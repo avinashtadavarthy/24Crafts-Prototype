@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -48,12 +49,16 @@ public class signup extends AppCompatActivity{
     private TextView dateView;
     private int year, month, day;
 
+    EditText password, confirm_password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
-
+        password = (EditText) findViewById(R.id.password);
+        password.setTransformationMethod(new PasswordTransformationMethod());
+        confirm_password = (EditText) findViewById(R.id.confirm_password);
+        confirm_password.setTransformationMethod(new PasswordTransformationMethod());
         Spinner craft = (Spinner) findViewById(R.id.spinner);
         CustomAdapterSpinner craftAdapter=new CustomAdapterSpinner(getApplicationContext(),whoN);
         craft.setAdapter(craftAdapter);
@@ -87,9 +92,9 @@ public class signup extends AppCompatActivity{
             }
         });
 
-
+        //commenting out until we can display the text hint in the page
         //multiselect spinner
-        ArrayList<String> options = new ArrayList<>();
+        /*ArrayList<String> options = new ArrayList<>();
         options.add("English");
         options.add("Hindi");
         options.add("Telugu");
@@ -103,7 +108,7 @@ public class signup extends AppCompatActivity{
         ArrayAdapter<String> adapter = new ArrayAdapter <String>(getApplicationContext(), android.R.layout.simple_list_item_multiple_choice, options);
         multiSelectSpinner.setListAdapter(adapter);
         multiSelectSpinner.setTitle("Select Languages Known");
-
+*/
 
         final EditText name1 =(EditText)findViewById(R.id.first_name);
 
