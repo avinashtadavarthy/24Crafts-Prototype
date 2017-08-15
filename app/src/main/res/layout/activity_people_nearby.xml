@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.rahul.splashscreen.ZoomableRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="551dp"
+    android:id="@+id/mainLayout"
+    tools:context="com.example.rahul.splashscreen.MainActivity"
+    android:background="@mipmap/blur"
+    tools:layout_editor_absoluteY="8dp"
+    tools:layout_editor_absoluteX="8dp">
+
+
+    <RelativeLayout
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        android:id="@+id/relativeLayout"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+
+
+
+        <ImageView
+            android:layout_width="340dp"
+            android:layout_height="340dp"
+            android:id="@+id/IMG"
+            android:layout_centerInParent="true"
+            android:background="@drawable/circle"/>
+
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/circle">
+
+
+
+        </ImageView>
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/icon_circle"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+
+    <ImageView
+        android:background="@drawable/imgborder"
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="31dp"
+        app:srcCompat="@drawable/icon_circle_blue"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:src="@drawable/personoutline"
+        android:visibility="invisible"
+        android:layout_above="@+id/imageView2"
+        android:layout_toRightOf="@+id/imageView2"
+        android:layout_toEndOf="@+id/imageView2" />
+
+    <ImageView
+        android:background="@drawable/imgborder"
+        android:id="@+id/imageView4"
+        android:src="@drawable/person"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/relativeLayout"
+        android:layout_alignLeft="@id/relativeLayout"
+        android:layout_alignStart="@id/relativeLayout"
+        android:layout_marginBottom="73dp"
+        android:layout_marginLeft="62dp"
+        android:visibility="invisible"
+        android:layout_marginStart="62dp"
+        app:srcCompat="@drawable/icon_circle_1" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:background="@drawable/imgborder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView7"
+        android:layout_marginBottom="15dp"
+        android:visibility="invisible"
+        android:src="@drawable/personoutline"
+        app:srcCompat="@drawable/icon_circle_orange" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:background="@drawable/imgborder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:src="@drawable/person"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/icon_circle_1"
+        android:layout_above="@id/imageView4"
+        android:layout_alignLeft="@id/imageView4"
+        android:layout_alignStart="@id/imageView4" />
+
+    <ImageView
+        android:background="@drawable/imgborder"
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/icon_circle_blue"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/imageView4"
+        android:layout_toRightOf="@+id/button"
+        android:layout_toEndOf="@+id/button"
+        android:layout_marginLeft="17dp"
+        android:src="@drawable/personoutline"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="31dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="Search Again"
+
+        android:background="@drawable/button1"
+        android:visibility="invisible"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:text="People Near BY"
+        android:textSize="30dp"
+        android:textColor="#f9666f"
+        android:layout_centerVertical="true"/>
+
+
+</com.example.rahul.splashscreen.ZoomableRelativeLayout>

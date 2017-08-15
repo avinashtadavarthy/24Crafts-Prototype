@@ -1,5 +1,6 @@
 package com.example.iyashwant.spiderprojectprototype;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -52,7 +53,9 @@ public class Main2Activity extends AppCompatActivity
             Toast.makeText(this, "Encounters", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nearby) {
-            Toast.makeText(this, "Nearby", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this,PeopleNearby.class);
+            startActivity(i);
+            //Toast.makeText(this, "Nearby", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.directory) {
             Toast.makeText(this, "Directory", Toast.LENGTH_SHORT).show();

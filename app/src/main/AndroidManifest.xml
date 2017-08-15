@@ -9,30 +9,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".Login2"
+        <activity
+            android:name=".Login2"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".signup"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".signup2"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".signup3"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".signup4"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".Verification"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".Login"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".signup"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".signup2"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".signup3"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".signup4"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Verification"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity android:name=".PeopleNearby"></activity>
     </application>
 
 </manifest>
