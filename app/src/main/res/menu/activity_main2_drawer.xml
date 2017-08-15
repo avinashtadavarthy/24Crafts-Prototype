@@ -11,9 +11,9 @@
             android:icon="@drawable/people"
             android:title="Encounters" />
         <item
-            android:id="@+id/newsfeed"
+            android:id="@+id/nearby"
             android:icon="@drawable/book"
-            android:title="Newsfeed" />
+            android:title="People Nearby" />
         <item
             android:id="@+id/directory"
             android:icon="@drawable/contact"

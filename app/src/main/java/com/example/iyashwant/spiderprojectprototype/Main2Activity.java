@@ -51,8 +51,8 @@ public class Main2Activity extends AppCompatActivity
         } else if (id == R.id.encounters) {
             Toast.makeText(this, "Encounters", Toast.LENGTH_SHORT).show();
 
-        } else if (id == R.id.newsfeed) {
-            Toast.makeText(this, "Newsfeed", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.nearby) {
+            Toast.makeText(this, "Nearby", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.directory) {
             Toast.makeText(this, "Directory", Toast.LENGTH_SHORT).show();
