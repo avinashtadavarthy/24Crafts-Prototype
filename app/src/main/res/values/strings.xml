@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SpiderProjectPrototype</string>
+    <string name="app_name">24 Crafts</string>
     <string name="date_selected"/>
 
     <string-array name="who">
@@ -9,4 +9,21 @@
         <item>"Actor"</item>
         <item>"Actress"</item>
     </string-array>
+    <string-array name="words">
+        <item>one</item>
+        <item>two</item>
+        <item>three</item>
+        <item>four</item>
+        <item>five</item>
+
+    </string-array>
+
+    <string name="open_drawer">Open Navigation Drawer</string>
+    <string name="close_drawer">Close Navigation Drawer</string>
+    <string name="title_activity_main2">Home</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

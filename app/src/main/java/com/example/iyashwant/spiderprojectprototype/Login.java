@@ -50,4 +50,8 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    public void login(View view) {
+        Intent i = new Intent(this,Main2Activity.class);
+        startActivity(i);
+    }
 }

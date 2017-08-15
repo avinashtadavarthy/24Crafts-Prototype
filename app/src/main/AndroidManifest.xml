@@ -28,6 +28,11 @@
             android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".Verification"
             android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
