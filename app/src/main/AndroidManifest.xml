@@ -42,6 +42,8 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".PeopleNearby" />
         <activity android:name=".ProfileView"></activity>
+        <activity android:name=".Directory.contacts"></activity>
+        <activity android:name=".Directory.MainActivity"></activity>
     </application>
 
 </manifest>
