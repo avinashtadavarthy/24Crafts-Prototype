@@ -757,7 +757,7 @@ public class signup3 extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent next = new Intent(getApplicationContext(),signup4.class);
+                Intent next = new Intent(getApplicationContext(),ProfileView.class);
                 startActivity(next);
             }
         });
