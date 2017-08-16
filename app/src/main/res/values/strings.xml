@@ -3,7 +3,7 @@
     <string name="date_selected" />
 
     <string-array name="who">
-        <item>Who </item>
+        <item>Who</item>
         <item>"Director"</item>
         <item>"producer"</item>
         <item>"Actor"</item>
