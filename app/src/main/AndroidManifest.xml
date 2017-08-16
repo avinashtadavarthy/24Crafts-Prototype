@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.iyashwant.spiderprojectprototype">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -41,9 +43,10 @@
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".PeopleNearby" />
-        <activity android:name=".ProfileView"></activity>
-        <activity android:name=".Directory.contacts"></activity>
-        <activity android:name=".Directory.MainActivity"></activity>
+        <activity android:name=".ProfileView" />
+        <activity android:name=".Directory.contacts" />
+        <activity android:name=".Directory.MainActivity" />
+        <activity android:name=".Auditions.AuditionActivity"></activity>
     </application>
 
 </manifest>

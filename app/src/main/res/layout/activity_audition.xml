@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@mipmap/blur"
+        >
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/e1"
+
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_height="40sp"
+            android:hint="   Project name"
+
+            android:layout_marginBottom="10dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/box"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/e2"
+
+            android:layout_height="40sp"
+            android:hint="   Project type"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/box"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_marginLeft="30dp"
+
+            android:id="@+id/e3"
+            android:gravity="top"
+            android:layout_height="160sp"
+            android:hint="   Project description"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/box"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:id="@+id/e4"
+
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="10dp"
+            android:hint="   Features"
+            android:background="@drawable/box"/>
+        <EditText
+            android:layout_width="match_parent"
+
+            android:layout_height="40sp"
+
+            android:id="@+id/e5"
+            android:hint="   Shooting location"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/box"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+
+            android:layout_marginLeft="30dp"
+
+            android:id="@+id/e6"
+            android:layout_height="40sp"
+            android:hint="   Audition Location"
+            android:background="@drawable/box"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="10dp"
+
+
+            android:layout_height="40sp"
+            android:id="@+id/e7"
+            android:hint="   Valid From date (dd mm yy)"
+            android:background="@drawable/box"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="40sp"
+
+            android:id="@+id/e8"
+
+            android:hint="   Valid to date (dd mm yy)"
+            android:background="@drawable/box"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:inputType="number"
+            android:id="@+id/e9"
+            android:layout_height="40sp"
+
+            android:hint="   Contact number"
+            android:background="@drawable/box"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Compulsory fields are empty"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#ff0066"
+            android:id="@+id/errmsg"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="139dp"
+            android:layout_marginTop="50dp"
+            android:background="#8c8c8c"
+            android:onClick="post"
+            android:text="POST"
+            />
+
+
+
+
+
+
+
+    </LinearLayout>
+</ScrollView>

@@ -5,7 +5,7 @@
         <item
             android:id="@+id/auditions"
             android:icon="@drawable/auditions"
-            android:title="Open Auditions" />
+            android:title="Auditions" />
         <item
             android:id="@+id/encounters"
             android:icon="@drawable/people"
