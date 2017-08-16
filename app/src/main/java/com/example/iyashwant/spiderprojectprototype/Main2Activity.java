@@ -11,6 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.iyashwant.spiderprojectprototype.Auditions.AuditionActivity;
+import com.example.iyashwant.spiderprojectprototype.Directory.MainActivity;
+
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -48,6 +51,8 @@ public class Main2Activity extends AppCompatActivity
 
         if (id == R.id.auditions) {
             Toast.makeText(this, "Auditions", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this, AuditionActivity.class);
+            startActivity(i);
             // Handle the camera action
         } else if (id == R.id.encounters) {
             Toast.makeText(this, "Encounters", Toast.LENGTH_SHORT).show();
@@ -59,6 +64,8 @@ public class Main2Activity extends AppCompatActivity
 
         } else if (id == R.id.directory) {
             Toast.makeText(this, "Directory", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this,MainActivity.class);
+            startActivity(i);
 
         } else if (id == R.id.nav_share) {
             Toast.makeText(this, "5", Toast.LENGTH_SHORT).show();
