@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.rahul.splashscreen.ZoomableRelativeLayout
+
+<com.example.iyashwant.spiderprojectprototype.ZoomableRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="551dp"
+    android:layout_height="match_parent"
     android:id="@+id/mainLayout"
-    tools:context="com.example.rahul.splashscreen.MainActivity"
+    tools:context="com.example.iyashwant.spiderprojectprototype.PeopleNearby"
     android:background="@mipmap/blur"
     tools:layout_editor_absoluteY="8dp"
     tools:layout_editor_absoluteX="8dp">
@@ -45,9 +46,9 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/icon_circle"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/taigamod6"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
@@ -55,13 +56,13 @@
     <ImageView
         android:background="@drawable/imgborder"
         android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="31dp"
         app:srcCompat="@drawable/icon_circle_blue"
         android:layout_marginLeft="14dp"
         android:layout_marginStart="14dp"
-        android:src="@drawable/personoutline"
+        android:src="@drawable/taigamod1"
         android:visibility="invisible"
         android:layout_above="@+id/imageView2"
         android:layout_toRightOf="@+id/imageView2"
@@ -70,9 +71,9 @@
     <ImageView
         android:background="@drawable/imgborder"
         android:id="@+id/imageView4"
-        android:src="@drawable/person"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:src="@drawable/taigamod2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_alignBottom="@id/relativeLayout"
         android:layout_alignLeft="@id/relativeLayout"
         android:layout_alignStart="@id/relativeLayout"
@@ -85,23 +86,23 @@
     <ImageView
         android:id="@+id/imageView5"
         android:background="@drawable/imgborder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_alignBottom="@+id/imageView7"
         android:layout_marginBottom="15dp"
         android:visibility="invisible"
-        android:src="@drawable/personoutline"
+        android:src="@drawable/taigamod3"
         app:srcCompat="@drawable/icon_circle_orange" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:background="@drawable/imgborder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="44dp"
         android:layout_marginLeft="11dp"
         android:layout_marginStart="11dp"
-        android:src="@drawable/person"
+        android:src="@drawable/taigamod4"
         android:visibility="invisible"
         app:srcCompat="@drawable/icon_circle_1"
         android:layout_above="@id/imageView4"
@@ -111,15 +112,15 @@
     <ImageView
         android:background="@drawable/imgborder"
         android:id="@+id/imageView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         app:srcCompat="@drawable/icon_circle_blue"
         android:visibility="invisible"
         android:layout_alignTop="@+id/imageView4"
         android:layout_toRightOf="@+id/button"
         android:layout_toEndOf="@+id/button"
         android:layout_marginLeft="17dp"
-        android:src="@drawable/personoutline"
+        android:src="@drawable/taigamod5"
         android:layout_marginStart="17dp"
         android:layout_marginTop="31dp" />
 
@@ -151,10 +152,14 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"
-        android:text="People Near BY"
+        android:text="PEOPLE NEARBY"
         android:textSize="30dp"
         android:textColor="#f9666f"
         android:layout_centerVertical="true"/>
 
 
-</com.example.rahul.splashscreen.ZoomableRelativeLayout>
+</com.example.iyashwant.spiderprojectprototype.ZoomableRelativeLayout>
+
+
+
+
