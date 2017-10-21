@@ -319,6 +319,343 @@ public class signup3 extends AppCompatActivity {
         EditText choreo_6 = (EditText) findViewById(R.id.choreo_6);
 
 
+
+        final LinearLayout dop = ( LinearLayout) findViewById(R.id.dop);
+        dop.setVisibility(View.GONE);
+        RadioGroup dop_1radio = (RadioGroup) findViewById(R.id.dop_1radio);
+        RadioButton dop_1radioyes = (RadioButton) findViewById(R.id.dop_1radioyes);
+        final EditText dop_11 = (EditText) findViewById(R.id.dop_11);
+        dop_11.setVisibility(View.GONE);
+        EditText dop_2 = (EditText) findViewById(R.id.dop_2);
+        EditText dop_3 = (EditText) findViewById(R.id.dop_3);
+        EditText dop_4 = (EditText) findViewById(R.id.dop_4);
+        RadioGroup dop_5radio = (RadioGroup) findViewById(R.id.dop_5radio);
+        RadioButton dop_5radioyes = (RadioButton) findViewById(R.id.dop_5radioyes);
+
+
+
+
+        final LinearLayout stp = ( LinearLayout) findViewById(R.id.stp);
+        stp.setVisibility(View.GONE);
+        RadioGroup stp_1radio = (RadioGroup) findViewById(R.id.stp_1radio);
+        RadioButton stp_1radioyes = (RadioButton) findViewById(R.id.stp_1radioyes);
+        final EditText stp_11 = (EditText) findViewById(R.id.stp_11);
+        stp_11.setVisibility(View.GONE);
+        EditText stp_2 = (EditText) findViewById(R.id.stp_2);
+        RadioGroup stp_3radio = (RadioGroup) findViewById(R.id.stp_3radio);
+        RadioButton stp_3radioyes = (RadioButton) findViewById(R.id.stp_3radioyes);
+
+
+
+
+        final LinearLayout pro = ( LinearLayout) findViewById(R.id.pro);
+        pro.setVisibility(View.GONE);
+        RadioGroup pro_1radio = (RadioGroup) findViewById(R.id.pro_1radio);
+        RadioButton pro_1radioyes = (RadioButton) findViewById(R.id.pro_1radioyes);
+        final EditText pro_11 = (EditText) findViewById(R.id.pro_11);
+        pro_11.setVisibility(View.GONE);
+        EditText pro_2 = (EditText) findViewById(R.id.pro_2);
+        RadioGroup pro_3radio = (RadioGroup) findViewById(R.id.pro_3radio);
+        RadioButton pro_3radioyes = (RadioButton) findViewById(R.id.pro_3radioyes);
+
+
+
+
+        final LinearLayout desi = ( LinearLayout) findViewById(R.id.desi);
+        desi.setVisibility(View.GONE);
+        RadioGroup desi_1radio = (RadioGroup) findViewById(R.id.desi_1radio);
+        RadioButton desi_1radioyes = (RadioButton) findViewById(R.id.desi_1radioyes);
+        final EditText desi_11 = (EditText) findViewById(R.id.desi_11);
+        desi_11.setVisibility(View.GONE);
+        EditText desi_2 = (EditText) findViewById(R.id.desi_2);
+        EditText desi_3 = (EditText) findViewById(R.id.desi_3);
+        RadioGroup desi_3radio = (RadioGroup) findViewById(R.id.desi_4radio);
+        RadioButton desi_3radioyes = (RadioButton) findViewById(R.id.desi_4radioyes);
+
+
+
+
+        final LinearLayout prodm = ( LinearLayout) findViewById(R.id.prodm);
+        prodm.setVisibility(View.GONE);
+        RadioGroup prodm_1radio = (RadioGroup) findViewById(R.id.prodm_1radio);
+        RadioButton prodm_1radioyes = (RadioButton) findViewById(R.id.prodm_1radioyes);
+        final EditText prodm_11 = (EditText) findViewById(R.id.prodm_11);
+        prodm_11.setVisibility(View.GONE);
+        EditText prodm_2 = (EditText) findViewById(R.id.prodm_2);
+        RadioGroup prodm_3radio = (RadioGroup) findViewById(R.id.prodm_3radio);
+        RadioButton prodm_3radioyes = (RadioButton) findViewById(R.id.prodm_3radioyes);
+
+
+
+
+        final LinearLayout focus = ( LinearLayout) findViewById(R.id.focus);
+        focus.setVisibility(View.GONE);
+        RadioGroup focus_1radio = (RadioGroup) findViewById(R.id.focus_1radio);
+        RadioButton focus_1radioyes = (RadioButton) findViewById(R.id.focus_1radioyes);
+        final EditText focus_11 = (EditText) findViewById(R.id.focus_11);
+        focus_11.setVisibility(View.GONE);
+        EditText focus_2 = (EditText) findViewById(R.id.focus_2);
+        RadioGroup focus_3radio = (RadioGroup) findViewById(R.id.focus_3radio);
+        RadioButton focus_3radioyes = (RadioButton) findViewById(R.id.focus_3radioyes);
+
+
+
+
+        final LinearLayout driver = ( LinearLayout) findViewById(R.id.driver);
+        driver.setVisibility(View.GONE);
+        RadioGroup driver_1radio = (RadioGroup) findViewById(R.id.driver_1radio);
+        RadioButton driver_1radioyes = (RadioButton) findViewById(R.id.driver_1radioyes);
+        final EditText driver_11 = (EditText) findViewById(R.id.driver_11);
+        driver_11.setVisibility(View.GONE);
+        EditText driver_2 = (EditText) findViewById(R.id.driver_2);
+        RadioGroup driver_3radio = (RadioGroup) findViewById(R.id.driver_3radio);
+        RadioButton driver_3radioyes = (RadioButton) findViewById(R.id.driver_3radioyes);
+        
+
+
+        final LinearLayout mic = ( LinearLayout) findViewById(R.id.mic);
+        mic.setVisibility(View.GONE);
+        RadioGroup mic_1radio = (RadioGroup) findViewById(R.id.mic_1radio);
+        RadioButton mic_1radioyes = (RadioButton) findViewById(R.id.mic_1radioyes);
+        final EditText mic_11 = (EditText) findViewById(R.id.mic_11);
+        mic_11.setVisibility(View.GONE);
+        EditText mic_2 = (EditText) findViewById(R.id.mic_2);
+        RadioGroup mic_3radio = (RadioGroup) findViewById(R.id.mic_3radio);
+        RadioButton mic_3radioyes = (RadioButton) findViewById(R.id.mic_3radioyes);
+
+
+
+        final LinearLayout musicd = ( LinearLayout) findViewById(R.id.musicd);
+        musicd.setVisibility(View.GONE);
+        RadioGroup musicd_1radio = (RadioGroup) findViewById(R.id.musicd_1radio);
+        RadioButton musicd_1radioyes = (RadioButton) findViewById(R.id.musicd_1radioyes);
+        final EditText musicd_11 = (EditText) findViewById(R.id.musicd_11);
+        musicd_11.setVisibility(View.GONE);
+        EditText musicd_2 = (EditText) findViewById(R.id.musicd_2);
+        RadioGroup musicd_3radio = (RadioGroup) findViewById(R.id.musicd_3radio);
+        RadioButton musicd_3radioyes = (RadioButton) findViewById(R.id.musicd_3radioyes);
+        final EditText musicd_31 = (EditText) findViewById(R.id.musicd_31);
+        musicd_31.setVisibility(View.GONE);
+        RadioGroup musicd_4radio = (RadioGroup) findViewById(R.id.musicd_4radio);
+        RadioButton musicd_4radioyes = (RadioButton) findViewById(R.id.musicd_4radioyes);
+
+
+
+
+        final LinearLayout makeup = ( LinearLayout) findViewById(R.id.makeup);
+        makeup.setVisibility(View.GONE);
+        RadioGroup makeup_1radio = (RadioGroup) findViewById(R.id.makeup_1radio);
+        RadioButton makeup_1radioyes = (RadioButton) findViewById(R.id.makeup_1radioyes);
+        final EditText makeup_11 = (EditText) findViewById(R.id.makeup_11);
+        makeup_11.setVisibility(View.GONE);
+        EditText makeup_2 = (EditText) findViewById(R.id.makeup_2);
+        RadioGroup makeup_3radio = (RadioGroup) findViewById(R.id.makeup_3radio);
+        RadioButton makeup_3radioyes = (RadioButton) findViewById(R.id.makeup_3radioyes);
+
+
+
+
+        final LinearLayout hairdr = ( LinearLayout) findViewById(R.id.hairdr);
+        hairdr.setVisibility(View.GONE);
+        RadioGroup hairdr_1radio = (RadioGroup) findViewById(R.id.hairdr_1radio);
+        RadioButton hairdr_1radioyes = (RadioButton) findViewById(R.id.hairdr_1radioyes);
+        final EditText hairdr_11 = (EditText) findViewById(R.id.hairdr_11);
+        hairdr_11.setVisibility(View.GONE);
+        EditText hairdr_2 = (EditText) findViewById(R.id.hairdr_2);
+        RadioGroup hairdr_3radio = (RadioGroup) findViewById(R.id.hairdr_3radio);
+        RadioButton hairdr_3radioyes = (RadioButton) findViewById(R.id.hairdr_3radioyes);
+
+
+
+
+        final LinearLayout costu = ( LinearLayout) findViewById(R.id.costu);
+        costu.setVisibility(View.GONE);
+        RadioGroup costu_1radio = (RadioGroup) findViewById(R.id.costu_1radio);
+        RadioButton costu_1radioyes = (RadioButton) findViewById(R.id.costu_1radioyes);
+        final EditText costu_11 = (EditText) findViewById(R.id.costu_11);
+        costu_11.setVisibility(View.GONE);
+        EditText costu_2 = (EditText) findViewById(R.id.costu_2);
+        RadioGroup costu_3radio = (RadioGroup) findViewById(R.id.costu_3radio);
+        RadioButton costu_3radioyes = (RadioButton) findViewById(R.id.costu_3radioyes);
+
+
+
+
+        final LinearLayout artd = ( LinearLayout) findViewById(R.id.artd);
+        artd.setVisibility(View.GONE);
+        RadioGroup artd_1radio = (RadioGroup) findViewById(R.id.artd_1radio);
+        RadioButton artd_1radioyes = (RadioButton) findViewById(R.id.artd_1radioyes);
+        final EditText artd_11 = (EditText) findViewById(R.id.artd_11);
+        artd_11.setVisibility(View.GONE);
+        EditText artd_2 = (EditText) findViewById(R.id.artd_2);
+        RadioGroup artd_3radio = (RadioGroup) findViewById(R.id.artd_3radio);
+        RadioButton artd_3radioyes = (RadioButton) findViewById(R.id.artd_3radioyes);
+
+
+
+
+        final LinearLayout setd = ( LinearLayout) findViewById(R.id.setd);
+        setd.setVisibility(View.GONE);
+        RadioGroup setd_1radio = (RadioGroup) findViewById(R.id.setd_1radio);
+        RadioButton setd_1radioyes = (RadioButton) findViewById(R.id.setd_1radioyes);
+        final EditText setd_11 = (EditText) findViewById(R.id.setd_11);
+        setd_11.setVisibility(View.GONE);
+        EditText setd_2 = (EditText) findViewById(R.id.setd_2);
+        RadioGroup setd_3radio = (RadioGroup) findViewById(R.id.setd_3radio);
+        RadioButton setd_3radioyes = (RadioButton) findViewById(R.id.setd_3radioyes);
+
+
+
+
+        final LinearLayout stunt = ( LinearLayout) findViewById(R.id.stunt);
+        stunt.setVisibility(View.GONE);
+        RadioGroup stunt_1radio = (RadioGroup) findViewById(R.id.stunt_1radio);
+        RadioButton stunt_1radioyes = (RadioButton) findViewById(R.id.stunt_1radioyes);
+        final EditText stunt_11 = (EditText) findViewById(R.id.stunt_11);
+        stunt_11.setVisibility(View.GONE);
+        EditText stunt_2 = (EditText) findViewById(R.id.stunt_2);
+        RadioGroup stunt_3radio = (RadioGroup) findViewById(R.id.stunt_3radio);
+        RadioButton stunt_3radioyes = (RadioButton) findViewById(R.id.stunt_3radioyes);
+
+
+
+        final LinearLayout editor = ( LinearLayout) findViewById(R.id.editor);
+        editor.setVisibility(View.GONE);
+        EditText editor_1 = (EditText) findViewById(R.id.editor_1);
+        RadioGroup editor_2radio = (RadioGroup) findViewById(R.id.editor_2radio);
+        RadioButton editor_2radioyes = (RadioButton) findViewById(R.id.editor_2radioyes);
+        final EditText editor_21 = (EditText) findViewById(R.id.editor_21);
+        editor_21.setVisibility(View.GONE);
+        EditText editor_3 = (EditText) findViewById(R.id.editor_3);
+        EditText editor_4 = (EditText) findViewById(R.id.editor_4);
+        RadioGroup editor_5radio = (RadioGroup) findViewById(R.id.editor_5radio);
+        RadioButton editor_5radioyes = (RadioButton) findViewById(R.id.editor_5radioyes);
+
+
+
+
+        final LinearLayout locat = ( LinearLayout) findViewById(R.id.locat);
+        locat.setVisibility(View.GONE);
+        RadioGroup locat_1radio = (RadioGroup) findViewById(R.id.locat_1radio);
+        RadioButton locat_1radioyes = (RadioButton) findViewById(R.id.locat_1radioyes);
+        final EditText locat_11 = (EditText) findViewById(R.id.locat_11);
+        locat_11.setVisibility(View.GONE);
+        EditText locat_2 = (EditText) findViewById(R.id.locat_2);
+        RadioGroup locat_3radio = (RadioGroup) findViewById(R.id.locat_3radio);
+        RadioButton locat_3radioyes = (RadioButton) findViewById(R.id.locat_3radioyes);
+
+
+
+
+        final LinearLayout foodp = ( LinearLayout) findViewById(R.id.foodp);
+        foodp.setVisibility(View.GONE);
+        RadioGroup foodp_1radio = (RadioGroup) findViewById(R.id.foodp_1radio);
+        RadioButton foodp_1radioyes = (RadioButton) findViewById(R.id.foodp_1radioyes);
+        final EditText foodp_11 = (EditText) findViewById(R.id.foodp_11);
+        foodp_11.setVisibility(View.GONE);
+        EditText foodp_2 = (EditText) findViewById(R.id.foodp_2);
+        RadioGroup foodp_3radio = (RadioGroup) findViewById(R.id.foodp_3radio);
+        RadioButton foodp_3radioyes = (RadioButton) findViewById(R.id.foodp_3radioyes);
+
+
+
+        final LinearLayout dub = ( LinearLayout) findViewById(R.id.dub);
+        dub.setVisibility(View.GONE);
+        RadioGroup dub_1radio = (RadioGroup) findViewById(R.id.dub_1radio);
+        RadioButton dub_1radioyes = (RadioButton) findViewById(R.id.dub_1radioyes);
+        final EditText dub_11 = (EditText) findViewById(R.id.dub_11);
+        dub_11.setVisibility(View.GONE);
+        EditText dub_2 = (EditText) findViewById(R.id.dub_2);
+        RadioGroup dub_3radio = (RadioGroup) findViewById(R.id.dub_3radio);
+        RadioButton dub_3radioyes = (RadioButton) findViewById(R.id.dub_3radioyes);
+
+
+        final LinearLayout srec = ( LinearLayout) findViewById(R.id.srec);
+        srec.setVisibility(View.GONE);
+        EditText srec_1 = (EditText) findViewById(R.id.srec_1);
+        final EditText srec_11 = (EditText) findViewById(R.id.srec_11);
+        RadioGroup srec_2radio = (RadioGroup) findViewById(R.id.srec_2radio);
+        RadioButton srec_2radioyes = (RadioButton) findViewById(R.id.srec_2radioyes);
+        final EditText srec_21 = (EditText) findViewById(R.id.srec_21);
+        srec_21.setVisibility(View.GONE);
+        EditText srec_3 = (EditText) findViewById(R.id.srec_3);
+        RadioGroup srec_4radio = (RadioGroup) findViewById(R.id.srec_4radio);
+        RadioButton srec_4radioyes = (RadioButton) findViewById(R.id.srec_4radioyes);
+
+
+
+        final LinearLayout smix = ( LinearLayout) findViewById(R.id.smix);
+        smix.setVisibility(View.GONE);
+        EditText smix_1 = (EditText) findViewById(R.id.smix_1);
+        final EditText smix_11 = (EditText) findViewById(R.id.smix_11);
+        RadioGroup smix_2radio = (RadioGroup) findViewById(R.id.smix_2radio);
+        RadioButton smix_2radioyes = (RadioButton) findViewById(R.id.smix_2radioyes);
+        final EditText smix_21 = (EditText) findViewById(R.id.smix_21);
+        smix_21.setVisibility(View.GONE);
+        EditText smix_3 = (EditText) findViewById(R.id.smix_3);
+        RadioGroup smix_4radio = (RadioGroup) findViewById(R.id.smix_4radio);
+        RadioButton smix_4radioyes = (RadioButton) findViewById(R.id.smix_4radioyes);
+
+
+
+        final LinearLayout digint = ( LinearLayout) findViewById(R.id.digint);
+        digint.setVisibility(View.GONE);
+        EditText digint_1 = (EditText) findViewById(R.id.digint_1);
+        final EditText digint_11 = (EditText) findViewById(R.id.digint_11);
+        EditText digint_2 = (EditText) findViewById(R.id.digint_2);
+        EditText digint_3 = (EditText) findViewById(R.id.digint_3);
+        RadioGroup digint_4radio = (RadioGroup) findViewById(R.id.digint_4radio);
+        RadioButton digint_4radioyes = (RadioButton) findViewById(R.id.digint_4radioyes);
+        final EditText digint_41 = (EditText) findViewById(R.id.digint_41);
+        digint_41.setVisibility(View.GONE);
+        EditText digint_5 = (EditText) findViewById(R.id.digint_5);
+        RadioGroup digint_6radio = (RadioGroup) findViewById(R.id.digint_6radio);
+        RadioButton digint_6radioyes = (RadioButton) findViewById(R.id.digint_6radioyes);
+
+
+
+        final LinearLayout vfx = ( LinearLayout) findViewById(R.id.vfx);
+        vfx.setVisibility(View.GONE);
+        EditText vfx_1 = (EditText) findViewById(R.id.vfx_1);
+        final EditText vfx_11 = (EditText) findViewById(R.id.vfx_11);
+        EditText vfx_2 = (EditText) findViewById(R.id.vfx_2);
+        EditText vfx_3 = (EditText) findViewById(R.id.vfx_3);
+        RadioGroup vfx_4radio = (RadioGroup) findViewById(R.id.vfx_4radio);
+        RadioButton vfx_4radioyes = (RadioButton) findViewById(R.id.vfx_4radioyes);
+        final EditText vfx_41 = (EditText) findViewById(R.id.vfx_41);
+        vfx_41.setVisibility(View.GONE);
+        EditText vfx_5 = (EditText) findViewById(R.id.vfx_5);
+        RadioGroup vfx_6radio = (RadioGroup) findViewById(R.id.vfx_6radio);
+        RadioButton vfx_6radioyes = (RadioButton) findViewById(R.id.vfx_6radioyes);
+
+
+
+        final LinearLayout sfx = ( LinearLayout) findViewById(R.id.sfx);
+        sfx.setVisibility(View.GONE);
+        EditText sfx_1 = (EditText) findViewById(R.id.sfx_1);
+        final EditText sfx_11 = (EditText) findViewById(R.id.sfx_11);
+        EditText sfx_2 = (EditText) findViewById(R.id.sfx_2);
+        EditText sfx_3 = (EditText) findViewById(R.id.sfx_3);
+        RadioGroup sfx_4radio = (RadioGroup) findViewById(R.id.sfx_4radio);
+        RadioButton sfx_4radioyes = (RadioButton) findViewById(R.id.sfx_4radioyes);
+        final EditText sfx_41 = (EditText) findViewById(R.id.sfx_41);
+        sfx_41.setVisibility(View.GONE);
+        EditText sfx_5 = (EditText) findViewById(R.id.sfx_5);
+        RadioGroup sfx_6radio = (RadioGroup) findViewById(R.id.sfx_6radio);
+        RadioButton sfx_6radioyes = (RadioButton) findViewById(R.id.sfx_6radioyes);
+
+
+
+        final LinearLayout pets = ( LinearLayout) findViewById(R.id.pets);
+        pets.setVisibility(View.GONE);
+        EditText pets_1 = (EditText) findViewById(R.id.pets_1);
+        EditText pets_2 = (EditText) findViewById(R.id.pets_2);
+        RadioGroup pets_3radio = (RadioGroup) findViewById(R.id.pets_3radio);
+        RadioButton pets_3radioyes = (RadioButton) findViewById(R.id.pets_3radioyes);
+        
+
+
+
         final Bundle bundle = getIntent().getExtras();
         final String name = bundle.getString("name");
         final String craft = bundle.getString("craft");
@@ -337,6 +674,31 @@ public class signup3 extends AppCompatActivity {
             case "Script / Screenplay Writers": screenp.setVisibility(View.VISIBLE); break;
             case "Story Board Artist": sba.setVisibility(View.VISIBLE); break;
             case "Choreographer": choreo.setVisibility(View.VISIBLE); break;
+            case "Director of Photography": dop.setVisibility(View.VISIBLE); break;
+            case "Still Photographer": stp.setVisibility(View.VISIBLE); break;
+            case "PRO": pro.setVisibility(View.VISIBLE); break; 
+            case "Designer": desi.setVisibility(View.VISIBLE); break;
+            case "Production Manager": prodm.setVisibility(View.VISIBLE); break;
+            case "Focus Puller": focus.setVisibility(View.VISIBLE); break;
+            case "Vehicle Driver": driver.setVisibility(View.VISIBLE); break;
+            case "Mic Department": mic.setVisibility(View.VISIBLE); break;
+            case "Music Director": musicd.setVisibility(View.VISIBLE); break;
+            case "Makeup Man": makeup.setVisibility(View.VISIBLE); break;
+            case "Hair Dresser": hairdr.setVisibility(View.VISIBLE); break;
+            case "Costumer": costu.setVisibility(View.VISIBLE); break;
+            case "Art Department": artd.setVisibility(View.VISIBLE); break;
+            case "Set Department": setd.setVisibility(View.VISIBLE); break;
+            case "Stuntman": stunt.setVisibility(View.VISIBLE); break;
+            case "Editor": editor.setVisibility(View.VISIBLE); break;
+            case "Location Manager": locat.setVisibility(View.VISIBLE); break;
+            case "Production (Food)": foodp.setVisibility(View.VISIBLE); break;
+            case "Dubbing Artists": dub.setVisibility(View.VISIBLE); break;
+            case "Sound Recording Engineers": srec.setVisibility(View.VISIBLE); break;
+            case "Sound Mixing Engineers": smix.setVisibility(View.VISIBLE); break;
+            case "Digital Intermediate": digint.setVisibility(View.VISIBLE); break;
+            case "VFX / CG": vfx.setVisibility(View.VISIBLE); break;
+            case "SFX": sfx.setVisibility(View.VISIBLE); break;
+            case "Pet Suppliers / Pet Doctors / AWBI Certifications": pets.setVisibility(View.VISIBLE); break;
         }
 
         
@@ -750,6 +1112,273 @@ public class signup3 extends AppCompatActivity {
             }
         });
 
+
+        //dop
+        stp_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.stp_1radioyes)
+                    stp_11.setVisibility(View.VISIBLE);
+                else
+                    stp_11.setVisibility(View.GONE);
+            }
+        });
+        
+
+        //stp
+        stp_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.stp_1radioyes)
+                    stp_11.setVisibility(View.VISIBLE);
+                else
+                    stp_11.setVisibility(View.GONE);
+            }
+        });
+
+
+        //pro
+        pro_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.pro_1radioyes)
+                    pro_11.setVisibility(View.VISIBLE);
+                else
+                    pro_11.setVisibility(View.GONE);
+            }
+        });
+
+        //desi
+        desi_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.desi_1radioyes)
+                    desi_11.setVisibility(View.VISIBLE);
+                else
+                    desi_11.setVisibility(View.GONE);
+            }
+        });
+
+        //prodm
+        prodm_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.prodm_1radioyes)
+                    prodm_11.setVisibility(View.VISIBLE);
+                else
+                    prodm_11.setVisibility(View.GONE);
+            }
+        });
+
+        //focus
+        focus_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.focus_1radioyes)
+                    focus_11.setVisibility(View.VISIBLE);
+                else
+                    focus_11.setVisibility(View.GONE);
+            }
+        });
+
+        //driver
+        driver_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.driver_1radioyes)
+                    driver_11.setVisibility(View.VISIBLE);
+                else
+                    driver_11.setVisibility(View.GONE);
+            }
+        });
+
+        //mic
+        mic_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.mic_1radioyes)
+                    mic_11.setVisibility(View.VISIBLE);
+                else
+                    mic_11.setVisibility(View.GONE);
+            }
+        });
+
+        //musicd
+        musicd_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.musicd_1radioyes)
+                    musicd_11.setVisibility(View.VISIBLE);
+                else
+                    musicd_11.setVisibility(View.GONE);
+            }
+        });
+
+        //makeup
+        makeup_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.makeup_1radioyes)
+                    makeup_11.setVisibility(View.VISIBLE);
+                else
+                    makeup_11.setVisibility(View.GONE);
+            }
+        });
+
+        //hairdr
+        hairdr_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.hairdr_1radioyes)
+                    hairdr_11.setVisibility(View.VISIBLE);
+                else
+                    hairdr_11.setVisibility(View.GONE);
+            }
+        });
+
+        //costu
+        costu_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.costu_1radioyes)
+                    costu_11.setVisibility(View.VISIBLE);
+                else
+                    costu_11.setVisibility(View.GONE);
+            }
+        });
+
+        //artd
+        artd_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.artd_1radioyes)
+                    artd_11.setVisibility(View.VISIBLE);
+                else
+                    artd_11.setVisibility(View.GONE);
+            }
+        });
+
+        //setd
+        setd_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.setd_1radioyes)
+                    setd_11.setVisibility(View.VISIBLE);
+                else
+                    setd_11.setVisibility(View.GONE);
+            }
+        });
+
+        //stunt
+        stunt_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.stunt_1radioyes)
+                    stunt_11.setVisibility(View.VISIBLE);
+                else
+                    stunt_11.setVisibility(View.GONE);
+            }
+        });
+
+
+        //editor
+        editor_2radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.editor_2radioyes)
+                    editor_21.setVisibility(View.VISIBLE);
+                else
+                    editor_21.setVisibility(View.GONE);
+            }
+        });
+
+        //locat
+        locat_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.locat_1radioyes)
+                    locat_11.setVisibility(View.VISIBLE);
+                else
+                    locat_11.setVisibility(View.GONE);
+            }
+        });
+
+        //foodp
+        foodp_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.foodp_1radioyes)
+                    foodp_11.setVisibility(View.VISIBLE);
+                else
+                    foodp_11.setVisibility(View.GONE);
+            }
+        });
+
+        //dub
+        dub_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.dub_1radioyes)
+                    dub_11.setVisibility(View.VISIBLE);
+                else
+                    dub_11.setVisibility(View.GONE);
+            }
+        });
+
+        //srec
+        srec_2radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.srec_2radioyes)
+                    srec_11.setVisibility(View.VISIBLE);
+                else
+                    srec_11.setVisibility(View.GONE);
+            }
+        });
+
+        //smix
+        smix_2radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.smix_2radioyes)
+                    smix_11.setVisibility(View.VISIBLE);
+                else
+                    smix_11.setVisibility(View.GONE);
+            }
+        });
+
+        //digint
+        digint_4radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.digint_4radioyes)
+                    digint_11.setVisibility(View.VISIBLE);
+                else
+                    digint_11.setVisibility(View.GONE);
+            }
+        });
+
+        //vfx
+        vfx_4radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.vfx_4radioyes)
+                    vfx_11.setVisibility(View.VISIBLE);
+                else
+                    vfx_11.setVisibility(View.GONE);
+            }
+        });
+
+        //sfx
+        sfx_4radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.sfx_4radioyes)
+                    sfx_11.setVisibility(View.VISIBLE);
+                else
+                    sfx_11.setVisibility(View.GONE);
+            }
+        });
 
         
 

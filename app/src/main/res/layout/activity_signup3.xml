@@ -3545,6 +3545,3994 @@
                         />
 
                 </LinearLayout>
+                
+                <!-- DOP -->
+                <LinearLayout
+                    android:id="@+id/dop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/dop_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you performed in any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/dop_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/dop_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/dop_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/dop_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- camera used -->
+                    <EditText
+                        android:id="@+id/dop_3"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Which type of cameras have you used before? (Please list)"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- lens used -->
+                    <EditText
+                        android:id="@+id/dop_4"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Which type of lens have you used before? (Please list)"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/dop_5"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/dop_5radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/dop_5radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Still Photographer -->
+                <LinearLayout
+                    android:id="@+id/stp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/stp_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="6"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?" />
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/stp_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/stp_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/stp_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/stp_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/stp_3"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/stp_3radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/stp_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- PRO -->
+                <LinearLayout
+                    android:id="@+id/pro"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/pro_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/pro_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/pro_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/pro_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/pro_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/pro_3"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/pro_3radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/pro_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- designers -->
+                <LinearLayout
+                    android:id="@+id/desi"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/desi_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/desi_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/desi_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/desi_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/desi_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- software used -->
+                    <EditText
+                        android:id="@+id/desi_3"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="What software do you use to create designs?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/desi_4"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/desi_4radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/desi_4radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- production manager -->
+                <LinearLayout
+                    android:id="@+id/prodm"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/prodm_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/prodm_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/prodm_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/prodm_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/prodm_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/prodm_3"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/prodm_3radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/prodm_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- focus pullers -->
+                <LinearLayout
+                    android:id="@+id/focus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/focus_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/focus_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/focus_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/focus_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/focus_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/focus_3"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/focus_3radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/focus_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- vehicle driver -->
+                <LinearLayout
+                    android:id="@+id/driver"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/driver_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/driver_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/driver_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/driver_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/driver_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/driver_3"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/driver_3radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/driver_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- mic department -->
+                <LinearLayout
+                    android:id="@+id/mic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/mic_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/mic_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/mic_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/mic_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/mic_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/mic_3"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/mic_3radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/mic_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                
+                <!-- music director -->
+                <LinearLayout
+                    android:id="@+id/musicd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/musicd_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="6"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?" />
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/musicd_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/musicd_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/musicd_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/musicd_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- previously composed -->
+                    <LinearLayout
+                        android:id="@+id/musicd_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="10"
+                        android:layout_marginBottom="5sp">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you composed album songs earlier?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/musicd_3radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/musicd_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/musicd_31"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If Yes, list the albums"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:id="@+id/musicd_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/musicd_4radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/musicd_4radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                </LinearLayout>
+                
+                <!-- makeup man -->
+                <LinearLayout
+                    android:id="@+id/makeup"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/makeup_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/makeup_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/makeup_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/makeup_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/makeup_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/makeup_3"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/makeup_3radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/makeup_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- hairdresser -->
+                <LinearLayout
+                    android:id="@+id/hairdr"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/hairdr_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/hairdr_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/hairdr_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/hairdr_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/hairdr_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/hairdr_3"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/hairdr_3radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/hairdr_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- costumer -->
+                <LinearLayout
+                    android:id="@+id/costu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/costu_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/costu_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/costu_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/costu_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/costu_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/costu_3"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/costu_3radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/costu_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- art dept -->
+                <LinearLayout
+                    android:id="@+id/artd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/artd_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/artd_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/artd_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/artd_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/artd_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/artd_3"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/artd_3radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/artd_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- set dept -->
+                <LinearLayout
+                    android:id="@+id/setd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/setd_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/setd_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/setd_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/setd_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/setd_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/setd_3"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/setd_3radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/setd_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- stuntman -->
+                <LinearLayout
+                    android:id="@+id/stunt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/stunt_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/stunt_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/stunt_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/stunt_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/stunt_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/stunt_3"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/stunt_3radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/stunt_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- editor -->
+                <LinearLayout
+                    android:id="@+id/editor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- fluent os -->
+                    <EditText
+                        android:id="@+id/editor_1"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Mention the OS you're fluent in. Windows / MacOS / Both?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/editor_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/editor_2radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/editor_2radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/editor_21"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/editor_3"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- live edit -->
+                    <EditText
+                        android:id="@+id/editor_4"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Do you go for live editing?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/editor_5"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/editor_5radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/editor_5radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- location manager -->
+                <LinearLayout
+                    android:id="@+id/locat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/locat_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/locat_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/locat_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/locat_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/locat_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/locat_3"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/locat_3radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/locat_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- production (food) -->
+                <LinearLayout
+                    android:id="@+id/foodp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/foodp_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/foodp_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/foodp_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/foodp_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/foodp_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/foodp_3"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/foodp_3radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/foodp_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- dubbing artists -->
+                <LinearLayout
+                    android:id="@+id/dub"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/dub_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/dub_1radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/dub_1radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/dub_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/dub_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/dub_3"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/dub_3radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/dub_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                
+                <!-- sound recording engineers -->
+                <LinearLayout
+                    android:id="@+id/srec"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- lab or not -->
+                    <EditText
+                        android:id="@+id/srec_1"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Do you work in a lab or do you have your own studio? (Lab / Own Studio / Both)"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+                    
+                    <EditText
+                        android:id="@+id/srec_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Mention the name of the lab"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/srec_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/srec_2radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/srec_2radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/srec_21"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/srec_3"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/srec_4"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/srec_4radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/srec_4radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                
+                <!-- sound mixing engineers -->
+                <LinearLayout
+                    android:id="@+id/smix"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- lab or not -->
+                    <EditText
+                        android:id="@+id/smix_1"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Do you work in a lab or do you have your own studio? (Lab / Own Studio / Both)"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <EditText
+                        android:id="@+id/smix_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Mention the name of the lab"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/smix_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/smix_2radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/smix_2radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/smix_21"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/smix_3"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/smix_4"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/smix_4radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/smix_4radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                
+                <!-- digital intermediate -->
+                <LinearLayout
+                    android:id="@+id/digint"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- lab or not -->
+                    <EditText
+                        android:id="@+id/digint_1"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Do you work in a lab or do you have your own studio? (Lab / Own Studio / Both)"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <EditText
+                        android:id="@+id/digint_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Mention the name of the lab"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+                    
+                    <!-- softwares -->
+                    <EditText
+                        android:id="@+id/digint_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Please list the softwares that you use"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+                    
+                    <!-- fluent os -->
+                    <EditText
+                        android:id="@+id/digint_3"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Mention the OS you're fluent in. Windows / MacOS / Both?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/digint_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/digint_4radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/digint_4radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/digint_41"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/digint_5"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/digint_6"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/digint_6radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/digint_6radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                
+                <!-- vfx / cg -->
+                <LinearLayout
+                    android:id="@+id/vfx"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- lab or not -->
+                    <EditText
+                        android:id="@+id/vfx_1"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Do you work in a lab or do you have your own studio? (Lab / Own Studio / Both)"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <EditText
+                        android:id="@+id/vfx_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Mention the name of the lab"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- softwares -->
+                    <EditText
+                        android:id="@+id/vfx_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Please list the softwares that you use"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- fluent os -->
+                    <EditText
+                        android:id="@+id/vfx_3"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Mention the OS you're fluent in. Windows / MacOS / Both?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/vfx_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/vfx_4radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/vfx_4radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/vfx_41"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/vfx_5"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/vfx_6"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/vfx_6radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/vfx_6radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                
+                <!-- sfx -->
+                <LinearLayout
+                    android:id="@+id/sfx"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- lab or not -->
+                    <EditText
+                        android:id="@+id/sfx_1"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Do you work in a lab or do you have your own studio? (Lab / Own Studio / Both)"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <EditText
+                        android:id="@+id/sfx_11"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Mention the name of the lab"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- softwares -->
+                    <EditText
+                        android:id="@+id/sfx_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Please list the softwares that you use"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- fluent os -->
+                    <EditText
+                        android:id="@+id/sfx_3"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Mention the OS you're fluent in. Windows / MacOS / Both?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/sfx_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have you been a part of any feature films / TV shows / Short Films?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/sfx_4radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/sfx_4radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/sfx_41"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+
+                    <!-- years of experience -->
+                    <EditText
+                        android:id="@+id/sfx_5"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="How many years of experience do you have? What is it?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- passport -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/sfx_6"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Do you have a valid passport to travel?"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10sp"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/sfx_6radio"
+                            android:layout_width="0sp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/sfx_6radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                
+                <!-- pet suppliers / awbi -->
+                <LinearLayout
+                    android:id="@+id/pets"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- type -->
+                    <EditText
+                        android:id="@+id/pets_1"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="What type of pets do you provide?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- trained -->
+                    <EditText
+                        android:id="@+id/pets_2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="Are these pets trained for filming?"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <!-- previous work -->
+                    <LinearLayout
+                        android:id="@+id/pets_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5sp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="0sp"
+                            android:layout_height="match_parent"
+                            android:text="Have they performed in feature films / TV shows / Commercials?"
+                            android:paddingLeft="10sp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="6"/>
+
+                        <Space
+                            android:layout_width="0sp"
+                            android:layout_weight=".5"
+                            android:layout_height="match_parent" />
+
+                        <RadioGroup
+                            android:id="@+id/pets_3radio"
+                            android:layout_width="0sp"
+                            android:layout_weight="3.5"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/pets_3radioyes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:checked="false"
+                                android:scaleX="0.90"
+                                android:scaleY="0.90"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <EditText
+                        android:id="@+id/pets_31"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="32sp"
+                        android:layout_marginRight="16sp"
+                        android:layout_marginBottom="10sp"
+                        android:textSize="16dp"
+                        android:paddingLeft="20dp"
+                        android:ems="10"
+                        android:hint="If yes, please list"
+                        android:textColorHint="#ffffff"
+                        android:background="@drawable/box"
+                        android:inputType="textMultiLine"
+                        />
+
+                </LinearLayout>
+                
+                
 
             </LinearLayout>
 

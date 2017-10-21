@@ -36,7 +36,15 @@ public class signup extends AppCompatActivity{
             "Actor","Actress","Child Artist","Singer","Dancer",
             "Side Artists","Assistant Director","Lyric Writer / Lyricist",
             "Dialouge Writer","Script / Screenplay Writers", "Story Board Artist",
-            "Choreographer","Director of Photography"};
+            "Choreographer","Director of Photography", "Still Photographer",
+            "PRO", "Designer", "Production Manager",
+            "Focus Puller", "Vehicle Driver", "Mic Department",
+            "Music Director", "Makeup Man", "Hair Dresser",
+            "Costumer", "Art Department", "Set Department",
+            "Stuntman", "Editor", "Location Manager",
+            "Production (Food)", "Dubbing Artists", "Sound Recording Engineers",
+            "Sound Mixing Engineers", "Digital Intermediate", "VFX / CG",
+            "SFX", "Pet Suppliers / Pet Doctors / AWBI Certifications"};
 
     String[] genderString={"Choose Gender",
             "Male","Female","Other"};
