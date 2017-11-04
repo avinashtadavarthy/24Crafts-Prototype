@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype.Directory;
+package com.example.iyashwant.spiderprojectprototype;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,30 +8,28 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.iyashwant.spiderprojectprototype.R;
+import java.util.ArrayList;
 
 /**
  * Created by rakesh on 2/8/17.
  */
 
-public class GridAdapter extends RecyclerView.Adapter<GridAdapter.DirectoryViewHolder>{
+public class DirectoryGridAdapter extends RecyclerView.Adapter<DirectoryGridAdapter.DirectoryViewHolder>{
 
     Context context;
-    String[] desc;
-    int[] imgid;
+    ArrayList<IconsClass> icons;
 
-    GridAdapter(Context c,String[] desc, int[] imgid)
+    DirectoryGridAdapter(Context c, ArrayList<IconsClass> classobj)
     {
         this.context = c;
-        this.desc = desc;
-        this.imgid = imgid;
+        icons=classobj;
     }
 
 
     @Override
     public DirectoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View row = inflater.inflate(R.layout.singleitem,parent,false);
+        View row = inflater.inflate(R.layout.directorygridadapter,parent,false);
         DirectoryViewHolder dvh = new DirectoryViewHolder(row);
 
         return dvh;
@@ -40,14 +38,14 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.DirectoryViewH
     @Override
     public void onBindViewHolder(DirectoryViewHolder holder, int position) {
 
-        holder.T.setText(desc[position]);
-        holder.I.setImageResource(imgid[position]);
+        holder.T.setText(icons.get(position).getCraft_name());
+        holder.I.setImageResource(icons.get(position).getImg_id());
     }
 
 
     @Override
     public int getItemCount() {
-        return imgid.length;
+        return icons.size();
     }
 
     public class DirectoryViewHolder extends RecyclerView.ViewHolder{

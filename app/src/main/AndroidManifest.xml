@@ -44,11 +44,12 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".PeopleNearby" />
         <activity android:name=".ProfileView" />
-        <activity android:name=".Directory.contacts" />
-        <activity android:name=".Directory.MainActivity" />
         <activity android:name=".StartingScreen" />
         <activity android:name=".signup3client" />
         <activity android:name=".signupclient" />
+        <activity android:name=".Swipe.Tinderswipemain"></activity>
+        <activity android:name=".Directory"/>
+        <activity android:name=".Contacts"/>
     </application>
 
 </manifest>

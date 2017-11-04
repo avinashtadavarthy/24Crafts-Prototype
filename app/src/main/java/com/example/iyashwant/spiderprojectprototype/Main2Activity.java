@@ -13,7 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.iyashwant.spiderprojectprototype.Directory.MainActivity;
+import com.example.iyashwant.spiderprojectprototype.Swipe.Tinderswipemain;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -72,11 +72,12 @@ public class Main2Activity extends AppCompatActivity
             startActivity(i);
 
         } else if (id == R.id.encounters) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionFragment()).commit();
+            Intent i = new Intent(getApplicationContext(),Tinderswipemain.class);
+            startActivity(i);
 
         } else if (id == R.id.directory) {
             Toast.makeText(this, "Directory", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(this,MainActivity.class);
+            Intent i = new Intent(this,Directory.class);
             startActivity(i);
 
         } else if (id == R.id.promote) {

@@ -1,14 +1,15 @@
 package com.example.iyashwant.spiderprojectprototype;
 
+/**
+ * Created by rakesh on 3/8/17.
+ */
+
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-/**
- * Created by rajiv on 19/8/17.
- */
 
 public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
     private OnItemClickListener mListener;

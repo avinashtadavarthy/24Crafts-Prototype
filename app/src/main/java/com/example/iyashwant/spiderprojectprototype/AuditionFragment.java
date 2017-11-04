@@ -60,6 +60,7 @@ public class AuditionFragment extends android.support.v4.app.Fragment {
 
         }
     };
+
     private TextWatcher filterTextWatchere2 = new TextWatcher() {
 
         @Override
