@@ -12,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.iyashwant.spiderprojectprototype.Directory.MainActivity;
 import com.example.iyashwant.spiderprojectprototype.Swipe.Tinderswipemain;
 
 public class Main2Activity extends AppCompatActivity
@@ -73,7 +72,7 @@ public class Main2Activity extends AppCompatActivity
 
         } else if (id == R.id.directory) {
             Toast.makeText(this, "Directory", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(this,MainActivity.class);
+            Intent i = new Intent(this,Directory.class);
             startActivity(i);
 
         } else if (id == R.id.promote) {

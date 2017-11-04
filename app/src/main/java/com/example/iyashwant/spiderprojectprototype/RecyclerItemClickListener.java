@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype.Directory;
+package com.example.iyashwant.spiderprojectprototype;
 
 /**
  * Created by rakesh on 3/8/17.

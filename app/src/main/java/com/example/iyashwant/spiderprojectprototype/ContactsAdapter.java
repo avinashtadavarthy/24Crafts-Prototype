@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype.Directory;
+package com.example.iyashwant.spiderprojectprototype;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,38 +7,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.iyashwant.spiderprojectprototype.R;
+import java.util.List;
 
 /**
  * Created by rakesh on 3/8/17.
  */
 
-public class Recycler_adapter extends RecyclerView.Adapter<Recycler_adapter.DirectoryViewHolder>{
+public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.DirectoryViewHolder>{
 
     Context context;
-    String[] name;
-    String[] phone;
-    String[] email;
-    String[] address;
-    String[] website;
+    List<ContactsHelper> object;
     int no;
 
-    Recycler_adapter(Context c,String[] name, String[] phone, String[] email,String[] address,String[] website,int no_of_people)
+    ContactsAdapter(Context c, List<ContactsHelper> obj)
     {
         this.context = c;
-        this.name = name;
-        this.phone = phone;
-        this.email=email;
-        this.address=address;
-        this.website=website;
-        this.no=no_of_people;
+       object=obj;
     }
 
 
     @Override
     public DirectoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View row = inflater.inflate(R.layout.single_contact_file,parent,false);
+        View row = inflater.inflate(R.layout.contactsadapter,parent,false);
         DirectoryViewHolder dvh = new DirectoryViewHolder(row);
 
         return dvh;
@@ -47,24 +38,25 @@ public class Recycler_adapter extends RecyclerView.Adapter<Recycler_adapter.Dire
     @Override
     public void onBindViewHolder(DirectoryViewHolder holder, int position) {
 
-        if(!(name[position].equals("")))
-        holder.name1.setText("Name:  " +name[position]);
+        if(!(object.get(position).getNAME().equals("")))
+        holder.name1.setText(object.get(position).getNAME());
+
         else
             holder.name1.setVisibility(View.INVISIBLE);
-        if(!(phone[position].equals("")))
-        holder.phone1.setText("Phone:  "+phone[position]);
+        if(!(object.get(position).getPHONE().equals("")))
+        holder.phone1.setText(object.get(position).getPHONE());
         else
             holder.phone1.setVisibility(View.INVISIBLE);
-        if(!(email[position].equals("")))
-        holder.email1.setText("E-mail:  "+email[position]);
+        if(!(object.get(position).getEMAIL().equals("")))
+        holder.email1.setText(object.get(position).getEMAIL());
         else
             holder.email1.setVisibility(View.INVISIBLE);
-        if(!(website[position].equals("")))
-        holder.website1.setText("Website:  "+website[position]);
+        if(!(object.get(position).getWEBSITE().equals("")))
+        holder.website1.setText(object.get(position).getWEBSITE());
         else
             holder.website1.setVisibility(View.INVISIBLE);
-        if(!(address[position].equals("")))
-        holder.address1.setText("Address:  "+address[position]);
+        if(!(object.get(position).getADDRESS().equals("")))
+        holder.address1.setText(object.get(position).getADDRESS());
         else
             holder.address1.setVisibility(View.INVISIBLE);
 
@@ -73,7 +65,7 @@ public class Recycler_adapter extends RecyclerView.Adapter<Recycler_adapter.Dire
 
     @Override
     public int getItemCount() {
-        return no;
+        return object.size();
     }
 
     public class DirectoryViewHolder extends RecyclerView.ViewHolder{
