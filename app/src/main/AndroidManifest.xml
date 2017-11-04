@@ -46,6 +46,9 @@
         <activity android:name=".ProfileView" />
         <activity android:name=".Directory.contacts" />
         <activity android:name=".Directory.MainActivity" />
+        <activity android:name=".StartingScreen" />
+        <activity android:name=".signup3client"/>
+        <activity android:name=".signupclient" />
     </application>
 
 </manifest>
