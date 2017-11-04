@@ -67,7 +67,6 @@ public class InboxTab2 extends Fragment {
             super(supportFragmentManager);
         }
 
-
         @Override
         public Fragment getItem(int position) {
             switch (position){
