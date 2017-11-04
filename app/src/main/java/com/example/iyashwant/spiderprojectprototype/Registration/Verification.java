@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype;
+package com.example.iyashwant.spiderprojectprototype.Registration;
 
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.iyashwant.spiderprojectprototype.R;
 
 public class Verification extends AppCompatActivity {
 

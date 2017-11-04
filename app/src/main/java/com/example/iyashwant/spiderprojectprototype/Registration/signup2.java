@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype;
+package com.example.iyashwant.spiderprojectprototype.Registration;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,6 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.example.iyashwant.spiderprojectprototype.CustomAdapterSpinner;
+import com.example.iyashwant.spiderprojectprototype.R;
 
 public class signup2 extends AppCompatActivity {
 

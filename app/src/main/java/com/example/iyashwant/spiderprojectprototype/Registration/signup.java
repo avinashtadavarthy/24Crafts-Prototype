@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype;
+package com.example.iyashwant.spiderprojectprototype.Registration;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -12,23 +12,17 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.ArrayAdapter;
-
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.example.iyashwant.spiderprojectprototype.CustomAdapterSpinner;
+import com.example.iyashwant.spiderprojectprototype.R;
+
 import java.util.Calendar;
-
-import io.apptik.widget.multiselectspinner.MultiSelectSpinner;
 
 public class signup extends AppCompatActivity{
 

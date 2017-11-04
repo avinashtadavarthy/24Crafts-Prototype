@@ -6,7 +6,7 @@
     android:background="@mipmap/wall"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="com.example.iyashwant.spiderprojectprototype.Verification"
+    tools:context="com.example.iyashwant.spiderprojectprototype.Registration.Verification"
     android:screenOrientation="portrait">
 
 

@@ -24,19 +24,19 @@
             android:name=".Login"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".signup"
+            android:name=".Registration.signup"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".signup2"
+            android:name=".Registration.signup2"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".signup3"
+            android:name=".Registration.signup3"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".signup4"
+            android:name=".Registration.signup4"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".Verification"
+            android:name=".Registration.Verification"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Main2Activity"
@@ -46,7 +46,6 @@
         <activity android:name=".ProfileView" />
         <activity android:name=".Directory.contacts" />
         <activity android:name=".Directory.MainActivity" />
-        <activity android:name=".Auditions.AuditionActivity"></activity>
     </application>
 
 </manifest>

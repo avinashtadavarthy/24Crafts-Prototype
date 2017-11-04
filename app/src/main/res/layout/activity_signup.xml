@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/wall"
-    tools:context="com.example.iyashwant.spiderprojectprototype.signup"
+    tools:context="com.example.iyashwant.spiderprojectprototype.Registration.signup"
     android:orientation="vertical"
     android:focusable="true"
     android:focusableInTouchMode="true"

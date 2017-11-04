@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype;
+package com.example.iyashwant.spiderprojectprototype.Registration;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.iyashwant.spiderprojectprototype.R;
 
 public class signup4 extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype;
+package com.example.iyashwant.spiderprojectprototype.Registration;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,6 +16,10 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+
+import com.example.iyashwant.spiderprojectprototype.CustomAdapterSpinner;
+import com.example.iyashwant.spiderprojectprototype.ProfileView;
+import com.example.iyashwant.spiderprojectprototype.R;
 
 public class signup3 extends AppCompatActivity {
 

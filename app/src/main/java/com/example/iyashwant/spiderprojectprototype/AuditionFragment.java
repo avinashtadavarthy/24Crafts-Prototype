@@ -1,23 +1,35 @@
-package com.example.iyashwant.spiderprojectprototype.Auditions;
+package com.example.iyashwant.spiderprojectprototype;
 
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Fragment;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.iyashwant.spiderprojectprototype.R;
+import com.example.iyashwant.spiderprojectprototype.Auditions.Audition;
 
-public class AuditionActivity extends AppCompatActivity {
+/**
+ * Created by Avinash Tadavarthy on 04-Nov-17.
+ */
+
+public class AuditionFragment extends Fragment {
+
+    View myView;
+
 
     EditText e1, e2, e3, e4, e5, e6, e7, e8, e9;
     TextView errmsg;
     Audition c = new Audition();
+
+
     public void err_msg_disp(int i)
     {
         if(i==1)
@@ -27,7 +39,7 @@ public class AuditionActivity extends AppCompatActivity {
     }
 
     public void restore(EditText e) {
-        e.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.box));
+        e.setBackground(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.box));
         err_msg_disp(-1);
     }
 
@@ -185,23 +197,25 @@ public class AuditionActivity extends AppCompatActivity {
         }
     };
 
+
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_audition);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        myView = inflater.inflate(R.layout.activity_audition,container,false);
 
 
-        e1 = (EditText) findViewById(R.id.e1);
-        errmsg = (TextView) findViewById(R.id.errmsg);
+        e1 = (EditText) myView.findViewById(R.id.e1);
+        errmsg = (TextView) myView.findViewById(R.id.errmsg);
         errmsg.setVisibility(View.GONE);
-        e2 = (EditText) findViewById(R.id.e2);
-        e3 = (EditText) findViewById(R.id.e3);
-        e4 = (EditText) findViewById(R.id.e4);
-        e5 = (EditText) findViewById(R.id.e5);
-        e6 = (EditText) findViewById(R.id.e6);
-        e7 = (EditText) findViewById(R.id.e7);
-        e8 = (EditText) findViewById(R.id.e8);
-        e9 = (EditText) findViewById(R.id.e9);
+        e2 = (EditText) myView.findViewById(R.id.e2);
+        e3 = (EditText) myView.findViewById(R.id.e3);
+        e4 = (EditText) myView.findViewById(R.id.e4);
+        e5 = (EditText) myView.findViewById(R.id.e5);
+        e6 = (EditText) myView.findViewById(R.id.e6);
+        e7 = (EditText) myView.findViewById(R.id.e7);
+        e8 = (EditText) myView.findViewById(R.id.e8);
+        e9 = (EditText) myView.findViewById(R.id.e9);
         e1.addTextChangedListener(filterTextWatchere1);
         e2.addTextChangedListener(filterTextWatchere2);
         e3.addTextChangedListener(filterTextWatchere3);
@@ -212,8 +226,9 @@ public class AuditionActivity extends AppCompatActivity {
         e8.addTextChangedListener(filterTextWatchere8);
         e9.addTextChangedListener(filterTextWatchere9);
 
-    }
 
+        return myView;
+    }
 
 
     boolean check(EditText e) {
@@ -221,7 +236,7 @@ public class AuditionActivity extends AppCompatActivity {
         if (e.getText().toString().equals(""))
         {
 
-            e.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.error_box));
+            e.setBackground(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.error_box));
             return false;
 
         }
@@ -248,7 +263,7 @@ public class AuditionActivity extends AppCompatActivity {
         i9=check(e9);
         if(i1&&i2&&i3&&i4&&i5&&i6&&i7&&i8&&i9)
         {
-            Toast.makeText(getApplicationContext(), "Posted!",
+            Toast.makeText(getActivity().getApplicationContext(), "Posted!",
                     Toast.LENGTH_SHORT).show();//post it
             c.setProj_name(e1.getText().toString());
             c.setProj_type(e2.getText().toString());
@@ -265,6 +280,7 @@ public class AuditionActivity extends AppCompatActivity {
         else
             err_msg_disp(1);
 
-
     }
+
+
 }

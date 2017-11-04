@@ -1,5 +1,6 @@
 package com.example.iyashwant.spiderprojectprototype;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -11,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.iyashwant.spiderprojectprototype.Auditions.AuditionActivity;
 import com.example.iyashwant.spiderprojectprototype.Directory.MainActivity;
 
 public class Main2Activity extends AppCompatActivity
@@ -48,30 +48,40 @@ public class Main2Activity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        FragmentManager fragmentManager = getFragmentManager();
 
-        if (id == R.id.auditions) {
-            Toast.makeText(this, "Auditions", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(this, AuditionActivity.class);
-            startActivity(i);
-            // Handle the camera action
-        } else if (id == R.id.encounters) {
-            Toast.makeText(this, "Encounters", Toast.LENGTH_SHORT).show();
+        if (id == R.id.profile) {
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new ProfileviewFragment()).commit();
+
+        } else if (id == R.id.inbox) {
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionFragment()).commit();
+
+        } else if (id == R.id.auditions) {
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionFragment()).commit();
+
+        } else if (id == R.id.newsfeed) {
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new SecondFragment()).commit();
 
         } else if (id == R.id.nearby) {
             Intent i = new Intent(this,PeopleNearby.class);
             startActivity(i);
-            //Toast.makeText(this, "Nearby", Toast.LENGTH_SHORT).show();
+
+        } else if (id == R.id.encounters) {
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionFragment()).commit();
 
         } else if (id == R.id.directory) {
             Toast.makeText(this, "Directory", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this,MainActivity.class);
             startActivity(i);
 
-        } else if (id == R.id.nav_share) {
-            Toast.makeText(this, "5", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.promote) {
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionFragment()).commit();
 
-        } else if (id == R.id.nav_send) {
-            Toast.makeText(this, "6", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.subscribe) {
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionFragment()).commit();
+
+        } else if (id == R.id.settings) {
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionFragment()).commit();
 
         }
 
