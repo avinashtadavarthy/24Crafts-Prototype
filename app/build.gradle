@@ -36,6 +36,6 @@ dependencies {
     compile 'io.apptik.widget:multiselectspinner:1.0.12'
     compile 'com.android.support:design:26.+'
     compile 'com.daimajia.androidanimations:library:2.2@aar'
-    testCompile 'junit:junit:4.12'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    testCompile 'junit:junit:4.12'
 }
