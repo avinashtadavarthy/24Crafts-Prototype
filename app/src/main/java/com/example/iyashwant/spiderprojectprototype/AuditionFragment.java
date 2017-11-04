@@ -20,7 +20,7 @@ import com.example.iyashwant.spiderprojectprototype.Auditions.Audition;
  * Created by Avinash Tadavarthy on 04-Nov-17.
  */
 
-public class AuditionFragment extends Fragment {
+public class AuditionFragment extends android.support.v4.app.Fragment {
 
     View myView;
 
@@ -204,6 +204,7 @@ public class AuditionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.activity_audition,container,false);
 
+        getActivity().setTitle("Auditions");
 
         e1 = (EditText) myView.findViewById(R.id.e1);
         errmsg = (TextView) myView.findViewById(R.id.errmsg);

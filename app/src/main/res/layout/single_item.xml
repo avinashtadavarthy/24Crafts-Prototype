@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    android:layout_marginTop="15dp">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="50dp"
+        android:id="@+id/IMG"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="20dp"
+        android:src="@mipmap/ic_launcher_round"
+        android:background="@drawable/circle_r"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NAME"
+            android:layout_toRightOf="@id/IMG"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:id="@+id/name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MEETING!!"
+            android:layout_marginBottom="3dp"
+            android:layout_below="@id/name"
+            android:layout_toRightOf="@id/IMG"
+            android:textSize="12dp"
+            android:id="@+id/subject"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Has been a long time."
+            android:layout_toRightOf="@id/IMG"
+            android:textSize="10dp"
+            android:layout_below="@id/subject"
+            android:id="@+id/body"/>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/time"
+          android:text="2h"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="25dp"
+          android:layout_marginBottom="5dp"/>
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/time"
+
+        android:src="@drawable/delete"
+        android:id="@+id/trash"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+
+        />
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/starred"
+
+        android:layout_marginRight="10dp"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/star_empty"
+        android:layout_below="@id/time"
+        android:layout_toLeftOf="@id/trash"
+
+
+        />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/IMG"
+
+    android:text="                     ___________________________"/>
+
+
+
+</RelativeLayout>
+

@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -31,6 +32,10 @@ public class Main2Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        if(savedInstanceState==null){
+            navigationView.getMenu().performIdentifierAction(R.id.profile,0);
+        }
     }
 
     @Override
@@ -48,16 +53,16 @@ public class Main2Activity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        FragmentManager fragmentManager = getFragmentManager();
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
 
         if (id == R.id.profile) {
             fragmentManager.beginTransaction().replace(R.id.content_frame, new ProfileviewFragment()).commit();
 
         } else if (id == R.id.inbox) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionFragment()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new InboxTab2()).commit();
 
         } else if (id == R.id.auditions) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionFragment()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionsTab2()).commit();
 
         } else if (id == R.id.newsfeed) {
             fragmentManager.beginTransaction().replace(R.id.content_frame, new SecondFragment()).commit();
