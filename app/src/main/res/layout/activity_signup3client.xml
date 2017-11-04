@@ -1,0 +1,166 @@
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@mipmap/wall"
+    tools:context="com.example.iyashwant.spiderprojectprototype.signup3"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:screenOrientation="portrait"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="match_parent" android:padding="10sp" android:layout_height="fill_parent">
+            <TextView android:id="@+id/textView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_marginBottom="10sp" android:layout_marginTop="30sp" android:text="Please fill in the details" android:textSize="15sp" android:textStyle="bold"/>
+            <LinearLayout android:id="@+id/questions" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_below="@id/textView" android:orientation="vertical">
+                <!-- casting agent -->
+                <LinearLayout android:id="@+id/casting_agent" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <!-- experience -->
+                    <LinearLayout android:id="@+id/casting_agent_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
+                        <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] If yes, please list :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <RadioGroup android:id="@+id/casting_agent_1radio" android:layout_width="0sp" android:layout_weight="3.5" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <RadioButton android:id="@+id/casting_agent_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
+                            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
+                        </RadioGroup>
+                    </LinearLayout>
+                    <EditText android:id="@+id/casting_agent_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                </LinearLayout>
+                <!-- codirector -->
+                <LinearLayout android:id="@+id/codirector" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <!-- experience -->
+                    <LinearLayout android:id="@+id/codirector_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
+                        <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] If yes, please list :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <RadioGroup android:id="@+id/codirector_1radio" android:layout_width="0sp" android:layout_weight="3.5" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <RadioButton android:id="@+id/codirector_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
+                            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
+                        </RadioGroup>
+                    </LinearLayout>
+                    <EditText android:id="@+id/codirector_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                </LinearLayout>
+                <!-- coproducer -->
+                <LinearLayout android:id="@+id/coproducer" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <!-- experience -->
+                    <LinearLayout android:id="@+id/coproducer_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
+                        <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] If yes, please list :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <RadioGroup android:id="@+id/coproducer_1radio" android:layout_width="0sp" android:layout_weight="3.5" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <RadioButton android:id="@+id/coproducer_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
+                            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
+                        </RadioGroup>
+                    </LinearLayout>
+                    <EditText android:id="@+id/coproducer_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                    <EditText android:id="@+id/coproducer_2" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="16sp" android:layout_marginRight="16sp" android:textSize="16dp" android:paddingLeft="20dp" android:layout_marginTop="20dp" android:layout_gravity="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:ems="10" android:hint="Enter name of Production House" android:textColorHint="#ffffff" android:background="@drawable/box"/>
+                </LinearLayout>
+                <!-- director -->
+                <LinearLayout android:id="@+id/director" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <!-- experience -->
+                    <LinearLayout android:id="@+id/director_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
+                        <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] If yes, please list :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <RadioGroup android:id="@+id/director_1radio" android:layout_width="0sp" android:layout_weight="3.5" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <RadioButton android:id="@+id/director_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
+                            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
+                        </RadioGroup>
+                    </LinearLayout>
+                    <EditText android:id="@+id/director_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                </LinearLayout>
+                <!-- asstdirector -->
+                <LinearLayout android:id="@+id/asstdirector" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <!-- experience -->
+                    <LinearLayout android:id="@+id/asstdirector_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
+                        <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] If yes, please list :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <RadioGroup android:id="@+id/asstdirector_1radio" android:layout_width="0sp" android:layout_weight="3.5" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <RadioButton android:id="@+id/asstdirector_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
+                            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
+                        </RadioGroup>
+                    </LinearLayout>
+                    <EditText android:id="@+id/asstdirector_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                </LinearLayout>
+                <!-- directoraudit -->
+                <LinearLayout android:id="@+id/directoraudit" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <!-- experience -->
+                    <LinearLayout android:id="@+id/directoraudit_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
+                        <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] If yes, please list :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <RadioGroup android:id="@+id/directoraudit_1radio" android:layout_width="0sp" android:layout_weight="3.5" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <RadioButton android:id="@+id/directoraudit_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
+                            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
+                        </RadioGroup>
+                    </LinearLayout>
+                    <EditText android:id="@+id/directoraudit_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                </LinearLayout>
+                <!-- execproducer -->
+                <LinearLayout android:id="@+id/execproducer" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <!-- experience -->
+                    <LinearLayout android:id="@+id/execproducer_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
+                        <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] If yes, please list :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <RadioGroup android:id="@+id/execproducer_1radio" android:layout_width="0sp" android:layout_weight="3.5" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <RadioButton android:id="@+id/execproducer_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
+                            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
+                        </RadioGroup>
+                    </LinearLayout>
+                    <EditText android:id="@+id/execproducer_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                    <EditText android:id="@+id/execproducer_2" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="16sp" android:layout_marginRight="16sp" android:textSize="16dp" android:paddingLeft="20dp" android:layout_marginTop="20dp" android:layout_gravity="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:ems="10" android:hint="Enter name of Production House" android:textColorHint="#ffffff" android:background="@drawable/box"/>
+                </LinearLayout>
+                <!-- modelcoordinator -->
+                <LinearLayout android:id="@+id/modelcoor" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <!-- experience -->
+                    <LinearLayout android:id="@+id/modelcoor_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
+                        <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] If yes, please list :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <RadioGroup android:id="@+id/modelcoor_1radio" android:layout_width="0sp" android:layout_weight="3.5" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <RadioButton android:id="@+id/modelcoor_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
+                            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
+                        </RadioGroup>
+                    </LinearLayout>
+                    <EditText android:id="@+id/modelcoor_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                </LinearLayout>
+                <!-- producer -->
+                <LinearLayout android:id="@+id/producer" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <!-- experience -->
+                    <LinearLayout android:id="@+id/producer_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
+                        <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] If yes, please list :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <RadioGroup android:id="@+id/producer_1radio" android:layout_width="0sp" android:layout_weight="3.5" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <RadioButton android:id="@+id/producer_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
+                            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
+                        </RadioGroup>
+                    </LinearLayout>
+                    <EditText android:id="@+id/producer_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                    <EditText android:id="@+id/producer_2" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="16sp" android:layout_marginRight="16sp" android:textSize="16dp" android:paddingLeft="20dp" android:layout_marginTop="20dp" android:layout_gravity="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:ems="10" android:hint="Enter name of Production House" android:textColorHint="#ffffff" android:background="@drawable/box"/>
+                </LinearLayout>
+                <!-- prodhouseman -->
+                <LinearLayout android:id="@+id/prodhouseman" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <!-- experience -->
+                    <LinearLayout android:id="@+id/prodhouseman_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
+                        <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] If yes, please list :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <RadioGroup android:id="@+id/prodhouseman_1radio" android:layout_width="0sp" android:layout_weight="3.5" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <RadioButton android:id="@+id/prodhouseman_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
+                            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
+                        </RadioGroup>
+                    </LinearLayout>
+                    <EditText android:id="@+id/prodhouseman_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                    <EditText android:id="@+id/prodhouseman_2" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="16sp" android:layout_marginRight="16sp" android:textSize="16dp" android:paddingLeft="20dp" android:layout_marginTop="20dp" android:layout_gravity="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:ems="10" android:hint="Enter name of Production House" android:textColorHint="#ffffff" android:background="@drawable/box"/>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Bio" android:textStyle="bold" android:textSize="15sp" android:layout_below="@+id/questions" android:layout_alignParentLeft="true" android:layout_marginTop="20dp"/>
+            <EditText android:id="@+id/editText1" android:layout_width="match_parent" android:layout_height="90sp" android:hint="250 characters only" android:textSize="15sp" android:gravity="top" android:padding="10sp" android:background="@drawable/box" android:layout_below="@+id/textView2" android:layout_alignParentLeft="true" android:layout_marginTop="14dp" android:maxLength="250" android:inputType="textCapSentences"/>
+            <TextView android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="15sp" android:text="Interested Roles / Characters" android:textStyle="bold" android:layout_below="@+id/editText1" android:layout_alignParentLeft="true" android:layout_marginTop="20dp"/>
+            <EditText android:id="@+id/editText2" android:layout_width="match_parent" android:layout_height="90sp" android:hint="250 characters only" android:textSize="15sp" android:gravity="top" android:padding="10sp" android:background="@drawable/box" android:layout_below="@+id/textView3" android:layout_alignParentLeft="true" android:layout_marginTop="14dp" android:maxLength="250" android:inputType="textCapSentences"/>
+            <TextView android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Interests / Hobbies" android:layout_below="@+id/editText2" android:textStyle="bold" android:textSize="15sp" android:layout_alignParentLeft="true" android:layout_marginTop="20dp"/>
+            <EditText android:layout_width="match_parent" android:layout_height="90sp" android:background="@drawable/box" android:hint="250 characters only" android:textSize="15sp" android:gravity="top" android:id="@+id/editText3" android:padding="10sp" android:layout_below="@+id/textView4" android:layout_alignParentLeft="true" android:layout_marginTop="14dp" android:maxLength="250" android:inputType="textCapSentences"/>
+            <TextView android:id="@+id/textView5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Relevant Links" android:layout_below="@+id/editText3" android:textStyle="bold" android:textSize="15sp" android:layout_alignParentLeft="true" android:layout_marginTop="20dp"/>
+            <EditText android:layout_width="match_parent" android:layout_height="90sp" android:background="@drawable/box" android:hint="250 characters only" android:textSize="15sp" android:gravity="top" android:id="@+id/editText4" android:padding="10sp" android:layout_below="@+id/textView5" android:layout_alignParentLeft="true" android:layout_marginTop="14dp" android:layout_marginBottom="60dp" android:maxLength="250" android:inputType="textCapSentences"/>
+        </RelativeLayout>
+    </ScrollView>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="3sp" android:layout_alignParentTop="true" android:orientation="horizontal" android:weightSum="4">
+        <TextView android:layout_width="0sp" android:layout_weight="1" android:background="#dddddd" android:layout_height="match_parent"/>
+        <TextView android:layout_width="0sp" android:layout_weight="1" android:background="#dddddd" android:layout_height="match_parent"/>
+        <TextView android:layout_width="0sp" android:layout_weight="1" android:background="#dddddd" android:layout_height="match_parent"/>
+        <TextView android:layout_width="0sp" android:layout_weight="1" android:layout_height="match_parent"/>
+    </LinearLayout>
+    <Button android:id="@+id/button3" android:layout_width="match_parent" android:layout_height="40dp" android:layout_alignParentBottom="true" android:background="@drawable/button_round" android:gravity="center" android:layout_gravity="center_horizontal" android:text="Next" android:textColor="#ffffff" android:layout_marginBottom="5dp" android:layout_marginLeft="25dp" android:layout_marginRight="25dp" android:layout_marginTop="5dp"/>
+</RelativeLayout>

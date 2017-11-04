@@ -52,7 +52,7 @@ public class Login2 extends AppCompatActivity {
         floatingActionButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent nextpage = new Intent(getApplicationContext(),signup.class);
+                Intent nextpage = new Intent(getApplicationContext(),StartingScreen.class);
                 startActivity(nextpage);
             }
         });
