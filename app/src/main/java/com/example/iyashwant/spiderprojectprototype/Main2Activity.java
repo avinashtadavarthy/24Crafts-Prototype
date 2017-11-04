@@ -11,6 +11,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.iyashwant.spiderprojectprototype.Swipe.Tinderswipemain;
@@ -18,10 +20,12 @@ import com.example.iyashwant.spiderprojectprototype.Swipe.Tinderswipemain;
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -33,8 +37,17 @@ public class Main2Activity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        ImageButton profile_edits = (ImageButton) navigationView.getHeaderView(0).findViewById(R.id.profile_edits);
+        profile_edits.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent i = new Intent(Main2Activity.this, ProfileView2.class);
+                startActivity(i);
+            }
+        });
+
         if(savedInstanceState==null){
-            navigationView.getMenu().performIdentifierAction(R.id.profile,0);
+            navigationView.getMenu().performIdentifierAction(R.id.inbox,0);
         }
     }
 
@@ -55,10 +68,7 @@ public class Main2Activity extends AppCompatActivity
         int id = item.getItemId();
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
 
-        if (id == R.id.profile) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new ProfileviewFragment()).commit();
-
-        } else if (id == R.id.inbox) {
+       if (id == R.id.inbox) {
             fragmentManager.beginTransaction().replace(R.id.content_frame, new InboxTab2()).commit();
 
         } else if (id == R.id.auditions) {

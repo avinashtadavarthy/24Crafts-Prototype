@@ -3,10 +3,6 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/profile"
-            android:icon="@drawable/profile"
-            android:title="View/Edit Profile" />
-        <item
             android:id="@+id/inbox"
             android:icon="@drawable/inbox"
             android:title="Inbox" />

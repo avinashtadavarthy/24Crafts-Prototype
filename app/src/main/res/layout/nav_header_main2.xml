@@ -19,34 +19,41 @@
         app:srcCompat="@mipmap/ic_launcher_round" />
 
 
-
     <LinearLayout
         android:layout_width="0sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:padding="20dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical">
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/nav_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
             android:text="Name"
             android:textColor="#ffffff"
-            android:textSize="20sp"
-            android:layout_marginBottom="10sp"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/nav_craft"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/nav_name"
             android:text="Craft"
             android:textColor="#ffffff"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            android:layout_marginBottom="20sp"/>
+
+        <ImageButton
+            android:id="@+id/profile_edits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#10ffffff"
+            android:src="@drawable/edit_white" />
 
     </LinearLayout>
-
 
 
 </LinearLayout>
