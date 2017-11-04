@@ -60,6 +60,7 @@ public class AuditionFragment extends Fragment {
 
         }
     };
+    
     private TextWatcher filterTextWatchere2 = new TextWatcher() {
 
         @Override
