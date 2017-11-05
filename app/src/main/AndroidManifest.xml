@@ -42,15 +42,20 @@
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".PeopleNearby" />
         <activity android:name=".ProfileView" />
         <activity android:name=".StartingScreen" />
         <activity android:name=".signup3client" />
         <activity android:name=".signupclient" />
-        <activity android:name=".Swipe.Tinderswipemain"/>
-        <activity android:name=".Directory"/>
-        <activity android:name=".Contacts"/>
-        <activity android:name=".ProfileView2"
+        <activity
+            android:name=".Swipe.Tinderswipemain"
+            android:parentActivityName=".Main2Activity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Contacts" />
+        <activity
+            android:name=".ProfileView2"
+            android:parentActivityName=".Main2Activity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Settings"
             android:theme="@style/AppTheme"
             android:parentActivityName=".Main2Activity"/>
     </application>

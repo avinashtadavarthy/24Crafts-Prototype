@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     android:paddingLeft="25dp"
     android:paddingRight="25dp"
-    tools:context="com.example.iyashwant.spiderprojectprototype.Directory.MainActivity">
+    tools:context="com.example.iyashwant.spiderprojectprototype.DirectoryFragment">
 
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="10sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/rv">

@@ -36,6 +36,9 @@ public class Main2Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        if(savedInstanceState==null){
+            navigationView.getMenu().performIdentifierAction(R.id.inbox,0);
+        }
 
         ImageButton profile_edits = (ImageButton) navigationView.getHeaderView(0).findViewById(R.id.profile_edits);
         profile_edits.setOnClickListener(new View.OnClickListener(){
@@ -45,10 +48,6 @@ public class Main2Activity extends AppCompatActivity
                 startActivity(i);
             }
         });
-
-        if(savedInstanceState==null){
-            navigationView.getMenu().performIdentifierAction(R.id.inbox,0);
-        }
     }
 
     @Override
@@ -75,31 +74,28 @@ public class Main2Activity extends AppCompatActivity
             fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionsTab2()).commit();
 
         } else if (id == R.id.newsfeed) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new SecondFragment()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new NewsfeedFragment()).commit();
 
         } else if (id == R.id.nearby) {
-            Intent i = new Intent(this,PeopleNearby.class);
-            startActivity(i);
+           fragmentManager.beginTransaction().replace(R.id.content_frame, new PeopleNearbyFragment()).commit();
 
         } else if (id == R.id.encounters) {
-            Intent i = new Intent(getApplicationContext(),Tinderswipemain.class);
-            startActivity(i);
+           fragmentManager.beginTransaction().replace(R.id.content_frame, new SwipeFragment()).commit();
 
-        } else if (id == R.id.directory) {
-            Toast.makeText(this, "Directory", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(this,Directory.class);
-            startActivity(i);
+       } else if (id == R.id.directory) {
+           fragmentManager.beginTransaction().replace(R.id.content_frame, new DirectoryFragment()).commit();
 
         } else if (id == R.id.promote) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionFragment()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new SecondFragment()).commit();
 
         } else if (id == R.id.subscribe) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionFragment()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new SecondFragment()).commit();
 
         } else if (id == R.id.settings) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionFragment()).commit();
+           Intent i = new Intent(this,Settings.class);
+           startActivity(i);
 
-        }
+       }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

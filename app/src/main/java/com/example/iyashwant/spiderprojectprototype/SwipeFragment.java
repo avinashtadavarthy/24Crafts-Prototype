@@ -1,40 +1,47 @@
-package com.example.iyashwant.spiderprojectprototype.Swipe;
+package com.example.iyashwant.spiderprojectprototype;
 
 import android.content.Context;
 import android.graphics.Point;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.iyashwant.spiderprojectprototype.R;
+import com.example.iyashwant.spiderprojectprototype.Swipe.Profile;
+import com.example.iyashwant.spiderprojectprototype.Swipe.TinderCard;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipeDirectionalView;
 import com.mindorks.placeholderview.Utils;
 import com.mindorks.placeholderview.listeners.ItemRemovedListener;
 
+/**
+ * Created by Avinash Tadavarthy on 04-Nov-17.
+ */
 
-public class Tinderswipemain extends AppCompatActivity implements TinderCard.Callback {
+public class SwipeFragment extends android.support.v4.app.Fragment implements TinderCard.Callback {
+
+    View myView;
 
     private SwipeDirectionalView mSwipeView;
     private Context mContext;
     private int mAnimationDuration = 300;
     private boolean isToUndo = false;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tinderswipemain);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        myView = inflater.inflate(R.layout.activity_tinderswipemain,container,false);
 
-        getSupportActionBar().setTitle("People Nearby");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getActivity().setTitle("Encounters");
 
-        mSwipeView = (SwipeDirectionalView) findViewById(R.id.swipeView);
-        mContext = getApplicationContext();
+        mSwipeView = (SwipeDirectionalView) myView.findViewById(R.id.swipeView);
+        mContext = getActivity().getApplicationContext();
 
         int bottomMargin = Utils.dpToPx(160);
-        Point windowSize = com.example.iyashwant.spiderprojectprototype.Swipe.Utils.getDisplaySize(getWindowManager());
+        Point windowSize = com.example.iyashwant.spiderprojectprototype.Swipe.Utils.getDisplaySize(getActivity().getWindowManager());
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
                 .setIsUndoEnabled(true)
@@ -55,25 +62,25 @@ public class Tinderswipemain extends AppCompatActivity implements TinderCard.Cal
 
         Point cardViewHolderSize = new Point(windowSize.x, windowSize.y - bottomMargin);
 
-        for (Profile profile : com.example.iyashwant.spiderprojectprototype.Swipe.Utils.loadProfiles(getApplicationContext())) {
+        for (Profile profile : com.example.iyashwant.spiderprojectprototype.Swipe.Utils.loadProfiles(getActivity().getApplicationContext())) {
             mSwipeView.addView(new TinderCard(mContext, profile, cardViewHolderSize, this));
         }
 
-        findViewById(R.id.rejectBtn).setOnClickListener(new View.OnClickListener() {
+        myView.findViewById(R.id.rejectBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSwipeView.doSwipe(false);
             }
         });
 
-        findViewById(R.id.acceptBtn).setOnClickListener(new View.OnClickListener() {
+        myView.findViewById(R.id.acceptBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSwipeView.doSwipe(true);
             }
         });
 
-        findViewById(R.id.undoBtn).setOnClickListener(new View.OnClickListener() {
+        myView.findViewById(R.id.undoBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSwipeView.undoLastSwipe();
@@ -89,12 +96,14 @@ public class Tinderswipemain extends AppCompatActivity implements TinderCard.Cal
                 }
             }
         });
+        
+        return myView;
     }
 
     @Override
     public void onSwipeUp() {
-        Toast.makeText(this, "SAVED TO FAVOURITES!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "SAVED TO FAVOURITES!", Toast.LENGTH_SHORT).show();
         isToUndo = true;
     }
+    
 }
-

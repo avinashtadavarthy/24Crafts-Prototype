@@ -2,15 +2,23 @@ package com.example.iyashwant.spiderprojectprototype;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-public class Directory extends AppCompatActivity {
+/**
+ * Created by Avinash Tadavarthy on 04-Nov-17.
+ */
+
+public class DirectoryFragment extends android.support.v4.app.Fragment {
+
+    View myView;
 
     RecyclerView recyclerView;
     DirectoryGridAdapter adapter;
@@ -18,28 +26,27 @@ public class Directory extends AppCompatActivity {
     String[] desc = {"Ad and Corporate Filmmakers","Advertising and Marketing","Agency","Art Directors","Audigraphers","Auditorium","Dance","Directors",
             "Cine Banners","Cine Designers","Cinema Laboratories","Cinematographers", "Classical Singers","Colour Lab","Costumers","Dialogue Writers",
             "Dubbing and Recording Studios","Dubbing Artist","Editing Studio-Editing Suite","Event Managers","Exhibitors Associations","Film Directors","Film Distributors","Film Editors",
-    "Film Mediators","Film Producers","Film Writers","Graphic Designers","Hotels","Journalists","Journals(Websites)","Journals","Light Music Troupe",
-    "Lyric Writers","Makeup Men & Hairdressers","Modelling and Portfolio","Music Directors","Music Incharge","Outdoor units",
-    "Playback Singers","Press Photographers","Preview Theatres","PRO","Production Executive","Recording Studios","Script Writers",
-    "Shooting House","Still Photographers","Studios","Stunt Masters","TV Serial Directors","TV Serial Producers","Unions and Associations",
+            "Film Mediators","Film Producers","Film Writers","Graphic Designers","Hotels","Journalists","Journals(Websites)","Journals","Light Music Troupe",
+            "Lyric Writers","Makeup Men & Hairdressers","Modelling and Portfolio","Music Directors","Music Incharge","Outdoor units",
+            "Playback Singers","Press Photographers","Preview Theatres","PRO","Production Executive","Recording Studios","Script Writers",
+            "Shooting House","Still Photographers","Studios","Stunt Masters","TV Serial Directors","TV Serial Producers","Unions and Associations",
             "Video Post Production Studios"};
 
 
-
-
-
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_directory);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        myView = inflater.inflate(R.layout.activity_directory,container,false);
 
-        recyclerView = (RecyclerView) findViewById(R.id.rv);
+        getActivity().setTitle("Directory");
+
+        recyclerView = (RecyclerView) myView.findViewById(R.id.rv);
 
         recyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(this.getApplicationContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                new RecyclerItemClickListener(this.getActivity().getApplicationContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         Log.i("Hello",desc[position]);//returns fine
-                        Intent I = new Intent(Directory.this,Contacts.class);
+                        Intent I = new Intent(getActivity(),Contacts.class);
                         Log.i("hi",class_obj.get(position).getUrl_param());
                         I.putExtra("craft",class_obj.get(position).getUrl_param());
 
@@ -53,12 +60,12 @@ public class Directory extends AppCompatActivity {
                 })
         );
 
-        GridLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),3);
+        GridLayoutManager layoutManager = new GridLayoutManager(getActivity().getApplicationContext(),3);
         recyclerView.setLayoutManager(layoutManager);
 
 
 
-        adapter = new DirectoryGridAdapter(this,class_obj);///////////////////////////////////////////////
+        adapter = new DirectoryGridAdapter(getActivity(),class_obj);///////////////////////////////////////////////
         class_obj.add(new IconsClass(R.drawable.adcorp,"Ad and Corporate Filmmakers","adcorp"));
         class_obj.add(new IconsClass(R.drawable.advertisingandmarketing,"Advertisingandmarketing","advertising"));
         class_obj.add(new IconsClass(R.drawable.artdirector,"Art directors","artdirectors"));
@@ -113,7 +120,8 @@ public class Directory extends AppCompatActivity {
         class_obj.add(new IconsClass(R.drawable.videopostproduction,"video post production","videopostproduction"));
 
 
-
         recyclerView.setAdapter(adapter);
+
+        return myView;
     }
 }

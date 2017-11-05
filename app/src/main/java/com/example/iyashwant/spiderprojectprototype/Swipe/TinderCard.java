@@ -116,7 +116,7 @@ public class TinderCard {
         mSwipeView.setAlpha(alpha);
     }
 
-    interface Callback {
+    public interface Callback {
         void onSwipeUp();
     }
 }

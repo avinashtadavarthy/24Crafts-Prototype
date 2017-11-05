@@ -7,7 +7,7 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:id="@+id/mainLayout"
-    tools:context="com.example.iyashwant.spiderprojectprototype.PeopleNearby"
+    tools:context="com.example.iyashwant.spiderprojectprototype.PeopleNearbyFragment"
     android:background="@mipmap/blur"
     tools:layout_editor_absoluteY="8dp"
     tools:layout_editor_absoluteX="8dp">
@@ -144,18 +144,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="8dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"
-        android:text="PEOPLE NEARBY"
-        android:textSize="30dp"
-        android:textColor="#f9666f"
-        android:layout_centerVertical="true"/>
 
 
 </com.example.iyashwant.spiderprojectprototype.ZoomableRelativeLayout>

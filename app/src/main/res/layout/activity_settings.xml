@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.iyashwant.spiderprojectprototype.Settings">
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Account Information"
+        android:layout_margin="10sp"/>
+
+    <TextView
+        android:id="@+id/verify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verify Yourself"
+        android:layout_margin="10sp"/>
+
+    <TextView
+        android:id="@+id/coinsfree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Free Coins"
+        android:layout_margin="10sp"/>
+
+    <TextView
+        android:id="@+id/morecoins"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Buy More Coins"
+        android:layout_margin="10sp"/>
+
+    <TextView
+        android:id="@+id/themes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Themes"
+        android:layout_margin="10sp"/>
+
+    <TextView
+        android:id="@+id/daily"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Daily Check In"
+        android:layout_margin="10sp"/>
+
+    <TextView
+        android:layout_marginTop="30sp"
+        android:layout_marginBottom="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="3sp"
+        android:background="#000000"/>
+
+    <TextView
+        android:id="@+id/contactus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contact / Support"
+        android:layout_margin="10sp"/>
+
+    <TextView
+        android:id="@+id/aboutus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="About Us"
+        android:layout_margin="10sp"/>
+
+</LinearLayout>

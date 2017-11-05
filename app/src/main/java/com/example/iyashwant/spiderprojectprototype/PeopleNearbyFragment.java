@@ -1,10 +1,12 @@
 package com.example.iyashwant.spiderprojectprototype;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -15,7 +17,13 @@ import com.daimajia.androidanimations.library.YoYo;
 
 import java.util.Random;
 
-public class PeopleNearby extends AppCompatActivity {
+/**
+ * Created by Avinash Tadavarthy on 04-Nov-17.
+ */
+
+public class PeopleNearbyFragment extends android.support.v4.app.Fragment {
+
+    View myView;
 
     ImageView imageView1,imageView;
     ImageView imageView2;
@@ -27,29 +35,31 @@ public class PeopleNearby extends AppCompatActivity {
     ScaleGestureDetector scaleGestureDetector;
     int a;
     Button button;
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_people_nearby);
-        TextView textView = (TextView) findViewById(R.id.textView2);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        myView = inflater.inflate(R.layout.activity_people_nearby,container,false);
 
-        mainLayout = (ZoomableRelativeLayout) findViewById(R.id.mainLayout);
-        scaleGestureDetector = new ScaleGestureDetector(this, new onPinchListener(mainLayout));
+        getActivity().setTitle("People Nearby");
 
+        TextView textView = (TextView) myView.findViewById(R.id.textView2);
 
+        mainLayout = (ZoomableRelativeLayout) myView.findViewById(R.id.mainLayout);
+        scaleGestureDetector = new ScaleGestureDetector(getActivity(), new onPinchListener(mainLayout));
 
-        imageView = (ImageView) findViewById(R.id.IMG);
+        imageView = (ImageView) myView.findViewById(R.id.IMG);
 
         random = new Random();
         a = random.nextInt(6)+1;
-        button = (Button) findViewById(R.id.button);
+        button = (Button) myView.findViewById(R.id.button);
         counter(a);
 
-        imageView1 = (ImageView) findViewById(R.id.imageView3);
-        imageView2 = (ImageView) findViewById(R.id.imageView4);
-        imageView3 = (ImageView) findViewById(R.id.imageView5);
-        imageView4 = (ImageView) findViewById(R.id.imageView6);
-        imageView5 = (ImageView) findViewById(R.id.imageView7);
+        imageView1 = (ImageView) myView.findViewById(R.id.imageView3);
+        imageView2 = (ImageView) myView.findViewById(R.id.imageView4);
+        imageView3 = (ImageView) myView.findViewById(R.id.imageView5);
+        imageView4 = (ImageView) myView.findViewById(R.id.imageView6);
+        imageView5 = (ImageView) myView.findViewById(R.id.imageView7);
 
         counter(a+1);
 
@@ -86,12 +96,17 @@ public class PeopleNearby extends AppCompatActivity {
                 return true;
             }
         });
+        
+        
+        return myView;
     }
+
+
     public void counter(int a)
     {
 
 
-        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        final ProgressBar progressBar = (ProgressBar) myView.findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
 
@@ -109,7 +124,7 @@ public class PeopleNearby extends AppCompatActivity {
                     public void run() {
 
                         imageView1.setVisibility(View.VISIBLE);
-                        YoYo.with(Techniques.FadeIn).duration(1000).repeat(1).playOn(findViewById(R.id.imageView3));
+                        YoYo.with(Techniques.FadeIn).duration(1000).repeat(1).playOn(myView.findViewById(R.id.imageView3));
                         progressBar.setVisibility(View.INVISIBLE);
                         button.setVisibility(View.VISIBLE);
                     }
@@ -179,10 +194,10 @@ public class PeopleNearby extends AppCompatActivity {
                 //button.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.INVISIBLE);
                 break;
-
-
-
+            
         }
 
     }
+    
+    
 }
