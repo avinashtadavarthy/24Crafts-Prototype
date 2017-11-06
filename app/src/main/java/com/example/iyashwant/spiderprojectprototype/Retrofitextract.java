@@ -17,10 +17,6 @@ import retrofit2.http.Path;
 
 public interface Retrofitextract {
 
-
-
-
-
     @GET("/{craft_name}")//attached to base url
     Call<List<ContactsHelper>> getLongUrl(@Path("craft_name") String craft_name);//
     //Call<ShortToLongUrlHelper> a pojo object
