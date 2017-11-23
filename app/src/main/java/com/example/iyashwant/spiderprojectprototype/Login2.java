@@ -7,27 +7,63 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.WebView;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.VideoView;
 
-import com.example.iyashwant.spiderprojectprototype.Registration.signup;
 import com.github.clans.fab.FloatingActionButton;
 
 public class Login2 extends AppCompatActivity {
 
-    FloatingActionButton floatingActionButton1,floatingActionButton2,floatingActionButton3;
+    FloatingActionButton fabEmail, fabSign, fabExit;
     VideoView videoview;
+    ImageButton fbLogin, googleLogin, instaLogin;
+
+    private final String LOG_TAG = "Login2 Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
 
-        /// splash video code start
-        videoview = (VideoView) findViewById(R.id.videoView);
+        initialiseViews();
+        displayCoverVideo();
+        initialiseFABEvents();
+        initialiseLoginButtonEvents();
+
+    }
+
+    private void initialiseLoginButtonEvents(){
+        View.OnClickListener loginListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int id = view.getId();
+
+                //TODO:Add social login action below
+                if(id==R.id.fb_login_button){
+
+                } else if(id == R.id.gl_login_button){
+
+                } else if(id==R.id.inst_login_button){
+
+                } else {
+                    Log.d(LOG_TAG, "Unregistered click event");
+                }
+
+            }
+        };
+
+        fbLogin.setOnClickListener(loginListener);
+        googleLogin.setOnClickListener(loginListener);
+        instaLogin.setOnClickListener(loginListener);
+    }
+
+    private void displayCoverVideo(){
         Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.splash);
         videoview.setVideoURI(uri);
         videoview.start();
@@ -37,10 +73,22 @@ public class Login2 extends AppCompatActivity {
                 mp.setLooping(true);
             }
         });
-        ///splash video code end
+    }
 
-        floatingActionButton1 =(FloatingActionButton)findViewById(R.id.material_design_floating_action_menu_item1);
-        floatingActionButton1.setOnClickListener(new View.OnClickListener() {
+    private void initialiseViews(){
+        fabEmail=(FloatingActionButton)findViewById(R.id.action_email_fab);
+        fabSign = (FloatingActionButton)findViewById(R.id.action_sign_fab);
+        fabExit = (FloatingActionButton)findViewById(R.id.action_exit_fab);
+
+        videoview = (VideoView) findViewById(R.id.videoView);
+
+        fbLogin = (ImageButton)findViewById(R.id.fb_login_button);
+        googleLogin = (ImageButton)findViewById(R.id.gl_login_button);
+        instaLogin = (ImageButton)findViewById(R.id.inst_login_button);
+    }
+
+    private void initialiseFABEvents(){
+        fabEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent nextpage = new Intent(getApplicationContext(),Login.class);
@@ -48,8 +96,7 @@ public class Login2 extends AppCompatActivity {
             }
         });
 
-        floatingActionButton2 = (FloatingActionButton)findViewById(R.id.material_design_floating_action_menu_item2);
-        floatingActionButton2.setOnClickListener(new View.OnClickListener() {
+        fabSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent nextpage = new Intent(getApplicationContext(),StartingScreen.class);
@@ -57,8 +104,7 @@ public class Login2 extends AppCompatActivity {
             }
         });
 
-        floatingActionButton3 = (FloatingActionButton)findViewById(R.id.material_design_floating_action_menu_item4);
-        floatingActionButton3.setOnClickListener(new View.OnClickListener() {
+        fabExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();

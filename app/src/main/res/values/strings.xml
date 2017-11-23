@@ -29,4 +29,8 @@
     <string name="title_activity_dashboard">dashboard</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_inbox_tab">InboxTab</string>
+    <string name="title_activity_main3">Main3Activity</string>
+    <string name="jwtTokenKey">UserToken</string>
+    <string name="sample_auth_token">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InR1dHV0YXBhc3dpQGdtYWlsLmNvbSIsImlkIjoiNWExNTU2NDQ4OWNhZWEwNjMwZmNhNjFmIiwiaXNDbGllbnQiOmZhbHNlLCJjYXRlZ29yeSI6IkNSQUZUU01BTiIsImlhdCI6MTUxMTM0Nzc4NSwiZXhwIjoxNTExNDM0MTg1fQ.kihgdfj59ZvU8OpPEkF4gjbHDrzFll97ju0PT4CEwCU</string>
+
 </resources>

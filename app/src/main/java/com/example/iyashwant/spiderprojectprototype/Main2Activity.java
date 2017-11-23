@@ -1,10 +1,9 @@
 package com.example.iyashwant.spiderprojectprototype;
 
-import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,9 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
-
-import com.example.iyashwant.spiderprojectprototype.Swipe.Tinderswipemain;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -25,6 +21,13 @@ public class Main2Activity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        SharedPreferences sharedPref = this.getPreferences(MODE_PRIVATE);
+        String jwttoken = sharedPref.getString(getString(R.string.jwtTokenKey), null);
+        if(jwttoken==null){
+            Intent intent = new Intent(this, Login2.class);
+            startActivity(intent);
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -68,10 +71,10 @@ public class Main2Activity extends AppCompatActivity
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
 
        if (id == R.id.inbox) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new InboxTab2()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new InboxTab()).commit();
 
         } else if (id == R.id.auditions) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionsTab2()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionsTab()).commit();
 
         } else if (id == R.id.newsfeed) {
             fragmentManager.beginTransaction().replace(R.id.content_frame, new NewsfeedFragment()).commit();

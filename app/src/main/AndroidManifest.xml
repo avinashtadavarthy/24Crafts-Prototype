@@ -44,8 +44,8 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".ProfileView" />
         <activity android:name=".StartingScreen" />
-        <activity android:name=".signup3client" />
-        <activity android:name=".signupclient" />
+        <activity android:name=".Registration.signup3client" />
+        <activity android:name=".Registration.signupclient" />
         <activity
             android:name=".Swipe.Tinderswipemain"
             android:parentActivityName=".Main2Activity"
@@ -55,9 +55,14 @@
             android:name=".ProfileView2"
             android:parentActivityName=".Main2Activity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Settings"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".Main2Activity"/>
+        <activity
+            android:name=".Settings"
+            android:parentActivityName=".Main2Activity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Main3Activity"
+            android:label="@string/title_activity_main3"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 
 </manifest>
