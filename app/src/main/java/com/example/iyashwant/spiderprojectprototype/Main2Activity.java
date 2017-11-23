@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
