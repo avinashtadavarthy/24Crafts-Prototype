@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context="com.example.iyashwant.spiderprojectprototype.SubscribePopUp">
+
+    <TextView
+        android:id="@+id/Subscribe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="40sp"
+        android:text="SUBSCRIBE"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Subscription"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/Subscribe"
+        android:textSize="20sp"
+        android:text="Subscribe to 24Crafts to enjoy using the app's features. Subscription allows Producers/Directors to find you...."/>
+
+    <RelativeLayout
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/Subscription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/SubscribeButton"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="40dp"
+            android:text="Subscribe"
+            />
+
+        <Button
+            android:layout_alignParentBottom="true"
+            android:id="@+id/ContinueButton"
+            android:text="Continue Free"
+            android:layout_marginRight="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="launchIntent"/>
+
+    </RelativeLayout>
+</RelativeLayout>

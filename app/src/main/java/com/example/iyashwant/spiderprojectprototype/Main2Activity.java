@@ -89,10 +89,14 @@ public class Main2Activity extends AppCompatActivity
            fragmentManager.beginTransaction().replace(R.id.content_frame, new DirectoryFragment()).commit();
 
         } else if (id == R.id.promote) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new SecondFragment()).commit();
+           Intent i = new Intent(getApplicationContext(),PromoteProfilePopUp.class);
+           startActivity(i);
+           //fragmentManager.beginTransaction().replace(R.id.content_frame, new SecondFragment()).commit();
 
         } else if (id == R.id.subscribe) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new SecondFragment()).commit();
+           Intent i = new Intent(getApplicationContext(),SubscribePopUp.class);
+           startActivity(i);
+           // fragmentManager.beginTransaction().replace(R.id.content_frame, new SecondFragment()).commit();
 
         } else if (id == R.id.settings) {
            Intent i = new Intent(this,Settings.class);

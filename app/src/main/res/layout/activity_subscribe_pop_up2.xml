@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="15dp"
+    android:layout_height="match_parent"
+    tools:context="com.example.iyashwant.spiderprojectprototype.SubscribePopUp2">
+
+    <TextView
+        android:id="@+id/Subscribe2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="40sp"
+        android:text="SUBSCRIBE"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Subscription2"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/Subscribe2"
+        android:textSize="20sp"
+        android:text="Note: Free Account only gives you access to the DIRECTORY. Producers/Directors will not be able to contact you..."/>
+
+    <TextView
+        android:id="@+id/Subscription22"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/Subscription2"
+        android:textSize="20sp"
+        android:text="Do you really want to continue Free ?"
+        />
+
+    <RelativeLayout
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/Subscription22"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/YesButton"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="40dp"
+            android:text="Yes"
+            />
+
+        <Button
+            android:layout_alignParentBottom="true"
+            android:id="@+id/NoButton"
+            android:text="No"
+            android:layout_marginRight="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
