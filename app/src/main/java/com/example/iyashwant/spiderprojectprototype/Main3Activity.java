@@ -73,7 +73,10 @@ public class Main3Activity extends AppCompatActivity
         int id = item.getItemId();
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
 
-        if (id == R.id.talent_hunt) {
+        if(id == R.id.dashboard){
+            fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new ClientDashboard()).commit();
+
+        } else if (id == R.id.talent_hunt) {
             fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new SecondFragment()).commit();
 
         } else if (id == R.id.nearby) {
