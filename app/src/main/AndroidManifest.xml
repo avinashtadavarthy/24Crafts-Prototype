@@ -13,7 +13,22 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
             android:name=".Login2"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan">
+
+
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+
+
+
+        </activity>
         <activity
             android:name=".Login"
             android:windowSoftInputMode="adjustPan" />
@@ -56,17 +71,14 @@
             android:name=".Settings"
             android:parentActivityName=".Main2Activity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".FreeCoins"></activity>
+        <activity android:name=".FreeCoins" />
         <activity android:name=".RefAndEarn" />
-        <activity android:name=".DailyCheckIn">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".DailyCheckIn"></activity>
         <activity android:name=".DailyCheckIn2" />
-        <activity android:name=".VerifyYourself"></activity>
+        <activity android:name=".VerifyYourself" />
+        <activity android:name=".ClientDashboard">
+
+        </activity>
     </application>
 
 </manifest>
