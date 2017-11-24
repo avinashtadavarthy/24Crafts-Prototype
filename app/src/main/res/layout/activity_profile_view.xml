@@ -20,6 +20,8 @@
                 android:layout_alignParentTop="true"
                 android:id="@+id/MainLayout"
                 android:weightSum="10">
+
+                
                 <RelativeLayout
                     android:layout_width="0sp"
                     android:layout_weight="6.5"
