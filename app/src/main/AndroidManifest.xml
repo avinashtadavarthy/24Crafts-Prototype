@@ -57,6 +57,22 @@
         <activity android:name=".Settings"
             android:theme="@style/Theme.AppCompat"
             android:parentActivityName=".Main2Activity"/>
+        <activity android:name=".FreeCoins"
+            android:theme="@style/AppTheme.CustomTheme"/>
+        <activity android:name=".RefAndEarn"
+            android:theme="@style/AppTheme.CustomTheme"/>
+        <activity android:name=".DailyCheckIn"
+            android:theme="@style/AppTheme.CustomTheme"/>
+        <activity android:name=".DailyCheckIn2"
+            android:theme="@style/AppTheme.CustomTheme"/>
+        <activity android:name=".VerifyYourself"
+            android:theme="@style/AppTheme.CustomTheme"/>
+        <activity android:name=".PromoteProfilePopUp"
+            android:theme="@style/AppTheme.CustomTheme"/>
+        <activity android:name=".SubscribePopUp"
+            android:theme="@style/AppTheme.CustomTheme"/>
+        <activity android:name=".SubscribePopUp2"
+            android:theme="@style/AppTheme.CustomTheme"/>
     </application>
 
 </manifest>
