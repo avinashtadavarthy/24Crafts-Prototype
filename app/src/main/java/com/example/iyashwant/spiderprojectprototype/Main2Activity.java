@@ -17,18 +17,19 @@ public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        SharedPreferences sharedPref = this.getPreferences(MODE_PRIVATE);
+      /*  SharedPreferences sharedPref = this.getPreferences(MODE_PRIVATE);
         String jwttoken = sharedPref.getString(getString(R.string.jwtTokenKey), null);
         if(jwttoken==null){
             Intent intent = new Intent(this, Login2.class);
             startActivity(intent);
         }
-
+*/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

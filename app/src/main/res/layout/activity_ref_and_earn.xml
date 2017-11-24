@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="15dp"
+    android:layout_height="match_parent"
+    tools:context="com.example.iyashwant.spiderprojectprototype.RefAndEarn">
+
+    <ImageView
+        android:id="@+id/refandearnimage"
+        android:layout_centerHorizontal="true"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/refandearn"/>
+
+    <TextView
+        android:id="@+id/refandearntext"
+        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:layout_below="@id/refandearnimage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Share the following referal code with your friends and gain Five coins each."/>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_width="150dp"
+        android:id="@+id/refcode"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/refandearntext"
+        android:layout_centerHorizontal="true"/>
+
+
+    <LinearLayout
+        android:onClick="shareIntent"
+        android:background="@drawable/border"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/refcode"
+        android:id="@+id/sharelayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/shareimage"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/refcode"
+        android:layout_centerHorizontal="true"
+        android:text="Share"/>
+
+    </LinearLayout>
+</RelativeLayout>
