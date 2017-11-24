@@ -6,9 +6,9 @@
 
     <application
         android:allowBackup="true"
-        android:largeHeap="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -86,6 +86,7 @@
         <activity
             android:name=".SubscribePopUp2"
             android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".ClientDashboardLayout"></activity>
     </application>
 
 </manifest>
