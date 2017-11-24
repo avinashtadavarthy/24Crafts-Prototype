@@ -3,6 +3,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/dashboard"
+            android:icon="@drawable/dashboard"
+            android:title="Dashboard" />
+        <item
             android:id="@+id/talent_hunt"
             android:icon="@drawable/talent_hunt"
             android:title="Talent Hunter - Cast &amp; Crew" />
