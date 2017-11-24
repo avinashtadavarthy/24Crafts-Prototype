@@ -9,5 +9,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="119dp"
-        android:text="Second Layout" />
+        android:text="Empty shit that has to be filled" />
+
 </RelativeLayout>

@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 
 public class Main3Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,6 +33,20 @@ public class Main3Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        if(savedInstanceState==null){
+            navigationView.getMenu().performIdentifierAction(R.id.dashboard,0);
+        }
+
+        ImageButton profile_edits = (ImageButton) navigationView.getHeaderView(0).findViewById(R.id.profile_edits);
+        profile_edits.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent i = new Intent(Main3Activity.this, ProfileView2.class);
+                startActivity(i);
+            }
+        });
+
     }
 
     @Override

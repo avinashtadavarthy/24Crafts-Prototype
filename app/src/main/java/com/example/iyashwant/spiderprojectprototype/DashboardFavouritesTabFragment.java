@@ -16,7 +16,6 @@ public class DashboardFavouritesTabFragment extends android.support.v4.app.Fragm
         myView = inflater.inflate(R.layout.activity_dashboard_favourites_tab_fragment,container,false);
 
 
-
         return myView;
     }
 }
