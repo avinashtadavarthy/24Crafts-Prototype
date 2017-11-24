@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#616161"
+    android:background="@mipmap/blur"
     android:padding="10dp"
     android:orientation="vertical"
     tools:context="com.example.iyashwant.spiderprojectprototype.StartingScreen">
@@ -16,6 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+
         <ImageView
             android:id="@+id/imgview"
             android:layout_width="150dp"
@@ -23,12 +25,13 @@
             android:src="@drawable/icon_twentyfour"
             android:layout_centerHorizontal="true"/>
 
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Choose Your Category"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="20dp"
+            android:text="Who are you?"
+            android:textColor="#e2e2e2"
+            android:layout_marginTop="150dp"
             android:textSize="20sp"
             android:gravity="center"
             android:layout_below="@id/imgview"/>
@@ -43,7 +46,7 @@
 
         <RelativeLayout
             android:padding="10dp"
-            android:background="#795548"
+
             android:layout_marginTop="30dp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="50dp"
@@ -53,17 +56,18 @@
             <ImageView
                 android:layout_centerHorizontal="true"
                 android:id="@+id/craftsmen"
+                android:tint="#ffffff"
                 android:onClick="regcraftsmen"
                 android:src="@drawable/ic_person"
-                android:layout_width="40dp"
-                android:layout_height="40dp"/>
+                android:layout_width="100dp"
+                android:layout_height="70dp"/>
 
 
             <TextView
                 android:layout_width="100dp"
                 android:text="Craftsmen"
                 android:gravity="center"
-                android:textColor="#FFC107"
+                android:textColor="#ffffff"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/craftsmen"/>
 
@@ -71,7 +75,6 @@
 
         <RelativeLayout
             android:padding="10dp"
-            android:background="#1B5E20"
             android:layout_marginTop="30dp"
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
@@ -82,16 +85,17 @@
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/ic_movie"
                 android:id="@+id/client"
+                android:tint="#000000"
                 android:onClick="regclient"
-                android:layout_width="40dp"
-                android:layout_height="40dp"/>
+                android:layout_width="100dp"
+                android:layout_height="70dp"/>
 
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="100dp"
                 android:text="Client"
                 android:gravity="center"
-                android:textColor="#FFC107"
+                android:textColor="#000000"
                 android:layout_below="@id/client"/>
 
         </RelativeLayout>

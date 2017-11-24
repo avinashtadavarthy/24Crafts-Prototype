@@ -191,9 +191,10 @@
                 android:background="@drawable/box"
                 android:layout_width="match_parent"
                 android:textSize="16dp"
+
                 android:popupBackground="@drawable/box_spin"
                 android:layout_gravity="center"
-                android:layout_height="40dp"
+                android:layout_height="60dp"
                 android:layout_marginLeft="16sp"
                 android:layout_marginRight="16sp" />
 
