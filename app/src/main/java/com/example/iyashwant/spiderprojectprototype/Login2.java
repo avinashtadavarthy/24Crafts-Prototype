@@ -1,17 +1,24 @@
 package com.example.iyashwant.spiderprojectprototype;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.net.Uri;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.VideoView;
@@ -31,11 +38,116 @@ public class Login2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
 
+
         initialiseViews();
         displayCoverVideo();
         initialiseFABEvents();
-        initialiseLoginButtonEvents();
+        //initialiseLoginButtonEvents();
+        LoginpopUp();
 
+    }
+
+
+    private void LoginpopUp()
+    {
+        ImageButton facebook = (ImageButton)findViewById(R.id.fb_login_button);
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(Login2.this);
+
+                alert.setTitle("Login \n ");
+
+                WebView wv = new WebView(Login2.this);
+                wv.loadUrl("http:\\24crafts.ga:3000/login/facebook");
+                wv.setWebViewClient(new WebViewClient() {
+                    @Override
+                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                        view.loadUrl(url);
+
+                        return true;
+                    }
+                });
+
+                alert.setView(wv);
+                alert.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                alert.show();
+
+
+
+            }
+        });
+
+        ImageButton google = (ImageButton)findViewById(R.id.gl_login_button);
+        google.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(Login2.this);
+
+                alert.setTitle("Login \n ");
+
+                WebView wv = new WebView(Login2.this);
+                wv.loadUrl("http:\\24crafts.ga:3000/login/google");
+                wv.setWebViewClient(new WebViewClient() {
+                    @Override
+                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                        view.loadUrl(url);
+
+                        return true;
+                    }
+                });
+
+                alert.setView(wv);
+                alert.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                alert.show();
+
+
+
+            }
+        });
+
+        ImageButton twitter = (ImageButton)findViewById(R.id.twitter_login_button);
+        twitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(Login2.this);
+
+                alert.setTitle("Login \n ");
+
+                WebView wv = new WebView(Login2.this);
+                wv.loadUrl("http:\\24crafts.ga:3000/login/twitter");
+                wv.setWebViewClient(new WebViewClient() {
+                    @Override
+                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                        view.loadUrl(url);
+
+                        return true;
+                    }
+                });
+
+                alert.setView(wv);
+                alert.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                alert.show();
+
+
+
+            }
+        });
     }
 
     private void initialiseLoginButtonEvents(){
@@ -46,10 +158,19 @@ public class Login2 extends AppCompatActivity {
 
                 //TODO:Add social login action below
                 if(id==R.id.fb_login_button){
+                    Intent socialpage = new Intent(getApplicationContext(),LoginSocial.class);
+                    startActivity(socialpage);
+
 
                 } else if(id == R.id.gl_login_button){
+                    Intent socialpage = new Intent(getApplicationContext(),LoginSocial.class);
+                    startActivity(socialpage);
 
-                } else if(id==R.id.inst_login_button){
+
+                } else if(id==R.id.twitter_login_button){
+                    Intent socialpage = new Intent(getApplicationContext(),LoginSocial.class);
+                    startActivity(socialpage);
+
 
                 } else {
                     Log.d(LOG_TAG, "Unregistered click event");
@@ -84,7 +205,7 @@ public class Login2 extends AppCompatActivity {
 
         fbLogin = (ImageButton)findViewById(R.id.fb_login_button);
         googleLogin = (ImageButton)findViewById(R.id.gl_login_button);
-        instaLogin = (ImageButton)findViewById(R.id.inst_login_button);
+        instaLogin = (ImageButton)findViewById(R.id.twitter_login_button);
     }
 
     private void initialiseFABEvents(){

@@ -34,7 +34,7 @@
             android:layout_marginTop="150dp"
             android:textSize="20sp"
             android:gravity="center"
-            android:layout_below="@id/imgview"/>
+            />
 
     </RelativeLayout>
 

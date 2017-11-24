@@ -86,7 +86,8 @@
         <activity
             android:name=".SubscribePopUp2"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".ClientDashboardLayout"></activity>
+        <activity android:name=".ClientDashboardLayout" />
+        <activity android:name=".LoginSocial"></activity>
     </application>
 
 </manifest>
