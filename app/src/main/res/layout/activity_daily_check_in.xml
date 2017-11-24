@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context="com.example.iyashwant.spiderprojectprototype.DailyCheckIn">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/CheckinText"
+        android:text="CHECK IN"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/CheckinSentence"
+        android:text="Log in to 24crafts and and earn free rewards"
+        android:layout_width="match_parent"
+        android:layout_below="@id/CheckinText"
+        android:gravity="center_horizontal"
+        android:textSize="15sp"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/CheckinSentence"
+        android:id="@+id/layoutimages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/layoutimages"
+        android:id="@+id/layouttext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:gravity="center"
+            android:layout_marginRight="5dp"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:text="Day 1"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:gravity="center"
+            android:layout_marginRight="5dp"
+            android:layout_width="0dp"
+            android:text="Day 2"
+            android:layout_height="20dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:gravity="center"
+            android:layout_marginRight="5dp"
+            android:layout_width="0dp"
+            android:text="Day 3"
+            android:layout_height="20dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:gravity="center"
+            android:layout_marginRight="5dp"
+            android:layout_width="0dp"
+            android:text="Day 4"
+            android:layout_height="20dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:text="Day 5"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layouttext"
+        android:id="@+id/checkinbutton"
+        android:layout_centerHorizontal="true"
+        android:onClick="checkinintent"
+        android:text="CHECK IN"/>
+
+
+
+</RelativeLayout>

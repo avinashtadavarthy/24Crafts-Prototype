@@ -13,13 +13,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
             android:name=".Login2"
-            android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Login"
             android:windowSoftInputMode="adjustPan" />
@@ -38,6 +32,9 @@
         <activity
             android:name=".Registration.Verification"
             android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".PromoteProfilePopUp" />
+        <activity android:name=".SubscribePopUp" />
+        <activity android:name=".SubscribePopUp2" />
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
@@ -55,9 +52,21 @@
             android:name=".ProfileView2"
             android:parentActivityName=".Main2Activity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Settings"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".Main2Activity"/>
+        <activity
+            android:name=".Settings"
+            android:parentActivityName=".Main2Activity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".FreeCoins"></activity>
+        <activity android:name=".RefAndEarn" />
+        <activity android:name=".DailyCheckIn">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".DailyCheckIn2" />
+        <activity android:name=".VerifyYourself"></activity>
     </application>
 
 </manifest>

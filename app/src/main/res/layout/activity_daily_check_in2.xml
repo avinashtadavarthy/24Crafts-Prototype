@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context="com.example.iyashwant.spiderprojectprototype.DailyCheckIn2">
+
+    <TextView
+        android:id="@+id/DayText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DAY 1"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"/>
+
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/DayText"
+        android:layout_marginTop="70dp"
+        android:id="@+id/starimage"
+        android:layout_marginLeft="120dp"/>
+
+    <TextView
+        android:layout_marginTop="70dp"
+        android:layout_below="@id/DayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+16"
+        android:textSize="30sp"
+        android:id="@+id/startext"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/starimage"/>
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/starimage"
+        android:textSize="20sp"
+        android:text="Gain more coins by checking in everyday"
+        android:id="@+id/starsentencetext"
+        android:gravity="center_horizontal"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/OKbutton"
+        android:text="OK"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:onClick="destroypopup"
+        android:layout_below="@id/starsentencetext"/>
+</RelativeLayout>
