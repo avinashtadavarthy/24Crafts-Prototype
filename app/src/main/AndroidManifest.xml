@@ -56,7 +56,7 @@
             android:parentActivityName=".Main2Activity"
             android:theme="@style/AppTheme" />
         <activity android:name=".Settings"
-            android:theme="@style/AppTheme"
+            android:theme="@style/Theme.AppCompat"
             android:parentActivityName=".Main2Activity"/>
     </application>
 

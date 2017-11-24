@@ -5,11 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
+    android:background="@mipmap/blur"
     tools:context="com.example.iyashwant.spiderprojectprototype.Settings">
 
     <TextView
         android:id="@+id/info"
+        android:padding="10dp"
         android:layout_width="match_parent"
+        android:textColor="#ffff"
+        android:textSize="15dp"
+
         android:layout_height="wrap_content"
         android:text="Account Information"
         android:layout_margin="10sp"/>
@@ -18,18 +24,28 @@
         android:id="@+id/verify"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#ffff"
+
+        android:textSize="15dp"
+        android:padding="10dp"
         android:text="Verify Yourself"
         android:layout_margin="10sp"/>
 
     <TextView
         android:id="@+id/coinsfree"
         android:layout_width="match_parent"
+        android:padding="10dp"
+        android:textColor="#ffff"
+        android:textSize="15dp"
         android:layout_height="wrap_content"
         android:text="Free Coins"
         android:layout_margin="10sp"/>
 
     <TextView
         android:id="@+id/morecoins"
+        android:textColor="#ffff"
+        android:textSize="15dp"
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Buy More Coins"
@@ -37,14 +53,20 @@
 
     <TextView
         android:id="@+id/themes"
+        android:textColor="#ffff"
+        android:textSize="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:text="Themes"
         android:layout_margin="10sp"/>
 
     <TextView
         android:id="@+id/daily"
         android:layout_width="match_parent"
+        android:padding="10dp"
+        android:textColor="#ffff"
+        android:textSize="15dp"
         android:layout_height="wrap_content"
         android:text="Daily Check In"
         android:layout_margin="10sp"/>
@@ -53,20 +75,25 @@
         android:layout_marginTop="30sp"
         android:layout_marginBottom="30sp"
         android:layout_width="match_parent"
-        android:layout_height="3sp"
+        android:layout_height="1sp"
         android:background="#000000"/>
 
     <TextView
         android:id="@+id/contactus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#ffff"
+        android:textSize="10dp"
         android:text="Contact / Support"
         android:layout_margin="10sp"/>
 
     <TextView
         android:id="@+id/aboutus"
+        android:textColor="#ffff"
+        android:textSize="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:text="About Us"
         android:layout_margin="10sp"/>
 

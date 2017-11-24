@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     android:orientation="vertical"
-    android:background="#002200"
+    android:background="@mipmap/blur"
     tools:context="com.example.iyashwant.spiderprojectprototype.Directory.contacts">
     <TextView
         android:layout_width="wrap_content"
