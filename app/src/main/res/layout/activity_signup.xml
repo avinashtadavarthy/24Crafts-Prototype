@@ -237,9 +237,7 @@
             android:layout_marginLeft="16sp"
             android:layout_marginRight="16sp"
             android:textSize="16dp"
-            android:paddingLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
+
             android:background="@drawable/box"/>
 -->
 

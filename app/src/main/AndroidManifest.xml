@@ -8,26 +8,18 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
             android:name=".Login2"
             android:windowSoftInputMode="adjustPan">
-
-
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
-
-
-
         </activity>
         <activity
             android:name=".Login"
@@ -47,12 +39,11 @@
         <activity
             android:name=".Registration.Verification"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".PromoteProfilePopUp" />
-        <activity android:name=".SubscribePopUp" />
-        <activity android:name=".SubscribePopUp2" />
         <activity
             android:name=".Main2Activity"
-            android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".Main3Activity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".ProfileView" />
         <activity android:name=".StartingScreen" />
@@ -70,15 +61,32 @@
         <activity
             android:name=".Settings"
             android:parentActivityName=".Main2Activity"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".FreeCoins" />
-        <activity android:name=".RefAndEarn" />
-        <activity android:name=".DailyCheckIn"></activity>
-        <activity android:name=".DailyCheckIn2" />
-        <activity android:name=".VerifyYourself" />
-        <activity android:name=".ClientDashboard">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".FreeCoins"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".RefAndEarn"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".DailyCheckIn"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".DailyCheckIn2"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".VerifyYourself"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".PromoteProfilePopUp"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".SubscribePopUp"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".SubscribePopUp2"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".ClientDashboardLayout"></activity>
     </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,6 +19,13 @@ import com.example.iyashwant.spiderprojectprototype.CustomAdapterSpinner;
 import com.example.iyashwant.spiderprojectprototype.R;
 
 public class signup2 extends AppCompatActivity {
+
+
+
+    String[] textArray = { "very fair", " ", "fair", " ","medium"," ","olive"," ","brown","","dark","" };
+    Integer[] imageArray = { R.drawable.veryfair, R.drawable.veryfairf,
+            R.drawable.fair, R.drawable.fairf, R.drawable.medium, R.drawable.mediumf, R.drawable.olive, R.drawable.olivef, R.drawable.brown, R.drawable.brownf, R.drawable.dark, R.drawable.darkf};
+
 
     String[] bodytypeString={"Choose Body Type",
             "Athletic","Average","Petite","Thin","Heavy","Other"};
@@ -154,6 +162,18 @@ public class signup2 extends AppCompatActivity {
             }
         });
 
+
+        TextView text = (TextView) findViewById(R.id.imgName);
+        ImageView imageView =(ImageView)findViewById(R.id.imgFace);
+        Spinner spinner = (Spinner) findViewById(R.id.skin_tone);
+
+        SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.custom, textArray, imageArray);
+        spinner.setAdapter(adapter);
+
+        // Declaring and typecasting a Spinner
+
+        /*
+
         final Spinner skintone = (Spinner) findViewById(R.id.skin_tone);
         CustomAdapterSpinner skintoneAdapter=new CustomAdapterSpinner(getApplicationContext(),skintoneString);
         skintone.setAdapter(skintoneAdapter);
@@ -170,6 +190,8 @@ public class signup2 extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+
+        */
 
         final Spinner facialhair = (Spinner) findViewById(R.id.facial_hair);
         CustomAdapterSpinner facialhairAdapter=new CustomAdapterSpinner(getApplicationContext(),facialhairString);

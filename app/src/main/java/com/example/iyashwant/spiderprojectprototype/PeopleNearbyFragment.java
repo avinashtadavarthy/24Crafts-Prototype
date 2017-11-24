@@ -8,6 +8,7 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -39,7 +40,7 @@ public class PeopleNearbyFragment extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.activity_people_nearby,container,false);
+        myView = inflater.inflate(R.layout.activity_people_nearby, container, false);
 
         getActivity().setTitle("People Nearby");
 
@@ -108,7 +109,6 @@ public class PeopleNearbyFragment extends android.support.v4.app.Fragment {
 
         final ProgressBar progressBar = (ProgressBar) myView.findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
-
 
 
 

@@ -1,68 +1,95 @@
 package com.example.iyashwant.spiderprojectprototype;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
-import android.view.Menu;
+import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
+import android.view.ViewGroup;
 
-import java.util.ArrayList;
+/**
+ * Created by Avinash Tadavarthy on 05-Nov-17.
+ */
 
-public class ClientDashboard extends AppCompatActivity {
+public class ClientDashboard extends Fragment {
 
-    private static RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
-    private static RecyclerView recyclerView;
-    private static ArrayList<DataModel> data;
-    static View.OnClickListener myOnClickListener;
-    private static ArrayList<Integer> removedItems;
+    View myView;
 
+    TabLayout client_dashboard_tabs;
+    ViewPager client_dashboard_tabbed;
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_client_dashboard);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        myView = inflater.inflate(R.layout.activity_client_dashboard,container,false);
 
 
-        myOnClickListener = new MyOnClickListener(this);
+        getActivity().setTitle("Dashboard");
 
-        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_clientdashboard);
-        recyclerView.setHasFixedSize(true);
+        client_dashboard_tabbed = (ViewPager) myView.findViewById(R.id.client_dashboard_tabbed);
+        client_dashboard_tabbed.setAdapter(new ClientDashboard.ClientDashboardAdapter(getFragmentManager(), getActivity().getApplicationContext()));
 
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        client_dashboard_tabs = (TabLayout) myView.findViewById(R.id.client_dashboard_tabs);
+        client_dashboard_tabs.setupWithViewPager(client_dashboard_tabbed);
 
-        data = new ArrayList<>();
-        for (int i = 0; i < MyData.nameArray.length-1; i++) {
-            data.add(new DataModel(
-                    MyData.nameArray[i],
-                    MyData.versionArray[i],
-                    MyData.id_[i],
-                    MyData.drawableArray[i]
-            ));
-        }
+        client_dashboard_tabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                client_dashboard_tabbed.setCurrentItem(tab.getPosition());
+            }
 
-        removedItems = new ArrayList<Integer>();
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                client_dashboard_tabbed.setCurrentItem(tab.getPosition());
+            }
 
-        adapter = new CustomAdapter(data);
-        recyclerView.setAdapter(adapter);
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                client_dashboard_tabbed.setCurrentItem(tab.getPosition());
+            }
+        });
+
+        return myView;
     }
 
+    private class ClientDashboardAdapter extends FragmentStatePagerAdapter {
 
-    private static class MyOnClickListener implements View.OnClickListener {
+        private String fragments [] = {"Auditions", "My Favourites", "Messages"};
 
-        private MyOnClickListener(Context context) {
+        public ClientDashboardAdapter(FragmentManager supportFragmentManager, Context applicationContext) {
+            super(supportFragmentManager);
         }
 
         @Override
-        public void onClick(View view) {
+        public Fragment getItem(int position) {
+            switch (position){
+                case 0:
+                    return new DashboardAuditionsTabFragment();
+                case 1:
+                    return new DashboardFavouritesTabFragment();
+                case 2:
+                    return new DashboardMessagesTabFragment();
+                default:
+                    return null;
+            }
+        }
 
+        @Override
+        public int getCount() {
+            return fragments.length;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return fragments[position];
         }
     }
+
+
 }
 
