@@ -55,8 +55,8 @@
 
             <ImageButton
                 android:id="@+id/profile_edits"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="44dp"
+                android:layout_height="43dp"
                 android:background="#00ffffff"
                 android:padding="10sp"
                 android:src="@drawable/edit_white" />
