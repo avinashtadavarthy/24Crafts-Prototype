@@ -72,32 +72,32 @@ public class Main2Activity extends AppCompatActivity
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
 
        if (id == R.id.inbox) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new InboxTab()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new InboxTab()).commit();
 
         } else if (id == R.id.auditions) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new AuditionsTab()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new AuditionsTab()).commit();
 
         } else if (id == R.id.newsfeed) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new NewsfeedFragment()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new NewsfeedFragment()).commit();
 
         } else if (id == R.id.nearby) {
-           fragmentManager.beginTransaction().replace(R.id.content_frame, new PeopleNearbyFragment()).commit();
+           fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new PeopleNearbyFragment()).commit();
 
         } else if (id == R.id.encounters) {
-           fragmentManager.beginTransaction().replace(R.id.content_frame, new SwipeFragment()).commit();
+           fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new SwipeFragment()).commit();
 
        } else if (id == R.id.directory) {
-           fragmentManager.beginTransaction().replace(R.id.content_frame, new DirectoryFragment()).commit();
+           fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new DirectoryFragment()).commit();
 
         } else if (id == R.id.promote) {
            Intent i = new Intent(getApplicationContext(),PromoteProfilePopUp.class);
            startActivity(i);
-           //fragmentManager.beginTransaction().replace(R.id.content_frame, new SecondFragment()).commit();
+           //fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new SecondFragment()).commit();
 
         } else if (id == R.id.subscribe) {
            Intent i = new Intent(getApplicationContext(),SubscribePopUp.class);
            startActivity(i);
-           // fragmentManager.beginTransaction().replace(R.id.content_frame, new SecondFragment()).commit();
+           // fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new SecondFragment()).commit();
 
         } else if (id == R.id.settings) {
            Intent i = new Intent(this,Settings.class);

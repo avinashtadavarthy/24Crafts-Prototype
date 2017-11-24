@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 public class SecondFragment extends android.support.v4.app.Fragment {
 
     View myView;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
