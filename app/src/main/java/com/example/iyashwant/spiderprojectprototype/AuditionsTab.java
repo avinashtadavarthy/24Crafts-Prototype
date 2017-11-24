@@ -20,7 +20,7 @@ import android.view.ViewGroup;
 import java.util.List;
 import java.util.Vector;
 
-public class AuditionsTab2 extends Fragment {
+public class AuditionsTab extends Fragment {
 
     View myView;
 

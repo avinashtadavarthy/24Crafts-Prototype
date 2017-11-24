@@ -3,12 +3,9 @@ package com.example.iyashwant.spiderprojectprototype;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -19,7 +16,7 @@ import android.view.ViewGroup;
  * Created by Avinash Tadavarthy on 05-Nov-17.
  */
 
-public class InboxTab2 extends Fragment {
+public class InboxTab extends Fragment {
 
     View myView;
 
@@ -35,7 +32,7 @@ public class InboxTab2 extends Fragment {
         getActivity().setTitle("Messages");
 
         inbox_tabbed = (ViewPager) myView.findViewById(R.id.inbox_tabbed);
-        inbox_tabbed.setAdapter(new InboxTab2.InboxAdapter(getFragmentManager(), getActivity().getApplicationContext()));
+        inbox_tabbed.setAdapter(new InboxTab.InboxAdapter(getFragmentManager(), getActivity().getApplicationContext()));
 
         inbox_tabs = (TabLayout) myView.findViewById(R.id.inbox_tabs);
         inbox_tabs.setupWithViewPager(inbox_tabbed);
