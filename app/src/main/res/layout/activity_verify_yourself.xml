@@ -1,9 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="15dp"
     tools:context="com.example.iyashwant.spiderprojectprototype.VerifyYourself">
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/verifyImage"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/verifyText"
+        android:text="Please Call us and Verify yourself. We will provide you with an Authenticaion Token which has to be entered below!"
+        android:layout_below="@id/verifyImage"/>
+
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/verifyText"
+        android:id="@+id/calllayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/callicon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9786543762"
+            android:layout_gravity="center"/>
+
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/verficationcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calllayout"
+        android:text="CODE"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/submitbutton"
+        android:layout_below="@id/verficationcode"
+        android:layout_centerHorizontal="true"
+        android:text="SUBMIT"/>
 </RelativeLayout>

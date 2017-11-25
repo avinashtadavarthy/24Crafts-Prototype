@@ -15,11 +15,10 @@
         <activity
             android:name=".Login2"
             android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
+
+
         </activity>
         <activity
             android:name=".Login"
@@ -52,7 +51,15 @@
         <activity
             android:name=".Swipe.Tinderswipemain"
             android:parentActivityName=".Main2Activity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme" >
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            </activity>
         <activity android:name=".Contacts" />
         <activity
             android:name=".ProfileView2"
@@ -86,7 +93,11 @@
         <activity
             android:name=".SubscribePopUp2"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".ClientDashboardLayout"></activity>
+        <activity android:name=".ClientDashboardLayout" />
+        <activity android:name=".DisplayProfile">
+
+
+        </activity>
     </application>
 
 </manifest>

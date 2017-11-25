@@ -2,6 +2,7 @@ package com.example.iyashwant.spiderprojectprototype.Swipe;
 
 import android.content.Context;
 import android.graphics.Point;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
