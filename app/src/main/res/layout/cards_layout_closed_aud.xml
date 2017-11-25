@@ -88,16 +88,6 @@
                 android:layout_toRightOf="@id/applicants"
                 android:text="35" />
 
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/editicon"
-                android:src="@drawable/edit"
-                android:layout_below="@+id/LocationText"
-                android:layout_toLeftOf="@+id/deleteicon"
-                android:tint="#FFFFFF"/>
-
             <ImageView
                 android:id="@+id/deleteicon"
                 android:layout_marginRight="10sp"

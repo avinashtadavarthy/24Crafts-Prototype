@@ -67,9 +67,9 @@ public class DashboardAuditionsTabFragment extends Fragment {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    return new SecondFragment();
+                    return new ClientOpenAuditionsFragment();
                 case 1:
-                    return new SecondFragment();
+                    return new ClientClosedAuditionsFragment();
                 default:
                     return null;
             }
@@ -88,3 +88,5 @@ public class DashboardAuditionsTabFragment extends Fragment {
 
 
 }
+
+

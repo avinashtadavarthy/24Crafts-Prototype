@@ -9,6 +9,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by rajiv on 18/8/17.
  */
@@ -63,7 +65,7 @@ public class GridAdapter_Trash extends RecyclerView.Adapter<GridAdapter_Trash.Di
     public class DirectoryViewHolder extends RecyclerView.ViewHolder{
 
         TextView nam,sub,bod,tim;
-        ImageView I;
+        CircleImageView I;
         ImageButton trash,star;
 
 

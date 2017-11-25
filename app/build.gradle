@@ -34,7 +34,8 @@ dependencies {
     // since we are using the 26.+ support libraries in the project
 
 
-    compile 'com.android.support:recyclerview-v7:26.+'
+    compile 'com.makeramen:roundedimageview:2.3.0'
+    compile 'de.hdodenhof:circleimageview:2.2.0'
     compile 'com.android.support:recyclerview-v7:26.+'
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'

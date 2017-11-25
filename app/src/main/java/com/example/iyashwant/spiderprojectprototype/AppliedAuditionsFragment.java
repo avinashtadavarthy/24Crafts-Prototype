@@ -1,62 +1,77 @@
 package com.example.iyashwant.spiderprojectprototype;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.example.iyashwant.spiderprojectprototype.Auditions.AppliedAuditionsRecyclerAdapter;
-import com.example.iyashwant.spiderprojectprototype.Auditions.AuditionHelper;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import java.util.ArrayList;
 
 /**
  * Created by Avinash Tadavarthy on 05-Nov-17.
  */
 
-public class AppliedAuditionsFragment extends Fragment implements Callback<List<AuditionHelper>> {
+public class AppliedAuditionsFragment extends Fragment {
 
     View myView;
-    RecyclerView recyclerView;
-    AppliedAuditionsRecyclerAdapter adapter;
+
+    private static RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private static RecyclerView recyclerView;
+    private static ArrayList<DataModel> data;
+    static View.OnClickListener myOnClickListener;
+    private static ArrayList<Integer> removedItems;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.applied_auditions_tab,container,false);
-        recyclerView = (RecyclerView) myView.findViewById(R.id.open_auditions_recyclerview);
+        myView = inflater.inflate(R.layout.activity_client_dashboard_layout2,container,false);
+
+
+        myOnClickListener = new AppliedAuditionsFragment.MyOnClickListener(getActivity().getApplicationContext());
+
+        recyclerView = (RecyclerView) myView.findViewById(R.id.my_recycler_view_clientdashboard);
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        data = new ArrayList<>();
+        for (int i = 0; i < MyData.nameArray.length-1; i++) {
+            data.add(new DataModel(
+                    MyData.nameArray[i],
+                    MyData.versionArray[i],
+                    MyData.id_[i],
+                    MyData.drawableArray[i]
+            ));
+        }
+
+        removedItems = new ArrayList<Integer>();
+
+        adapter = new CustomAdapterAppliedAuditions(data);
+        recyclerView.setAdapter(adapter);
+
+
         return myView;
     }
 
-    void fetchAppliedAuditions(){
-        RetrofitService retrofitService = RetrofitService.retrofit.create(RetrofitService.class);
 
-        Call<List<AuditionHelper>> call = retrofitService.fetchAuditions(getString(R.string.sample_auth_token));
-        call.enqueue(this);
+    private static class MyOnClickListener implements View.OnClickListener {
+
+        private MyOnClickListener(Context context) {
+        }
+
+        @Override
+        public void onClick(View view) {
+
+        }
     }
 
-
-    @Override
-    public void onResponse(Call<List<AuditionHelper>> call, Response<List<AuditionHelper>> response) {
-        List<AuditionHelper> auditionHelperList = response.body();
-        adapter = new AppliedAuditionsRecyclerAdapter(getContext(),auditionHelperList);
-        if(recyclerView!=null)
-            recyclerView.swapAdapter(adapter, true);
-        else
-            recyclerView.setAdapter(adapter);
-        recyclerView.notify();
-    }
-
-    @Override
-    public void onFailure(Call<List<AuditionHelper>> call, Throwable t) {
-        Toast.makeText(this.getContext(), "Failed to fetch auditions", Toast.LENGTH_SHORT).show();
-    }
 }

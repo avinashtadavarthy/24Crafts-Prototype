@@ -6,15 +6,16 @@
     android:paddingTop="10dp"
     android:layout_marginTop="6dp">
 
-    <ImageView
-        android:layout_width="70dp"
-        android:layout_marginTop="10dp"
-        android:layout_height="50dp"
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/IMG"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="20dp"
-        android:src="@mipmap/ic_launcher_round"
-        android:background="@drawable/circle_r"/>
+        android:layout_width="80sp"
+        android:layout_height="60sp"
+        android:src="@drawable/sample1"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="10sp"/>
+
 
         <TextView
             android:layout_width="wrap_content"

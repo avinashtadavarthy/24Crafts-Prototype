@@ -33,6 +33,7 @@ public class InboxTabFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.inbox_tab,container,false);
+
         manage=new LinearLayoutManager(getActivity());
         adapter=new GridAdapter(getActivity(),name,sub,body,time,8,img);//no of iems is the arguement
         recycler= (RecyclerView) myView.findViewById(R.id.recy);

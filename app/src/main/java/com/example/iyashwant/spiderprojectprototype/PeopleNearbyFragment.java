@@ -18,6 +18,8 @@ import com.daimajia.androidanimations.library.YoYo;
 
 import java.util.Random;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by Avinash Tadavarthy on 04-Nov-17.
  */
@@ -26,11 +28,12 @@ public class PeopleNearbyFragment extends android.support.v4.app.Fragment {
 
     View myView;
 
-    ImageView imageView1,imageView;
-    ImageView imageView2;
-    ImageView imageView3;
-    ImageView imageView4;
-    ImageView imageView5;
+    ImageView imageView;
+    CircleImageView imageView1;
+    CircleImageView imageView2;
+    CircleImageView imageView3;
+    CircleImageView imageView4;
+    CircleImageView imageView5;
     Random random;
     ZoomableRelativeLayout mainLayout;
     ScaleGestureDetector scaleGestureDetector;
@@ -56,11 +59,11 @@ public class PeopleNearbyFragment extends android.support.v4.app.Fragment {
         button = (Button) myView.findViewById(R.id.button);
         counter(a);
 
-        imageView1 = (ImageView) myView.findViewById(R.id.imageView3);
-        imageView2 = (ImageView) myView.findViewById(R.id.imageView4);
-        imageView3 = (ImageView) myView.findViewById(R.id.imageView5);
-        imageView4 = (ImageView) myView.findViewById(R.id.imageView6);
-        imageView5 = (ImageView) myView.findViewById(R.id.imageView7);
+        imageView1 = (CircleImageView) myView.findViewById(R.id.imageView3);
+        imageView2 = (CircleImageView) myView.findViewById(R.id.imageView4);
+        imageView3 = (CircleImageView) myView.findViewById(R.id.imageView5);
+        imageView4 = (CircleImageView) myView.findViewById(R.id.imageView6);
+        imageView5 = (CircleImageView) myView.findViewById(R.id.imageView7);
 
         counter(a+1);
 
@@ -109,9 +112,6 @@ public class PeopleNearbyFragment extends android.support.v4.app.Fragment {
 
         final ProgressBar progressBar = (ProgressBar) myView.findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
-
-
-
 
 
 

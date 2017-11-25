@@ -3,6 +3,8 @@ package com.example.iyashwant.spiderprojectprototype;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,11 +15,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-/**
- * Created by Avinash Tadavarthy on 05-Nov-17.
- */
-
-public class OpenAuditionsFragment extends Fragment {
+public class ClientOpenAuditionsFragment extends Fragment {
 
     View myView;
 
@@ -27,14 +25,15 @@ public class OpenAuditionsFragment extends Fragment {
     private static ArrayList<DataModel> data;
     static View.OnClickListener myOnClickListener;
     private static ArrayList<Integer> removedItems;
+    private FloatingActionButton createaudition;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.activity_client_dashboard_layout2,container,false);
+        myView = inflater.inflate(R.layout.activity_client_dashboard_layout,container,false);
 
 
-        myOnClickListener = new OpenAuditionsFragment.MyOnClickListener(getActivity().getApplicationContext());
+        myOnClickListener = new ClientOpenAuditionsFragment.MyOnClickListener(getActivity().getApplicationContext());
 
         recyclerView = (RecyclerView) myView.findViewById(R.id.my_recycler_view_clientdashboard);
         recyclerView.setHasFixedSize(true);
@@ -55,9 +54,18 @@ public class OpenAuditionsFragment extends Fragment {
 
         removedItems = new ArrayList<Integer>();
 
-        adapter = new CustomAdapterOpenAuditions(data);
+        adapter = new ClientCustomAdapterOpenAuditions(data);
         recyclerView.setAdapter(adapter);
 
+
+        createaudition = (FloatingActionButton) myView.findViewById(R.id.createaudition);
+        createaudition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Create an audition", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         return myView;
     }
