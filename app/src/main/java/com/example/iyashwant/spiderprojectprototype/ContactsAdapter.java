@@ -42,23 +42,23 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Direct
         holder.name1.setText(object.get(position).getNAME());
 
         else
-            holder.name1.setVisibility(View.INVISIBLE);
+            holder.name1.setVisibility(View.GONE);
         if(!(object.get(position).getPHONE().equals("")))
         holder.phone1.setText(object.get(position).getPHONE());
         else
-            holder.phone1.setVisibility(View.INVISIBLE);
+            holder.phone1.setVisibility(View.GONE);
         if(!(object.get(position).getEMAIL().equals("")))
         holder.email1.setText(object.get(position).getEMAIL());
         else
-            holder.email1.setVisibility(View.INVISIBLE);
+            holder.email1.setVisibility(View.GONE);
         if(!(object.get(position).getWEBSITE().equals("")))
         holder.website1.setText(object.get(position).getWEBSITE());
         else
-            holder.website1.setVisibility(View.INVISIBLE);
+            holder.website1.setVisibility(View.GONE);
         if(!(object.get(position).getADDRESS().equals("")))
         holder.address1.setText(object.get(position).getADDRESS());
         else
-            holder.address1.setVisibility(View.INVISIBLE);
+            holder.address1.setVisibility(View.GONE);
 
     }
 
