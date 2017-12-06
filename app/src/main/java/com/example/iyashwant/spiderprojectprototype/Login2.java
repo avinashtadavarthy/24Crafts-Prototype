@@ -19,8 +19,12 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.VideoView;
 
 import com.github.clans.fab.FloatingActionButton;
@@ -30,6 +34,10 @@ public class Login2 extends AppCompatActivity {
     FloatingActionButton fabEmail, fabSign, fabExit;
     VideoView videoview;
     ImageButton fbLogin, googleLogin, instaLogin;
+    RelativeLayout webhold;
+    Button webclose;
+    ProgressBar progressBar;
+    WebView wv;
 
     private final String LOG_TAG = "Login2 Activity";
 
@@ -38,6 +46,13 @@ public class Login2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
 
+        wv = (WebView) findViewById(R.id.webView);
+
+        webhold = (RelativeLayout) findViewById(R.id.webhold);
+        webhold.setVisibility(View.GONE);
+
+        webclose = (Button) findViewById(R.id.webclose);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         initialiseViews();
         displayCoverVideo();
@@ -45,73 +60,65 @@ public class Login2 extends AppCompatActivity {
         //initialiseLoginButtonEvents();
         LoginpopUp();
 
+        webclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                webhold.setVisibility(View.GONE);
+            }
+        });
     }
 
 
     private void LoginpopUp()
     {
+
         ImageButton facebook = (ImageButton)findViewById(R.id.fb_login_button);
         facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(Login2.this);
 
-                alert.setTitle("Login \n ");
+                webhold.setVisibility(View.VISIBLE);
 
-                WebView wv = new WebView(Login2.this);
                 wv.loadUrl("http:\\24crafts.ga:3000/login/facebook");
                 wv.setWebViewClient(new WebViewClient() {
                     @Override
                     public boolean shouldOverrideUrlLoading(WebView view, String url) {
                         view.loadUrl(url);
-
                         return true;
                     }
-                });
-
-                alert.setView(wv);
-                alert.setNegativeButton("Close", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
+                    public void onPageFinished(WebView view, String url) {
+                        // TODO Auto-generated method stub
+                        super.onPageFinished(view, url);
+                        progressBar.setVisibility(View.GONE);
                     }
                 });
-                alert.show();
-
-
 
             }
         });
+
 
         ImageButton google = (ImageButton)findViewById(R.id.gl_login_button);
         google.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(Login2.this);
 
-                alert.setTitle("Login \n ");
-
-                WebView wv = new WebView(Login2.this);
+                webhold.setVisibility(View.VISIBLE);
+                WebView wv = (WebView) findViewById(R.id.webView);
                 wv.loadUrl("http:\\24crafts.ga:3000/login/google");
                 wv.setWebViewClient(new WebViewClient() {
                     @Override
                     public boolean shouldOverrideUrlLoading(WebView view, String url) {
                         view.loadUrl(url);
-
                         return true;
                     }
-                });
-
-                alert.setView(wv);
-                alert.setNegativeButton("Close", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
+                    public void onPageFinished(WebView view, String url) {
+                        // TODO Auto-generated method stub
+                        super.onPageFinished(view, url);
+                        progressBar.setVisibility(View.GONE);
                     }
                 });
-                alert.show();
-
-
 
             }
         });
@@ -120,33 +127,27 @@ public class Login2 extends AppCompatActivity {
         twitter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(Login2.this);
 
-                alert.setTitle("Login \n ");
-
-                WebView wv = new WebView(Login2.this);
+                webhold.setVisibility(View.VISIBLE);
+                WebView wv = (WebView) findViewById(R.id.webView);
                 wv.loadUrl("http:\\24crafts.ga:3000/login/twitter");
                 wv.setWebViewClient(new WebViewClient() {
                     @Override
                     public boolean shouldOverrideUrlLoading(WebView view, String url) {
                         view.loadUrl(url);
-
                         return true;
                     }
-                });
-
-                alert.setView(wv);
-                alert.setNegativeButton("Close", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
+                    public void onPageFinished(WebView view, String url) {
+                        // TODO Auto-generated method stub
+                        super.onPageFinished(view, url);
+                        progressBar.setVisibility(View.GONE);
                     }
                 });
-                alert.show();
-
-
 
             }
+
+
         });
     }
 

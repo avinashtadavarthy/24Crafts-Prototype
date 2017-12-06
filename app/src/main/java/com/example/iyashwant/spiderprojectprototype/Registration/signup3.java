@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -1386,11 +1385,11 @@ public class signup3 extends AppCompatActivity {
 
         
 
-        Button button = (Button)findViewById(R.id.button3);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button button_3_craft = (Button)findViewById(R.id.button_3_craft);
+        button_3_craft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent next = new Intent(getApplicationContext(),ProfileView.class);
+                Intent next = new Intent(getApplicationContext(),Verification.class).putExtra("type","craft");
                 startActivity(next);
             }
         });

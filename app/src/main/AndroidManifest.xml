@@ -28,13 +28,16 @@
             android:name=".Registration.signup"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".Registration.signupclient"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".Registration.signup2"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Registration.signup3"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".Registration.signup4"
+            android:name=".Registration.signup3client"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Registration.Verification"
@@ -45,22 +48,23 @@
         <activity
             android:name=".Main3Activity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".ProfileView" />
         <activity android:name=".StartingScreen" />
-        <activity android:name=".signup3client" />
-        <activity android:name=".signupclient" />
         <activity
             android:name=".Swipe.Tinderswipemain"
             android:parentActivityName=".Main2Activity"
             android:theme="@style/AppTheme" />
         <activity android:name=".Contacts" />
         <activity
-            android:name=".ProfileView2"
+            android:name=".ProfileView"
             android:parentActivityName=".Main2Activity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Settings"
             android:parentActivityName=".Main2Activity"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".AboutUs"
+            android:parentActivityName=".Settings"
             android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".FreeCoins"
@@ -86,6 +90,8 @@
         <activity
             android:name=".SubscribePopUp2"
             android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".TermsConditions" />
+        <activity android:name=".PrivacyPolicy"></activity>
     </application>
 
 </manifest>

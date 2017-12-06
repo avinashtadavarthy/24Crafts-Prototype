@@ -4,13 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/app_bar_main3">
-
-    <FrameLayout
-        android:id="@+id/content_frame_clients"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </FrameLayout>
+    tools:context="com.example.iyashwant.spiderprojectprototype.TermsConditions">
 
 </android.support.constraint.ConstraintLayout>

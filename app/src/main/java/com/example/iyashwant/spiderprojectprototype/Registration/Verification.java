@@ -1,26 +1,33 @@
 package com.example.iyashwant.spiderprojectprototype.Registration;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.iyashwant.spiderprojectprototype.Main2Activity;
+import com.example.iyashwant.spiderprojectprototype.Main3Activity;
 import com.example.iyashwant.spiderprojectprototype.R;
 
 public class Verification extends AppCompatActivity {
 
     ImageView fb,insta,twitter,phone,google;
     TextView fb_text,insta_text,google_text,twitter_text,phone_text;
+    Button verification_done;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verification);
+
+        final String type = getIntent().getStringExtra("type");
 
         fb =(ImageView)findViewById(R.id.fb);
         insta=(ImageView) findViewById(R.id.insta);
@@ -109,6 +116,21 @@ public class Verification extends AppCompatActivity {
         });
 
 
+        verification_done = (Button) findViewById(R.id.verification_done);
+        verification_done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(type.equals("craft")){
+                    Intent next = new Intent(getApplicationContext(),Main2Activity.class);
+                    startActivity(next);
+                } else if(type.equals("client")){
+                    Intent next = new Intent(getApplicationContext(),Main3Activity.class);
+                    startActivity(next);
+                }
+
+            }
+        });
 
 
     }

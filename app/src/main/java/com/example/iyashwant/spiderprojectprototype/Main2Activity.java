@@ -1,7 +1,6 @@
 package com.example.iyashwant.spiderprojectprototype;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,11 +45,11 @@ public class Main2Activity extends AppCompatActivity
             navigationView.getMenu().performIdentifierAction(R.id.inbox,0);
         }
 
-        ImageButton profile_edits = (ImageButton) navigationView.getHeaderView(0).findViewById(R.id.profile_edits);
-        profile_edits.setOnClickListener(new View.OnClickListener(){
+        RelativeLayout nav_header_crafts = (RelativeLayout) navigationView.getHeaderView(0).findViewById(R.id.nav_header_crafts);
+        nav_header_crafts.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent i = new Intent(Main2Activity.this, ProfileView2.class);
+                Intent i = new Intent(Main2Activity.this, ProfileView.class);
                 startActivity(i);
             }
         });
@@ -61,7 +61,7 @@ public class Main2Activity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            finish();
         }
     }
 

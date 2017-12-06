@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
+    android:id="@+id/content_frame_settings"
     android:background="@mipmap/blur"
     tools:context="com.example.iyashwant.spiderprojectprototype.Settings">
 
@@ -84,18 +84,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#ffff"
-        android:textSize="10dp"
+        android:textSize="15dp"
         android:text="Contact / Support"
         android:layout_margin="10sp"/>
 
     <TextView
         android:id="@+id/aboutus"
         android:textColor="#ffff"
-        android:textSize="10dp"
+        android:textSize="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         android:text="About Us"
         android:layout_margin="10sp"/>
 
-</LinearLayout>
+    </LinearLayout>
