@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context="com.example.iyashwant.spiderprojectprototype.AccountInfo">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/AccInfoName"
+        android:text="Name"/>
+    <TextView
+        android:textColor="#FFA000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/AccInfoNameText"
+        android:textSize="25sp"
+        android:layout_below="@id/AccInfoName"/>
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/AccInfoNameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/AccInfoBirthday"
+        android:text="Birthday"/>
+    <TextView
+        android:textColor="#FFA000"
+        android:textSize="25sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/AccInfoBirthdayText"
+        android:layout_below="@id/AccInfoBirthday"/>
+
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/AccInfoBirthdayText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/AccInfoMobile"
+        android:text="Mobile"/>
+    <TextView
+        android:textSize="25sp"
+        android:textColor="#FFA000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/AccInfoMobileText"
+        android:layout_below="@id/AccInfoMobile"/>
+
+
+
+       <TextView
+           android:layout_below="@id/AccInfoMobileText"
+           android:id="@+id/genderTextview"
+           android:layout_alignParentLeft="true"
+           android:layout_width="wrap_content"
+           android:layout_marginRight="30dp"
+           android:layout_height="wrap_content"
+           android:text="Gender"
+           android:layout_marginTop="15dp"
+           android:gravity="center_horizontal|center_vertical"
+           android:textSize="25sp"/>
+
+       <RadioGroup
+           android:id="@+id/genderRadioGroup"
+           android:layout_below="@id/AccInfoMobileText"
+           android:layout_toRightOf="@id/genderTextview"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content">
+
+           <RadioButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/maleRadioButton"/>
+
+           <RadioButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/femaleRadiobutton"/>
+
+       </RadioGroup>
+
+       <TextView
+           android:layout_below="@id/AccInfoMobileText"
+           android:id="@+id/maleTextview"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Male"
+           android:textSize="20sp"
+           android:layout_toRightOf="@id/genderRadioGroup"/>
+
+       <TextView
+           android:layout_marginTop="7dp"
+           android:textSize="20sp"
+           android:text="Female"
+           android:id="@+id/femaleTextview"
+           android:layout_below="@id/maleTextview"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_toRightOf="@id/genderRadioGroup"/>
+
+
+
+
+
+    <TextView
+        android:id="@+id/accountinfotext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/accountinfotext"
+        android:layout_below="@id/genderTextview"
+        android:textSize="15sp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:text="Eg : rak****23@gmail.com"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:id="@+id/emailidtextview"
+        android:layout_below="@id/accountinfotext"/>
+
+
+    <Button
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/ForgotPassButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Out"
+        android:id="@+id/SignOutButton"/>
+    <Button
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password ?"
+        android:id="@+id/ForgotPassButton"
+        android:layout_alignParentBottom="true" />
+
+
+
+
+</RelativeLayout>

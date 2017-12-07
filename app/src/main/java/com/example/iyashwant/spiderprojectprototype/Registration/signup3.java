@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -16,12 +18,34 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.iyashwant.spiderprojectprototype.CustomAdapterSpinner;
 import com.example.iyashwant.spiderprojectprototype.ProfileView;
 import com.example.iyashwant.spiderprojectprototype.R;
+import com.example.iyashwant.spiderprojectprototype.Swipe.Profile;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.safetynet.SafetyNet;
+import com.google.android.gms.safetynet.SafetyNetApi;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class signup3 extends AppCompatActivity {
+
+    String userResponseToken;
+    String SITE_KEY="6LdycDsUAAAAAFXNFTd5ra6Kt16ws6xGWqSg6Kes";
+    String SECRET_KEY="6LdycDsUAAAAABovRryWV3ACDefaICVwxC68s9EG";
 
     String[] actor_61string={"If yes, then what kind?",
             "Feature Films", "TV Shows", "Short Films", "College Culturals", "Anchor", "Hosts", "Other"};
@@ -78,7 +102,7 @@ public class signup3 extends AppCompatActivity {
         RadioGroup actor_6radio = (RadioGroup) findViewById(R.id.actor_6radio);
         RadioButton actor_6radioyes = (RadioButton) findViewById(R.id.actor_6radioyes);
         final Spinner actor_61 = (Spinner) findViewById(R.id.actor_61);
-        CustomAdapterSpinner actor_61adapter=new CustomAdapterSpinner(getApplicationContext(),actor_61string);
+        CustomAdapterSpinner actor_61adapter = new CustomAdapterSpinner(getApplicationContext(), actor_61string);
         actor_61.setAdapter(actor_61adapter);
         actor_61.setVisibility(View.GONE);
         final EditText actor_62 = (EditText) findViewById(R.id.actor_62);
@@ -106,7 +130,7 @@ public class signup3 extends AppCompatActivity {
         RadioGroup actress_6radio = (RadioGroup) findViewById(R.id.actress_6radio);
         RadioButton actress_6radioyes = (RadioButton) findViewById(R.id.actress_6radioyes);
         final Spinner actress_61 = (Spinner) findViewById(R.id.actress_61);
-        CustomAdapterSpinner actress_61adapter=new CustomAdapterSpinner(getApplicationContext(),actress_61string);
+        CustomAdapterSpinner actress_61adapter = new CustomAdapterSpinner(getApplicationContext(), actress_61string);
         actress_61.setAdapter(actress_61adapter);
         actress_61.setVisibility(View.GONE);
         final EditText actress_62 = (EditText) findViewById(R.id.actress_62);
@@ -134,14 +158,14 @@ public class signup3 extends AppCompatActivity {
         RadioGroup side_6radio = (RadioGroup) findViewById(R.id.side_6radio);
         RadioButton side_6radioyes = (RadioButton) findViewById(R.id.side_6radioyes);
         final Spinner side_61 = (Spinner) findViewById(R.id.side_61);
-        CustomAdapterSpinner side_61adapter=new CustomAdapterSpinner(getApplicationContext(),side_61string);
+        CustomAdapterSpinner side_61adapter = new CustomAdapterSpinner(getApplicationContext(), side_61string);
         side_61.setAdapter(side_61adapter);
         side_61.setVisibility(View.GONE);
         final EditText side_62 = (EditText) findViewById(R.id.side_62);
         side_62.setVisibility(View.GONE);
 
 
-        final LinearLayout child = ( LinearLayout) findViewById(R.id.child);
+        final LinearLayout child = (LinearLayout) findViewById(R.id.child);
         child.setVisibility(View.GONE);
         EditText child_11 = (EditText) findViewById(R.id.child_11);
         EditText child_12 = (EditText) findViewById(R.id.child_12);
@@ -157,14 +181,14 @@ public class signup3 extends AppCompatActivity {
         RadioGroup child_4radio = (RadioGroup) findViewById(R.id.child_4radio);
         RadioButton child_4radioyes = (RadioButton) findViewById(R.id.child_4radioyes);
         final Spinner child_41 = (Spinner) findViewById(R.id.child_41);
-        CustomAdapterSpinner child_41adapter=new CustomAdapterSpinner(getApplicationContext(),child_41string);
+        CustomAdapterSpinner child_41adapter = new CustomAdapterSpinner(getApplicationContext(), child_41string);
         child_41.setAdapter(child_41adapter);
         child_41.setVisibility(View.GONE);
         final EditText child_42 = (EditText) findViewById(R.id.child_42);
         child_42.setVisibility(View.GONE);
 
 
-        final LinearLayout singer = ( LinearLayout) findViewById(R.id.singer);
+        final LinearLayout singer = (LinearLayout) findViewById(R.id.singer);
         singer.setVisibility(View.GONE);
         RadioGroup singer_1radio = (RadioGroup) findViewById(R.id.singer_1radio);
         RadioButton singer_1radioyes = (RadioButton) findViewById(R.id.singer_1radioyes);
@@ -175,7 +199,7 @@ public class signup3 extends AppCompatActivity {
         final EditText singer_21 = (EditText) findViewById(R.id.singer_21);
         singer_21.setVisibility(View.GONE);
         Spinner singer_3 = (Spinner) findViewById(R.id.singer_3);
-        CustomAdapterSpinner singer_3adapter=new CustomAdapterSpinner(getApplicationContext(),singer_3string);
+        CustomAdapterSpinner singer_3adapter = new CustomAdapterSpinner(getApplicationContext(), singer_3string);
         singer_3.setAdapter(singer_3adapter);
         RadioGroup singer_4radio = (RadioGroup) findViewById(R.id.singer_4radio);
         RadioButton singer_4radioyes = (RadioButton) findViewById(R.id.singer_4radioyes);
@@ -189,9 +213,9 @@ public class signup3 extends AppCompatActivity {
         RadioButton singer_6radioyes = (RadioButton) findViewById(R.id.singer_6radioyes);
         final EditText singer_61 = (EditText) findViewById(R.id.singer_61);
         singer_61.setVisibility(View.GONE);
-        
 
-        final LinearLayout dancer = ( LinearLayout) findViewById(R.id.dancer);
+
+        final LinearLayout dancer = (LinearLayout) findViewById(R.id.dancer);
         dancer.setVisibility(View.GONE);
         RadioGroup dancer_1radio = (RadioGroup) findViewById(R.id.dancer_1radio);
         RadioButton dancer_1radioyes = (RadioButton) findViewById(R.id.dancer_1radioyes);
@@ -202,7 +226,7 @@ public class signup3 extends AppCompatActivity {
         final EditText dancer_21 = (EditText) findViewById(R.id.dancer_21);
         dancer_21.setVisibility(View.GONE);
         Spinner dancer_3 = (Spinner) findViewById(R.id.dancer_3);
-        CustomAdapterSpinner dancer_3adapter=new CustomAdapterSpinner(getApplicationContext(),dancer_3string);
+        CustomAdapterSpinner dancer_3adapter = new CustomAdapterSpinner(getApplicationContext(), dancer_3string);
         dancer_3.setAdapter(dancer_3adapter);
         RadioGroup dancer_4radio = (RadioGroup) findViewById(R.id.dancer_4radio);
         RadioButton dancer_4radioyes = (RadioButton) findViewById(R.id.dancer_4radioyes);
@@ -215,10 +239,10 @@ public class signup3 extends AppCompatActivity {
         final EditText dancer_52 = (EditText) findViewById(R.id.dancer_52);
         dancer_52.setVisibility(View.GONE);
         Spinner dancer_6 = (Spinner) findViewById(R.id.dancer_6);
-        CustomAdapterSpinner dancer_6adapter=new CustomAdapterSpinner(getApplicationContext(),dancer_6string);
+        CustomAdapterSpinner dancer_6adapter = new CustomAdapterSpinner(getApplicationContext(), dancer_6string);
         dancer_6.setAdapter(dancer_6adapter);
 
-        final LinearLayout assdir = ( LinearLayout) findViewById(R.id.assdir);
+        final LinearLayout assdir = (LinearLayout) findViewById(R.id.assdir);
         assdir.setVisibility(View.GONE);
         RadioGroup assdir_1radio = (RadioGroup) findViewById(R.id.assdir_1radio);
         RadioButton assdir_1radioyes = (RadioButton) findViewById(R.id.assdir_1radioyes);
@@ -236,9 +260,9 @@ public class signup3 extends AppCompatActivity {
         RadioButton assdir_5radioyes = (RadioButton) findViewById(R.id.assdir_5radioyes);
         RadioGroup assdir_6radio = (RadioGroup) findViewById(R.id.assdir_6radio);
         RadioButton assdir_6radioyes = (RadioButton) findViewById(R.id.assdir_6radioyes);
-        
 
-        final LinearLayout lyric = ( LinearLayout) findViewById(R.id.lyric);
+
+        final LinearLayout lyric = (LinearLayout) findViewById(R.id.lyric);
         lyric.setVisibility(View.GONE);
         RadioGroup lyric_1radio = (RadioGroup) findViewById(R.id.lyric_1radio);
         RadioButton lyric_1radioyes = (RadioButton) findViewById(R.id.lyric_1radioyes);
@@ -252,9 +276,9 @@ public class signup3 extends AppCompatActivity {
         RadioButton lyric_3radioyes = (RadioButton) findViewById(R.id.lyric_3radioyes);
         final EditText lyric_31 = (EditText) findViewById(R.id.lyric_31);
         lyric_31.setVisibility(View.GONE);
-        
 
-        final LinearLayout dwrite = ( LinearLayout) findViewById(R.id.dwrite);
+
+        final LinearLayout dwrite = (LinearLayout) findViewById(R.id.dwrite);
         dwrite.setVisibility(View.GONE);
         RadioGroup dwrite_1radio = (RadioGroup) findViewById(R.id.dwrite_1radio);
         RadioButton dwrite_1radioyes = (RadioButton) findViewById(R.id.dwrite_1radioyes);
@@ -267,9 +291,9 @@ public class signup3 extends AppCompatActivity {
         RadioButton dwrite_4radioyes = (RadioButton) findViewById(R.id.dwrite_4radioyes);
         final EditText dwrite_41 = (EditText) findViewById(R.id.dwrite_41);
         dwrite_41.setVisibility(View.GONE);
-        
 
-        final LinearLayout screenp = ( LinearLayout) findViewById(R.id.screenp);
+
+        final LinearLayout screenp = (LinearLayout) findViewById(R.id.screenp);
         screenp.setVisibility(View.GONE);
         RadioGroup screenp_1radio = (RadioGroup) findViewById(R.id.screenp_1radio);
         RadioButton screenp_1radioyes = (RadioButton) findViewById(R.id.screenp_1radioyes);
@@ -282,25 +306,25 @@ public class signup3 extends AppCompatActivity {
         RadioButton screenp_4radioyes = (RadioButton) findViewById(R.id.screenp_4radioyes);
         final EditText screenp_41 = (EditText) findViewById(R.id.screenp_41);
         screenp_41.setVisibility(View.GONE);
-        
 
-        final LinearLayout sba = ( LinearLayout) findViewById(R.id.sba);
+
+        final LinearLayout sba = (LinearLayout) findViewById(R.id.sba);
         sba.setVisibility(View.GONE);
         RadioGroup sba_1radio = (RadioGroup) findViewById(R.id.sba_1radio);
         RadioButton sba_1radioyes = (RadioButton) findViewById(R.id.sba_1radioyes);
         final EditText sba_11 = (EditText) findViewById(R.id.sba_11);
         sba_11.setVisibility(View.GONE);
         Spinner sba_2 = (Spinner) findViewById(R.id.sba_2);
-        CustomAdapterSpinner sba_2adapter=new CustomAdapterSpinner(getApplicationContext(),sba_2string);
+        CustomAdapterSpinner sba_2adapter = new CustomAdapterSpinner(getApplicationContext(), sba_2string);
         sba_2.setAdapter(sba_2adapter);
         Spinner sba_3 = (Spinner) findViewById(R.id.sba_3);
-        CustomAdapterSpinner sba_3adapter=new CustomAdapterSpinner(getApplicationContext(),sba_3string);
+        CustomAdapterSpinner sba_3adapter = new CustomAdapterSpinner(getApplicationContext(), sba_3string);
         sba_3.setAdapter(sba_3adapter);
         RadioGroup sba_4radio = (RadioGroup) findViewById(R.id.sba_4radio);
         RadioButton sba_4radioyes = (RadioButton) findViewById(R.id.sba_4radioyes);
 
 
-        final LinearLayout choreo = ( LinearLayout) findViewById(R.id.choreo);
+        final LinearLayout choreo = (LinearLayout) findViewById(R.id.choreo);
         choreo.setVisibility(View.GONE);
         Spinner choreo_1 = (Spinner) findViewById(R.id.choreo_1);
         RadioGroup choreo_2radio = (RadioGroup) findViewById(R.id.choreo_2radio);
@@ -308,7 +332,7 @@ public class signup3 extends AppCompatActivity {
         final EditText choreo_21 = (EditText) findViewById(R.id.choreo_21);
         choreo_21.setVisibility(View.GONE);
         Spinner choreo_3 = (Spinner) findViewById(R.id.choreo_3);
-        CustomAdapterSpinner choreo_3adapter=new CustomAdapterSpinner(getApplicationContext(),choreo_3string);
+        CustomAdapterSpinner choreo_3adapter = new CustomAdapterSpinner(getApplicationContext(), choreo_3string);
         choreo_3.setAdapter(choreo_3adapter);
         RadioGroup choreo_4radio = (RadioGroup) findViewById(R.id.choreo_4radio);
         RadioButton choreo_4radioyes = (RadioButton) findViewById(R.id.choreo_4radioyes);
@@ -323,8 +347,7 @@ public class signup3 extends AppCompatActivity {
         EditText choreo_6 = (EditText) findViewById(R.id.choreo_6);
 
 
-
-        final LinearLayout dop = ( LinearLayout) findViewById(R.id.dop);
+        final LinearLayout dop = (LinearLayout) findViewById(R.id.dop);
         dop.setVisibility(View.GONE);
         RadioGroup dop_1radio = (RadioGroup) findViewById(R.id.dop_1radio);
         RadioButton dop_1radioyes = (RadioButton) findViewById(R.id.dop_1radioyes);
@@ -337,9 +360,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton dop_5radioyes = (RadioButton) findViewById(R.id.dop_5radioyes);
 
 
-
-
-        final LinearLayout stp = ( LinearLayout) findViewById(R.id.stp);
+        final LinearLayout stp = (LinearLayout) findViewById(R.id.stp);
         stp.setVisibility(View.GONE);
         RadioGroup stp_1radio = (RadioGroup) findViewById(R.id.stp_1radio);
         RadioButton stp_1radioyes = (RadioButton) findViewById(R.id.stp_1radioyes);
@@ -350,9 +371,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton stp_3radioyes = (RadioButton) findViewById(R.id.stp_3radioyes);
 
 
-
-
-        final LinearLayout pro = ( LinearLayout) findViewById(R.id.pro);
+        final LinearLayout pro = (LinearLayout) findViewById(R.id.pro);
         pro.setVisibility(View.GONE);
         RadioGroup pro_1radio = (RadioGroup) findViewById(R.id.pro_1radio);
         RadioButton pro_1radioyes = (RadioButton) findViewById(R.id.pro_1radioyes);
@@ -363,9 +382,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton pro_3radioyes = (RadioButton) findViewById(R.id.pro_3radioyes);
 
 
-
-
-        final LinearLayout desi = ( LinearLayout) findViewById(R.id.desi);
+        final LinearLayout desi = (LinearLayout) findViewById(R.id.desi);
         desi.setVisibility(View.GONE);
         RadioGroup desi_1radio = (RadioGroup) findViewById(R.id.desi_1radio);
         RadioButton desi_1radioyes = (RadioButton) findViewById(R.id.desi_1radioyes);
@@ -377,9 +394,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton desi_3radioyes = (RadioButton) findViewById(R.id.desi_4radioyes);
 
 
-
-
-        final LinearLayout prodm = ( LinearLayout) findViewById(R.id.prodm);
+        final LinearLayout prodm = (LinearLayout) findViewById(R.id.prodm);
         prodm.setVisibility(View.GONE);
         RadioGroup prodm_1radio = (RadioGroup) findViewById(R.id.prodm_1radio);
         RadioButton prodm_1radioyes = (RadioButton) findViewById(R.id.prodm_1radioyes);
@@ -390,9 +405,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton prodm_3radioyes = (RadioButton) findViewById(R.id.prodm_3radioyes);
 
 
-
-
-        final LinearLayout focus = ( LinearLayout) findViewById(R.id.focus);
+        final LinearLayout focus = (LinearLayout) findViewById(R.id.focus);
         focus.setVisibility(View.GONE);
         RadioGroup focus_1radio = (RadioGroup) findViewById(R.id.focus_1radio);
         RadioButton focus_1radioyes = (RadioButton) findViewById(R.id.focus_1radioyes);
@@ -403,9 +416,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton focus_3radioyes = (RadioButton) findViewById(R.id.focus_3radioyes);
 
 
-
-
-        final LinearLayout driver = ( LinearLayout) findViewById(R.id.driver);
+        final LinearLayout driver = (LinearLayout) findViewById(R.id.driver);
         driver.setVisibility(View.GONE);
         RadioGroup driver_1radio = (RadioGroup) findViewById(R.id.driver_1radio);
         RadioButton driver_1radioyes = (RadioButton) findViewById(R.id.driver_1radioyes);
@@ -414,10 +425,9 @@ public class signup3 extends AppCompatActivity {
         EditText driver_2 = (EditText) findViewById(R.id.driver_2);
         RadioGroup driver_3radio = (RadioGroup) findViewById(R.id.driver_3radio);
         RadioButton driver_3radioyes = (RadioButton) findViewById(R.id.driver_3radioyes);
-        
 
 
-        final LinearLayout mic = ( LinearLayout) findViewById(R.id.mic);
+        final LinearLayout mic = (LinearLayout) findViewById(R.id.mic);
         mic.setVisibility(View.GONE);
         RadioGroup mic_1radio = (RadioGroup) findViewById(R.id.mic_1radio);
         RadioButton mic_1radioyes = (RadioButton) findViewById(R.id.mic_1radioyes);
@@ -428,8 +438,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton mic_3radioyes = (RadioButton) findViewById(R.id.mic_3radioyes);
 
 
-
-        final LinearLayout musicd = ( LinearLayout) findViewById(R.id.musicd);
+        final LinearLayout musicd = (LinearLayout) findViewById(R.id.musicd);
         musicd.setVisibility(View.GONE);
         RadioGroup musicd_1radio = (RadioGroup) findViewById(R.id.musicd_1radio);
         RadioButton musicd_1radioyes = (RadioButton) findViewById(R.id.musicd_1radioyes);
@@ -444,9 +453,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton musicd_4radioyes = (RadioButton) findViewById(R.id.musicd_4radioyes);
 
 
-
-
-        final LinearLayout makeup = ( LinearLayout) findViewById(R.id.makeup);
+        final LinearLayout makeup = (LinearLayout) findViewById(R.id.makeup);
         makeup.setVisibility(View.GONE);
         RadioGroup makeup_1radio = (RadioGroup) findViewById(R.id.makeup_1radio);
         RadioButton makeup_1radioyes = (RadioButton) findViewById(R.id.makeup_1radioyes);
@@ -457,9 +464,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton makeup_3radioyes = (RadioButton) findViewById(R.id.makeup_3radioyes);
 
 
-
-
-        final LinearLayout hairdr = ( LinearLayout) findViewById(R.id.hairdr);
+        final LinearLayout hairdr = (LinearLayout) findViewById(R.id.hairdr);
         hairdr.setVisibility(View.GONE);
         RadioGroup hairdr_1radio = (RadioGroup) findViewById(R.id.hairdr_1radio);
         RadioButton hairdr_1radioyes = (RadioButton) findViewById(R.id.hairdr_1radioyes);
@@ -470,9 +475,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton hairdr_3radioyes = (RadioButton) findViewById(R.id.hairdr_3radioyes);
 
 
-
-
-        final LinearLayout costu = ( LinearLayout) findViewById(R.id.costu);
+        final LinearLayout costu = (LinearLayout) findViewById(R.id.costu);
         costu.setVisibility(View.GONE);
         RadioGroup costu_1radio = (RadioGroup) findViewById(R.id.costu_1radio);
         RadioButton costu_1radioyes = (RadioButton) findViewById(R.id.costu_1radioyes);
@@ -483,9 +486,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton costu_3radioyes = (RadioButton) findViewById(R.id.costu_3radioyes);
 
 
-
-
-        final LinearLayout artd = ( LinearLayout) findViewById(R.id.artd);
+        final LinearLayout artd = (LinearLayout) findViewById(R.id.artd);
         artd.setVisibility(View.GONE);
         RadioGroup artd_1radio = (RadioGroup) findViewById(R.id.artd_1radio);
         RadioButton artd_1radioyes = (RadioButton) findViewById(R.id.artd_1radioyes);
@@ -496,9 +497,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton artd_3radioyes = (RadioButton) findViewById(R.id.artd_3radioyes);
 
 
-
-
-        final LinearLayout setd = ( LinearLayout) findViewById(R.id.setd);
+        final LinearLayout setd = (LinearLayout) findViewById(R.id.setd);
         setd.setVisibility(View.GONE);
         RadioGroup setd_1radio = (RadioGroup) findViewById(R.id.setd_1radio);
         RadioButton setd_1radioyes = (RadioButton) findViewById(R.id.setd_1radioyes);
@@ -509,9 +508,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton setd_3radioyes = (RadioButton) findViewById(R.id.setd_3radioyes);
 
 
-
-
-        final LinearLayout stunt = ( LinearLayout) findViewById(R.id.stunt);
+        final LinearLayout stunt = (LinearLayout) findViewById(R.id.stunt);
         stunt.setVisibility(View.GONE);
         RadioGroup stunt_1radio = (RadioGroup) findViewById(R.id.stunt_1radio);
         RadioButton stunt_1radioyes = (RadioButton) findViewById(R.id.stunt_1radioyes);
@@ -522,8 +519,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton stunt_3radioyes = (RadioButton) findViewById(R.id.stunt_3radioyes);
 
 
-
-        final LinearLayout editor = ( LinearLayout) findViewById(R.id.editor);
+        final LinearLayout editor = (LinearLayout) findViewById(R.id.editor);
         editor.setVisibility(View.GONE);
         EditText editor_1 = (EditText) findViewById(R.id.editor_1);
         RadioGroup editor_2radio = (RadioGroup) findViewById(R.id.editor_2radio);
@@ -536,9 +532,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton editor_5radioyes = (RadioButton) findViewById(R.id.editor_5radioyes);
 
 
-
-
-        final LinearLayout locat = ( LinearLayout) findViewById(R.id.locat);
+        final LinearLayout locat = (LinearLayout) findViewById(R.id.locat);
         locat.setVisibility(View.GONE);
         RadioGroup locat_1radio = (RadioGroup) findViewById(R.id.locat_1radio);
         RadioButton locat_1radioyes = (RadioButton) findViewById(R.id.locat_1radioyes);
@@ -549,9 +543,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton locat_3radioyes = (RadioButton) findViewById(R.id.locat_3radioyes);
 
 
-
-
-        final LinearLayout foodp = ( LinearLayout) findViewById(R.id.foodp);
+        final LinearLayout foodp = (LinearLayout) findViewById(R.id.foodp);
         foodp.setVisibility(View.GONE);
         RadioGroup foodp_1radio = (RadioGroup) findViewById(R.id.foodp_1radio);
         RadioButton foodp_1radioyes = (RadioButton) findViewById(R.id.foodp_1radioyes);
@@ -562,8 +554,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton foodp_3radioyes = (RadioButton) findViewById(R.id.foodp_3radioyes);
 
 
-
-        final LinearLayout dub = ( LinearLayout) findViewById(R.id.dub);
+        final LinearLayout dub = (LinearLayout) findViewById(R.id.dub);
         dub.setVisibility(View.GONE);
         RadioGroup dub_1radio = (RadioGroup) findViewById(R.id.dub_1radio);
         RadioButton dub_1radioyes = (RadioButton) findViewById(R.id.dub_1radioyes);
@@ -574,7 +565,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton dub_3radioyes = (RadioButton) findViewById(R.id.dub_3radioyes);
 
 
-        final LinearLayout srec = ( LinearLayout) findViewById(R.id.srec);
+        final LinearLayout srec = (LinearLayout) findViewById(R.id.srec);
         srec.setVisibility(View.GONE);
         EditText srec_1 = (EditText) findViewById(R.id.srec_1);
         final EditText srec_11 = (EditText) findViewById(R.id.srec_11);
@@ -587,8 +578,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton srec_4radioyes = (RadioButton) findViewById(R.id.srec_4radioyes);
 
 
-
-        final LinearLayout smix = ( LinearLayout) findViewById(R.id.smix);
+        final LinearLayout smix = (LinearLayout) findViewById(R.id.smix);
         smix.setVisibility(View.GONE);
         EditText smix_1 = (EditText) findViewById(R.id.smix_1);
         final EditText smix_11 = (EditText) findViewById(R.id.smix_11);
@@ -601,8 +591,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton smix_4radioyes = (RadioButton) findViewById(R.id.smix_4radioyes);
 
 
-
-        final LinearLayout digint = ( LinearLayout) findViewById(R.id.digint);
+        final LinearLayout digint = (LinearLayout) findViewById(R.id.digint);
         digint.setVisibility(View.GONE);
         EditText digint_1 = (EditText) findViewById(R.id.digint_1);
         final EditText digint_11 = (EditText) findViewById(R.id.digint_11);
@@ -617,8 +606,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton digint_6radioyes = (RadioButton) findViewById(R.id.digint_6radioyes);
 
 
-
-        final LinearLayout vfx = ( LinearLayout) findViewById(R.id.vfx);
+        final LinearLayout vfx = (LinearLayout) findViewById(R.id.vfx);
         vfx.setVisibility(View.GONE);
         EditText vfx_1 = (EditText) findViewById(R.id.vfx_1);
         final EditText vfx_11 = (EditText) findViewById(R.id.vfx_11);
@@ -633,8 +621,7 @@ public class signup3 extends AppCompatActivity {
         RadioButton vfx_6radioyes = (RadioButton) findViewById(R.id.vfx_6radioyes);
 
 
-
-        final LinearLayout sfx = ( LinearLayout) findViewById(R.id.sfx);
+        final LinearLayout sfx = (LinearLayout) findViewById(R.id.sfx);
         sfx.setVisibility(View.GONE);
         EditText sfx_1 = (EditText) findViewById(R.id.sfx_1);
         final EditText sfx_11 = (EditText) findViewById(R.id.sfx_11);
@@ -649,68 +636,138 @@ public class signup3 extends AppCompatActivity {
         RadioButton sfx_6radioyes = (RadioButton) findViewById(R.id.sfx_6radioyes);
 
 
-
-        final LinearLayout pets = ( LinearLayout) findViewById(R.id.pets);
+        final LinearLayout pets = (LinearLayout) findViewById(R.id.pets);
         pets.setVisibility(View.GONE);
         EditText pets_1 = (EditText) findViewById(R.id.pets_1);
         EditText pets_2 = (EditText) findViewById(R.id.pets_2);
         RadioGroup pets_3radio = (RadioGroup) findViewById(R.id.pets_3radio);
         RadioButton pets_3radioyes = (RadioButton) findViewById(R.id.pets_3radioyes);
-        
-
 
 
         final Bundle bundle = getIntent().getExtras();
         final String name = bundle.getString("name");
         final String craft = bundle.getString("craft");
 
-        switch(craft)
-        {
-            case "Actor": actor.setVisibility(View.VISIBLE); break;
-            case "Actress": actress.setVisibility(View.VISIBLE); break;
-            case "Child Artist": child.setVisibility(View.VISIBLE); break;
-            case "Singer": singer.setVisibility(View.VISIBLE); break;
-            case "Dancer": dancer.setVisibility(View.VISIBLE); break;
-            case "Side Artists": side.setVisibility(View.VISIBLE); break;
-            case "Assistant Director": assdir.setVisibility(View.VISIBLE); break;
-            case "Lyric Writer / Lyricist": lyric.setVisibility(View.VISIBLE); break;
-            case "Dialouge Writer": dwrite.setVisibility(View.VISIBLE); break;
-            case "Script / Screenplay Writers": screenp.setVisibility(View.VISIBLE); break;
-            case "Story Board Artist": sba.setVisibility(View.VISIBLE); break;
-            case "Choreographer": choreo.setVisibility(View.VISIBLE); break;
-            case "Director of Photography": dop.setVisibility(View.VISIBLE); break;
-            case "Still Photographer": stp.setVisibility(View.VISIBLE); break;
-            case "PRO": pro.setVisibility(View.VISIBLE); break; 
-            case "Designer": desi.setVisibility(View.VISIBLE); break;
-            case "Production Manager": prodm.setVisibility(View.VISIBLE); break;
-            case "Focus Puller": focus.setVisibility(View.VISIBLE); break;
-            case "Vehicle Driver": driver.setVisibility(View.VISIBLE); break;
-            case "Mic Department": mic.setVisibility(View.VISIBLE); break;
-            case "Music Director": musicd.setVisibility(View.VISIBLE); break;
-            case "Makeup Man": makeup.setVisibility(View.VISIBLE); break;
-            case "Hair Dresser": hairdr.setVisibility(View.VISIBLE); break;
-            case "Costumer": costu.setVisibility(View.VISIBLE); break;
-            case "Art Department": artd.setVisibility(View.VISIBLE); break;
-            case "Set Department": setd.setVisibility(View.VISIBLE); break;
-            case "Stuntman": stunt.setVisibility(View.VISIBLE); break;
-            case "Editor": editor.setVisibility(View.VISIBLE); break;
-            case "Location Manager": locat.setVisibility(View.VISIBLE); break;
-            case "Production (Food)": foodp.setVisibility(View.VISIBLE); break;
-            case "Dubbing Artists": dub.setVisibility(View.VISIBLE); break;
-            case "Sound Recording Engineers": srec.setVisibility(View.VISIBLE); break;
-            case "Sound Mixing Engineers": smix.setVisibility(View.VISIBLE); break;
-            case "Digital Intermediate": digint.setVisibility(View.VISIBLE); break;
-            case "VFX / CG": vfx.setVisibility(View.VISIBLE); break;
-            case "SFX": sfx.setVisibility(View.VISIBLE); break;
-            case "Pet Suppliers / Pet Doctors / AWBI Certifications": pets.setVisibility(View.VISIBLE); break;
+        switch (craft) {
+            case "Actor":
+                actor.setVisibility(View.VISIBLE);
+                break;
+            case "Actress":
+                actress.setVisibility(View.VISIBLE);
+                break;
+            case "Child Artist":
+                child.setVisibility(View.VISIBLE);
+                break;
+            case "Singer":
+                singer.setVisibility(View.VISIBLE);
+                break;
+            case "Dancer":
+                dancer.setVisibility(View.VISIBLE);
+                break;
+            case "Side Artists":
+                side.setVisibility(View.VISIBLE);
+                break;
+            case "Assistant Director":
+                assdir.setVisibility(View.VISIBLE);
+                break;
+            case "Lyric Writer / Lyricist":
+                lyric.setVisibility(View.VISIBLE);
+                break;
+            case "Dialouge Writer":
+                dwrite.setVisibility(View.VISIBLE);
+                break;
+            case "Script / Screenplay Writers":
+                screenp.setVisibility(View.VISIBLE);
+                break;
+            case "Story Board Artist":
+                sba.setVisibility(View.VISIBLE);
+                break;
+            case "Choreographer":
+                choreo.setVisibility(View.VISIBLE);
+                break;
+            case "Director of Photography":
+                dop.setVisibility(View.VISIBLE);
+                break;
+            case "Still Photographer":
+                stp.setVisibility(View.VISIBLE);
+                break;
+            case "PRO":
+                pro.setVisibility(View.VISIBLE);
+                break;
+            case "Designer":
+                desi.setVisibility(View.VISIBLE);
+                break;
+            case "Production Manager":
+                prodm.setVisibility(View.VISIBLE);
+                break;
+            case "Focus Puller":
+                focus.setVisibility(View.VISIBLE);
+                break;
+            case "Vehicle Driver":
+                driver.setVisibility(View.VISIBLE);
+                break;
+            case "Mic Department":
+                mic.setVisibility(View.VISIBLE);
+                break;
+            case "Music Director":
+                musicd.setVisibility(View.VISIBLE);
+                break;
+            case "Makeup Man":
+                makeup.setVisibility(View.VISIBLE);
+                break;
+            case "Hair Dresser":
+                hairdr.setVisibility(View.VISIBLE);
+                break;
+            case "Costumer":
+                costu.setVisibility(View.VISIBLE);
+                break;
+            case "Art Department":
+                artd.setVisibility(View.VISIBLE);
+                break;
+            case "Set Department":
+                setd.setVisibility(View.VISIBLE);
+                break;
+            case "Stuntman":
+                stunt.setVisibility(View.VISIBLE);
+                break;
+            case "Editor":
+                editor.setVisibility(View.VISIBLE);
+                break;
+            case "Location Manager":
+                locat.setVisibility(View.VISIBLE);
+                break;
+            case "Production (Food)":
+                foodp.setVisibility(View.VISIBLE);
+                break;
+            case "Dubbing Artists":
+                dub.setVisibility(View.VISIBLE);
+                break;
+            case "Sound Recording Engineers":
+                srec.setVisibility(View.VISIBLE);
+                break;
+            case "Sound Mixing Engineers":
+                smix.setVisibility(View.VISIBLE);
+                break;
+            case "Digital Intermediate":
+                digint.setVisibility(View.VISIBLE);
+                break;
+            case "VFX / CG":
+                vfx.setVisibility(View.VISIBLE);
+                break;
+            case "SFX":
+                sfx.setVisibility(View.VISIBLE);
+                break;
+            case "Pet Suppliers / Pet Doctors / AWBI Certifications":
+                pets.setVisibility(View.VISIBLE);
+                break;
         }
 
-        
+
         //actor
         actor_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.actor_1radioyes)
+                if (checkedId == R.id.actor_1radioyes)
                     actor_11.setVisibility(View.VISIBLE);
                 else
                     actor_11.setVisibility(View.GONE);
@@ -720,7 +777,7 @@ public class signup3 extends AppCompatActivity {
         actor_2radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.actor_2radioyes)
+                if (checkedId == R.id.actor_2radioyes)
                     actor_22.setVisibility(View.VISIBLE);
                 else
                     actor_22.setVisibility(View.GONE);
@@ -730,7 +787,7 @@ public class signup3 extends AppCompatActivity {
         actor_4radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.actor_4radioyes)
+                if (checkedId == R.id.actor_4radioyes)
                     actor_41.setVisibility(View.VISIBLE);
                 else
                     actor_41.setVisibility(View.GONE);
@@ -740,23 +797,22 @@ public class signup3 extends AppCompatActivity {
         actor_6radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.actor_6radioyes){
+                if (checkedId == R.id.actor_6radioyes) {
                     actor_61.setVisibility(View.VISIBLE);
                     actor_62.setVisibility(View.VISIBLE);
-                }
-                else {
+                } else {
                     actor_61.setVisibility(View.GONE);
                     actor_62.setVisibility(View.GONE);
                 }
             }
         });
 
-        
+
         //actress
         actress_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.actress_1radioyes)
+                if (checkedId == R.id.actress_1radioyes)
                     actress_11.setVisibility(View.VISIBLE);
                 else
                     actress_11.setVisibility(View.GONE);
@@ -766,7 +822,7 @@ public class signup3 extends AppCompatActivity {
         actress_2radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.actress_2radioyes)
+                if (checkedId == R.id.actress_2radioyes)
                     actress_22.setVisibility(View.VISIBLE);
                 else
                     actress_22.setVisibility(View.GONE);
@@ -776,7 +832,7 @@ public class signup3 extends AppCompatActivity {
         actress_4radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.actress_4radioyes)
+                if (checkedId == R.id.actress_4radioyes)
                     actress_41.setVisibility(View.VISIBLE);
                 else
                     actress_41.setVisibility(View.GONE);
@@ -786,23 +842,22 @@ public class signup3 extends AppCompatActivity {
         actress_6radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.actress_6radioyes){
+                if (checkedId == R.id.actress_6radioyes) {
                     actress_61.setVisibility(View.VISIBLE);
                     actress_62.setVisibility(View.VISIBLE);
-                }
-                else {
+                } else {
                     actress_61.setVisibility(View.GONE);
                     actress_62.setVisibility(View.GONE);
                 }
             }
         });
-        
-        
+
+
         //side
         side_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.side_1radioyes)
+                if (checkedId == R.id.side_1radioyes)
                     side_11.setVisibility(View.VISIBLE);
                 else
                     side_11.setVisibility(View.GONE);
@@ -812,7 +867,7 @@ public class signup3 extends AppCompatActivity {
         side_2radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.side_2radioyes)
+                if (checkedId == R.id.side_2radioyes)
                     side_22.setVisibility(View.VISIBLE);
                 else
                     side_22.setVisibility(View.GONE);
@@ -822,7 +877,7 @@ public class signup3 extends AppCompatActivity {
         side_4radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.side_4radioyes)
+                if (checkedId == R.id.side_4radioyes)
                     side_41.setVisibility(View.VISIBLE);
                 else
                     side_41.setVisibility(View.GONE);
@@ -832,22 +887,21 @@ public class signup3 extends AppCompatActivity {
         side_6radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.side_6radioyes){
+                if (checkedId == R.id.side_6radioyes) {
                     side_61.setVisibility(View.VISIBLE);
                     side_62.setVisibility(View.VISIBLE);
-                }
-                else {
+                } else {
                     side_61.setVisibility(View.GONE);
                     side_62.setVisibility(View.GONE);
                 }
             }
         });
-        
+
         //child
         child_2radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.child_2radioyes)
+                if (checkedId == R.id.child_2radioyes)
                     child_21.setVisibility(View.VISIBLE);
                 else
                     child_21.setVisibility(View.GONE);
@@ -857,7 +911,7 @@ public class signup3 extends AppCompatActivity {
         child_3radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.child_3radioyes)
+                if (checkedId == R.id.child_3radioyes)
                     child_31.setVisibility(View.VISIBLE);
                 else
                     child_31.setVisibility(View.GONE);
@@ -867,23 +921,22 @@ public class signup3 extends AppCompatActivity {
         child_4radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.child_4radioyes) {
+                if (checkedId == R.id.child_4radioyes) {
                     child_41.setVisibility(View.VISIBLE);
                     child_42.setVisibility(View.VISIBLE);
-                }
-                else {
+                } else {
                     child_41.setVisibility(View.GONE);
                     child_42.setVisibility(View.GONE);
                 }
             }
         });
-        
-        
+
+
         //singer
         singer_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.singer_1radioyes)
+                if (checkedId == R.id.singer_1radioyes)
                     singer_11.setVisibility(View.VISIBLE);
                 else
                     singer_11.setVisibility(View.GONE);
@@ -893,7 +946,7 @@ public class signup3 extends AppCompatActivity {
         singer_2radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.singer_2radioyes)
+                if (checkedId == R.id.singer_2radioyes)
                     singer_21.setVisibility(View.VISIBLE);
                 else
                     singer_21.setVisibility(View.GONE);
@@ -903,7 +956,7 @@ public class signup3 extends AppCompatActivity {
         singer_4radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.singer_4radioyes)
+                if (checkedId == R.id.singer_4radioyes)
                     singer_41.setVisibility(View.VISIBLE);
                 else
                     singer_41.setVisibility(View.GONE);
@@ -913,7 +966,7 @@ public class signup3 extends AppCompatActivity {
         singer_5radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.singer_5radioyes)
+                if (checkedId == R.id.singer_5radioyes)
                     singer_51.setVisibility(View.VISIBLE);
                 else
                     singer_51.setVisibility(View.GONE);
@@ -923,19 +976,19 @@ public class signup3 extends AppCompatActivity {
         singer_6radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.singer_6radioyes)
+                if (checkedId == R.id.singer_6radioyes)
                     singer_61.setVisibility(View.VISIBLE);
                 else
                     singer_61.setVisibility(View.GONE);
             }
         });
-        
-        
+
+
         //dancer
         dancer_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.dancer_1radioyes)
+                if (checkedId == R.id.dancer_1radioyes)
                     dancer_11.setVisibility(View.VISIBLE);
                 else
                     dancer_11.setVisibility(View.GONE);
@@ -945,7 +998,7 @@ public class signup3 extends AppCompatActivity {
         dancer_2radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.dancer_2radioyes)
+                if (checkedId == R.id.dancer_2radioyes)
                     dancer_21.setVisibility(View.VISIBLE);
                 else
                     dancer_21.setVisibility(View.GONE);
@@ -955,7 +1008,7 @@ public class signup3 extends AppCompatActivity {
         dancer_4radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.dancer_4radioyes)
+                if (checkedId == R.id.dancer_4radioyes)
                     dancer_41.setVisibility(View.VISIBLE);
                 else
                     dancer_41.setVisibility(View.GONE);
@@ -965,23 +1018,22 @@ public class signup3 extends AppCompatActivity {
         dancer_5radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.dancer_5radioyes){
+                if (checkedId == R.id.dancer_5radioyes) {
                     dancer_51.setVisibility(View.VISIBLE);
                     dancer_52.setVisibility(View.VISIBLE);
-                }
-                else{
+                } else {
                     dancer_51.setVisibility(View.GONE);
                     dancer_52.setVisibility(View.GONE);
                 }
             }
         });
-        
-        
+
+
         //assdir
         assdir_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.assdir_1radioyes)
+                if (checkedId == R.id.assdir_1radioyes)
                     assdir_11.setVisibility(View.VISIBLE);
                 else
                     assdir_11.setVisibility(View.GONE);
@@ -991,23 +1043,22 @@ public class signup3 extends AppCompatActivity {
         assdir_2radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.assdir_2radioyes)
+                if (checkedId == R.id.assdir_2radioyes)
                     assdir_22.setVisibility(View.VISIBLE);
                 else
                     assdir_22.setVisibility(View.GONE);
             }
         });
-        
-        
+
+
         //lyric
         lyric_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.lyric_1radioyes){
+                if (checkedId == R.id.lyric_1radioyes) {
                     lyric_11.setVisibility(View.VISIBLE);
                     lyric_12.setVisibility(View.VISIBLE);
-                }
-                else{
+                } else {
                     lyric_11.setVisibility(View.GONE);
                     lyric_12.setVisibility(View.GONE);
                 }
@@ -1018,19 +1069,19 @@ public class signup3 extends AppCompatActivity {
         lyric_3radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.lyric_3radioyes)
+                if (checkedId == R.id.lyric_3radioyes)
                     lyric_31.setVisibility(View.VISIBLE);
                 else
                     lyric_31.setVisibility(View.GONE);
             }
         });
-        
-        
+
+
         //dwrite
         dwrite_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.dwrite_1radioyes)
+                if (checkedId == R.id.dwrite_1radioyes)
                     dwrite_11.setVisibility(View.VISIBLE);
                 else
                     dwrite_11.setVisibility(View.GONE);
@@ -1040,19 +1091,19 @@ public class signup3 extends AppCompatActivity {
         dwrite_4radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.dwrite_4radioyes)
+                if (checkedId == R.id.dwrite_4radioyes)
                     dwrite_41.setVisibility(View.VISIBLE);
                 else
                     dwrite_41.setVisibility(View.GONE);
             }
         });
-        
-        
+
+
         //screenp
         screenp_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.screenp_1radioyes)
+                if (checkedId == R.id.screenp_1radioyes)
                     screenp_11.setVisibility(View.VISIBLE);
                 else
                     screenp_11.setVisibility(View.GONE);
@@ -1062,30 +1113,30 @@ public class signup3 extends AppCompatActivity {
         screenp_4radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.screenp_4radioyes)
+                if (checkedId == R.id.screenp_4radioyes)
                     screenp_41.setVisibility(View.VISIBLE);
                 else
                     screenp_41.setVisibility(View.GONE);
             }
         });
-        
-        
+
+
         //sba
         sba_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.sba_1radioyes)
+                if (checkedId == R.id.sba_1radioyes)
                     sba_11.setVisibility(View.VISIBLE);
                 else
                     sba_11.setVisibility(View.GONE);
             }
         });
-        
+
         //choreo
         choreo_2radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.choreo_2radioyes)
+                if (checkedId == R.id.choreo_2radioyes)
                     choreo_21.setVisibility(View.VISIBLE);
                 else
                     choreo_21.setVisibility(View.GONE);
@@ -1095,7 +1146,7 @@ public class signup3 extends AppCompatActivity {
         choreo_4radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.choreo_4radioyes)
+                if (checkedId == R.id.choreo_4radioyes)
                     choreo_41.setVisibility(View.VISIBLE);
                 else
                     choreo_41.setVisibility(View.GONE);
@@ -1105,11 +1156,10 @@ public class signup3 extends AppCompatActivity {
         choreo_5radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.choreo_5radioyes){
+                if (checkedId == R.id.choreo_5radioyes) {
                     choreo_51.setVisibility(View.VISIBLE);
                     choreo_52.setVisibility(View.VISIBLE);
-                }
-                else {
+                } else {
                     choreo_51.setVisibility(View.GONE);
                     choreo_52.setVisibility(View.GONE);
                 }
@@ -1121,19 +1171,19 @@ public class signup3 extends AppCompatActivity {
         stp_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.stp_1radioyes)
+                if (checkedId == R.id.stp_1radioyes)
                     stp_11.setVisibility(View.VISIBLE);
                 else
                     stp_11.setVisibility(View.GONE);
             }
         });
-        
+
 
         //stp
         stp_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.stp_1radioyes)
+                if (checkedId == R.id.stp_1radioyes)
                     stp_11.setVisibility(View.VISIBLE);
                 else
                     stp_11.setVisibility(View.GONE);
@@ -1145,7 +1195,7 @@ public class signup3 extends AppCompatActivity {
         pro_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.pro_1radioyes)
+                if (checkedId == R.id.pro_1radioyes)
                     pro_11.setVisibility(View.VISIBLE);
                 else
                     pro_11.setVisibility(View.GONE);
@@ -1156,7 +1206,7 @@ public class signup3 extends AppCompatActivity {
         desi_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.desi_1radioyes)
+                if (checkedId == R.id.desi_1radioyes)
                     desi_11.setVisibility(View.VISIBLE);
                 else
                     desi_11.setVisibility(View.GONE);
@@ -1167,7 +1217,7 @@ public class signup3 extends AppCompatActivity {
         prodm_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.prodm_1radioyes)
+                if (checkedId == R.id.prodm_1radioyes)
                     prodm_11.setVisibility(View.VISIBLE);
                 else
                     prodm_11.setVisibility(View.GONE);
@@ -1178,7 +1228,7 @@ public class signup3 extends AppCompatActivity {
         focus_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.focus_1radioyes)
+                if (checkedId == R.id.focus_1radioyes)
                     focus_11.setVisibility(View.VISIBLE);
                 else
                     focus_11.setVisibility(View.GONE);
@@ -1189,7 +1239,7 @@ public class signup3 extends AppCompatActivity {
         driver_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.driver_1radioyes)
+                if (checkedId == R.id.driver_1radioyes)
                     driver_11.setVisibility(View.VISIBLE);
                 else
                     driver_11.setVisibility(View.GONE);
@@ -1200,7 +1250,7 @@ public class signup3 extends AppCompatActivity {
         mic_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.mic_1radioyes)
+                if (checkedId == R.id.mic_1radioyes)
                     mic_11.setVisibility(View.VISIBLE);
                 else
                     mic_11.setVisibility(View.GONE);
@@ -1211,7 +1261,7 @@ public class signup3 extends AppCompatActivity {
         musicd_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.musicd_1radioyes)
+                if (checkedId == R.id.musicd_1radioyes)
                     musicd_11.setVisibility(View.VISIBLE);
                 else
                     musicd_11.setVisibility(View.GONE);
@@ -1222,7 +1272,7 @@ public class signup3 extends AppCompatActivity {
         makeup_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.makeup_1radioyes)
+                if (checkedId == R.id.makeup_1radioyes)
                     makeup_11.setVisibility(View.VISIBLE);
                 else
                     makeup_11.setVisibility(View.GONE);
@@ -1233,7 +1283,7 @@ public class signup3 extends AppCompatActivity {
         hairdr_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.hairdr_1radioyes)
+                if (checkedId == R.id.hairdr_1radioyes)
                     hairdr_11.setVisibility(View.VISIBLE);
                 else
                     hairdr_11.setVisibility(View.GONE);
@@ -1244,7 +1294,7 @@ public class signup3 extends AppCompatActivity {
         costu_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.costu_1radioyes)
+                if (checkedId == R.id.costu_1radioyes)
                     costu_11.setVisibility(View.VISIBLE);
                 else
                     costu_11.setVisibility(View.GONE);
@@ -1255,7 +1305,7 @@ public class signup3 extends AppCompatActivity {
         artd_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.artd_1radioyes)
+                if (checkedId == R.id.artd_1radioyes)
                     artd_11.setVisibility(View.VISIBLE);
                 else
                     artd_11.setVisibility(View.GONE);
@@ -1266,7 +1316,7 @@ public class signup3 extends AppCompatActivity {
         setd_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.setd_1radioyes)
+                if (checkedId == R.id.setd_1radioyes)
                     setd_11.setVisibility(View.VISIBLE);
                 else
                     setd_11.setVisibility(View.GONE);
@@ -1277,7 +1327,7 @@ public class signup3 extends AppCompatActivity {
         stunt_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.stunt_1radioyes)
+                if (checkedId == R.id.stunt_1radioyes)
                     stunt_11.setVisibility(View.VISIBLE);
                 else
                     stunt_11.setVisibility(View.GONE);
@@ -1289,7 +1339,7 @@ public class signup3 extends AppCompatActivity {
         editor_2radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.editor_2radioyes)
+                if (checkedId == R.id.editor_2radioyes)
                     editor_21.setVisibility(View.VISIBLE);
                 else
                     editor_21.setVisibility(View.GONE);
@@ -1300,7 +1350,7 @@ public class signup3 extends AppCompatActivity {
         locat_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.locat_1radioyes)
+                if (checkedId == R.id.locat_1radioyes)
                     locat_11.setVisibility(View.VISIBLE);
                 else
                     locat_11.setVisibility(View.GONE);
@@ -1311,7 +1361,7 @@ public class signup3 extends AppCompatActivity {
         foodp_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.foodp_1radioyes)
+                if (checkedId == R.id.foodp_1radioyes)
                     foodp_11.setVisibility(View.VISIBLE);
                 else
                     foodp_11.setVisibility(View.GONE);
@@ -1322,7 +1372,7 @@ public class signup3 extends AppCompatActivity {
         dub_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.dub_1radioyes)
+                if (checkedId == R.id.dub_1radioyes)
                     dub_11.setVisibility(View.VISIBLE);
                 else
                     dub_11.setVisibility(View.GONE);
@@ -1333,7 +1383,7 @@ public class signup3 extends AppCompatActivity {
         srec_2radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.srec_2radioyes)
+                if (checkedId == R.id.srec_2radioyes)
                     srec_11.setVisibility(View.VISIBLE);
                 else
                     srec_11.setVisibility(View.GONE);
@@ -1344,7 +1394,7 @@ public class signup3 extends AppCompatActivity {
         smix_2radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.smix_2radioyes)
+                if (checkedId == R.id.smix_2radioyes)
                     smix_11.setVisibility(View.VISIBLE);
                 else
                     smix_11.setVisibility(View.GONE);
@@ -1355,7 +1405,7 @@ public class signup3 extends AppCompatActivity {
         digint_4radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.digint_4radioyes)
+                if (checkedId == R.id.digint_4radioyes)
                     digint_11.setVisibility(View.VISIBLE);
                 else
                     digint_11.setVisibility(View.GONE);
@@ -1366,7 +1416,7 @@ public class signup3 extends AppCompatActivity {
         vfx_4radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.vfx_4radioyes)
+                if (checkedId == R.id.vfx_4radioyes)
                     vfx_11.setVisibility(View.VISIBLE);
                 else
                     vfx_11.setVisibility(View.GONE);
@@ -1377,24 +1427,106 @@ public class signup3 extends AppCompatActivity {
         sfx_4radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.sfx_4radioyes)
+                if (checkedId == R.id.sfx_4radioyes)
                     sfx_11.setVisibility(View.VISIBLE);
                 else
                     sfx_11.setVisibility(View.GONE);
             }
         });
 
-        
-
-        Button button = (Button)findViewById(R.id.button3);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent next = new Intent(getApplicationContext(),ProfileView.class);
-                startActivity(next);
-            }
-        });
     }
+
+    public void recaptcha(View v)
+    {
+//                Intent next = new Intent(getApplicationContext(),ProfileView.class);
+//                startActivity(next);
+
+                SafetyNet.getClient(getApplicationContext()).verifyWithRecaptcha(SITE_KEY)
+                        .addOnSuccessListener(this,
+                                new OnSuccessListener<SafetyNetApi.RecaptchaTokenResponse>() {
+                                    @Override
+                                    public void onSuccess(SafetyNetApi.RecaptchaTokenResponse response) {
+                                        // Indicates communication with reCAPTCHA service was
+                                        // successful.
+                                        userResponseToken = response.getTokenResult();
+                                        if (!userResponseToken.isEmpty()) {
+                                            // Validate the user response token using the
+                                            // reCAPTCHA siteverify API.
+                                            sendRequest();
+                                        }
+                                    }
+                                })
+                        .addOnFailureListener(this, new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                if (e instanceof ApiException) {
+                                    // An error occurred when communicating with the
+                                    // reCAPTCHA service. Refer to the status code to
+                                    // handle the error appropriately.
+                                    ApiException apiException = (ApiException) e;
+                                    int statusCode = apiException.getStatusCode();
+                                    Log.d("TAG", "Error: " + CommonStatusCodes
+                                            .getStatusCodeString(statusCode));
+                                } else {
+                                    // A different, unknown type of error occurred.
+                                    Log.d("TAG", "Error: " + e.getMessage());
+                                }
+                            }
+                        });
+
+    }
+
+
+
+
+
+
+
+    public void sendRequest()
+    {
+        String url = "https://www.google.com/recaptcha/api/siteverify";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new com.android.volley.Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            //Toast.makeText(MainActivity.this, obj.getString("success"), Toast.LENGTH_LONG).show();
+                            if (obj.getString("success").equals("true")){
+                                moveNewActivity();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("secret",SECRET_KEY);
+                params.put("response", userResponseToken);
+                return params;
+            }
+        };
+        AppController.getInstance(this).addToRequestQueue(stringRequest);
+
+    }
+
+    public void moveNewActivity(){
+        Intent intent = new Intent(this, ProfileView.class);
+        startActivity(intent);
+        finish();
+    }
+
 
     //keyboard disappears when you click outside
     @Override
@@ -1424,3 +1556,6 @@ public class signup3 extends AppCompatActivity {
     }
 
 }
+
+
+

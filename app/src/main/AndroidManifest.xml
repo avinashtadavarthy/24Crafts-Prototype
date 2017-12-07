@@ -86,6 +86,9 @@
         <activity
             android:name=".SubscribePopUp2"
             android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".RateUs" />
+        <activity android:name=".PurchaseCoins" />
+        <activity android:name=".AccountInfo"></activity>
     </application>
 
 </manifest>

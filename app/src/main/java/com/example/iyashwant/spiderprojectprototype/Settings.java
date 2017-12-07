@@ -23,4 +23,10 @@ public class Settings extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void accountinfo(View view)
+    {
+        Intent intent = new Intent(getApplicationContext(),AccountInfo.class);
+        startActivity(intent);
+    }
+
 }

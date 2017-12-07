@@ -21,7 +21,7 @@
     <string name="open_drawer">Open Navigation Drawer</string>
     <string name="close_drawer">Close Navigation Drawer</string>
     <string name="title_activity_main2">Home</string>
-
+    <string name="accountinfotext">Make sure you can remember your password, as you\'ll need it to sign back in</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.iyashwant.spiderprojectprototype.PurchaseCoins">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:id="@+id/RelativeLayout1"
+        android:padding="25dp">
+
+
+
+        <ImageView
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="130dp"
+            android:id="@+id/Image1"
+            android:src="@drawable/taigamod2"
+            android:layout_height="130dp" />
+
+        <TextView
+            android:id="@+id/Textview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="left"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/Image1"
+            android:text="Ragav"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Graphic Designer"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/Image1"
+            android:layout_below="@id/Textview1"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/RelativeLayout1"
+        android:id="@+id/RelativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:paddingLeft="100dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="18sp"
+                android:text="Current Coins : "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="250"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/onefiftycoins"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:paddingTop="20dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:background="@drawable/rectangularborder"
+        android:id="@+id/RelativeLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RelativeLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp">
+
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/twentycoins"/>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/img1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20 Coins - 10 Rupees"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:paddingTop="20dp"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/rectangularborder"
+        android:id="@+id/RelativeLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RelativeLayout2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="17dp"
+        android:layout_marginEnd="17dp">
+
+        <ImageView
+            android:id="@+id/img2"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/fiftycoins"/>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/img2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50 Coins - 20 Rupees"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:background="@drawable/rectangularborder"
+        android:paddingTop="20dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:id="@+id/RelativeLayout5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/RelativeLayout3"
+        android:layout_alignEnd="@+id/RelativeLayout3"
+        android:layout_marginBottom="12dp">
+
+        <ImageView
+            android:id="@+id/img3"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/fiftycoins"/>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/img3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="150 Coins-50 Rupees"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:paddingTop="20dp"
+        android:paddingLeft="7dp"
+        android:paddingRight="15dp"
+        android:background="@drawable/rectangularborder"
+        android:id="@+id/RelativeLayout6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/RelativeLayout5"
+        android:layout_alignRight="@+id/RelativeLayout4"
+        android:layout_alignEnd="@+id/RelativeLayout4">
+
+        <ImageView
+            android:id="@+id/img4"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/fiftycoins"/>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/img4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="350 Coins-100 Rupees"/>
+    </RelativeLayout>
+</RelativeLayout>

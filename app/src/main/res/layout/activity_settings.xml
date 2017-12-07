@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:textColor="#ffff"
         android:textSize="15dp"
-
+        android:onClick="accountinfo"
         android:layout_height="wrap_content"
         android:text="Account Information"
         android:layout_margin="10sp"/>

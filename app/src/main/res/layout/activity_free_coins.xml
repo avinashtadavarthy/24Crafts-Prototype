@@ -17,6 +17,7 @@
     
     <LinearLayout
         android:id="@+id/layout1"
+        android:onClick="rateUs"
         android:layout_below="@id/rateusimage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
