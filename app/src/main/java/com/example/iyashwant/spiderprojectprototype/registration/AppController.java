@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype.Registration;
+package com.example.iyashwant.spiderprojectprototype.registration;
 
 import android.app.Application;
 import android.content.Context;

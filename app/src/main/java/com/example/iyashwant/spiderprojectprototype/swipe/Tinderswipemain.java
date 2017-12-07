@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype.Swipe;
+package com.example.iyashwant.spiderprojectprototype.swipe;
 
 import android.content.Context;
 import android.graphics.Point;
@@ -34,7 +34,7 @@ public class Tinderswipemain extends AppCompatActivity implements TinderCard.Cal
         mContext = getApplicationContext();
 
         int bottomMargin = Utils.dpToPx(160);
-        Point windowSize = com.example.iyashwant.spiderprojectprototype.Swipe.Utils.getDisplaySize(getWindowManager());
+        Point windowSize = com.example.iyashwant.spiderprojectprototype.swipe.Utils.getDisplaySize(getWindowManager());
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
                 .setIsUndoEnabled(true)
@@ -55,7 +55,7 @@ public class Tinderswipemain extends AppCompatActivity implements TinderCard.Cal
 
         Point cardViewHolderSize = new Point(windowSize.x, windowSize.y - bottomMargin);
 
-        for (Profile profile : com.example.iyashwant.spiderprojectprototype.Swipe.Utils.loadProfiles(getApplicationContext())) {
+        for (Profile profile : com.example.iyashwant.spiderprojectprototype.swipe.Utils.loadProfiles(getApplicationContext())) {
             mSwipeView.addView(new TinderCard(mContext, profile, cardViewHolderSize, this));
         }
 

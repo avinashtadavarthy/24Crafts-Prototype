@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.iyashwant.spiderprojectprototype.Registration.signup;
-import com.example.iyashwant.spiderprojectprototype.Registration.signupclient;
+import com.example.iyashwant.spiderprojectprototype.registration.signup;
+import com.example.iyashwant.spiderprojectprototype.registration.signupclient;
 
 public class StartingScreen extends AppCompatActivity {
 

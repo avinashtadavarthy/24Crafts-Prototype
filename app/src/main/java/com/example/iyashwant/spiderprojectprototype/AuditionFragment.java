@@ -1,6 +1,5 @@
 package com.example.iyashwant.spiderprojectprototype;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -14,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.iyashwant.spiderprojectprototype.Auditions.Audition;
+import com.example.iyashwant.spiderprojectprototype.auditions.Audition;
 
 /**
  * Created by Avinash Tadavarthy on 04-Nov-17.

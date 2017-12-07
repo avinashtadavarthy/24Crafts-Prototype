@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype.Auditions;
+package com.example.iyashwant.spiderprojectprototype.auditions;
 
 /**
  * Created by rajiv on 10/8/17.

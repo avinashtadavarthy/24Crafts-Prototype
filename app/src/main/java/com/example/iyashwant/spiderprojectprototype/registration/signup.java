@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype.Registration;
+package com.example.iyashwant.spiderprojectprototype.registration;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -24,12 +24,21 @@ import com.example.iyashwant.spiderprojectprototype.R;
 
 import java.util.Calendar;
 
-public class signupclient extends AppCompatActivity{
+public class signup extends AppCompatActivity{
 
     String[] whoN={"Who am I?",
-            "Casting Agent","Co-Director","Co-Producer","Director","Director Assistant",
-            "Director Audition","Executive Producer","Model Coordinator",
-            "Producer","Production House Manager"};
+            "Actor","Actress","Child Artist","Singer","Dancer",
+            "Side Artists","Assistant Director","Lyric Writer / Lyricist",
+            "Dialouge Writer","Script / Screenplay Writers", "Story Board Artist",
+            "Choreographer","Director of Photography", "Still Photographer",
+            "PRO", "Designer", "Production Manager",
+            "Focus Puller", "Vehicle Driver", "Mic Department",
+            "Music Director", "Makeup Man", "Hair Dresser",
+            "Costumer", "Art Department", "Set Department",
+            "Stuntman", "Editor", "Location Manager",
+            "Production (Food)", "Dubbing Artists", "Sound Recording Engineers",
+            "Sound Mixing Engineers", "Digital Intermediate", "VFX / CG",
+            "SFX", "Pet Suppliers / Pet Doctors / AWBI Certifications"};
 
     String[] genderString={"Choose Gender",
             "Male","Female","Other"};
@@ -64,16 +73,19 @@ public class signupclient extends AppCompatActivity{
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch(whoN[position])
                 {
-                    case "Casting Agent": selectedcraft = "Casting Agent"; break;
-                    case "Co-Director": selectedcraft = "Co-Director"; break;
-                    case "Co-Producer": selectedcraft = "Co-Producer"; break;
-                    case "Director": selectedcraft = "Director"; break;
-                    case "Director Assistant": selectedcraft = "Director Assistant"; break;
-                    case "Director Audition": selectedcraft = "Director Audition"; break;
-                    case "Executive Producer": selectedcraft = "Executive Producer"; break;
-                    case "Model Coordinator": selectedcraft = "Model Coordinator"; break;
-                    case "Producer": selectedcraft = "Producer"; break;
-                    case "Production House Manager": selectedcraft = "Production House Manager"; break;
+                    case "Actor": selectedcraft = "Actor"; break;
+                    case "Actress": selectedcraft = "Actress"; break;
+                    case "Child Artist": selectedcraft = "Child Artist"; break;
+                    case "Singer": selectedcraft = "Singer"; break;
+                    case "Dancer": selectedcraft = "Dancer"; break;
+                    case "Side Artists": selectedcraft = "Side Artists"; break;
+                    case "Assistant Director": selectedcraft = "Assistant Director"; break;
+                    case "Lyric Writer / Lyricist": selectedcraft = "Lyric Writer / Lyricist"; break;
+                    case "Dialouge Writer": selectedcraft = "Dialouge Writer"; break;
+                    case "Script / Screenplay Writers": selectedcraft = "Script / Screenplay Writers"; break;
+                    case "Story Board Artist": selectedcraft = "Story Board Artist"; break;
+                    case "Choreographer": selectedcraft = "Choreographer"; break;
+                    case "Director of Photography": selectedcraft = "Director of Photography"; break;
                 }
             }
 
@@ -108,14 +120,25 @@ public class signupclient extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
-
-                name=name1.getText().toString();
-                Intent goToNextActivity = new Intent(getApplicationContext(), signup3client.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("name",name);
-                bundle.putString("craft",selectedcraft);
-                goToNextActivity.putExtras(bundle);
-                startActivity(goToNextActivity);
+                if(selectedcraft.equals("Actor") || selectedcraft.equals("Actress") || selectedcraft.equals("Child Artist") || selectedcraft.equals("Dancer") || selectedcraft.equals("Side Artists")){
+                    name=name1.getText().toString();
+                    Intent goToNextActivity = new Intent(getApplicationContext(), signup2.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("name",name);
+                    bundle.putString("craft",selectedcraft);
+                    goToNextActivity.putExtras(bundle);
+                    startActivity(goToNextActivity);
+                }
+                else
+                {
+                    name=name1.getText().toString();
+                    Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("name",name);
+                    bundle.putString("craft",selectedcraft);
+                    goToNextActivity.putExtras(bundle);
+                    startActivity(goToNextActivity);
+                }
 
             }
         });

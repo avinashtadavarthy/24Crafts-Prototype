@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/wall"
-    tools:context="com.example.iyashwant.spiderprojectprototype.Registration.signup3"
+    tools:context="com.example.iyashwant.spiderprojectprototype.registration.signup3"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:screenOrientation="portrait">

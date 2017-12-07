@@ -5,7 +5,7 @@ android {
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.example.iyashwant.spiderprojectprototype"
-        minSdkVersion 21
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -35,9 +35,6 @@ dependencies {
 
 
     compile 'com.github.ksoichiro:android-observablescrollview'
-
-
-    compile 'com.github.AndroidDeveloperLB:AutoFitTextView:4'
     compile 'com.makeramen:roundedimageview:2.3.0'
     compile 'de.hdodenhof:circleimageview:2.2.0'
     compile 'com.android.support:recyclerview-v7:26.+'

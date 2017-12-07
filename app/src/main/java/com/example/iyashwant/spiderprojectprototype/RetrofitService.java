@@ -1,19 +1,14 @@
 package com.example.iyashwant.spiderprojectprototype;
 
-import com.example.iyashwant.spiderprojectprototype.Auditions.AuditionHelper;
-
-import org.junit.runners.Parameterized;
+import com.example.iyashwant.spiderprojectprototype.auditions.AuditionHelper;
 
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Headers;
-import retrofit2.http.Query;
 
 /**
  * Created by srikanth on 10/11/17.

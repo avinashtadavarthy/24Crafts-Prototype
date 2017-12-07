@@ -1,8 +1,7 @@
-package com.example.iyashwant.spiderprojectprototype.Auditions;
+package com.example.iyashwant.spiderprojectprototype.auditions;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.iyashwant.spiderprojectprototype.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 

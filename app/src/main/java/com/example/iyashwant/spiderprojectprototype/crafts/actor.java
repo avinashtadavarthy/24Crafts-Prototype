@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype.Crafts;
+package com.example.iyashwant.spiderprojectprototype.crafts;
 
 public class actor extends Actoractresscommon{
 

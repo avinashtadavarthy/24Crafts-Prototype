@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype.Registration;
+package com.example.iyashwant.spiderprojectprototype.registration;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -38,10 +38,10 @@ public class Verification extends AppCompatActivity {
 
 
         fb_text= (TextView)findViewById(R.id.fb_text_veri);
-        insta_text =(TextView)findViewById(R.id.insta_text_veri);
-        twitter_text=(TextView)findViewById(R.id.twiter_text_veri);
-        phone_text=(TextView)findViewById(R.id.phone_text_veri);
-        google_text=(TextView)findViewById(R.id.google_text_veri);
+        insta_text = (TextView)findViewById(R.id.insta_text_veri);
+        twitter_text= (TextView)findViewById(R.id.twiter_text_veri);
+        phone_text = (TextView)findViewById(R.id.phone_text_veri);
+        google_text = (TextView)findViewById(R.id.google_text_veri);
 
 
         fb.setOnLongClickListener(new View.OnLongClickListener() {

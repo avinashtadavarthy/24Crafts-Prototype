@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype.Auditions;
+package com.example.iyashwant.spiderprojectprototype.auditions;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

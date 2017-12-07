@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype.Swipe;
+package com.example.iyashwant.spiderprojectprototype.swipe;
 
 import android.content.Context;
 import android.content.res.AssetManager;
