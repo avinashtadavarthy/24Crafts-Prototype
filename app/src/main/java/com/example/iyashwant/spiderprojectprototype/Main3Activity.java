@@ -1,9 +1,12 @@
 package com.example.iyashwant.spiderprojectprototype;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,10 +16,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
-public class Main3Activity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class Main3Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +46,58 @@ public class Main3Activity extends AppCompatActivity
             navigationView.getMenu().performIdentifierAction(R.id.dashboard,0);
         }
 
-        ImageButton profile_edits = (ImageButton) navigationView.getHeaderView(0).findViewById(R.id.profile_edits);
-        profile_edits.setOnClickListener(new View.OnClickListener(){
+        LinearLayout header_for_clients = (LinearLayout) navigationView.getHeaderView(0).findViewById(R.id.header_for_clients);
+        header_for_clients.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent i = new Intent(Main3Activity.this, ProfileView2.class);
+                Intent i = new Intent(Main3Activity.this, ProfileView.class);
                 startActivity(i);
             }
         });
+
+        ImageView aud_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.aud_handy);
+        aud_handy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(Main3Activity.this, "Connect to Auditions Tab", Toast.LENGTH_SHORT).show();
+
+                DrawerLayout mDrawerLayout;
+                mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+                mDrawerLayout.closeDrawers();
+
+            }
+        });
+
+        ImageView fav_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.fav_handy);
+        fav_handy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(Main3Activity.this, "Connect to Favourites Tab", Toast.LENGTH_SHORT).show();
+
+
+                DrawerLayout mDrawerLayout;
+                mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+                mDrawerLayout.closeDrawers();
+
+            }
+        });
+
+        ImageView inbox_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.inbox_handy);
+        inbox_handy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(Main3Activity.this, "Connect to Messages Tab", Toast.LENGTH_SHORT).show();
+
+                DrawerLayout mDrawerLayout;
+                mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+                mDrawerLayout.closeDrawers();
+
+            }
+        });
+
 
     }
 
@@ -55,7 +107,7 @@ public class Main3Activity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            finish();
         }
     }
 
@@ -110,4 +162,5 @@ public class Main3Activity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
