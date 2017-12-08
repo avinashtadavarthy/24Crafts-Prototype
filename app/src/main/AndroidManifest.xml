@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.iyashwant.spiderprojectprototype">
+    package="com.example.iyashwant.spiderprojectprototype" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,48 +11,47 @@
         android:largeHeap="true"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat">
+        android:theme="@style/Theme.AppCompat.NoActionBar" >
         <activity
             android:name=".Login2"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".Login"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".registration.signup"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".registration.signup2"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".registration.signup3"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".registration.Verification"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="registration.signup3client"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="registration.signupclient"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity
-            android:name=".Main2Activity" />
-        <activity
-            android:name=".Main3Activity" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".Main3Activity" />
         <activity android:name=".StartingScreen" />
         <activity
             android:name=".swipe.Tinderswipemain"
@@ -62,10 +61,6 @@
         <activity
             android:name=".ProfileView"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".Settings"
-            android:parentActivityName=".Main2Activity"
-            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".FreeCoins"
             android:theme="@style/AppTheme.CustomTheme" />
@@ -91,11 +86,25 @@
             android:name=".SubscribePopUp2"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
+            android:name=".Settings"
+            android:parentActivityName=".Main2Activity"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".AccountInfo"
+            android:parentActivityName=".Settings"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".AboutUs"
+            android:parentActivityName=".Settings"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
             android:name=".TermsConditions"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:parentActivityName=".AboutUs"
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".PrivacyPolicy"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:parentActivityName=".AboutUs"
+            android:theme="@style/Theme.AppCompat" />
     </application>
 
 </manifest>

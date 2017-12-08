@@ -101,7 +101,7 @@ public class Main2Activity extends AppCompatActivity
            // fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new SecondFragment()).commit();
 
         } else if (id == R.id.settings) {
-           Intent i = new Intent(this,Settings.class);
+           Intent i = new Intent(this,Settings.class).putExtra("type","crafts");
            startActivity(i);
 
        }

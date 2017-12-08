@@ -56,11 +56,4 @@ public class AboutUs extends AppCompatActivity {
             });
         }
 
-
-    @Override
-    public void onBackPressed()
-    {
-        overridePendingTransition(R.anim.right_out, R.anim.left_enter);
-    }
-
 }

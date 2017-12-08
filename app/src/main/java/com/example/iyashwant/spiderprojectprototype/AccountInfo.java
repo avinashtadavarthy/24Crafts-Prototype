@@ -13,6 +13,8 @@ public class AccountInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_info);
 
+        getSupportActionBar().setTitle("Account Info");
+
         nameText = findViewById(R.id.AccInfoNameText);
         birthdayText = findViewById(R.id.AccInfoBirthdayText);
         mobiletext = findViewById(R.id.AccInfoMobileText);

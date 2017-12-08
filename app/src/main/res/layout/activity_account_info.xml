@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
+    android:background="@mipmap/blur"
     tools:context="com.example.iyashwant.spiderprojectprototype.AccountInfo">
 
     <TextView
@@ -69,6 +70,7 @@
            android:textSize="25sp"/>
 
        <RadioGroup
+           android:layout_marginTop="10sp"
            android:id="@+id/genderRadioGroup"
            android:layout_below="@id/AccInfoMobileText"
            android:layout_toRightOf="@id/genderTextview"
@@ -88,6 +90,7 @@
        </RadioGroup>
 
        <TextView
+           android:layout_marginTop="10sp"
            android:layout_below="@id/AccInfoMobileText"
            android:id="@+id/maleTextview"
            android:layout_width="wrap_content"
@@ -117,7 +120,7 @@
         android:text="@string/accountinfotext"
         android:layout_below="@id/genderTextview"
         android:textSize="15sp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40sp"
         android:gravity="center_horizontal"/>
 
     <TextView
@@ -127,6 +130,7 @@
         android:gravity="center_horizontal"
         android:layout_height="wrap_content"
         android:id="@+id/emailidtextview"
+        android:textStyle="bold"
         android:layout_below="@id/accountinfotext"/>
 
 

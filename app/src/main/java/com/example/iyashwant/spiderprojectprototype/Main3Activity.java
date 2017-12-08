@@ -153,7 +153,7 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
             fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new DirectoryFragment()).commit();
 
         } else if (id == R.id.settings) {
-            Intent i = new Intent(this,Settings.class);
+            Intent i = new Intent(this,Settings.class).putExtra("type","clients");
             startActivity(i);
 
         }

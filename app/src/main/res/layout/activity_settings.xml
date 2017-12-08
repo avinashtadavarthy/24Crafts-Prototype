@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,93 +9,231 @@
     android:background="@mipmap/blur"
     tools:context="com.example.iyashwant.spiderprojectprototype.Settings">
 
-    <TextView
+    <LinearLayout
         android:id="@+id/info"
-        android:padding="10dp"
-        android:layout_width="match_parent"
-        android:textColor="#ffff"
-        android:textSize="15dp"
-        android:onClick="accountinfo"
-        android:layout_height="wrap_content"
-        android:text="Account Information"
-        android:layout_margin="10sp"/>
-
-    <TextView
-        android:id="@+id/verify"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ffff"
+        android:orientation="horizontal"
+        android:padding="8sp"
+        android:background="?android:attr/selectableItemBackground">
 
-        android:textSize="15dp"
-        android:padding="10dp"
-        android:text="Verify Yourself"
-        android:layout_margin="10sp"/>
+        <ImageView
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:src="@drawable/account_info"
+            android:tint="#ffffff"
+            android:layout_margin="5sp"/>
 
-    <TextView
-        android:id="@+id/coinsfree"
-        android:onClick="freecoins"
-        android:layout_width="match_parent"
-        android:padding="10dp"
-        android:textColor="#ffff"
-        android:textSize="15dp"
-        android:layout_height="wrap_content"
-        android:text="Free Coins"
-        android:layout_margin="10sp"/>
-
-    <TextView
-        android:id="@+id/morecoins"
-        android:textColor="#ffff"
-        android:textSize="15dp"
-        android:padding="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Buy More Coins"
-        android:layout_margin="10sp"/>
-
-    <TextView
-        android:id="@+id/themes"
-        android:textColor="#ffff"
-        android:textSize="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Themes"
-        android:layout_margin="10sp"/>
-
-    <TextView
-        android:id="@+id/daily"
-        android:layout_width="match_parent"
-        android:padding="10dp"
-        android:textColor="#ffff"
-        android:textSize="15dp"
-        android:layout_height="wrap_content"
-        android:text="Daily Check In"
-        android:layout_margin="10sp"/>
-
-    <TextView
-        android:layout_marginTop="30sp"
-        android:layout_marginBottom="30sp"
-        android:layout_width="match_parent"
-        android:layout_height="1sp"
-        android:background="#000000"/>
-
-    <TextView
-        android:id="@+id/contactus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#ffff"
-        android:textSize="15dp"
-        android:text="Contact / Support"
-        android:layout_margin="10sp"/>
-
-    <TextView
-        android:id="@+id/aboutus"
-        android:textColor="#ffff"
-        android:textSize="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:text="About Us"
-        android:layout_margin="10sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:layout_marginLeft="5sp"
+            android:text="Account Information"
+            android:textColor="#ffffff"/>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/verify"
+        android:layout_below="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="8sp">
+
+        <ImageView
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:src="@drawable/verify_yourself"
+            android:tint="#ffffff"
+            android:layout_margin="5sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:layout_marginLeft="5sp"
+            android:text="Verify Yourself"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/coinsfree"
+        android:layout_below="@+id/verify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8sp"
+        android:background="?android:attr/selectableItemBackground">
+
+        <ImageView
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:src="@drawable/free_coins"
+            android:tint="#ffffff"
+            android:layout_margin="5sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:layout_marginLeft="5sp"
+            android:text="Free Coins"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/morecoins"
+        android:layout_below="@+id/coinsfree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="8sp">
+
+        <ImageView
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:src="@drawable/buy_coins"
+            android:tint="#ffffff"
+            android:layout_margin="5sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:layout_marginLeft="5sp"
+            android:text="Buy More Coins"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/themes"
+        android:layout_below="@+id/morecoins"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="8sp">
+
+        <ImageView
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:src="@drawable/theme"
+            android:tint="#ffffff"
+            android:layout_margin="5sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:layout_marginLeft="5sp"
+            android:text="Themes"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/daily"
+        android:layout_below="@+id/themes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8sp">
+
+        <ImageView
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:src="@drawable/check_in"
+            android:tint="#ffffff"
+            android:layout_margin="5sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:layout_marginLeft="5sp"
+            android:text="Daily Check-In"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:layout_above="@+id/contactus"
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:background="#ffffff"/>
+
+    <LinearLayout
+        android:id="@+id/contactus"
+        android:layout_above="@+id/aboutus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="8sp">
+
+        <ImageView
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:src="@drawable/contact_us"
+            android:tint="#ffffff"
+            android:layout_margin="5sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:layout_marginLeft="5sp"
+            android:text="Contact / Support"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/aboutus"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="8sp">
+
+        <ImageView
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:src="@drawable/about_us"
+            android:tint="#ffffff"
+            android:layout_margin="5sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:layout_marginLeft="5sp"
+            android:text="About us"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
+
+    </RelativeLayout>
