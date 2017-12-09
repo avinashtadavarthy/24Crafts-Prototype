@@ -79,7 +79,7 @@ public class Login2 extends AppCompatActivity {
 
                 webhold.setVisibility(View.VISIBLE);
 
-                wv.loadUrl("http:\\24crafts.ga:3000/login/facebook");
+                wv.loadUrl("http:\\24crafts.tk:3000/login/facebook");
                 wv.setWebViewClient(new WebViewClient() {
                     @Override
                     public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -105,7 +105,7 @@ public class Login2 extends AppCompatActivity {
 
                 webhold.setVisibility(View.VISIBLE);
                 WebView wv = (WebView) findViewById(R.id.webView);
-                wv.loadUrl("http:\\24crafts.ga:3000/login/google");
+                wv.loadUrl("http:\\24crafts.tk:3000/login/google");
                 wv.setWebViewClient(new WebViewClient() {
                     @Override
                     public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -130,7 +130,7 @@ public class Login2 extends AppCompatActivity {
 
                 webhold.setVisibility(View.VISIBLE);
                 WebView wv = (WebView) findViewById(R.id.webView);
-                wv.loadUrl("http:\\24crafts.ga:3000/login/twitter");
+                wv.loadUrl("http:\\24crafts.tk:3000/login/twitter");
                 wv.setWebViewClient(new WebViewClient() {
                     @Override
                     public boolean shouldOverrideUrlLoading(WebView view, String url) {
