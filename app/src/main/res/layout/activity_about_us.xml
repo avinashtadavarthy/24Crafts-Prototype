@@ -5,90 +5,87 @@
     android:background="@mipmap/blur"
     android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/privacy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textSize="15sp"
+        android:padding="16sp"
+        android:layout_marginTop="5sp"
+        android:text="Privacy Policy"
+        android:textColor="#ffffff"
+        android:background="?android:attr/selectableItemBackground"/>
+
+    <TextView
+        android:id="@+id/tandc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textSize="15sp"
+        android:padding="16sp"
+        android:text="Terms and Conditions"
+        android:textColor="#ffffff"
+        android:background="?android:attr/selectableItemBackground"/>
+
+
+        <LinearLayout
+            android:id="@+id/website"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Privacy Policy"
-            android:layout_marginLeft="10dp"
-            android:textColor="#FFFFFF"
-            android:textSize="30dp"
-            android:layout_marginTop="20dp"
-            android:clickable="true"
-            android:id="@+id/privacy"
-            android:layout_marginBottom="20dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Terms and Conditions"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="#FFFFFF"
-            android:id="@+id/tandc"
-            android:clickable="true"
-            android:textSize="30dp"
-            />
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:padding="16sp"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="vertical">
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="15sp"
                 android:text="Website"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
-                android:textColor="#FFFFFF"
-                android:id="@+id/website"
-                android:clickable="true"
-                android:textSize="30dp"
-                />
+                android:textColor="#ffffff"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="http://www.geass.technology"
-                android:layout_marginBottom="20dp"
                 android:layout_marginLeft="10dp"
-                android:textColor="#FFFFFF"
-                android:layout_below="@id/website"
-                android:clickable="true"
-                android:textSize="18dp"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Copyright(c) 2017"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="10dp"
-                android:textColor="#FFFFFF"
-                android:id="@+id/copy"
-                android:clickable="true"
-                android:textSize="30dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Geass Technology"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="10dp"
-                android:textColor="#FFFFFF"
-                android:layout_below="@id/copy"
-                android:clickable="true"
-                android:textSize="17dp" />
+                android:textColor="#80ffffff" />
+        </LinearLayout>
 
-    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/copy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16sp"
+        android:background="?android:attr/selectableItemBackground"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"
+            android:text="Copyright(c) 2017"
+            android:textColor="#ffffff"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Change log"
-            android:layout_marginBottom="20dp"
+            android:text="Geass Technology"
             android:layout_marginLeft="10dp"
-            android:textColor="#FFFFFF"
+            android:textColor="#80ffffff" />
+    </LinearLayout>
 
-            android:clickable="true"
-            android:textSize="30dp" />
+    <TextView
+        android:id="@+id/change_log"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textSize="15sp"
+        android:padding="16sp"
+        android:text="Change Log"
+        android:textColor="#ffffff"
+        android:background="?android:attr/selectableItemBackground"/>
 
 </LinearLayout>

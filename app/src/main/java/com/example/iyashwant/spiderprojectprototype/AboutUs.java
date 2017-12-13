@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,11 +20,13 @@ public class AboutUs extends AppCompatActivity {
         setContentView(R.layout.activity_about_us);
 
         getSupportActionBar().setTitle("About Us");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-            TextView privac =  (TextView) findViewById(R.id.privacy);
-            TextView tanc = (TextView) findViewById(R.id.tandc);
-            TextView website = (TextView) findViewById(R.id.website);
+
+        TextView privac =  (TextView) findViewById(R.id.privacy);
+            TextView tandc = (TextView) findViewById(R.id.tandc);
+            LinearLayout website = (LinearLayout) findViewById(R.id.website);
+            LinearLayout copy = (LinearLayout) findViewById(R.id.copy);
+            TextView change_log = (TextView) findViewById(R.id.change_log);
 
             privac.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -35,7 +38,7 @@ public class AboutUs extends AppCompatActivity {
                 }
             });
 
-            tanc.setOnClickListener(new View.OnClickListener() {
+            tandc.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent i = new Intent(AboutUs.this, TermsConditions.class);
@@ -54,6 +57,20 @@ public class AboutUs extends AppCompatActivity {
 
                 }
             });
-        }
 
+            copy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(AboutUs.this, "Add Copyright page", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            change_log.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(AboutUs.this, "Add Changelog page", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
 }
