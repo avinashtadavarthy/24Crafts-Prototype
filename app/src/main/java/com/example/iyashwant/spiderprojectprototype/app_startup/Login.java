@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype;
+package com.example.iyashwant.spiderprojectprototype.app_startup;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,7 +11,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.github.clans.fab.FloatingActionButton;
+import com.example.iyashwant.spiderprojectprototype.Main2Activity;
+import com.example.iyashwant.spiderprojectprototype.Main3Activity;
+import com.example.iyashwant.spiderprojectprototype.R;
 
 public class Login extends AppCompatActivity {
 

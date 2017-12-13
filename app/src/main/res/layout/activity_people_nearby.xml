@@ -14,72 +14,80 @@
 
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="340dp"
         android:layout_height="340dp"
-        android:id="@+id/relativeLayout"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
-
-
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="83dp">
 
 
         <ImageView
+            android:id="@+id/IMG"
             android:layout_width="340dp"
             android:layout_height="340dp"
-            android:id="@+id/IMG"
             android:layout_centerInParent="true"
-            android:background="@drawable/circle"/>
+            android:background="@drawable/circle" />
 
 
         <ImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_centerInParent="true"
-            android:background="@drawable/circle">
-
+            android:background="@drawable/circle"
+            android:id="@+id/imageView8">
 
 
         </ImageView>
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/taigamod6" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView6"
+            android:layout_width="52sp"
+            android:layout_height="52sp"
+            android:layout_above="@+id/imageView2"
+            android:layout_marginBottom="17dp"
+            android:layout_toLeftOf="@+id/imageView8"
+            android:layout_toStartOf="@+id/imageView8"
+            android:src="@drawable/taigamod4"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/icon_circle_1" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView3"
+            android:layout_width="52sp"
+            android:layout_height="52sp"
+            android:layout_above="@+id/imageView8"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="27dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginRight="22dp"
+            android:src="@drawable/taigamod1"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/icon_circle_blue" />
+
 
     </RelativeLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/imageView2"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/taigamod6"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
-
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView3"
-        android:layout_width="52sp"
-        android:layout_height="52sp"
-        android:layout_marginBottom="31dp"
-        app:srcCompat="@drawable/icon_circle_blue"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:src="@drawable/taigamod1"
-        android:visibility="invisible"
-        android:layout_above="@+id/imageView2"
-        android:layout_toRightOf="@+id/imageView2"
-        android:layout_toEndOf="@+id/imageView2" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView4"
-        android:src="@drawable/taigamod2"
         android:layout_width="52sp"
         android:layout_height="52sp"
-        android:layout_alignBottom="@id/relativeLayout"
-        android:layout_alignLeft="@id/relativeLayout"
-        android:layout_alignStart="@id/relativeLayout"
-        android:layout_marginBottom="73dp"
-        android:layout_marginLeft="62dp"
+        android:layout_above="@+id/progressBar"
+        android:layout_marginBottom="52dp"
+        android:layout_toLeftOf="@+id/progressBar"
+        android:layout_toStartOf="@+id/progressBar"
+        android:src="@drawable/taigamod2"
         android:visibility="invisible"
-        android:layout_marginStart="62dp"
         app:srcCompat="@drawable/icon_circle_1" />
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -87,38 +95,14 @@
         android:layout_width="52sp"
         android:layout_height="52sp"
         android:layout_alignBottom="@+id/imageView7"
-        android:layout_marginBottom="15dp"
-        android:visibility="invisible"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
         android:src="@drawable/taigamod3"
+        android:visibility="invisible"
         app:srcCompat="@drawable/icon_circle_orange" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView6"
-        android:layout_width="52sp"
-        android:layout_height="52sp"
-        android:layout_marginBottom="44dp"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
-        android:src="@drawable/taigamod4"
-        android:visibility="invisible"
-        app:srcCompat="@drawable/icon_circle_1"
-        android:layout_above="@id/imageView4"
-        android:layout_alignLeft="@id/imageView4"
-        android:layout_alignStart="@id/imageView4" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView7"
-        android:layout_width="52sp"
-        android:layout_height="52sp"
-        app:srcCompat="@drawable/icon_circle_blue"
-        android:visibility="invisible"
-        android:layout_alignTop="@+id/imageView4"
-        android:layout_toRightOf="@+id/button"
-        android:layout_toEndOf="@+id/button"
-        android:layout_marginLeft="17dp"
-        android:src="@drawable/taigamod5"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="31dp" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -133,13 +117,27 @@
         android:id="@+id/button"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:text="Search Again"
+        android:layout_below="@+id/progressBar"
 
-        android:background="@drawable/button1"
-        android:visibility="invisible"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button1"
+        android:text="Search Again"
+        android:visibility="invisible" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView7"
+        android:layout_width="52sp"
+        android:layout_height="52sp"
+        android:layout_alignBottom="@+id/imageView4"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_toEndOf="@+id/button"
+        android:layout_toRightOf="@+id/button"
+        android:src="@drawable/taigamod5"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/icon_circle_blue" />
 
 
 </com.example.iyashwant.spiderprojectprototype.ZoomableRelativeLayout>

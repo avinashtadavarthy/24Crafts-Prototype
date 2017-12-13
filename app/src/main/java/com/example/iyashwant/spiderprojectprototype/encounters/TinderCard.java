@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype.swipe;
+package com.example.iyashwant.spiderprojectprototype.encounters;
 
 import android.content.Context;
 import android.graphics.Point;

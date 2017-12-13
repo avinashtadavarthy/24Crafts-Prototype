@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.iyashwant.spiderprojectprototype" >
+    package="com.example.iyashwant.spiderprojectprototype">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,19 +11,23 @@
         android:largeHeap="true"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar" >
-        <activity
-            android:name=".Login2"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="adjustPan" >
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        <!-- splash screen -->
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".Login"
+            android:name=".app_startup.Login2"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".app_startup.Login"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
@@ -52,9 +56,9 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Main2Activity" />
         <activity android:name=".Main3Activity" />
-        <activity android:name=".StartingScreen" />
+        <activity android:name=".registration.StartingScreen" />
         <activity
-            android:name=".swipe.Tinderswipemain"
+            android:name=".encounters.Tinderswipemain"
             android:parentActivityName=".Main2Activity"
             android:theme="@style/AppTheme" />
         <activity android:name=".Contacts" />

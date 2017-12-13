@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype;
+package com.example.iyashwant.spiderprojectprototype.registration;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.iyashwant.spiderprojectprototype.R;
 import com.example.iyashwant.spiderprojectprototype.registration.signup;
 import com.example.iyashwant.spiderprojectprototype.registration.signupclient;
 

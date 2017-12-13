@@ -10,17 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-
         android:orientation="vertical"
         app:cardCornerRadius="45dp"
         android:background="@drawable/round_card"
-        app:cardElevation="4dp"
-        app:cardPreventCornerOverlap="false">
+        app:cardElevation="2sp"
+        app:cardPreventCornerOverlap="false"
+        app:cardBackgroundColor="#fffff0">
 
         <ImageView
             android:id="@+id/profileImageView"
             android:layout_width="match_parent"
-
             android:layout_height="match_parent"
             android:layout_marginBottom="75dp"
             android:scaleType="fitXY" />
@@ -29,8 +28,6 @@
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:layout_gravity="bottom"
-
-
             android:gravity="center|left"
             android:orientation="vertical"
             android:paddingLeft="20dp">

@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype;
+package com.example.iyashwant.spiderprojectprototype.auditions;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,13 +7,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.iyashwant.spiderprojectprototype.DataModel;
+import com.example.iyashwant.spiderprojectprototype.R;
+
 import java.util.ArrayList;
 
-/**
- * Created by rakesh on 24/11/17.
- */
-
-public class CustomAdapterOpenAuditions extends RecyclerView.Adapter<CustomAdapterOpenAuditions.MyViewHolder> {
+public class CustomAdapterAppliedAuditions extends RecyclerView.Adapter<CustomAdapterAppliedAuditions.MyViewHolder> {
 
     private ArrayList<DataModel> dataSet;
 
@@ -31,7 +30,7 @@ public class CustomAdapterOpenAuditions extends RecyclerView.Adapter<CustomAdapt
         }
     }
 
-    public CustomAdapterOpenAuditions(ArrayList<DataModel> data) {
+    public CustomAdapterAppliedAuditions(ArrayList<DataModel> data) {
         this.dataSet = data;
     }
 
@@ -41,7 +40,7 @@ public class CustomAdapterOpenAuditions extends RecyclerView.Adapter<CustomAdapt
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.auditions_cards_layout, parent, false);
 
-        view.setOnClickListener(OpenAuditionsFragment.myOnClickListener);
+        view.setOnClickListener(ClosedAuditionsFragment.myOnClickListener);
 
         MyViewHolder myViewHolder = new MyViewHolder(view);
         return myViewHolder;

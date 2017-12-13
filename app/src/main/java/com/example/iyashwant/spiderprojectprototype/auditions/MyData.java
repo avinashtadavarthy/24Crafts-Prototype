@@ -1,4 +1,6 @@
-package com.example.iyashwant.spiderprojectprototype;
+package com.example.iyashwant.spiderprojectprototype.auditions;
+
+import com.example.iyashwant.spiderprojectprototype.R;
 
 /**
  * Created by rakesh on 24/11/17.

@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype;
+package com.example.iyashwant.spiderprojectprototype.encounters;
 
 import android.content.Context;
 import android.graphics.Point;
@@ -8,10 +8,10 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.example.iyashwant.spiderprojectprototype.swipe.Profile;
-import com.example.iyashwant.spiderprojectprototype.swipe.TinderCard;
+import com.example.iyashwant.spiderprojectprototype.R;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipeDirectionalView;
 import com.mindorks.placeholderview.Utils;
@@ -41,7 +41,7 @@ public class SwipeFragment extends android.support.v4.app.Fragment implements Ti
         mContext = getActivity().getApplicationContext();
 
         int bottomMargin = Utils.dpToPx(160);
-        Point windowSize = com.example.iyashwant.spiderprojectprototype.swipe.Utils.getDisplaySize(getActivity().getWindowManager());
+        Point windowSize = com.example.iyashwant.spiderprojectprototype.encounters.Utils.getDisplaySize(getActivity().getWindowManager());
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
                 .setIsUndoEnabled(true)
@@ -62,7 +62,7 @@ public class SwipeFragment extends android.support.v4.app.Fragment implements Ti
 
         Point cardViewHolderSize = new Point(windowSize.x, windowSize.y - bottomMargin);
 
-        for (Profile profile : com.example.iyashwant.spiderprojectprototype.swipe.Utils.loadProfiles(getActivity().getApplicationContext())) {
+        for (Profile profile : com.example.iyashwant.spiderprojectprototype.encounters.Utils.loadProfiles(getActivity().getApplicationContext())) {
             mSwipeView.addView(new TinderCard(mContext, profile, cardViewHolderSize, this));
         }
 

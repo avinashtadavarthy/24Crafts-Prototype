@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype;
+package com.example.iyashwant.spiderprojectprototype.auditions;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,13 +11,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.iyashwant.spiderprojectprototype.DataModel;
+import com.example.iyashwant.spiderprojectprototype.R;
+
 import java.util.ArrayList;
 
 /**
  * Created by Avinash Tadavarthy on 05-Nov-17.
  */
 
-public class ClientClosedAuditionsFragment extends Fragment {
+public class OpenAuditionsFragment extends Fragment {
 
     View myView;
 
@@ -33,7 +36,8 @@ public class ClientClosedAuditionsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.activity_client_dashboard_layout2,container,false);
 
-        myOnClickListener = new ClientClosedAuditionsFragment.MyOnClickListener(getActivity().getApplicationContext());
+
+        myOnClickListener = new OpenAuditionsFragment.MyOnClickListener(getActivity().getApplicationContext());
 
         recyclerView = (RecyclerView) myView.findViewById(R.id.my_recycler_view_clientdashboard);
         recyclerView.setHasFixedSize(true);
@@ -54,11 +58,13 @@ public class ClientClosedAuditionsFragment extends Fragment {
 
         removedItems = new ArrayList<Integer>();
 
-        adapter = new ClientCustomAdapterClosedAuditions(data);
+        adapter = new CustomAdapterOpenAuditions(data);
         recyclerView.setAdapter(adapter);
+
 
         return myView;
     }
+
 
     private static class MyOnClickListener implements View.OnClickListener {
 
@@ -70,6 +76,5 @@ public class ClientClosedAuditionsFragment extends Fragment {
 
         }
     }
-
 
 }

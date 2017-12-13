@@ -23,10 +23,10 @@ public class AboutUs extends AppCompatActivity {
 
 
         TextView privac =  (TextView) findViewById(R.id.privacy);
-            TextView tandc = (TextView) findViewById(R.id.tandc);
-            LinearLayout website = (LinearLayout) findViewById(R.id.website);
-            LinearLayout copy = (LinearLayout) findViewById(R.id.copy);
-            TextView change_log = (TextView) findViewById(R.id.change_log);
+        TextView tandc = (TextView) findViewById(R.id.tandc);
+        LinearLayout website = (LinearLayout) findViewById(R.id.website);
+        LinearLayout copy = (LinearLayout) findViewById(R.id.copy);
+        TextView change_log = (TextView) findViewById(R.id.change_log);
 
             privac.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -1,4 +1,4 @@
-package com.example.iyashwant.spiderprojectprototype.swipe;
+package com.example.iyashwant.spiderprojectprototype.encounters;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
