@@ -1,56 +1,76 @@
 package com.example.iyashwant.spiderprojectprototype;
 
+
+import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.animation.BounceInterpolator;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class ProfileView extends AppCompatActivity {
+
+    ImageButton edit_profile, profile_back, fav_profile;
+    NestedScrollView nestedScrollView;
+    int i=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_profile);
 
-        getSupportActionBar().setTitle("View / Edit Your Profile");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        edit_profile = (ImageButton) findViewById(R.id.edit_profile);
+        profile_back = (ImageButton) findViewById(R.id.profile_back);
+        fav_profile = (ImageButton) findViewById(R.id.fav_profile);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.coverphotoviewpager);
+        nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
 
-        ImageAdapter adapter = new ImageAdapter(this); //Here we are defining the Imageadapter object
+        profile_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
-        viewPager.setAdapter(adapter); // Here we are passing and setting the adapter for the images
+        edit_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),ProfileViewEdit.class);
+                startActivity(i);
+            }
+        });
 
-    }
+        fav_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                i++;
+                if(i%2!=0){
+                    ObjectAnimator animY = ObjectAnimator.ofFloat(fav_profile, "translationY", -100f, 0f);
+                    animY.setDuration(800);
+                    animY.setInterpolator(new BounceInterpolator());
+                    animY.start();
+                    fav_profile.setImageResource(R.drawable.heart_full);
+                } else {
+                    ObjectAnimator animY = ObjectAnimator.ofFloat(fav_profile, "translationY", -100f, 0f);
+                    animY.setDuration(800);
+                    animY.setInterpolator(new BounceInterpolator());
+                    animY.start();
+                    fav_profile.setImageResource(R.drawable.heart_outline);
+                }
+            }
+        });
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
 
-        // Inflate the menu; this adds items to the action bar if it is present.
-        return true;
-
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        // Handle action bar item clicks here. The action bar will
-
-        // automatically handle clicks on the Home/Up button, so long
-
-        // as you specify a parent activity in AndroidManifest.xml.
-
-        int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        //ViewPager viewPager = (ViewPager) findViewById(R.id.coverphotoviewpager);
+        //ImageAdapter adapter = new ImageAdapter(this); //Here we are defining the Imageadapter object
+        //viewPager.setAdapter(adapter); // Here we are passing and setting the adapter for the images
 
     }
 

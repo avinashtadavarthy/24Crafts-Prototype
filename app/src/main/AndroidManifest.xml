@@ -14,18 +14,17 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
         <!-- splash screen -->
-        <activity android:name=".SplashScreen">
+        <activity android:name=".app_startup.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".app_startup.Login2"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".app_startup.Login"
             android:theme="@style/Theme.AppCompat.NoActionBar"
@@ -62,9 +61,7 @@
             android:parentActivityName=".Main2Activity"
             android:theme="@style/AppTheme" />
         <activity android:name=".Contacts" />
-        <activity
-            android:name=".ProfileView"
-            android:theme="@style/AppTheme" />
+        <activity android:name=".ProfileView" />
         <activity
             android:name=".FreeCoins"
             android:theme="@style/AppTheme.CustomTheme" />
@@ -109,6 +106,7 @@
             android:name=".PrivacyPolicy"
             android:parentActivityName=".AboutUs"
             android:theme="@style/Theme.AppCompat" />
+        <activity android:name=".ProfileViewEdit"></activity>
     </application>
 
 </manifest>

@@ -1,14 +1,13 @@
-package com.example.iyashwant.spiderprojectprototype;
+package com.example.iyashwant.spiderprojectprototype.app_startup;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.VideoView;
 
-import com.example.iyashwant.spiderprojectprototype.app_startup.Login2;
+import com.example.iyashwant.spiderprojectprototype.R;
 
 public class SplashScreen extends AppCompatActivity {
 

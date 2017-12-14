@@ -46,6 +46,7 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
             navigationView.getMenu().performIdentifierAction(R.id.dashboard,0);
         }
 
+
         LinearLayout header_for_clients = (LinearLayout) navigationView.getHeaderView(0).findViewById(R.id.header_for_clients);
         header_for_clients.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -109,28 +110,6 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         } else {
             finish();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main3, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
