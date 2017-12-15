@@ -100,22 +100,9 @@ public class Login2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                webhold.setVisibility(View.VISIBLE);
-                WebView wv = (WebView) findViewById(R.id.webView);
-                wv.loadUrl("http:\\24crafts.tk:3000/login/google");
-                wv.setWebViewClient(new WebViewClient() {
-                    @Override
-                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                        view.loadUrl(url);
-                        return true;
-                    }
-                    @Override
-                    public void onPageFinished(WebView view, String url) {
-                        // TODO Auto-generated method stub
-                        super.onPageFinished(view, url);
-                        progressBar.setVisibility(View.GONE);
-                    }
-                });
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http:\\24crafts.tk:3000/login/google"));
+                startActivity(i);
+                overridePendingTransition(R.anim.right_enter, R.anim.left_out);
 
             }
         });

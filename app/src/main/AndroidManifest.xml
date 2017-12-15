@@ -60,6 +60,8 @@
         <activity android:name=".Main2Activity" />
         <activity android:name=".Main3Activity" />
         <activity android:name=".registration.StartingScreen" />
+        <activity android:name=".PurchaseCoins"
+            android:theme="@style/Theme.AppCompat"/>
         <activity
             android:name=".encounters.Tinderswipemain"
             android:parentActivityName=".Main2Activity"

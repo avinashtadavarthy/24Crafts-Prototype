@@ -2,14 +2,22 @@ package com.example.iyashwant.spiderprojectprototype;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.example.iyashwant.spiderprojectprototype.auditions.AuditionsTab;
@@ -31,7 +39,25 @@ public class Main2Activity extends AppCompatActivity
             Intent intent = new Intent(this, Login2.class);
             startActivity(intent);
         }
-*/
+
+        */
+
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout_craft);
+        final FrameLayout contentLayout = (FrameLayout) findViewById(R.id.content_frame_crafts);
+
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) contentLayout.getLayoutParams();
+                layoutParams.setMargins(0, 0, 0, appBarLayout.getMeasuredHeight() + verticalOffset);
+                contentLayout.requestLayout();
+            }
+
+        });
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -46,6 +72,15 @@ public class Main2Activity extends AppCompatActivity
         if(savedInstanceState==null){
             navigationView.getMenu().performIdentifierAction(R.id.inbox,0);
         }
+
+        ImageView purchase_coins = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.purchase_coins);
+        purchase_coins.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Main2Activity.this, PurchaseCoins.class);
+                startActivity(i);
+            }
+        });
 
         RelativeLayout nav_header_crafts = (RelativeLayout) navigationView.getHeaderView(0).findViewById(R.id.nav_header_crafts);
         nav_header_crafts.setOnClickListener(new View.OnClickListener(){
@@ -74,10 +109,17 @@ public class Main2Activity extends AppCompatActivity
         int id = item.getItemId();
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
 
-       if (id == R.id.inbox) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new InboxTab()).commit();
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        } else if (id == R.id.auditions) {
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+
+       if (id == R.id.inbox) {
+           Fragment fragment = new InboxTab();
+            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, fragment).commit();
+
+       } else if (id == R.id.auditions) {
             fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new AuditionsTab()).commit();
 
         } else if (id == R.id.newsfeed) {
@@ -112,4 +154,5 @@ public class Main2Activity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

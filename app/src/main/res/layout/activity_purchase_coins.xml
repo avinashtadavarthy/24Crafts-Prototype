@@ -5,23 +5,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/blur"
     tools:context="com.example.iyashwant.spiderprojectprototype.PurchaseCoins">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="170dp"
         android:id="@+id/RelativeLayout1"
+        android:background="#40ffffff"
         android:padding="25dp">
 
-
-
-        <ImageView
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_width="130dp"
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/Image1"
-            android:src="@drawable/taigamod2"
-            android:layout_height="130dp" />
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            android:src="@drawable/taigamod2" />
 
         <TextView
             android:id="@+id/Textview1"
@@ -89,7 +92,7 @@
         android:layout_marginLeft="17dp"
         android:layout_marginStart="17dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img1"
             android:layout_width="75dp"
             android:layout_height="75dp"
@@ -118,7 +121,7 @@
         android:layout_marginRight="17dp"
         android:layout_marginEnd="17dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img2"
             android:layout_width="75dp"
             android:layout_height="75dp"
@@ -146,7 +149,7 @@
         android:layout_alignEnd="@+id/RelativeLayout3"
         android:layout_marginBottom="12dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img3"
             android:layout_width="75dp"
             android:layout_height="75dp"
@@ -172,7 +175,7 @@
         android:layout_alignRight="@+id/RelativeLayout4"
         android:layout_alignEnd="@+id/RelativeLayout4">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img4"
             android:layout_width="75dp"
             android:layout_height="75dp"

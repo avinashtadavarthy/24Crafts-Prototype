@@ -1,7 +1,11 @@
 package com.example.iyashwant.spiderprojectprototype;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.media.Image;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -12,7 +16,7 @@ import android.widget.ImageButton;
 
 public class ProfileViewEdit extends AppCompatActivity {
 
-    ImageButton profile_back;
+    ImageButton profile_back, edit_done;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +24,57 @@ public class ProfileViewEdit extends AppCompatActivity {
         setContentView(R.layout.activity_profile_view_edit);
 
         profile_back = (ImageButton) findViewById(R.id.profile_back);
+        edit_done = (ImageButton) findViewById(R.id.edit_done);
 
         profile_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+
+                AlertDialog.Builder a_builder = new AlertDialog.Builder(ProfileViewEdit.this);
+                a_builder.setMessage("Discard your changes and quit editing?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                onBackPressed();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int i) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert = a_builder.create();
+                alert.show();
+
+            }
+        });
+
+        edit_done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                AlertDialog.Builder a_builder = new AlertDialog.Builder(ProfileViewEdit.this);
+                a_builder.setMessage("Save your changes and quit editing?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                onBackPressed();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int i) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert = a_builder.create();
+                alert.show();
+
             }
         });
 

@@ -1,8 +1,10 @@
 package com.example.iyashwant.spiderprojectprototype;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 /**
  * Created by Avinash Tadavarthy on 04-Nov-17.
@@ -22,6 +25,7 @@ public class InboxTabFragment extends android.support.v4.app.Fragment {
     RecyclerView recycler;
     LinearLayoutManager manage;
     GridAdapter adapter;
+
 
     String name[]={"Mont","rid","har","Ram","sid","sam","james","jarry"};
     String sub[]={"Hi","meeting","Materials","shootout","mall","meetup","meet","study"};

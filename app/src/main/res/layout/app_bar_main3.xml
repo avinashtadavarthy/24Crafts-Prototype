@@ -7,12 +7,13 @@
     tools:context="com.example.iyashwant.spiderprojectprototype.Main3Activity">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_client"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppBarOverlay">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar_layout"
+            android:id="@+id/collapsing_toolbar_layout_client"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:contentScrim="?attr/colorPrimary"
@@ -33,6 +34,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main3" />
+    <FrameLayout
+        android:id="@+id/content_frame_clients"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -77,12 +77,16 @@
 </LinearLayout>
 
     <ImageView
-        android:layout_width="25sp"
-        android:layout_height="25sp"
+        android:id="@+id/purchase_coins"
+        android:layout_width="40sp"
+        android:padding="5sp"
+        android:layout_height="40sp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:src="@drawable/free_coins"
-        android:layout_margin="8sp"/>
+        android:layout_margin="5sp"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"/>
 
 
 </RelativeLayout>
