@@ -13,6 +13,12 @@
     android:screenOrientation="portrait">
 
 
+    <RelativeLayout
+        android:id="@+id/rel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
@@ -51,30 +57,33 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp" />
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="48dp"
-        android:textColor="#ffffff"
-        android:text="LOGIN CRAFTSMEN"
-        android:gravity="center"
-        android:background="@drawable/button_round"
-        android:id="@+id/btnCraftsmen"
-        android:layout_below="@+id/btnClients"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        <Button
+            android:id="@+id/btnClients"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/forgot_password"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_round"
+            android:gravity="center"
+            android:text="LOGIN CLIENTS"
+            android:textColor="#ffffff" />
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="48dp"
-        android:textColor="#ffffff"
-        android:text="LOGIN CLIENTS"
-        android:gravity="center"
-        android:background="@drawable/button_round"
-        android:id="@+id/btnClients"
-        android:layout_below="@+id/forgot_password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp" />
+        <Button
+            android:id="@+id/btnCraftsmen"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_alignLeft="@+id/btnClients"
+            android:layout_alignStart="@+id/btnClients"
+            android:layout_below="@+id/btnClients"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/button_round"
+            android:gravity="center"
+            android:text="LOGIN CRAFTSMEN"
+            android:textColor="#ffffff" />
 
     </RelativeLayout>
+
+</RelativeLayout>
 
 

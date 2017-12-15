@@ -23,6 +23,8 @@ public class SplashScreen extends AppCompatActivity {
 
         splashvideo = (VideoView) findViewById(R.id.splashvideo);
 
+
+
         String uriPath = "android.resource://com.example.iyashwant.spiderprojectprototype/" + R.raw.opening;
         Uri uri = Uri.parse(uriPath);
         splashvideo.setVideoURI(uri);

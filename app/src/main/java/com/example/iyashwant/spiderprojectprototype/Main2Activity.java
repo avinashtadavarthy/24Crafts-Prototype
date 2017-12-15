@@ -42,6 +42,7 @@ public class Main2Activity extends AppCompatActivity
 
         */
 
+        //to alter the display size on scroll
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout_craft);
         final FrameLayout contentLayout = (FrameLayout) findViewById(R.id.content_frame_crafts);
