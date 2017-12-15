@@ -16,7 +16,7 @@
 
         android:layout_height="match_parent"
 
-        android:background="#000000"
+        android:background="@mipmap/blur"
         tools:context="com.example.srikanth.a24crafts.talent_hunt.TalentHuntDriver">
 
         <android.support.v7.widget.RecyclerView

@@ -46,7 +46,6 @@
                 android:layout_centerHorizontal="true"
                 android:id="@+id/craftsman_reg"
                 android:background="?android:attr/selectableItemBackground"
-
                 android:tint="#ffffff"
                 android:src="@drawable/ic_person"
                 android:layout_width="100dp"

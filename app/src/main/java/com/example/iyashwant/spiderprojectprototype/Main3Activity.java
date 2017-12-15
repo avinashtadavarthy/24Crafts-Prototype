@@ -1,14 +1,11 @@
 package com.example.iyashwant.spiderprojectprototype;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,15 +13,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class Main3Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -78,17 +71,23 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
             }
         });
 
+
+        final Bundle data = new Bundle();//Use bundle to pass data
+
         ImageView aud_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.aud_handy);
         aud_handy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(Main3Activity.this, "Connect to Auditions Tab", Toast.LENGTH_SHORT).show();
+                Fragment fragment = new ClientDashboard();//Get Fragment Instance
+                data.putString("tab", "audition");//put string, int, etc in bundle with a key value
+                fragment.setArguments(data);//Finally set argument bundle to fragment
+                android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_frame_clients, fragment).commit();
 
                 DrawerLayout mDrawerLayout;
                 mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
                 mDrawerLayout.closeDrawers();
-
             }
         });
 
@@ -97,8 +96,11 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(Main3Activity.this, "Connect to Favourites Tab", Toast.LENGTH_SHORT).show();
-
+                Fragment fragment = new ClientDashboard();//Get Fragment Instance
+                data.putString("tab", "fav");//put string, int, etc in bundle with a key value
+                fragment.setArguments(data);//Finally set argument bundle to fragment
+                android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_frame_clients, fragment).commit();
 
                 DrawerLayout mDrawerLayout;
                 mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -112,12 +114,15 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(Main3Activity.this, "Connect to Messages Tab", Toast.LENGTH_SHORT).show();
+                Fragment fragment = new ClientDashboard();//Get Fragment Instance
+                data.putString("tab", "message");//put string, int, etc in bundle with a key value
+                fragment.setArguments(data);//Finally set argument bundle to fragment
+                android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_frame_clients, fragment).commit();
 
                 DrawerLayout mDrawerLayout;
                 mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
                 mDrawerLayout.closeDrawers();
-
             }
         });
 
@@ -142,11 +147,15 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
 
         if(id == R.id.dashboard){
-            fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new ClientDashboard()).commit();
+            Bundle data = new Bundle();
+            Fragment fragment = new ClientDashboard();
+            data.putString("tab", "audition");//put string, int, etc in bundle with a key value
+            fragment.setArguments(data);
+            fragmentManager.beginTransaction().replace(R.id.content_frame_clients, fragment).commit();
             appBarLayout.setTargetElevation(0);
 
         } else if (id == R.id.talent_hunt) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new TalentHuntFrag()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new TalentHuntFragment()).commit();
             if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.nearby) {

@@ -8,9 +8,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.iyashwant.spiderprojectprototype.auditions.DashboardAuditionsTabFragment;
 
@@ -38,6 +41,16 @@ public class ClientDashboard extends Fragment {
 
         client_dashboard_tabs = (TabLayout) myView.findViewById(R.id.client_dashboard_tabs);
         client_dashboard_tabs.setupWithViewPager(client_dashboard_tabbed);
+
+        String getData = getArguments().getString("tab");
+        if (getData != null) {
+            if(getData.equals("audition"))
+                client_dashboard_tabbed.setCurrentItem(0);
+            else if(getData.equals("fav"))
+                client_dashboard_tabbed.setCurrentItem(1);
+            else if(getData.equals("message"))
+                client_dashboard_tabbed.setCurrentItem(2);
+        }
 
         client_dashboard_tabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
