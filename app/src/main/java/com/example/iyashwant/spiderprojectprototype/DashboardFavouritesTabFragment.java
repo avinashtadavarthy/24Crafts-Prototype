@@ -1,17 +1,14 @@
 package com.example.iyashwant.spiderprojectprototype;
 
-import android.app.Fragment;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
 
 import java.util.ArrayList;
 
@@ -23,28 +20,36 @@ public class DashboardFavouritesTabFragment extends android.support.v4.app.Fragm
 
     View myView;
 
-    RecyclerView favs_grid;
-    FavsAdapter adapter;
-    ArrayList<Integer> img_id = new ArrayList<>();
+    GridView favs_grid;
+    int[] mThumbIds = {
+            R.drawable.sample1, R.drawable.sample1, R.drawable.sample1,
+            R.drawable.sample1, R.drawable.sample1, R.drawable.sample1,
+            R.drawable.sample1, R.drawable.sample1, R.drawable.sample1,
+            R.drawable.sample1, R.drawable.sample1, R.drawable.sample1,
+            R.drawable.sample1, R.drawable.sample1, R.drawable.sample1,
+            R.drawable.sample1, R.drawable.sample1, R.drawable.sample1,
+            R.drawable.sample1, R.drawable.sample1, R.drawable.sample1,
+            R.drawable.sample1, R.drawable.sample1, R.drawable.sample1
+    };
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.activity_dashboard_favourites_tab_fragment,container,false);
 
-        favs_grid = (RecyclerView) myView.findViewById(R.id.favs_grid);
-        adapter = new FavsAdapter(getActivity().getApplicationContext(),img_id);
+        favs_grid = (GridView) myView.findViewById(R.id.favs_grid);
+        FavsAdapter adapter = new FavsAdapter(getActivity().getApplicationContext(), mThumbIds);
+       favs_grid.setAdapter(adapter);
 
-        favs_grid.setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(),3));
-        favs_grid.setAdapter(adapter);
+       favs_grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-        for(int i=0;i<21;i++) {
+               Intent page = new Intent(getActivity().getApplicationContext(), ProfileView.class);
+               startActivity(page);
 
-            img_id.add(R.drawable.sample1);// insert pics here
-            adapter.notifyItemInserted(i);
-        }
-
-        adapter.notifyDataSetChanged();//notify adapter
+           }
+       });
 
         return myView;
     }

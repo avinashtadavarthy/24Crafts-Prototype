@@ -17,7 +17,10 @@ public class NewsfeedFragment extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.second_layout,container,false);
+        myView = inflater.inflate(R.layout.newsfeed_fragment,container,false);
+
+        getActivity().setTitle("Newsfeed");
+
         return myView;
     }
 }

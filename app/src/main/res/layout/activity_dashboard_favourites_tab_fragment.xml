@@ -4,12 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     tools:context="com.example.iyashwant.spiderprojectprototype.DashboardFavouritesTabFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/favs_grid"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"/>
+   <GridView
+       android:id="@+id/favs_grid"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:numColumns="3"
+       android:verticalSpacing="5sp"
+       android:horizontalSpacing="5sp"
+       android:layout_gravity="center_horizontal"
+       android:layout_marginRight="10sp"
+       android:layout_marginLeft="10sp"
+       android:paddingTop="10sp"
+       android:paddingBottom="10sp" />
 
 </LinearLayout>

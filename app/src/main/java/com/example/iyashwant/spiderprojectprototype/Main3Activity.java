@@ -29,12 +29,14 @@ import android.widget.Toast;
 
 public class Main3Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    AppBarLayout appBarLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar_client);
+        appBarLayout = (AppBarLayout) findViewById(R.id.app_bar_client);
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout_client);
         final FrameLayout contentLayout = (FrameLayout) findViewById(R.id.content_frame_clients);
 
@@ -141,15 +143,19 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
 
         if(id == R.id.dashboard){
             fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new ClientDashboard()).commit();
+            appBarLayout.setTargetElevation(0);
 
         } else if (id == R.id.talent_hunt) {
             fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new TalentHuntFrag()).commit();
+            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.nearby) {
             fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new PeopleNearbyFragment()).commit();
+            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.directory) {
             fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new DirectoryFragment()).commit();
+            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.settings) {
             Intent i = new Intent(this,Settings.class).putExtra("type","clients");

@@ -7,6 +7,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +28,7 @@ public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
+    AppBarLayout appBarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class Main2Activity extends AppCompatActivity
         */
 
         //to alter the display size on scroll
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
+        appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout_craft);
         final FrameLayout contentLayout = (FrameLayout) findViewById(R.id.content_frame_crafts);
 
@@ -119,21 +121,27 @@ public class Main2Activity extends AppCompatActivity
        if (id == R.id.inbox) {
            Fragment fragment = new InboxTab();
             fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, fragment).commit();
+           appBarLayout.setTargetElevation(0);
 
        } else if (id == R.id.auditions) {
             fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new AuditionsTab()).commit();
+           appBarLayout.setTargetElevation(0);
 
         } else if (id == R.id.newsfeed) {
             fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new NewsfeedFragment()).commit();
+           if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.nearby) {
            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new PeopleNearbyFragment()).commit();
+           if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.encounters) {
            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new SwipeFragment()).commit();
+           if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
        } else if (id == R.id.directory) {
            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new DirectoryFragment()).commit();
+           if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.promote) {
            Intent i = new Intent(getApplicationContext(),PromoteProfilePopUp.class);
