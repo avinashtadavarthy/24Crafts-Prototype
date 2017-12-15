@@ -21,6 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- starting screen -->
         <activity
             android:name=".app_startup.Login2"
             android:theme="@style/Theme.AppCompat.NoActionBar"
@@ -29,6 +31,8 @@
             android:name=".app_startup.Login"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
+
+        <!-- registration -->
         <activity
             android:name=".registration.signup"
             android:theme="@style/Theme.AppCompat.NoActionBar"
@@ -106,7 +110,9 @@
             android:name=".PrivacyPolicy"
             android:parentActivityName=".AboutUs"
             android:theme="@style/Theme.AppCompat" />
-        <activity android:name=".ProfileViewEdit"></activity>
+        <activity android:name=".ProfileViewEdit"/>
+        <activity android:name=".RateUs"
+            android:theme="@style/AppTheme.CustomTheme"/>
     </application>
 
 </manifest>
