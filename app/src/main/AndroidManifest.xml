@@ -50,11 +50,11 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="registration.signup3client"
+            android:name=".registration.signup3client"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="registration.signupclient"
+            android:name=".registration.signupclient"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Main2Activity" />
@@ -110,9 +110,15 @@
             android:name=".PrivacyPolicy"
             android:parentActivityName=".AboutUs"
             android:theme="@style/Theme.AppCompat" />
-        <activity android:name=".ProfileViewEdit"/>
-        <activity android:name=".RateUs"
-            android:theme="@style/AppTheme.CustomTheme"/>
+        <activity android:name=".ProfileViewEdit" />
+        <activity
+            android:name=".RateUs"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".ForgotPassword" />
+        <activity
+            android:name=".ForgotPasswordPopUp"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".CreateAuditions"></activity>
     </application>
 
 </manifest>

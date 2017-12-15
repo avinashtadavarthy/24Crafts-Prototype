@@ -18,6 +18,7 @@ import android.widget.EditText;
 
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.iyashwant.spiderprojectprototype.CustomAdapterSpinner;
 import com.example.iyashwant.spiderprojectprototype.R;
@@ -43,7 +44,7 @@ public class signup extends AppCompatActivity{
     String[] genderString={"Choose Gender",
             "Male","Female","Other"};
 
-    String name,selectedcraft = "hi";
+    String name,selectedcraft = "null";
 
     //datepicker
     private DatePicker datePicker;
@@ -120,6 +121,8 @@ public class signup extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
+
+
                 if(selectedcraft.equals("Actor") || selectedcraft.equals("Actress") || selectedcraft.equals("Child Artist") || selectedcraft.equals("Dancer") || selectedcraft.equals("Side Artists")){
                     name=name1.getText().toString();
                     Intent goToNextActivity = new Intent(getApplicationContext(), signup2.class);
@@ -129,6 +132,12 @@ public class signup extends AppCompatActivity{
                     goToNextActivity.putExtras(bundle);
                     startActivity(goToNextActivity);
                 }
+
+                else if(selectedcraft.equals("null"))
+                {
+                    Toast.makeText(getApplicationContext(),"Please select appropriate Portfolio to continue",Toast.LENGTH_LONG).show();
+                }
+
                 else
                 {
                     name=name1.getText().toString();

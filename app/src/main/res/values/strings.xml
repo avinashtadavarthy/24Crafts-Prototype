@@ -18,6 +18,9 @@
 
     </string-array>
 
+    <string name="reg_email_text">Please Check Your email for instructions on resetting your password</string>
+    <string name="unreg_email_text">Email Address Not Found. Kindly Register</string>
+
     <string name="open_drawer">Open Navigation Drawer</string>
     <string name="close_drawer">Close Navigation Drawer</string>
     <string name="title_activity_main2">Home</string>

@@ -5,12 +5,15 @@ package com.example.iyashwant.spiderprojectprototype;
  */
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import butterknife.OnItemSelected;
 
 public class CustomAdapterSpinner extends BaseAdapter {
     Context context;
@@ -24,6 +27,18 @@ public class CustomAdapterSpinner extends BaseAdapter {
         this.list = list;
         inflter = (LayoutInflater.from(applicationContext));
     }
+
+    @Override
+    public boolean isEnabled(int position) {
+        if(position == 0)
+            return false;
+
+        else
+            return true;
+
+    }
+
+
 
     @Override
     public int getCount() {

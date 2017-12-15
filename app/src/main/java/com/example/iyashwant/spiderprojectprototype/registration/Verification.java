@@ -27,7 +27,7 @@ public class Verification extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verification);
 
-        final String type = getIntent().getStringExtra("type");
+       // final String type = getIntent().getStringExtra("type");
 
         fb =(ImageView)findViewById(R.id.fb);
         insta=(ImageView) findViewById(R.id.insta);
@@ -121,14 +121,7 @@ public class Verification extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(type.equals("craft")){
-                    Intent next = new Intent(getApplicationContext(),Main2Activity.class);
-                    startActivity(next);
-                } else if(type.equals("client")){
-                    Intent next = new Intent(getApplicationContext(),Main3Activity.class);
-                    startActivity(next);
-                }
-
+               finish();
             }
         });
 

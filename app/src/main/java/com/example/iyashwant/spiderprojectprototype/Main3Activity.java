@@ -123,7 +123,7 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
             fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new ClientDashboard()).commit();
 
         } else if (id == R.id.talent_hunt) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new SecondFragment()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new TalentHuntFrag()).commit();
 
         } else if (id == R.id.nearby) {
             fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new PeopleNearbyFragment()).commit();

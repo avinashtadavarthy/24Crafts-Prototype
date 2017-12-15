@@ -3,6 +3,7 @@ package com.example.iyashwant.spiderprojectprototype.app_startup;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -10,15 +11,22 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.example.iyashwant.spiderprojectprototype.ForgotPassword;
 import com.example.iyashwant.spiderprojectprototype.Main2Activity;
 import com.example.iyashwant.spiderprojectprototype.Main3Activity;
 import com.example.iyashwant.spiderprojectprototype.R;
 
+import org.w3c.dom.Text;
+
 public class Login extends AppCompatActivity {
 
     Button btnCraftsmen, btnClients;
-
+    TextView forgotPassword;
+    RelativeLayout parent;
+    AnimationDrawable animationDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +35,25 @@ public class Login extends AppCompatActivity {
 
         btnCraftsmen = (Button) findViewById(R.id.btnCraftsmen);
         btnClients = (Button) findViewById(R.id.btnClients);
+        forgotPassword = findViewById(R.id.forgot_password);
+
+        parent = findViewById(R.id.parentLayout);
+        animationDrawable = (AnimationDrawable) parent.getBackground();
+
+        animationDrawable.setEnterFadeDuration(1000);
+        animationDrawable.setExitFadeDuration(2000);
+
+
+
+        animationDrawable.start();
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),ForgotPassword.class);
+                startActivity(intent);
+            }
+        });
 
         btnCraftsmen.setOnClickListener(new View.OnClickListener() {
             @Override

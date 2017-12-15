@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,6 +9,10 @@
     tools:context="com.example.iyashwant.spiderprojectprototype.registration.Verification"
     android:screenOrientation="portrait">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
@@ -266,17 +270,24 @@
 
     </LinearLayout>
 
+
+
+    </LinearLayout>
+
+
+
     <Button
         android:id="@+id/verification_done"
         android:layout_width="360dp"
         android:layout_height="40dp"
-        android:layout_marginTop="110dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/button_round"
         android:gravity="center"
         android:layout_gravity="center_horizontal"
-        android:text="Next"
+        android:text="Finish"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:textColor="#ffffff" />
 
 
-</LinearLayout>
+</RelativeLayout>

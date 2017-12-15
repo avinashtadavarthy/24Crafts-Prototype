@@ -18,6 +18,7 @@ import android.widget.EditText;
 
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.iyashwant.spiderprojectprototype.CustomAdapterSpinner;
 import com.example.iyashwant.spiderprojectprototype.R;
@@ -34,7 +35,7 @@ public class signupclient extends AppCompatActivity{
     String[] genderString={"Choose Gender",
             "Male","Female","Other"};
 
-    String name,selectedcraft = "hi";
+    String name,selectedcraft = "null";
 
     //datepicker
     private DatePicker datePicker;
@@ -47,7 +48,7 @@ public class signupclient extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_signupclient);
         password = (EditText) findViewById(R.id.password);
         password.setTransformationMethod(new PasswordTransformationMethod());
         confirm_password = (EditText) findViewById(R.id.confirm_password);
@@ -108,14 +109,21 @@ public class signupclient extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
+                if(selectedcraft.equals("null"))
+                {
+                    Toast.makeText(getApplicationContext(),"Please select appropriate Portfolio to continue",Toast.LENGTH_LONG).show();
+                }
 
-                name=name1.getText().toString();
-                Intent goToNextActivity = new Intent(getApplicationContext(), signup3client.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("name",name);
-                bundle.putString("craft",selectedcraft);
-                goToNextActivity.putExtras(bundle);
-                startActivity(goToNextActivity);
+                else
+                {
+                    name = name1.getText().toString();
+                    Intent goToNextActivity = new Intent(getApplicationContext(), signup3client.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("name", name);
+                    bundle.putString("craft", selectedcraft);
+                    goToNextActivity.putExtras(bundle);
+                    startActivity(goToNextActivity);
+                }
 
             }
         });
