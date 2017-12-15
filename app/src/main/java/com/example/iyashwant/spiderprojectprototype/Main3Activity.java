@@ -38,6 +38,7 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout_client);
         final FrameLayout contentLayout = (FrameLayout) findViewById(R.id.content_frame_clients);
 
+        //to alter the display size on scroll
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
 
             @Override
