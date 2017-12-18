@@ -1,12 +1,14 @@
 package com.example.iyashwant.spiderprojectprototype;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -24,7 +26,6 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.DirectoryViewH
     String name[],subject[],body[],time[];
     int no_items,img[];
     ImageButton trash,star;
-
 
     GridAdapter(Context c,String name[],String subject[], String body[],String time[],int no_items,int img[])
     {
@@ -58,18 +59,18 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.DirectoryViewH
         holder.tim.setText(time[position]);
     }
 
-
     @Override
     public int getItemCount() {
         return no_items;
     }
+
+
 
     public class DirectoryViewHolder extends RecyclerView.ViewHolder{
 
         TextView nam,sub,bod,tim;
         CircleImageView I;
         ImageButton trash,star;
-
 
         public DirectoryViewHolder(View itemView) {
             super(itemView);
@@ -82,7 +83,6 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.DirectoryViewH
             tim = itemView.findViewById(R.id.time);
             trash=itemView.findViewById(R.id.trash);
             star = itemView.findViewById(R.id.starred);
-
         }
     }
 
