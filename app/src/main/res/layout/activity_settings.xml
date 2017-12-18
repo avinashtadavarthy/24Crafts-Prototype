@@ -11,16 +11,16 @@
 
     <LinearLayout
         android:id="@+id/info"
+        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8sp"
         android:layout_marginTop="5sp"
         android:background="?android:attr/selectableItemBackground">
 
         <ImageView
-            android:layout_width="40sp"
-            android:layout_height="40sp"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
             android:src="@drawable/account_info"
             android:tint="#ffffff"
             android:layout_margin="5sp"/>
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:layout_marginLeft="5sp"
             android:text="Account Information"
             android:textColor="#ffffff"/>
@@ -43,11 +43,11 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="?android:attr/selectableItemBackground"
-        android:padding="8sp">
+        android:padding="5sp">
 
         <ImageView
-            android:layout_width="40sp"
-            android:layout_height="40sp"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
             android:src="@drawable/verify_yourself"
             android:tint="#ffffff"
             android:layout_margin="5sp"/>
@@ -56,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:layout_marginLeft="5sp"
             android:text="Verify Yourself"
             android:textColor="#ffffff"/>
@@ -69,12 +69,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8sp"
+        android:padding="5sp"
         android:background="?android:attr/selectableItemBackground">
 
         <ImageView
-            android:layout_width="40sp"
-            android:layout_height="40sp"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
             android:src="@drawable/free_coins"
             android:tint="#ffffff"
             android:layout_margin="5sp"/>
@@ -83,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:layout_marginLeft="5sp"
             android:text="Free Coins"
             android:textColor="#ffffff"/>
@@ -98,11 +98,11 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="?android:attr/selectableItemBackground"
-        android:padding="8sp">
+        android:padding="5sp">
 
         <ImageView
-            android:layout_width="40sp"
-            android:layout_height="40sp"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
             android:src="@drawable/buy_coins"
             android:tint="#ffffff"
             android:layout_margin="5sp"/>
@@ -111,7 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:layout_marginLeft="5sp"
             android:text="Buy More Coins"
             android:textColor="#ffffff"/>
@@ -127,11 +127,11 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="?android:attr/selectableItemBackground"
-        android:padding="8sp">
+        android:padding="5sp">
 
         <ImageView
-            android:layout_width="40sp"
-            android:layout_height="40sp"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
             android:src="@drawable/theme"
             android:tint="#ffffff"
             android:layout_margin="5sp"/>
@@ -140,7 +140,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:layout_marginLeft="5sp"
             android:text="Themes"
             android:textColor="#ffffff"/>
@@ -154,11 +154,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8sp">
+        android:padding="5sp">
 
         <ImageView
-            android:layout_width="40sp"
-            android:layout_height="40sp"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
             android:src="@drawable/check_in"
             android:tint="#ffffff"
             android:layout_margin="5sp"/>
@@ -167,7 +167,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:layout_marginLeft="5sp"
             android:text="Daily Check-In"
             android:textColor="#ffffff"/>
@@ -189,11 +189,11 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="?android:attr/selectableItemBackground"
-        android:padding="8sp">
+        android:padding="4sp">
 
         <ImageView
-            android:layout_width="40sp"
-            android:layout_height="40sp"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
             android:src="@drawable/contact_us"
             android:tint="#ffffff"
             android:layout_margin="5sp"/>
@@ -202,7 +202,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="15sp"
+            android:textSize="10sp"
             android:layout_marginLeft="5sp"
             android:text="Contact / Support"
             android:textColor="#ffffff"/>
@@ -217,11 +217,11 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="?android:attr/selectableItemBackground"
-        android:padding="8sp">
+        android:padding="4sp">
 
         <ImageView
-            android:layout_width="40sp"
-            android:layout_height="40sp"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
             android:src="@drawable/about_us"
             android:tint="#ffffff"
             android:layout_margin="5sp"/>
@@ -230,7 +230,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="15sp"
+            android:textSize="10sp"
             android:layout_marginLeft="5sp"
             android:text="About us"
             android:textColor="#ffffff"/>

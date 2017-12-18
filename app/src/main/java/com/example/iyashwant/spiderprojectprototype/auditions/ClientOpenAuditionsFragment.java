@@ -1,6 +1,7 @@
 package com.example.iyashwant.spiderprojectprototype.auditions;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.iyashwant.spiderprojectprototype.CreateAuditions;
 import com.example.iyashwant.spiderprojectprototype.DataModel;
 import com.example.iyashwant.spiderprojectprototype.R;
 
@@ -55,6 +57,9 @@ public class ClientOpenAuditionsFragment extends Fragment {
             ));
         }
 
+
+
+
         removedItems = new ArrayList<Integer>();
 
         adapter = new ClientCustomAdapterOpenAuditions(data);
@@ -65,8 +70,8 @@ public class ClientOpenAuditionsFragment extends Fragment {
         createaudition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Create an audition", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i = new Intent(getActivity().getApplicationContext(),CreateAuditions.class);
+                startActivity(i);
             }
         });
 

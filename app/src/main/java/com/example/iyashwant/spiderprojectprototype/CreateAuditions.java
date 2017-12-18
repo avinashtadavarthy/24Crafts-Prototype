@@ -260,7 +260,7 @@ public class CreateAuditions extends AppCompatActivity {
             c.setProj_validto(e8.getText().toString());
             c.setProj_contact(e9.getText().toString());
             Log.i("Details:",c.getProj_audiloc()+c.getProj_contact()+c.getProj_desc()+c.getProj_features());
-
+            finish();
         }
         else
             err_msg_disp(1);
