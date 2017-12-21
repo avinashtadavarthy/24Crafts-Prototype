@@ -1,10 +1,12 @@
 package com.example.iyashwant.spiderprojectprototype.app_startup;
 
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.VideoView;
 
 import com.example.iyashwant.spiderprojectprototype.R;
