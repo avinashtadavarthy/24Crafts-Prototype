@@ -94,8 +94,14 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".Contacts" />
         <activity android:name=".ProfileView" />
+        <activity android:name=".YoutubePlayerActivity"/>
         <activity android:name=".CreateAuditions"/>
 
+
+        <!-- Razor Pay Integration -->
+        <meta-data android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_FSoknm2lAIBB6U" />
+        <activity android:name=".PaymentActivity" />
 
         <!-- Pop Ups -->
         <activity android:name=".FreeCoins"
@@ -122,10 +128,10 @@
             android:theme="@style/Theme.AppCompat" />
         <activity android:name=".AccountInfo"
             android:parentActivityName=".Settings"
-            android:theme="@style/Theme.AppCompat" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".AboutUs"
             android:parentActivityName=".Settings"
-            android:theme="@style/Theme.AppCompat" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".TermsConditions"
             android:parentActivityName=".AboutUs"
             android:theme="@style/Theme.AppCompat" />
