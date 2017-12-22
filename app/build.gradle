@@ -66,6 +66,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.10'
     compile 'com.android.volley:volley:1.0.0'
+    compile('com.razorpay:checkout:1.4.4')
     compile files('libs/YouTubeAndroidPlayerApi.jar')
 
 }
