@@ -6,12 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.iyashwant.spiderprojectprototype.R;
-import com.example.iyashwant.spiderprojectprototype.RecyclerViewClickListener;
 
 import java.util.List;
 
@@ -42,8 +39,6 @@ public class AppliedAuditionsRecyclerAdapter extends RecyclerView.Adapter<Applie
     public void onBindViewHolder(CustomViewHolder holder, int position) {
         AuditionHelper auditionHelper = mAuditionHelpersList.get(position);
         holder.auditionTitle.setText(auditionHelper.getTitle());
-       // boolean switchState = holder.auditionSwitch.isChecked();
-
         //holder.auditionLocation.setText(auditionHelper.getLocation());
         //holder.noOfApplicants.setText("No of Applicants:"+auditionHelper.getApplicants());
         //String photoUrl = auditionHelper.getPhotoUrl();
@@ -51,12 +46,10 @@ public class AppliedAuditionsRecyclerAdapter extends RecyclerView.Adapter<Applie
         //Picasso.with(mContext).load(photoUrl).into(holder.auditionProfile);
     }
 
-
     public class CustomViewHolder extends RecyclerView.ViewHolder{
 
         TextView auditionTitle, auditionLocation, noOfApplicants;
         ImageView auditionProfile;
-
 
         public CustomViewHolder(View itemView) {
             super(itemView);
@@ -65,8 +58,9 @@ public class AppliedAuditionsRecyclerAdapter extends RecyclerView.Adapter<Applie
             auditionLocation = (TextView) itemView.findViewById(R.id.audition_location);
             noOfApplicants = (TextView) itemView.findViewById(R.id.no_of_applicants_tv);
             //auditionProfile = (ImageView) itemView.findViewById(R.id.no_of_applicants_tv);
-        }
 
+
+        }
     }
 
 

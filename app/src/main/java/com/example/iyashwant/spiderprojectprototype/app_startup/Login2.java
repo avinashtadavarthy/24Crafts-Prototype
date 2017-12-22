@@ -3,6 +3,7 @@ package com.example.iyashwant.spiderprojectprototype.app_startup;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.net.Uri;
 
@@ -17,8 +18,11 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.example.iyashwant.spiderprojectprototype.LoginSocial;
@@ -28,13 +32,20 @@ import com.github.clans.fab.FloatingActionButton;
 
 public class Login2 extends AppCompatActivity {
 
-    FloatingActionButton fabEmail, fabSign, fabExit;
+    FloatingActionButton fabEmail, fabSign;
     VideoView videoview;
-    ImageButton fbLogin, googleLogin, instaLogin;
+    LinearLayout facebook, google, instagram;
+    LinearLayout sign_up_button, login_button;
+
+    ImageView signup_iconz, login_iconz;
+    TextView otherlogins;
+
+    /*
     RelativeLayout webhold;
     Button webclose;
     ProgressBar progressBar;
     WebView wv;
+    */
 
     private final String LOG_TAG = "Login2 Activity";
 
@@ -43,19 +54,55 @@ public class Login2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
 
-        wv = (WebView) findViewById(R.id.webView);
+        facebook = (LinearLayout) findViewById(R.id.fb_login_button);
+        google = (LinearLayout) findViewById(R.id.gl_login_button);
+        instagram = (LinearLayout) findViewById(R.id.instagram_login_button);
 
-        webhold = (RelativeLayout) findViewById(R.id.webhold);
-        webhold.setVisibility(View.GONE);
+        //fabEmail=(FloatingActionButton)findViewById(R.id.action_email_fab);
+        //fabSign = (FloatingActionButton)findViewById(R.id.action_sign_fab);
 
-        webclose = (Button) findViewById(R.id.webclose);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        videoview = (VideoView) findViewById(R.id.videoView);
 
-        initialiseViews();
+        otherlogins = (TextView) findViewById(R.id.otherlogins);
+        sign_up_button = (LinearLayout) findViewById(R.id.sign_up_button);
+        login_button = (LinearLayout) findViewById(R.id.login_button);
+
+        signup_iconz = (ImageView) findViewById(R.id.signup_iconz);
+        login_iconz = (ImageView) findViewById(R.id.login_iconz);
+
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            otherlogins.setElevation(10);
+            signup_iconz.setElevation(8);
+            login_iconz.setElevation(8);
+        }
+
+        sign_up_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextpage = new Intent(getApplicationContext(),StartingScreen.class);
+                startActivity(nextpage);
+            }
+        });
+
+        login_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextpage = new Intent(getApplicationContext(),Login.class);
+                startActivity(nextpage);
+            }
+        });
+
         displayCoverVideo();
-        initialiseFABEvents();
+        //initialiseFABEvents();
         //initialiseLoginButtonEvents();
         LoginpopUp();
+
+        /*
+        wv = (WebView) findViewById(R.id.webView);
+        webhold = (RelativeLayout) findViewById(R.id.webhold);
+        webhold.setVisibility(View.GONE);
+        webclose = (Button) findViewById(R.id.webclose);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         webclose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,25 +110,20 @@ public class Login2 extends AppCompatActivity {
                 webhold.setVisibility(View.GONE);
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finishAffinity();
+        */
 
     }
+
 
     private void LoginpopUp()
     {
 
-        ImageButton facebook = (ImageButton)findViewById(R.id.fb_login_button);
         facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                /*
                 webhold.setVisibility(View.VISIBLE);
-
                 wv.loadUrl("http:\\24crafts.tk:3000/login/facebook");
                 wv.setWebViewClient(new WebViewClient() {
                     @Override
@@ -91,33 +133,35 @@ public class Login2 extends AppCompatActivity {
                     }
                     @Override
                     public void onPageFinished(WebView view, String url) {
-                        // TODO Auto-generated method stub
                         super.onPageFinished(view, url);
                         progressBar.setVisibility(View.GONE);
                     }
                 });
+                */
 
             }
         });
 
 
-        ImageButton google = (ImageButton)findViewById(R.id.gl_login_button);
         google.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                /*
                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http:\\24crafts.tk:3000/login/google"));
                 startActivity(i);
                 overridePendingTransition(R.anim.right_enter, R.anim.left_out);
+                */
 
             }
         });
 
-        ImageButton twitter = (ImageButton)findViewById(R.id.twitter_login_button);
-        twitter.setOnClickListener(new View.OnClickListener() {
+
+        instagram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                /*
                 webhold.setVisibility(View.VISIBLE);
                 WebView wv = (WebView) findViewById(R.id.webView);
                 wv.loadUrl("http:\\24crafts.tk:3000/login/twitter");
@@ -129,50 +173,16 @@ public class Login2 extends AppCompatActivity {
                     }
                     @Override
                     public void onPageFinished(WebView view, String url) {
-                        // TODO Auto-generated method stub
                         super.onPageFinished(view, url);
                         progressBar.setVisibility(View.GONE);
                     }
                 });
+                */
 
             }
 
 
         });
-    }
-
-    private void initialiseLoginButtonEvents(){
-        View.OnClickListener loginListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int id = view.getId();
-
-                //TODO:Add social login action below
-                if(id==R.id.fb_login_button){
-                    Intent socialpage = new Intent(getApplicationContext(),LoginSocial.class);
-                    startActivity(socialpage);
-
-
-                } else if(id == R.id.gl_login_button){
-                    Intent socialpage = new Intent(getApplicationContext(),LoginSocial.class);
-                    startActivity(socialpage);
-
-
-                } else if(id==R.id.twitter_login_button){
-                    Intent socialpage = new Intent(getApplicationContext(),LoginSocial.class);
-                    startActivity(socialpage);
-
-
-                } else {
-                    Log.d(LOG_TAG, "Unregistered click event");
-                }
-
-            }
-        };
-
-        fbLogin.setOnClickListener(loginListener);
-        googleLogin.setOnClickListener(loginListener);
-        instaLogin.setOnClickListener(loginListener);
     }
 
     private void displayCoverVideo(){
@@ -187,17 +197,6 @@ public class Login2 extends AppCompatActivity {
         });
     }
 
-    private void initialiseViews(){
-        fabEmail=(FloatingActionButton)findViewById(R.id.action_email_fab);
-        fabSign = (FloatingActionButton)findViewById(R.id.action_sign_fab);
-        fabExit = (FloatingActionButton)findViewById(R.id.action_exit_fab);
-
-        videoview = (VideoView) findViewById(R.id.videoView);
-
-        fbLogin = (ImageButton)findViewById(R.id.fb_login_button);
-        googleLogin = (ImageButton)findViewById(R.id.gl_login_button);
-        instaLogin = (ImageButton)findViewById(R.id.twitter_login_button);
-    }
 
     private void initialiseFABEvents(){
         fabEmail.setOnClickListener(new View.OnClickListener() {
@@ -213,13 +212,6 @@ public class Login2 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent nextpage = new Intent(getApplicationContext(),StartingScreen.class);
                 startActivity(nextpage);
-            }
-        });
-
-        fabExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
     }

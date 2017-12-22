@@ -45,7 +45,9 @@ public class DashboardFavouritesTabFragment extends android.support.v4.app.Fragm
            @Override
            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-               Intent page = new Intent(getActivity().getApplicationContext(), ProfileView.class);
+               Intent page = new Intent(getActivity().getApplicationContext(), ProfileView.class)
+                       .putExtra("thisistogetback", "do nothing")
+                       .putExtra("fromwhom", "do nothing");
                startActivity(page);
 
            }

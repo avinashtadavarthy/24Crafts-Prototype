@@ -14,20 +14,34 @@ import android.widget.TextView;
 
 import com.example.iyashwant.spiderprojectprototype.Main2Activity;
 import com.example.iyashwant.spiderprojectprototype.Main3Activity;
+import com.example.iyashwant.spiderprojectprototype.ProfileView;
 import com.example.iyashwant.spiderprojectprototype.R;
 
 public class Verification extends AppCompatActivity {
 
     ImageView fb,insta,twitter,phone,google;
     TextView fb_text,insta_text,google_text,twitter_text,phone_text;
-    Button verification_done;
+    Button verification_done, verification_skip;
+
+    String fromhere = "Hello";
+    String fromwhom = "hey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verification);
 
-       // final String type = getIntent().getStringExtra("type");
+        verification_done = (Button) findViewById(R.id.verification_done);
+        verification_skip = (Button) findViewById(R.id.verification_skip);
+
+        fromhere = getIntent().getStringExtra("fromhere");
+        fromwhom = getIntent().getStringExtra("fromwhom");
+
+        if(fromhere.equals("PhoneVerified")) {
+            verification_done.setVisibility(View.GONE);
+        } else if(fromhere.equals("FromSettings")) {
+            verification_skip.setVisibility(View.GONE);
+        }
 
         fb =(ImageView)findViewById(R.id.fb);
         insta=(ImageView) findViewById(R.id.insta);
@@ -51,7 +65,6 @@ public class Verification extends AppCompatActivity {
                 fb.setImageResource(R.drawable.facebook);
                 fb_text.setTextColor(Color.GREEN);
                 fb_text.setText("Verified!");
-
                 return false;
             }
         });
@@ -62,7 +75,7 @@ public class Verification extends AppCompatActivity {
 
                 insta.setImageResource(R.drawable.insta);
                 insta_text.setTextColor(Color.GREEN);
-                insta_text.setText("verified!");
+                insta_text.setText("Verified!");
                 return false;
             }
         });
@@ -73,12 +86,13 @@ public class Verification extends AppCompatActivity {
             public boolean onLongClick(View v) {
                 twitter.setImageResource(R.drawable.twitter);
                 twitter_text.setTextColor(Color.GREEN);
-                twitter_text.setText("verified!");
+                twitter_text.setText("Verified!");
                 return false;
             }
 
         });
 
+        /*
         phone.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -86,11 +100,11 @@ public class Verification extends AppCompatActivity {
                 View view2 = LayoutInflater.from(Verification.this).inflate(R.layout.phone_verify,null);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(Verification.this);
-                builder.setView(view2).setPositiveButton("verify !", new DialogInterface.OnClickListener() {
+                builder.setView(view2).setPositiveButton("Verify !", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         phone_text.setTextColor(Color.GREEN);
-                        phone_text.setText("verified!");
+                        phone_text.setText("Verified!");
                         phone.setImageResource(R.drawable.phone2);
 
                     }
@@ -101,7 +115,7 @@ public class Verification extends AppCompatActivity {
                 return false;
             }
         });
-
+        */
 
         google.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -116,15 +130,23 @@ public class Verification extends AppCompatActivity {
         });
 
 
-        verification_done = (Button) findViewById(R.id.verification_done);
+
         verification_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-               finish();
+                finish();
             }
         });
 
+        verification_skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent next = new Intent(getApplicationContext(), ProfileView.class)
+                        .putExtra("thisistogetback", "getback")
+                        .putExtra("fromwhom", fromwhom);
+                startActivity(next);
+            }
+        });
 
     }
 }

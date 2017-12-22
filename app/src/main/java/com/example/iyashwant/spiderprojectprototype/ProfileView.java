@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.android.volley.toolbox.StringRequest;
 import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
@@ -28,6 +29,7 @@ public class ProfileView extends AppCompatActivity {
     NestedScrollView nestedScrollView;
     ImageView video1, video2, video3;
     int i = 0;
+    String togetback = "Hello", fromwhom = "Hey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,12 +113,32 @@ public class ProfileView extends AppCompatActivity {
         }).start();
 */
 
-
-
     public void playVideo(View view)
     {
         Intent i = new Intent(getApplicationContext(),YoutubePlayerActivity.class);
         startActivity(i);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        togetback = getIntent().getStringExtra("thisistogetback");
+        fromwhom = getIntent().getStringExtra("fromwhom");
+
+        if(togetback.equals("getback") && fromwhom.equals("Crafts")) {
+
+            Intent i = new Intent(getApplicationContext(), Main2Activity.class);
+            startActivity(i);
+
+        } else if(togetback.equals("getback") && fromwhom.equals("Clients")) {
+
+            Intent i = new Intent(getApplicationContext(), Main3Activity.class);
+            startActivity(i);
+
+        } else {
+            finish();
+        }
+
+    }
 }

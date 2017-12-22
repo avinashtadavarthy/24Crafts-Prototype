@@ -5,6 +5,15 @@
     <string name="seek_to">Jump To</string>
     <string name="seek_to_hint">Seconds</string>
 
+    <string name="facebook_app_id">106468900132564</string>
+
+    <string name="FACEBOOK_APP_IDnew">1497155203735641</string>
+
+    <string name="ACCOUNT_KIT_CLIENT_TOKEN">b6c8bbc8c2ad7fabe72e82871fd71d65</string>
+
+    <string name="fb_login_protocol_scheme">fb106468900132564</string>
+
+
     <string-array name="who">
         <item>Who</item>
         <item>"Director"</item>
@@ -248,6 +257,7 @@ Maecenas mattis, erat et viverra euismod, neque diam porttitor tellus, in fringi
 
 Praesent tincidunt lorem sit amet mi consequat cursus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent vitae blandit sapien. Curabitur est sapien, lobortis sit amet facilisis vel, faucibus eu quam. Nam tempus libero at tellus tempor laoreet. Pellentesque quam lorem, tincidunt in molestie eget, dictum vel risus. Nunc gravida convallis mattis.
     </string>
+
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"

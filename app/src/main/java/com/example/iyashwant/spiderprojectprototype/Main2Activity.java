@@ -1,15 +1,18 @@
 package com.example.iyashwant.spiderprojectprototype;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
@@ -89,7 +92,9 @@ public class Main2Activity extends AppCompatActivity
         nav_header_crafts.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent i = new Intent(Main2Activity.this, ProfileView.class);
+                Intent i = new Intent(Main2Activity.this, ProfileView.class)
+                        .putExtra("thisistogetback", "do nothing")
+                        .putExtra("fromwhom", "do nothing");
                 startActivity(i);
             }
         });
@@ -101,8 +106,25 @@ public class Main2Activity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            finish();
+
+            new AlertDialog.Builder(Main2Activity.this)
+                    .setMessage("Do you really want to exit?")
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.finishAffinity(Main2Activity.this);
+                            finish();
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .show();
+
         }
+
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

@@ -1,11 +1,14 @@
 package com.example.iyashwant.spiderprojectprototype;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -66,7 +69,9 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         header_for_clients.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent i = new Intent(Main3Activity.this, ProfileView.class);
+                Intent i = new Intent(Main3Activity.this, ProfileView.class)
+                        .putExtra("thisistogetback", "do nothing")
+                        .putExtra("fromwhom", "do nothing");
                 startActivity(i);
             }
         });
@@ -135,7 +140,22 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            finish();
+
+            new AlertDialog.Builder(Main3Activity.this)
+                    .setMessage("Do you really want to exit?")
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.finishAffinity(Main3Activity.this);
+                            finish();
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .show();
+
         }
     }
 

@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.example.iyashwant.spiderprojectprototype.DataModel;
 import com.example.iyashwant.spiderprojectprototype.R;
-import com.example.iyashwant.spiderprojectprototype.RecyclerViewClickListener;
 
 import java.util.ArrayList;
 
@@ -17,39 +16,26 @@ import java.util.ArrayList;
  * Created by rakesh on 24/11/17.
  */
 
-public class CustomAdapterOpenAuditions extends RecyclerView.Adapter<CustomAdapterOpenAuditions.MyViewHolder>  {
+public class CustomAdapterOpenAuditions extends RecyclerView.Adapter<CustomAdapterOpenAuditions.MyViewHolder> {
 
     private ArrayList<DataModel> dataSet;
 
-
-    private RecyclerViewClickListener mListener;
-
-    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewlocationname;
         TextView textViewnoofapplicants;
         ImageView imageViewIcon;
-        RecyclerViewClickListener mListener;
 
-        public MyViewHolder(View itemView,RecyclerViewClickListener listener) {
+        public MyViewHolder(View itemView) {
             super(itemView);
-            this.mListener = listener;
-            itemView.setOnClickListener(this);
             this.textViewlocationname = (TextView) itemView.findViewById(R.id.LocationText);
             this.textViewnoofapplicants = (TextView) itemView.findViewById(R.id.applicantsText);
             this.imageViewIcon = (ImageView) itemView.findViewById(R.id.dashboardimage);
         }
-
-        @Override
-        public void onClick(View view) {
-
-          //  mListener.onCLick(,getAdapterPosition());
-        }
     }
 
-    public CustomAdapterOpenAuditions(ArrayList<DataModel> data,RecyclerViewClickListener listener) {
+    public CustomAdapterOpenAuditions(ArrayList<DataModel> data) {
         this.dataSet = data;
-        mListener = listener;
     }
 
     @Override
@@ -60,7 +46,7 @@ public class CustomAdapterOpenAuditions extends RecyclerView.Adapter<CustomAdapt
 
         view.setOnClickListener(OpenAuditionsFragment.myOnClickListener);
 
-        MyViewHolder myViewHolder = new MyViewHolder(view,mListener);
+        MyViewHolder myViewHolder = new MyViewHolder(view);
         return myViewHolder;
     }
 
