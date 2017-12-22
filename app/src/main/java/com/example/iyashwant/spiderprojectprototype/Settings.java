@@ -54,7 +54,7 @@ public class Settings extends AppCompatActivity {
             verify.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(),Verification.class);
+                    Intent intent = new Intent(getApplicationContext(),Verification.class).putExtra("fromhere", "FromSettings");
                     startActivity(intent);
                     overridePendingTransition(R.anim.right_enter, R.anim.left_out);
                 }

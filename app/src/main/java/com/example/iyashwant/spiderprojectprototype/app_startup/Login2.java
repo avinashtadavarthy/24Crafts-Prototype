@@ -3,6 +3,7 @@ package com.example.iyashwant.spiderprojectprototype.app_startup;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.net.Uri;
 
@@ -17,9 +18,11 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.example.iyashwant.spiderprojectprototype.LoginSocial;
@@ -32,6 +35,10 @@ public class Login2 extends AppCompatActivity {
     FloatingActionButton fabEmail, fabSign;
     VideoView videoview;
     LinearLayout facebook, google, instagram;
+    LinearLayout sign_up_button, login_button;
+
+    ImageView signup_iconz, login_iconz;
+    TextView otherlogins;
 
     /*
     RelativeLayout webhold;
@@ -51,13 +58,42 @@ public class Login2 extends AppCompatActivity {
         google = (LinearLayout) findViewById(R.id.gl_login_button);
         instagram = (LinearLayout) findViewById(R.id.instagram_login_button);
 
-        fabEmail=(FloatingActionButton)findViewById(R.id.action_email_fab);
-        fabSign = (FloatingActionButton)findViewById(R.id.action_sign_fab);
+        //fabEmail=(FloatingActionButton)findViewById(R.id.action_email_fab);
+        //fabSign = (FloatingActionButton)findViewById(R.id.action_sign_fab);
 
         videoview = (VideoView) findViewById(R.id.videoView);
 
+        otherlogins = (TextView) findViewById(R.id.otherlogins);
+        sign_up_button = (LinearLayout) findViewById(R.id.sign_up_button);
+        login_button = (LinearLayout) findViewById(R.id.login_button);
+
+        signup_iconz = (ImageView) findViewById(R.id.signup_iconz);
+        login_iconz = (ImageView) findViewById(R.id.login_iconz);
+
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            otherlogins.setElevation(10);
+            signup_iconz.setElevation(8);
+            login_iconz.setElevation(8);
+        }
+
+        sign_up_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextpage = new Intent(getApplicationContext(),StartingScreen.class);
+                startActivity(nextpage);
+            }
+        });
+
+        login_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextpage = new Intent(getApplicationContext(),Login.class);
+                startActivity(nextpage);
+            }
+        });
+
         displayCoverVideo();
-        initialiseFABEvents();
+        //initialiseFABEvents();
         //initialiseLoginButtonEvents();
         LoginpopUp();
 

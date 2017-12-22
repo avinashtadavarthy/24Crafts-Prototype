@@ -17,6 +17,7 @@ public class SplashScreen extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 3000;
 
     VideoView splashvideo;
+    ImageView splashlogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,8 @@ public class SplashScreen extends AppCompatActivity {
 
         splashvideo = (VideoView) findViewById(R.id.splashvideo);
 
-
+        splashlogo = (ImageView) findViewById(R.id.splashlogo);
+        if (android.os.Build.VERSION.SDK_INT >= 21) splashlogo.setElevation(10);
 
         String uriPath = "android.resource://com.example.iyashwant.spiderprojectprototype/" + R.raw.opening;
         Uri uri = Uri.parse(uriPath);

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.iyashwant.spiderprojectprototype">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -22,6 +23,7 @@
             </intent-filter>
         </activity>
 
+
         <!-- starting screen -->
         <activity
             android:name=".app_startup.Login2"
@@ -31,6 +33,7 @@
             android:name=".app_startup.Login"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
+
 
         <!-- registration -->
         <activity
@@ -57,70 +60,82 @@
             android:name=".registration.signupclient"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ForgotPassword" />
+        <activity android:name=".ForgotPasswordPopUp"
+            android:theme="@style/AppTheme.CustomTheme" />
+
+
+        <!-- Facebook SDK Integration -->
+        <meta-data android:name="com.facebook.accountkit.ApplicationName"
+            android:value="@string/app_name" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/FACEBOOK_APP_IDnew" />
+
+        <meta-data
+            android:name="com.facebook.accountkit.ClientToken"
+            android:value="@string/ACCOUNT_KIT_CLIENT_TOKEN" />
+
+        <activity
+            android:name="com.facebook.accountkit.ui.AccountKitActivity"
+            android:theme="@style/AppLoginTheme"
+            tools:replace="android:theme" />
+
+
+        <!-- Main App -->
         <activity android:name=".Main2Activity" />
         <activity android:name=".Main3Activity" />
         <activity android:name=".registration.StartingScreen" />
         <activity android:name=".PurchaseCoins"
             android:theme="@style/Theme.AppCompat"/>
-        <activity
-            android:name=".encounters.Tinderswipemain"
+        <activity android:name=".encounters.Tinderswipemain"
             android:parentActivityName=".Main2Activity"
             android:theme="@style/AppTheme" />
         <activity android:name=".Contacts" />
         <activity android:name=".ProfileView" />
-        <activity
-            android:name=".FreeCoins"
+        <activity android:name=".CreateAuditions"/>
+
+
+        <!-- Pop Ups -->
+        <activity android:name=".FreeCoins"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity
-            android:name=".RefAndEarn"
+        <activity android:name=".RefAndEarn"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity
-            android:name=".DailyCheckIn"
+        <activity android:name=".DailyCheckIn"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity
-            android:name=".DailyCheckIn2"
+        <activity android:name=".DailyCheckIn2"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity
-            android:name=".VerifyYourself"
+        <activity android:name=".VerifyYourself"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity
-            android:name=".PromoteProfilePopUp"
+        <activity android:name=".PromoteProfilePopUp"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity
-            android:name=".SubscribePopUp"
+        <activity android:name=".SubscribePopUp"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity
-            android:name=".SubscribePopUp2"
+        <activity android:name=".SubscribePopUp2"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity
-            android:name=".Settings"
+
+
+        <!-- Settings -->
+        <activity android:name=".Settings"
             android:parentActivityName=".Main2Activity"
             android:theme="@style/Theme.AppCompat" />
-        <activity
-            android:name=".AccountInfo"
+        <activity android:name=".AccountInfo"
             android:parentActivityName=".Settings"
             android:theme="@style/Theme.AppCompat" />
-        <activity
-            android:name=".AboutUs"
+        <activity android:name=".AboutUs"
             android:parentActivityName=".Settings"
             android:theme="@style/Theme.AppCompat" />
-        <activity
-            android:name=".TermsConditions"
+        <activity android:name=".TermsConditions"
             android:parentActivityName=".AboutUs"
             android:theme="@style/Theme.AppCompat" />
-        <activity
-            android:name=".PrivacyPolicy"
+        <activity android:name=".PrivacyPolicy"
             android:parentActivityName=".AboutUs"
             android:theme="@style/Theme.AppCompat" />
         <activity android:name=".ProfileViewEdit" />
-        <activity
-            android:name=".RateUs"
+        <activity android:name=".RateUs"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".ForgotPassword" />
-        <activity
-            android:name=".ForgotPasswordPopUp"
-            android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".CreateAuditions"></activity>
+
     </application>
 
 </manifest>

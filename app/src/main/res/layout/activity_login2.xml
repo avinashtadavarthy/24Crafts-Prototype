@@ -21,16 +21,18 @@
         android:layout_height="fill_parent"/>
 
     <LinearLayout
+        android:gravity="center"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:padding="10sp"
-        android:layout_width="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/fb_login_button"
-        android:layout_width="wrap_content"
+        android:layout_width="220sp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@drawable/round_card"
@@ -100,11 +102,97 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_marginTop="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="50sp"
+                android:background="#ffffff"
+                android:layout_height="1sp"
+                android:layout_marginRight="5sp"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/otherlogins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="other login methods"
+                android:textColor="#ffffff"
+                android:fontFamily="sans-serif-smallcaps"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:layout_width="50sp"
+                android:background="#ffffff"
+                android:layout_height="1sp"
+                android:layout_marginLeft="5sp"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/sign_up_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/signup_iconz"
+                    android:layout_width="45sp"
+                    android:layout_height="45sp"
+                    android:padding="5sp"
+                    android:src="@drawable/signup_icon"
+                    android:layout_marginRight="50sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sign Up"
+                    android:textColor="#ffffff"
+                    android:fontFamily="sans-serif-condensed"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/login_iconz"
+                    android:layout_width="45sp"
+                    android:layout_height="45sp"
+                    android:padding="5sp"
+                    android:src="@drawable/login_icon"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Login"
+                    android:textColor="#ffffff"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_horizontal"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
     </LinearLayout>
 
 
     <com.github.clans.fab.FloatingActionMenu
-
+        android:visibility="gone"
         android:id="@+id/material_design_android_floating_action_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -145,7 +233,7 @@
 
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/action_email_fab"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_action_email"
@@ -157,7 +245,7 @@
 
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/action_sign_fab"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_action_sign"
