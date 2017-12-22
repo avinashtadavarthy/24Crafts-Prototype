@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.iyashwant.spiderprojectprototype">
+    package="com.twenty.four.crafts">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -15,10 +15,9 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
         <!-- splash screen -->
-        <activity android:name=".app_startup.SplashScreen">
+        <activity android:name="com.twenty.four.crafts.app_startup.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,120 +25,131 @@
 
         <!-- starting screen -->
         <activity
-            android:name=".app_startup.Login2"
+            android:name="com.twenty.four.crafts.app_startup.Login2"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".app_startup.Login"
+            android:name="com.twenty.four.crafts.app_startup.Login"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
 
 
         <!-- registration -->
         <activity
-            android:name=".registration.signup"
+            android:name="com.twenty.four.crafts.registration.signup"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".registration.signup2"
+            android:name="com.twenty.four.crafts.registration.signup2"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".registration.signup3"
+            android:name="com.twenty.four.crafts.registration.signup3"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".registration.Verification"
+            android:name="com.twenty.four.crafts.registration.Verification"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".registration.signup3client"
+            android:name="com.twenty.four.crafts.registration.signup3client"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".registration.signupclient"
+            android:name="com.twenty.four.crafts.registration.signupclient"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ForgotPassword" />
-        <activity android:name=".ForgotPasswordPopUp"
+        <activity android:name="com.twenty.four.crafts.ForgotPassword" />
+        <activity android:name="com.twenty.four.crafts.ForgotPasswordPopUp"
             android:theme="@style/AppTheme.CustomTheme" />
 
 
         <!-- Facebook SDK Integration -->
         <meta-data android:name="com.facebook.accountkit.ApplicationName"
             android:value="@string/app_name" />
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/FACEBOOK_APP_IDnew" />
-
         <meta-data
             android:name="com.facebook.accountkit.ClientToken"
             android:value="@string/ACCOUNT_KIT_CLIENT_TOKEN" />
-
         <activity
             android:name="com.facebook.accountkit.ui.AccountKitActivity"
             android:theme="@style/AppLoginTheme"
             tools:replace="android:theme" />
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
 
 
         <!-- Main App -->
-        <activity android:name=".Main2Activity" />
-        <activity android:name=".Main3Activity" />
-        <activity android:name=".registration.StartingScreen" />
-        <activity android:name=".PurchaseCoins"
+        <activity android:name="com.twenty.four.crafts.Main2Activity" />
+        <activity android:name="com.twenty.four.crafts.Main3Activity" />
+        <activity android:name="com.twenty.four.crafts.registration.StartingScreen" />
+        <activity android:name="com.twenty.four.crafts.PurchaseCoins"
             android:theme="@style/Theme.AppCompat"/>
-        <activity android:name=".encounters.Tinderswipemain"
-            android:parentActivityName=".Main2Activity"
+        <activity android:name="com.twenty.four.crafts.encounters.Tinderswipemain"
+            android:parentActivityName="com.twenty.four.crafts.Main2Activity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Contacts" />
-        <activity android:name=".ProfileView" />
-        <activity android:name=".YoutubePlayerActivity"/>
-        <activity android:name=".CreateAuditions"/>
+        <activity android:name="com.twenty.four.crafts.Contacts" />
+        <activity android:name="com.twenty.four.crafts.ProfileView" />
+        <activity android:name="com.twenty.four.crafts.YoutubePlayerActivity"/>
+        <activity android:name="com.twenty.four.crafts.CreateAuditions"/>
 
 
         <!-- Razor Pay Integration -->
         <meta-data android:name="com.razorpay.ApiKey"
             android:value="rzp_test_FSoknm2lAIBB6U" />
-        <activity android:name=".PaymentActivity" />
+        <activity android:name="com.twenty.four.crafts.PaymentActivity" />
 
         <!-- Pop Ups -->
-        <activity android:name=".FreeCoins"
+        <activity android:name="com.twenty.four.crafts.FreeCoins"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".RefAndEarn"
+        <activity android:name="com.twenty.four.crafts.RefAndEarn"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".DailyCheckIn"
+        <activity android:name="com.twenty.four.crafts.DailyCheckIn"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".DailyCheckIn2"
+        <activity android:name="com.twenty.four.crafts.DailyCheckIn2"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".VerifyYourself"
+        <activity android:name="com.twenty.four.crafts.VerifyYourself"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".PromoteProfilePopUp"
+        <activity android:name="com.twenty.four.crafts.PromoteProfilePopUp"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".SubscribePopUp"
+        <activity android:name="com.twenty.four.crafts.SubscribePopUp"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".SubscribePopUp2"
+        <activity android:name="com.twenty.four.crafts.SubscribePopUp2"
             android:theme="@style/AppTheme.CustomTheme" />
 
 
         <!-- Settings -->
-        <activity android:name=".Settings"
-            android:parentActivityName=".Main2Activity"
+        <activity android:name="com.twenty.four.crafts.Settings"
+            android:parentActivityName="com.twenty.four.crafts.Main2Activity"
             android:theme="@style/Theme.AppCompat" />
-        <activity android:name=".AccountInfo"
-            android:parentActivityName=".Settings"
+        <activity android:name="com.twenty.four.crafts.AccountInfo"
+            android:parentActivityName="com.twenty.four.crafts.Settings"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".AboutUs"
-            android:parentActivityName=".Settings"
+        <activity android:name="com.twenty.four.crafts.AboutUs"
+            android:parentActivityName="com.twenty.four.crafts.Settings"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".TermsConditions"
-            android:parentActivityName=".AboutUs"
+        <activity android:name="com.twenty.four.crafts.TermsConditions"
+            android:parentActivityName="com.twenty.four.crafts.AboutUs"
             android:theme="@style/Theme.AppCompat" />
-        <activity android:name=".PrivacyPolicy"
-            android:parentActivityName=".AboutUs"
+        <activity android:name="com.twenty.four.crafts.PrivacyPolicy"
+            android:parentActivityName="com.twenty.four.crafts.AboutUs"
             android:theme="@style/Theme.AppCompat" />
-        <activity android:name=".ProfileViewEdit" />
-        <activity android:name=".RateUs"
+        <activity android:name="com.twenty.four.crafts.ProfileViewEdit" />
+        <activity android:name="com.twenty.four.crafts.RateUs"
             android:theme="@style/AppTheme.CustomTheme" />
 
     </application>

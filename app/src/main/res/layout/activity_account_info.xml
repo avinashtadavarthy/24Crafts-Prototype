@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/blur"
-    tools:context="com.example.iyashwant.spiderprojectprototype.AccountInfo">
+    tools:context="com.twenty.four.crafts.AccountInfo">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"

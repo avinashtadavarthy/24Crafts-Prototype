@@ -6,7 +6,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/animation_background"
-    tools:context="com.example.iyashwant.spiderprojectprototype.app_startup.Login2"
+    tools:context="com.twenty.four.crafts.app_startup.Login2"
     android:focusable="true"
     android:id="@+id/parentLayout"
     android:focusableInTouchMode="true"

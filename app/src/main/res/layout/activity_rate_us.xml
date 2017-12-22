@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
-    tools:context="com.example.iyashwant.spiderprojectprototype.RateUs">
+    tools:context="com.twenty.four.crafts.RateUs">
 
     <ImageView
         android:layout_width="50dp"

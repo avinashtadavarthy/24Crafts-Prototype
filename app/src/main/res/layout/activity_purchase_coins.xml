@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/blur"
-    tools:context="com.example.iyashwant.spiderprojectprototype.PurchaseCoins">
+    tools:context="com.twenty.four.crafts.PurchaseCoins">
 
     <RelativeLayout
         android:layout_width="match_parent"

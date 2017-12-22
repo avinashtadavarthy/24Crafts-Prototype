@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#ffffff"
-    tools:context="com.example.iyashwant.spiderprojectprototype.app_startup.SplashScreen">
+    tools:context="com.twenty.four.crafts.app_startup.SplashScreen">
 
     <VideoView
         android:id="@+id/splashvideo"

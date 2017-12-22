@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.example.iyashwant.spiderprojectprototype.PrivacyPolicy"
+    tools:context="com.twenty.four.crafts.PrivacyPolicy"
     android:background="@mipmap/blur">
 
     <TextView

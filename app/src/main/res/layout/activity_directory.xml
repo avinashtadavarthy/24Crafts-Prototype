@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@mipmap/wall"
     android:orientation="vertical"
-    tools:context="com.example.iyashwant.spiderprojectprototype.DirectoryFragment">
+    tools:context="com.twenty.four.crafts.DirectoryFragment">
 
    <ScrollView
        android:layout_width="match_parent"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@mipmap/wall"
-    tools:context="com.example.iyashwant.spiderprojectprototype.registration.signup2"
+    tools:context="com.twenty.four.crafts.registration.signup2"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:screenOrientation="portrait">

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:id="@+id/content_frame_settings"
     android:background="@mipmap/blur"
-    tools:context="com.example.iyashwant.spiderprojectprototype.Settings">
+    tools:context="com.twenty.four.crafts.Settings">
 
     <LinearLayout
         android:id="@+id/info"

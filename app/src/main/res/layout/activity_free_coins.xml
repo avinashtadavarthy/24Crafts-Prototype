@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="15dp"
     android:background="#ffffff"
-    tools:context="com.example.iyashwant.spiderprojectprototype.FreeCoins">
+    tools:context="com.twenty.four.crafts.FreeCoins">
 
     <ImageView
         android:layout_width="100dp"

@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
 
         android:background="@mipmap/blur"
-        tools:context="com.example.srikanth.a24crafts.talent_hunt.TalentHuntDriver">
+        tools:context="com.twenty.srikanth.a24crafts.talent_hunt.TalentHuntDriver">
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"

@@ -8,7 +8,7 @@
     android:background="@mipmap/blur"
     android:padding="10dp"
     android:orientation="vertical"
-    tools:context="com.example.iyashwant.spiderprojectprototype.registration.StartingScreen">
+    tools:context="com.twenty.four.crafts.registration.StartingScreen">
 
     <RelativeLayout
         android:id="@+id/layout1"

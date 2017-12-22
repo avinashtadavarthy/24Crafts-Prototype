@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context="com.example.iyashwant.spiderprojectprototype.YoutubePlayerActivity">
+    tools:context="com.twenty.four.crafts.YoutubePlayerActivity">
 
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/youtube_view"

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:padding="15dp"
     android:layout_height="match_parent"
-    tools:context="com.example.iyashwant.spiderprojectprototype.RefAndEarn">
+    tools:context="com.twenty.four.crafts.RefAndEarn">
 
     <ImageView
         android:id="@+id/refandearnimage"

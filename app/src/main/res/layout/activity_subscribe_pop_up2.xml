@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:padding="15dp"
     android:layout_height="match_parent"
-    tools:context="com.example.iyashwant.spiderprojectprototype.SubscribePopUp2">
+    tools:context="com.twenty.four.crafts.SubscribePopUp2">
 
     <ImageView
         android:id="@+id/Subscribe2"
