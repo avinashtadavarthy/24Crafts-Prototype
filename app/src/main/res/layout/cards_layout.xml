@@ -40,6 +40,7 @@
                 android:layout_marginTop="10dp">
 
                 <TextView
+                    android:id="@+id/open_auditions_text_heading"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -48,6 +49,7 @@
                     android:textSize="20sp" />
 
                 <Switch
+                    android:id="@+id/open_auditions_switch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp" />

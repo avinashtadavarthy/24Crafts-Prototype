@@ -8,22 +8,44 @@
     android:layout_height="match_parent"
     tools:context="com.example.iyashwant.spiderprojectprototype.SubscribePopUp2">
 
-    <TextView
+    <ImageView
         android:id="@+id/Subscribe2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:src="@drawable/logo"/>
+
+    <TextView
+        android:id="@+id/subscribe_text2"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/Subscribe2"
+        android:text="24 Crafts"
         android:gravity="center_horizontal"
-        android:textSize="40sp"
-        android:text="SUBSCRIBE"/>
+        android:textSize="25sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/note_textview"
+        android:text="NOTE:"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:layout_below="@id/subscribe_text2"
+        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Subscription2"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/Subscribe2"
-        android:textSize="20sp"
-        android:text="Note: Free Account only gives you access to the DIRECTORY. Producers/Directors will not be able to contact you..."/>
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/note_textview"
+        android:textSize="18sp"
+        android:text="Free Account only gives you access to the DIRECTORY. Producers/Directors will not be able to contact you..."/>
 
     <TextView
         android:id="@+id/Subscription22"
@@ -31,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_below="@id/Subscription2"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:text="Do you really want to continue Free ?"
         />
 
@@ -41,19 +63,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
+        <TextView
             android:id="@+id/YesButton"
             android:layout_width="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_height="wrap_content"
+            android:textSize="25sp"
             android:layout_alignParentBottom="true"
             android:text="Yes"
             />
 
-        <Button
+        <TextView
             android:layout_alignParentBottom="true"
             android:id="@+id/NoButton"
             android:text="No"
+            android:textSize="25sp"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

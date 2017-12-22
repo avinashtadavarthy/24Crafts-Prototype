@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
     android:orientation="vertical">
 
@@ -11,42 +11,45 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:orientation="vertical"
-        app:cardCornerRadius="45dp"
-        android:background="@drawable/round_card"
+        android:background="@drawable/cardbottomround"
         app:cardElevation="2sp"
         app:cardPreventCornerOverlap="false"
         app:cardBackgroundColor="#fffff0">
 
         <ImageView
+            android:src="@drawable/pic2"
             android:id="@+id/profileImageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="75dp"
+            android:layout_marginBottom="105dp"
             android:scaleType="fitXY" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="105dp"
             android:layout_gravity="bottom"
-            android:gravity="center|left"
-            android:orientation="vertical"
-            android:paddingLeft="20dp">
+            android:gravity="center_horizontal|left"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/nameAgeTxt"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18dp"
+                android:gravity="center_horizontal"
                 android:textStyle="bold" />
 
             <TextView
+                android:gravity="center_horizontal"
                 android:id="@+id/locationNameTxt"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="14dp"
                 android:textStyle="normal" />
         </LinearLayout>
+
+
     </android.support.v7.widget.CardView>
-</FrameLayout>
+</RelativeLayout>

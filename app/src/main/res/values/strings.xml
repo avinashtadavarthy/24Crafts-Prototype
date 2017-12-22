@@ -1,15 +1,9 @@
 <resources>
     <string name="app_name">24 Crafts</string>
     <string name="date_selected" />
-
-    <string name="facebook_app_id">106468900132564</string>
-
-    <string name="FACEBOOK_APP_IDnew">1497155203735641</string>
-
-    <string name="ACCOUNT_KIT_CLIENT_TOKEN">b6c8bbc8c2ad7fabe72e82871fd71d65</string>
-
-    <string name="fb_login_protocol_scheme">fb106468900132564</string>
-
+    <string name="player_error">Error initializing YouTube player: %s</string>
+    <string name="seek_to">Jump To</string>
+    <string name="seek_to_hint">Seconds</string>
 
     <string-array name="who">
         <item>Who</item>

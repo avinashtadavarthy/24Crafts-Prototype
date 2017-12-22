@@ -32,7 +32,8 @@
         android:focusableInTouchMode="true"
         android:layout_alignBottom="@+id/button11"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="14dp">
 
 
     <LinearLayout

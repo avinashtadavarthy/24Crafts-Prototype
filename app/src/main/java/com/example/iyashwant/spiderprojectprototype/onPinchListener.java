@@ -2,14 +2,11 @@ package com.example.iyashwant.spiderprojectprototype;
 
 import android.view.ScaleGestureDetector;
 
-/**
- * Created by rakesh on 16/8/17.
- */
+import com.example.iyashwant.spiderprojectprototype.ZoomableRelativeLayout;
 
 public class onPinchListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
 
-    float startingSpan;
-    float endSpan;
+    float currentSpan;
     float startFocusX;
     float startFocusY;
     ZoomableRelativeLayout mZoomableRelativeLayout;
@@ -19,21 +16,26 @@ public class onPinchListener extends ScaleGestureDetector.SimpleOnScaleGestureLi
         mZoomableRelativeLayout = layout;
     }
 
-    public boolean onScaleBegin(ScaleGestureDetector detector) {
-        startingSpan = detector.getCurrentSpan();
+    public boolean onScaleBegin(ScaleGestureDetector detector)
+    {
+        currentSpan = detector.getCurrentSpan();
         startFocusX = detector.getFocusX();
         startFocusY = detector.getFocusY();
         return true;
     }
 
+    public boolean onScale(ScaleGestureDetector detector)
+    {
+        mZoomableRelativeLayout.relativeScale(detector.getCurrentSpan() / currentSpan, startFocusX, startFocusY);
 
-    public boolean onScale(ScaleGestureDetector detector) {
-        mZoomableRelativeLayout.scale(detector.getCurrentSpan()/startingSpan, startFocusX, startFocusY);
+        currentSpan = detector.getCurrentSpan();
+
         return true;
     }
 
-    public void onScaleEnd(ScaleGestureDetector detector) {
-        mZoomableRelativeLayout.restore();
+    public void onScaleEnd(ScaleGestureDetector detector)
+    {
+        mZoomableRelativeLayout.release();
     }
 }
 

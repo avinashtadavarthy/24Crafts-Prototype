@@ -18,7 +18,6 @@ public class TalentHuntFragment extends android.support.v4.app.Fragment {
     Talent_support_class class_object;
 
 
-
     ArrayList<Talent_support_class> data=new ArrayList<>();
 
 

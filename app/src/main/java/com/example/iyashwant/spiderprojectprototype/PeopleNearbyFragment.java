@@ -50,7 +50,7 @@ public class PeopleNearbyFragment extends android.support.v4.app.Fragment {
         TextView textView = (TextView) myView.findViewById(R.id.textView2);
 
         mainLayout = (ZoomableRelativeLayout) myView.findViewById(R.id.mainLayout);
-        scaleGestureDetector = new ScaleGestureDetector(getActivity(), new onPinchListener(mainLayout));
+        scaleGestureDetector = new ScaleGestureDetector(getActivity(),new onPinchListener(mainLayout));
 
         imageView = (ImageView) myView.findViewById(R.id.IMG);
 

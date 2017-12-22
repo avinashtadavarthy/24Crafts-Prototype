@@ -24,9 +24,16 @@ public class SubscribePopUp extends AppCompatActivity {
 
     }
 
+    public void purchasecoinsIntent(View view)
+    {
+        Intent intent = new Intent(getApplicationContext(),PurchaseCoins.class);
+        startActivity(intent);
+        finish();
+    }
     public void launchIntent(View view)
     {
         Intent intent = new Intent(getApplicationContext(),SubscribePopUp2.class);
         startActivity(intent);
+        finish();
     }
 }

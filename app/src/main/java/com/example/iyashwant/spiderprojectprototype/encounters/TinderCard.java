@@ -23,6 +23,8 @@ import com.mindorks.placeholderview.annotations.swipe.SwipingDirection;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
+import static com.example.iyashwant.spiderprojectprototype.R.drawable.pic2;
+
 /**
  * Created by rakesh on 5/11/17.
  */
@@ -56,10 +58,9 @@ public class TinderCard {
 
     @Resolve
     private void onResolved() {
-        Glide.with(mContext).load(mProfile.getImageUrl())
-                .bitmapTransform(new RoundedCornersTransformation(mContext, Utils.dpToPx(7), 0,
-                        RoundedCornersTransformation.CornerType.TOP))
+       Glide.with(mContext).load("https://www.arabiaweddings.com/sites/default/files/indian%20bride2.JPG")
                 .into(profileImageView);
+        //profileImageView.setImageResource(R.drawable.pic2);
         nameAgeTxt.setText(mProfile.getName() + ", " + mProfile.getAge());
         locationNameTxt.setText(mProfile.getLocation());
         mSwipeView.setAlpha(1);

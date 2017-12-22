@@ -4,11 +4,13 @@ import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.style.IconMarginSpan;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.iyashwant.spiderprojectprototype.R;
@@ -33,14 +35,14 @@ public class SwipeFragment extends android.support.v4.app.Fragment implements Ti
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.activity_tinderswipemain,container,false);
+        myView = inflater.from(container.getContext()).inflate(R.layout.activity_tinderswipemain,container,false);
 
         getActivity().setTitle("Encounters");
 
         mSwipeView = (SwipeDirectionalView) myView.findViewById(R.id.swipeView);
         mContext = getActivity().getApplicationContext();
 
-        int bottomMargin = Utils.dpToPx(160);
+        int bottomMargin = Utils.dpToPx(80);
         Point windowSize = com.example.iyashwant.spiderprojectprototype.encounters.Utils.getDisplaySize(getActivity().getWindowManager());
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
@@ -66,17 +68,18 @@ public class SwipeFragment extends android.support.v4.app.Fragment implements Ti
             mSwipeView.addView(new TinderCard(mContext, profile, cardViewHolderSize, this));
         }
 
-        myView.findViewById(R.id.rejectBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mSwipeView.doSwipe(false);
-            }
-        });
 
         myView.findViewById(R.id.acceptBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSwipeView.doSwipe(true);
+            }
+        });
+
+        myView.findViewById(R.id.rejectBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSwipeView.doSwipe(false);
             }
         });
 
@@ -96,7 +99,7 @@ public class SwipeFragment extends android.support.v4.app.Fragment implements Ti
                 }
             }
         });
-        
+
         return myView;
     }
 

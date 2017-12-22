@@ -14,7 +14,7 @@ public class ForgotPasswordPopUp extends AppCompatActivity {
 
     TextView forgotPasswordPopUpTextView;
     Button forgotPasswordPopUpButton;
-    int emailFound = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,38 +33,6 @@ public class ForgotPasswordPopUp extends AppCompatActivity {
 
         forgotPasswordPopUpTextView = findViewById(R.id.forgot_password_popup_textview);
         forgotPasswordPopUpButton = findViewById(R.id.forgot_password_popup_button);
-
-        if(emailFound == 0)
-        {
-            forgotPasswordPopUpTextView.setText(R.string.unreg_email_text);
-            forgotPasswordPopUpButton.setText("REGISTER");
-        }
-
-        else
-        {
-            forgotPasswordPopUpTextView.setText(R.string.reg_email_text);
-            forgotPasswordPopUpButton.setText("OK");
-        }
-
-
-
-        forgotPasswordPopUpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(emailFound == 0)
-                {
-                    Intent i = new Intent(getApplicationContext(), StartingScreen.class);
-                    startActivity(i);
-                }
-
-
-                else
-                {
-                    finish();
-                }
-            }
-        });
 
 
     }

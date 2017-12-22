@@ -5,6 +5,47 @@
     android:background="@mipmap/blur"
     android:orientation="vertical">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#212121">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/profile_back2"
+                android:layout_width="25sp"
+                android:layout_height="?attr/actionBarSize"
+                android:paddingTop="15sp"
+                android:paddingBottom="15sp"
+                android:src="@drawable/back"
+                android:scaleType="centerCrop"
+                android:tint="#ffffff"
+                android:background="#00000000"
+                android:onClick="goBacktoPrevious"
+                android:layout_alignParentLeft="true"/>
+
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/profile_back2"
+                android:text="About Us"
+                android:textSize="20sp"
+                android:gravity="center_vertical"/>
+
+
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+
     <TextView
         android:id="@+id/privacy"
         android:layout_width="match_parent"
@@ -66,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textSize="15sp"
-            android:text="Copyright(c) 2017"
+            android:text="Copyright 2017 ©"
             android:textColor="#ffffff"/>
 
         <TextView

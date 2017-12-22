@@ -5,9 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.TextView;
+import java.util.Random;
 
 public class DailyCheckIn extends AppCompatActivity {
 
+    TextView random1,random2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +22,11 @@ public class DailyCheckIn extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.8),(int)(height*.6));
+        getWindow().setLayout((int)(width*.8),(int)(height*.9));
+
+        random1 = findViewById(R.id.random1);
+        random2 = findViewById(R.id.random2);
+
     }
 
     public void checkinintent(View view)

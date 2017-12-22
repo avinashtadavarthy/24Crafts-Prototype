@@ -8,21 +8,33 @@
     android:padding="15dp"
     tools:context="com.example.iyashwant.spiderprojectprototype.SubscribePopUp">
 
-    <TextView
+    <ImageView
         android:id="@+id/Subscribe"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"
+        android:src="@drawable/logo"/>
+
+    <TextView
+        android:id="@+id/subscribe_text"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/Subscribe"
+        android:text="24 Crafts"
         android:gravity="center_horizontal"
-        android:textSize="40sp"
-        android:text="SUBSCRIBE"/>
+        android:textSize="25sp"
+        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Subscription"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/Subscribe"
-        android:textSize="20sp"
+        android:layout_below="@id/subscribe_text"
+        android:textSize="18sp"
+        android:gravity="center_horizontal"
         android:text="Subscribe to 24Crafts to enjoy using the app's features. Subscription allows Producers/Directors to find you...."/>
 
     <RelativeLayout
@@ -33,7 +45,8 @@
 
         <Button
             android:id="@+id/SubscribeButton"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
+            android:onClick="purchasecoinsIntent"
             android:layout_alignParentLeft="true"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -45,7 +58,7 @@
             android:id="@+id/ContinueButton"
             android:text="Continue Free"
             android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:onClick="launchIntent"/>
 

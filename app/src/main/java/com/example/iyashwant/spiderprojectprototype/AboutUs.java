@@ -3,8 +3,10 @@ package com.example.iyashwant.spiderprojectprototype;
 import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +16,17 @@ import android.widget.Toast;
 
 public class AboutUs extends AppCompatActivity {
 
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
 
+        toolbar = findViewById(R.id.toolbar2);
+
+        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("About Us");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         TextView privac =  (TextView) findViewById(R.id.privacy);
@@ -74,4 +80,11 @@ public class AboutUs extends AppCompatActivity {
             });
 
         }
+
+        public void goBacktoPrevious(View view)
+        {
+            onBackPressed();
+        }
+
+
 }

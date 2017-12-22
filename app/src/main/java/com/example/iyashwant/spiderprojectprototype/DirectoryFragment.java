@@ -3,14 +3,19 @@ package com.example.iyashwant.spiderprojectprototype;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Avinash Tadavarthy on 04-Nov-17.
@@ -22,6 +27,8 @@ public class DirectoryFragment extends android.support.v4.app.Fragment {
 
     RecyclerView recyclerView;
     DirectoryGridAdapter adapter;
+    CustomPagerAdapter mCustomPagerAdapter;
+    ViewPager mViewPager;
     ArrayList<IconsClass> class_obj=new ArrayList<>();
     String[] desc = {"Ad and Corporate Filmmakers","Advertising and Marketing","Agency","Art Directors","Audigraphers","Auditorium","Dance","Directors",
             "Cine Banners","Cine Designers","Cinema Laboratories","Cinematographers", "Classical Singers","Colour Lab","Costumers","Dialogue Writers",
@@ -41,6 +48,11 @@ public class DirectoryFragment extends android.support.v4.app.Fragment {
         getActivity().setTitle("Directory");
 
         recyclerView = (RecyclerView) myView.findViewById(R.id.rv);
+        mCustomPagerAdapter = new CustomPagerAdapter(getFragmentManager(), getActivity().getApplicationContext());
+
+        mViewPager = (ViewPager) myView.findViewById(R.id.directoryViewPager);
+        mViewPager.setAdapter(mCustomPagerAdapter);
+        pageSwitcher(3);
 
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(this.getActivity().getApplicationContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
@@ -65,10 +77,12 @@ public class DirectoryFragment extends android.support.v4.app.Fragment {
 
 
 
+
+
         adapter = new DirectoryGridAdapter(getActivity(),class_obj);///////////////////////////////////////////////
         class_obj.add(new IconsClass(R.drawable.adcorp,"Ad and Corporate Filmmakers","adcorp"));
         class_obj.add(new IconsClass(R.drawable.advertisingandmarketing,"Advertisingandmarketing","advertising"));
-        class_obj.add(new IconsClass(R.drawable.artdirector,"Art directors","artdirectors"));
+        class_obj.add(new IconsClass(R.drawable.artdirector_white,"Art directors","artdirectors"));
         class_obj.add(new IconsClass(R.drawable.audiographers,"audiographers","audiographers"));
         class_obj.add(new IconsClass(R.drawable.auditorium,"auditorium","auditorium"));
         class_obj.add(new IconsClass(R.drawable.choreographers,"choreographers","choreographers"));
@@ -93,7 +107,7 @@ public class DirectoryFragment extends android.support.v4.app.Fragment {
         class_obj.add(new IconsClass(R.drawable.hotels,"hotels","hotels"));
         class_obj.add(new IconsClass(R.drawable.journalist,"journalist","journalists"));
         class_obj.add(new IconsClass(R.drawable.journals,"journals","journals"));
-        class_obj.add(new IconsClass(R.drawable.journalsandwebsites,"Journals and Websites","journalwebsites"));
+        class_obj.add(new IconsClass(R.drawable.journals_websites,"Journals and Websites","journalwebsites"));
         class_obj.add(new IconsClass(R.drawable.lightmusictroupe,"lightmusictroupe","lightmusictroupe"));
         class_obj.add(new IconsClass(R.drawable.lyricwriters,"lyricwriters","lyricwriters"));
         class_obj.add(new IconsClass(R.drawable.makeupmen,"makeupmen","makeupmenandhairdressers"));
@@ -120,8 +134,54 @@ public class DirectoryFragment extends android.support.v4.app.Fragment {
         class_obj.add(new IconsClass(R.drawable.videopostproduction,"video post production","videopostproduction"));
 
 
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity().getApplicationContext(),layoutManager.getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setAdapter(adapter);
 
         return myView;
+    }
+
+
+    Timer timer;
+    int page = 0;
+    final boolean keeprunning = true;
+
+    public void pageSwitcher(int seconds) {
+        timer = new Timer(); // At this line a new Thread will be created
+        timer.scheduleAtFixedRate(new RemindTask(), 0, seconds * 1000); // delay
+        // in
+        // milliseconds
+    }
+
+    // this is an inner class...
+    public class RemindTask extends TimerTask {
+
+        @Override
+        public void run() {
+
+
+                // As the TimerTask run on a seprate thread from UI thread we have
+                // to call runOnUiThread to do work on UI thread.
+
+     if(getActivity()!=null) {
+         getActivity().runOnUiThread(new Runnable() {
+             public void run() {
+
+                 if (page > 2) { // In my case the number of pages are 5
+                     page = 0;
+                     // Showing a toast for just testing purpose
+                     //Toast.makeText(getActivity().getApplicationContext(), "Timer stoped",
+                     //      Toast.LENGTH_LONG).show();
+                 } else {
+                     mViewPager.setCurrentItem(page++);
+                 }
+             }
+         });
+     }
+     else cancel();
+
+
+            }
+
     }
 }

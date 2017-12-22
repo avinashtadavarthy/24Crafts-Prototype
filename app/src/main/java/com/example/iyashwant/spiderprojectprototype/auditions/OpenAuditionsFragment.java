@@ -10,9 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import com.example.iyashwant.spiderprojectprototype.DataModel;
 import com.example.iyashwant.spiderprojectprototype.R;
+import com.example.iyashwant.spiderprojectprototype.RecyclerViewClickListener;
 
 import java.util.ArrayList;
 
@@ -58,7 +61,13 @@ public class OpenAuditionsFragment extends Fragment {
 
         removedItems = new ArrayList<Integer>();
 
-        adapter = new CustomAdapterOpenAuditions(data);
+        RecyclerViewClickListener listener = new RecyclerViewClickListener() {
+            @Override
+            public void onCLick(View view, int position) {
+                Toast.makeText(getContext(), "Position " + position, Toast.LENGTH_SHORT).show();
+            }
+        };
+        adapter = new CustomAdapterOpenAuditions(data,listener);
         recyclerView.setAdapter(adapter);
 
 

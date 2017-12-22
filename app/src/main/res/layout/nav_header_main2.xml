@@ -2,10 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="220sp"
-    android:gravity="bottom"
+    android:layout_height="300sp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:id="@+id/nav_header_crafts">
+
+    <RelativeLayout
+        android:id="@+id/mainRelativeLayout"
+        android:gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="220dp">
 
     <ImageView
         android:layout_width="match_parent"
@@ -39,8 +44,9 @@
 
 
     <LinearLayout
-        android:layout_height="0sp"
+        android:id="@+id/NameLayoutLinear"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="2"
         android:orientation="vertical"
@@ -50,28 +56,29 @@
             android:id="@+id/nav_name"
             android:layout_width="match_parent"
             android:layout_height="0sp"
-            android:layout_weight="2"
-            android:layout_margin="5sp"
-            android:text="Name"
-            android:textSize="25sp"
-            android:textColor="#ffffff"
-            android:textAlignment="center"
             android:layout_gravity="center_vertical"
-            android:fontFamily="sans-serif-condensed" />
+            android:layout_margin="5sp"
+            android:layout_weight="2"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Name"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/nav_craft"
             android:layout_width="match_parent"
             android:layout_height="0sp"
-            android:layout_weight="1"
-            android:text="Craft"
-            android:textColor="#ffffff"
-            android:fontFamily="sans-serif-condensed"
-            android:textSize="12sp"
             android:layout_marginBottom="15sp"
-            android:textAlignment="center"/>
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Craft"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="12sp" />
 
     </LinearLayout>
+
 
 
 </LinearLayout>
@@ -88,5 +95,47 @@
         android:focusable="true"
         android:background="?android:attr/selectableItemBackground"/>
 
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_below="@id/mainRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/aud_handy1"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:src="@drawable/aud_handy"
+            android:scaleType="fitCenter"
+            android:layout_margin="5sp"/>
+
+        <ImageView
+            android:id="@+id/fav_handy1"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:src="@drawable/fav_handy"
+            android:scaleType="fitCenter"
+            android:layout_margin="5sp"/>
+
+        <ImageView
+            android:id="@+id/inbox_handy1"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:src="@drawable/inbox_handy"
+            android:scaleType="fitCenter"
+            android:layout_margin="5sp"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

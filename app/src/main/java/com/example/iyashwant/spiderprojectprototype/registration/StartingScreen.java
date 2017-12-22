@@ -25,7 +25,7 @@ public class StartingScreen extends AppCompatActivity {
         craftsman_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),signup.class).putExtra("type", "craftsman");
+                Intent i = new Intent(getApplicationContext(),signup.class);
                 startActivity(i);
             }
         });
@@ -33,7 +33,7 @@ public class StartingScreen extends AppCompatActivity {
         client_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),signupclient.class).putExtra("type", "client");
+                Intent i = new Intent(getApplicationContext(),signupclient.class);
                 startActivity(i);
             }
         });

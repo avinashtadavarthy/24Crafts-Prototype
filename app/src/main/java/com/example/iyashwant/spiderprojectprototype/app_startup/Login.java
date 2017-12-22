@@ -43,9 +43,8 @@ public class Login extends AppCompatActivity {
         animationDrawable.setEnterFadeDuration(1000);
         animationDrawable.setExitFadeDuration(2000);
 
-
-
         animationDrawable.start();
+
 
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +70,13 @@ public class Login extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(),Login2.class);
+        startActivity(intent);
     }
 
     //keyboard disappears when you click outside

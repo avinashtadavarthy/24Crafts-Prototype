@@ -58,8 +58,6 @@ public class signup extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
-
         password = (EditText) findViewById(R.id.password);
         password.setTransformationMethod(new PasswordTransformationMethod());
         confirm_password = (EditText) findViewById(R.id.confirm_password);

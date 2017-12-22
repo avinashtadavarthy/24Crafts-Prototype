@@ -2,6 +2,7 @@ package com.example.iyashwant.spiderprojectprototype;
 
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -54,7 +55,7 @@ public class Settings extends AppCompatActivity {
             verify.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(),Verification.class).putExtra("fromhere", "FromSettings");
+                    Intent intent = new Intent(getApplicationContext(),Verification.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.right_enter, R.anim.left_out);
                 }
@@ -64,6 +65,13 @@ public class Settings extends AppCompatActivity {
             //stuff
         }
 
+        morecoins.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),PurchaseCoins.class);
+                startActivity(intent);
+            }
+        });
         coinsfree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,7 +91,9 @@ public class Settings extends AppCompatActivity {
         daily.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //stuff
+
+                Intent intent = new Intent(getApplicationContext(),DailyCheckIn.class);
+                startActivity(intent);
             }
         });
 
@@ -91,6 +101,10 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //stuff
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://support@geass.technology"));
+                startActivity(i);
+                overridePendingTransition(R.anim.right_enter, R.anim.left_out);
+
             }
         });
 

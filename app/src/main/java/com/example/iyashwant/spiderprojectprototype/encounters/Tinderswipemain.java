@@ -33,7 +33,7 @@ public class Tinderswipemain extends AppCompatActivity implements TinderCard.Cal
         mSwipeView = (SwipeDirectionalView) findViewById(R.id.swipeView);
         mContext = getApplicationContext();
 
-        int bottomMargin = Utils.dpToPx(160);
+        int bottomMargin = Utils.dpToPx(80);
         Point windowSize = com.example.iyashwant.spiderprojectprototype.encounters.Utils.getDisplaySize(getWindowManager());
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
@@ -59,7 +59,7 @@ public class Tinderswipemain extends AppCompatActivity implements TinderCard.Cal
             mSwipeView.addView(new TinderCard(mContext, profile, cardViewHolderSize, this));
         }
 
-        findViewById(R.id.rejectBtn).setOnClickListener(new View.OnClickListener() {
+          findViewById(R.id.rejectBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mSwipeView.doSwipe(false);

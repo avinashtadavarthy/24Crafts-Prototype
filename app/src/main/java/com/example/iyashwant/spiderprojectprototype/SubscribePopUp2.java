@@ -1,10 +1,15 @@
 package com.example.iyashwant.spiderprojectprototype;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.View;
+import android.widget.TextView;
 
 public class SubscribePopUp2 extends AppCompatActivity {
+
+    TextView yes,no;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,5 +23,27 @@ public class SubscribePopUp2 extends AppCompatActivity {
         int height = dm.heightPixels;
 
         getWindow().setLayout((int)(width*.8),(int)(height*.7));
+
+
+        yes = findViewById(R.id.YesButton);
+        no = findViewById(R.id.NoButton);
+
+        yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),SubscribePopUp.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
+
+
 }

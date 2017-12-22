@@ -22,6 +22,13 @@
         android:layout_marginTop="83dp">
 
 
+
+        <ImageView
+            android:layout_width="500dp"
+            android:layout_height="500dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/circle"/>
+
         <ImageView
             android:id="@+id/IMG"
             android:layout_width="340dp"
@@ -111,14 +118,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/relativeLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp" />
+        android:layout_marginTop="20dp" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/progressBar"
-
+        android:layout_marginBottom="10dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:background="@drawable/button1"
