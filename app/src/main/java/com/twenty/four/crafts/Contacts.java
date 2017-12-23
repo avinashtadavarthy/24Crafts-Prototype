@@ -31,7 +31,7 @@ public class Contacts extends AppCompatActivity  {
         final List<ContactsHelper> obj_list = new ArrayList<>();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://24crafts.tk:3000/directory/")//base url is what does not change for any query from app side
+                .baseUrl("http://24crafts.tk")//base url is what does not change for any query from app side
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         Retrofitextract r = retrofit.create(Retrofitextract.class);
