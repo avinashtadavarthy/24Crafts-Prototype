@@ -8,18 +8,19 @@
     tools:context="com.twenty.four.crafts.DashboardFavouritesTabFragment">
 
    <GridView
+       android:scrollbarStyle="outsideOverlay"
        android:scrollbars="vertical"
        android:id="@+id/favs_grid"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:numColumns="3"
-       android:verticalSpacing="5sp"
-       android:horizontalSpacing="5sp"
+       android:verticalSpacing="2sp"
+       android:horizontalSpacing="2sp"
        android:layout_gravity="center_horizontal"
-       android:layout_marginRight="10sp"
-       android:layout_marginLeft="10sp"
-       android:paddingTop="10sp"
-       android:paddingBottom="10sp" />
+       android:layout_marginRight="5sp"
+       android:layout_marginLeft="5sp"
+       android:paddingTop="5sp"
+       android:paddingBottom="5sp" />
 
    </LinearLayout>
 

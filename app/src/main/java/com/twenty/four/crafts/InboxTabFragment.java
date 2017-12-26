@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 /**
  * Created by Avinash Tadavarthy on 04-Nov-17.
@@ -17,7 +19,7 @@ import android.view.ViewGroup;
 public class InboxTabFragment extends android.support.v4.app.Fragment {
 
     View myView;
-
+    RelativeLayout messageLayout,overlapLayout;
     RecyclerView recycler;
     LinearLayoutManager manage;
     GridAdapter adapter;
@@ -34,8 +36,15 @@ public class InboxTabFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.inbox_tab,container,false);
 
+        RecyclerViewClickListenerInbox listenerInbox = new RecyclerViewClickListenerInbox() {
+            @Override
+            public void onLongClick(View view, int position) {
+             //   Toast.makeText(getContext(),position+"",Toast.LENGTH_SHORT).show();
+            }
+        };
+
         manage=new LinearLayoutManager(getActivity());
-        adapter=new GridAdapter(getActivity(),name,sub,body,time,8,img);//no of iems is the arguement
+        adapter=new GridAdapter(getActivity(),name,sub,body,time,8,img,listenerInbox);//no of iems is the arguement
         recycler= (RecyclerView) myView.findViewById(R.id.recy);
         recycler.setLayoutManager(manage);
         recycler.setAdapter(adapter);
@@ -48,6 +57,8 @@ public class InboxTabFragment extends android.support.v4.app.Fragment {
 
                     @Override public void onLongItemClick(View view, int position) {
                         // do whatever
+
+                        Toast.makeText(getContext(),position+"",Toast.LENGTH_SHORT).show();
                     }
                 })
         );

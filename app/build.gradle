@@ -69,5 +69,6 @@ dependencies {
     compile 'com.android.volley:volley:1.0.0'
     compile('com.razorpay:checkout:1.4.4')
     compile files('libs/YouTubeAndroidPlayerApi.jar')
+    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 
 }

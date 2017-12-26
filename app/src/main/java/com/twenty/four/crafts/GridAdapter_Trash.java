@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
+import com.amulyakhare.textdrawable.util.ColorGenerator;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -47,8 +50,17 @@ public class GridAdapter_Trash extends RecyclerView.Adapter<GridAdapter_Trash.Di
     @Override
     public void onBindViewHolder(DirectoryViewHolder holder, int position) {
 
+        String firstLetter = String.valueOf(name[position].charAt(0));
+        ColorGenerator generator = ColorGenerator.MATERIAL; // or use DEFAULT
+// generate random color
+        int color = generator.getRandomColor();
+//int color = generator.getRandomColor();
 
-        holder.I.setImageResource(img[position]);
+        TextDrawable drawable = TextDrawable.builder()
+                .beginConfig().width(60).height(60).toUpperCase().endConfig()
+                .buildRound(firstLetter, color); // radius in px
+
+        holder.I.setImageDrawable(drawable);
         holder.nam.setText(name[position]);
         holder.bod.setText(body[position]);
         holder.sub.setText(subject[position]);
@@ -78,7 +90,7 @@ public class GridAdapter_Trash extends RecyclerView.Adapter<GridAdapter_Trash.Di
             bod = itemView.findViewById(R.id.body);
             tim = itemView.findViewById(R.id.time);
             trash=itemView.findViewById(R.id.trash);
-            star = itemView.findViewById(R.id.starred);
+            star = itemView.findViewById(R.id.star);
 
         }
     }
