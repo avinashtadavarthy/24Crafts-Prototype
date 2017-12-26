@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,9 +8,10 @@
     tools:context="com.twenty.four.crafts.DashboardFavouritesTabFragment">
 
    <GridView
+       android:scrollbars="vertical"
        android:id="@+id/favs_grid"
        android:layout_width="match_parent"
-       android:layout_height="match_parent"
+       android:layout_height="wrap_content"
        android:numColumns="3"
        android:verticalSpacing="5sp"
        android:horizontalSpacing="5sp"
@@ -19,4 +21,6 @@
        android:paddingTop="10sp"
        android:paddingBottom="10sp" />
 
-</LinearLayout>
+   </LinearLayout>
+
+

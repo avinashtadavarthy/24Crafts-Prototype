@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -24,6 +26,8 @@ public class Login extends AppCompatActivity {
     Button btnCraftsmen, btnClients;
     TextView forgotPassword;
     RelativeLayout parent;
+    EditText email;
+    TextInputEditText password;
     AnimationDrawable animationDrawable;
 
     @Override
@@ -36,6 +40,10 @@ public class Login extends AppCompatActivity {
         forgotPassword = findViewById(R.id.forgot_password);
 
         parent = findViewById(R.id.parentLayout);
+        password = findViewById(R.id.password);
+        email = findViewById(R.id.email);
+        email.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+
         animationDrawable = (AnimationDrawable) parent.getBackground();
 
         animationDrawable.setEnterFadeDuration(1000);
@@ -44,6 +52,15 @@ public class Login extends AppCompatActivity {
 
 
         animationDrawable.start();
+
+        password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus)
+                    password.setHint("");
+                else
+                    password.setHint("Password");
+            }
+        });
 
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override

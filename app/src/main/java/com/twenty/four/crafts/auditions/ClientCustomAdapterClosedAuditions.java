@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.twenty.four.crafts.DataModel;
 import com.twenty.four.crafts.R;
+import com.twenty.four.crafts.RecyclerViewClickListener;
 
 import java.util.ArrayList;
 
@@ -19,23 +20,34 @@ import java.util.ArrayList;
 public class ClientCustomAdapterClosedAuditions extends RecyclerView.Adapter<ClientCustomAdapterClosedAuditions.MyViewHolder> {
 
     private ArrayList<DataModel> dataSet;
+    private RecyclerViewClickListener mListener;
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView textViewlocationname;
         TextView textViewnoofapplicants;
-        ImageView imageViewIcon;
+        ImageView imageViewIcon,delButton;
+        RecyclerViewClickListener mListener;
 
-        public MyViewHolder(View itemView) {
+        public MyViewHolder(View itemView,RecyclerViewClickListener listener) {
             super(itemView);
+            mListener = listener;
+            delButton = itemView.findViewById(R.id.deleteicon1);
             this.textViewlocationname = (TextView) itemView.findViewById(R.id.LocationText);
             this.textViewnoofapplicants = (TextView) itemView.findViewById(R.id.applicantsText);
             this.imageViewIcon = (ImageView) itemView.findViewById(R.id.dashboardimage);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            mListener.delClick(delButton,getAdapterPosition());
         }
     }
 
-    public ClientCustomAdapterClosedAuditions(ArrayList<DataModel> data) {
+    public ClientCustomAdapterClosedAuditions(ArrayList<DataModel> data, RecyclerViewClickListener listener) {
         this.dataSet = data;
+        mListener = listener;
     }
 
     @Override
@@ -46,7 +58,7 @@ public class ClientCustomAdapterClosedAuditions extends RecyclerView.Adapter<Cli
 
         view.setOnClickListener(ClientOpenAuditionsFragment.myOnClickListener);
 
-        MyViewHolder myViewHolder = new MyViewHolder(view);
+        MyViewHolder myViewHolder = new MyViewHolder(view,mListener);
         return myViewHolder;
     }
 

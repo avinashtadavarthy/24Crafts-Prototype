@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.twenty.four.crafts.registration.StartingScreen;
@@ -17,6 +19,7 @@ public class ForgotPassword extends AppCompatActivity {
     Button submit;
     RelativeLayout parent;
     int emailFound = 1;
+    EditText regEmailId;
     String dialogtext,dialogbuttontext;
 
     @Override
@@ -26,6 +29,8 @@ public class ForgotPassword extends AppCompatActivity {
 
         submit = findViewById(R.id.forgot_password_button);
         parent = findViewById(R.id.forgotPasswordParentLayout);
+        regEmailId = findViewById(R.id.forgot_password_edittext);
+        regEmailId.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
         AnimationDrawable animationDrawable = (AnimationDrawable) parent.getBackground();
 

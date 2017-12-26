@@ -1,6 +1,8 @@
 package com.twenty.four.crafts.auditions;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,9 +12,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.twenty.four.crafts.DataModel;
 import com.twenty.four.crafts.R;
+import com.twenty.four.crafts.RecyclerViewClickListener;
 
 import java.util.ArrayList;
 
@@ -57,7 +61,41 @@ public class ClientClosedAuditionsFragment extends Fragment {
 
         removedItems = new ArrayList<Integer>();
 
-        adapter = new ClientCustomAdapterClosedAuditions(data);
+        RecyclerViewClickListener listener = new RecyclerViewClickListener() {
+            @Override
+            public void onCLick(View view, int position) {
+
+            }
+
+            @Override
+            public void delClick(ImageView delButton, int position) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("Are you sure you want to permanently delete the audition?")
+                        .setCancelable(false)
+                        .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //do things
+                            }
+                        })
+                        .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        });
+
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+
+            @Override
+            public void editClick(ImageView editbutton, int position) {
+
+            }
+        };
+
+        adapter = new ClientCustomAdapterClosedAuditions(data,listener);
         recyclerView.setAdapter(adapter);
 
         return myView;
