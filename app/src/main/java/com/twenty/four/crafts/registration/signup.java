@@ -20,10 +20,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
 import com.twenty.four.crafts.CustomAdapterSpinner;
 import com.twenty.four.crafts.R;
 
 import java.util.Calendar;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class signup extends AppCompatActivity{
 
@@ -54,10 +57,39 @@ public class signup extends AppCompatActivity{
 
     EditText password, confirm_password;
 
+    //integrating logins
+    String firstname;
+    String lastname;
+    String email;
+    String gender;
+    String imgurl;
+
+    EditText first_name1, last_name1, email1;
+    CircleImageView profile_image1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+
+        //receiving data
+        Bundle bundle1 = getIntent().getExtras();
+        firstname = bundle1.getString("firstname");
+        lastname = bundle1.getString("lastname");
+        email = bundle1.getString("email");
+        gender = bundle1.getString("gender");
+        imgurl = bundle1.getString("imgurl");
+
+        first_name1 = (EditText) findViewById(R.id.first_name);
+        last_name1 = (EditText) findViewById(R.id.last_name);
+        email1 = (EditText) findViewById(R.id.email);
+        profile_image1 = (CircleImageView) findViewById(R.id.profile_image);
+
+        first_name1.setText(firstname);
+        last_name1.setText(lastname);
+        email1.setText(email);
+        Picasso.with(getApplicationContext()).load(imgurl).into(profile_image1);
 
 
         password = (EditText) findViewById(R.id.password);
@@ -115,7 +147,7 @@ public class signup extends AppCompatActivity{
         multiSelectSpinner.setTitle("Select Languages Known");
 */
 
-        final EditText name1 =(EditText)findViewById(R.id.first_name);
+        //final EditText name1 =(EditText)findViewById(R.id.first_name);
 
 
         Button next = (Button)findViewById(R.id.button11);
@@ -126,7 +158,7 @@ public class signup extends AppCompatActivity{
 
 
                 if(selectedcraft.equals("Actor") || selectedcraft.equals("Actress") || selectedcraft.equals("Child Artist") || selectedcraft.equals("Dancer") || selectedcraft.equals("Side Artists")){
-                    name=name1.getText().toString();
+                    name=first_name1.getText().toString();
                     Intent goToNextActivity = new Intent(getApplicationContext(), signup2.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("name",name);
@@ -142,7 +174,7 @@ public class signup extends AppCompatActivity{
 
                 else
                 {
-                    name=name1.getText().toString();
+                    name=first_name1.getText().toString();
                     Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("name",name);

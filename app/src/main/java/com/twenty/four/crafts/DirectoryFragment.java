@@ -48,6 +48,8 @@ public class DirectoryFragment extends android.support.v4.app.Fragment {
         getActivity().setTitle("Directory");
 
         recyclerView = (RecyclerView) myView.findViewById(R.id.rv);
+        recyclerView.setNestedScrollingEnabled(false);
+
         mCustomPagerAdapter = new CustomPagerAdapter(getFragmentManager(), getActivity().getApplicationContext());
 
         mViewPager = (ViewPager) myView.findViewById(R.id.directoryViewPager);

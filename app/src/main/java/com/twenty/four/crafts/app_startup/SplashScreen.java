@@ -28,8 +28,9 @@ public class SplashScreen extends AppCompatActivity {
         splashlogo = (ImageView) findViewById(R.id.splashlogo);
         if (android.os.Build.VERSION.SDK_INT >= 21) splashlogo.setElevation(10);
 
-        String uriPath = "android.resource://com.example.iyashwant.spiderprojectprototype/" + R.raw.opening;
-        Uri uri = Uri.parse(uriPath);
+        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.opening);
+        //String uriPath = "android.resource://com.twenty.four.crafts/" + R.raw.opening;
+        //Uri uri = Uri.parse(uriPath);
         splashvideo.setVideoURI(uri);
         splashvideo.requestFocus();
         splashvideo.start();
@@ -60,8 +61,9 @@ public class SplashScreen extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         splashvideo= (VideoView) findViewById(R.id.splashvideo);
-        String uriPath = "android.resource://com.example.iyashwant.spiderprojectprototype/" + R.raw.opening;
-        Uri uri = Uri.parse(uriPath);
+        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.opening);
+        //String uriPath = "android.resource://com.example.iyashwant.spiderprojectprototype/" + R.raw.opening;
+        //Uri uri = Uri.parse(uriPath);
         splashvideo.setVideoURI(uri);
         splashvideo.start();
     }

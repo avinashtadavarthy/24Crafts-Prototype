@@ -8,6 +8,7 @@ import android.net.Uri;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -15,11 +16,34 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+import com.twenty.four.crafts.MySingleton;
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.registration.StartingScreen;
 import com.github.clans.fab.FloatingActionButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 
 public class Login2 extends AppCompatActivity {
 
@@ -38,14 +62,94 @@ public class Login2 extends AppCompatActivity {
     WebView wv;
     */
 
+    //fb login integration
+    CallbackManager callbackManager;
+    String access;
+    public String firstname, lastname, email, gender, imgurl;
+    String url = "https://graph.facebook.com/me?fields=id,verified,first_name,last_name,name,gender,email,cover.height(720),picture.height(720),age_range&access_token=";
+
     private final String LOG_TAG = "Login2 Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login2);
 
-        facebook = (LinearLayout) findViewById(R.id.fb_login_button);
+        callbackManager = CallbackManager.Factory.create();
+        LoginManager.getInstance().registerCallback(
+                callbackManager,
+                new FacebookCallback < LoginResult > () {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+
+                        access = loginResult.getAccessToken().getToken();
+
+
+                        //making the request and getting the data
+                        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url + access, null,
+                                new Response.Listener<JSONObject>()
+                                {
+                                    @Override
+                                    public void onResponse(JSONObject response) {
+
+                                        firstname = response.optString("first_name");
+                                        lastname = response.optString("last_name");
+                                        email = response.optString("email");
+                                        gender = response.optString("gender");
+
+                                        try {
+                                            JSONObject picture = response.getJSONObject("picture");
+                                            JSONObject data = picture.getJSONObject("data");
+                                            imgurl = data.optString("url");
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+
+                                        Toast.makeText(Login2.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+                                        //transferring data
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("firstname", firstname);
+                                        bundle.putString("lastname", lastname);
+                                        bundle.putString("email", email);
+                                        bundle.putString("gender", gender);
+                                        bundle.putString("imgurl", imgurl);
+
+                                        Intent i = new Intent(Login2.this, StartingScreen.class);
+                                        i.putExtras(bundle);
+                                        startActivity(i);
+                                    }
+                                },
+                                new Response.ErrorListener()
+                                {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+
+                                        Toast.makeText(Login2.this, "Login Error", Toast.LENGTH_SHORT).show();
+                                        error.printStackTrace();
+                                    }
+                                }
+                        );
+
+                        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(getRequest);
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Toast.makeText(Login2.this, "Login attempt cancelled.", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        Toast.makeText(Login2.this, "Login attempt failed", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+
+
+    facebook = (LinearLayout) findViewById(R.id.fb_login_button);
         google = (LinearLayout) findViewById(R.id.gl_login_button);
         instagram = (LinearLayout) findViewById(R.id.instagram_login_button);
 
@@ -103,6 +207,51 @@ public class Login2 extends AppCompatActivity {
         });
         */
 
+    }
+
+    /*void getData(final String accesstoken) {
+        // prepare the Request
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url + accesstoken, null,
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        firstname = response.optString("first_name");
+                        lastname = response.optString("last_name");
+                        email = response.optString("email");
+                        gender = response.optString("gender");
+                        imgurl = response.optString("url");
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        Toast.makeText(Login2.this, "Login Error", Toast.LENGTH_SHORT).show();
+                        error.printStackTrace();
+                    }
+                }
+        );
+
+        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(getRequest);
+
+    }*/
+
+    public void fbLogin(View view) {
+
+        LoginManager.getInstance().logInWithReadPermissions(
+                this,
+                Arrays.asList("user_photos", "email", "user_birthday", "public_profile")
+        );
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
 

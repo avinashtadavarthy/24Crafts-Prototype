@@ -41,6 +41,57 @@
         android:orientation="vertical"
         android:weightSum="1">
 
+        <LinearLayout
+            android:layout_marginTop="50dp"
+            android:paddingLeft="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:scaleType="centerCrop"
+                android:id="@+id/profile_image"
+                android:layout_width="130sp"
+                android:layout_height="130sp"
+                android:src="@drawable/logo"/>
+
+            <LinearLayout
+                android:layout_marginLeft="30sp"
+                android:layout_width="150sp"
+                android:orientation="vertical"
+                android:layout_height="80sp"
+                android:weightSum="2"
+                android:gravity="center"
+                android:layout_gravity="center_vertical">
+
+                <Button
+                    android:id="@+id/click_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="0sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_card"
+                    android:text="Click a picture"
+                    android:textColor="#000000"
+                    android:textAllCaps="false"
+                    android:layout_marginBottom="20sp"
+                    android:padding="2sp"/>
+
+
+                <Button
+                    android:id="@+id/import_from_gallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="0sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_card"
+                    android:text="Import From Gallery"
+                    android:textColor="#000000"
+                    android:textAllCaps="false"
+                    android:padding="5sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
 
     <EditText
         android:id="@+id/first_name"
@@ -51,7 +102,7 @@
         android:layout_gravity="center"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20sp"
         android:ems="10"
         android:hint="First Name"
         android:textColorHint="#ffffff"
