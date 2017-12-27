@@ -77,6 +77,7 @@ public class signupclient extends AppCompatActivity{
         click_picture = (Button) findViewById(R.id.click_picture);
         import_from_gallery = (Button) findViewById(R.id.import_from_gallery);
 
+        // TODO: send the images up to the server on submit
         import_from_gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
