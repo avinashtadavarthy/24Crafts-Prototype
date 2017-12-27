@@ -41,6 +41,23 @@ public class AccountInfo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                //TODO: if user has logged in via social login, do the respective signout
+
+                /*//For Facebook
+                add this before onCreate FacebookSdk.sdkInitialize(getApplicationContext());
+                LoginManager.getInstance().logOut();*/
+
+                /*//For Google
+                private void signOut() {
+                    Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
+                        @Override
+                        public void onResult(@NonNull Status status) {
+                            updateUI(false);
+                        }
+                    });
+                }*/
+
+
                 AlertDialog.Builder a_builder = new AlertDialog.Builder(AccountInfo.this);
                 a_builder.setMessage("Do You Want to Sign Out of 24 Crafts?")
                         .setCancelable(false)

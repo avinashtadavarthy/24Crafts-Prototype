@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.twenty.four.crafts.R;
+import com.twenty.four.crafts.User;
 
 public class StartingScreen extends AppCompatActivity {
 
@@ -38,6 +39,8 @@ public class StartingScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                User.getInstance().isClient = "false";
+
                 Intent i = new Intent(getApplicationContext(),signup.class).putExtra("type", "craftsman");
                 i.putExtras(transferdata());
                 startActivity(i);
@@ -48,6 +51,8 @@ public class StartingScreen extends AppCompatActivity {
         client_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                User.getInstance().isClient = "true";
 
                 Intent i = new Intent(getApplicationContext(),signupclient.class).putExtra("type", "client");
                 i.putExtras(transferdata());

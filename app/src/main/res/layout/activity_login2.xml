@@ -76,7 +76,8 @@
 
     </LinearLayout>
 
-    <LinearLayout
+
+        <LinearLayout
         android:id="@+id/gl_login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -98,9 +99,9 @@
             android:fontFamily="sans-serif-condensed"
             android:layout_height="40sp"
             android:gravity="center"
-            android:background="@drawable/round_card"/>
+            android:background="?android:attr/selectableItemBackground"/>
 
-    </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/instagram_login_button"
@@ -123,9 +124,10 @@
                 android:fontFamily="sans-serif-condensed"
                 android:layout_height="40sp"
                 android:gravity="center"
-                android:background="@drawable/round_card"/>
+                android:background="?android:attr/selectableItemBackground"/>
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_marginTop="15sp"
@@ -177,7 +179,8 @@
                     android:layout_height="45sp"
                     android:padding="5sp"
                     android:src="@drawable/signup_icon"
-                    android:layout_marginRight="50sp" />
+                    android:layout_marginRight="50sp"
+                    android:background="?android:attr/selectableItemBackground" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -199,7 +202,8 @@
                     android:layout_width="45sp"
                     android:layout_height="45sp"
                     android:padding="5sp"
-                    android:src="@drawable/login_icon"/>
+                    android:src="@drawable/login_icon"
+                    android:background="?android:attr/selectableItemBackground" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -214,128 +218,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
-    <com.github.clans.fab.FloatingActionMenu
-        android:visibility="gone"
-        android:id="@+id/material_design_android_floating_action_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="11dp"
-        android:layout_marginRight="10sp"
-        fab:menu_animationDelayPerItem="55"
-        fab:menu_backgroundColor="@android:color/transparent"
-        fab:menu_buttonSpacing="0dp"
-        fab:menu_colorNormal="#ffffff"
-        fab:menu_colorPressed="#ff004e"
-        fab:menu_colorRipple="#99d4d4d4"
-        fab:menu_fab_size="normal"
-        fab:menu_icon="@drawable/fab_btn_plus"
-        fab:menu_labels_colorNormal="#3a464646"
-        fab:menu_labels_colorPressed="#21434343"
-        fab:menu_labels_colorRipple="#66efecec"
-        fab:menu_labels_cornerRadius="3dp"
-        fab:menu_labels_ellipsize="none"
-        fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
-        fab:menu_labels_margin="0dp"
-        fab:menu_labels_maxLines="-1"
-        fab:menu_labels_padding="8dp"
-        fab:menu_labels_position="left"
-        fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
-        fab:menu_labels_showShadow="true"
-        fab:menu_labels_singleLine="false"
-        fab:menu_labels_textColor="#f2f1f1"
-        fab:menu_labels_textSize="13sp"
-        fab:menu_openDirection="up"
-        fab:menu_shadowColor="#661d1e1d"
-        fab:menu_shadowRadius="4dp"
-        fab:menu_shadowXOffset="1dp"
-        fab:menu_shadowYOffset="4dp"
-        fab:menu_showShadow="true">
-
-
-
-        <com.github.clans.fab.FloatingActionButton
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_action_email"
-            fab:menu_colorNormal="#ffffff"
-            fab:menu_colorPressed="#ff004e"
-            fab:menu_colorRipple="#99d4d4d4"
-            fab:fab_label="Login with Email"
-            fab:fab_size="normal" />
-
-
-        <com.github.clans.fab.FloatingActionButton
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_action_sign"
-            fab:menu_colorNormal="#ffffff"
-            fab:menu_colorPressed="#ff004e"
-            fab:menu_colorRipple="#99d4d4d4"
-            fab:fab_label="Sign Up with Email"
-            fab:fab_size="normal" />
-
-    </com.github.clans.fab.FloatingActionMenu>
-
-
-    <!--
-
-    <RelativeLayout
-        android:visibility="gone"
-        android:id="@+id/webhold"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#323232"
-            android:layout_margin="30sp"
-            android:elevation="10dp"
-            android:orientation="vertical"
-            android:layout_centerInParent="true"
-            android:weightSum="10">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0sp"
-                android:layout_weight="9.5"
-                android:orientation="vertical">
-
-                <WebView
-                    android:id="@+id/webView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"/>
-
-            </LinearLayout>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="0sp"
-                android:layout_weight="0.5"
-                android:text="Close"
-                android:background="#ff004e"
-                android:textSize="12sp"
-                android:id="@+id/webclose"/>
-
-        </LinearLayout>
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="70sp"
-            android:layout_height="70sp"
-            android:layout_centerInParent="true"/>
-
-    </RelativeLayout>
-
-    -->
-
 
 </RelativeLayout>

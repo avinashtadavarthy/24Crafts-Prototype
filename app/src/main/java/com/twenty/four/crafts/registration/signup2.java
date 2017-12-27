@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.twenty.four.crafts.CustomAdapterSpinner;
 import com.twenty.four.crafts.R;
+import com.twenty.four.crafts.User;
 
 public class signup2 extends AppCompatActivity {
 
@@ -71,9 +72,11 @@ public class signup2 extends AppCompatActivity {
         final TextView other_facialhair = (TextView) findViewById(R.id.other_facialhair);
         other_facialhair.setVisibility(View.GONE);
 
-        final TextView hipsize = (TextView) findViewById(R.id.hip_size);
-        final TextView waistsize = (TextView) findViewById(R.id.waist_size);
-        final TextView chestsize = (TextView) findViewById(R.id.chest_size);
+        final EditText height = (EditText) findViewById(R.id.height);
+        final EditText weight = (EditText) findViewById(R.id.weight);
+        final EditText hipsize = (EditText) findViewById(R.id.hip_size);
+        final EditText waistsize = (EditText) findViewById(R.id.waist_size);
+        final EditText chestsize = (EditText) findViewById(R.id.chest_size);
 
 
         final Spinner bodytype = (Spinner) findViewById(R.id.body_type);
@@ -216,12 +219,24 @@ public class signup2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+               /* User.getInstance().bodytype = bodytype.getSelectedItem().toString();
+                User.getInstance().haircolor = haircolor.getSelectedItem().toString();
+                User.getInstance().hairlength = hairlength.getSelectedItem().toString();
+                User.getInstance().eyecolor = eyecolor.
+                User.getInstance().complexion =
+                User.getInstance().facialhair =
+                User.getInstance().userheight =
+                User.getInstance().userweight =
+                User.getInstance().hipsize =
+                User.getInstance().chestsize =
+                User.getInstance().waistsize =
+
                 Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("name",name);
                 bundle.putString("craft",craft);
                 goToNextActivity.putExtras(bundle);
-                startActivity(goToNextActivity);
+                startActivity(goToNextActivity);*/
             }
         });
 

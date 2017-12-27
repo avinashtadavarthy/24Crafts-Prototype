@@ -22,6 +22,7 @@ android {
 repositories {
     mavenCentral()
     jcenter()
+    google()
 }
 
 dependencies {
@@ -36,6 +37,7 @@ dependencies {
     //SDKs for login and verification
     implementation 'com.facebook.android:account-kit-sdk:4.+'
     implementation 'com.facebook.android:facebook-login:[4,5)'
+
     //SDKs for login and verification
 
     compile 'com.github.bumptech.glide:glide:3.7.0'

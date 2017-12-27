@@ -5,6 +5,9 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
@@ -23,7 +26,9 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 import com.twenty.four.crafts.CustomAdapterSpinner;
 import com.twenty.four.crafts.R;
+import com.twenty.four.crafts.User;
 
+import java.io.IOException;
 import java.util.Calendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -38,15 +43,8 @@ public class signupclient extends AppCompatActivity{
     String[] genderString={"Choose Gender",
             "Male","Female","Other"};
 
-    String name,selectedcraft = "null";
+    String name,selectedcraft = "null",selectedgender = "null";
 
-    //datepicker
-    private DatePicker datePicker;
-    private Calendar calendar;
-    private TextView dateView;
-    private int year, month, day;
-
-    EditText password, confirm_password;
 
     //integrating logins
     String firstname;
@@ -55,14 +53,52 @@ public class signupclient extends AppCompatActivity{
     String gender;
     String imgurl;
 
-    EditText first_name1, last_name1, email1;
+    EditText first_name1, last_name1, email1,
+            password1, confirm_password1, residing1, hometown1;
+    Spinner craft,genderspin;
     CircleImageView profile_image1;
+
+    //datepicker
+    TextView dob1;
+    int year, month, day;
+
+    //gallery access
+    Button click_picture, import_from_gallery;
+    private int PICK_IMAGE_REQUEST = 1;
+    private static final int CAMERA_REQUEST = 1888;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signupclient);
+
+        //gallery access
+        click_picture = (Button) findViewById(R.id.click_picture);
+        import_from_gallery = (Button) findViewById(R.id.import_from_gallery);
+
+        import_from_gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent();
+                // Show only images, no videos or anything else
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                // Always show the chooser (if there are multiple options available)
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+
+            }
+        });
+
+        click_picture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+            }
+        });
+
 
         //receiving data
         Bundle bundle1 = getIntent().getExtras();
@@ -75,7 +111,13 @@ public class signupclient extends AppCompatActivity{
         first_name1 = (EditText) findViewById(R.id.first_name);
         last_name1 = (EditText) findViewById(R.id.last_name);
         email1 = (EditText) findViewById(R.id.email);
+        password1 = (EditText) findViewById(R.id.password);
+        confirm_password1 = (EditText) findViewById(R.id.confirm_password);
+        residing1 = (EditText) findViewById(R.id.residing);
+        hometown1 = (EditText) findViewById(R.id.hometown);
         profile_image1 = (CircleImageView) findViewById(R.id.profile_image);
+        dob1 = (TextView) findViewById(R.id.dob);
+
 
         first_name1.setText(firstname);
         last_name1.setText(lastname);
@@ -83,18 +125,13 @@ public class signupclient extends AppCompatActivity{
         Picasso.with(getApplicationContext()).load(imgurl).into(profile_image1);
 
 
+        password1.setTransformationMethod(new PasswordTransformationMethod());
+        confirm_password1.setTransformationMethod(new PasswordTransformationMethod());
 
-        password = (EditText) findViewById(R.id.password);
-        password.setTransformationMethod(new PasswordTransformationMethod());
-        confirm_password = (EditText) findViewById(R.id.confirm_password);
-        confirm_password.setTransformationMethod(new PasswordTransformationMethod());
-        Spinner craft = (Spinner) findViewById(R.id.spinner);
+        craft = (Spinner) findViewById(R.id.spinner);
         CustomAdapterSpinner craftAdapter=new CustomAdapterSpinner(getApplicationContext(),whoN);
         craft.setAdapter(craftAdapter);
 
-        Spinner gender = (Spinner) findViewById(R.id.gender);
-        CustomAdapterSpinner genderAdapter=new CustomAdapterSpinner(getApplicationContext(),genderString);
-        gender.setAdapter(genderAdapter);
         craft.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -110,6 +147,28 @@ public class signupclient extends AppCompatActivity{
                     case "Model Coordinator": selectedcraft = "Model Coordinator"; break;
                     case "Producer": selectedcraft = "Producer"; break;
                     case "Production House Manager": selectedcraft = "Production House Manager"; break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+
+        genderspin = (Spinner) findViewById(R.id.gender);
+        CustomAdapterSpinner genderAdapter=new CustomAdapterSpinner(getApplicationContext(),genderString);
+        genderspin.setAdapter(genderAdapter);
+
+        genderspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch(genderString[position])
+                {
+                    case "Male": selectedgender = "Male"; break;
+                    case "Female": selectedgender = "Female"; break;
+                    case "Other": selectedgender = "Other"; break;
+
                 }
             }
 
@@ -144,13 +203,26 @@ public class signupclient extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
-                if(selectedcraft.equals("null"))
-                {
+                if(selectedcraft.equals("null")) {
                     Toast.makeText(getApplicationContext(),"Please select appropriate Portfolio to continue",Toast.LENGTH_LONG).show();
-                }
+                } else if(selectedgender.equals("null")) {
+                    Toast.makeText(getApplicationContext(),"Please select appropriate gender to continue",Toast.LENGTH_LONG).show();
+                } else if(selectedcraft.equals("null") && selectedgender.equals("null")) {
+                    Toast.makeText(signupclient.this, "Select all mandatory fields to continue", Toast.LENGTH_SHORT).show();
+                } else {
 
-                else
-                {
+                    User.getInstance().firstname = first_name1.getText().toString();
+                    User.getInstance().lastname = last_name1.getText().toString();
+                    User.getInstance().useremail = email1.getText().toString();
+                    User.getInstance().password = password1.getText().toString();
+                    User.getInstance().dob = dob1.getText().toString().trim();
+                    User.getInstance().usergender = selectedgender;
+                    User.getInstance().category = selectedcraft;
+                    User.getInstance().residingin = residing1.getText().toString();
+                    User.getInstance().hometown = hometown1.getText().toString();
+
+
+
                     name = first_name1.getText().toString();
                     Intent goToNextActivity = new Intent(getApplicationContext(), signup3client.class);
                     Bundle bundle = new Bundle();
@@ -162,13 +234,33 @@ public class signupclient extends AppCompatActivity{
 
             }
         });
-
-        //datepicker
-        dateView = (TextView) findViewById(R.id.dob);
-        calendar = Calendar.getInstance();
-        year = calendar.get(Calendar.YEAR);
-
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+            Uri uri = data.getData();
+
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                // Log.d(TAG, String.valueOf(bitmap));
+                profile_image1.setImageBitmap(bitmap);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            profile_image1.setImageBitmap(photo);
+        }
+    }
+
+
+
 
     //keyboard disappears when you click outside
     @Override
@@ -229,7 +321,7 @@ public class signupclient extends AppCompatActivity{
             };
 
     private void showDate(int year, int month, int day) {
-        dateView.setText(new StringBuilder().append(day).append("/")
+        dob1.setText(new StringBuilder().append(day).append("/")
                 .append(month).append("/").append(year));
     }
 }

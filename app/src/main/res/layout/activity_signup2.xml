@@ -291,7 +291,6 @@
 
             <EditText
                 android:id="@+id/hip_size"
-
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="16sp"
@@ -310,7 +309,6 @@
 
             <EditText
                 android:id="@+id/chest_size"
-
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="16sp"

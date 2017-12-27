@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,6 +24,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -54,13 +56,6 @@ public class Login2 extends AppCompatActivity {
 
     ImageView signup_iconz, login_iconz;
     TextView otherlogins;
-
-    /*
-    RelativeLayout webhold;
-    Button webclose;
-    ProgressBar progressBar;
-    WebView wv;
-    */
 
     //fb login integration
     CallbackManager callbackManager;
@@ -149,7 +144,7 @@ public class Login2 extends AppCompatActivity {
         );
 
 
-    facebook = (LinearLayout) findViewById(R.id.fb_login_button);
+        facebook = (LinearLayout) findViewById(R.id.fb_login_button);
         google = (LinearLayout) findViewById(R.id.gl_login_button);
         instagram = (LinearLayout) findViewById(R.id.instagram_login_button);
 
@@ -166,9 +161,12 @@ public class Login2 extends AppCompatActivity {
         login_iconz = (ImageView) findViewById(R.id.login_iconz);
 
         if (android.os.Build.VERSION.SDK_INT >= 21) {
-            otherlogins.setElevation(10);
-            signup_iconz.setElevation(8);
-            login_iconz.setElevation(8);
+            otherlogins.setElevation(8);
+            signup_iconz.setElevation(6);
+            login_iconz.setElevation(6);
+            facebook.setElevation(5);
+            google.setElevation(5);
+            instagram.setElevation(5);
         }
 
         sign_up_button.setOnClickListener(new View.OnClickListener() {
@@ -188,63 +186,24 @@ public class Login2 extends AppCompatActivity {
         });
 
         displayCoverVideo();
-        //initialiseFABEvents();
-        //initialiseLoginButtonEvents();
-        LoginpopUp();
-
-        /*
-        wv = (WebView) findViewById(R.id.webView);
-        webhold = (RelativeLayout) findViewById(R.id.webhold);
-        webhold.setVisibility(View.GONE);
-        webclose = (Button) findViewById(R.id.webclose);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-
-        webclose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                webhold.setVisibility(View.GONE);
-            }
-        });
-        */
 
     }
 
-    /*void getData(final String accesstoken) {
-        // prepare the Request
-        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url + accesstoken, null,
-                new Response.Listener<JSONObject>()
-                {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        firstname = response.optString("first_name");
-                        lastname = response.optString("last_name");
-                        email = response.optString("email");
-                        gender = response.optString("gender");
-                        imgurl = response.optString("url");
-                    }
-                },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                        Toast.makeText(Login2.this, "Login Error", Toast.LENGTH_SHORT).show();
-                        error.printStackTrace();
-                    }
-                }
-        );
-
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(getRequest);
-
-    }*/
-
     public void fbLogin(View view) {
 
-        LoginManager.getInstance().logInWithReadPermissions(
-                this,
-                Arrays.asList("user_photos", "email", "user_birthday", "public_profile")
-        );
+        if(AccessToken.getCurrentAccessToken()!=null) {
+            LoginManager.getInstance().logOut();
+            LoginManager.getInstance().logInWithReadPermissions(
+                    this,
+                    Arrays.asList("user_photos", "email", "user_birthday", "public_profile"));
+        } else {
+
+            LoginManager.getInstance().logInWithReadPermissions(
+                    this,
+                    Arrays.asList("user_photos", "email", "user_birthday", "public_profile"));
+
+        }
+
 
     }
 
@@ -255,75 +214,6 @@ public class Login2 extends AppCompatActivity {
     }
 
 
-    private void LoginpopUp()
-    {
-
-        facebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                /*
-                webhold.setVisibility(View.VISIBLE);
-                wv.loadUrl("http:\\24crafts.tk:3000/login/facebook");
-                wv.setWebViewClient(new WebViewClient() {
-                    @Override
-                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                        view.loadUrl(url);
-                        return true;
-                    }
-                    @Override
-                    public void onPageFinished(WebView view, String url) {
-                        super.onPageFinished(view, url);
-                        progressBar.setVisibility(View.GONE);
-                    }
-                });
-                */
-
-            }
-        });
-
-
-        google.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                /*
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http:\\24crafts.tk:3000/login/google"));
-                startActivity(i);
-                overridePendingTransition(R.anim.right_enter, R.anim.left_out);
-                */
-
-            }
-        });
-
-
-        instagram.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                /*
-                webhold.setVisibility(View.VISIBLE);
-                WebView wv = (WebView) findViewById(R.id.webView);
-                wv.loadUrl("http:\\24crafts.tk:3000/login/twitter");
-                wv.setWebViewClient(new WebViewClient() {
-                    @Override
-                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                        view.loadUrl(url);
-                        return true;
-                    }
-                    @Override
-                    public void onPageFinished(WebView view, String url) {
-                        super.onPageFinished(view, url);
-                        progressBar.setVisibility(View.GONE);
-                    }
-                });
-                */
-
-            }
-
-
-        });
-    }
 
     private void displayCoverVideo(){
         Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.splash);
