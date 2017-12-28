@@ -16,7 +16,8 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
         <!-- splash screen -->
-        <activity android:name="com.twenty.four.crafts.app_startup.SplashScreen">
+        <activity android:name="com.twenty.four.crafts.app_startup.SplashScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -28,33 +29,41 @@
         <activity
             android:name="com.twenty.four.crafts.app_startup.Login2"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.twenty.four.crafts.app_startup.Login"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"/>
 
 
         <!-- registration -->
         <activity
             android:name="com.twenty.four.crafts.registration.signup"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.twenty.four.crafts.registration.signup2"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.twenty.four.crafts.registration.signup3"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.twenty.four.crafts.registration.Verification"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name="com.twenty.four.crafts.ForgotPassword" />
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.twenty.four.crafts.ForgotPassword"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.twenty.four.crafts.ForgotPasswordPopUp"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.CustomTheme"
+            android:screenOrientation="portrait"/>
 
 
         <!-- Facebook SDK Integration -->
@@ -69,14 +78,17 @@
         <activity
             android:name="com.facebook.accountkit.ui.AccountKitActivity"
             android:theme="@style/AppLoginTheme"
-            tools:replace="android:theme" />
+            tools:replace="android:theme"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.facebook.FacebookActivity"
             android:configChanges=
                 "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.facebook.CustomTabActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -87,63 +99,88 @@
 
 
         <!-- Main App -->
-        <activity android:name="com.twenty.four.crafts.Main2Activity" />
-        <activity android:name="com.twenty.four.crafts.Main3Activity" />
-        <activity android:name="com.twenty.four.crafts.registration.StartingScreen" />
+        <activity android:name="com.twenty.four.crafts.Main2Activity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.twenty.four.crafts.Main3Activity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.twenty.four.crafts.registration.StartingScreen"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.twenty.four.crafts.PurchaseCoins"
-            android:theme="@style/Theme.AppCompat"/>
+            android:theme="@style/Theme.AppCompat"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.twenty.four.crafts.encounters.Tinderswipemain"
             android:parentActivityName="com.twenty.four.crafts.Main2Activity"
-            android:theme="@style/AppTheme" />
-        <activity android:name="com.twenty.four.crafts.Contacts" />
-        <activity android:name="com.twenty.four.crafts.ProfileView" />
-        <activity android:name="com.twenty.four.crafts.YoutubePlayerActivity"/>
-        <activity android:name="com.twenty.four.crafts.CreateAuditions"/>
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.twenty.four.crafts.Contacts"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.twenty.four.crafts.ProfileView"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.twenty.four.crafts.YoutubePlayerActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.twenty.four.crafts.CreateAuditions"
+            android:screenOrientation="portrait"/>
 
 
         <!-- Razor Pay Integration -->
         <meta-data android:name="com.razorpay.ApiKey"
             android:value="rzp_test_FSoknm2lAIBB6U" />
-        <activity android:name="com.twenty.four.crafts.PaymentActivity" />
+        <activity android:name="com.twenty.four.crafts.PaymentActivity"
+            android:screenOrientation="portrait"/>
 
         <!-- Pop Ups -->
         <activity android:name="com.twenty.four.crafts.FreeCoins"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.CustomTheme"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.twenty.four.crafts.RefAndEarn"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.CustomTheme"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.twenty.four.crafts.DailyCheckIn"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.CustomTheme"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.twenty.four.crafts.DailyCheckIn2"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.CustomTheme"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.twenty.four.crafts.VerifyYourself"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.CustomTheme"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.twenty.four.crafts.PromoteProfilePopUp"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.CustomTheme"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.twenty.four.crafts.SubscribePopUp"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.CustomTheme"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.twenty.four.crafts.SubscribePopUp2"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.CustomTheme"
+            android:screenOrientation="portrait"/>
 
 
         <!-- Settings -->
         <activity android:name="com.twenty.four.crafts.Settings"
             android:parentActivityName="com.twenty.four.crafts.Main2Activity"
-            android:theme="@style/Theme.AppCompat" />
+            android:theme="@style/Theme.AppCompat"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.twenty.four.crafts.AccountInfo"
             android:parentActivityName="com.twenty.four.crafts.Settings"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.twenty.four.crafts.AboutUs"
             android:parentActivityName="com.twenty.four.crafts.Settings"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.twenty.four.crafts.TermsConditions"
             android:parentActivityName="com.twenty.four.crafts.AboutUs"
-            android:theme="@style/Theme.AppCompat" />
+            android:theme="@style/Theme.AppCompat"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.twenty.four.crafts.PrivacyPolicy"
             android:parentActivityName="com.twenty.four.crafts.AboutUs"
-            android:theme="@style/Theme.AppCompat" />
-        <activity android:name="com.twenty.four.crafts.ProfileViewEdit" />
+            android:theme="@style/Theme.AppCompat"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.twenty.four.crafts.ProfileViewEdit"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.twenty.four.crafts.RateUs"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.CustomTheme"
+            android:screenOrientation="portrait"/>
 
     </application>
 

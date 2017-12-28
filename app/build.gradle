@@ -35,12 +35,16 @@ dependencies {
     // since we are using the 26.+ support libraries in the project
 
     //SDKs for login and verification
+
+    //facebook
     implementation 'com.facebook.android:account-kit-sdk:4.+'
     implementation 'com.facebook.android:facebook-login:[4,5)'
 
+    //google
+    compile 'com.google.android.gms:play-services-auth:11.6.0'
+
     //SDKs for login and verification
 
-    compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.android.support:recyclerview-v7:26.+'
     compile 'com.android.support:preference-v14:26.+'
     compile 'com.android.support:appcompat-v7:26.1.0'
@@ -74,3 +78,5 @@ dependencies {
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 
 }
+
+apply plugin: 'com.google.gms.google-services'

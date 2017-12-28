@@ -52,7 +52,7 @@ public class AccountInfo extends AppCompatActivity {
                     Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
                         @Override
                         public void onResult(@NonNull Status status) {
-                            updateUI(false);
+                            //do something
                         }
                     });
                 }*/

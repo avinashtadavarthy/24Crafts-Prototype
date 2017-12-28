@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -34,6 +36,13 @@ import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.twenty.four.crafts.MySingleton;
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.registration.StartingScreen;
@@ -47,7 +56,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
-public class Login2 extends AppCompatActivity {
+public class Login2 extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener{
 
     FloatingActionButton fabEmail, fabSign;
     VideoView videoview;
@@ -65,7 +74,11 @@ public class Login2 extends AppCompatActivity {
     public String firstname, lastname, email, gender, imgurl;
     String url = "https://graph.facebook.com/me?fields=id,verified,first_name,last_name,name,gender,email,cover.height(720),picture.height(720),age_range&access_token=";
 
-    private final String LOG_TAG = "Login2 Activity";
+    //google login integration
+    Button signIn;
+    GoogleApiClient googleApiClient;
+    GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+    private static final int REQ_CODE = 9001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,9 +164,6 @@ public class Login2 extends AppCompatActivity {
         google = (LinearLayout) findViewById(R.id.gl_login_button);
         instagram = (LinearLayout) findViewById(R.id.instagram_login_button);
 
-        //fabEmail=(FloatingActionButton)findViewById(R.id.action_email_fab);
-        //fabSign = (FloatingActionButton)findViewById(R.id.action_sign_fab);
-
         videoview = (VideoView) findViewById(R.id.videoView);
 
         otherlogins = (TextView) findViewById(R.id.otherlogins);
@@ -198,7 +208,67 @@ public class Login2 extends AppCompatActivity {
 
         displayCoverVideo();
 
+
+        //google signin integration
+        signIn = (Button) findViewById(R.id.bn_login);
+        signIn.setOnClickListener(this);
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this,this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions)
+                .build();
+
     }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.bn_login:
+
+                Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+                startActivityForResult(intent, REQ_CODE);
+
+                break;
+        }
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    private void handleResult(GoogleSignInResult result) {
+
+        if(result.isSuccess()) {
+            GoogleSignInAccount account = result.getSignInAccount();
+
+            firstname = account.getDisplayName();
+            lastname = account.getFamilyName();
+            email = account.getEmail();
+            imgurl = account.getPhotoUrl().toString();
+
+            if(firstname.contains(" "))
+                firstname = firstname.substring(0, firstname.indexOf(" "));
+
+            bundle.putString("firstname", firstname);
+            bundle.putString("lastname", lastname);
+            bundle.putString("email", email);
+            bundle.putString("gender", " ");
+            bundle.putString("imgurl", imgurl);
+
+            Toast.makeText(Login2.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+            Intent i = new Intent(Login2.this, StartingScreen.class);
+                                        i.putExtras(bundle);
+                                        startActivity(i);
+        } else {
+            Toast.makeText(Login2.this, "Login Unsuccessful", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    //facebook login
 
     public void fbLogin(View view) {
 
@@ -215,13 +285,18 @@ public class Login2 extends AppCompatActivity {
 
         }
 
-
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == REQ_CODE) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            handleResult(result);
+        }
+
     }
 
 
@@ -234,25 +309,6 @@ public class Login2 extends AppCompatActivity {
             @Override
             public void onPrepared(MediaPlayer mp) {
                 mp.setLooping(true);
-            }
-        });
-    }
-
-
-    private void initialiseFABEvents(){
-        fabEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent nextpage = new Intent(getApplicationContext(),Login.class);
-                startActivity(nextpage);
-            }
-        });
-
-        fabSign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent nextpage = new Intent(getApplicationContext(),StartingScreen.class);
-                startActivity(nextpage);
             }
         });
     }
@@ -310,5 +366,4 @@ public class Login2 extends AppCompatActivity {
             imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
         }
     }
-
 }

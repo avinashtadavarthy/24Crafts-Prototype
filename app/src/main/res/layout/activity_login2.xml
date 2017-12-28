@@ -56,17 +56,12 @@
                 android:background="@drawable/round_card"
                 style="?android:attr/borderlessButtonStyle"/>
 
-        <TextView
-            android:visibility="gone"
-            android:text="Login with Facebook"
-            android:textColor="#000000"
-            android:layout_width="180sp"
-            android:layout_height="40sp"
-            android:gravity="center"
-            android:background="@drawable/round_card"/>
-
     </LinearLayout>
 
+        <com.google.android.gms.common.SignInButton
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
         android:id="@+id/gl_login_button"
@@ -83,7 +78,20 @@
             android:background="@drawable/circle_filled"
             android:padding="10sp"/>
 
+            <Button
+                android:id="@+id/bn_login"
+                android:layout_width="180sp"
+                android:layout_height="40sp"
+                android:text="Login with Google"
+                android:textColor="#000000"
+                android:textAllCaps="false"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center"
+                android:background="@drawable/round_card"
+                style="?android:attr/borderlessButtonStyle"/>
+
         <TextView
+            android:visibility="gone"
             android:text="Login with Google"
             android:textColor="#000000"
             android:layout_width="183sp"
