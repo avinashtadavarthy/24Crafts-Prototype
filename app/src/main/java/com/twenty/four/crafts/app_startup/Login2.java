@@ -75,6 +75,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
     String url = "https://graph.facebook.com/me?fields=id,verified,first_name,last_name,name,gender,email,cover.height(720),picture.height(720),age_range&access_token=";
 
     //google login integration
+    GoogleSignInOptions gso;
     Button signIn;
     GoogleApiClient googleApiClient;
     GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
@@ -210,12 +211,17 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
 
         //google signin integration
-        signIn = (Button) findViewById(R.id.bn_login);
-        signIn.setOnClickListener(this);
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
         googleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this,this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions)
                 .build();
+
+        signIn = (Button) findViewById(R.id.bn_login);
+        signIn.setOnClickListener(this);
 
     }
 
@@ -243,10 +249,16 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         if(result.isSuccess()) {
             GoogleSignInAccount account = result.getSignInAccount();
 
+            if(account != null) {
+
             firstname = account.getDisplayName();
             lastname = account.getFamilyName();
             email = account.getEmail();
-            imgurl = account.getPhotoUrl().toString();
+            if(account.getPhotoUrl() != null) {
+                imgurl = account.getPhotoUrl().toString();
+            } else {
+                imgurl = "null";
+            }
 
             if(firstname.contains(" "))
                 firstname = firstname.substring(0, firstname.indexOf(" "));
@@ -262,6 +274,9 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
             Intent i = new Intent(Login2.this, StartingScreen.class);
                                         i.putExtras(bundle);
                                         startActivity(i);
+            }
+
+
         } else {
             Toast.makeText(Login2.this, "Login Unsuccessful", Toast.LENGTH_SHORT).show();
         }
@@ -290,12 +305,13 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == REQ_CODE) {
+        if(requestCode == REQ_CODE && resultCode == Activity.RESULT_OK) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleResult(result);
         }
+
+        callbackManager.onActivityResult(requestCode, resultCode, data);
 
     }
 

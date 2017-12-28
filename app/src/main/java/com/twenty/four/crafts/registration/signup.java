@@ -263,12 +263,17 @@ public class signup extends AppCompatActivity{
 
 
         if(!firstname.equals("null")) {
+
             first_name1.setText(firstname);
             last_name1.setText(lastname);
             email1.setText(email);
-            Picasso.with(getApplicationContext()).load(imgurl).into(profile_image1);
+
+            if(!imgurl.equals("null")) Picasso.with(getApplicationContext()).load(imgurl).into(profile_image1);
+            else profile_image1.setImageResource(R.drawable.com_facebook_profile_picture_blank_square);
+
             if(gender.equals("male")) genderspin.setSelection(1);
             else if(gender.equals("female")) genderspin.setSelection(2);
+
         }
 
 
