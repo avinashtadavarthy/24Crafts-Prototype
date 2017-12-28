@@ -35,6 +35,9 @@ public class signup3 extends AppCompatActivity {
     public static int APP_REQUEST_CODE = 99;
 
 
+    Bundle bundle;
+    String type, name, craft;
+    LinearLayout questions_crafts, questions_clients;
 
 
     String[] actor_61string={"If yes, then what kind?",
@@ -70,6 +73,22 @@ public class signup3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup3);
+
+        bundle = getIntent().getExtras();
+        name = bundle.getString("name");
+        craft = bundle.getString("craft");
+        type = bundle.getString("type");
+
+        questions_crafts = (LinearLayout) findViewById(R.id.questions_crafts);
+        questions_clients = (LinearLayout) findViewById(R.id.questions_clients);
+
+        if(type.equals("craftsman")) {
+            questions_clients.setVisibility(View.GONE);
+        } else if(type.equals("client")) {
+            questions_crafts.setVisibility(View.GONE);
+        }
+
+        //craftsmen
 
         final LinearLayout actor = (LinearLayout) findViewById(R.id.actor);
         actor.setVisibility(View.GONE);
@@ -670,16 +689,113 @@ public class signup3 extends AppCompatActivity {
         EditText pets_2 = (EditText) findViewById(R.id.pets_2);
         RadioGroup pets_3radio = (RadioGroup) findViewById(R.id.pets_3radio);
         RadioButton pets_3radioyes = (RadioButton) findViewById(R.id.pets_3radioyes);
-        
 
 
 
-        final Bundle bundle = getIntent().getExtras();
-        final String name = bundle.getString("name");
-        final String craft = bundle.getString("craft");
+        //clients
+        final LinearLayout castingagent = (LinearLayout) findViewById(R.id.casting_agent);
+        castingagent.setVisibility(View.GONE);
+        RadioGroup castingagent_1radio = (RadioGroup) findViewById(R.id.casting_agent_1radio);
+        RadioButton castingagent_1radioyes = (RadioButton) findViewById(R.id.casting_agent_1radioyes);
+        final EditText castingagent_11 = (EditText) findViewById(R.id.casting_agent_11);
+        castingagent_11.setVisibility(View.GONE);
+
+
+
+        final LinearLayout codirector = (LinearLayout) findViewById(R.id.codirector);
+        codirector.setVisibility(View.GONE);
+        RadioGroup codirector_1radio = (RadioGroup) findViewById(R.id.codirector_1radio);
+        RadioButton codirector_1radioyes = (RadioButton) findViewById(R.id.codirector_1radioyes);
+        final EditText codirector_11 = (EditText) findViewById(R.id.codirector_11);
+        codirector_11.setVisibility(View.GONE);
+
+
+
+        final LinearLayout coproducer = (LinearLayout) findViewById(R.id.coproducer);
+        coproducer.setVisibility(View.GONE);
+        EditText coproducer_2 = (EditText) findViewById(R.id.coproducer_2);
+        RadioGroup coproducer_1radio = (RadioGroup) findViewById(R.id.coproducer_1radio);
+        RadioButton coproducer_1radioyes = (RadioButton) findViewById(R.id.coproducer_1radioyes);
+        final EditText coproducer_11 = (EditText) findViewById(R.id.coproducer_11);
+        coproducer_11.setVisibility(View.GONE);
+
+
+
+
+        final LinearLayout director = (LinearLayout) findViewById(R.id.director);
+        director.setVisibility(View.GONE);
+        RadioGroup director_1radio = (RadioGroup) findViewById(R.id.director_1radio);
+        RadioButton director_1radioyes = (RadioButton) findViewById(R.id.director_1radioyes);
+        final EditText director_11 = (EditText) findViewById(R.id.director_11);
+        director_11.setVisibility(View.GONE);
+
+
+
+
+        final LinearLayout asstdirector = (LinearLayout) findViewById(R.id.asstdirector);
+        asstdirector.setVisibility(View.GONE);
+        RadioGroup asstdirector_1radio = (RadioGroup) findViewById(R.id.asstdirector_1radio);
+        RadioButton asstdirector_1radioyes = (RadioButton) findViewById(R.id.asstdirector_1radioyes);
+        final EditText asstdirector_11 = (EditText) findViewById(R.id.asstdirector_11);
+        asstdirector_11.setVisibility(View.GONE);
+
+
+
+
+        final LinearLayout directoraudit = (LinearLayout) findViewById(R.id.directoraudit);
+        directoraudit.setVisibility(View.GONE);
+        RadioGroup directoraudit_1radio = (RadioGroup) findViewById(R.id.directoraudit_1radio);
+        RadioButton directoraudit_1radioyes = (RadioButton) findViewById(R.id.directoraudit_1radioyes);
+        final EditText directoraudit_11 = (EditText) findViewById(R.id.directoraudit_11);
+        directoraudit_11.setVisibility(View.GONE);
+
+
+
+
+        final LinearLayout execproducer = (LinearLayout) findViewById(R.id.execproducer);
+        execproducer.setVisibility(View.GONE);
+        EditText execproducer_2 = (EditText) findViewById(R.id.execproducer_2);
+        RadioGroup execproducer_1radio = (RadioGroup) findViewById(R.id.execproducer_1radio);
+        RadioButton execproducer_1radioyes = (RadioButton) findViewById(R.id.execproducer_1radioyes);
+        final EditText execproducer_11 = (EditText) findViewById(R.id.execproducer_11);
+        execproducer_11.setVisibility(View.GONE);
+
+
+
+
+        final LinearLayout modelcoor = (LinearLayout) findViewById(R.id.modelcoor);
+        modelcoor.setVisibility(View.GONE);
+        RadioGroup modelcoor_1radio = (RadioGroup) findViewById(R.id.modelcoor_1radio);
+        RadioButton moedlcoor_1radioyes = (RadioButton) findViewById(R.id.modelcoor_1radioyes);
+        final EditText modelcoor_11 = (EditText) findViewById(R.id.modelcoor_11);
+        modelcoor_11.setVisibility(View.GONE);
+
+
+
+        final LinearLayout producer = (LinearLayout) findViewById(R.id.producer);
+        producer.setVisibility(View.GONE);
+        EditText producer_2 = (EditText) findViewById(R.id.producer_2);
+        RadioGroup producer_1radio = (RadioGroup) findViewById(R.id.producer_1radio);
+        RadioButton producer_1radioyes = (RadioButton) findViewById(R.id.producer_1radioyes);
+        final EditText producer_11 = (EditText) findViewById(R.id.producer_11);
+        producer_11.setVisibility(View.GONE);
+
+
+
+
+        final LinearLayout prodhouseman = (LinearLayout) findViewById(R.id.prodhouseman);
+        prodhouseman.setVisibility(View.GONE);
+        EditText prodhouseman_2 = (EditText) findViewById(R.id.prodhouseman_2);
+        RadioGroup prodhouseman_1radio = (RadioGroup) findViewById(R.id.prodhouseman_1radio);
+        RadioButton prodhouseman_1radioyes = (RadioButton) findViewById(R.id.prodhouseman_1radioyes);
+        final EditText prodhouseman_11 = (EditText) findViewById(R.id.prodhouseman_11);
+        prodhouseman_11.setVisibility(View.GONE);
+
+
 
         switch(craft)
         {
+            //craftsmen
             case "Actor": actor.setVisibility(View.VISIBLE); break;
             case "Actress": actress.setVisibility(View.VISIBLE); break;
             case "Child Artist": child.setVisibility(View.VISIBLE); break;
@@ -717,8 +833,22 @@ public class signup3 extends AppCompatActivity {
             case "VFX / CG": vfx.setVisibility(View.VISIBLE); break;
             case "SFX": sfx.setVisibility(View.VISIBLE); break;
             case "Pet Suppliers / Pet Doctors / AWBI Certifications": pets.setVisibility(View.VISIBLE); break;
+
+            //clients
+            case "Casting Agent": castingagent.setVisibility(View.VISIBLE); break;
+            case "Co-Director": codirector.setVisibility(View.VISIBLE); break;
+            case "Co-Producer": coproducer.setVisibility(View.VISIBLE); break;
+            case "Director": director.setVisibility(View.VISIBLE); break;
+            case "Director Assistant": asstdirector.setVisibility(View.VISIBLE); break;
+            case "Director Audition": directoraudit.setVisibility(View.VISIBLE); break;
+            case "Executive Producer": execproducer.setVisibility(View.VISIBLE); break;
+            case "Model Coordinator": modelcoor.setVisibility(View.VISIBLE); break;
+            case "Producer": producer.setVisibility(View.VISIBLE); break;
+            case "Production House Manager": prodhouseman.setVisibility(View.VISIBLE); break;
         }
 
+
+        //craftsmen
         
         //actor
         actor_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -1398,10 +1528,144 @@ public class signup3 extends AppCompatActivity {
             }
         });
 
-        
 
-        Button button_3_craft = (Button)findViewById(R.id.button_3_craft);
-        button_3_craft.setOnClickListener(new View.OnClickListener() {
+
+        //clients
+
+        //castingagent
+        castingagent_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.casting_agent_1radioyes)
+                    castingagent_11.setVisibility(View.VISIBLE);
+                else
+                    castingagent_11.setVisibility(View.GONE);
+            }
+        });
+
+
+        //codirector
+        codirector_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.codirector_1radioyes)
+                    codirector_11.setVisibility(View.VISIBLE);
+                else
+                    codirector_11.setVisibility(View.GONE);
+            }
+        });
+
+
+        //coproducer
+        coproducer_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.coproducer_1radioyes)
+                    coproducer_11.setVisibility(View.VISIBLE);
+                else
+                    coproducer_11.setVisibility(View.GONE);
+            }
+        });
+
+
+        //director
+        director_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.director_1radioyes)
+                    director_11.setVisibility(View.VISIBLE);
+                else
+                    director_11.setVisibility(View.GONE);
+            }
+        });
+
+
+        //director assistant
+        asstdirector_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.asstdirector_1radioyes)
+                    asstdirector_11.setVisibility(View.VISIBLE);
+                else
+                    asstdirector_11.setVisibility(View.GONE);
+            }
+        });
+
+
+        //director audition
+        directoraudit_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.directoraudit_1radioyes)
+                    directoraudit_11.setVisibility(View.VISIBLE);
+                else
+                    directoraudit_11.setVisibility(View.GONE);
+            }
+        });
+
+
+        //executive producer
+        execproducer_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.execproducer_1radioyes){
+                    execproducer_11.setVisibility(View.VISIBLE);
+                }
+                else{
+                    execproducer_11.setVisibility(View.GONE);
+                }
+
+            }
+        });
+
+
+        //modelcoordinator
+        modelcoor_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.modelcoor_1radioyes)
+                    modelcoor_11.setVisibility(View.VISIBLE);
+                else
+                    modelcoor_11.setVisibility(View.GONE);
+            }
+        });
+
+
+        //producer
+        producer_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.producer_1radioyes)
+                    producer_11.setVisibility(View.VISIBLE);
+                else
+                    producer_11.setVisibility(View.GONE);
+            }
+        });
+
+
+
+        //prodhouseman
+        prodhouseman_1radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.prodhouseman_1radioyes)
+                    prodhouseman_11.setVisibility(View.VISIBLE);
+                else
+                    prodhouseman_11.setVisibility(View.GONE);
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+        Button button_3 = (Button)findViewById(R.id.button_3);
+        button_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -1484,10 +1748,21 @@ public class signup3 extends AppCompatActivity {
                     toastMessage = "Success:" + loginResult.getAccessToken().getAccountId();
                     getAccount();
 
-                    Intent intent = new Intent(this, Verification.class)
-                            .putExtra("fromhere", "PhoneVerified")
-                            .putExtra("fromwhom", "Crafts");
-                    startActivity(intent);
+                    if(type.equals("craftsman")){
+
+                        Intent intent = new Intent(this, Verification.class)
+                                .putExtra("fromhere", "PhoneVerified")
+                                .putExtra("fromwhom", "Crafts");
+                        startActivity(intent);
+
+                    } else if(type.equals("client")){
+
+                        Intent intent = new Intent(this, Verification.class)
+                                .putExtra("fromhere", "PhoneVerified")
+                                .putExtra("fromwhom", "Clients");
+                        startActivity(intent);
+
+                    }
 
                 }
             }

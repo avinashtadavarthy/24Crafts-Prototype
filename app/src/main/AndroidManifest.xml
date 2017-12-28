@@ -52,14 +52,6 @@
             android:name="com.twenty.four.crafts.registration.Verification"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name="com.twenty.four.crafts.registration.signup3client"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name="com.twenty.four.crafts.registration.signupclient"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
         <activity android:name="com.twenty.four.crafts.ForgotPassword" />
         <activity android:name="com.twenty.four.crafts.ForgotPasswordPopUp"
             android:theme="@style/AppTheme.CustomTheme" />

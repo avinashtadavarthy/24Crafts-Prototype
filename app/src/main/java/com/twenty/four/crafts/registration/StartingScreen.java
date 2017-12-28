@@ -1,5 +1,6 @@
 package com.twenty.four.crafts.registration;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,8 +42,8 @@ public class StartingScreen extends AppCompatActivity {
 
                 User.getInstance().isClient = "false";
 
-                Intent i = new Intent(getApplicationContext(),signup.class).putExtra("type", "craftsman");
-                i.putExtras(transferdata());
+                Intent i = new Intent(getApplicationContext(),signup.class);
+                i.putExtras(transferdata("craftsman"));
                 startActivity(i);
 
             }
@@ -54,8 +55,8 @@ public class StartingScreen extends AppCompatActivity {
 
                 User.getInstance().isClient = "true";
 
-                Intent i = new Intent(getApplicationContext(),signupclient.class).putExtra("type", "client");
-                i.putExtras(transferdata());
+                Intent i = new Intent(getApplicationContext(),signup.class);
+                i.putExtras(transferdata("client"));
                 startActivity(i);
 
             }
@@ -63,7 +64,7 @@ public class StartingScreen extends AppCompatActivity {
 
     }
 
-    public Bundle transferdata()
+    public Bundle transferdata(String type)
     {
         Bundle bundle = new Bundle();
         bundle.putString("firstname", firstname);
@@ -71,8 +72,29 @@ public class StartingScreen extends AppCompatActivity {
         bundle.putString("email", email);
         bundle.putString("gender", gender);
         bundle.putString("imgurl", imgurl);
+        bundle.putString("type", type);
 
         return bundle;
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+        new android.support.v7.app.AlertDialog.Builder(StartingScreen.this)
+                .setMessage("Do you want to exit the registration process?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .show();
+
     }
 
 }

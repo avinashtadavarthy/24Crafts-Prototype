@@ -57,6 +57,8 @@ public class Login2 extends AppCompatActivity {
     ImageView signup_iconz, login_iconz;
     TextView otherlogins;
 
+    Bundle bundle;
+
     //fb login integration
     CallbackManager callbackManager;
     String access;
@@ -71,6 +73,8 @@ public class Login2 extends AppCompatActivity {
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login2);
+
+        bundle = new Bundle();
 
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(
@@ -105,7 +109,6 @@ public class Login2 extends AppCompatActivity {
                                         Toast.makeText(Login2.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
                                         //transferring data
-                                        Bundle bundle = new Bundle();
                                         bundle.putString("firstname", firstname);
                                         bundle.putString("lastname", lastname);
                                         bundle.putString("email", email);
@@ -172,8 +175,16 @@ public class Login2 extends AppCompatActivity {
         sign_up_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent nextpage = new Intent(getApplicationContext(),StartingScreen.class);
-                startActivity(nextpage);
+
+               bundle.putString("firstname", "null");
+                bundle.putString("lastname", "null");
+                bundle.putString("email", "null");
+                bundle.putString("gender", "null");
+                bundle.putString("imgurl", "null");
+
+                Intent i = new Intent(Login2.this, StartingScreen.class);
+                i.putExtras(bundle);
+                startActivity(i);
             }
         });
 

@@ -7,9 +7,11 @@ package com.twenty.four.crafts;
 public class User {
     private static User mInstance= null;
 
-    //page 1 (mandatory for all)
+    //page 1 (mandatory to all)
+    public String isClient;
+
+    //page 2 (mandatory for all)
     public String
-            isClient,
             firstname,
             lastname,
             useremail,
@@ -20,7 +22,7 @@ public class User {
             hometown,
             category;
 
-    //page 2 (only for actor, actress, child actor)
+    //page 3 (only for actor, actress, child actor)
     public String
             bodytype,
             haircolor,

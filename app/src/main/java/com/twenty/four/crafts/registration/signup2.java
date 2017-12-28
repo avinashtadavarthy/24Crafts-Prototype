@@ -55,6 +55,7 @@ public class signup2 extends AppCompatActivity {
         final Bundle bundle = getIntent().getExtras();
         final String name = bundle.getString("name");
         final String craft = bundle.getString("craft");
+        final String type = bundle.getString("type");
 
         TextView textView =(TextView)findViewById(R.id.welcome);
         textView.setText("Welcome, "+name);
@@ -235,8 +236,10 @@ public class signup2 extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("name",name);
                 bundle.putString("craft",craft);
+                bundle.putString("type", type);
                 goToNextActivity.putExtras(bundle);
                 startActivity(goToNextActivity);*/
+
             }
         });
 
