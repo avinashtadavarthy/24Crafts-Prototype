@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 android:layout_width="match_parent"
-android:layout_height="240sp"
+android:layout_height="250sp"
 android:orientation="vertical"
 android:id="@+id/nav_header_crafts"
 android:theme="@style/ThemeOverlay.AppCompat.Dark">
@@ -35,7 +35,8 @@ android:theme="@style/ThemeOverlay.AppCompat.Dark">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:weightSum="6">
+        android:weightSum="6"
+        android:paddingBottom="15sp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -107,7 +108,8 @@ android:theme="@style/ThemeOverlay.AppCompat.Dark">
         android:layout_height="0sp"
         android:layout_weight="0.75"
         android:weightSum="3"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#323232">
 
         <ImageView
             android:id="@+id/aud_handy"
@@ -117,7 +119,7 @@ android:theme="@style/ThemeOverlay.AppCompat.Dark">
             android:background="?android:attr/selectableItemBackground"
             android:src="@drawable/aud_handy"
             android:scaleType="fitCenter"
-            android:layout_margin="5sp"/>
+            android:padding="5sp"/>
 
         <ImageView
             android:id="@+id/fav_handy"
@@ -127,7 +129,7 @@ android:theme="@style/ThemeOverlay.AppCompat.Dark">
             android:background="?android:attr/selectableItemBackground"
             android:src="@drawable/fav_handy"
             android:scaleType="fitCenter"
-            android:layout_margin="5sp"/>
+            android:padding="5sp"/>
 
         <ImageView
             android:id="@+id/inbox_handy"
@@ -137,7 +139,7 @@ android:theme="@style/ThemeOverlay.AppCompat.Dark">
             android:background="?android:attr/selectableItemBackground"
             android:src="@drawable/inbox_handy"
             android:scaleType="fitCenter"
-            android:layout_margin="5sp"/>
+            android:padding="5sp"/>
 
     </LinearLayout>
 
