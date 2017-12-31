@@ -88,6 +88,14 @@ public class Login extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+        Intent i = new Intent(getApplicationContext(), Login2.class);
+        startActivity(i);
+
+    }
+
     //keyboard disappears when you click outside
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {

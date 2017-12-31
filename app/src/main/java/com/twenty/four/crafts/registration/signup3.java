@@ -29,6 +29,7 @@ import com.facebook.accountkit.PhoneNumber;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
+import com.twenty.four.crafts.User;
 
 public class signup3 extends AppCompatActivity {
 
@@ -1778,6 +1779,7 @@ public class signup3 extends AppCompatActivity {
     /**
      * Gets current account from Facebook Account Kit which include user's phone number.
      */
+
     private void getAccount(){
         AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
             @Override
@@ -1788,11 +1790,13 @@ public class signup3 extends AppCompatActivity {
                 // Get phone number
                 PhoneNumber phoneNumber = account.getPhoneNumber();
                 String phoneNumberString = phoneNumber.toString();
+                User.getInstance().phonenumber = phoneNumberString;
+                User.getInstance().phone_verified = true;
 
                 // Surface the result to your user in an appropriate way.
                 Toast.makeText(
                         signup3.this,
-                        phoneNumberString,
+                        phoneNumberString + " Verified!!",
                         Toast.LENGTH_LONG)
                         .show();
             }
@@ -1800,7 +1804,13 @@ public class signup3 extends AppCompatActivity {
             @Override
             public void onError(final AccountKitError error) {
                 Log.e("AccountKit",error.toString());
-                // Handle Error
+
+                Toast.makeText(
+                        signup3.this,
+                        "Unable to verify!!",
+                        Toast.LENGTH_SHORT)
+                        .show();
+
             }
         });
     }

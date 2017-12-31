@@ -8,14 +8,14 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.VideoView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.twenty.four.crafts.R;
 
 public class SplashScreen extends AppCompatActivity {
 
     // Splash screen timer
     private static int SPLASH_TIME_OUT = 3000;
-
-    VideoView splashvideo;
     ImageView splashlogo;
 
     @Override
@@ -23,25 +23,15 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        splashvideo = (VideoView) findViewById(R.id.splashvideo);
-
         splashlogo = (ImageView) findViewById(R.id.splashlogo);
         if (android.os.Build.VERSION.SDK_INT >= 21) splashlogo.setElevation(10);
 
-        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.opening);
-        //String uriPath = "android.resource://com.twenty.four.crafts/" + R.raw.opening;
-        //Uri uri = Uri.parse(uriPath);
-        splashvideo.setVideoURI(uri);
-        splashvideo.requestFocus();
-        splashvideo.start();
+        ImageView splashgif = (ImageView) findViewById(R.id.splashgif);
+        GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(splashgif);
+        Glide.with(this).load(R.raw.samplevideo).into(imageViewTarget);
 
 
         new Handler().postDelayed(new Runnable() {
-
-            /*
-             * Showing splash screen with a timer. This will be useful when you
-             * want to show case your app logo / company
-             */
 
             @Override
             public void run() {
@@ -55,29 +45,6 @@ public class SplashScreen extends AppCompatActivity {
                 finish();
             }
         }, SPLASH_TIME_OUT);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        splashvideo= (VideoView) findViewById(R.id.splashvideo);
-        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.opening);
-        //String uriPath = "android.resource://com.example.iyashwant.spiderprojectprototype/" + R.raw.opening;
-        //Uri uri = Uri.parse(uriPath);
-        splashvideo.setVideoURI(uri);
-        splashvideo.start();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        splashvideo.pause();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        splashvideo.stopPlayback();
     }
 
 }

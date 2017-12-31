@@ -27,10 +27,20 @@
         android:textSize="20dp"/>
 
         <LinearLayout
+            android:id="@+id/phone_layout"
             android:layout_width="match_parent"
-            android:paddingLeft="70dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="40dp">
+            android:layout_height="wrap_content"
+
+           android:elevation="8sp"
+            android:paddingLeft="40sp"
+            android:paddingRight="30sp"
+            android:paddingTop="10sp"
+            android:paddingBottom="10sp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="16sp"
+            android:layout_marginRight="16sp"
+            android:layout_marginBottom="16sp"
+            android:background="#ffffff">
 
             <ImageView
                 android:layout_width="55dp"
@@ -38,7 +48,7 @@
                 android:clickable="true"
                 android:id="@+id/phone"
                 android:src="@drawable/phone2"
-
+                android:layout_gravity="center_vertical"
                 />
 
 
@@ -47,227 +57,249 @@
                 android:id="@+id/phonelayout"
                 android:layout_width="match_parent"
                 android:orientation="vertical"
-                android:layout_height="match_parent">
-
-
+                android:layout_height="match_parent"
+                android:paddingLeft="16sp"
+                android:weightSum="2"
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="100dp"
-                    android:layout_marginLeft="40dp"
                     android:text="Phone"
-                    android:layout_marginTop="8dp"
+                    android:textColor="#000000"
                     android:textSize="20dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="0sp"
+                    android:layout_weight="1.25"/>
 
                 <TextView
 
-                    android:layout_height="wrap_content"
+                    android:layout_height="0sp"
+                    android:layout_weight="0.75"
                     android:layout_width="100dp"
-                    android:layout_marginLeft="40dp"
                     android:id="@+id/phone_text_veri"
                     android:text="Verified !"
-                    android:textColor="@android:color/holo_green_light"/>
+                    android:textColor="#ff99cc00"/>
 
             </LinearLayout>
 
         </LinearLayout>
 
 
-        <View
-            android:layout_marginBottom="20sp"
-            android:layout_height="1dp"
-            android:layout_gravity="center"
-            android:layout_width="350dp"
-            android:background="#9A9B9b"
-            />
-
-
     <LinearLayout
+        android:id="@+id/fb_layout"
         android:layout_width="match_parent"
-        android:paddingLeft="70dp"
-        android:layout_height="60dp">
+        android:layout_height="wrap_content"
+
+       android:elevation="8sp"
+        android:paddingLeft="40sp"
+        android:paddingRight="30sp"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
+        android:layout_marginLeft="16sp"
+        android:layout_marginRight="16sp"
+        android:layout_marginBottom="16sp"
+        android:background="#ffffff">
 
         <ImageView
             android:layout_width="55dp"
             android:layout_height="53dp"
             android:id="@+id/fb"
             android:src="@drawable/facebook_black"
-            android:clickable="true" />
-
-
+            android:clickable="true"
+            android:layout_gravity="center_vertical" />
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_height="match_parent">
-
-
+            android:layout_height="match_parent"
+            android:paddingLeft="16sp"
+            android:weightSum="2"
+            android:gravity="center">
 
             <TextView
                 android:layout_width="100dp"
-                android:layout_marginLeft="40dp"
-                android:text="Faceboook"
-                android:layout_marginTop="8dp"
+                android:text="Facebook"
+                android:textColor="#000000"
                 android:textSize="20dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="0sp"
+                android:layout_weight="1.25"/>
 
             <TextView
 
-                android:layout_height="wrap_content"
+                android:layout_height="0sp"
+                android:layout_weight="0.75"
                 android:layout_width="100dp"
-                android:layout_marginLeft="40dp"
-                android:text="Not verified !"
                 android:id="@+id/fb_text_veri"
+                android:text="Not verified !"
                 android:textColor="#ff4e4e"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <View
-        android:layout_marginBottom="20sp"
-        android:layout_height="1dp"
-        android:layout_gravity="center"
-        android:layout_width="350dp"
-        android:background="#9A9B9b"
-        />
-
     <LinearLayout
+        android:id="@+id/google_layout"
         android:layout_width="match_parent"
-        android:paddingLeft="70dp"
-        android:layout_height="60dp">
+        android:layout_height="wrap_content"
+
+       android:elevation="8sp"
+        android:paddingLeft="40sp"
+        android:paddingRight="30sp"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
+        android:layout_marginLeft="16sp"
+        android:layout_marginRight="16sp"
+        android:layout_marginBottom="16sp"
+        android:background="#ffffff">
+
         <ImageView
             android:layout_width="55dp"
             android:id="@+id/google"
             android:layout_height="50dp"
-            android:src="@drawable/google_black"
+            android:src="@drawable/googleg_disabled_color_18"
+            android:padding="10sp"
+            android:background="@drawable/circle_filled"
             android:clickable="true"
-
+            android:layout_gravity="center_vertical"
             />
 
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_height="match_parent">
-
-
+            android:layout_height="match_parent"
+            android:paddingLeft="16sp"
+            android:weightSum="2"
+            android:gravity="center">
 
             <TextView
                 android:layout_width="100dp"
-                android:layout_marginLeft="40dp"
-                android:text="Google +"
-                android:layout_marginTop="8dp"
+                android:text="Google"
+                android:textColor="#000000"
                 android:textSize="20dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="0sp"
+                android:layout_weight="1.25"/>
 
             <TextView
 
-                android:layout_height="wrap_content"
+                android:layout_height="0sp"
+                android:layout_weight="0.75"
                 android:layout_width="100dp"
-                android:layout_marginLeft="40dp"
-                android:text="Not verified !"
                 android:id="@+id/google_text_veri"
+                android:text="Not verified !"
                 android:textColor="#ff4e4e"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <View
-        android:layout_marginBottom="20sp"
-        android:layout_height="1dp"
-        android:layout_gravity="center"
-        android:layout_width="350dp"
-        android:background="#9A9B9b"
-        />
-
     <LinearLayout
+        android:id="@+id/insta_layout"
         android:layout_width="match_parent"
-        android:paddingLeft="70dp"
-        android:layout_height="60dp">
+        android:layout_height="wrap_content"
+
+       android:elevation="5sp"
+        android:paddingLeft="40sp"
+        android:paddingRight="30sp"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
+        android:layout_marginLeft="16sp"
+        android:layout_marginRight="16sp"
+        android:layout_marginBottom="16sp"
+        android:background="#ffffff">
+
         <ImageView
             android:layout_width="55dp"
             android:layout_height="50dp"
             android:clickable="true"
             android:src="@drawable/insta_black"
             android:id="@+id/insta"
+            android:layout_gravity="center_vertical"
             />
+
         <LinearLayout
+
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_height="match_parent">
-
-
+            android:layout_height="match_parent"
+            android:paddingLeft="16sp"
+            android:weightSum="2"
+            android:gravity="center">
 
             <TextView
                 android:layout_width="100dp"
-                android:layout_marginLeft="40dp"
                 android:text="Instagram"
-                android:layout_marginTop="8dp"
+                android:textColor="#000000"
                 android:textSize="20dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="0sp"
+                android:layout_weight="1.25"/>
 
             <TextView
 
-                android:layout_height="wrap_content"
+                android:layout_height="0sp"
+                android:layout_weight="0.75"
                 android:layout_width="100dp"
-                android:layout_marginLeft="40dp"
-                android:text="Not verified !"
                 android:id="@+id/insta_text_veri"
+                android:text="Not verified !"
                 android:textColor="#ff4e4e"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <View
-
-        android:layout_marginBottom="20sp"
-        android:layout_height="1dp"
-        android:layout_gravity="center"
-        android:layout_width="350dp"
-        android:background="#9A9B9b"
-        />
-
 
     <LinearLayout
+        android:id="@+id/twitter_layout"
         android:layout_width="match_parent"
-        android:paddingLeft="70dp"
-        android:layout_height="60dp">
+        android:layout_height="wrap_content"
+
+        android:elevation="5sp"
+        android:paddingLeft="40sp"
+        android:paddingRight="30sp"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
+        android:layout_marginLeft="16sp"
+        android:layout_marginRight="16sp"
+        android:layout_marginBottom="16sp"
+        android:background="#ffffff">
+
         <ImageView
             android:layout_width="55dp"
             android:layout_height="50dp"
             android:clickable="true"
             android:src="@drawable/twitter_black"
             android:id="@+id/twitter"
+            android:layout_gravity="center_vertical"
             />
+
         <LinearLayout
+
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_height="match_parent">
-
-
+            android:layout_height="match_parent"
+            android:paddingLeft="16sp"
+            android:weightSum="2"
+            android:gravity="center">
 
             <TextView
                 android:layout_width="100dp"
-                android:layout_marginLeft="40dp"
                 android:text="Twitter"
-                android:layout_marginTop="8dp"
+                android:textColor="#000000"
                 android:textSize="20dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="0sp"
+                android:layout_weight="1.25"/>
 
             <TextView
 
-                android:layout_height="wrap_content"
+                android:layout_height="0sp"
+                android:layout_weight="0.75"
                 android:layout_width="100dp"
-                android:layout_marginLeft="40dp"
+                android:id="@+id/twitter_text_veri"
                 android:text="Not verified !"
-                android:id="@+id/twiter_text_veri"
                 android:textColor="#ff4e4e"/>
 
         </LinearLayout>
-
     </LinearLayout>
 
     </LinearLayout>

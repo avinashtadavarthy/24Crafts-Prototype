@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="220dp"
+    android:layout_height="230sp"
     android:orientation="vertical"
     android:id="@+id/nav_header_clients"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
@@ -39,7 +39,7 @@
                 android:layout_height="0sp"
                 android:src="@drawable/sample1"
                 android:layout_weight="4"
-                android:elevation="20sp"
+                android:elevation="8sp"
                 android:layout_margin="5sp"
                 android:layout_width="match_parent"
                 android:padding="2sp"
@@ -124,6 +124,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
 
 </RelativeLayout>

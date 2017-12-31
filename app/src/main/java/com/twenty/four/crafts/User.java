@@ -7,10 +7,10 @@ package com.twenty.four.crafts;
 public class User {
     private static User mInstance= null;
 
-    //page 1 (mandatory to all)
+    //page 1 (mandatory to all) - StartingScreen
     public String isClient;
 
-    //page 2 (mandatory for all)
+    //page 2 (mandatory for all) - signup
     public String
             firstname,
             lastname,
@@ -22,7 +22,7 @@ public class User {
             hometown,
             category;
 
-    //page 3 (only for actor, actress, child actor)
+    //page 3 (only for actor, actress, child actor) - signup2
     public String
             bodytype,
             haircolor,
@@ -35,6 +35,17 @@ public class User {
             hipsize,
             chestsize,
             waistsize;
+
+    //page 4 (different for all) - signup 3
+    public String phonenumber;
+
+    //page 5 - Verification
+    public Boolean
+            phone_verified = false,
+            facebook_verified = false,
+            google_verified = false,
+            instagram_verified = false,
+            twitter_verified = false;
 
     protected User(){}
 

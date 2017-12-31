@@ -1,113 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="240sp"
+android:orientation="vertical"
+android:id="@+id/nav_header_crafts"
+android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+<ImageView
     android:layout_width="match_parent"
-    android:layout_height="300sp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    android:id="@+id/nav_header_crafts">
+    android:layout_height="match_parent"
+    android:id="@+id/coverpic"
+    android:src="@drawable/audition_sample"
+    android:scaleType="fitXY" />
 
-    <RelativeLayout
-        android:id="@+id/mainRelativeLayout"
-        android:gravity="top"
-        android:layout_width="match_parent"
-        android:layout_height="220dp">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/coverpic"
-        android:src="@drawable/audition_sample"
-        android:scaleType="fitXY" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#90000000"/>
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#90000000"/>
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="6">
+    android:weightSum="4"
+    android:orientation="vertical">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/nav_pic"
-        android:layout_height="0sp"
-        android:src="@drawable/sample1"
-        android:layout_weight="4"
-        android:elevation="20sp"
-        android:layout_margin="5sp"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:padding="2sp"
-        app:srcCompat="@mipmap/ic_launcher_round"/>
-
+        android:layout_height="0sp"
+        android:layout_weight="3.25">
 
     <LinearLayout
-        android:id="@+id/NameLayoutLinear"
+        android:id="@+id/header_for_crafts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="2"
         android:orientation="vertical"
-        android:weightSum="3">
+        android:weightSum="6">
 
-        <TextView
-            android:id="@+id/nav_name"
-            android:layout_width="match_parent"
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/nav_pic"
             android:layout_height="0sp"
-            android:layout_gravity="center_vertical"
+            android:src="@drawable/sample1"
+            android:layout_weight="4"
+            android:elevation="8sp"
             android:layout_margin="5sp"
-            android:layout_weight="2"
-            android:fontFamily="sans-serif-condensed"
-            android:text="Name"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/nav_craft"
             android:layout_width="match_parent"
+            android:padding="2sp"
+            app:srcCompat="@mipmap/ic_launcher_round"/>
+
+
+        <LinearLayout
             android:layout_height="0sp"
-            android:layout_marginBottom="15sp"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-condensed"
-            android:text="Craft"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:textSize="12sp" />
+            android:layout_width="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/nav_name"
+                android:layout_width="match_parent"
+                android:layout_height="0sp"
+                android:layout_weight="2"
+                android:layout_margin="5sp"
+                android:text="Name"
+                android:textSize="25sp"
+                android:textColor="#ffffff"
+                android:textAlignment="center"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="sans-serif-condensed" />
+
+            <TextView
+                android:id="@+id/nav_craft"
+                android:layout_width="match_parent"
+                android:layout_height="0sp"
+                android:layout_weight="1"
+                android:text="Craft"
+                android:textColor="#ffffff"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="12sp"
+                android:textAlignment="center"/>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
-
-
-</LinearLayout>
-
-    <ImageView
-        android:id="@+id/purchase_coins"
-        android:layout_width="40sp"
-        android:padding="5sp"
-        android:layout_height="40sp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/free_coins"
-        android:layout_margin="5sp"
-        android:focusable="true"
-        android:background="?android:attr/selectableItemBackground"/>
+        <ImageView
+            android:id="@+id/purchase_coins"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5sp"
+            android:background="?android:attr/selectableItemBackground"
+            android:focusable="true"
+            android:padding="5sp"
+            android:src="@drawable/free_coins" />
 
 
     </RelativeLayout>
 
-
     <LinearLayout
-        android:layout_below="@id/mainRelativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0sp"
+        android:layout_weight="0.75"
         android:weightSum="3"
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/aud_handy1"
+            android:id="@+id/aud_handy"
             android:layout_width="0sp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -117,7 +120,7 @@
             android:layout_margin="5sp"/>
 
         <ImageView
-            android:id="@+id/fav_handy1"
+            android:id="@+id/fav_handy"
             android:layout_width="0sp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -127,7 +130,7 @@
             android:layout_margin="5sp"/>
 
         <ImageView
-            android:id="@+id/inbox_handy1"
+            android:id="@+id/inbox_handy"
             android:layout_width="0sp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -138,4 +141,7 @@
 
     </LinearLayout>
 
+</LinearLayout>
+
 </RelativeLayout>
+

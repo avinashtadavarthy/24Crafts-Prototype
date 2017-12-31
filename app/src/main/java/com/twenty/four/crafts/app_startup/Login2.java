@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,6 +29,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -43,8 +48,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.twenty.four.crafts.Main2Activity;
 import com.twenty.four.crafts.MySingleton;
 import com.twenty.four.crafts.R;
+import com.twenty.four.crafts.User;
 import com.twenty.four.crafts.registration.StartingScreen;
 import com.github.clans.fab.FloatingActionButton;
 
@@ -58,8 +67,6 @@ import java.util.List;
 
 public class Login2 extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener{
 
-    FloatingActionButton fabEmail, fabSign;
-    VideoView videoview;
     LinearLayout facebook, google, instagram;
     LinearLayout sign_up_button, login_button;
 
@@ -81,15 +88,80 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
     GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
     private static final int REQ_CODE = 9001;
 
+    //instagram login integration
+    public static final String CLIENT_ID = "1669cbcf37994f0fb1c1b4ee97ed54e6";
+    public static final String CLIENT_SECRET = "70d6d7783f9d4d4a82beb4f70b5894f8";
+    public static final String CALLBACKURL = "http://geass.technology";
+
+    public static final String APIURL = "https://api.instagram.com/v1";
+    private static final String AUTHURL = "https://api.instagram.com/oauth/authorize/";
+    private static final String TOKENURL ="https://api.instagram.com/oauth/access_token";
+    public static final String USETHISSHIT = "https://api.instagram.com/oauth/authorize/?client_id=1669cbcf37994f0fb1c1b4ee97ed54e6&redirect_uri=http://geass.technology&response_type=token";
+
+    String authURLString = AUTHURL + "?client_id=" + CLIENT_ID + "&redirect_uri=" + CALLBACKURL + "&response_type=code&display=touch&scope=likes+comments+relationships";
+    String tokenURLString = TOKENURL + "?client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&redirect_uri=" + CALLBACKURL + "&grant_type=authorization_code";
+    String request_token;
+    Button login_for_instagram;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        FacebookSdk.sdkInitialize(getApplicationContext());
+        /* * * */
+        /* */ FacebookSdk.sdkInitialize(getApplicationContext());
+        /* * * */
         setContentView(R.layout.activity_login2);
+
+        ImageView openinggif = (ImageView) findViewById(R.id.openinggif);
+        GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(openinggif);
+        Glide.with(this).load(R.raw.samplegif2).into(imageViewTarget);
 
         bundle = new Bundle();
 
+        facebook = (LinearLayout) findViewById(R.id.fb_login_button);
+        google = (LinearLayout) findViewById(R.id.gl_login_button);
+        instagram = (LinearLayout) findViewById(R.id.instagram_login_button);
+
+        otherlogins = (TextView) findViewById(R.id.otherlogins);
+        sign_up_button = (LinearLayout) findViewById(R.id.sign_up_button);
+        login_button = (LinearLayout) findViewById(R.id.login_button);
+
+        signup_iconz = (ImageView) findViewById(R.id.signup_iconz);
+        login_iconz = (ImageView) findViewById(R.id.login_iconz);
+
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            otherlogins.setElevation(8);
+            signup_iconz.setElevation(6);
+            login_iconz.setElevation(6);
+            facebook.setElevation(5);
+            google.setElevation(5);
+            instagram.setElevation(5);
+        }
+
+        sign_up_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+               bundle.putString("firstname", "null");
+               bundle.putString("lastname", "null");
+               bundle.putString("email", "null");
+               bundle.putString("gender", "null");
+               bundle.putString("imgurl", "null");
+
+                Intent i = new Intent(Login2.this, StartingScreen.class);
+                i.putExtras(bundle);
+                startActivity(i);
+            }
+        });
+
+        login_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextpage = new Intent(getApplicationContext(),Login.class);
+                startActivity(nextpage);
+            }
+        });
+
+        //facebook signin integration
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(
                 callbackManager,
@@ -121,6 +193,8 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
                                         }
 
                                         Toast.makeText(Login2.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+                                        User.getInstance().facebook_verified = true;
 
                                         //transferring data
                                         bundle.putString("firstname", firstname);
@@ -161,55 +235,6 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         );
 
 
-        facebook = (LinearLayout) findViewById(R.id.fb_login_button);
-        google = (LinearLayout) findViewById(R.id.gl_login_button);
-        instagram = (LinearLayout) findViewById(R.id.instagram_login_button);
-
-        videoview = (VideoView) findViewById(R.id.videoView);
-
-        otherlogins = (TextView) findViewById(R.id.otherlogins);
-        sign_up_button = (LinearLayout) findViewById(R.id.sign_up_button);
-        login_button = (LinearLayout) findViewById(R.id.login_button);
-
-        signup_iconz = (ImageView) findViewById(R.id.signup_iconz);
-        login_iconz = (ImageView) findViewById(R.id.login_iconz);
-
-        if (android.os.Build.VERSION.SDK_INT >= 21) {
-            otherlogins.setElevation(8);
-            signup_iconz.setElevation(6);
-            login_iconz.setElevation(6);
-            facebook.setElevation(5);
-            google.setElevation(5);
-            instagram.setElevation(5);
-        }
-
-        sign_up_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-               bundle.putString("firstname", "null");
-                bundle.putString("lastname", "null");
-                bundle.putString("email", "null");
-                bundle.putString("gender", "null");
-                bundle.putString("imgurl", "null");
-
-                Intent i = new Intent(Login2.this, StartingScreen.class);
-                i.putExtras(bundle);
-                startActivity(i);
-            }
-        });
-
-        login_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent nextpage = new Intent(getApplicationContext(),Login.class);
-                startActivity(nextpage);
-            }
-        });
-
-        displayCoverVideo();
-
-
         //google signin integration
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -223,7 +248,14 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         signIn = (Button) findViewById(R.id.bn_login);
         signIn.setOnClickListener(this);
 
+
+        //instagram signin integration
+        login_for_instagram = (Button) findViewById(R.id.login_for_instagram);
+
+
+
     }
+
 
     @Override
     public void onClick(View v) {
@@ -231,12 +263,31 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         switch (v.getId()) {
             case R.id.bn_login:
 
-                Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-                startActivityForResult(intent, REQ_CODE);
+                if (googleApiClient != null && googleApiClient.isConnected()) {
+
+                    signOut();
+                    Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+                    startActivityForResult(intent, REQ_CODE);
+
+                } else {
+
+                    Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+                    startActivityForResult(intent, REQ_CODE);
+
+                }
 
                 break;
         }
 
+    }
+
+    private void signOut() {
+        Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
+            @Override
+            public void onResult(@NonNull Status status) {
+                //do something
+            }
+        });
     }
 
     @Override
@@ -250,6 +301,8 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
             GoogleSignInAccount account = result.getSignInAccount();
 
             if(account != null) {
+
+                User.getInstance().google_verified = true;
 
             firstname = account.getDisplayName();
             lastname = account.getFamilyName();
@@ -316,44 +369,12 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
     }
 
 
-
-    private void displayCoverVideo(){
-        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.splash);
-        videoview.setVideoURI(uri);
-        videoview.start();
-        videoview.setOnPreparedListener (new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                mp.setLooping(true);
-            }
-        });
-    }
-
     @Override
-    protected void onStart() {
-        super.onStart();
-        videoview = (VideoView) findViewById(R.id.videoView);
-        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.splash);
-        videoview.setVideoURI(uri);
-        videoview.start();
-        videoview.setOnPreparedListener (new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                mp.setLooping(true);
-            }
-        });
-    }
+    public void onBackPressed() {
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        videoview.pause();
-    }
+        ActivityCompat.finishAffinity(Login2.this);
+        finish();
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        videoview.stopPlayback();
     }
 
     //keyboard disappears when you click outside
