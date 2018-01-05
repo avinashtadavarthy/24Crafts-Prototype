@@ -17,7 +17,6 @@
 
         <!-- splash screen -->
         <activity android:name="com.twenty.four.crafts.app_startup.SplashScreen"
-            android:theme="@style/Theme.Transparent"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

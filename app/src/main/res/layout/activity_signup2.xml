@@ -360,7 +360,7 @@
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center_horizontal"
-        android:text="Next"
+        android:text="Skip"
         android:textColor="#ffffff" />
 
 </RelativeLayout>

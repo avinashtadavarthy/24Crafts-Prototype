@@ -2,6 +2,7 @@ package com.twenty.four.crafts.registration;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -70,19 +71,19 @@ public class Verification extends AppCompatActivity {
         google_text = (TextView)findViewById(R.id.google_text_veri);
 
 
-        if(User.getInstance().facebook_verified) {
+        if(getSPData("facebook_verified").equals("true")) {
             fb.setImageResource(R.drawable.facebook);
             fb_text.setTextColor(Color.parseColor("#ff99cc00")); //#82ad00
             fb_text.setText("Verified!");
         }
 
-        if(User.getInstance().google_verified) {
+        if(getSPData("google_verified").equals("true")) {
             google.setImageResource(R.drawable.googleg_standard_color_18);
             google_text.setTextColor(Color.parseColor("#ff99cc00"));
             google_text.setText("Verified!");
         }
 
-        if(User.getInstance().instagram_verified) {
+       /* if(User.getInstance().instagram_verified) {
             insta.setImageResource(R.drawable.instagram_icon);
             insta_text.setTextColor(Color.parseColor("#ff99cc00"));
             insta_text.setText("Verified!");
@@ -93,7 +94,7 @@ public class Verification extends AppCompatActivity {
             twitter_text.setTextColor(Color.parseColor("#ff99cc00"));
             twitter_text.setText("Verified!");
         }
-
+*/
 
         phone_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +126,7 @@ public class Verification extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(User.getInstance().facebook_verified) {
+                if(getSPData("facebook_verified").equals("true")) {
 
                     new AlertDialog.Builder(Verification.this)
                             .setTitle("Facebook Verification Done!")
@@ -159,7 +160,7 @@ public class Verification extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(User.getInstance().google_verified) {
+                if(getSPData("google_verified").equals("true")) {
 
                     new AlertDialog.Builder(Verification.this)
                             .setTitle("Google Verification Done!")
@@ -188,6 +189,7 @@ public class Verification extends AppCompatActivity {
             }
         });
 
+/*
 
         insta_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -256,6 +258,7 @@ public class Verification extends AppCompatActivity {
             }
         });
 
+*/
 
         verification_done.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -275,6 +278,22 @@ public class Verification extends AppCompatActivity {
         });
 
     }
+
+
+
+
+
+    // Shared Preferences
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "null");
+
+        return data;
+
+    }
+
+
 }
 
 

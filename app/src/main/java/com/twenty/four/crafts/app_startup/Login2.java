@@ -3,6 +3,7 @@ package com.twenty.four.crafts.app_startup;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 
@@ -194,7 +195,8 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
                                         Toast.makeText(Login2.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
-                                        User.getInstance().facebook_verified = true;
+                                        //User.mInstance.setFacebook_verified(true);
+                                        storeSPData("facebook_verified", "true");
 
                                         //transferring data
                                         bundle.putString("firstname", firstname);
@@ -302,7 +304,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
             if(account != null) {
 
-                User.getInstance().google_verified = true;
+                storeSPData("google_verified", "true");
 
             firstname = account.getDisplayName();
             lastname = account.getFamilyName();
@@ -403,4 +405,27 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
             imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
         }
     }
+
+
+
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
+
+    }
+
 }

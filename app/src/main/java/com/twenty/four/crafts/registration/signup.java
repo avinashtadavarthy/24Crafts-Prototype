@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -305,9 +306,18 @@ public class signup extends AppCompatActivity{
 
                 if(type.equals("craftsman")) {
 
-
-
                     if(selectedcraft.equals("Actor") || selectedcraft.equals("Actress") || selectedcraft.equals("Child Artist") || selectedcraft.equals("Dancer") || selectedcraft.equals("Side Artists")){
+
+                        storeSPData("firstname", first_name1.getText().toString());
+                        storeSPData("lastname", last_name1.getText().toString());
+                        storeSPData("useremail", email1.getText().toString());
+                        storeSPData("password", password1.getText().toString());
+                        storeSPData("dob", dob1.getText().toString());
+                        storeSPData("usergender", selectedgender);
+                        storeSPData("category", selectedcraft);
+                        storeSPData("residingin", residing1.getText().toString());
+                        storeSPData("hometown", hometown1.getText().toString());
+
                         name=first_name1.getText().toString();
                         Intent goToNextActivity = new Intent(getApplicationContext(), signup2.class);
                         Bundle bundle = new Bundle();
@@ -318,26 +328,24 @@ public class signup extends AppCompatActivity{
                         startActivity(goToNextActivity);
                     } else if(selectedcraft.equals("null"))
                     {
-                        Toast.makeText(getApplicationContext(),"Please select appropriate Portfolio to continue",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Please select appropriate Portfolio to continue", Toast.LENGTH_LONG).show();
                     } else if(selectedgender.equals("null")) {
-                        Toast.makeText(getApplicationContext(),"Please select appropriate gender to continue",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Please select appropriate gender to continue", Toast.LENGTH_LONG).show();
                     } else if(selectedcraft.equals("null") && selectedgender.equals("null")) {
                         Toast.makeText(getApplicationContext(), "Select all mandatory fields to continue", Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
 
-                        User.getInstance().firstname = first_name1.getText().toString();
-                        User.getInstance().lastname = last_name1.getText().toString();
-                        User.getInstance().useremail = email1.getText().toString();
-                        User.getInstance().password = password1.getText().toString();
-                        User.getInstance().dob = dob1.getText().toString().trim();
-                        User.getInstance().usergender = selectedgender;
-                        User.getInstance().category = selectedcraft;
-                        User.getInstance().residingin = residing1.getText().toString();
-                        User.getInstance().hometown = hometown1.getText().toString();
-
-
+                        storeSPData("firstname", first_name1.getText().toString());
+                        storeSPData("lastname", last_name1.getText().toString());
+                        storeSPData("useremail", email1.getText().toString());
+                        storeSPData("password", password1.getText().toString());
+                        storeSPData("dob", dob1.getText().toString());
+                        storeSPData("usergender", selectedgender);
+                        storeSPData("category", selectedcraft);
+                        storeSPData("residingin", residing1.getText().toString());
+                        storeSPData("hometown", hometown1.getText().toString());
 
                         name=first_name1.getText().toString();
                         Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
@@ -353,8 +361,6 @@ public class signup extends AppCompatActivity{
 
                 } else if(type.equals("client")) {
 
-
-
                     if(selectedcraft.equals("null")) {
                         Toast.makeText(getApplicationContext(),"Please select appropriate Portfolio to continue",Toast.LENGTH_LONG).show();
                     } else if(selectedgender.equals("null")) {
@@ -363,17 +369,17 @@ public class signup extends AppCompatActivity{
                         Toast.makeText(getApplicationContext(), "Select all mandatory fields to continue", Toast.LENGTH_SHORT).show();
                     } else {
 
-                        User.getInstance().firstname = first_name1.getText().toString();
-                        User.getInstance().lastname = last_name1.getText().toString();
-                        User.getInstance().useremail = email1.getText().toString();
-                        User.getInstance().password = password1.getText().toString();
-                        User.getInstance().dob = dob1.getText().toString().trim();
-                        User.getInstance().usergender = selectedgender;
-                        User.getInstance().category = selectedcraft;
-                        User.getInstance().residingin = residing1.getText().toString();
-                        User.getInstance().hometown = hometown1.getText().toString();
 
-
+                        //storeSPData("firstname", "Avinash");
+                        storeSPData("firstname", first_name1.getText().toString());
+                        storeSPData("lastname", last_name1.getText().toString());
+                        storeSPData("useremail", email1.getText().toString());
+                        storeSPData("password", password1.getText().toString());
+                        storeSPData("dob", dob1.getText().toString().trim());
+                        storeSPData("usergender", selectedgender);
+                        storeSPData("category", selectedcraft);
+                        storeSPData("residingin", residing1.getText().toString());
+                        storeSPData("hometown", hometown1.getText().toString());
 
                         name = first_name1.getText().toString();
                         Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
@@ -384,8 +390,6 @@ public class signup extends AppCompatActivity{
                         goToNextActivity.putExtras(bundle);
                         startActivity(goToNextActivity);
                     }
-
-
 
                 }
 
@@ -484,4 +488,31 @@ public class signup extends AppCompatActivity{
         dob1.setText(new StringBuilder().append(day).append("/")
                 .append(month).append("/").append(year));
     }
+
+
+
+
+
+
+
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
+
+    }
+
 }

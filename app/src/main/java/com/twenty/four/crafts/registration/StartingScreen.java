@@ -2,11 +2,14 @@ package com.twenty.four.crafts.registration;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.facebook.FacebookSdk;
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.User;
 
@@ -40,7 +43,7 @@ public class StartingScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                User.getInstance().isClient = "false";
+                storeSPData("isClient", "false");
 
                 Intent i = new Intent(getApplicationContext(),signup.class);
                 i.putExtras(transferdata("craftsman"));
@@ -49,11 +52,13 @@ public class StartingScreen extends AppCompatActivity {
             }
         });
 
+
+
         client_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                User.getInstance().isClient = "true";
+                storeSPData("isClient", "true");
 
                 Intent i = new Intent(getApplicationContext(),signup.class);
                 i.putExtras(transferdata("client"));
@@ -94,6 +99,29 @@ public class StartingScreen extends AppCompatActivity {
                     }
                 })
                 .show();
+
+    }
+
+
+
+
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
 
     }
 

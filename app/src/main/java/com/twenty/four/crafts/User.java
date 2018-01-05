@@ -1,59 +1,56 @@
 package com.twenty.four.crafts;
 
+import android.content.SharedPreferences;
+
+import static android.content.Context.MODE_PRIVATE;
+
 /**
  * Created by avinash on 27/12/17.
  */
 
-public class User {
-    private static User mInstance= null;
+public class User{
+
+    /*
 
     //page 1 (mandatory to all) - StartingScreen
-    public String isClient;
+    private Boolean isClient = false;
 
     //page 2 (mandatory for all) - signup
-    public String
+    private String
             firstname,
             lastname,
             useremail,
             password,
             usergender,
             dob,
-            residingin,
-            hometown,
+            residingin = "null",
+            hometown = "null",
             category;
 
     //page 3 (only for actor, actress, child actor) - signup2
-    public String
-            bodytype,
-            haircolor,
-            hairlength,
-            eyecolor,
-            complexion,
-            facialhair,
-            userheight,
-            userweight,
-            hipsize,
-            chestsize,
-            waistsize;
+    private String
+            bodytype = "null",
+            haircolor = "null",
+            hairlength = "null",
+            eyecolor = "null",
+            complexion = "null",
+            facialhair = "null",
+            userheight = "null",
+            userweight = "null",
+            hipsize = "null",
+            chestsize = "null",
+            waistsize = "null";
 
     //page 4 (different for all) - signup 3
-    public String phonenumber;
+    private String phonenumber;
 
     //page 5 - Verification
-    public Boolean
+    private Boolean
             phone_verified = false,
             facebook_verified = false,
             google_verified = false,
             instagram_verified = false,
             twitter_verified = false;
 
-    protected User(){}
-
-    public static synchronized User getInstance(){
-        if(null == mInstance){
-            mInstance = new User();
-        }
-        return mInstance;
-    }
-
+  */
 }

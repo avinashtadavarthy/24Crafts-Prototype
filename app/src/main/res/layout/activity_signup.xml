@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@mipmap/wall"
     tools:context="com.twenty.four.crafts.registration.signup"
     android:orientation="vertical"
@@ -98,25 +99,44 @@
 
         </LinearLayout>
 
+       <!-- <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/text_field_boxes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:labelText="Label">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/extended_edit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>-->
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="45sp"
+            android:gravity="center"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/box"
+            android:layout_marginLeft="16sp"
+            android:layout_marginRight="16sp">
 
     <EditText
         android:id="@+id/first_name"
-
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:paddingLeft="20dp"
         android:layout_gravity="center"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20sp"
         android:ems="10"
         android:hint="First Name"
         android:textColorHint="#ffffff"
         android:textSize="16dp"
-        android:background="@drawable/box"
-        android:inputType="textPersonName"
-        android:layout_marginLeft="16sp"
-        android:layout_marginRight="16sp"/>
+        android:background="#00ffffff"
+        android:inputType="textPersonName" />
+
+        </android.support.design.widget.TextInputLayout>
 
     <EditText
         android:id="@+id/last_name"

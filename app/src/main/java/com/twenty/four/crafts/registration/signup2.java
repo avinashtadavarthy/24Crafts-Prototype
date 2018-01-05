@@ -3,6 +3,7 @@ package com.twenty.four.crafts.registration;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -14,14 +15,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.twenty.four.crafts.CustomAdapterSpinner;
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.User;
 
 public class signup2 extends AppCompatActivity {
-
-
 
     String[] textArray = { "very fair", " ", "fair", " ","medium"," ","olive"," ","brown","","dark","" };
     Integer[] imageArray = { R.drawable.veryfair, R.drawable.veryfairf,
@@ -220,17 +220,19 @@ public class signup2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-               /* User.getInstance().bodytype = bodytype.getSelectedItem().toString();
-                User.getInstance().haircolor = haircolor.getSelectedItem().toString();
-                User.getInstance().hairlength = hairlength.getSelectedItem().toString();
-                User.getInstance().eyecolor = eyecolor.
-                User.getInstance().complexion =
-                User.getInstance().facialhair =
-                User.getInstance().userheight =
-                User.getInstance().userweight =
-                User.getInstance().hipsize =
-                User.getInstance().chestsize =
-                User.getInstance().waistsize =
+
+                /*storeSPData("bodytype", bodytype.getSelectedItem().toString());
+                storeSPData("haircolor", haircolor.getSelectedItem().toString());
+                storeSPData("hairlength", hairlength.getSelectedItem().toString());
+                storeSPData("eyecolor", eyecolor.getSelectedItem().toString());
+                //storeSPData("complexion", );
+                storeSPData("facialhair", facialhair.getSelectedItem().toString());
+                storeSPData("userheight", height.getText().toString());
+                storeSPData("userweight", weight.getText().toString());
+                storeSPData("hipsize", hipsize.getText().toString());
+                storeSPData("chestsize", chestsize.getText().toString());
+                storeSPData("waistsize", waistsize.getText().toString());*/
+
 
                 Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
                 Bundle bundle = new Bundle();
@@ -238,9 +240,10 @@ public class signup2 extends AppCompatActivity {
                 bundle.putString("craft",craft);
                 bundle.putString("type", type);
                 goToNextActivity.putExtras(bundle);
-                startActivity(goToNextActivity);*/
+                startActivity(goToNextActivity);
 
             }
+
         });
 
 
@@ -285,6 +288,29 @@ public class signup2 extends AppCompatActivity {
             InputMethodManager imm = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
         }
+    }
+
+
+
+
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
+
     }
 
 }
