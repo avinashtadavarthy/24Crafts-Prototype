@@ -14,12 +14,26 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.facebook.FacebookSdk;
+import com.twenty.four.crafts.MySingleton;
 import com.twenty.four.crafts.ProfileView;
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.User;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Verification extends AppCompatActivity {
+
+    private String jwtToken;
 
     ImageView fb,insta,twitter,phone,google;
     TextView fb_text,insta_text,google_text,twitter_text,phone_text;
@@ -83,18 +97,17 @@ public class Verification extends AppCompatActivity {
             google_text.setText("Verified!");
         }
 
-       /* if(User.getInstance().instagram_verified) {
+       if(getSPData("instagram_verified").equals("true")) {
             insta.setImageResource(R.drawable.instagram_icon);
             insta_text.setTextColor(Color.parseColor("#ff99cc00"));
             insta_text.setText("Verified!");
         }
 
-        if(User.getInstance().twitter_verified) {
+        if(getSPData("twitter_verified").equals("true")) {
             twitter.setImageResource(R.drawable.twitter);
             twitter_text.setTextColor(Color.parseColor("#ff99cc00"));
             twitter_text.setText("Verified!");
         }
-*/
 
         phone_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -189,13 +202,13 @@ public class Verification extends AppCompatActivity {
             }
         });
 
-/*
+
 
         insta_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(User.getInstance().instagram_verified) {
+                if(getSPData("instagram_verified").equals("true")) {
 
                     new AlertDialog.Builder(Verification.this)
                             .setTitle("Instagram Verification Done!")
@@ -229,7 +242,7 @@ public class Verification extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(User.getInstance().twitter_verified) {
+                if(getSPData("twitter_verified").equals("true")) {
 
                     new AlertDialog.Builder(Verification.this)
                             .setTitle("Twitter Verification Done!")
@@ -258,7 +271,7 @@ public class Verification extends AppCompatActivity {
             }
         });
 
-*/
+
 
         verification_done.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -270,10 +283,14 @@ public class Verification extends AppCompatActivity {
         verification_skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                loginWithVolley();
+
                 Intent next = new Intent(getApplicationContext(), ProfileView.class)
                         .putExtra("thisistogetback", "getback")
                         .putExtra("fromwhom", fromwhom);
                 startActivity(next);
+
             }
         });
 
@@ -281,18 +298,117 @@ public class Verification extends AppCompatActivity {
 
 
 
+    private void loginWithVolley() {
+
+        String url = "http://24crafts.tk:3000/login";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    jwtToken = jsonObject.optString("token");
 
 
-    // Shared Preferences
+
+
+
+
+
+
+                    //to get the data
+
+                    String newurl = "http://24crafts.tk:3000/user";
+
+                    StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                            Toast.makeText(Verification.this, response, Toast.LENGTH_LONG).show();
+                            storeSPData("allTheUserData", response);
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            error.printStackTrace();
+                        }
+                    }){
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+
+                            Map<String, String> params = new HashMap<String, String>();
+
+                            params.put("authorization", jwtToken);
+
+                            return params;
+                        }
+                    };
+
+                    MySingleton.getInstance(getApplicationContext()).addToRequestQueue(getRequest);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                //to get the data
+
+
+
+
+
+
+
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("username", getSPData("useremail"));
+                params.put("password", getSPData("password"));
+
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+    }
+
+
+
+
+
+
+
+
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
     private String getSPData(String key) {
 
-        SharedPreferences mUserData = getSharedPreferences("UserData", MODE_PRIVATE);
-        String data = mUserData.getString(key, "null");
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
 
         return data;
 
     }
-
 
 }
 

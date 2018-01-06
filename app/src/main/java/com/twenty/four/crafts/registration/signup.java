@@ -15,29 +15,38 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.twenty.four.crafts.CustomAdapterSpinner;
+import com.twenty.four.crafts.LanguagesPopUp;
 import com.twenty.four.crafts.Main2Activity;
 import com.twenty.four.crafts.ProfileViewEdit;
 import com.twenty.four.crafts.R;
+import com.twenty.four.crafts.SubscribePopUp;
 import com.twenty.four.crafts.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.apptik.widget.multiselectspinner.BaseMultiSelectSpinner;
+import io.apptik.widget.multiselectspinner.MultiSelectSpinner;
 
 public class signup extends AppCompatActivity{
 
@@ -80,6 +89,7 @@ public class signup extends AppCompatActivity{
             password1, confirm_password1, residing1, hometown1;
     Spinner craft,genderspin;
     CircleImageView profile_image1;
+    TextView display_languages;
 
     //datepicker
     TextView dob1;
@@ -278,25 +288,24 @@ public class signup extends AppCompatActivity{
         }
 
 
-        //commenting out until we can display the text hint in the page
-        //multiselect spinner
-        /*ArrayList<String> options = new ArrayList<>();
-        options.add("English");
-        options.add("Hindi");
-        options.add("Telugu");
-        options.add("Tamil");
-        options.add("Kannada");
-        options.add("Malayalam");
-        options.add("Punjabi");
-        options.add("Bhojpuri");
 
-        MultiSelectSpinner multiSelectSpinner = (MultiSelectSpinner) findViewById(R.id.languages);
-        ArrayAdapter<String> adapter = new ArrayAdapter <String>(getApplicationContext(), android.R.layout.simple_list_item_multiple_choice, options);
-        multiSelectSpinner.setListAdapter(adapter);
-        multiSelectSpinner.setTitle("Select Languages Known");
-*/
 
-        //final EditText name1 =(EditText)findViewById(R.id.first_name);
+
+        display_languages = (TextView) findViewById(R.id.display_languages);
+
+        display_languages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    Intent i = new Intent(getApplicationContext(),LanguagesPopUp.class).putExtra("languagesspoken", User.getInstance().languagesspokendirty);
+                    startActivityForResult(i,1);
+            }
+        });
+
+
+
+
+
 
 
         Button next = (Button)findViewById(R.id.button11);
@@ -310,10 +319,10 @@ public class signup extends AppCompatActivity{
 
                         storeSPData("firstname", first_name1.getText().toString());
                         storeSPData("lastname", last_name1.getText().toString());
-                        storeSPData("useremail", email1.getText().toString());
+                        storeSPData("email", email1.getText().toString());
                         storeSPData("password", password1.getText().toString());
                         storeSPData("dob", dob1.getText().toString());
-                        storeSPData("usergender", selectedgender);
+                        storeSPData("gender", selectedgender);
                         storeSPData("category", selectedcraft);
                         storeSPData("residingin", residing1.getText().toString());
                         storeSPData("hometown", hometown1.getText().toString());
@@ -339,10 +348,10 @@ public class signup extends AppCompatActivity{
 
                         storeSPData("firstname", first_name1.getText().toString());
                         storeSPData("lastname", last_name1.getText().toString());
-                        storeSPData("useremail", email1.getText().toString());
+                        storeSPData("email", email1.getText().toString());
                         storeSPData("password", password1.getText().toString());
                         storeSPData("dob", dob1.getText().toString());
-                        storeSPData("usergender", selectedgender);
+                        storeSPData("gender", selectedgender);
                         storeSPData("category", selectedcraft);
                         storeSPData("residingin", residing1.getText().toString());
                         storeSPData("hometown", hometown1.getText().toString());
@@ -370,13 +379,12 @@ public class signup extends AppCompatActivity{
                     } else {
 
 
-                        //storeSPData("firstname", "Avinash");
                         storeSPData("firstname", first_name1.getText().toString());
                         storeSPData("lastname", last_name1.getText().toString());
-                        storeSPData("useremail", email1.getText().toString());
+                        storeSPData("email", email1.getText().toString());
                         storeSPData("password", password1.getText().toString());
                         storeSPData("dob", dob1.getText().toString().trim());
-                        storeSPData("usergender", selectedgender);
+                        storeSPData("gender", selectedgender);
                         storeSPData("category", selectedcraft);
                         storeSPData("residingin", residing1.getText().toString());
                         storeSPData("hometown", hometown1.getText().toString());
@@ -393,7 +401,6 @@ public class signup extends AppCompatActivity{
 
                 }
 
-
             }
         });
 
@@ -404,6 +411,18 @@ public class signup extends AppCompatActivity{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK) {
+                String languagesspoken = data.getStringExtra("languagesspoken");
+
+                if(languagesspoken.equals("")) {
+                    display_languages.setText("Select Languages Spoken");
+                } else {
+                    display_languages.setText(languagesspoken);
+                }
+            }
+        }
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
 

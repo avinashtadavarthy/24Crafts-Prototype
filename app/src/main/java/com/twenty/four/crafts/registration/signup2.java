@@ -15,18 +15,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.twenty.four.crafts.CustomAdapterSpinner;
 import com.twenty.four.crafts.R;
-import com.twenty.four.crafts.User;
 
 public class signup2 extends AppCompatActivity {
-
-    String[] textArray = { "very fair", " ", "fair", " ","medium"," ","olive"," ","brown","","dark","" };
-    Integer[] imageArray = { R.drawable.veryfair, R.drawable.veryfairf,
-            R.drawable.fair, R.drawable.fairf, R.drawable.medium, R.drawable.mediumf, R.drawable.olive, R.drawable.olivef, R.drawable.brown, R.drawable.brownf, R.drawable.dark, R.drawable.darkf};
-
 
     String[] bodytypeString={"Choose Body Type",
             "Athletic","Average","Petite","Thin","Heavy","Other"};
@@ -40,8 +33,19 @@ public class signup2 extends AppCompatActivity {
     String[] eyecolorString={"Choose Eye Color",
             "Black", "Brown", "Blue", "Amber", "Grey", "Green", "Hazel", "Other"};
 
-    String[] skintoneString={"Choose Skin Tone",
-            "Very Fair", "Fair", "Medium", "Olive", "Brown", "Dark", "Other"};
+
+
+    Integer[] imageArraymale = {
+            R.drawable.ic_person, R.drawable.veryfair, R.drawable.fair,  R.drawable.medium,  R.drawable.olive,  R.drawable.brown, R.drawable.dark};
+
+    Integer[] imageArrayfemale = {
+            R.drawable.ic_person, R.drawable.veryfairf, R.drawable.fairf, R.drawable.mediumf, R.drawable.olivef, R.drawable.brownf, R.drawable.darkf};
+
+    String[] skintoneString = { "Choose Skin Tone", "Very Fair", "Fair", "Medium", "Olive", "Brown", "Dark" };
+
+    String skinToneSelector = "null";
+
+
 
     String[] facialhairString={"Choose Facial Hair",
             "Beard","Moustache", "Beard & Moustache", "Stubble", "None", "Other"};
@@ -169,25 +173,25 @@ public class signup2 extends AppCompatActivity {
 
         TextView text = (TextView) findViewById(R.id.imgName);
         ImageView imageView =(ImageView)findViewById(R.id.imgFace);
-        Spinner spinner = (Spinner) findViewById(R.id.skin_tone);
-
-        SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.custom, textArray, imageArray);
-        spinner.setAdapter(adapter);
-
-        // Declaring and typecasting a Spinner
-
-        /*
-
         final Spinner skintone = (Spinner) findViewById(R.id.skin_tone);
-        CustomAdapterSpinner skintoneAdapter=new CustomAdapterSpinner(getApplicationContext(),skintoneString);
-        skintone.setAdapter(skintoneAdapter);
+        if(getSPData("gender").equals("Male")){
+            SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.custom, skintoneString, imageArraymale);
+            skintone.setAdapter(adapter);
+        } else if(getSPData("gender").equals("Female") || getSPData("gender").equals("Other")) {
+            SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.custom, skintoneString, imageArrayfemale);
+            skintone.setAdapter(adapter);
+        }
         skintone.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(skintoneString[position].equals("Other"))
-                    other_skintone.setVisibility(View.VISIBLE);
-                else
-                    other_skintone.setVisibility(View.GONE);
+                switch(position) {
+                    case 1: skinToneSelector = "Veryfair"; break;
+                    case 2: skinToneSelector = "Fair"; break;
+                    case 3: skinToneSelector = "Medium"; break;
+                    case 4: skinToneSelector = "Olive"; break;
+                    case 5: skinToneSelector = "Brown"; break;
+                    case 6: skinToneSelector = "Dark"; break;
+                }
             }
 
             @Override
@@ -195,7 +199,6 @@ public class signup2 extends AppCompatActivity {
             }
         });
 
-        */
 
         final Spinner facialhair = (Spinner) findViewById(R.id.facial_hair);
         CustomAdapterSpinner facialhairAdapter=new CustomAdapterSpinner(getApplicationContext(),facialhairString);
@@ -220,24 +223,67 @@ public class signup2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if(bodytype.getSelectedItem() != null) {
 
-                /*storeSPData("bodytype", bodytype.getSelectedItem().toString());
-                storeSPData("haircolor", haircolor.getSelectedItem().toString());
-                storeSPData("hairlength", hairlength.getSelectedItem().toString());
-                storeSPData("eyecolor", eyecolor.getSelectedItem().toString());
-                //storeSPData("complexion", );
-                storeSPData("facialhair", facialhair.getSelectedItem().toString());
-                storeSPData("userheight", height.getText().toString());
-                storeSPData("userweight", weight.getText().toString());
-                storeSPData("hipsize", hipsize.getText().toString());
-                storeSPData("chestsize", chestsize.getText().toString());
-                storeSPData("waistsize", waistsize.getText().toString());*/
+                    if(!bodytype.getSelectedItem().toString().equals("Other")) storeSPData("bodyType", bodytype.getSelectedItem().toString());
+                    else storeSPData("bodyType", other_bodytype.getText().toString());
+                }
+
+                if(haircolor.getSelectedItem() != null) {
+
+                    if(!haircolor.getSelectedItem().toString().equals("Other")) storeSPData("hairColor", haircolor.getSelectedItem().toString());
+                    else storeSPData("hairColor", other_haircolor.getText().toString());
+                }
+
+                if(hairlength.getSelectedItem() != null) {
+
+                    if(!hairlength.getSelectedItem().toString().equals("Other")) storeSPData("hairLength", hairlength.getSelectedItem().toString());
+                    else storeSPData("hairLength", other_hairlength.getText().toString());
+                }
+
+                if(eyecolor.getSelectedItem() != null) {
+
+                    if(!eyecolor.getSelectedItem().toString().equals("Other")) storeSPData("eyeColor", eyecolor.getSelectedItem().toString());
+                    else storeSPData("eyeColor", other_eyecolor.getText().toString());
+                }
+
+                if(!skinToneSelector.equals("null")) {
+
+                    storeSPData("skinTone", skinToneSelector);
+
+                }
+
+                if(facialhair.getSelectedItem() != null) {
+
+                    if(!facialhair.getSelectedItem().toString().equals("Other")) storeSPData("facialHair", facialhair.getSelectedItem().toString());
+                    else storeSPData("facialHair", other_facialhair.getText().toString());
+                }
+
+                if(!height.getText().toString().equals("")) {
+                    storeSPData("height", height.getText().toString());
+                }
+
+                if(!weight.getText().toString().equals("")) {
+                    storeSPData("weight", weight.getText().toString());
+                }
+
+                if(!hipsize.getText().toString().equals("")) {
+                    storeSPData("hipsize", hipsize.getText().toString());
+                }
+
+                if(!chestsize.getText().toString().equals("")) {
+                    storeSPData("chestSize", chestsize.getText().toString());
+                }
+
+                if(!waistsize.getText().toString().equals("")) {
+                    storeSPData("waistSize", waistsize.getText().toString());
+                }
 
 
                 Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("name",name);
-                bundle.putString("craft",craft);
+                bundle.putString("name", name);
+                bundle.putString("craft", craft);
                 bundle.putString("type", type);
                 goToNextActivity.putExtras(bundle);
                 startActivity(goToNextActivity);

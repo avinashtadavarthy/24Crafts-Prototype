@@ -114,7 +114,7 @@
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="45sp"
+            android:layout_height="46sp"
             android:gravity="center"
             android:layout_marginTop="10sp"
             android:background="@drawable/box"
@@ -124,7 +124,7 @@
     <EditText
         android:id="@+id/first_name"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="40sp"
         android:paddingLeft="20dp"
         android:layout_gravity="center"
         android:layout_alignParentTop="true"
@@ -252,10 +252,9 @@
 
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:paddingLeft="20dp"
             android:layout_gravity="center"
-            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:ems="10"
@@ -284,19 +283,20 @@
             android:background="@drawable/box"
             />
 
-<!--
-
-        <io.apptik.widget.multiselectspinner.MultiSelectSpinner
-            android:id="@+id/languages"
-            android:text="Select known languages"
+        <TextView
+            android:id="@+id/display_languages"
+            android:text="Select Languages Spoken"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="40sp"
+            android:textSize="16sp"
+            android:background="@drawable/box"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="16sp"
             android:layout_marginRight="16sp"
-            android:textSize="16dp"
+            android:textColor="#ffffff" />
 
-            android:background="@drawable/box"/>
--->
 
     <Spinner
         android:id="@+id/spinner"

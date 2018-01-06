@@ -50,6 +50,7 @@
                         android:layout_height="90sp">
 
                         <TextView
+                            android:id="@+id/profile_personname"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Person's Name"
@@ -67,6 +68,7 @@
                             android:layout_gravity="end">
 
                             <TextView
+                                android:id="@+id/profile_craft"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="end"
@@ -82,6 +84,7 @@
                                 android:textColor="#ffffff" />
 
                             <TextView
+                                android:id="@+id/profile_age"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="end"
@@ -96,6 +99,7 @@
                     </LinearLayout>
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_picture"
                     android:layout_width="120sp"
                     android:layout_height="120sp"
                     android:layout_marginLeft="16sp"
@@ -203,6 +207,7 @@
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/profile_bio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
@@ -210,6 +215,7 @@
                         android:textAlignment="center"/>
 
                     <TextView
+                        android:id="@+id/profile_introles"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="#90000000"
@@ -382,6 +388,7 @@
                         android:textStyle="bold"/>
 
                     <TextView
+                        android:id="@+id/profile_hometown"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
@@ -403,6 +410,7 @@
                         android:textStyle="bold"/>
 
                     <TextView
+                        android:id="@+id/profile_residingin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
@@ -424,6 +432,7 @@
                         android:textStyle="bold"/>
 
                     <TextView
+                        android:id="@+id/profile_languagesspoken"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
@@ -493,6 +502,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/profile_height"
                         android:layout_width="0sp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
@@ -505,6 +515,7 @@
                         android:padding="4sp"/>
 
                     <TextView
+                        android:id="@+id/profile_weight"
                         android:layout_width="0sp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
@@ -561,6 +572,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/profile_chest"
                         android:layout_width="0sp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
@@ -573,6 +585,7 @@
                         android:padding="4sp"/>
 
                     <TextView
+                        android:id="@+id/profile_waist"
                         android:layout_width="0sp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
@@ -600,6 +613,7 @@
                         android:textStyle="bold"/>
 
                     <TextView
+                        android:id="@+id/profile_facialhair"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
@@ -621,6 +635,7 @@
                         android:textStyle="bold"/>
 
                     <TextView
+                        android:id="@+id/profile_skintone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"

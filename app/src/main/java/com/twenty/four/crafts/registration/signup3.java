@@ -21,14 +21,11 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.twenty.four.crafts.CustomAdapterSpinner;
 import com.twenty.four.crafts.MySingleton;
-import com.twenty.four.crafts.ProfileView;
 import com.twenty.four.crafts.R;
 import com.facebook.accountkit.Account;
 import com.facebook.accountkit.AccountKit;
@@ -39,7 +36,6 @@ import com.facebook.accountkit.PhoneNumber;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
-import com.twenty.four.crafts.User;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -88,7 +84,10 @@ public class signup3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup3);
 
-        //Toast.makeText(signup3.this, User.getInstance().firstname + '\n' + User.getInstance().lastname + '\n' + User.getInstance().useremail + '\n' + User.getInstance().password + '\n' + User.getInstance().dob + '\n' + User.getInstance().usergender + '\n' + User.getInstance().category, Toast.LENGTH_SHORT).show();
+        String usersname = getSPData("firstname") + " " + getSPData("lastname");
+        storeSPData("name", usersname);
+
+
 
         bundle = getIntent().getExtras();
         name = bundle.getString("name");
@@ -1686,7 +1685,7 @@ public class signup3 extends AppCompatActivity {
             public void onClick(View v) {
 
                 //add user onto the app
-                postJsonRequest();
+                addUserWithVolley();
 
                 initAccountKitSmsFlow();
 
@@ -1839,7 +1838,7 @@ public class signup3 extends AppCompatActivity {
 
     //adding the user onto the app
 
-    void postJsonRequest() {
+    void addUserWithVolley() {
 
         String url = "http://24crafts.tk:3000/adduser";
 
@@ -1865,13 +1864,23 @@ public class signup3 extends AppCompatActivity {
 
                 Map<String, String> params = new HashMap<String, String>();
 
-                params.put("name", getSPData("firstname") + " " + getSPData("lastname"));
+                params.put("name", getSPData("name"));
                 params.put("password", getSPData("password"));
                 params.put("dob", getSPData("dob"));
                 params.put("isClient", getSPData("isClient"));
                 params.put("category", getSPData("category"));
-                params.put("gender", getSPData("usergender"));
-                params.put("email", getSPData("useremail"));
+                params.put("gender", getSPData("gender"));
+                params.put("email", getSPData("email"));
+                params.put("bodyType", getSPData("bodyType"));
+                params.put("hairColor", getSPData("hairColor"));
+                params.put("hairLength", getSPData("hairLength"));
+                params.put("eyeColor", getSPData("eyeColor"));
+                params.put("skinTone", getSPData("skinTone"));
+                params.put("facialHair", getSPData("facialHair"));
+                params.put("height", getSPData("height"));
+                params.put("weight", getSPData("weight"));
+                params.put("chestSize", getSPData("chestSize"));
+                params.put("waistSize", getSPData("waistSize"));
 
                 return params;
             }

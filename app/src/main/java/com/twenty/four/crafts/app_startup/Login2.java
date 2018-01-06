@@ -142,6 +142,11 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
             @Override
             public void onClick(View v) {
 
+                storeSPData("facebook_verified", "false");
+                storeSPData("google_verified", "false");
+                storeSPData("instagram_verified", "false");
+                storeSPData("twitter_verified", "false");
+
                bundle.putString("firstname", "null");
                bundle.putString("lastname", "null");
                bundle.putString("email", "null");
@@ -378,6 +383,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         finish();
 
     }
+
 
     //keyboard disappears when you click outside
     @Override

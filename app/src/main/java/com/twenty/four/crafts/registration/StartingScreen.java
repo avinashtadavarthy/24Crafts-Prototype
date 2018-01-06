@@ -28,6 +28,8 @@ public class StartingScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting_screen);
 
+        storeSPData("languagesspoken_neat", "");
+
         craftsman_reg = (ImageView) findViewById(R.id.craftsman_reg);
         client_reg = (ImageView) findViewById(R.id.client_reg);
 
