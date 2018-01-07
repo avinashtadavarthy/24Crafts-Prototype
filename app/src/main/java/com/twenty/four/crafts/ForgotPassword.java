@@ -7,10 +7,12 @@ import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.twenty.four.crafts.registration.StartingScreen;
 
@@ -59,25 +61,27 @@ public class ForgotPassword extends AppCompatActivity {
                     dialogbuttontext = "OK";
                 }
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(ForgotPassword.this);
-                builder.setMessage(dialogtext)
-                        .setCancelable(false)
-                        .setPositiveButton(dialogbuttontext, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                //do things
-                                if(emailFound == 0)
-                                {
-                                    Intent i = new Intent(getApplicationContext(), StartingScreen.class);
-                                    startActivity(i);
-                                }
+                AlertDialog dialog = new AlertDialog.Builder(ForgotPassword.this).setMessage(dialogtext).
+                setPositiveButton(dialogbuttontext, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if(emailFound == 0)
+                        {
+                            Intent intent = new Intent(ForgotPassword.this, StartingScreen.class);
+                            startActivity(intent);
+                        }
 
-                                else
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert = builder.create();
-                alert.show();
+                        else
+                            dialogInterface.cancel();
+                    }
+                })
+                .show();
+                TextView textView = (TextView) dialog.findViewById(android.R.id.message);
+                textView.setGravity(Gravity.LEFT);
+                textView.setTextSize(15);
             }
         });
     }
 }
+
+
