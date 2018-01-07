@@ -17,7 +17,7 @@ import com.google.android.gms.auth.api.Auth;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
-public class LanguagesPopUp extends AppCompatActivity{
+public class LanguagesPopUp extends AppCompatActivity {
 
     CheckBox Assamese, Bengali, Bhojpuri, Bodo, Chhattisgarhi, English, Gujarati, Haryanvi, Hindi, Kannada, Konkani, Maithali, Malayalam, Marathi, Odia, Punjabi, Rajasthani, Sindhi, Tamil, Telugu, Tulu, Urdu;
 

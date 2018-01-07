@@ -44,7 +44,7 @@
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
                         </RadioGroup>
                     </LinearLayout>
-                    <EditText android:id="@+id/casting_agent_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                    <EditText android:id="@+id/casting_agent_11" android:layout_width="match_parent" android:layout_height="40sp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16sp" android:paddingLeft="20sp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
                 </LinearLayout>
                 <!-- codirector -->
                 <LinearLayout android:id="@+id/codirector" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
@@ -57,7 +57,7 @@
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
                         </RadioGroup>
                     </LinearLayout>
-                    <EditText android:id="@+id/codirector_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                    <EditText android:id="@+id/codirector_11" android:layout_width="match_parent" android:layout_height="40sp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16sp" android:paddingLeft="20sp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
                 </LinearLayout>
                 <!-- coproducer -->
                 <LinearLayout android:id="@+id/coproducer" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
@@ -70,8 +70,8 @@
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
                         </RadioGroup>
                     </LinearLayout>
-                    <EditText android:id="@+id/coproducer_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
-                    <EditText android:id="@+id/coproducer_2" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="16sp" android:layout_marginRight="16sp" android:textSize="16dp" android:paddingLeft="20dp" android:layout_marginTop="20dp" android:layout_gravity="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:ems="10" android:hint="Enter name of Production House" android:textColorHint="#ffffff" android:background="@drawable/box"/>
+                    <EditText android:id="@+id/coproducer_11" android:layout_width="match_parent" android:layout_height="40sp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16sp" android:paddingLeft="20sp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                    <EditText android:id="@+id/coproducer_2" android:layout_width="match_parent" android:layout_height="40sp" android:layout_marginLeft="16sp" android:layout_marginRight="16sp" android:textSize="16sp" android:paddingLeft="20sp" android:layout_marginTop="20sp" android:layout_gravity="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:ems="10" android:hint="Enter name of Production House" android:textColorHint="#ffffff" android:background="@drawable/box"/>
                 </LinearLayout>
                 <!-- director -->
                 <LinearLayout android:id="@+id/director" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
@@ -84,7 +84,7 @@
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
                         </RadioGroup>
                     </LinearLayout>
-                    <EditText android:id="@+id/director_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                    <EditText android:id="@+id/director_11" android:layout_width="match_parent" android:layout_height="40sp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16sp" android:paddingLeft="20sp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
                 </LinearLayout>
                 <!-- asstdirector -->
                 <LinearLayout android:id="@+id/asstdirector" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
@@ -97,7 +97,7 @@
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
                         </RadioGroup>
                     </LinearLayout>
-                    <EditText android:id="@+id/asstdirector_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                    <EditText android:id="@+id/asstdirector_11" android:layout_width="match_parent" android:layout_height="40sp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16sp" android:paddingLeft="20sp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
                 </LinearLayout>
                 <!-- directoraudit -->
                 <LinearLayout android:id="@+id/directoraudit" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
@@ -110,7 +110,7 @@
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
                         </RadioGroup>
                     </LinearLayout>
-                    <EditText android:id="@+id/directoraudit_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                    <EditText android:id="@+id/directoraudit_11" android:layout_width="match_parent" android:layout_height="40sp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16sp" android:paddingLeft="20sp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
                 </LinearLayout>
                 <!-- execproducer -->
                 <LinearLayout android:id="@+id/execproducer" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
@@ -123,8 +123,8 @@
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
                         </RadioGroup>
                     </LinearLayout>
-                    <EditText android:id="@+id/execproducer_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
-                    <EditText android:id="@+id/execproducer_2" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="16sp" android:layout_marginRight="16sp" android:textSize="16dp" android:paddingLeft="20dp" android:layout_marginTop="20dp" android:layout_gravity="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:ems="10" android:hint="Enter name of Production House" android:textColorHint="#ffffff" android:background="@drawable/box"/>
+                    <EditText android:id="@+id/execproducer_11" android:layout_width="match_parent" android:layout_height="40sp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16sp" android:paddingLeft="20sp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                    <EditText android:id="@+id/execproducer_2" android:layout_width="match_parent" android:layout_height="40sp" android:layout_marginLeft="16sp" android:layout_marginRight="16sp" android:textSize="16sp" android:paddingLeft="20sp" android:layout_marginTop="20sp" android:layout_gravity="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:ems="10" android:hint="Enter name of Production House" android:textColorHint="#ffffff" android:background="@drawable/box"/>
                 </LinearLayout>
                 <!-- modelcoordinator -->
                 <LinearLayout android:id="@+id/modelcoor" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
@@ -137,7 +137,7 @@
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
                         </RadioGroup>
                     </LinearLayout>
-                    <EditText android:id="@+id/modelcoor_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                    <EditText android:id="@+id/modelcoor_11" android:layout_width="match_parent" android:layout_height="40sp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16sp" android:paddingLeft="20sp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
                 </LinearLayout>
                 <!-- producer -->
                 <LinearLayout android:id="@+id/producer" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
@@ -150,8 +150,8 @@
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
                         </RadioGroup>
                     </LinearLayout>
-                    <EditText android:id="@+id/producer_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
-                    <EditText android:id="@+id/producer_2" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="16sp" android:layout_marginRight="16sp" android:textSize="16dp" android:paddingLeft="20dp" android:layout_marginTop="20dp" android:layout_gravity="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:ems="10" android:hint="Enter name of Production House" android:textColorHint="#ffffff" android:background="@drawable/box"/>
+                    <EditText android:id="@+id/producer_11" android:layout_width="match_parent" android:layout_height="40sp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16sp" android:paddingLeft="20sp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                    <EditText android:id="@+id/producer_2" android:layout_width="match_parent" android:layout_height="40sp" android:layout_marginLeft="16sp" android:layout_marginRight="16sp" android:textSize="16sp" android:paddingLeft="20sp" android:layout_marginTop="20sp" android:layout_gravity="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:ems="10" android:hint="Enter name of Production House" android:textColorHint="#ffffff" android:background="@drawable/box"/>
                 </LinearLayout>
                 <!-- prodhouseman -->
                 <LinearLayout android:id="@+id/prodhouseman" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
@@ -164,8 +164,8 @@
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
                         </RadioGroup>
                     </LinearLayout>
-                    <EditText android:id="@+id/prodhouseman_11" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16dp" android:paddingLeft="20dp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
-                    <EditText android:id="@+id/prodhouseman_2" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginLeft="16sp" android:layout_marginRight="16sp" android:textSize="16dp" android:paddingLeft="20dp" android:layout_marginTop="20dp" android:layout_gravity="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:ems="10" android:hint="Enter name of Production House" android:textColorHint="#ffffff" android:background="@drawable/box"/>
+                    <EditText android:id="@+id/prodhouseman_11" android:layout_width="match_parent" android:layout_height="40sp" android:layout_marginLeft="32sp" android:layout_marginRight="16sp" android:layout_marginBottom="10sp" android:textSize="16sp" android:paddingLeft="20sp" android:ems="10" android:hint="If Yes, what styles" android:textColorHint="#ffffff" android:background="@drawable/box" android:inputType="textMultiLine"/>
+                    <EditText android:id="@+id/prodhouseman_2" android:layout_width="match_parent" android:layout_height="40sp" android:layout_marginLeft="16sp" android:layout_marginRight="16sp" android:textSize="16sp" android:paddingLeft="20sp" android:layout_marginTop="20sp" android:layout_gravity="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:ems="10" android:hint="Enter name of Production House" android:textColorHint="#ffffff" android:background="@drawable/box"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -236,12 +236,12 @@
                         android:id="@+id/actor_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, what styles"
                         android:textColorHint="#ffffff"
@@ -302,12 +302,12 @@
                         android:id="@+id/actor_22"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, let us know"
                         android:textColorHint="#ffffff"
@@ -418,12 +418,12 @@
                         android:id="@+id/actor_41"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, what kind"
                         android:textColorHint="#ffffff"
@@ -534,12 +534,12 @@
                         android:id="@+id/actor_61"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, what kind"
                         android:textColorHint="#ffffff"
@@ -550,12 +550,12 @@
                         android:id="@+id/actor_62"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="List relevant names / Links"
                         android:textColorHint="#ffffff"
@@ -624,12 +624,12 @@
                         android:id="@+id/actress_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, what styles"
                         android:textColorHint="#ffffff"
@@ -690,12 +690,12 @@
                         android:id="@+id/actress_22"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, let us know"
                         android:textColorHint="#ffffff"
@@ -806,12 +806,12 @@
                         android:id="@+id/actress_41"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, what kind"
                         android:textColorHint="#ffffff"
@@ -922,12 +922,12 @@
                         android:id="@+id/actress_61"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, what kind"
                         android:textColorHint="#ffffff"
@@ -938,12 +938,12 @@
                         android:id="@+id/actress_62"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="List relevant names / Links"
                         android:textColorHint="#ffffff"
@@ -1012,12 +1012,12 @@
                         android:id="@+id/side_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, what styles"
                         android:textColorHint="#ffffff"
@@ -1078,12 +1078,12 @@
                         android:id="@+id/side_22"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, let us know"
                         android:textColorHint="#ffffff"
@@ -1194,12 +1194,12 @@
                         android:id="@+id/side_41"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, what kind"
                         android:textColorHint="#ffffff"
@@ -1310,12 +1310,12 @@
                         android:id="@+id/side_61"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, what kind"
                         android:textColorHint="#ffffff"
@@ -1326,12 +1326,12 @@
                         android:id="@+id/side_62"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="List relevant names / Links"
                         android:textColorHint="#ffffff"
@@ -1354,20 +1354,20 @@
                         android:textStyle="bold"
                         android:textSize="15sp"
                         android:layout_alignParentLeft="true"
-                        android:layout_marginTop="20dp" />
+                        android:layout_marginTop="20sp" />
                     <EditText
                         android:id="@+id/child_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="16sp"
                         android:layout_marginRight="16sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:layout_gravity="center"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="25dp"
+                        android:layout_marginTop="25sp"
                         android:ems="10"
                         android:hint="Parent / Guardian Name"
                         android:textColorHint="#ffffff"
@@ -1378,15 +1378,15 @@
                         android:id="@+id/child_12"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="16sp"
                         android:layout_marginRight="16sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:layout_gravity="center"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="25dp"
+                        android:layout_marginTop="25sp"
                         android:ems="10"
                         android:hint="Contact Number"
                         android:textColorHint="#ffffff"
@@ -1395,13 +1395,13 @@
                         />
                     <Spinner
                         android:id="@+id/child_13"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="20sp"
                         android:background="@drawable/box"
                         android:layout_width="match_parent"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:popupBackground="@drawable/box_spin"
                         android:layout_gravity="center"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="16sp"
                         android:layout_marginRight="16sp" />
                     <!-- child sing -->
@@ -1457,12 +1457,12 @@
                         android:id="@+id/child_21"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, let us know"
                         android:textColorHint="#ffffff"
@@ -1522,12 +1522,12 @@
                         android:id="@+id/child_31"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, what styles"
                         android:textColorHint="#ffffff"
@@ -1587,12 +1587,12 @@
                         android:id="@+id/child_41"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, what kind"
                         android:textColorHint="#ffffff"
@@ -1603,12 +1603,12 @@
                         android:id="@+id/child_42"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="List relevant names / Links"
                         android:textColorHint="#ffffff"
@@ -1678,7 +1678,7 @@
                         android:id="@+id/singer_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -1686,9 +1686,9 @@
                         android:ems="10"
                         android:hint="If Yes, upload links to the tracks"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <!-- own lyrics -->
                     <LinearLayout
@@ -1744,7 +1744,7 @@
                         android:id="@+id/singer_21"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -1752,22 +1752,22 @@
                         android:ems="10"
                         android:hint="If Yes, upload links"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <!-- singing style -->
                     <Spinner
                         android:id="@+id/singer_3"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="16sp"
                         android:layout_marginRight="16sp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="20sp"
                         android:background="@drawable/box"
                         android:popupBackground="@drawable/box_spin"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <!--  classical training -->
                     <LinearLayout
@@ -1823,7 +1823,7 @@
                         android:id="@+id/singer_41"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -1831,9 +1831,9 @@
                         android:ems="10"
                         android:hint="If Yes, for how long?"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <!-- misc uploads -->
                     <LinearLayout
@@ -1889,7 +1889,7 @@
                         android:id="@+id/singer_51"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -1897,9 +1897,9 @@
                         android:ems="10"
                         android:hint="If Yes, upload links"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <!-- performed -->
                     <LinearLayout
@@ -1955,7 +1955,7 @@
                         android:id="@+id/singer_61"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -1963,9 +1963,9 @@
                         android:ems="10"
                         android:hint="If Yes, list them and upload links"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -2030,7 +2030,7 @@
                         android:id="@+id/dancer_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -2038,9 +2038,9 @@
                         android:ems="10"
                         android:hint="If Yes, upload links to the tracks"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <!-- own choreo -->
                     <LinearLayout
@@ -2096,7 +2096,7 @@
                         android:id="@+id/dancer_21"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -2104,22 +2104,22 @@
                         android:ems="10"
                         android:hint="If Yes, upload links"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <!-- dancing style -->
                     <Spinner
                         android:id="@+id/dancer_3"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="16sp"
                         android:layout_marginRight="16sp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="20sp"
                         android:background="@drawable/box"
                         android:popupBackground="@drawable/box_spin"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <!-- dance trained -->
                     <LinearLayout
@@ -2175,7 +2175,7 @@
                         android:id="@+id/dancer_41"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -2183,9 +2183,9 @@
                         android:ems="10"
                         android:hint="Where and under whom?"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <!-- dance performed -->
                     <LinearLayout
@@ -2241,7 +2241,7 @@
                         android:id="@+id/dancer_51"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -2249,15 +2249,15 @@
                         android:ems="10"
                         android:hint="If the performance was good upload links"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <EditText
                         android:id="@+id/dancer_52"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -2265,22 +2265,22 @@
                         android:ems="10"
                         android:hint="List relevant names / Links"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <!-- dance interest -->
                     <Spinner
                         android:id="@+id/dancer_6"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="16sp"
                         android:layout_marginRight="16sp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="20sp"
                         android:background="@drawable/box"
                         android:popupBackground="@drawable/box_spin"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -2345,7 +2345,7 @@
                         android:id="@+id/assdir_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -2353,9 +2353,9 @@
                         android:ems="10"
                         android:hint="Necessary titles and links?"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <!-- own movie -->
                     <LinearLayout
@@ -2411,7 +2411,7 @@
                         android:id="@+id/assdir_22"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -2419,9 +2419,9 @@
                         android:ems="10"
                         android:hint="Names and necessary links?"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <!-- seeking dir -->
                     <LinearLayout
@@ -2686,7 +2686,7 @@
                         android:id="@+id/lyric_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -2694,16 +2694,16 @@
                         android:ems="10"
                         android:hint="Necessary titles and links?"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <!-- languages -->
                     <EditText
                         android:id="@+id/lyric_12"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -2711,9 +2711,9 @@
                         android:ems="10"
                         android:hint="List of Languages you have/can written dialogues in?"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <!-- passport -->
                     <LinearLayout
@@ -2819,7 +2819,7 @@
                         android:id="@+id/lyric_31"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -2827,9 +2827,9 @@
                         android:ems="10"
                         android:hint="Names and necessary links?"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -2894,7 +2894,7 @@
                         android:id="@+id/dwrite_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -2902,16 +2902,16 @@
                         android:ems="10"
                         android:hint="Necessary titles and links?"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <!-- list of langs -->
                     <EditText
                         android:id="@+id/dwrite_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -2919,9 +2919,9 @@
                         android:ems="10"
                         android:hint="List of Languages you have/can written dialogues in?"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                     <!-- passport -->
                     <LinearLayout
@@ -3027,7 +3027,7 @@
                         android:id="@+id/dwrite_41"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
@@ -3035,9 +3035,9 @@
                         android:ems="10"
                         android:hint="Names and necessary links?"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="20dp"
+                        android:paddingLeft="20sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -3101,12 +3101,12 @@
                         android:id="@+id/screenp_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Necessary titles and links?"
                         android:textColorHint="#ffffff"
@@ -3119,12 +3119,12 @@
                         android:id="@+id/screenp_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="List of Languages you have/can written dialogues in?"
                         android:textColorHint="#ffffff"
@@ -3235,12 +3235,12 @@
                         android:id="@+id/screenp_41"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Names and necessary links?"
                         android:textColorHint="#ffffff"
@@ -3310,12 +3310,12 @@
                         android:id="@+id/sba_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Necessary titles and links?"
                         android:textColorHint="#ffffff"
@@ -3328,12 +3328,12 @@
                         android:id="@+id/sba_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, what kind"
                         android:textColorHint="#ffffff"
@@ -3346,12 +3346,12 @@
                         android:id="@+id/sba_3"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, what kind"
                         android:textColorHint="#ffffff"
@@ -3424,12 +3424,12 @@
 
                         android:layout_width="match_parent"
                         android:popupBackground="@drawable/box_spin"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, what kind"
                         android:textColorHint="#ffffff"
@@ -3490,12 +3490,12 @@
                         android:id="@+id/choreo_21"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, upload links to the tracks"
                         android:textColorHint="#ffffff"
@@ -3506,13 +3506,13 @@
                     <!-- dancing style -->
                     <Spinner
                         android:id="@+id/choreo_3"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="20sp"
                         android:background="@drawable/box"
                         android:layout_width="match_parent"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         android:popupBackground="@drawable/box_spin"
                         android:layout_gravity="center"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="16sp"
                         android:layout_marginRight="16sp" />
 
@@ -3569,12 +3569,12 @@
                         android:id="@+id/choreo_41"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Where and under whom?"
                         android:textColorHint="#ffffff"
@@ -3636,7 +3636,7 @@
                         android:id="@+id/choreo_51"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginBottom="10sp"
                         android:popupBackground="@drawable/box_spin"
                         android:layout_marginLeft="32sp"
@@ -3644,19 +3644,19 @@
                         android:background="@drawable/box"
                         android:ems="10"
                         android:inputType="textMultiLine"
-                        android:paddingLeft="10dp"
+                        android:paddingLeft="10sp"
                         android:textColorHint="#ffffff"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
                     <EditText
                         android:id="@+id/choreo_52"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="List relevant names / Links"
                         android:textColorHint="#ffffff"
@@ -3669,12 +3669,12 @@
                         android:id="@+id/choreo_6"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How large of a group have you choreographed for ?"
                         android:textColorHint="#ffffff"
@@ -3744,12 +3744,12 @@
                         android:id="@+id/dop_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -3762,12 +3762,12 @@
                         android:id="@+id/dop_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -3780,12 +3780,12 @@
                         android:id="@+id/dop_3"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Which type of cameras have you used before? (Please list)"
                         android:textColorHint="#ffffff"
@@ -3798,12 +3798,12 @@
                         android:id="@+id/dop_4"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Which type of lens have you used before? (Please list)"
                         android:textColorHint="#ffffff"
@@ -3923,12 +3923,12 @@
                         android:id="@+id/stp_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -3941,12 +3941,12 @@
                         android:id="@+id/stp_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -4066,12 +4066,12 @@
                         android:id="@+id/pro_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -4084,12 +4084,12 @@
                         android:id="@+id/pro_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -4209,12 +4209,12 @@
                         android:id="@+id/desi_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -4227,12 +4227,12 @@
                         android:id="@+id/desi_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -4245,12 +4245,12 @@
                         android:id="@+id/desi_3"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="What software do you use to create designs?"
                         android:textColorHint="#ffffff"
@@ -4370,12 +4370,12 @@
                         android:id="@+id/prodm_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -4388,12 +4388,12 @@
                         android:id="@+id/prodm_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -4513,12 +4513,12 @@
                         android:id="@+id/focus_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -4531,12 +4531,12 @@
                         android:id="@+id/focus_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -4656,12 +4656,12 @@
                         android:id="@+id/driver_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -4674,12 +4674,12 @@
                         android:id="@+id/driver_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -4799,12 +4799,12 @@
                         android:id="@+id/mic_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -4817,12 +4817,12 @@
                         android:id="@+id/mic_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -4942,12 +4942,12 @@
                         android:id="@+id/musicd_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -4960,12 +4960,12 @@
                         android:id="@+id/musicd_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -5026,12 +5026,12 @@
                         android:id="@+id/musicd_31"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If Yes, list the albums"
                         android:textColorHint="#ffffff"
@@ -5150,12 +5150,12 @@
                         android:id="@+id/makeup_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -5168,12 +5168,12 @@
                         android:id="@+id/makeup_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -5293,12 +5293,12 @@
                         android:id="@+id/hairdr_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -5311,12 +5311,12 @@
                         android:id="@+id/hairdr_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -5436,12 +5436,12 @@
                         android:id="@+id/costu_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -5454,12 +5454,12 @@
                         android:id="@+id/costu_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -5579,12 +5579,12 @@
                         android:id="@+id/artd_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -5597,12 +5597,12 @@
                         android:id="@+id/artd_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -5722,12 +5722,12 @@
                         android:id="@+id/setd_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -5740,12 +5740,12 @@
                         android:id="@+id/setd_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -5865,12 +5865,12 @@
                         android:id="@+id/stunt_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -5883,12 +5883,12 @@
                         android:id="@+id/stunt_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -5960,12 +5960,12 @@
                         android:id="@+id/editor_1"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Mention the OS you're fluent in. Windows / MacOS / Both?"
                         android:textColorHint="#ffffff"
@@ -6026,12 +6026,12 @@
                         android:id="@+id/editor_21"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -6044,12 +6044,12 @@
                         android:id="@+id/editor_3"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -6062,12 +6062,12 @@
                         android:id="@+id/editor_4"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Do you go for live editing?"
                         android:textColorHint="#ffffff"
@@ -6187,12 +6187,12 @@
                         android:id="@+id/locat_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -6205,12 +6205,12 @@
                         android:id="@+id/locat_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -6330,12 +6330,12 @@
                         android:id="@+id/foodp_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -6348,12 +6348,12 @@
                         android:id="@+id/foodp_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -6473,12 +6473,12 @@
                         android:id="@+id/dub_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -6491,12 +6491,12 @@
                         android:id="@+id/dub_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -6568,12 +6568,12 @@
                         android:id="@+id/srec_1"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Do you work in a lab or do you have your own studio? (Lab / Own Studio / Both)"
                         android:textColorHint="#ffffff"
@@ -6585,12 +6585,12 @@
                         android:id="@+id/srec_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Mention the name of the lab"
                         android:textColorHint="#ffffff"
@@ -6651,12 +6651,12 @@
                         android:id="@+id/srec_21"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -6670,12 +6670,12 @@
                         android:id="@+id/srec_3"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -6747,12 +6747,12 @@
                         android:id="@+id/smix_1"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Do you work in a lab or do you have your own studio? (Lab / Own Studio / Both)"
                         android:textColorHint="#ffffff"
@@ -6764,12 +6764,12 @@
                         android:id="@+id/smix_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Mention the name of the lab"
                         android:textColorHint="#ffffff"
@@ -6830,12 +6830,12 @@
                         android:id="@+id/smix_21"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -6849,12 +6849,12 @@
                         android:id="@+id/smix_3"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -6926,12 +6926,12 @@
                         android:id="@+id/digint_1"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Do you work in a lab or do you have your own studio? (Lab / Own Studio / Both)"
                         android:textColorHint="#ffffff"
@@ -6943,12 +6943,12 @@
                         android:id="@+id/digint_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Mention the name of the lab"
                         android:textColorHint="#ffffff"
@@ -6961,12 +6961,12 @@
                         android:id="@+id/digint_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Please list the softwares that you use"
                         android:textColorHint="#ffffff"
@@ -6979,12 +6979,12 @@
                         android:id="@+id/digint_3"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Mention the OS you're fluent in. Windows / MacOS / Both?"
                         android:textColorHint="#ffffff"
@@ -7045,12 +7045,12 @@
                         android:id="@+id/digint_41"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -7064,12 +7064,12 @@
                         android:id="@+id/digint_5"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -7141,12 +7141,12 @@
                         android:id="@+id/vfx_1"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Do you work in a lab or do you have your own studio? (Lab / Own Studio / Both)"
                         android:textColorHint="#ffffff"
@@ -7158,12 +7158,12 @@
                         android:id="@+id/vfx_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Mention the name of the lab"
                         android:textColorHint="#ffffff"
@@ -7176,12 +7176,12 @@
                         android:id="@+id/vfx_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Please list the softwares that you use"
                         android:textColorHint="#ffffff"
@@ -7194,12 +7194,12 @@
                         android:id="@+id/vfx_3"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Mention the OS you're fluent in. Windows / MacOS / Both?"
                         android:textColorHint="#ffffff"
@@ -7260,12 +7260,12 @@
                         android:id="@+id/vfx_41"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -7279,12 +7279,12 @@
                         android:id="@+id/vfx_5"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -7356,12 +7356,12 @@
                         android:id="@+id/sfx_1"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Do you work in a lab or do you have your own studio? (Lab / Own Studio / Both)"
                         android:textColorHint="#ffffff"
@@ -7373,12 +7373,12 @@
                         android:id="@+id/sfx_11"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Mention the name of the lab"
                         android:textColorHint="#ffffff"
@@ -7391,12 +7391,12 @@
                         android:id="@+id/sfx_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Please list the softwares that you use"
                         android:textColorHint="#ffffff"
@@ -7409,12 +7409,12 @@
                         android:id="@+id/sfx_3"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Mention the OS you're fluent in. Windows / MacOS / Both?"
                         android:textColorHint="#ffffff"
@@ -7475,12 +7475,12 @@
                         android:id="@+id/sfx_41"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -7494,12 +7494,12 @@
                         android:id="@+id/sfx_5"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="How many years of experience do you have? What is it?"
                         android:textColorHint="#ffffff"
@@ -7571,12 +7571,12 @@
                         android:id="@+id/pets_1"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="What type of pets do you provide?"
                         android:textColorHint="#ffffff"
@@ -7589,12 +7589,12 @@
                         android:id="@+id/pets_2"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="Are these pets trained for filming?"
                         android:textColorHint="#ffffff"
@@ -7655,12 +7655,12 @@
                         android:id="@+id/pets_31"
 
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="32sp"
                         android:layout_marginRight="16sp"
                         android:layout_marginBottom="10sp"
-                        android:textSize="16dp"
-                        android:paddingLeft="20dp"
+                        android:textSize="16sp"
+                        android:paddingLeft="20sp"
                         android:ems="10"
                         android:hint="If yes, please list"
                         android:textColorHint="#ffffff"
@@ -7683,7 +7683,7 @@
                 android:textSize="15sp"
                 android:layout_below="@id/questions_crafts"
                 android:layout_alignParentLeft="true"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20sp" />
 
             <EditText
                 android:id="@+id/editText1"
@@ -7696,7 +7696,7 @@
                 android:background="@drawable/box"
                 android:layout_below="@+id/textView2"
                 android:layout_alignParentLeft="true"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="14sp"
                 android:maxLength="250"
                 android:inputType="textCapSentences"/>
 
@@ -7709,7 +7709,7 @@
                 android:textStyle="bold"
                 android:layout_below="@+id/editText1"
                 android:layout_alignParentLeft="true"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20sp" />
 
             <EditText
                 android:id="@+id/editText2"
@@ -7722,7 +7722,7 @@
                 android:background="@drawable/box"
                 android:layout_below="@+id/textView3"
                 android:layout_alignParentLeft="true"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="14sp"
                 android:maxLength="250"
                 android:inputType="textCapSentences"/>
 
@@ -7735,7 +7735,7 @@
                 android:textStyle="bold"
                 android:textSize="15sp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20sp" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -7748,7 +7748,7 @@
                 android:padding="10sp"
                 android:layout_below="@+id/textView4"
                 android:layout_alignParentLeft="true"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="14sp"
                 android:maxLength="250"
                 android:inputType="textCapSentences"/>
 
@@ -7761,7 +7761,7 @@
                 android:textStyle="bold"
                 android:textSize="15sp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20sp" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -7774,8 +7774,8 @@
                 android:padding="10sp"
                 android:layout_below="@+id/textView5"
                 android:layout_alignParentLeft="true"
-                android:layout_marginTop="14dp"
-                android:layout_marginBottom="60dp"
+                android:layout_marginTop="14sp"
+                android:layout_marginBottom="60sp"
                 android:maxLength="250"
                 android:inputType="textCapSentences"/>
 
@@ -7817,16 +7817,16 @@
     <Button
         android:id="@+id/button_3"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="40sp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/button_round"
         android:gravity="center"
         android:layout_gravity="center_horizontal"
         android:text="Next"
         android:textColor="#ffffff"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginBottom="5sp"
+        android:layout_marginLeft="25sp"
+        android:layout_marginRight="25sp"
+        android:layout_marginTop="5sp" />
 
 </RelativeLayout>

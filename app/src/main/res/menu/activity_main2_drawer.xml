@@ -3,14 +3,6 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/inbox"
-            android:icon="@drawable/inbox"
-            android:title="Inbox" />
-        <item
-            android:id="@+id/auditions"
-            android:icon="@drawable/auditions"
-            android:title="Auditions" />
-        <item
             android:id="@+id/newsfeed"
             android:icon="@drawable/newsfeed"
             android:title="News Feed" />

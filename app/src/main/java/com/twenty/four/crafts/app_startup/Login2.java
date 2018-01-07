@@ -104,17 +104,24 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
     String request_token;
     Button login_for_instagram;
 
+
+    ImageView splashlogo;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /* * * */
-        /* */ FacebookSdk.sdkInitialize(getApplicationContext());
-        /* * * */
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+        /* */ FacebookSdk.sdkInitialize(getApplicationContext()); /* */
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
         setContentView(R.layout.activity_login2);
 
         ImageView openinggif = (ImageView) findViewById(R.id.openinggif);
         GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(openinggif);
-        Glide.with(this).load(R.raw.samplegif2).into(imageViewTarget);
+        Glide.with(this).load(R.raw.samplevideo).into(imageViewTarget);
+
+         splashlogo = (ImageView) findViewById(R.id.splashlogo);
+        if (android.os.Build.VERSION.SDK_INT >= 21) splashlogo.setElevation(10);
 
         bundle = new Bundle();
 
@@ -184,6 +191,8 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
                                 {
                                     @Override
                                     public void onResponse(JSONObject response) {
+
+                                        storeSPData("facebookJSON", response.toString());
 
                                         firstname = response.optString("first_name");
                                         lastname = response.optString("last_name");

@@ -1,56 +1,109 @@
 package com.twenty.four.crafts.registration;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.squareup.picasso.Picasso;
 import com.twenty.four.crafts.CustomAdapterSpinner;
 import com.twenty.four.crafts.LanguagesPopUp;
-import com.twenty.four.crafts.Main2Activity;
-import com.twenty.four.crafts.ProfileViewEdit;
 import com.twenty.four.crafts.R;
-import com.twenty.four.crafts.SubscribePopUp;
 import com.twenty.four.crafts.User;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import io.apptik.widget.multiselectspinner.BaseMultiSelectSpinner;
-import io.apptik.widget.multiselectspinner.MultiSelectSpinner;
 
 public class signup extends AppCompatActivity{
 
     //TODO: Add languages spoken "multi select spinner"
+
+    String[] restricteddomains = { "tagyourself.com", "whatpaas.com", "emeil.in", "azmeil.tk", "mailfa.tk", "inbax.tk", "emeil.ir",
+            "einrot.com", "10minut.com.pl", "0-mail.com", "33mail.com", "maildrop.cc", "inboxalias.com", "spam4.me", "koszmail.pl ",
+            "0815.ru", "0clickemail.com", "0wnd.net", "0wnd.org", "10minutemail.com", "20minutemail.com", "2prong.com", "30minutemail.com",
+            "3d-painting.com", "4warding.com", "4warding.net", "4warding.org", "60minutemail.com", "675hosting.com", "675hosting.net",
+            "675hosting.org", "6url.com", "75hosting.com", "75hosting.net", "75hosting.org", "7tags.com", "9ox.net", "a-bc.net",
+            "afrobacon.com", "ajaxapp.net", "amilegit.com", "amiri.net", "amiriindustries.com", "anonbox.net", "anonymbox.com",
+            "antichef.com", "antichef.net", "antispam.de", "baxomale.ht.cx", "beefmilk.com", "binkmail.com", "bio-muesli.net",
+            "bobmail.info", "bodhi.lawlita.com", "bofthew.com", "brefmail.com", "broadbandninja.com", "bsnow.net", "bugmenot.com",
+            "bumpymail.com", "casualdx.com", "centermail.com", "centermail.net", "chogmail.com", "choicemail1.com", "cool.fr.nf",
+            "correo.blogos.net", "cosmorph.com", "courriel.fr.nf", "courrieltemporaire.com", "cubiclink.com", "curryworld.de", "cust.in",
+            "dacoolest.com", "dandikmail.com", "dayrep.com", "deadaddress.com", "deadspam.com", "despam.it", "despammed.com", "devnullmail.com",
+            "dfgh.net", "digitalsanctuary.com", "discardmail.com", "discardmail.de", "emailmiser.com", "disposableaddress.com", "disposeamail.com",
+            "disposemail.com", "dispostable.com", "dm.w3internet.co.ukexample.com", "dodgeit.com", "dodgit.com", "dodgit.org", "donemail.ru",
+            "dontreg.com", "dontsendmespam.de", "dump-email.info", "dumpandjunk.com", "dumpmail.de", "dumpyemail.com", "e4ward.com", "email60.com",
+            "emaildienst.de", "emailias.com", "emailigo.de", "emailinfive.com", "emailmiser.com", "emailsensei.com", "emailtemporario.com.br",
+            "emailto.de", "emailwarden.com", "emailx.at.hm", "emailxfer.com", "emz.net", "enterto.com", "ephemail.net", "etranquil.com", "etranquil.net",
+            "etranquil.org", "explodemail.com", "fakeinbox.com", "fakeinformation.com", "fastacura.com", "fastchevy.com", "fastchrysler.com",
+            "fastkawasaki.com", "fastmazda.com", "fastmitsubishi.com", "fastnissan.com", "fastsubaru.com", "fastsuzuki.com", "fasttoyota.com",
+            "fastyamaha.com", "filzmail.com", "fizmail.com", "fr33mail.info", "frapmail.com", "front14.org", "fux0ringduh.com", "garliclife.com",
+            "get1mail.com", "get2mail.fr", "grr.la", "getonemail.com", "getonemail.net", "ghosttexter.de", "girlsundertheinfluence.com", "gishpuppy.com",
+            "gowikibooks.com", "gowikicampus.com", "gowikicars.com", "gowikifilms.com", "gowikigames.com", "gowikimusic.com", "gowikinetwork.com",
+            "gowikitravel.com", "gowikitv.com", "great-host.in", "greensloth.com", "gsrv.co.uk", "guerillamail.biz", "guerillamail.com", "guerillamail.net",
+            "guerillamail.org", "guerrillamail.biz", "guerrillamail.com", "guerrillamail.de", "guerrillamail.net", "guerrillamail.org",
+            "guerrillamailblock.com", "h.mintemail.com", "h8s.org", "haltospam.com", "hatespam.org", "hidemail.de", "hochsitze.com", "hotpop.com",
+            "hulapla.de", "ieatspam.eu", "ieatspam.info", "ihateyoualot.info", "iheartspam.org", "imails.info", "inboxclean.com", "inboxclean.org",
+            "incognitomail.com", "incognitomail.net", "incognitomail.org", "insorg-mail.info", "ipoo.org", "irish2me.com", "iwi.net", "jetable.com",
+            "jetable.fr.nf", "jetable.net", "jetable.org", "jnxjn.com", "junk1e.com", "kasmail.com", "kaspop.com", "keepmymail.com", "killmail.com",
+            "killmail.net", "kir.ch.tc", "klassmaster.com", "klassmaster.net", "klzlk.com", "kulturbetrieb.info", "kurzepost.de", "letthemeatspam.com",
+            "lhsdv.com", "lifebyfood.com", "link2mail.net", "litedrop.com", "lol.ovpn.to", "lookugly.com", "lopl.co.cc", "lortemail.dk", "lr78.com",
+            "m4ilweb.info", "maboard.com", "mail-temporaire.fr", "mail.by", "mail.mezimages.net", "mail2rss.org", "mail333.com", "mail4trash.com",
+            "mailbidon.com", "mailblocks.com", "mailcatch.com", "maileater.com", "mailexpire.com", "mailfreeonline.com", "mailin8r.com", "mailinater.com",
+            "mailinator.com", "mailinator.net", "mailinator2.com", "mailincubator.com", "mailme.ir", "mailme.lv", "mailmetrash.com", "mailmoat.com",
+            "mailnator.com", "mailnesia.com", "mailnull.com", "mailshell.com", "mailsiphon.com", "mailslite.com", "mailzilla.com", "mailzilla.org", "mbx.cc",
+            "mega.zik.dj", "meinspamschutz.de", "meltmail.com", "messagebeamer.de", "mierdamail.com", "mintemail.com", "moburl.com", "moncourrier.fr.nf",
+            "monemail.fr.nf", "monmail.fr.nf", "msa.minsmail.com", "mt2009.com", "mx0.wwwnew.eu", "mycleaninbox.net", "mypartyclip.de", "myphantomemail.com",
+            "myspaceinc.com", "myspaceinc.net", "myspaceinc.org", "myspacepi", "10minut.com.pl", "mpedup.com", "myspamless.com", "mytrashmail.com",
+            "neomailbox.com", "nepwk.com", "nervmich.net", "nervtmich.net", "netmails.com", "netmails.net", "netzidiot.de", "neverbox.com", "no-spam.ws",
+            "nobulk.com", "noclickemail.com", "nogmailspam.info", "nomail.xl.cx", "nomail2me.com", "nomorespamemails.com", "nospam.ze.tc", "nospam4.us",
+            "nospamfor.us", "nospamthanks.info", "notmailinator.com", "nowmymail.com", "nurfuerspam.de", "nwldx.com", "objectmail.com", "obobbo.com",
+            "oneoffemail.com", "onewaymail.com", "online.ms", "oopi.org", "ordinaryamerican.net", "otherinbox.com", "ourklips.com", "outlawspam.com", "ovpn.to",
+            "owlpic.com", "pancakemail.com", "pimpedupmyspace.com", "pjjkp.com", "politikerclub.de", "poofy.org", "pookmail.com", "privacy.net", "proxymail.eu",
+            "prtnx.com", "punkass.com", "PutThisInYourSpamDatabase.com", "qq.com", "quickinbox.com", "rcpt.at", "recode.me", "recursor.net", "regbypass.com",
+            "regbypass.comsafe-mail.net", "rejectmail.com", "rklips.com", "rmqkr.net", "rppkn.com", "rtrtr.com", "s0ny.net", "safe-mail.net", "safersignup.de",
+            "safetymail.info", "safetypost.de", "sandelf.de", "saynotospams.com", "selfdestructingmail.com", "SendSpamHere.com", "sharklasers.com", "shiftmail.com",
+            "shitmail.me", "shortmail.net", "sibmail.com", "skeefmail.com", "slaskpost.se", "slopsbox.com", "smellfear.com", "snakemail.com", "sneakemail.com",
+            "sofimail.com", "sofort-mail.de", "sogetthis.com", "soodonims.com", "spam.la", "spam.su", "spamavert.com", "spambob.com", "spambob.net", "spambob.org",
+            "spambog.com", "spambog.de", "spambog.ru", "spambox.info", "spambox.irishspringrealty.com", "spambox.us", "spamcannon.com", "spamcannon.net",
+            "spamcero.com", "spamcon.org", "spamcorptastic.com", "spamcowboy.com", "spamcowboy.net", "spamcowboy.org", "spamday.com", "spamex.com", "spamfree24.com",
+            "spamfree24.de", "spamfree24.eu", "spamfree24.info", "spamfree24.net", "spamfree24.org", "spamgourmet.com", "spamgourmet.net", "spamgourmet.org",
+            "SpamHereLots.com", "SpamHerePlease.com", "spamhole.com", "spamify.com", "spaminator.de", "spamkill.info", "spaml.com", "spaml.de", "spammotel.com",
+            "spamobox.com", "spamoff.de", "spamslicer.com", "spamspot.com", "spamthis.co.uk", "spamthisplease.com", "spamtrail.com", "speed.1s.fr", "supergreatmail.com",
+            "supermailer.jp", "suremail.info", "teewars.org", "teleworm.com", "tempalias.com", "tempe-mail.com", "tempemail.biz", "tempemail.com", "TempEMail.net",
+            "tempinbox.co.uk", "tempinbox.com", "tempmail.it", "tempmail2.com", "tempomail.fr", "temporarily.de", "temporarioemail.com.br", "temporaryemail.net",
+            "temporaryforwarding.com", "temporaryinbox.com", "thanksnospam.info", "thankyou2010.com", "thisisnotmyrealemail.com", "throwawayemailaddress.com",
+            "tilien.com", "tmailinator.com", "tradermail.info", "trash-amil.com", "trash-mail.at", "trash-mail.com", "trash-mail.de", "trash2009.com",
+            "trashemail.de", "trashmail.at", "trashmail.com", "trashmail.de", "trashmail.me", "trashmail.net", "trashmail.org", "trashmail.ws", "trashmailer.com",
+            "trashymail.com", "trashymail.net", "trillianpro.com", "turual.com", "twinmail.de", "tyldd.com", "uggsrock.com", "upliftnow.com", "uplipht.com",
+            "venompen.com", "veryrealemail.com", "viditag.com", "viewcastmedia.com", "viewcastmedia.net", "viewcastmedia.org", "webm4il.info", "wegwerfadresse.de",
+            "wegwerfemail.de", "wegwerfmail.de", "wegwerfmail.net", "wegwerfmail.org", "wetrainbayarea.com", "wetrainbayarea.org", "wh4f.org", "whyspam.me",
+            "willselfdestruct.com", "winemaven.info", "wronghead.com", "wuzup.net", "wuzupmail.net", "www.e4ward.com", "www.gishpuppy.com", "www.mailinator.com",
+            "wwwnew.eu", "xagloo.com", "xemaps.com", "xents.com", "xmaily.com", "xoxy.net", "yep.it", "yogamaven.com", "yopmail.com", "yopmail.fr", "yopmail.net",
+            "ypmail.webarnak.fr.eu.org", "yuurok.com", "zehnminutenmail.de", "zippymail.info", "zoaxe.com", "zoemail.org" };
 
     String[] whoNcrafts = {"Who am I?",
             "Actor","Actress","Child Artist","Singer","Dancer",
@@ -86,10 +139,12 @@ public class signup extends AppCompatActivity{
     String imgurl;
 
     EditText first_name1, last_name1, email1,
-            password1, confirm_password1, residing1, hometown1;
+            password1, confirm_password1;
     Spinner craft,genderspin;
     CircleImageView profile_image1;
     TextView display_languages;
+    TextView residing1;
+    TextView hometown1;
 
     //datepicker
     TextView dob1;
@@ -150,8 +205,6 @@ public class signup extends AppCompatActivity{
         email1 = (EditText) findViewById(R.id.email);
         password1 = (EditText) findViewById(R.id.password);
         confirm_password1 = (EditText) findViewById(R.id.confirm_password);
-        residing1 = (EditText) findViewById(R.id.residing);
-        hometown1 = (EditText) findViewById(R.id.hometown);
         profile_image1 = (CircleImageView) findViewById(R.id.profile_image);
         dob1 = (TextView) findViewById(R.id.dob);
 
@@ -297,15 +350,54 @@ public class signup extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
-                    Intent i = new Intent(getApplicationContext(),LanguagesPopUp.class).putExtra("languagesspoken", User.getInstance().languagesspokendirty);
-                    startActivityForResult(i,1);
+                Intent i = new Intent(getApplicationContext(),LanguagesPopUp.class).putExtra("languagesspoken", User.getInstance().languagesspokendirty);
+                startActivityForResult(i,1);
+            }
+        });
+
+
+        residing1 = (TextView) findViewById(R.id.residing);
+        hometown1 = (TextView) findViewById(R.id.hometown);
+
+
+        residing1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+
+                    Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN).build(signup.this);
+                    startActivityForResult(intent, 1000);
+
+                } catch (GooglePlayServicesRepairableException e) {
+                        e.printStackTrace();
+                } catch (GooglePlayServicesNotAvailableException e) {
+                        e.printStackTrace();
+                }
+
+
             }
         });
 
 
 
+        hometown1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                try {
 
+                    Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN).build(signup.this);
+                    startActivityForResult(intent, 2000);
+
+                } catch (GooglePlayServicesRepairableException e) {
+                    e.printStackTrace();
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
 
 
         Button next = (Button)findViewById(R.id.button11);
@@ -324,8 +416,6 @@ public class signup extends AppCompatActivity{
                         storeSPData("dob", dob1.getText().toString());
                         storeSPData("gender", selectedgender);
                         storeSPData("category", selectedcraft);
-                        storeSPData("residingin", residing1.getText().toString());
-                        storeSPData("hometown", hometown1.getText().toString());
 
                         name=first_name1.getText().toString();
                         Intent goToNextActivity = new Intent(getApplicationContext(), signup2.class);
@@ -353,8 +443,6 @@ public class signup extends AppCompatActivity{
                         storeSPData("dob", dob1.getText().toString());
                         storeSPData("gender", selectedgender);
                         storeSPData("category", selectedcraft);
-                        storeSPData("residingin", residing1.getText().toString());
-                        storeSPData("hometown", hometown1.getText().toString());
 
                         name=first_name1.getText().toString();
                         Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
@@ -386,8 +474,6 @@ public class signup extends AppCompatActivity{
                         storeSPData("dob", dob1.getText().toString().trim());
                         storeSPData("gender", selectedgender);
                         storeSPData("category", selectedcraft);
-                        storeSPData("residingin", residing1.getText().toString());
-                        storeSPData("hometown", hometown1.getText().toString());
 
                         name = first_name1.getText().toString();
                         Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
@@ -408,21 +494,46 @@ public class signup extends AppCompatActivity{
     }
 
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+
+        if (requestCode == 1000) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlaceAutocomplete.getPlace(this, data);
+                residing1.setText(place.getName());
+                storeSPData("residingIn", place.getName().toString());
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+        if (requestCode == 2000) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlaceAutocomplete.getPlace(this, data);
+                hometown1.setText(place.getName());
+                storeSPData("homeTown", place.getName().toString());
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
         if(requestCode == 1) {
             if(resultCode == Activity.RESULT_OK) {
                 String languagesspoken = data.getStringExtra("languagesspoken");
-
-                if(languagesspoken.equals("")) {
-                    display_languages.setText("Select Languages Spoken");
-                } else {
-                    display_languages.setText(languagesspoken);
-                }
+                if(languagesspoken.equals("")) display_languages.setText("Select Languages Spoken");
+                else display_languages.setText(languagesspoken);
             }
         }
+
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
@@ -504,8 +615,8 @@ public class signup extends AppCompatActivity{
             };
 
     private void showDate(int year, int month, int day) {
-        dob1.setText(new StringBuilder().append(day).append("/")
-                .append(month).append("/").append(year));
+        dob1.setText(new StringBuilder().append(month).append("/")
+                .append(day).append("/").append(year));
     }
 
 
