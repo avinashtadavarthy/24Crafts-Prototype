@@ -92,9 +92,9 @@ public class ClientCustomAdapterOpenAuditions extends RecyclerView.Adapter<Clien
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean bChecked) {
                 if (bChecked) {
-                    Toast.makeText(mContext, "Checked", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "Applied", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(mContext, "Unchecked", Toast.LENGTH_SHORT).show();
+
 
                 }
 

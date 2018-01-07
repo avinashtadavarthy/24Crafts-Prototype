@@ -78,6 +78,7 @@ dependencies {
     compile('com.razorpay:checkout:1.4.4')
     compile files('libs/YouTubeAndroidPlayerApi.jar')
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    compile 'com.kila.apprater_dialog.lars:apprater-dialog:1.0.5'
 
     implementation 'com.google.android.gms:play-services-maps:11.8.0'
     implementation 'com.google.android.gms:play-services-location:11.8.0'

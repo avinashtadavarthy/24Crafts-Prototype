@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 
+import com.kila.apprater_dialog.lars.AppRater;
+
 public class RateUs extends AppCompatActivity {
 
     RatingBar rb;
@@ -20,7 +22,10 @@ public class RateUs extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rate_us);
+
+
+
+       setContentView(R.layout.activity_rate_us);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -30,19 +35,19 @@ public class RateUs extends AppCompatActivity {
 
         getWindow().setLayout((int)(width*.8),(int)(height*.6));
 
-        rb = (RatingBar) findViewById(R.id.ratingbar);
+        /*rb = (RatingBar) findViewById(R.id.ratingbar);
         rateusImage = (ImageView) findViewById(R.id.rateusimage);
         description = (EditText) findViewById(R.id.descriptionEdittext);
-        submit = (Button) findViewById(R.id.submitButton);
+        submit = (Button) findViewById(R.id.submitButton);*/
 
 
-        rb.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+      /*  rb.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
 
                 ratingValue = v;
                 Log.d("rateus",ratingValue + "");
             }
-        });
+        });*/
     }
 }

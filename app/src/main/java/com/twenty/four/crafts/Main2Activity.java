@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.kila.apprater_dialog.lars.AppRater;
 import com.twenty.four.crafts.auditions.AuditionsTab;
 import com.twenty.four.crafts.encounters.SwipeFragment;
 
@@ -35,6 +36,15 @@ public class Main2Activity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        new AppRater.StarBuilder(this,"com.twenty.four.crafts")
+                .showDefault()
+                .minimumNumberOfStars(3)
+                .email("raku18998@gmail.com")
+                .timesToLaunch(3)
+                .daysToWait(1)
+                .appLaunched();
+
         setContentView(R.layout.activity_main2);
 
       /*  SharedPreferences sharedPref = this.getPreferences(MODE_PRIVATE);

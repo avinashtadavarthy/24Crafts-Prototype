@@ -1,10 +1,14 @@
 package com.twenty.four.crafts;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+
+import com.twenty.four.crafts.registration.StartingScreen;
 
 public class SubscribePopUp extends AppCompatActivity {
 
@@ -32,8 +36,26 @@ public class SubscribePopUp extends AppCompatActivity {
     }
     public void launchIntent(View view)
     {
-        Intent intent = new Intent(getApplicationContext(),SubscribePopUp2.class);
-        startActivity(intent);
-        finish();
+        final int[] count = {0};
+        /*Intent intent = new Intent(getApplicationContext(),SubscribePopUp2.class);
+        startActivity(intent);*/
+        AlertDialog.Builder builder = new AlertDialog.Builder(SubscribePopUp.this);
+        builder.setMessage("Free Account only gives you access to the DIRECTORY. Producers/Directors will not be able to contact you...")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //do things
+                        dialog.cancel();
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
