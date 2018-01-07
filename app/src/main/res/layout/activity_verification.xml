@@ -16,15 +16,15 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginLeft="-30dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="60sp"
+        android:layout_marginLeft="-30sp"
+        android:layout_marginTop="20sp"
         android:background="@drawable/bubble"
-        android:paddingRight="40dp"
-        android:paddingLeft="50dp"
-        android:paddingTop="19dp"
+        android:paddingRight="40sp"
+        android:paddingLeft="50sp"
+        android:paddingTop="19sp"
         android:text="Verification"
-        android:textSize="20dp"/>
+        android:textSize="20sp"/>
 
         <LinearLayout
             android:id="@+id/phone_layout"
@@ -36,15 +36,15 @@
             android:paddingRight="30sp"
             android:paddingTop="10sp"
             android:paddingBottom="10sp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="40sp"
             android:layout_marginLeft="16sp"
             android:layout_marginRight="16sp"
             android:layout_marginBottom="16sp"
             android:background="#ffffff">
 
             <ImageView
-                android:layout_width="55dp"
-                android:layout_height="50dp"
+                android:layout_width="55sp"
+                android:layout_height="50sp"
                 android:clickable="true"
                 android:id="@+id/phone"
                 android:src="@drawable/phone2"
@@ -63,10 +63,10 @@
                 android:gravity="center">
 
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="100sp"
                     android:text="Phone"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:layout_height="0sp"
                     android:layout_weight="1.25"/>
 
@@ -74,7 +74,7 @@
 
                     android:layout_height="0sp"
                     android:layout_weight="0.75"
-                    android:layout_width="100dp"
+                    android:layout_width="100sp"
                     android:id="@+id/phone_text_veri"
                     android:text="Verified !"
                     android:textColor="#ff99cc00"/>
@@ -100,8 +100,8 @@
         android:background="#ffffff">
 
         <ImageView
-            android:layout_width="55dp"
-            android:layout_height="53dp"
+            android:layout_width="55sp"
+            android:layout_height="53sp"
             android:id="@+id/fb"
             android:src="@drawable/facebook_black"
             android:clickable="true"
@@ -117,10 +117,10 @@
             android:gravity="center">
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="100sp"
                 android:text="Facebook"
                 android:textColor="#000000"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_height="0sp"
                 android:layout_weight="1.25"/>
 
@@ -128,7 +128,7 @@
 
                 android:layout_height="0sp"
                 android:layout_weight="0.75"
-                android:layout_width="100dp"
+                android:layout_width="100sp"
                 android:id="@+id/fb_text_veri"
                 android:text="Not verified !"
                 android:textColor="#ff4e4e"/>
@@ -153,9 +153,9 @@
         android:background="#ffffff">
 
         <ImageView
-            android:layout_width="55dp"
+            android:layout_width="55sp"
             android:id="@+id/google"
-            android:layout_height="50dp"
+            android:layout_height="50sp"
             android:src="@drawable/googleg_disabled_color_18"
             android:padding="10sp"
             android:background="@drawable/circle_filled"
@@ -174,10 +174,10 @@
             android:gravity="center">
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="100sp"
                 android:text="Google"
                 android:textColor="#000000"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_height="0sp"
                 android:layout_weight="1.25"/>
 
@@ -185,7 +185,7 @@
 
                 android:layout_height="0sp"
                 android:layout_weight="0.75"
-                android:layout_width="100dp"
+                android:layout_width="100sp"
                 android:id="@+id/google_text_veri"
                 android:text="Not verified !"
                 android:textColor="#ff4e4e"/>
@@ -210,8 +210,8 @@
         android:background="#ffffff">
 
         <ImageView
-            android:layout_width="55dp"
-            android:layout_height="50dp"
+            android:layout_width="55sp"
+            android:layout_height="50sp"
             android:clickable="true"
             android:src="@drawable/insta_black"
             android:id="@+id/insta"
@@ -228,10 +228,10 @@
             android:gravity="center">
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="100sp"
                 android:text="Instagram"
                 android:textColor="#000000"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_height="0sp"
                 android:layout_weight="1.25"/>
 
@@ -239,7 +239,7 @@
 
                 android:layout_height="0sp"
                 android:layout_weight="0.75"
-                android:layout_width="100dp"
+                android:layout_width="100sp"
                 android:id="@+id/insta_text_veri"
                 android:text="Not verified !"
                 android:textColor="#ff4e4e"/>
@@ -265,8 +265,8 @@
         android:background="#ffffff">
 
         <ImageView
-            android:layout_width="55dp"
-            android:layout_height="50dp"
+            android:layout_width="55sp"
+            android:layout_height="50sp"
             android:clickable="true"
             android:src="@drawable/twitter_black"
             android:id="@+id/twitter"
@@ -283,10 +283,10 @@
             android:gravity="center">
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="100sp"
                 android:text="Twitter"
                 android:textColor="#000000"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_height="0sp"
                 android:layout_weight="1.25"/>
 
@@ -294,7 +294,7 @@
 
                 android:layout_height="0sp"
                 android:layout_weight="0.75"
-                android:layout_width="100dp"
+                android:layout_width="100sp"
                 android:id="@+id/twitter_text_veri"
                 android:text="Not verified !"
                 android:textColor="#ff4e4e"/>
@@ -306,9 +306,9 @@
 
     <Button
         android:id="@+id/verification_skip"
-        android:layout_width="360dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="10dp"
+        android:layout_width="360sp"
+        android:layout_height="40sp"
+        android:layout_marginBottom="10sp"
         android:background="@drawable/button_round"
         android:gravity="center"
         android:layout_gravity="center_horizontal"
@@ -320,9 +320,9 @@
 
     <Button
         android:id="@+id/verification_done"
-        android:layout_width="360dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="10dp"
+        android:layout_width="360sp"
+        android:layout_height="40sp"
+        android:layout_marginBottom="10sp"
         android:background="@drawable/button_round"
         android:gravity="center"
         android:layout_gravity="center_horizontal"

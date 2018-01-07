@@ -42,8 +42,8 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_marginTop="50dp"
-            android:paddingLeft="30dp"
+            android:layout_marginTop="50sp"
+            android:paddingLeft="30sp"
             android:layout_width="match_parent"
             android:layout_height="150sp"
             android:orientation="horizontal">
@@ -90,7 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40sp"
                     android:background="@drawable/round_card"
-                    android:text="Import From Gallery"
+                    android:text="Import"
                     android:textColor="#000000"
                     android:textAllCaps="false"
                     android:padding="5sp"/>
@@ -125,14 +125,14 @@
         android:id="@+id/first_name"
         android:layout_width="match_parent"
         android:layout_height="40sp"
-        android:paddingLeft="20dp"
+        android:paddingLeft="20sp"
         android:layout_gravity="center"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:hint="First Name"
         android:textColorHint="#ffffff"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:background="#00ffffff"
         android:inputType="textPersonName" />
 
@@ -142,14 +142,14 @@
         android:id="@+id/last_name"
 
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:paddingLeft="20dp"
+        android:layout_height="40sp"
+        android:paddingLeft="20sp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="20sp"
         android:ems="10"
         android:hint="Last Name"
         android:textColorHint="#ffffff"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:background="@drawable/box"
         android:inputType="textPersonName"
         android:layout_marginLeft="16sp"
@@ -159,14 +159,14 @@
         android:id="@+id/email"
 
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:paddingLeft="20dp"
+        android:layout_height="40sp"
+        android:paddingLeft="20sp"
         android:layout_gravity="center"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="20sp"
         android:ems="10"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:hint="Email"
         android:textColorHint="#ffffff"
         android:background="@drawable/box"
@@ -178,13 +178,13 @@
         android:id="@+id/password"
 
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:textSize="16dp"
-        android:paddingLeft="20dp"
+        android:layout_height="40sp"
+        android:textSize="16sp"
+        android:paddingLeft="20sp"
         android:layout_gravity="center"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="20sp"
         android:ems="10"
         android:hint="Password"
         android:textColorHint="#ffffff"
@@ -197,13 +197,13 @@
         android:id="@+id/confirm_password"
 
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:paddingLeft="20dp"
-        android:textSize="16dp"
+        android:layout_height="40sp"
+        android:paddingLeft="20sp"
+        android:textSize="16sp"
         android:layout_gravity="center"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="20sp"
         android:ems="10"
         android:hint="Confirm Password"
         android:textColorHint="#ffffff"
@@ -214,10 +214,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="40sp"
             android:layout_gravity="center"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="20sp"
             android:layout_marginLeft="16sp"
             android:layout_marginRight="16sp"
             android:weightSum="10">
@@ -225,63 +225,54 @@
             <Spinner
                 android:id="@+id/gender"
                 android:background="@drawable/box"
-                android:layout_width="0dp"
+                android:layout_width="0sp"
                 android:layout_weight="5"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:popupBackground="@drawable/box_spin"
-                android:layout_height="40dp" />
+                android:layout_height="40sp" />
 
             <TextView
                 android:id="@+id/dob"
-                android:layout_width="0dp"
+                android:layout_width="0sp"
                 android:layout_weight="5"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="20sp"
                 android:layout_height="match_parent"
                 android:background="@drawable/box"
-                android:text="@string/date_selected"
-                android:textColorHint="#ffffff"
-                android:hint="Click to set DOB"
-                android:textSize="16dp"
+                android:textColor="#ffffff"
+                android:text="Click to set DOB"
+                android:textSize="16sp"
                 android:onClick="setDate"
-                android:gravity="center"/>
+                android:paddingLeft="20sp" />
 
         </LinearLayout>
 
-        <EditText
+        <TextView
             android:id="@+id/residing"
-
+            android:text="Select Residing In"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="40sp"
             android:textSize="16sp"
-            android:paddingLeft="20dp"
-            android:layout_gravity="center"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:hint="Residing In"
-            android:textColorHint="#ffffff"
             android:background="@drawable/box"
-            android:layout_marginLeft="16sp"
-            android:layout_marginRight="16sp"/>
-
-        <EditText
-            android:id="@+id/hometown"
-
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:paddingLeft="20sp"
+            android:layout_marginTop="20sp"
             android:layout_marginLeft="16sp"
             android:layout_marginRight="16sp"
-            android:textSize="16dp"
-            android:paddingLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:ems="10"
-            android:hint="Native (Hometown)"
-            android:textColorHint="#ffffff"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:id="@+id/hometown"
+            android:text="Select Native (Hometown)"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:textSize="16sp"
             android:background="@drawable/box"
-            />
+            android:paddingLeft="20sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginLeft="16sp"
+            android:layout_marginRight="16sp"
+            android:textColor="#ffffff" />
 
         <TextView
             android:id="@+id/display_languages"
@@ -291,8 +282,8 @@
             android:layout_height="40sp"
             android:textSize="16sp"
             android:background="@drawable/box"
-            android:paddingLeft="20dp"
-            android:layout_marginTop="20dp"
+            android:paddingLeft="20sp"
+            android:layout_marginTop="20sp"
             android:layout_marginLeft="16sp"
             android:layout_marginRight="16sp"
             android:textColor="#ffffff" />
@@ -300,14 +291,14 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="20sp"
         android:background="@drawable/box"
         android:layout_width="match_parent"
-        android:textSize="16dp"
-        android:layout_marginBottom="50dp"
+        android:textSize="16sp"
+        android:layout_marginBottom="50sp"
         android:popupBackground="@drawable/box_spin"
         android:layout_gravity="center"
-        android:layout_height="40dp"
+        android:layout_height="40sp"
         android:layout_marginLeft="16sp"
         android:layout_marginRight="16sp" />
 
@@ -318,11 +309,11 @@
     <Button
         android:id="@+id/button11"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_height="40sp"
+        android:layout_marginTop="40sp"
+        android:layout_marginBottom="5sp"
+        android:layout_marginLeft="25sp"
+        android:layout_marginRight="25sp"
         android:background="@drawable/button_round"
         android:gravity="center"
         android:layout_gravity="center_horizontal"

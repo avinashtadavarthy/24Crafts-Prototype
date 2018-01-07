@@ -85,7 +85,7 @@ public class Main2Activity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         if(savedInstanceState==null){
-            navigationView.getMenu().performIdentifierAction(R.id.inbox,0);
+            navigationView.getMenu().performIdentifierAction(R.id.newsfeed,0);
         }
 
         ImageView purchase_coins = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.purchase_coins);
@@ -108,10 +108,6 @@ public class Main2Activity extends AppCompatActivity
             }
         });
 
-
-
-
-
         ImageView aud_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.aud_handy);
 
         aud_handy.setOnClickListener(new View.OnClickListener() {
@@ -129,19 +125,23 @@ public class Main2Activity extends AppCompatActivity
             }
         });
 
+
         ImageView fav_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.fav_handy);
 
         fav_handy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(Main2Activity.this, "Where do the craftsmen see their favourites list?", Toast.LENGTH_LONG).show();
+                android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new CraftsmenFavouritesTabFragment()).commit();
+                appBarLayout.setTargetElevation(8);
 
                 DrawerLayout mDrawerLayout;
                 mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
                 mDrawerLayout.closeDrawers();
             }
         });
+
 
         ImageView inbox_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.inbox_handy);
 
@@ -160,7 +160,6 @@ public class Main2Activity extends AppCompatActivity
 
             }
         });
-
 
     }
 
@@ -204,7 +203,7 @@ public class Main2Activity extends AppCompatActivity
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-       if (id == R.id.inbox) {
+       /*if (id == R.id.inbox) {
            Fragment fragment = new InboxTab();
             fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, fragment).commit();
            appBarLayout.setTargetElevation(0);
@@ -213,7 +212,9 @@ public class Main2Activity extends AppCompatActivity
             fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new AuditionsTab()).commit();
            appBarLayout.setTargetElevation(0);
 
-        } else if (id == R.id.newsfeed) {
+        } else */
+
+       if (id == R.id.newsfeed) {
             fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new NewsfeedFragment()).commit();
            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 

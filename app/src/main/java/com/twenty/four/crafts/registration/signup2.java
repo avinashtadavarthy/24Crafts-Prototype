@@ -19,6 +19,9 @@ import android.widget.TextView;
 import com.twenty.four.crafts.CustomAdapterSpinner;
 import com.twenty.four.crafts.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class signup2 extends AppCompatActivity {
 
     String[] bodytypeString={"Choose Body Type",
@@ -33,8 +36,6 @@ public class signup2 extends AppCompatActivity {
     String[] eyecolorString={"Choose Eye Color",
             "Black", "Brown", "Blue", "Amber", "Grey", "Green", "Hazel", "Other"};
 
-
-
     Integer[] imageArraymale = {
             R.drawable.ic_person, R.drawable.veryfair, R.drawable.fair,  R.drawable.medium,  R.drawable.olive,  R.drawable.brown, R.drawable.dark};
 
@@ -43,12 +44,17 @@ public class signup2 extends AppCompatActivity {
 
     String[] skintoneString = { "Choose Skin Tone", "Very Fair", "Fair", "Medium", "Olive", "Brown", "Dark" };
 
+    String[] facialhairString={"Choose Facial Hair",
+            "Beard","Moustache", "Beard & Moustache", "Stubble / Goatie", "None", "Other"};
+
+
+    String bodyTypeSelector = "null";
+    String hairColorSelector = "null";
+    String hairLengthSelector = "null";
+    String eyeColorSelector = "null";
+    String facialHairSelector = "null";
     String skinToneSelector = "null";
 
-
-
-    String[] facialhairString={"Choose Facial Hair",
-            "Beard","Moustache", "Beard & Moustache", "Stubble", "None", "Other"};
 
 
     @Override
@@ -62,19 +68,19 @@ public class signup2 extends AppCompatActivity {
         final String type = bundle.getString("type");
 
         TextView textView =(TextView)findViewById(R.id.welcome);
-        textView.setText("Welcome, "+name);
+        textView.setText("Hello, " + name);
 
-        final TextView other_bodytype = (TextView) findViewById(R.id.other_bodytype);
+        final EditText other_bodytype = (EditText) findViewById(R.id.other_bodytype);
         other_bodytype.setVisibility(View.GONE);
-        final TextView other_haircolor = (TextView) findViewById(R.id.other_haircolor);
+        final EditText other_haircolor = (EditText) findViewById(R.id.other_haircolor);
         other_haircolor.setVisibility(View.GONE);
-        final TextView other_hairlength = (TextView) findViewById(R.id.other_hairlength);
+        final EditText other_hairlength = (EditText) findViewById(R.id.other_hairlength);
         other_hairlength.setVisibility(View.GONE);
-        final TextView other_eyecolor = (TextView) findViewById(R.id.other_eyecolor);
+        final EditText other_eyecolor = (EditText) findViewById(R.id.other_eyecolor);
         other_eyecolor.setVisibility(View.GONE);
-        final TextView other_skintone = (TextView) findViewById(R.id.other_skintone);
+        final EditText other_skintone = (EditText) findViewById(R.id.other_skintone);
         other_skintone.setVisibility(View.GONE);
-        final TextView other_facialhair = (TextView) findViewById(R.id.other_facialhair);
+        final EditText other_facialhair = (EditText) findViewById(R.id.other_facialhair);
         other_facialhair.setVisibility(View.GONE);
 
         final EditText height = (EditText) findViewById(R.id.height);
@@ -93,11 +99,21 @@ public class signup2 extends AppCompatActivity {
                 if(bodytypeString[position].equals("Other")) {
                     bodytype.setBackgroundResource(R.drawable.box3);
                     other_bodytype.setVisibility(View.VISIBLE);
+                    bodyTypeSelector = other_bodytype.getText().toString();
                 }
                 else {
                     bodytype.setBackgroundResource(R.drawable.box);
                     other_bodytype.setVisibility(View.GONE);
                 }
+
+                switch(position) {
+                    case 1: bodyTypeSelector = "Athletic"; break;
+                    case 2: bodyTypeSelector = "Average"; break;
+                    case 3: bodyTypeSelector = "Petite"; break;
+                    case 4: bodyTypeSelector = "Thin"; break;
+                    case 5: bodyTypeSelector = "Heavy"; break;
+                }
+
             }
 
             @Override
@@ -121,6 +137,17 @@ public class signup2 extends AppCompatActivity {
                     haircolor.setBackgroundResource(R.drawable.box);
                     other_haircolor.setVisibility(View.GONE);
                 }
+
+                switch(position) {
+                    case 1: hairColorSelector = "Black"; break;
+                    case 2: hairColorSelector = "Brown"; break;
+                    case 3: hairColorSelector = "White"; break;
+                    case 4: hairColorSelector = "Red"; break;
+                    case 5: hairColorSelector = "Blonde"; break;
+                    case 6: hairColorSelector = "Burgundy"; break;
+                    case 7: hairColorSelector = "Ginger"; break;
+                }
+
             }
 
             @Override
@@ -142,6 +169,15 @@ public class signup2 extends AppCompatActivity {
                     hairlength.setBackgroundResource(R.drawable.box);
                     other_hairlength.setVisibility(View.GONE);
                 }
+
+                switch(position) {
+                    case 1: hairLengthSelector = "Short"; break;
+                    case 2: hairLengthSelector = "Medium"; break;
+                    case 3: hairLengthSelector = "Long"; break;
+                    case 4: hairLengthSelector = "Bald"; break;
+                    case 5: hairLengthSelector = "Shaved"; break;
+                }
+
             }
 
             @Override
@@ -163,6 +199,17 @@ public class signup2 extends AppCompatActivity {
                     eyecolor.setBackgroundResource(R.drawable.box);
                     other_eyecolor.setVisibility(View.GONE);
                 }
+
+                switch(position) {
+                    case 1: eyeColorSelector = "Black"; break;
+                    case 2: eyeColorSelector = "Brown"; break;
+                    case 3: eyeColorSelector = "Blue"; break;
+                    case 4: eyeColorSelector = "Amber"; break;
+                    case 5: eyeColorSelector = "Grey"; break;
+                    case 6: eyeColorSelector = "Green"; break;
+                    case 7: eyeColorSelector = "Hazel"; break;
+                }
+
             }
 
             @Override
@@ -210,6 +257,15 @@ public class signup2 extends AppCompatActivity {
                     other_facialhair.setVisibility(View.VISIBLE);
                 else
                     other_facialhair.setVisibility(View.GONE);
+
+                switch(position) {
+                    case 1: facialHairSelector = "Beard"; break;
+                    case 2: facialHairSelector = "Moustache"; break;
+                    case 3: facialHairSelector = "Beard & moustache"; break;
+                    case 4: facialHairSelector = "Stubble / goatie"; break;
+                    case 5: facialHairSelector = "None"; break;
+                }
+
             }
 
             @Override
@@ -222,6 +278,23 @@ public class signup2 extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                if(!bodyTypeSelector.equals("null")) storeSPData("bodyType", bodyTypeSelector);
+
+                if(!hairColorSelector.equals("null")) storeSPData("hairColor", hairColorSelector);
+
+                if(!hairLengthSelector.equals("null")) storeSPData("hairLength", hairLengthSelector);
+
+                if(!eyeColorSelector.equals("null")) storeSPData("eyeColor", eyeColorSelector);
+
+                if(!facialHairSelector.equals("null")) storeSPData("facialHair", facialHairSelector);
+
+                if(!skinToneSelector.equals("null")) storeSPData("skinTone", skinToneSelector);
+
+
+
+                /*
 
                 if(bodytype.getSelectedItem() != null) {
 
@@ -245,13 +318,8 @@ public class signup2 extends AppCompatActivity {
 
                     if(!eyecolor.getSelectedItem().toString().equals("Other")) storeSPData("eyeColor", eyecolor.getSelectedItem().toString());
                     else storeSPData("eyeColor", other_eyecolor.getText().toString());
-                }
+                }*/
 
-                if(!skinToneSelector.equals("null")) {
-
-                    storeSPData("skinTone", skinToneSelector);
-
-                }
 
                 if(facialhair.getSelectedItem() != null) {
 

@@ -24,6 +24,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.twenty.four.crafts.CustomAdapterSpinner;
 import com.twenty.four.crafts.MySingleton;
 import com.twenty.four.crafts.R;
@@ -36,6 +38,9 @@ import com.facebook.accountkit.PhoneNumber;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -611,7 +616,7 @@ public class signup3 extends AppCompatActivity {
 
 
 
-        final LinearLayout dub = ( LinearLayout) findViewById(R.id.dub);
+        final LinearLayout dub = (LinearLayout) findViewById(R.id.dub);
         dub.setVisibility(View.GONE);
         RadioGroup dub_1radio = (RadioGroup) findViewById(R.id.dub_1radio);
         RadioButton dub_1radioyes = (RadioButton) findViewById(R.id.dub_1radioyes);
@@ -620,6 +625,7 @@ public class signup3 extends AppCompatActivity {
         EditText dub_2 = (EditText) findViewById(R.id.dub_2);
         RadioGroup dub_3radio = (RadioGroup) findViewById(R.id.dub_3radio);
         RadioButton dub_3radioyes = (RadioButton) findViewById(R.id.dub_3radioyes);
+
 
 
         final LinearLayout srec = ( LinearLayout) findViewById(R.id.srec);
@@ -1871,6 +1877,8 @@ public class signup3 extends AppCompatActivity {
                 params.put("category", getSPData("category"));
                 params.put("gender", getSPData("gender"));
                 params.put("email", getSPData("email"));
+                params.put("phoneNumber", getSPData("phonenumber"));
+                params.put("phoneVerificationAccountKit", getSPData("phone_verified"));
                 params.put("bodyType", getSPData("bodyType"));
                 params.put("hairColor", getSPData("hairColor"));
                 params.put("hairLength", getSPData("hairLength"));
@@ -1881,6 +1889,14 @@ public class signup3 extends AppCompatActivity {
                 params.put("weight", getSPData("weight"));
                 params.put("chestSize", getSPData("chestSize"));
                 params.put("waistSize", getSPData("waistSize"));
+                params.put("residingIn", getSPData("residingIn"));
+                params.put("native", getSPData("homeTown"));
+                params.put("facebook", getSPData("facebookJSON"));
+
+                String[] languagesspoken = getSPData("languagesspoken_dirty").split(", ");
+                Gson gson = new GsonBuilder().create();
+                String jsonArray = gson.toJson(languagesspoken);
+                params.put("languagesSpoken", jsonArray);
 
                 return params;
             }
