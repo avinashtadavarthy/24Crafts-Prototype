@@ -208,7 +208,9 @@ public class Main2Activity extends AppCompatActivity
            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.nearby) {
-           fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new PeopleNearbyFragment()).commit();
+          // fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new MapsFragment()).commit();
+           Intent i = new Intent(getApplicationContext(),MapsActivity.class);
+           startActivity(i);
            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.encounters) {

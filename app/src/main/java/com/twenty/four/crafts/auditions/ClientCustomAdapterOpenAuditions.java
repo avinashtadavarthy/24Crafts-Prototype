@@ -45,7 +45,7 @@ public class ClientCustomAdapterOpenAuditions extends RecyclerView.Adapter<Clien
             this.textViewnoofapplicants = (TextView) itemView.findViewById(R.id.applicantsText);
             this.imageViewIcon = (ImageView) itemView.findViewById(R.id.dashboardimage);
             this.auditionsSwitch = itemView.findViewById(R.id.open_auditions_switch);
-            itemView.setOnClickListener(this);
+            delButton.setOnClickListener(this);
         }
 
         @Override

@@ -36,7 +36,7 @@ public class ClientCustomAdapterClosedAuditions extends RecyclerView.Adapter<Cli
             this.textViewlocationname = (TextView) itemView.findViewById(R.id.LocationText);
             this.textViewnoofapplicants = (TextView) itemView.findViewById(R.id.applicantsText);
             this.imageViewIcon = (ImageView) itemView.findViewById(R.id.dashboardimage);
-            itemView.setOnClickListener(this);
+            delButton.setOnClickListener(this);
         }
 
         @Override

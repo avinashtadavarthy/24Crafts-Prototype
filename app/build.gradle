@@ -43,7 +43,7 @@ dependencies {
     implementation 'com.facebook.android:facebook-login:[4,5)'
 
     //google
-    compile 'com.google.android.gms:play-services-auth:11.6.0'
+    compile 'com.google.android.gms:play-services-auth:11.8.0'
 
     //other libraries
     compile 'com.android.support:recyclerview-v7:26.+'
@@ -79,7 +79,12 @@ dependencies {
     compile files('libs/YouTubeAndroidPlayerApi.jar')
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 
+    implementation 'com.google.android.gms:play-services-maps:11.8.0'
+    implementation 'com.google.android.gms:play-services-location:11.8.0'
+    implementation 'com.google.android.gms:play-services-places:11.8.0'
+
 }
+
 
 
 apply plugin: 'com.google.gms.google-services'

@@ -7,6 +7,13 @@
 
     <uses-feature android:name="android.hardware.camera" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -15,6 +22,12 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCUI6kD24NcKgsnkcw5pL6yvv_3WvdJOJ0" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
         <!-- splash screen -->
         <activity
@@ -177,10 +190,10 @@
             android:name=".SubscribePopUp2"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".LanguagesPopUp"
+        <activity
+            android:name=".LanguagesPopUp"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.CustomThemeLangs" />
-
 
         <!-- Settings -->
         <activity
@@ -215,7 +228,9 @@
             android:name=".RateUs"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.CustomTheme" />
-
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
     </application>
 
 </manifest>

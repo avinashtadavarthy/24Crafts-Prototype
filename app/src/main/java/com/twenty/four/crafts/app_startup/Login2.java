@@ -236,6 +236,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
                     @Override
                     public void onError(FacebookException exception) {
+                        exception.printStackTrace();
                         Toast.makeText(Login2.this, "Login attempt failed", Toast.LENGTH_SHORT).show();
                     }
                 }
