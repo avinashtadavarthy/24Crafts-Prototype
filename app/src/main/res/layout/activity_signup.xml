@@ -134,7 +134,9 @@
         android:textColorHint="#ffffff"
         android:textSize="16sp"
         android:background="#00ffffff"
-        android:inputType="textPersonName" />
+        android:inputType="textCapSentences"/>
+        <!--android:inputType="textPersonName"
+            Testing Cap Sentences-->
 
         </android.support.design.widget.TextInputLayout>
 
@@ -151,9 +153,11 @@
         android:textColorHint="#ffffff"
         android:textSize="16sp"
         android:background="@drawable/box"
-        android:inputType="textPersonName"
+        android:inputType="textCapWords"
         android:layout_marginLeft="16sp"
         android:layout_marginRight="16sp"/>
+        <!--android:inputType="textPersonName"
+            Testing Cap Words-->
 
     <EditText
         android:id="@+id/email"
