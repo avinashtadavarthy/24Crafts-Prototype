@@ -86,8 +86,6 @@
         android:id="@+id/AccInfoBirthdayText"
         android:layout_below="@id/AccInfoBirthday"/>
 
-
-
     <TextView
         android:textSize="18sp"
         android:layout_marginTop="20dp"
@@ -105,13 +103,32 @@
         android:layout_below="@id/AccInfoMobile"/>
 
         <TextView
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
+            android:layout_below="@id/AccInfoMobileText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/AccInfoMobileText"
-            android:text="@string/accountinfotext"/>
+            android:id="@+id/AccInfoEmail"
+            android:text="Email" />
+
+        <TextView
+            android:textSize="20sp"
+            android:textColor="#FFA000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/AccInfoEmailText"
+            android:layout_below="@id/AccInfoEmail" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/AccInfoEmailText"
+            android:layout_marginTop="31dp"
+            android:gravity="center_horizontal"
+            android:text="@string/accountinfotext"
+            android:textSize="15sp" />
 
 
     <TextView

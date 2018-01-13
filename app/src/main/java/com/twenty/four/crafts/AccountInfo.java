@@ -13,7 +13,7 @@ import com.twenty.four.crafts.app_startup.Login;
 
 public class AccountInfo extends AppCompatActivity {
 
-    TextView nameText,birthdayText,mobiletext;
+    TextView nameText,birthdayText,mobiletext, emailText;
     TextView forgotPassword;
     TextView signout;
     Toolbar toolbar;
@@ -34,6 +34,7 @@ public class AccountInfo extends AppCompatActivity {
         nameText = findViewById(R.id.AccInfoNameText);
         birthdayText = findViewById(R.id.AccInfoBirthdayText);
         mobiletext = findViewById(R.id.AccInfoMobileText);
+        emailText = findViewById(R.id.AccInfoEmailText);
         forgotPassword = findViewById(R.id.ForgotPassButton);
         signout = findViewById(R.id.SignOutButton);
 
@@ -94,6 +95,7 @@ public class AccountInfo extends AppCompatActivity {
         nameText.setText("Ragav");
         birthdayText.setText("25/02/1992");
         mobiletext.setText("9876543210");
+        emailText.setText("Ragav@gmail.com");
     }
 
 
