@@ -13,7 +13,7 @@ import android.widget.TextView;
  */
 
 @SuppressLint("ValidFragment")
-class DemoFragment extends Fragment {
+public class DemoFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
