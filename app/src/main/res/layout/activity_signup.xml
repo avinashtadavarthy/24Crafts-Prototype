@@ -140,6 +140,7 @@
 
         </android.support.design.widget.TextInputLayout>
 
+
     <EditText
         android:id="@+id/last_name"
 
@@ -236,6 +237,7 @@
                 android:layout_height="40sp" />
 
             <TextView
+                android:gravity="center"
                 android:id="@+id/dob"
                 android:layout_width="0sp"
                 android:layout_weight="5"
@@ -246,7 +248,7 @@
                 android:text="Click to set DOB"
                 android:textSize="16sp"
                 android:onClick="setDate"
-                android:paddingLeft="20sp" />
+                 />
 
         </LinearLayout>
 

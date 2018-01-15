@@ -871,6 +871,7 @@
 
                     <!-- experience -->
                     <LinearLayout
+                        android:paddingBottom="5dp"
                         android:id="@+id/actress_6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1381,6 +1382,7 @@
                         android:layout_height="40sp"
                         android:layout_marginLeft="16sp"
                         android:layout_marginRight="16sp"
+                        android:layout_marginBottom="16sp"
                         android:textSize="16sp"
                         android:paddingLeft="20sp"
                         android:layout_gravity="center"
@@ -1393,17 +1395,7 @@
                         android:background="@drawable/box"
                         android:inputType="number"
                         />
-                    <Spinner
-                        android:id="@+id/child_13"
-                        android:layout_marginTop="20sp"
-                        android:background="@drawable/box"
-                        android:layout_width="match_parent"
-                        android:textSize="16sp"
-                        android:popupBackground="@drawable/box_spin"
-                        android:layout_gravity="center"
-                        android:layout_height="40sp"
-                        android:layout_marginLeft="16sp"
-                        android:layout_marginRight="16sp" />
+
                     <!-- child sing -->
                     <LinearLayout
                         android:id="@+id/child_2"

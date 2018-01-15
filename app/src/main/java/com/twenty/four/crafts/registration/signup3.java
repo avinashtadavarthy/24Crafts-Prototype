@@ -198,7 +198,6 @@ public class signup3 extends AppCompatActivity {
         child.setVisibility(View.GONE);
         EditText child_11 = (EditText) findViewById(R.id.child_11);
         EditText child_12 = (EditText) findViewById(R.id.child_12);
-        Spinner child_13 = (Spinner) findViewById(R.id.child_13);
         RadioGroup child_2radio = (RadioGroup) findViewById(R.id.child_2radio);
         RadioButton child_2radioyes = (RadioButton) findViewById(R.id.child_2radioyes);
         final EditText child_21 = (EditText) findViewById(R.id.child_21);

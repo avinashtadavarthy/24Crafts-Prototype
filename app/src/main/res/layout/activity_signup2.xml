@@ -260,7 +260,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25sp"
                 android:ems="10"
-                android:hint="Height"
+                android:hint="Height(cm)"
                 android:textColorHint="#ffffff"
                 android:background="@drawable/box"
                 android:inputType="textMultiLine"
@@ -282,7 +282,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25sp"
                 android:ems="10"
-                android:hint="Weight"
+                android:hint="Weight(kg)"
                 android:textColorHint="#ffffff"
                 android:background="@drawable/box"
                 android:inputType="text" />
@@ -301,7 +301,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25sp"
                 android:ems="10"
-                android:hint="Hip Size"
+                android:hint="Hip Size (cm)"
                 android:textColorHint="#ffffff"
                 android:background="@drawable/box"
                 android:inputType="text" />
@@ -319,7 +319,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25sp"
                 android:ems="10"
-                android:hint="Chest Size"
+                android:hint="Chest Size (cm)"
                 android:textColorHint="#ffffff"
                 android:background="@drawable/box"
                 android:inputType="text" />
@@ -339,7 +339,7 @@
                 android:layout_marginTop="25sp"
                 android:layout_marginBottom="60sp"
                 android:ems="10"
-                android:hint="Waist Size"
+                android:hint="Waist Size (cm)"
                 android:textColorHint="#ffffff"
                 android:background="@drawable/box"
                 android:inputType="text" />
@@ -359,7 +359,7 @@
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center_horizontal"
-        android:text="Skip"
+        android:text="NEXT"
         android:textColor="#ffffff" />
 
 </RelativeLayout>

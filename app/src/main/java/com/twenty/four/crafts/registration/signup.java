@@ -39,6 +39,7 @@ import java.io.IOException;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class signup extends AppCompatActivity{
+    private static final int LANGUAGES_SPOKEN = 25;
 
     //TODO: Add languages spoken "multi select spinner"
 
@@ -119,6 +120,7 @@ public class signup extends AppCompatActivity{
             "Sound Mixing Engineers", "Digital Intermediate", "VFX / CG",
             "SFX", "Pet Suppliers / Pet Doctors / AWBI Certifications"};
 
+
     String[] whoNclients = {"Who am I?",
             "Casting Agent","Co-Director","Co-Producer","Director","Director Assistant",
             "Director Audition","Executive Producer","Model Coordinator",
@@ -152,7 +154,7 @@ public class signup extends AppCompatActivity{
 
     //gallery access
     Button click_picture, import_from_gallery;
-    private int PICK_IMAGE_REQUEST = 1;
+    private int PICK_IMAGE_REQUEST = 10;
     private static final int CAMERA_REQUEST = 1888;
 
 
@@ -218,11 +220,37 @@ public class signup extends AppCompatActivity{
         password1.setTransformationMethod(new PasswordTransformationMethod());
         confirm_password1.setTransformationMethod(new PasswordTransformationMethod());
 
+
+        genderspin = (Spinner) findViewById(R.id.gender);
+        CustomAdapterSpinner genderAdapter=new CustomAdapterSpinner(getApplicationContext(),genderString);
+        genderspin.setAdapter(genderAdapter);
+
+        genderspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch(genderString[position])
+                {
+                    case "Male": selectedgender = "Male"; break;
+                    case "Female": selectedgender = "Female"; break;
+                    case "Other": selectedgender = "Other"; break;
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
         craft = (Spinner) findViewById(R.id.spinner);
         if(type.equals("craftsman")) {
 
-            CustomAdapterSpinner craftAdapter=new CustomAdapterSpinner(getApplicationContext(),whoNcrafts);
+            CustomAdapterSpinner craftAdapter;
+
+            craftAdapter = new CustomAdapterSpinner(getApplicationContext(), whoNcrafts);
             craft.setAdapter(craftAdapter);
+
+
             craft.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -304,26 +332,6 @@ public class signup extends AppCompatActivity{
         }
 
 
-        genderspin = (Spinner) findViewById(R.id.gender);
-        CustomAdapterSpinner genderAdapter=new CustomAdapterSpinner(getApplicationContext(),genderString);
-        genderspin.setAdapter(genderAdapter);
-
-        genderspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch(genderString[position])
-                {
-                    case "Male": selectedgender = "Male"; break;
-                    case "Female": selectedgender = "Female"; break;
-                    case "Other": selectedgender = "Other"; break;
-
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
 
 
         if(!firstname.equals("null")) {
@@ -351,7 +359,7 @@ public class signup extends AppCompatActivity{
             public void onClick(View v) {
 
                 Intent i = new Intent(getApplicationContext(),LanguagesPopUp.class).putExtra("languagesspoken", User.getInstance().languagesspokendirty);
-                startActivityForResult(i,1);
+                startActivityForResult(i,LANGUAGES_SPOKEN);
             }
         });
 
@@ -526,7 +534,7 @@ public class signup extends AppCompatActivity{
         }
 
 
-        if(requestCode == 1) {
+        if(requestCode == LANGUAGES_SPOKEN) {
             if(resultCode == Activity.RESULT_OK) {
                 String languagesspoken = data.getStringExtra("languagesspoken");
                 if(languagesspoken.equals("")) display_languages.setText("Select Languages Spoken");
