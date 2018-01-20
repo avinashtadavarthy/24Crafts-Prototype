@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.twenty.four.crafts.AuditionsMain;
 import com.twenty.four.crafts.R;
 
 /**
@@ -69,9 +70,11 @@ public class DashboardAuditionsTabFragment extends Fragment {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    return new ClientOpenAuditionsFragment();
+                    return new AuditionsMain();
+                    //return new ClientOpenAuditionsFragment();
                 case 1:
-                    return new ClientClosedAuditionsFragment();
+                    return new AuditionsMain();
+                    //return new ClientClosedAuditionsFragment();
                 default:
                     return null;
             }
