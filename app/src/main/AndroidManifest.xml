@@ -234,7 +234,8 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".EncountersMain"></activity>
+        <activity android:name=".EncountersMain" />
+        <activity android:name=".RSSMain"></activity>
     </application>
 
 </manifest>

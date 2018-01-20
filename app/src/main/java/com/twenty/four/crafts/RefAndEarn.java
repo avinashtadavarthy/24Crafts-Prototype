@@ -27,9 +27,10 @@ public class RefAndEarn extends AppCompatActivity {
 
     public void shareIntent(View view)
     {
+        String shareText = "Check out 24Crafts App. Open your door to stardom and earn free goodies! http://24crafts.tk/refcode=89489efh";
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-        sharingIntent.setType("text/html");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, Html.fromHtml("<p>This is the text that will be shared.</p>"));
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareText);
         startActivity(Intent.createChooser(sharingIntent,"Share using"));
     }
 }

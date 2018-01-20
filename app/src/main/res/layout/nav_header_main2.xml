@@ -100,6 +100,16 @@ android:theme="@style/ThemeOverlay.AppCompat.Dark">
             android:padding="5sp"
             android:src="@drawable/free_coins" />
 
+        <TextView
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:id="@+id/coinCount"
+            android:text="250"
+            android:gravity="bottom"
+            android:layout_marginBottom="5sp"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@id/purchase_coins"/>
+
 
     </RelativeLayout>
 

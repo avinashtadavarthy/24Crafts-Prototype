@@ -215,7 +215,7 @@ public class Main2Activity extends AppCompatActivity
         } else */
 
        if (id == R.id.newsfeed) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new NewsfeedFragment()).commit();
+            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new DemoActivity()).commit();
            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.nearby) {
