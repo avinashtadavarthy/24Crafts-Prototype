@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature android:name="android.hardware.camera" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
@@ -76,6 +76,21 @@
             android:name=".ForgotPasswordPopUp"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".registration.EditPictureActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- import images from gallery/camera -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.com.vansuita.pickimage.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/picker_provider_paths" />
+        </provider>
+
 
         <!-- Facebook SDK Integration -->
         <meta-data
@@ -237,7 +252,7 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".RSSMain" />
         <activity android:name=".LuckyWheelMain" />
-        <activity android:name=".main.TalentHunterMain"></activity>
+        <activity android:name=".main.TalentHunterMain"/>
     </application>
 
 </manifest>

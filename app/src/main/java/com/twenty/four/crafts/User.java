@@ -12,6 +12,8 @@ public class User {
     public static String
             languagesspoken = "", languagesspokendirty = "";
 
+    public static int ct = 0;
+
     protected User(){}
 
     public static synchronized User getInstance(){

@@ -9,17 +9,25 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.text.method.PasswordTransformationMethod;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,17 +37,32 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.squareup.picasso.Picasso;
+import com.steelkiwi.cropiwa.image.CropIwaResultReceiver;
 import com.twenty.four.crafts.CustomAdapterSpinner;
 import com.twenty.four.crafts.LanguagesPopUp;
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.User;
+import com.vansuita.pickimage.bean.PickResult;
+import com.vansuita.pickimage.bundle.PickSetup;
+import com.vansuita.pickimage.dialog.PickImageDialog;
+import com.vansuita.pickimage.enums.EPickType;
+import com.vansuita.pickimage.listeners.IPickClick;
+import com.vansuita.pickimage.listeners.IPickResult;
+import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
+import org.w3c.dom.Text;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class signup extends AppCompatActivity{
+public class signup extends AppCompatActivity implements IPickResult, CropIwaResultReceiver.Listener{
+
     private static final int LANGUAGES_SPOKEN = 25;
+    private static final int REQUEST_IMAGE_LOAD = 5555;
 
     //TODO: Add languages spoken "multi select spinner"
 
@@ -126,8 +149,8 @@ public class signup extends AppCompatActivity{
             "Director Audition","Executive Producer","Model Coordinator",
             "Producer","Production House Manager"};
 
-    String[] genderString = {"Choose Gender",
-            "Male","Female","Other"};
+    String[] genderString = { "Select Gender",
+            "Male", "Female", "Other" };
 
     String name, selectedcraft = "null", selectedgender = "null";
 
@@ -143,7 +166,7 @@ public class signup extends AppCompatActivity{
     EditText first_name1, last_name1, email1,
             password1, confirm_password1;
     Spinner craft,genderspin;
-    CircleImageView profile_image1;
+    CircleImageView profile_image1, edit_profile_btn;
     TextView display_languages;
     TextView residing1;
     TextView hometown1;
@@ -152,10 +175,14 @@ public class signup extends AppCompatActivity{
     TextView dob1;
     int year, month, day;
 
-    //gallery access
-    Button click_picture, import_from_gallery;
-    private int PICK_IMAGE_REQUEST = 10;
-    private static final int CAMERA_REQUEST = 1888;
+    //password checker
+    ProgressBar progress;
+
+
+    //image cropper
+    CropIwaResultReceiver cropResultReceiver;
+    ProgressBar loadimageprogress;
+
 
 
     @Override
@@ -163,30 +190,25 @@ public class signup extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        //gallery access
-        click_picture = (Button) findViewById(R.id.click_picture);
-        import_from_gallery = (Button) findViewById(R.id.import_from_gallery);
 
-        // TODO: send the images up to the server on submit
-        import_from_gallery.setOnClickListener(new View.OnClickListener() {
+        //import image
+        edit_profile_btn = (CircleImageView) findViewById(R.id.edit_profile_btn);
+        edit_profile_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent();
-                // Show only images, no videos or anything else
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                // Always show the chooser (if there are multiple options available)
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+                // TODO: send the images up to the server on submit
+                PickSetup setup = new PickSetup()
+                        .setTitle("Choose Image From")
+                        .setFlip(true)
+                        .setMaxSize(500)
+                        .setPickTypes(EPickType.GALLERY, EPickType.CAMERA)
+                        .setIconGravity(Gravity.CENTER)
+                        .setButtonOrientation(LinearLayoutCompat.VERTICAL)
+                        .setSystemDialog(true);
 
-            }
-        });
+                PickImageDialog.build(setup).show(signup.this);
 
-        click_picture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, CAMERA_REQUEST);
             }
         });
 
@@ -221,6 +243,7 @@ public class signup extends AppCompatActivity{
         confirm_password1.setTransformationMethod(new PasswordTransformationMethod());
 
 
+
         genderspin = (Spinner) findViewById(R.id.gender);
         CustomAdapterSpinner genderAdapter=new CustomAdapterSpinner(getApplicationContext(),genderString);
         genderspin.setAdapter(genderAdapter);
@@ -228,11 +251,18 @@ public class signup extends AppCompatActivity{
         genderspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                TextView gender_floatingtext = (TextView) findViewById(R.id.gender_floatingtext);
+
                 switch(genderString[position])
                 {
-                    case "Male": selectedgender = "Male"; break;
-                    case "Female": selectedgender = "Female"; break;
-                    case "Other": selectedgender = "Other"; break;
+                    case "Male": selectedgender = "Male";
+                        gender_floatingtext.setText("Gender");break;
+
+                    case "Female": selectedgender = "Female";
+                        gender_floatingtext.setText("Gender");break;
+                    case "Other": selectedgender = "Other";
+                        gender_floatingtext.setText("Gender");break;
 
                 }
             }
@@ -241,6 +271,8 @@ public class signup extends AppCompatActivity{
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+
+
 
         craft = (Spinner) findViewById(R.id.spinner);
         if(type.equals("craftsman")) {
@@ -499,7 +531,52 @@ public class signup extends AppCompatActivity{
         });
 
 
+
+
+        //image cropper
+        cropResultReceiver = new CropIwaResultReceiver();
+        cropResultReceiver.setListener(this);
+        cropResultReceiver.register(this);
+
+
+        loadimageprogress = (ProgressBar) findViewById(R.id.loadimageprogress);
+        loadimageprogress.setVisibility(View.GONE);
+
     }
+
+
+
+    @Override
+    public void onPickResult(PickResult r) {
+        if (r.getError() == null) {
+
+            //If you want the Uri.
+            //Mandatory to refresh image from Uri.
+            //getImageView().setImageURI(null);
+
+            //Setting the real returned image.
+            //getImageView().setImageURI(r.getUri());
+
+            //If you want the Bitmap.
+            //profile_image1.setImageBitmap(r.getBitmap());
+
+            Intent intent = new Intent(this, EditPictureActivity.class);
+            intent.putExtra("RawImageUri", r.getUri().toString());
+            //createImageFromBitmap(r.getBitmap(), "RawImage");
+            loadimageprogress.setVisibility(View.VISIBLE);
+            startActivityForResult(intent, REQUEST_IMAGE_LOAD);
+
+            //Image path
+            //r.getPath();
+
+        } else {
+            //Handle possible errors
+            //TODO: do what you have to do with r.getError();
+            Toast.makeText(this, r.getError().getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+
 
 
 
@@ -510,6 +587,10 @@ public class signup extends AppCompatActivity{
 
         if (requestCode == 1000) {
             if (resultCode == RESULT_OK) {
+
+                TextView residing_floatingtext = (TextView) findViewById(R.id.residing_floatingtext);
+                residing_floatingtext.setText("Residing In");
+
                 Place place = PlaceAutocomplete.getPlace(this, data);
                 residing1.setText(place.getName());
                 storeSPData("residingIn", place.getName().toString());
@@ -523,6 +604,10 @@ public class signup extends AppCompatActivity{
 
         if (requestCode == 2000) {
             if (resultCode == RESULT_OK) {
+
+                TextView hometown_floatingtext = (TextView) findViewById(R.id.hometown_floatingtext);
+                hometown_floatingtext.setText("Native (Hometown)");
+
                 Place place = PlaceAutocomplete.getPlace(this, data);
                 hometown1.setText(place.getName());
                 storeSPData("homeTown", place.getName().toString());
@@ -534,30 +619,27 @@ public class signup extends AppCompatActivity{
         }
 
 
-        if(requestCode == LANGUAGES_SPOKEN) {
+        if(requestCode == REQUEST_IMAGE_LOAD) {
             if(resultCode == Activity.RESULT_OK) {
-                String languagesspoken = data.getStringExtra("languagesspoken");
-                if(languagesspoken.equals("")) display_languages.setText("Select Languages Spoken");
-                else display_languages.setText(languagesspoken);
+                loadimageprogress.setVisibility(View.GONE);
             }
         }
 
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if(requestCode == LANGUAGES_SPOKEN) {
+            if(resultCode == Activity.RESULT_OK) {
 
-            Uri uri = data.getData();
+                TextView langs_floatingtext = (TextView) findViewById(R.id.langs_floatingtext);
+                langs_floatingtext.setText("Languages Spoken");
 
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                // Log.d(TAG, String.valueOf(bitmap));
-                profile_image1.setImageBitmap(bitmap);
+                String languagesspoken = data.getStringExtra("languagesspoken");
+                if(languagesspoken.equals("")) {
+                    display_languages.setText("Select Languages Spoken");
+                    langs_floatingtext.setText("");
+                }
+                else display_languages.setText(languagesspoken);
 
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-        } else if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            profile_image1.setImageBitmap(photo);
         }
     }
 
@@ -596,6 +678,8 @@ public class signup extends AppCompatActivity{
     //datepicker
     @SuppressWarnings("deprecation")
     public void setDate(View view) {
+        TextView dob_floatingtext = (TextView) findViewById(R.id.dob_floatingtext);
+        dob_floatingtext.setText("Date of Birth");
         showDialog(999);
     }
 
@@ -653,4 +737,26 @@ public class signup extends AppCompatActivity{
 
     }
 
+
+
+
+    //cropped image
+
+    @Override
+    public void onCropSuccess(Uri croppedUri) {
+        loadimageprogress.setVisibility(View.GONE);
+        profile_image1.setImageURI(croppedUri);
+    }
+
+    @Override
+    public void onCropFailed(Throwable e) {
+        Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
+        e.printStackTrace();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        cropResultReceiver.unregister(this);
+    }
 }
