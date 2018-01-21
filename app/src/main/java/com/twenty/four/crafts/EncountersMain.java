@@ -4,19 +4,15 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.yuyakaido.android.cardstackview.CardStackView;
@@ -32,6 +28,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
     private ProgressBar progressBar;
     private CardStackView cardStackView;
     private TouristSpotCardAdapter adapter;
+    LinearLayout row;
 
 
     @Nullable
@@ -41,6 +38,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
         getActivity().setTitle("Encounters");
         setHasOptionsMenu(true);
+        row = myView.findViewById(R.id.rowOfIcons);
 
         progressBar = (ProgressBar) myView.findViewById(R.id.activity_main_progress_bar);
 
@@ -87,7 +85,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
     }
 
 
-    @Override
+ /*   @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.activity_main,menu);
         super.onCreateOptionsMenu(menu, inflater);
@@ -122,7 +120,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     private TouristSpot createTouristSpot() {
         return new TouristSpot("Yasaka Shrine", "Kyoto", "https://source.unsplash.com/Xq1ntWruZQI/600x800");
@@ -156,6 +154,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
     private void reload() {
         cardStackView.setVisibility(View.GONE);
+        row.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -163,6 +162,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                 adapter = createTouristSpotCardAdapter();
                 cardStackView.setAdapter(adapter);
                 cardStackView.setVisibility(View.VISIBLE);
+                row.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
             }
         }, 1000);

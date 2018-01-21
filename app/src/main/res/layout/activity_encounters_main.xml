@@ -4,14 +4,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+
+    android:background="@drawable/bg_gradient"
     android:layout_height="match_parent">
+
+
 
     <com.yuyakaido.android.cardstackview.CardStackView
         android:id="@+id/activity_main_card_stack_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="32dp"
-        android:paddingBottom="32dp"
+        android:paddingTop="22dp"
+        android:paddingBottom="38dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:clipToPadding="false"
@@ -26,6 +30,51 @@
         app:leftOverlay="@layout/overlay_left"
         app:rightOverlay="@layout/overlay_right"
         app:topOverlay="@layout/overlay_top" />
+
+    <LinearLayout
+        android:padding="5sp"
+        android:background="@drawable/bg_gradient_reverse"
+        android:id="@+id/rowOfIcons"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+
+
+
+        <ImageView
+            android:src="@drawable/star_green"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30sp" />
+
+        <ImageView
+            android:src="@drawable/undo_this"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30sp" />
+
+
+        <ImageView
+            android:src="@drawable/icon_red_cross"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30sp" />
+
+
+
+        <ImageView
+
+            android:src="@drawable/message_this"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30sp" />
+
+
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/activity_main_progress_bar"

@@ -21,6 +21,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.twenty.four.crafts.main.TalentHunterMain;
+
 public class Main3Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     AppBarLayout appBarLayout;
@@ -173,8 +175,10 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
             appBarLayout.setTargetElevation(0);
 
         } else if (id == R.id.talent_hunt) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new TalentHuntFragment()).commit();
-            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
+//            fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new TalentHuntFragment()).commit();
+                Intent intent = new Intent(Main3Activity.this,TalentHunterMain.class);
+                startActivity(intent);
+              if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.nearby) {
             fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new PeopleNearbyFragment()).commit();
