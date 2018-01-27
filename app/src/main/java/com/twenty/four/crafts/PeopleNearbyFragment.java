@@ -45,6 +45,7 @@ public class PeopleNearbyFragment extends android.support.v4.app.Fragment {
         myView = inflater.inflate(R.layout.activity_people_nearby, container, false);
 
         getActivity().setTitle("People Nearby");
+        User.getInstance().navbarposclient = 0;
 
         TextView textView = (TextView) myView.findViewById(R.id.textView2);
 

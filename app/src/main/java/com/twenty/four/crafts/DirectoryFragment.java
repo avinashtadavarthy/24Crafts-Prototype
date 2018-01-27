@@ -46,9 +46,12 @@ public class DirectoryFragment extends android.support.v4.app.Fragment {
         myView = inflater.inflate(R.layout.activity_directory,container,false);
 
         getActivity().setTitle("Directory");
+        User.getInstance().navbarposclient = 0;
 
         recyclerView = (RecyclerView) myView.findViewById(R.id.rv);
         recyclerView.setNestedScrollingEnabled(false);
+
+        User.getInstance().navbarpos = 0;
 
         mCustomPagerAdapter = new CustomPagerAdapter(getFragmentManager(), getActivity().getApplicationContext());
 

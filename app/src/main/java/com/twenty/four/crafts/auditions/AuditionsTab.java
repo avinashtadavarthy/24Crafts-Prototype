@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.twenty.four.crafts.R;
+import com.twenty.four.crafts.User;
 
 public class AuditionsTab extends Fragment {
 
@@ -26,6 +27,7 @@ public class AuditionsTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.activity_auditions_tab,container,false);
 
+        User.getInstance().navbarpos = 1;
         getActivity().setTitle("Auditions");
 
         auditions_tabbed = (ViewPager) myView.findViewById(R.id.auditions_tabbed);

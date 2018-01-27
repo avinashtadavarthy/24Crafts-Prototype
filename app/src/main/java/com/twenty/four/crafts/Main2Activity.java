@@ -2,6 +2,7 @@ package com.twenty.four.crafts;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -21,11 +22,9 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.kila.apprater_dialog.lars.AppRater;
 import com.twenty.four.crafts.auditions.AuditionsTab;
-import com.twenty.four.crafts.encounters.SwipeFragment;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -55,6 +54,42 @@ public class Main2Activity extends AppCompatActivity
         }
 
         */
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        final ImageView aud_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.aud_handy);
+        final ImageView fav_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.fav_handy);
+        final ImageView inbox_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.inbox_handy);
+
+
+        if(User.getInstance().navbarpos == 1)
+      {
+          aud_handy.setBackgroundColor(Color.parseColor("#123456"));
+          fav_handy.setBackgroundColor(Color.parseColor("#000000"));
+          inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
+      }
+
+      else if(User.getInstance().navbarpos == 2)
+      {
+          fav_handy.setBackgroundColor(Color.parseColor("#123456"));
+          aud_handy.setBackgroundColor(Color.parseColor("#000000"));
+          inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
+
+      }
+
+      else if(User.getInstance().navbarpos == 3)
+      {
+
+          inbox_handy.setBackgroundColor(Color.parseColor("#123456"));
+          fav_handy.setBackgroundColor(Color.parseColor("#000000"));
+          aud_handy.setBackgroundColor(Color.parseColor("#000000"));
+      }
+
+      else
+        {
+            inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
+            fav_handy.setBackgroundColor(Color.parseColor("#000000"));
+            aud_handy.setBackgroundColor(Color.parseColor("#000000"));
+        }
 
         //to alter the display size on scroll
         appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
@@ -81,8 +116,7 @@ public class Main2Activity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+
 
         if(savedInstanceState==null){
             navigationView.getMenu().performIdentifierAction(R.id.newsfeed,0);
@@ -108,12 +142,15 @@ public class Main2Activity extends AppCompatActivity
             }
         });
 
-        ImageView aud_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.aud_handy);
+
 
         aud_handy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                aud_handy.setBackgroundColor(Color.parseColor("#123456"));
+                fav_handy.setBackgroundColor(Color.parseColor("#000000"));
+                inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
                 android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new AuditionsTab()).commit();
                 appBarLayout.setTargetElevation(0);
@@ -126,11 +163,15 @@ public class Main2Activity extends AppCompatActivity
         });
 
 
-        ImageView fav_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.fav_handy);
+
 
         fav_handy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                fav_handy.setBackgroundColor(Color.parseColor("#123456"));
+                aud_handy.setBackgroundColor(Color.parseColor("#000000"));
+                inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
 
                 android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new CraftsmenFavouritesTabFragment()).commit();
@@ -143,11 +184,15 @@ public class Main2Activity extends AppCompatActivity
         });
 
 
-        ImageView inbox_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.inbox_handy);
+
 
         inbox_handy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                inbox_handy.setBackgroundColor(Color.parseColor("#123456"));
+                fav_handy.setBackgroundColor(Color.parseColor("#000000"));
+                aud_handy.setBackgroundColor(Color.parseColor("#000000"));
 
                 Fragment fragment = new InboxTab();
                 android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
@@ -215,7 +260,8 @@ public class Main2Activity extends AppCompatActivity
         } else */
 
        if (id == R.id.newsfeed) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new DemoActivity()).commit();
+
+           fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new MainRSS()).commit();
            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.nearby) {

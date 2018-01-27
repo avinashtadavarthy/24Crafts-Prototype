@@ -34,6 +34,7 @@ public class CraftsmenFavouritesTabFragment extends android.support.v4.app.Fragm
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.activity_dashboard_favourites_tab_fragment,container,false);
 
+        User.getInstance().navbarpos = 2;
         getActivity().setTitle("Favourites");
 
         favs_grid = (GridView) myView.findViewById(R.id.favs_grid);

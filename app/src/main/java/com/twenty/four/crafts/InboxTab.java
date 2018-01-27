@@ -28,6 +28,7 @@ public class InboxTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.activity_inbox_tab,container,false);
 
+        User.getInstance().navbarpos = 3;
 
         getActivity().setTitle("Messages");
 

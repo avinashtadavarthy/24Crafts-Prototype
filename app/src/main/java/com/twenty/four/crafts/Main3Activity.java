@@ -2,6 +2,7 @@ package com.twenty.four.crafts;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -32,6 +33,51 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        final ImageView aud_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.aud_handy);
+        final ImageView fav_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.fav_handy);
+        final ImageView inbox_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.inbox_handy);
+
+        int dataInt = 0;
+        if(getIntent() != null) {
+
+            dataInt = getIntent().getIntExtra("navbarposclient",0);
+        }
+
+        if(dataInt == 1)
+        {
+            aud_handy.setBackgroundColor(Color.parseColor("#123456"));
+            fav_handy.setBackgroundColor(Color.parseColor("#000000"));
+            inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
+        }
+
+        else if(dataInt == 2)
+        {
+            fav_handy.setBackgroundColor(Color.parseColor("#123456"));
+            aud_handy.setBackgroundColor(Color.parseColor("#000000"));
+            inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
+
+        }
+
+        else if(dataInt == 3)
+        {
+
+            inbox_handy.setBackgroundColor(Color.parseColor("#123456"));
+            fav_handy.setBackgroundColor(Color.parseColor("#000000"));
+            aud_handy.setBackgroundColor(Color.parseColor("#000000"));
+        }
+
+        else
+        {
+            inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
+            fav_handy.setBackgroundColor(Color.parseColor("#000000"));
+            aud_handy.setBackgroundColor(Color.parseColor("#000000"));
+        }
+
+
         appBarLayout = (AppBarLayout) findViewById(R.id.app_bar_client);
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout_client);
         final FrameLayout contentLayout = (FrameLayout) findViewById(R.id.content_frame_clients);
@@ -57,8 +103,7 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+
 
         if(savedInstanceState==null){
             navigationView.getMenu().performIdentifierAction(R.id.dashboard,0);
@@ -79,10 +124,14 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
 
         final Bundle data = new Bundle();//Use bundle to pass data
 
-        ImageView aud_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.aud_handy);
+
         aud_handy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                aud_handy.setBackgroundColor(Color.parseColor("#123456"));
+                fav_handy.setBackgroundColor(Color.parseColor("#000000"));
+                inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
 
                 Fragment fragment = new ClientDashboard();//Get Fragment Instance
                 data.putString("tab", "audition");//put string, int, etc in bundle with a key value
@@ -96,10 +145,14 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
             }
         });
 
-        ImageView fav_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.fav_handy);
+
         fav_handy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                fav_handy.setBackgroundColor(Color.parseColor("#123456"));
+                aud_handy.setBackgroundColor(Color.parseColor("#000000"));
+                inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
 
                 Fragment fragment = new ClientDashboard();//Get Fragment Instance
                 data.putString("tab", "fav");//put string, int, etc in bundle with a key value
@@ -114,10 +167,16 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
             }
         });
 
-        ImageView inbox_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.inbox_handy);
+
         inbox_handy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                inbox_handy.setBackgroundColor(Color.parseColor("#123456"));
+                fav_handy.setBackgroundColor(Color.parseColor("#000000"));
+                aud_handy.setBackgroundColor(Color.parseColor("#000000"));
+
 
                 Fragment fragment = new ClientDashboard();//Get Fragment Instance
                 data.putString("tab", "message");//put string, int, etc in bundle with a key value

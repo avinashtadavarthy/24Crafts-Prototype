@@ -1,6 +1,7 @@
 package com.twenty.four.crafts;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -41,12 +42,27 @@ public class ClientDashboard extends Fragment {
 
         String getData = getArguments().getString("tab");
         if (getData != null) {
+            int data = 0;
             if(getData.equals("audition"))
+            {
                 client_dashboard_tabbed.setCurrentItem(0);
+                User.getInstance().navbarposclient = 1;
+                data = 1;
+            }
             else if(getData.equals("fav"))
+            {
                 client_dashboard_tabbed.setCurrentItem(1);
+                User.getInstance().navbarposclient = 2;
+                data = 2;
+            }
             else if(getData.equals("message"))
+            {
                 client_dashboard_tabbed.setCurrentItem(2);
+                User.getInstance().navbarposclient = 3;
+                data = 3;
+            }
+            Intent intent = new Intent(getActivity().getApplicationContext(),Main3Activity.class);
+            intent.putExtra("navbarposclient",data);
         }
 
         client_dashboard_tabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

@@ -40,6 +40,8 @@ public class EncountersMain extends android.support.v4.app.Fragment {
         setHasOptionsMenu(true);
         row = myView.findViewById(R.id.rowOfIcons);
 
+        User.getInstance().navbarpos = 0;
+
         progressBar = (ProgressBar) myView.findViewById(R.id.activity_main_progress_bar);
 
         cardStackView = (CardStackView) myView.findViewById(R.id.activity_main_card_stack_view);

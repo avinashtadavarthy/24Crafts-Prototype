@@ -12,6 +12,8 @@ public class User {
     public static String
             languagesspoken = "", languagesspokendirty = "";
 
+    public int navbarpos = 0;
+    public int navbarposclient = 1;
     public static int ct = 0;
 
     protected User(){}
