@@ -70,7 +70,26 @@ public class signup3 extends AppCompatActivity {
     String[] singer_3string={"Select your singing style",
             "Choir / Orchestra", "Soloist", "Opera / Chinese Opera", "Gospel", "Traditional Music", "Carnatic", "Folk / Country", "Ghana", "Ghazal", "Rap", "World Music", "Jazz", "Blues", "Pop and Rock", "Others"};
 
-    String[] dancer_3string={"Please Select Your Dancing Style"};
+    String[] dancer_3string={"Please Select Your Dancing Style",
+            "Acro dance", "Afro-beat", "American Rhythm", "Animation", "Argentine tango", "B-boying", "Bachata", "Balinese traditional dance", "Ballet",
+            "Ballroom dance", "Baroque dance", "Belly dance", "Bernie dance", "Bhangra", "Bharatanatyam", "Blues dance", "Bolero", "Boogie-woogie", "Bounce",
+            "Break Dance", "Breaking", "Calypso", "Capoeira", "Carolina Shag", "Cha Cha", "Charleston", "Cheer dance", "Chhau dance", "Clown Walk",
+            "Collegiate Shag", "Compas dance", "Concert dance", "Contact improvisation", "Contemporary dance", "Corridos", "Crowdsurfing", "Cumbia",
+            "Dance de Gauthier", "Dandiya and Garba", "Danza", "Deneme", "Detroit Jit", "Disco dance", "Duranguense", "East Coast Swing", "Ecstatic dance",
+            "Electric boogaloo", "Electro Dance", "English country dance", "Fire dance", "Flamenco", "Flexing", "Floating", "Flying Men Dance", "Folk dance",
+            "Footwork", "Foxtrot", "Free step", "Freestyle", "Freezes", "Gaudiya Nritya", "gayunder", "Greek Classical", "Hand Jive", "Hard dance",
+            "Hard Rock Pogo", "Hardcore dancing", "Hip Hop", "Hip-hop culture", "Hit Dem Folks", "House dance", "Hustle", "International Latin", "Jacking",
+            "Jazz dance", "Jerkin'", "Jiggin'", "Jitterbug", "Jive", "Jump up", "Jumpstyle", "Kathak", "Kathakali", "Kizomba", "Kpop Dance", "Krumping",
+            "Kuchipudi", "Latin / rhythm", "Leroc", "Lindy Hop", "Line dance", "Linya vrak dance", "Liquiding", "Litefeet", "Liturgical dance", "Locking",
+            "Lyrical dance", "Lyrical hip-hop", "Maculelê", "Malaysian Shuffle ", "Mambo", "Manipuri dance", "Masque", "Mass", "Medieval dance",
+            "Melbourne Shuffle", "Memphis Jookin'", "Merengue", "Metal Mosh", "Milonga", "Modern dance", "Modern Imaginative", "Modern Jive", "Mohiniyattam",
+            "Moonwalk", "Moshing", "Native American", "Neonstyle", "Novelty and fad dances", "Odissi", "Perafic dance", "Performance dance", "Pom dance",
+            "Popping", "Postmodern dance", "Powermoves", "Punjabi", "Punk Rock Pogo", "Quebradita", "Quickstep", "Rajastani", "Regency dance",
+            "Reggae dance", "Reggaeton", "Regional Indian Dances", "River", "Robot dance", "Rueda", "Rumba", "Salsa", "Salsaton dance",
+            "Samba (ballroom dance)", "Samba (Brazilian dance)", "Samba de Gafieira", "Sattriya", "Scarecrow", "Semba", "Semi classical", "Ska Dance",
+            "Skanking", "Slothing", "Snap dance", "Soca dance", "Spinning, hooping and flow arts", "St. Louis Shag", "Strobing", "Swing dance", "Tango",
+            "Tap dance", "Tejano", "The Lucker Stomp", "Toprock", "Traditional African-American", "Traditional jazz", "Turfing", "Tutting", "Viennese Waltz",
+            "Vintage dance", "Vogue", "Waacking", "Waltz", "Waving", "West Coast Swing", "Western dance", "Zeybreak ", "Zouk", "Zumba" };
 
     String[] dancer_6string={"What are you interested in?",
             "Dancing", "Choreographing", "Both"};
@@ -81,7 +100,26 @@ public class signup3 extends AppCompatActivity {
     String[] sba_3string={"What are your story boards like?",
             "Static Pics", "Animated", "Both"};
 
-    String[] choreo_3string={"Please Select Your Dancing Style"};
+    String[] choreo_3string={"Please Select Your Dancing Style",
+            "Acro dance", "Afro-beat", "American Rhythm", "Animation", "Argentine tango", "B-boying", "Bachata", "Balinese traditional dance", "Ballet",
+            "Ballroom dance", "Baroque dance", "Belly dance", "Bernie dance", "Bhangra", "Bharatanatyam", "Blues dance", "Bolero", "Boogie-woogie", "Bounce",
+            "Break Dance", "Breaking", "Calypso", "Capoeira", "Carolina Shag", "Cha Cha", "Charleston", "Cheer dance", "Chhau dance", "Clown Walk",
+            "Collegiate Shag", "Compas dance", "Concert dance", "Contact improvisation", "Contemporary dance", "Corridos", "Crowdsurfing", "Cumbia",
+            "Dance de Gauthier", "Dandiya and Garba", "Danza", "Deneme", "Detroit Jit", "Disco dance", "Duranguense", "East Coast Swing", "Ecstatic dance",
+            "Electric boogaloo", "Electro Dance", "English country dance", "Fire dance", "Flamenco", "Flexing", "Floating", "Flying Men Dance", "Folk dance",
+            "Footwork", "Foxtrot", "Free step", "Freestyle", "Freezes", "Gaudiya Nritya", "gayunder", "Greek Classical", "Hand Jive", "Hard dance",
+            "Hard Rock Pogo", "Hardcore dancing", "Hip Hop", "Hip-hop culture", "Hit Dem Folks", "House dance", "Hustle", "International Latin", "Jacking",
+            "Jazz dance", "Jerkin'", "Jiggin'", "Jitterbug", "Jive", "Jump up", "Jumpstyle", "Kathak", "Kathakali", "Kizomba", "Kpop Dance", "Krumping",
+            "Kuchipudi", "Latin / rhythm", "Leroc", "Lindy Hop", "Line dance", "Linya vrak dance", "Liquiding", "Litefeet", "Liturgical dance", "Locking",
+            "Lyrical dance", "Lyrical hip-hop", "Maculelê", "Malaysian Shuffle ", "Mambo", "Manipuri dance", "Masque", "Mass", "Medieval dance",
+            "Melbourne Shuffle", "Memphis Jookin'", "Merengue", "Metal Mosh", "Milonga", "Modern dance", "Modern Imaginative", "Modern Jive", "Mohiniyattam",
+            "Moonwalk", "Moshing", "Native American", "Neonstyle", "Novelty and fad dances", "Odissi", "Perafic dance", "Performance dance", "Pom dance",
+            "Popping", "Postmodern dance", "Powermoves", "Punjabi", "Punk Rock Pogo", "Quebradita", "Quickstep", "Rajastani", "Regency dance",
+            "Reggae dance", "Reggaeton", "Regional Indian Dances", "River", "Robot dance", "Rueda", "Rumba", "Salsa", "Salsaton dance",
+            "Samba (ballroom dance)", "Samba (Brazilian dance)", "Samba de Gafieira", "Sattriya", "Scarecrow", "Semba", "Semi classical", "Ska Dance",
+            "Skanking", "Slothing", "Snap dance", "Soca dance", "Spinning, hooping and flow arts", "St. Louis Shag", "Strobing", "Swing dance", "Tango",
+            "Tap dance", "Tejano", "The Lucker Stomp", "Toprock", "Traditional African-American", "Traditional jazz", "Turfing", "Tutting", "Viennese Waltz",
+            "Vintage dance", "Vogue", "Waacking", "Waltz", "Waving", "West Coast Swing", "Western dance", "Zeybreak ", "Zouk", "Zumba"};
     
     
     @Override
@@ -262,8 +300,8 @@ public class signup3 extends AppCompatActivity {
         dancer_41.setVisibility(View.GONE);
         RadioGroup dancer_5radio = (RadioGroup) findViewById(R.id.dancer_5radio);
         RadioButton dancer_5radioyes = (RadioButton) findViewById(R.id.dancer_5radioyes);
-        final Spinner dancer_51 = (Spinner) findViewById(R.id.dancer_51);
-        dancer_51.setVisibility(View.GONE);
+        /*final Spinner dancer_51 = (Spinner) findViewById(R.id.dancer_51);
+        dancer_51.setVisibility(View.GONE);*/
         final EditText dancer_52 = (EditText) findViewById(R.id.dancer_52);
         dancer_52.setVisibility(View.GONE);
         Spinner dancer_6 = (Spinner) findViewById(R.id.dancer_6);
@@ -354,7 +392,7 @@ public class signup3 extends AppCompatActivity {
 
         final LinearLayout choreo = ( LinearLayout) findViewById(R.id.choreo);
         choreo.setVisibility(View.GONE);
-        Spinner choreo_1 = (Spinner) findViewById(R.id.choreo_1);
+       /* Spinner choreo_1 = (Spinner) findViewById(R.id.choreo_1);*/
         RadioGroup choreo_2radio = (RadioGroup) findViewById(R.id.choreo_2radio);
         RadioButton choreo_2radioyes = (RadioButton) findViewById(R.id.choreo_2radioyes);
         final EditText choreo_21 = (EditText) findViewById(R.id.choreo_21);
@@ -368,8 +406,8 @@ public class signup3 extends AppCompatActivity {
         choreo_41.setVisibility(View.GONE);
         RadioGroup choreo_5radio = (RadioGroup) findViewById(R.id.choreo_5radio);
         RadioButton choreo_5radioyes = (RadioButton) findViewById(R.id.choreo_5radioyes);
-        final Spinner choreo_51 = (Spinner) findViewById(R.id.choreo_51);
-        choreo_51.setVisibility(View.GONE);
+       /* final Spinner choreo_51 = (Spinner) findViewById(R.id.choreo_51);
+        choreo_51.setVisibility(View.GONE);*/
         final EditText choreo_52 = (EditText) findViewById(R.id.choreo_52);
         choreo_52.setVisibility(View.GONE);
         EditText choreo_6 = (EditText) findViewById(R.id.choreo_6);
@@ -709,6 +747,8 @@ public class signup3 extends AppCompatActivity {
         EditText pets_2 = (EditText) findViewById(R.id.pets_2);
         RadioGroup pets_3radio = (RadioGroup) findViewById(R.id.pets_3radio);
         RadioButton pets_3radioyes = (RadioButton) findViewById(R.id.pets_3radioyes);
+        final EditText pets_31 = (EditText) findViewById(R.id.pets_31);
+        pets_31.setVisibility(View.GONE);
 
 
 
@@ -1130,11 +1170,11 @@ public class signup3 extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 if(checkedId == R.id.dancer_5radioyes){
-                    dancer_51.setVisibility(View.VISIBLE);
+                    /*dancer_51.setVisibility(View.VISIBLE);*/
                     dancer_52.setVisibility(View.VISIBLE);
                 }
                 else{
-                    dancer_51.setVisibility(View.GONE);
+                    /*dancer_51.setVisibility(View.GONE);*/
                     dancer_52.setVisibility(View.GONE);
                 }
             }
@@ -1270,11 +1310,11 @@ public class signup3 extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 if(checkedId == R.id.choreo_5radioyes){
-                    choreo_51.setVisibility(View.VISIBLE);
+                   /* choreo_51.setVisibility(View.VISIBLE);*/
                     choreo_52.setVisibility(View.VISIBLE);
                 }
                 else {
-                    choreo_51.setVisibility(View.GONE);
+                    /*choreo_51.setVisibility(View.GONE);*/
                     choreo_52.setVisibility(View.GONE);
                 }
             }
@@ -1547,6 +1587,19 @@ public class signup3 extends AppCompatActivity {
                     sfx_11.setVisibility(View.GONE);
             }
         });
+
+
+        //pets
+        pets_3radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == R.id.pets_3radioyes)
+                    pets_31.setVisibility(View.VISIBLE);
+                else
+                    pets_31.setVisibility(View.GONE);
+            }
+        });
+
 
 
 

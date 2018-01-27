@@ -1,4 +1,4 @@
-package com.twenty.four.crafts.main;
+package com.twenty.four.crafts.garlandview.main;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +10,11 @@ import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.TailLayoutManager;
 import com.twenty.four.crafts.TailRecyclerView;
 import com.twenty.four.crafts.TailSnapHelper;
-import com.twenty.four.crafts.details.DetailsActivity;
-import com.twenty.four.crafts.header.HeaderTransformer;
-import com.twenty.four.crafts.main.inner.InnerData;
-import com.twenty.four.crafts.main.inner.InnerItem;
-import com.twenty.four.crafts.main.outer.OuterAdapter;
+import com.twenty.four.crafts.garlandview.details.DetailsActivity;
+import com.twenty.four.crafts.garlandview.header.HeaderTransformer;
+import com.twenty.four.crafts.garlandview.main.inner.InnerData;
+import com.twenty.four.crafts.garlandview.main.inner.InnerItem;
+import com.twenty.four.crafts.garlandview.main.outer.OuterAdapter;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

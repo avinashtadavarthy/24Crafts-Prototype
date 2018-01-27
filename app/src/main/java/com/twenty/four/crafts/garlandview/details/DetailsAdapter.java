@@ -1,4 +1,4 @@
-package com.twenty.four.crafts.details;
+package com.twenty.four.crafts.garlandview.details;
 
 
 import android.databinding.DataBindingUtil;

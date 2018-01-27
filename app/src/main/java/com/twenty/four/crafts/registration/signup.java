@@ -4,15 +4,19 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -171,6 +175,8 @@ public class signup extends AppCompatActivity implements IPickResult, CropIwaRes
     TextView residing1;
     TextView hometown1;
 
+    TextInputLayout input_firstname, input_lastname, input_email, input_password, input_confirmpassword;
+
     //datepicker
     TextView dob1;
     int year, month, day;
@@ -189,6 +195,14 @@ public class signup extends AppCompatActivity implements IPickResult, CropIwaRes
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+
+        input_firstname = (TextInputLayout) findViewById(R.id.input_firstname);
+        input_lastname = (TextInputLayout) findViewById(R.id.input_lastname);
+        input_email = (TextInputLayout) findViewById(R.id.input_email);
+        input_password = (TextInputLayout) findViewById(R.id.input_password);
+        input_confirmpassword = (TextInputLayout) findViewById(R.id.input_confirmpassword);
+
 
 
         //import image
@@ -241,6 +255,38 @@ public class signup extends AppCompatActivity implements IPickResult, CropIwaRes
 
         password1.setTransformationMethod(new PasswordTransformationMethod());
         confirm_password1.setTransformationMethod(new PasswordTransformationMethod());
+
+
+        confirm_password1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if(confirm_password1.getText().toString().equals("")) input_confirmpassword.setError(null);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if(!password1.getText().toString().equals("") && password1.getText().toString().equals(confirm_password1.getText().toString()))
+                    input_confirmpassword.setError(null);
+                else input_confirmpassword.setError("Passwords don't match");
+
+                if(confirm_password1.getText().toString().equals("")) input_confirmpassword.setError(null);
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if(!password1.getText().toString().equals("") && password1.getText().toString().equals(confirm_password1.getText().toString())) {
+                    input_confirmpassword.setError(null);
+                } else {
+                    input_confirmpassword.setError("Passwords don't match");
+                }
+
+                if(confirm_password1.getText().toString().equals("")) input_confirmpassword.setError(null);
+
+            }
+        });
 
 
 

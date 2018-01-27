@@ -1,4 +1,4 @@
-package com.twenty.four.crafts.main.inner;
+package com.twenty.four.crafts.garlandview.main.inner;
 
 public class InnerData {
 

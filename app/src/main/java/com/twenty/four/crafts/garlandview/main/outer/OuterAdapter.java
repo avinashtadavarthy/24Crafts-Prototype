@@ -1,4 +1,4 @@
-package com.twenty.four.crafts.main.outer;
+package com.twenty.four.crafts.garlandview.main.outer;
 
 
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.TailAdapter;
-import com.twenty.four.crafts.main.inner.InnerData;
+import com.twenty.four.crafts.garlandview.main.inner.InnerData;
 
 import java.util.List;
 

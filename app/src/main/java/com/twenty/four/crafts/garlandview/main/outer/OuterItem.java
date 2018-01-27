@@ -1,4 +1,4 @@
-package com.twenty.four.crafts.main.outer;
+package com.twenty.four.crafts.garlandview.main.outer;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -18,12 +18,12 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.twenty.four.crafts.R;
-import com.twenty.four.crafts.header.HeaderDecorator;
-import com.twenty.four.crafts.header.HeaderItem;
-import com.twenty.four.crafts.inner.InnerLayoutManager;
-import com.twenty.four.crafts.inner.InnerRecyclerView;
-import com.twenty.four.crafts.main.inner.InnerAdapter;
-import com.twenty.four.crafts.main.inner.InnerData;
+import com.twenty.four.crafts.garlandview.header.HeaderDecorator;
+import com.twenty.four.crafts.garlandview.header.HeaderItem;
+import com.twenty.four.crafts.garlandview.inner.InnerLayoutManager;
+import com.twenty.four.crafts.garlandview.inner.InnerRecyclerView;
+import com.twenty.four.crafts.garlandview.main.inner.InnerAdapter;
+import com.twenty.four.crafts.garlandview.main.inner.InnerData;
 
 import java.util.ArrayList;
 import java.util.List;

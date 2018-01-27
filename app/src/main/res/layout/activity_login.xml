@@ -9,6 +9,7 @@
     tools:context="com.twenty.four.crafts.app_startup.Login2"
     android:focusable="true"
     android:id="@+id/parentLayout"
+    android:fitsSystemWindows="true"
     android:focusableInTouchMode="true"
     android:screenOrientation="portrait">
 

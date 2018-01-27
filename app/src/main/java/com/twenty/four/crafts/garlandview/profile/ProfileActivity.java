@@ -1,4 +1,4 @@
-package com.twenty.four.crafts.profile;
+package com.twenty.four.crafts.garlandview.profile;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.twenty.four.crafts.R;
-import com.twenty.four.crafts.details.DetailsData;
+import com.twenty.four.crafts.garlandview.details.DetailsData;
 
 import java.util.ArrayList;
 

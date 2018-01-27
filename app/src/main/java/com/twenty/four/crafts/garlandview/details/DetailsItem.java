@@ -1,4 +1,4 @@
-package com.twenty.four.crafts.profile;
+package com.twenty.four.crafts.garlandview.details;
 
 
 import android.support.v7.widget.RecyclerView;
@@ -6,12 +6,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.twenty.four.crafts.R;
-import com.twenty.four.crafts.details.DetailsData;
 
 
-public class ProfileItem extends RecyclerView.ViewHolder {
+class DetailsItem extends RecyclerView.ViewHolder {
 
-    public ProfileItem(View itemView) {
+    DetailsItem(View itemView) {
         super(itemView);
     }
 

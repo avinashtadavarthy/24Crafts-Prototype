@@ -1,9 +1,9 @@
-package com.twenty.four.crafts.header;
+package com.twenty.four.crafts.garlandview.header;
 
 import android.view.View;
 
 import com.twenty.four.crafts.TailItem;
-import com.twenty.four.crafts.inner.InnerRecyclerView;
+import com.twenty.four.crafts.garlandview.inner.InnerRecyclerView;
 
 
 /**
