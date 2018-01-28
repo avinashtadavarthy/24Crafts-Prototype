@@ -1,17 +1,17 @@
 package com.twenty.four.crafts;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -24,8 +24,10 @@ import java.util.TimerTask;
 public class DirectoryFragment extends android.support.v4.app.Fragment {
 
     View myView;
+    AdView mAdView;
 
-    RecyclerView recyclerView;
+
+    GridView gv1;
     DirectoryGridAdapter adapter;
     CustomPagerAdapter mCustomPagerAdapter;
     ViewPager mViewPager;
@@ -48,13 +50,12 @@ public class DirectoryFragment extends android.support.v4.app.Fragment {
         getActivity().setTitle("Directory");
         User.getInstance().navbarposclient = 0;
 
-        recyclerView = (RecyclerView) myView.findViewById(R.id.rv);
-        recyclerView.setNestedScrollingEnabled(false);
 
         User.getInstance().navbarpos = 0;
 
         mCustomPagerAdapter = new CustomPagerAdapter(getFragmentManager(), getActivity().getApplicationContext());
 
+        gv1 = myView.findViewById(R.id.gv);
         mViewPager = (ViewPager) myView.findViewById(R.id.directoryViewPager);
         mViewPager.setAdapter(mCustomPagerAdapter);
         pageSwitcher(3);
@@ -72,7 +73,7 @@ public class DirectoryFragment extends android.support.v4.app.Fragment {
                 mViewPager.getParent().requestDisallowInterceptTouchEvent(true);
             }
         });
-        recyclerView.addOnItemTouchListener(
+       /* recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(this.getActivity().getApplicationContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         Log.i("Hello",desc[position]);//returns fine
@@ -83,21 +84,34 @@ public class DirectoryFragment extends android.support.v4.app.Fragment {
                         startActivity(I);
                         // do whatever
                     }
-
                     @Override public void onLongItemClick(View view, int position) {
                         // do whatever
                     }
                 })
-        );
+        );*/
 
-        GridLayoutManager layoutManager = new GridLayoutManager(getActivity().getApplicationContext(),3);
-        recyclerView.setLayoutManager(layoutManager);
-
-
+      /*  GridLayoutManager layoutManager = new GridLayoutManager(getActivity().getApplicationContext(),3);
+        recyclerView.setLayoutManager(layoutManager);*/
 
 
 
-        adapter = new DirectoryGridAdapter(getActivity(),class_obj);///////////////////////////////////////////////
+        MobileAds.initialize(getActivity().getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
+
+        // Gets the ad view defined in layout/ad_fragment.xml with ad unit ID set in
+        // values/strings.xml.
+        mAdView = myView.findViewById(R.id.ad_view);
+
+        // Create an ad request. Check your logcat output for the hashed device ID to
+        // get test ads on a physical device. e.g.
+        // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device
+         AdRequest adRequest = new AdRequest.Builder()
+                .build();
+
+        mAdView.loadAd(adRequest);
+
+
+
+        //adapter = new DirectoryGridAdapter(getActivity(),class_obj);///////////////////////////////////////////////
         class_obj.add(new IconsClass(R.drawable.adcorp,"Ad and Corporate Filmmakers","adcorp"));
         class_obj.add(new IconsClass(R.drawable.advertisingandmarketing,"Advertisingandmarketing","advertising"));
         class_obj.add(new IconsClass(R.drawable.artdirector_white,"Art directors","artdirectors"));
@@ -151,10 +165,17 @@ public class DirectoryFragment extends android.support.v4.app.Fragment {
         class_obj.add(new IconsClass(R.drawable.unionsandassicoations,"unions and assicoations","unionsandassociations"));
         class_obj.add(new IconsClass(R.drawable.videopostproduction,"video post production","videopostproduction"));
 
+        gv1.setNumColumns(3);
+        gv1.setAdapter(new DirectoryGridAdapter(getActivity().getApplicationContext(),class_obj));
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity().getApplicationContext(),layoutManager.getOrientation());
-        recyclerView.addItemDecoration(dividerItemDecoration);
-        recyclerView.setAdapter(adapter);
+
+        gv1.setNestedScrollingEnabled(false);
+        mViewPager.setNestedScrollingEnabled(false);
+
+
+        //DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity().getApplicationContext(),layoutManager.getOrientation());
+        /*recyclerView.addItemDecoration(dividerItemDecoration);
+        recyclerView.setAdapter(adapter);*/
 
         return myView;
     }
@@ -201,5 +222,34 @@ public class DirectoryFragment extends android.support.v4.app.Fragment {
 
             }
 
+
+    }
+
+
+
+    @Override
+    public void onPause() {
+        if (mAdView != null) {
+            mAdView.pause();
+        }
+        super.onPause();
+    }
+
+    /** Called when returning to the activity */
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mAdView != null) {
+            mAdView.resume();
+        }
+    }
+
+    /** Called before the activity is destroyed */
+    @Override
+    public void onDestroy() {
+        if (mAdView != null) {
+            mAdView.destroy();
+        }
+        super.onDestroy();
     }
 }

@@ -117,6 +117,11 @@ dependencies {
     compile 'com.github.blocoio:faker:1.2.5'
     compile 'org.greenrobot:eventbus:3.0.0'
 
+    compile 'com.google.android.gms:play-services-ads:11.8.0'
+    compile 'com.eminayar.panterdialog:panter-dialog:0.0.2.1'
+
+    compile "com.google.android.gms:play-services-gcm:11.8.0"
+
 
     implementation 'com.google.android.gms:play-services-maps:11.8.0'
     implementation 'com.google.android.gms:play-services-location:11.8.0'

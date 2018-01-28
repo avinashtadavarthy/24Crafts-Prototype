@@ -2,6 +2,12 @@
     <string name="app_name">24 Crafts</string>
 
 
+
+    <string name="hello_world">Hello world!</string>
+
+    <!-- This is an ad unit ID for a test ad. Replace with your own banner ad unit id. -->
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+
     <string name="order_id_mock" translatable="false"># 1234–5678</string>
     <string name="price_mock" translatable="false">$25</string>
     <string name="requests_count_mock" translatable="false">5</string>

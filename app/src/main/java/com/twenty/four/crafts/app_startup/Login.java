@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.twenty.four.crafts.ForgotPassword;
 import com.twenty.four.crafts.Main2Activity;
 import com.twenty.four.crafts.Main3Activity;
+import com.twenty.four.crafts.PushNotifMain;
 import com.twenty.four.crafts.R;
 
 public class Login extends AppCompatActivity {
@@ -86,6 +87,18 @@ public class Login extends AppCompatActivity {
             }
         });
 
+
+
+
+
+        Button notif  = findViewById(R.id.pushnotif);
+        notif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), PushNotifMain.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override

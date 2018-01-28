@@ -1,33 +1,25 @@
 {
   "project_info": {
-    "project_number": "1016243921488",
-    "project_id": "crafts-190419"
+    "project_number": "499329704820",
+    "project_id": "craftspush"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1016243921488:android:92079e93429040b2",
+        "mobilesdk_app_id": "1:499329704820:android:92079e93429040b2",
         "android_client_info": {
           "package_name": "com.twenty.four.crafts"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1016243921488-2t1vqctafnbrj2ctc4kl4ulq14lpev3n.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.twenty.four.crafts",
-            "certificate_hash": "7c86a6a0879eaa4100694a24d5bf07869b67c2d4"
-          }
-        },
-        {
-          "client_id": "1016243921488-6ufjce2ff798ed9u3tqvgk96gpa7vg51.apps.googleusercontent.com",
+          "client_id": "499329704820-m0nntv0h6eig5ciutj3vbufbegubh84l.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC_dksoomh5hpeDATRbSGHZ7d2wp20b9t0"
+          "current_key": "AIzaSyAFT9RQULczW4Tuh2ktyZMnS1zZhEXOv6U"
         }
       ],
       "services": {

@@ -286,6 +286,16 @@ public class Main2Activity extends AppCompatActivity
         } else if (id == R.id.subscribe) {
            Intent i = new Intent(getApplicationContext(),SubscribePopUp.class);
            startActivity(i);
+
+          /* new PanterDialog(Main2Activity.this)
+                   .setHeaderBackground(R.drawable.bg_gradient)
+                   .setHeaderLogo(R.drawable.logo)
+                   .setPositive("SUBSCRIBE")
+                   .setNegative("CONTINUE FREE")
+                   .withAnimation(Animation.POP)
+                   .setMessage("Subscribe to 24Crafts to enjoy using the app's features. Subscription allows Producers/Directors to find you")
+                   .isCancelable(false)
+                   .show();*/
            // fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new SecondFragment()).commit();
 
         } else if (id == R.id.settings) {
