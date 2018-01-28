@@ -1,4 +1,4 @@
-package com.twenty.four.crafts.profile;
+package com.twenty.four.crafts.garlandview.profile;
 
 
 import android.databinding.DataBindingUtil;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.databinding.ProfileItemBinding;
-import com.twenty.four.crafts.details.DetailsData;
+import com.twenty.four.crafts.garlandview.details.DetailsData;
 
 import java.util.List;
 

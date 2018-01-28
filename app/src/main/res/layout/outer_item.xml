@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false">
 
-    <com.twenty.four.crafts.inner.InnerRecyclerView
+    <com.twenty.four.crafts.garlandview.inner.InnerRecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

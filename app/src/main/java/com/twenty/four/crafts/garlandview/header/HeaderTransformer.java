@@ -1,4 +1,4 @@
-package com.twenty.four.crafts.header;
+package com.twenty.four.crafts.garlandview.header;
 
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;

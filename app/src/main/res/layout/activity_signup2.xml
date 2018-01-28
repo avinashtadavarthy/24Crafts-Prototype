@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@mipmap/wall"
+    android:background="@drawable/bg_gradient"
     tools:context="com.twenty.four.crafts.registration.signup2"
     android:focusable="true"
     android:focusableInTouchMode="true"
@@ -65,284 +65,321 @@
                 android:id="@+id/welcome"/>
 
 
-            <Spinner
-                android:id="@+id/body_type"
-                android:layout_marginTop="20sp"
-                android:background="@drawable/box"
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:textSize="16sp"
-                android:popupBackground="@drawable/box_spin"
-                android:layout_gravity="center"
-                android:layout_height="40sp"
-                android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp" />
-
-            <EditText
-                android:id="@+id/other_bodytype"
-
-                android:layout_width="match_parent"
-                android:layout_height="40sp"
-                android:layout_marginLeft="32sp"
-                android:layout_marginRight="16sp"
-                android:textSize="16sp"
-                android:paddingLeft="20sp"
-                android:ems="10"
-                android:hint="If Other, type here"
-                android:textColorHint="#ffffff"
-                android:background="@drawable/box2"
-                android:inputType="textMultiLine" />
-
-            <Spinner
-                android:id="@+id/hair_color"
-                android:layout_marginTop="20sp"
-                android:background="@drawable/box"
-                android:layout_width="match_parent"
-                android:textSize="16sp"
-                android:popupBackground="@drawable/box_spin"
-                android:layout_gravity="center"
-                android:layout_height="40sp"
-                android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp" />
-
-            <EditText
-                android:id="@+id/other_haircolor"
-
-                android:layout_width="match_parent"
-                android:layout_height="40sp"
-                android:layout_marginLeft="32sp"
-                android:layout_marginRight="16sp"
-                android:textSize="16sp"
-                android:paddingLeft="20sp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:ems="10"
-                android:hint="If Other, type here"
-                android:textColorHint="#ffffff"
-                android:background="@drawable/box2"
-                android:inputType="textMultiLine"
-                />
-
-
-            <Spinner
-                android:id="@+id/hair_length"
-                android:layout_marginTop="20sp"
-                android:background="@drawable/box"
-                android:layout_width="match_parent"
-                android:textSize="16sp"
-                android:popupBackground="@drawable/box_spin"
-                android:layout_gravity="center"
-                android:layout_height="40sp"
-                android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp" />
-
-            <EditText
-                android:id="@+id/other_hairlength"
-
-                android:layout_width="match_parent"
-                android:layout_height="40sp"
-                android:layout_marginLeft="32sp"
-                android:layout_marginRight="16sp"
-                android:textSize="16sp"
-                android:paddingLeft="20sp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:ems="10"
-                android:hint="If Other, type here"
-                android:textColorHint="#ffffff"
-                android:background="@drawable/box2"
-                android:inputType="textMultiLine"
-                />
-
-
-            <Spinner
-                android:id="@+id/eye_color"
-                android:layout_marginTop="20sp"
-                android:background="@drawable/box"
-                android:layout_width="match_parent"
-                android:textSize="16sp"
-                android:popupBackground="@drawable/box_spin"
-                android:layout_gravity="center"
-                android:layout_height="40sp"
-                android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp" />
-
-            <EditText
-                android:id="@+id/other_eyecolor"
-
-                android:layout_width="match_parent"
-                android:layout_height="40sp"
-                android:layout_marginLeft="32sp"
-                android:layout_marginRight="16sp"
-                android:textSize="16sp"
-                android:paddingLeft="20sp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:ems="10"
-                android:hint="If Other, type here"
-                android:textColorHint="#ffffff"
-                android:background="@drawable/box2"
-                android:inputType="textMultiLine"
-                />
-
-
-            <Spinner
-                android:id="@+id/skin_tone"
-                android:layout_marginTop="20sp"
-                android:background="@drawable/box"
-                android:layout_width="match_parent"
-                android:textSize="16sp"
-
-                android:popupBackground="@drawable/box_spin"
-                android:layout_gravity="center"
                 android:layout_height="60sp"
+                android:orientation="vertical"
+                android:layout_marginTop="16sp"
                 android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp" />
+                android:layout_marginRight="16sp">
 
-            <EditText
-                android:id="@+id/other_skintone"
+                <TextView
+                    android:id="@+id/bodytype_floatingtext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4sp"
+                    android:hint="Body Type"
+                    android:textColor="#808080"
+                    android:textSize="12sp"/>
 
+                <Spinner
+                    android:id="@+id/body_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/underline"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40sp"
-                android:layout_marginLeft="32sp"
-                android:layout_marginRight="16sp"
-                android:textSize="16sp"
-                android:paddingLeft="20sp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:ems="10"
-                android:hint="If Other, type here"
-                android:textColorHint="#ffffff"
-                android:background="@drawable/box2"
-                android:inputType="textMultiLine"
-                />
-
-            <Spinner
-                android:id="@+id/facial_hair"
-                android:layout_marginTop="20sp"
-                android:background="@drawable/box"
-                android:layout_width="match_parent"
-                android:textSize="16sp"
-                android:popupBackground="@drawable/box_spin"
-                android:layout_gravity="center"
-                android:layout_height="40sp"
+                android:layout_height="60sp"
+                android:orientation="vertical"
+                android:layout_marginTop="16sp"
                 android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp" />
+                android:layout_marginRight="16sp">
 
-            <EditText
-                android:id="@+id/other_facialhair"
+                <TextView
+                    android:id="@+id/haircolor_floatingtext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4sp"
+                    android:hint="Hair Color"
+                    android:textColor="#808080"
+                    android:textSize="12sp"/>
 
+                <Spinner
+                    android:id="@+id/hair_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/underline"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40sp"
-                android:layout_marginLeft="32sp"
-                android:layout_marginRight="16sp"
-                android:textSize="16sp"
-                android:paddingLeft="20sp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:ems="10"
-                android:hint="If Other, type here"
-                android:textColorHint="#ffffff"
-                android:background="@drawable/box2"
-                android:inputType="textMultiLine"
-                />
+                android:layout_height="60sp"
+                android:orientation="vertical"
+                android:layout_marginTop="16sp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp">
 
-            <EditText
-                android:id="@+id/height"
+                <TextView
+                    android:id="@+id/hairlength_floatingtext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4sp"
+                    android:hint="Hair Length"
+                    android:textColor="#808080"
+                    android:textSize="12sp"/>
 
+                <Spinner
+                    android:id="@+id/hair_length"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/underline"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40sp"
+                android:layout_height="60sp"
+                android:orientation="vertical"
+                android:layout_marginTop="16sp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp">
+
+                <TextView
+                    android:id="@+id/eyecolor_floatingtext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4sp"
+                    android:hint="Eye Color"
+                    android:textColor="#808080"
+                    android:textSize="12sp"/>
+
+                <Spinner
+                    android:id="@+id/eye_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/underline"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16sp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp">
+
+                <TextView
+                    android:id="@+id/skintone_floatingtext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4sp"
+                    android:hint="Skin Tone"
+                    android:textColor="#808080"
+                    android:textSize="12sp"/>
+
+                <Spinner
+                    android:id="@+id/skin_tone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/underline"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/facialhairlayout"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:orientation="vertical"
+                android:layout_marginTop="16sp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp">
+
+                <TextView
+                    android:id="@+id/facialhair_floatingtext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4sp"
+                    android:hint="Facial Hair"
+                    android:textColor="#808080"
+                    android:textSize="12sp"/>
+
+                <Spinner
+                    android:id="@+id/facial_hair"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/underline"/>
+
+            </LinearLayout>
+
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_height"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:gravity="center"
+                android:layout_marginTop="16sp"
                 android:layout_marginLeft="16sp"
                 android:layout_marginRight="16sp"
-                android:textSize="16sp"
-                android:paddingLeft="20sp"
-                android:layout_gravity="center"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="25sp"
-                android:ems="10"
-                android:hint="Height(cm)"
+                android:hint="Height (ft)"
                 android:textColorHint="#ffffff"
-                android:background="@drawable/box"
-                android:inputType="textMultiLine"
-                />
+                android:textSize="16sp"
+                app:errorEnabled="true">
+
+                <EditText
+                    android:id="@+id/height"
+                    android:layout_width="match_parent"
+                    android:layout_height="50sp"
+                    android:paddingLeft="5sp"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:ems="10"
+                    android:inputType="number" />
+
+            </android.support.design.widget.TextInputLayout>
 
 
 
-            <EditText
-                android:id="@+id/weight"
-
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_weight"
                 android:layout_width="match_parent"
-                android:layout_height="40sp"
+                android:layout_height="60sp"
+                android:gravity="center"
+                android:layout_marginTop="16sp"
                 android:layout_marginLeft="16sp"
                 android:layout_marginRight="16sp"
-                android:textSize="16sp"
-                android:paddingLeft="20sp"
-                android:layout_gravity="center"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="25sp"
-                android:ems="10"
-                android:hint="Weight(kg)"
+                android:hint="Weight (kg)"
                 android:textColorHint="#ffffff"
-                android:background="@drawable/box"
-                android:inputType="text" />
+                android:textSize="16sp"
+                app:errorEnabled="true">
+
+                <EditText
+                    android:id="@+id/weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="50sp"
+                    android:paddingLeft="5sp"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:ems="10"
+                    android:inputType="number" />
+
+            </android.support.design.widget.TextInputLayout>
 
 
-            <EditText
-                android:id="@+id/hip_size"
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_hipsize"
                 android:layout_width="match_parent"
-                android:layout_height="40sp"
+                android:layout_height="60sp"
+                android:gravity="center"
+                android:layout_marginTop="16sp"
                 android:layout_marginLeft="16sp"
                 android:layout_marginRight="16sp"
-                android:textSize="16sp"
-                android:paddingLeft="20sp"
-                android:layout_gravity="center"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="25sp"
-                android:ems="10"
-                android:hint="Hip Size (cm)"
+                android:hint="Hip Size (in)"
                 android:textColorHint="#ffffff"
-                android:background="@drawable/box"
-                android:inputType="text" />
+                android:textSize="16sp"
+                app:errorEnabled="true">
 
-            <EditText
-                android:id="@+id/chest_size"
+                <EditText
+                    android:id="@+id/hip_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="50sp"
+                    android:textSize="16sp"
+                    android:paddingLeft="5sp"
+                    android:layout_gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:ems="10"
+                    android:inputType="number" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_chestsize"
                 android:layout_width="match_parent"
-                android:layout_height="40sp"
+                android:layout_height="60sp"
+                android:gravity="center"
+                android:layout_marginTop="16sp"
                 android:layout_marginLeft="16sp"
                 android:layout_marginRight="16sp"
-                android:textSize="16sp"
-                android:paddingLeft="20sp"
-                android:layout_gravity="center"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="25sp"
-                android:ems="10"
-                android:hint="Chest Size (cm)"
+                android:hint="Chest Size (in)"
                 android:textColorHint="#ffffff"
-                android:background="@drawable/box"
-                android:inputType="text" />
+                android:textSize="16sp"
+                app:errorEnabled="true">
 
-            <EditText
-                android:id="@+id/waist_size"
+                <EditText
+                    android:id="@+id/chest_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="50sp"
+                    android:textSize="16sp"
+                    android:paddingLeft="5sp"
+                    android:layout_gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:ems="10"
+                    android:inputType="number" />
 
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_waistsize"
                 android:layout_width="match_parent"
-                android:layout_height="40sp"
+                android:layout_height="60sp"
+                android:gravity="center"
+                android:layout_marginTop="16sp"
                 android:layout_marginLeft="16sp"
                 android:layout_marginRight="16sp"
-                android:textSize="16sp"
-                android:paddingLeft="20sp"
-                android:layout_gravity="center"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="25sp"
-                android:layout_marginBottom="60sp"
-                android:ems="10"
-                android:hint="Waist Size (cm)"
+                android:hint="Waist Size (in)"
                 android:textColorHint="#ffffff"
-                android:background="@drawable/box"
-                android:inputType="text" />
+                android:textSize="16sp"
+                app:errorEnabled="true">
+
+                <EditText
+                    android:id="@+id/waist_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="50sp"
+                    android:paddingLeft="5sp"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:ems="10"
+                    android:inputType="number" />
+
+            </android.support.design.widget.TextInputLayout>
+            
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50sp" />
 
         </LinearLayout>
     </ScrollView>
@@ -350,12 +387,9 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:layout_marginBottom="5sp"
-        android:layout_marginLeft="25sp"
-        android:layout_marginRight="25sp"
-        android:layout_marginTop="5sp"
         android:layout_height="40sp"
-        android:background="@drawable/button_round"
+        android:background="#004e92"
+        android:elevation="8sp"
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center_horizontal"

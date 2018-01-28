@@ -1,4 +1,4 @@
-package com.twenty.four.crafts.details;
+package com.twenty.four.crafts.garlandview.details;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
@@ -14,8 +14,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.twenty.four.crafts.GarlandApp;
 import com.twenty.four.crafts.R;
-import com.twenty.four.crafts.main.TalentHunterMain;
-import com.twenty.four.crafts.profile.ProfileActivity;
+import com.twenty.four.crafts.garlandview.main.TalentHunterMain;
+import com.twenty.four.crafts.garlandview.profile.ProfileActivity;
 
 import java.util.ArrayList;
 

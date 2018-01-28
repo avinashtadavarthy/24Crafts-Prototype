@@ -1,4 +1,4 @@
-package com.twenty.four.crafts.inner;
+package com.twenty.four.crafts.garlandview.inner;
 
 
 import android.content.Context;

@@ -22,7 +22,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.twenty.four.crafts.main.TalentHunterMain;
+import com.twenty.four.crafts.garlandview.main.TalentHunterMain;
 
 public class Main3Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

@@ -1,4 +1,4 @@
-package com.twenty.four.crafts.main.inner;
+package com.twenty.four.crafts.garlandview.main.inner;
 
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class InnerAdapter extends com.twenty.four.crafts.inner.InnerAdapter<InnerItem> {
+public class InnerAdapter extends com.twenty.four.crafts.garlandview.inner.InnerAdapter<InnerItem> {
 
     private final List<InnerData> mData = new ArrayList<>();
 

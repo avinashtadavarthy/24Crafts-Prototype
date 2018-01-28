@@ -1,4 +1,4 @@
-package com.twenty.four.crafts.main.inner;
+package com.twenty.four.crafts.garlandview.main.inner;
 
 
 import android.view.View;
@@ -13,7 +13,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
-public class InnerItem  extends com.twenty.four.crafts.inner.InnerItem {
+public class InnerItem  extends com.twenty.four.crafts.garlandview.inner.InnerItem {
 
     private final View mInnerLayout;
 
