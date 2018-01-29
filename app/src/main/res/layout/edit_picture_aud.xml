@@ -6,19 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#000000"
-    tools:context="com.twenty.four.crafts.registration.EditPictureActivity">
+    tools:context="com.twenty.four.crafts.EditPictureforAuditions">
 
     <com.steelkiwi.cropiwa.CropIwaView
         android:id="@+id/crop_view"
         android:layout_width="match_parent"
         android:layout_height="400sp"
+        android:layout_centerInParent="true"
         app:ci_dynamic_aspect_ratio="false"
         app:ci_draw_grid="true"
         app:ci_initial_position="centerCrop"
-        app:ci_crop_shape="oval"
-        android:layout_centerInParent="true"
-        app:ci_aspect_ratio_w="1"
-        app:ci_aspect_ratio_h="1"
+        app:ci_crop_shape="rectangle"
+        app:ci_aspect_ratio_w="16"
+        app:ci_aspect_ratio_h="9"
         app:ci_scale_enabled="true"
         app:ci_translation_enabled="true" />
 
@@ -26,9 +26,7 @@
     <LinearLayout
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="50sp"
-        android:background="#212121"
-        android:elevation="8sp"
+        android:layout_height="40sp"
         android:orientation="horizontal"
         android:weightSum="5">
 
@@ -39,8 +37,8 @@
             android:layout_height="match_parent"
             android:text="cancel"
             android:textColor="#ffffff"
-            android:layout_margin="1sp"
             android:background="?android:attr/selectableItemBackground"/>
+
 
         <Button
             android:id="@+id/cropandsave"
@@ -49,7 +47,6 @@
             android:layout_height="match_parent"
             android:text="continue"
             android:textColor="#ffffff"
-            android:layout_margin="1sp"
             android:background="?android:attr/selectableItemBackground"/>
 
     </LinearLayout>

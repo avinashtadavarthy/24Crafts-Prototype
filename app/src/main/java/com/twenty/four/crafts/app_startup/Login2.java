@@ -57,6 +57,7 @@ import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.User;
 import com.twenty.four.crafts.registration.StartingScreen;
 import com.github.clans.fab.FloatingActionButton;
+import com.twenty.four.crafts.registration.filter.FilterActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -268,8 +269,6 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
         //instagram signin integration
         login_for_instagram = (Button) findViewById(R.id.login_for_instagram);
-
-
 
     }
 

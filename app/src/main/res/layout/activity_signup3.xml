@@ -33,7 +33,7 @@
 
             <LinearLayout android:id="@+id/questions_clients"
                 android:layout_below="@id/textView"
-                android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+                android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
                 <!-- casting agent -->
                 <LinearLayout android:id="@+id/casting_agent" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
                     <!-- experience -->
@@ -41,7 +41,7 @@
                         <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6.5"
                             android:textSize="16sp"
                             android:textColor="#ffffff" />
-                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="wrap_content"/>
                         <RadioGroup android:id="@+id/casting_agent_1radio" android:layout_width="0sp" android:layout_weight="4" android:layout_height="wrap_content" android:orientation="horizontal">
                             <RadioButton android:id="@+id/casting_agent_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
@@ -71,7 +71,7 @@
                     <!-- experience -->
                     <LinearLayout android:id="@+id/codirector_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
                         <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"/>
-                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="wrap_content"/>
                         <RadioGroup android:id="@+id/codirector_1radio" android:layout_width="0sp" android:layout_weight="4" android:layout_height="wrap_content" android:orientation="horizontal">
                             <RadioButton android:id="@+id/codirector_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
@@ -100,7 +100,7 @@
                     <!-- experience -->
                     <LinearLayout android:id="@+id/coproducer_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
                         <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"/>
-                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="wrap_content"/>
                         <RadioGroup android:id="@+id/coproducer_1radio" android:layout_width="0sp" android:layout_weight="4" android:layout_height="wrap_content" android:orientation="horizontal">
                             <RadioButton android:id="@+id/coproducer_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
@@ -142,7 +142,7 @@
                     <!-- experience -->
                     <LinearLayout android:id="@+id/director_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
                         <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"/>
-                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="wrap_content"/>
                         <RadioGroup android:id="@+id/director_1radio" android:layout_width="0sp" android:layout_weight="4" android:layout_height="wrap_content" android:orientation="horizontal">
                             <RadioButton android:id="@+id/director_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
@@ -171,7 +171,7 @@
                     <!-- experience -->
                     <LinearLayout android:id="@+id/asstdirector_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
                         <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"/>
-                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="wrap_content"/>
                         <RadioGroup android:id="@+id/asstdirector_1radio" android:layout_width="0sp" android:layout_weight="4" android:layout_height="wrap_content" android:orientation="horizontal">
                             <RadioButton android:id="@+id/asstdirector_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
@@ -200,7 +200,7 @@
                     <!-- experience -->
                     <LinearLayout android:id="@+id/directoraudit_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
                         <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"/>
-                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="wrap_content"/>
                         <RadioGroup android:id="@+id/directoraudit_1radio" android:layout_width="0sp" android:layout_weight="4" android:layout_height="wrap_content" android:orientation="horizontal">
                             <RadioButton android:id="@+id/directoraudit_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
@@ -229,7 +229,7 @@
                     <!-- experience -->
                     <LinearLayout android:id="@+id/execproducer_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
                         <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"/>
-                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="wrap_content"/>
                         <RadioGroup android:id="@+id/execproducer_1radio" android:layout_width="0sp" android:layout_weight="4" android:layout_height="wrap_content" android:orientation="horizontal">
                             <RadioButton android:id="@+id/execproducer_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
@@ -261,7 +261,7 @@
                     <!-- experience -->
                     <LinearLayout android:id="@+id/modelcoor_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
                         <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"/>
-                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="wrap_content"/>
                         <RadioGroup android:id="@+id/modelcoor_1radio" android:layout_width="0sp" android:layout_weight="4" android:layout_height="wrap_content" android:orientation="horizontal">
                             <RadioButton android:id="@+id/modelcoor_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
@@ -290,7 +290,7 @@
                     <!-- experience -->
                     <LinearLayout android:id="@+id/producer_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
                         <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"/>
-                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="wrap_content"/>
                         <RadioGroup android:id="@+id/producer_1radio" android:layout_width="0sp" android:layout_weight="4" android:layout_height="wrap_content" android:orientation="horizontal">
                             <RadioButton android:id="@+id/producer_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
@@ -322,7 +322,7 @@
                     <!-- experience -->
                     <LinearLayout android:id="@+id/prodhouseman_1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:weightSum="10" android:layout_marginBottom="5sp">
                         <TextView android:layout_width="0sp" android:layout_height="wrap_content" android:text="Have you had previous experience in : [Feature Films / TV Shows / College Culturals / Short Films / Web Series / YouTube Channel / Anchor / Host / Other] :" android:paddingLeft="10sp" android:gravity="center_vertical" android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"/>
-                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="match_parent"/>
+                        <Space android:layout_width="0sp" android:layout_weight=".5" android:layout_height="wrap_content"/>
                         <RadioGroup android:id="@+id/prodhouseman_1radio" android:layout_width="0sp" android:layout_weight="4" android:layout_height="wrap_content" android:orientation="horizontal">
                             <RadioButton android:id="@+id/prodhouseman_1radioyes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:scaleX="0.90" android:scaleY="0.90" android:text="Yes"/>
                             <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:checked="false" android:scaleX="0.90" android:scaleY="0.90"/>
@@ -353,7 +353,7 @@
             <LinearLayout android:id="@+id/questions_crafts"
                 android:layout_below="@+id/questions_clients"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <!-- actor -->
@@ -374,7 +374,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you know how to dance?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -383,7 +383,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/actor_1radio"
@@ -453,7 +453,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/actor_2radio"
@@ -523,7 +523,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/actor_3radio"
@@ -564,7 +564,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you play any sports?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -573,7 +573,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/actor_4radio"
@@ -635,7 +635,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -644,7 +644,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/actor_5radio"
@@ -685,7 +685,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you had any prior acting experience?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -694,7 +694,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/actor_6radio"
@@ -777,7 +777,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you know how to dance?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -786,7 +786,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/actress_1radio"
@@ -848,7 +848,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you know how to sing?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -857,7 +857,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/actress_2radio"
@@ -919,7 +919,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you know how to swim?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -928,7 +928,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/actress_3radio"
@@ -969,7 +969,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you play any sports?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -978,7 +978,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/actress_4radio"
@@ -1040,7 +1040,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -1049,7 +1049,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/actress_5radio"
@@ -1091,7 +1091,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you had any prior acting experience?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -1100,7 +1100,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/actress_6radio"
@@ -1186,7 +1186,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you know how to dance?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -1195,7 +1195,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/side_1radio"
@@ -1257,7 +1257,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you know how to sing?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -1266,7 +1266,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/side_2radio"
@@ -1328,7 +1328,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you know how to swim?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -1337,7 +1337,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/side_3radio"
@@ -1378,7 +1378,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you play any sports?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -1387,7 +1387,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/side_4radio"
@@ -1450,7 +1450,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -1459,7 +1459,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/side_5radio"
@@ -1500,7 +1500,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you had any prior acting experience?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -1509,7 +1509,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/side_6radio"
@@ -1632,7 +1632,7 @@
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Does the child know how to sing?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -1641,7 +1641,7 @@
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/child_2radio"
@@ -1702,7 +1702,7 @@ android:hint="If Yes, let us know"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Does the child know how to dance?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -1711,7 +1711,7 @@ android:hint="If Yes, let us know"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/child_3radio"
@@ -1772,7 +1772,7 @@ android:hint="If Yes, let us know"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Does the child have any prior acting experience?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -1781,7 +1781,7 @@ android:hint="If Yes, let us know"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/child_4radio"
@@ -1866,7 +1866,7 @@ android:hint="If Yes, let us know"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -1874,7 +1874,7 @@ android:hint="If Yes, let us know"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -1939,7 +1939,7 @@ android:hint="If Yes, let us know"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -1947,7 +1947,7 @@ android:hint="If Yes, let us know"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -2019,7 +2019,7 @@ android:hint="If Yes, upload links"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -2027,7 +2027,7 @@ android:hint="If Yes, upload links"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -2098,7 +2098,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -2169,7 +2169,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -2243,7 +2243,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5"
                             android:textSize="16sp"
                             android:textColor="#ffffff"
@@ -2253,7 +2253,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -2317,7 +2317,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -2325,7 +2325,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -2400,7 +2400,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -2408,7 +2408,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -2481,7 +2481,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -2569,7 +2569,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -2632,7 +2632,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -2640,7 +2640,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -2704,7 +2704,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -2712,7 +2712,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -2754,7 +2754,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -2762,7 +2762,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -2804,7 +2804,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -2812,7 +2812,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -2854,7 +2854,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -2862,7 +2862,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -2921,7 +2921,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -3008,7 +3008,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -3016,7 +3016,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -3058,7 +3058,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -3066,7 +3066,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -3125,7 +3125,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/dwrite"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -3147,7 +3147,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -3229,7 +3229,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -3237,7 +3237,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -3279,7 +3279,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -3287,7 +3287,7 @@ android:drawableLeft="@drawable/indent"
 
                         <Space
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5" />
 
                         <RadioGroup
@@ -3346,7 +3346,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/screenp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -3369,7 +3369,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/screenp_1radio"
@@ -3453,7 +3453,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -3462,7 +3462,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/screenp_3radio"
@@ -3503,7 +3503,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you write Movie Dialogues and Lyrics as well?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -3512,7 +3512,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/screenp_4radio"
@@ -3568,7 +3568,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/sba"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -3591,7 +3591,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/sba_1radio"
@@ -3689,7 +3689,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -3698,7 +3698,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/sba_4radio"
@@ -3734,7 +3734,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/choreo"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- interested in? -->
@@ -3765,7 +3765,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you composed your own soundtracks?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -3774,7 +3774,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/choreo_2radio"
@@ -3848,7 +3848,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Are you trained / schooled?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -3857,7 +3857,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/choreo_4radio"
@@ -3927,7 +3927,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/choreo_5radio"
@@ -4023,7 +4023,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/dop"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -4046,7 +4046,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/dop_1radio"
@@ -4181,7 +4181,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -4190,7 +4190,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/dop_5radio"
@@ -4226,7 +4226,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/stp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -4240,7 +4240,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -4249,7 +4249,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/stp_1radio"
@@ -4334,7 +4334,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -4343,7 +4343,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/stp_3radio"
@@ -4379,7 +4379,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/pro"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -4393,7 +4393,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -4402,7 +4402,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/pro_1radio"
@@ -4487,7 +4487,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -4496,7 +4496,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/pro_3radio"
@@ -4532,7 +4532,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/desi"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -4546,7 +4546,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -4555,7 +4555,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/desi_1radio"
@@ -4663,7 +4663,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -4672,7 +4672,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/desi_4radio"
@@ -4708,7 +4708,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/prodm"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -4722,7 +4722,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -4731,7 +4731,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/prodm_1radio"
@@ -4818,7 +4818,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -4827,7 +4827,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/prodm_3radio"
@@ -4863,7 +4863,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/focus"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -4877,7 +4877,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -4886,7 +4886,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/focus_1radio"
@@ -4972,7 +4972,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -4981,7 +4981,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/focus_3radio"
@@ -5017,7 +5017,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/driver"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -5031,7 +5031,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -5040,7 +5040,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/driver_1radio"
@@ -5121,7 +5121,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -5130,7 +5130,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/driver_3radio"
@@ -5166,7 +5166,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/mic"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -5180,7 +5180,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -5189,7 +5189,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/mic_1radio"
@@ -5272,7 +5272,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -5281,7 +5281,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/mic_3radio"
@@ -5331,7 +5331,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="6.5" android:textSize="16sp" android:textColor="#ffffff"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -5340,7 +5340,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/musicd_1radio"
@@ -5422,7 +5422,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you composed album songs earlier?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -5431,7 +5431,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/musicd_3radio"
@@ -5493,7 +5493,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -5502,7 +5502,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/musicd_4radio"
@@ -5537,7 +5537,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/makeup"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -5551,7 +5551,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -5560,7 +5560,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/makeup_1radio"
@@ -5644,7 +5644,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -5653,7 +5653,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/makeup_3radio"
@@ -5689,7 +5689,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/hairdr"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -5703,7 +5703,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -5712,7 +5712,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/hairdr_1radio"
@@ -5796,7 +5796,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -5805,7 +5805,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/hairdr_3radio"
@@ -5841,7 +5841,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/costu"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -5855,7 +5855,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -5864,7 +5864,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/costu_1radio"
@@ -5949,7 +5949,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -5958,7 +5958,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/costu_3radio"
@@ -5994,7 +5994,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/artd"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -6008,7 +6008,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -6017,7 +6017,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/artd_1radio"
@@ -6100,7 +6100,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -6109,7 +6109,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/artd_3radio"
@@ -6145,7 +6145,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/setd"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -6159,7 +6159,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -6168,7 +6168,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/setd_1radio"
@@ -6252,7 +6252,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -6261,7 +6261,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/setd_3radio"
@@ -6297,7 +6297,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/stunt"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -6311,7 +6311,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -6320,7 +6320,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/stunt_1radio"
@@ -6402,7 +6402,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -6411,7 +6411,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/stunt_3radio"
@@ -6447,7 +6447,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/editor"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- fluent os -->
@@ -6484,7 +6484,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -6493,7 +6493,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/editor_2radio"
@@ -6599,7 +6599,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -6608,7 +6608,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/editor_5radio"
@@ -6644,7 +6644,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/locat"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -6658,7 +6658,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -6667,7 +6667,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/locat_1radio"
@@ -6751,7 +6751,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -6760,7 +6760,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/locat_3radio"
@@ -6796,7 +6796,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/foodp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -6810,7 +6810,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -6819,7 +6819,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/foodp_1radio"
@@ -6901,7 +6901,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -6910,7 +6910,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/foodp_3radio"
@@ -6946,7 +6946,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/dub"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- previous work -->
@@ -6960,7 +6960,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -6969,7 +6969,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/dub_1radio"
@@ -7053,7 +7053,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -7062,7 +7062,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/dub_3radio"
@@ -7098,7 +7098,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/srec"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- lab or not -->
@@ -7157,7 +7157,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -7166,7 +7166,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/srec_2radio"
@@ -7253,7 +7253,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -7262,7 +7262,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/srec_4radio"
@@ -7298,7 +7298,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/smix"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- lab or not -->
@@ -7355,7 +7355,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -7364,7 +7364,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/smix_2radio"
@@ -7450,7 +7450,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -7459,7 +7459,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/smix_4radio"
@@ -7495,7 +7495,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/digint"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- lab or not -->
@@ -7608,7 +7608,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -7617,7 +7617,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/digint_4radio"
@@ -7705,7 +7705,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -7714,7 +7714,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/digint_6radio"
@@ -7750,7 +7750,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/vfx"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- lab or not -->
@@ -7854,7 +7854,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -7863,7 +7863,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/vfx_4radio"
@@ -7949,7 +7949,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -7958,7 +7958,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/vfx_6radio"
@@ -7994,7 +7994,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/sfx"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- lab or not -->
@@ -8098,7 +8098,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have you been a part of any feature films / TV shows / Short Films?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -8107,7 +8107,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/sfx_4radio"
@@ -8192,7 +8192,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Do you have a valid passport to travel?"
                             android:gravity="center_vertical"
                             android:paddingLeft="10sp"
@@ -8201,7 +8201,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/sfx_6radio"
@@ -8237,7 +8237,7 @@ android:drawableLeft="@drawable/indent"
                 <LinearLayout
                     android:id="@+id/pets"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <!-- type -->
@@ -8295,7 +8295,7 @@ android:drawableLeft="@drawable/indent"
 
                         <TextView
                             android:layout_width="0sp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Have they performed in feature films / TV shows / Commercials?"
                             android:paddingLeft="10sp"
                             android:gravity="center_vertical"
@@ -8304,7 +8304,7 @@ android:drawableLeft="@drawable/indent"
                         <Space
                             android:layout_width="0sp"
                             android:layout_weight=".5"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                         <RadioGroup
                             android:id="@+id/pets_3radio"
@@ -8486,24 +8486,24 @@ android:drawableLeft="@drawable/indent"
             android:layout_width="0sp"
             android:layout_weight="1"
             android:background="#dddddd"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:layout_width="0sp"
             android:layout_weight="1"
             android:background="#dddddd"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:layout_width="0sp"
             android:layout_weight="1"
             android:background="#dddddd"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:layout_width="0sp"
             android:layout_weight="1"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

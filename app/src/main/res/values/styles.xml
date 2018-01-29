@@ -119,4 +119,15 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">@color/colorPrimary</item>
     </style>
+
+
+
+    <!--Image Filters-->
+    <style name="AppTheme.NoActionBar.Fullscreen">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:actionMenuTextColor">@color/color_option_menu</item>
+    </style>
+
 </resources>

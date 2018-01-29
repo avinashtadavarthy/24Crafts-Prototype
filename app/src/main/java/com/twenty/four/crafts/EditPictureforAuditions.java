@@ -1,28 +1,21 @@
-package com.twenty.four.crafts.registration;
+package com.twenty.four.crafts;
 
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.steelkiwi.cropiwa.CropIwaView;
 import com.steelkiwi.cropiwa.config.CropIwaSaveConfig;
-import com.twenty.four.crafts.R;
-import com.twenty.four.crafts.User;
-import com.twenty.four.crafts.registration.filter.FilterActivity;
-import com.twenty.four.crafts.registration.filter.utils.BitmapUtils;
 
-public class EditPictureActivity extends AppCompatActivity {
-
-    final static int REQUEST_IMAGE_FILTER = 2121;
+public class EditPictureforAuditions extends AppCompatActivity {
 
     Bitmap rawimage;
     private CropIwaView cropView;
@@ -34,9 +27,7 @@ public class EditPictureActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_picture);
-
-       getSupportActionBar().setTitle("Crop The Image");
+        setContentView(R.layout.edit_picture_aud);
 
         rawimageuri = getIntent().getStringExtra("RawImageUri");
 
@@ -55,8 +46,6 @@ public class EditPictureActivity extends AppCompatActivity {
 
                 //file:///sdcard/Video0006.mp4
 
-                //Uri.parse("file:///sdcard/pic" + User.getInstance().ct + ".png")
-
                 ContentValues values = new ContentValues();
                 values.put(MediaStore.Images.Media.TITLE, System.currentTimeMillis());
                 values.put(MediaStore.Images.Media.DISPLAY_NAME, System.currentTimeMillis());
@@ -66,16 +55,15 @@ public class EditPictureActivity extends AppCompatActivity {
                 values.put(MediaStore.Images.Media.DATE_ADDED, System.currentTimeMillis());
                 values.put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis());
 
-                 Uri url = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+                Uri url = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
 
 
                 cropView.crop(new CropIwaSaveConfig.Builder(url)
-                        .setCompressFormat(Bitmap.CompressFormat.JPEG)
+                        .setCompressFormat(Bitmap.CompressFormat.PNG)
                         .setQuality(100)
                         .build());
 
-                Intent i = new Intent(EditPictureActivity.this, FilterActivity.class);
-                startActivityForResult(i,REQUEST_IMAGE_FILTER);
+                finish();
 
             }
         });
@@ -90,24 +78,10 @@ public class EditPictureActivity extends AppCompatActivity {
     }
 
 
-
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == REQUEST_IMAGE_FILTER) {
-            if(resultCode == Activity.RESULT_OK) {
-
-                String path = data.getStringExtra("saved_path");
-
-                //return to signup activity
-                Intent intent = new Intent();
-                intent.putExtra("saved_path", path);
-                setResult(Activity.RESULT_OK, intent);
-
-                finish();
-            }
-        }
-
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        setResult(Activity.RESULT_OK, intent);
+        super.onBackPressed();
     }
 }

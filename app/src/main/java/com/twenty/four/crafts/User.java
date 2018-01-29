@@ -14,7 +14,6 @@ public class User {
 
     public int navbarpos = 0;
     public int navbarposclient = 1;
-    public static int ct = 0;
 
     protected User(){}
 

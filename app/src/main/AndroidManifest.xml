@@ -24,6 +24,7 @@
     <uses-permission android:name="com.twenty.four.crafts.permission.C2D_MESSAGE" />
 
 
+
     <application
         android:name=".GarlandApp"
         android:allowBackup="true"
@@ -93,6 +94,14 @@
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".registration.EditPictureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme3"/>
+        <activity
+            android:name=".registration.filter.FilterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2"/>
+        <activity
+            android:name=".EditPictureforAuditions"
             android:screenOrientation="portrait" />
 
         <!-- import images from gallery/camera -->
@@ -180,8 +189,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".CreateAuditions"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait" />
+            android:parentActivityName=".Main3Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme3"
+            android:windowSoftInputMode="adjustPan" />
 
         <!-- Razor Pay Integration -->
         <meta-data
@@ -306,5 +317,4 @@
 
 
     </application>
-
 </manifest>

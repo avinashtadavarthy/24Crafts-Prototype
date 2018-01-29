@@ -1,6 +1,7 @@
 package com.twenty.four.crafts;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -79,7 +80,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
             @Override
             public void onFailure(Call<PaymentID> call, Throwable t) {
                 Toast.makeText(PaymentActivity.this, "Throwable"+t, Toast.LENGTH_LONG).show();
-
+                finish();
             }
         });
 
@@ -90,6 +91,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
     public void onPaymentError(int code, String response) {
         try {
             Toast.makeText(this, "Payment failed: " + code + " " + response, Toast.LENGTH_SHORT).show();
+            finish();
         } catch (Exception e) {
             Log.e(TAG, "Exception in onPaymentError", e);
         }

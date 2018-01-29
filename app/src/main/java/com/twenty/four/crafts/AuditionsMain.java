@@ -1,7 +1,9 @@
 package com.twenty.four.crafts;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,6 +21,8 @@ import java.util.ArrayList;
 public class AuditionsMain extends android.support.v4.app.Fragment {
 
     View myView;
+
+    private FloatingActionButton createaudition;
 
     @Nullable
     @Override
@@ -60,6 +64,16 @@ public class AuditionsMain extends android.support.v4.app.Fragment {
                 ((FoldingCell) view).toggle(false);
                 // register in adapter that state for selected cell is toggled
                 adapter.registerToggle(pos);
+            }
+        });
+
+
+        createaudition = (FloatingActionButton) myView.findViewById(R.id.createaudition);
+        createaudition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity().getApplicationContext(),CreateAuditions.class);
+                startActivity(i);
             }
         });
 

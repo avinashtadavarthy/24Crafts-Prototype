@@ -204,7 +204,7 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.menu_main2, menu);
         return true;
     }
 

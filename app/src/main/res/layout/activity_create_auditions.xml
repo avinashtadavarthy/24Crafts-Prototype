@@ -1,130 +1,540 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_gradient">
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@mipmap/blur"
-        >
-        <EditText
+        android:paddingBottom="?android:attr/actionBarSize">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:id="@+id/e1"
-
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="50dp"
-            android:layout_height="40sp"
-            android:hint="   Project name"
-
-            android:layout_marginBottom="10dp"
-            android:textColor="#ffffff"
-            android:background="@drawable/box"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_marginLeft="30dp"
-            android:id="@+id/e2"
-
-            android:layout_height="40sp"
-            android:hint="   Project type"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/box"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_marginLeft="30dp"
-
-            android:id="@+id/e3"
-            android:gravity="top"
-            android:layout_height="160sp"
-            android:hint="   Project description"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/box"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="40sp"
-            android:id="@+id/e4"
-
-            android:layout_marginLeft="30dp"
-            android:layout_marginBottom="10dp"
-            android:hint="   Features"
-            android:background="@drawable/box"/>
-        <EditText
-            android:layout_width="match_parent"
-
-            android:layout_height="40sp"
-
-            android:id="@+id/e5"
-            android:hint="   Shooting location"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/box"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_marginBottom="10dp"
-
-            android:layout_marginLeft="30dp"
-
-            android:id="@+id/e6"
-            android:layout_height="40sp"
-            android:hint="   Audition Location"
-            android:background="@drawable/box"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_marginLeft="30dp"
-            android:layout_marginBottom="10dp"
-
-
-            android:layout_height="40sp"
-            android:id="@+id/e7"
-            android:hint="   Valid From date (dd mm yy)"
-            android:background="@drawable/box"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_marginLeft="30dp"
-            android:layout_marginBottom="10dp"
-            android:layout_height="40sp"
-
-            android:id="@+id/e8"
-
-            android:hint="   Valid to date (dd mm yy)"
-            android:background="@drawable/box"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="30dp"
-            android:inputType="number"
-            android:id="@+id/e9"
-            android:layout_height="40sp"
-
-            android:hint="   Contact number"
-            android:background="@drawable/box"/>
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Compulsory fields are empty"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="10dp"
-            android:textColor="#ff0066"
-            android:id="@+id/errmsg"
-            />
+            android:orientation="vertical">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="139dp"
-            android:layout_marginTop="50dp"
-            android:background="#8c8c8c"
-            android:onClick="post"
-            android:text="POST"
-            />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/aud_image"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:background="#30ffffff"
+                        android:src="@drawable/logo"
+                        app:layout_constraintDimensionRatio="H,16:9"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/edit_aud_image"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:layout_margin="10sp"
+                    android:elevation="10sp"
+                    android:src="@drawable/edit_profile"
+                    app:civ_border_color="#50000000"
+                    app:civ_border_width="1sp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"/>
+
+                <ProgressBar
+                    android:id="@+id/loadimageprogress"
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_centerInParent="true"
+                    android:elevation="15sp"
+                    android:indeterminate="true"
+                    android:indeterminateTint="#ffffff" />
+
+            </RelativeLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp"
+                android:layout_marginTop="30sp"
+                android:hint="Project name"
+                android:paddingTop="5sp"
+                android:textColorHint="#ffffff">
+
+                <EditText
+                    android:id="@+id/e1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/box"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:paddingBottom="10sp"
+                    android:paddingLeft="10sp"
+                    android:paddingTop="8sp"
+                    android:textColor="#ffffff"
+                    android:textSize="24sp" />
+
+            </android.support.design.widget.TextInputLayout>
 
 
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp"
+                android:hint="Project Type"
+                android:paddingTop="5sp"
+                android:textColorHint="#ffffff">
+
+                <EditText
+                    android:id="@+id/e2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/box"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:padding="10sp"
+                    android:textSize="16sp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/project_type_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp"
+                android:layout_marginTop="5sp"
+                android:background="@drawable/box"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <Button
+                        android:id="@+id/bn1"
+                        android:layout_width="0sp"
+                        android:layout_height="50sp"
+                        android:layout_margin="5sp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_box"
+                        android:padding="5sp"
+                        android:text="Feature Films"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/bn2"
+                        android:layout_width="0sp"
+                        android:layout_height="50sp"
+                        android:layout_margin="5sp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_box"
+                        android:padding="5sp"
+                        android:text="TV Shows"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
 
 
+                    <Button
+                        android:id="@+id/bn3"
+                        android:layout_width="0sp"
+                        android:layout_height="50sp"
+                        android:layout_margin="5sp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_box"
+                        android:padding="5sp"
+                        android:text="Ads"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/bn4"
+                        android:layout_width="0sp"
+                        android:layout_height="50sp"
+                        android:layout_margin="5sp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_box"
+                        android:padding="5sp"
+                        android:text="Short Films"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <Button
+                        android:id="@+id/bn5"
+                        android:layout_width="0sp"
+                        android:layout_height="50sp"
+                        android:layout_margin="5sp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_box"
+                        android:padding="5sp"
+                        android:text="Web Series"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/bn6"
+                        android:layout_width="0sp"
+                        android:layout_height="50sp"
+                        android:layout_margin="5sp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_box"
+                        android:padding="5sp"
+                        android:text="YouTube"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/bn7"
+                        android:layout_width="0sp"
+                        android:layout_height="50sp"
+                        android:layout_margin="5sp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_box"
+                        android:padding="5sp"
+                        android:text="Hosts"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/bn8"
+                        android:layout_width="0sp"
+                        android:layout_height="50sp"
+                        android:layout_margin="5sp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_box"
+                        android:padding="5sp"
+                        android:text="Anchor"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <!-- <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <Button
+                    android:id="@+id/bn9"
+                    android:layout_width="0sp"
+                    android:layout_weight="1"
+                    android:layout_height="50sp"
+                    android:layout_margin="5sp"
+                    android:padding="5sp"
+                    android:background="@drawable/button_box"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textAllCaps="false"
+                    android:textAlignment="center"
+                    android:text="Other"/>
+
+                <Button
+                    android:layout_width="0sp"
+                    android:layout_weight="1"
+                    android:layout_height="50sp"
+                    android:layout_margin="5sp"
+                    android:padding="5sp"
+                    android:background="#00ffffff"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textAllCaps="false"
+                    android:textAlignment="center"/>
+
+                <Button
+                    android:layout_width="0sp"
+                    android:layout_weight="1"
+                    android:layout_height="50sp"
+                    android:layout_margin="5sp"
+                    android:padding="5sp"
+                    android:background="#00ffffff"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textAllCaps="false"
+                    android:textAlignment="center"
+                    android:text=""/>
+
+                <Button
+                    android:layout_width="0sp"
+                    android:layout_weight="1"
+                    android:layout_height="50sp"
+                    android:layout_margin="5sp"
+                    android:padding="5sp"
+                    android:background="#00ffffff"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textAllCaps="false"
+                    android:textAlignment="center"
+                    android:text=""/>
+
+                
+            </LinearLayout>-->
+
+            </LinearLayout>
 
 
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16sp"
+                android:hint="Project description"
+                android:paddingTop="5sp"
+                android:textColorHint="#ffffff">
 
-    </LinearLayout>
-</ScrollView>
+                <EditText
+                    android:id="@+id/e3"
+                    android:layout_width="match_parent"
+                    android:layout_height="150sp"
+                    android:background="@drawable/box"
+                    android:gravity="top"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:padding="10sp"
+                    android:textColorHint="#ffffff"
+                    android:textSize="16sp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp"
+                android:hint="Features"
+                android:paddingTop="5sp"
+                android:textColorHint="#ffffff">
+
+                <EditText
+                    android:id="@+id/e4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/box"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:padding="10sp"
+                    android:textSize="16sp" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp"
+                android:hint="Shooting location"
+                android:paddingTop="5sp"
+                android:textColorHint="#ffffff">
+
+                <EditText
+                    android:id="@+id/e5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/box"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:padding="10sp"
+                    android:textSize="16sp" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp"
+                android:hint="Audition Location"
+                android:paddingTop="5sp"
+                android:textColorHint="#ffffff">
+
+                <EditText
+                    android:id="@+id/e6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/box"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:padding="10sp"
+                    android:textSize="16sp" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp"
+                android:hint="Valid From ? (dd/mm/yyyy)"
+                android:paddingTop="5sp"
+                android:textColorHint="#ffffff">
+
+                <EditText
+                    android:id="@+id/e7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/box"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:padding="10sp"
+                    android:textSize="16sp" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp"
+                android:hint="What time does it start?"
+                android:paddingTop="5sp"
+                android:textColorHint="#ffffff">
+
+                <EditText
+                    android:id="@+id/e10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/box"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:padding="10sp"
+                    android:textSize="16sp" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp"
+                android:hint="Valid To ? (dd/mm/yyyy)"
+                android:paddingTop="5sp"
+                android:textColorHint="#ffffff">
+
+                <EditText
+                    android:id="@+id/e8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/box"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:padding="10sp"
+                    android:textSize="16sp" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp"
+                android:hint="Contact number"
+                android:paddingTop="2sp"
+                android:textColorHint="#ffffff">
+
+                <EditText
+                    android:id="@+id/e9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/box"
+                    android:gravity="center_vertical"
+                    android:inputType="number"
+                    android:padding="10sp"
+                    android:textSize="16sp" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/errmsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50sp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp"
+                android:layout_marginTop="10sp"
+                android:gravity="center_horizontal"
+                android:text="Compulsory fields are empty"
+                android:textColor="#ff0066" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="50sp"
+        android:background="#004e92"
+        android:onClick="post"
+        android:text="POST" />
+
+</RelativeLayout>

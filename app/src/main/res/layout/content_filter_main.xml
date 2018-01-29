@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#212121"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.twenty.four.crafts.registration.filter.FilterActivity"
+    tools:showIn="@layout/activity_filter">
+
+    <RelativeLayout
+        android:id="@+id/image_preview_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10sp"
+        android:background="#000000"
+        android:paddingBottom="10sp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image_preview"
+        android:layout_width="match_parent"
+        android:layout_height="360sp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/com_facebook_profile_picture_blank_square"/>
+
+        <ProgressBar
+            android:id="@+id/loadimageprogress"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:indeterminate="true"
+            android:indeterminateTint="#000000"
+            android:layout_centerInParent="true"
+            android:elevation="15sp" />
+
+    </RelativeLayout>
+
+    <com.twenty.four.crafts.registration.filter.utils.NonSwipeableViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:layout_above="@+id/tabs"
+        android:layout_below="@+id/image_preview_layout"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_alignParentBottom="true"
+        app:tabGravity="fill"
+        app:tabMode="fixed" />
+
+</RelativeLayout>

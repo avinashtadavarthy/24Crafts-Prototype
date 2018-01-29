@@ -60,10 +60,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Calendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class signup extends AppCompatActivity implements IPickResult, CropIwaResultReceiver.Listener{
+import static android.view.View.GONE;
+
+public class signup extends AppCompatActivity implements IPickResult {
 
     private static final int LANGUAGES_SPOKEN = 25;
     private static final int REQUEST_IMAGE_LOAD = 5555;
@@ -179,16 +182,15 @@ public class signup extends AppCompatActivity implements IPickResult, CropIwaRes
 
     //datepicker
     TextView dob1;
-    int year, month, day;
+    Calendar cal = Calendar.getInstance();
+    int year = cal.get(Calendar.YEAR);
+    int month = cal.get(Calendar.MONTH);
+    int day = cal.get(Calendar.DAY_OF_MONTH);
 
     //password checker
     ProgressBar progress;
 
-
-    //image cropper
-    CropIwaResultReceiver cropResultReceiver;
     ProgressBar loadimageprogress;
-
 
 
     @Override
@@ -230,12 +232,12 @@ public class signup extends AppCompatActivity implements IPickResult, CropIwaRes
 
         //receiving data
         Bundle bundle1 = getIntent().getExtras();
-        type = bundle1.getString("type");
-        firstname = bundle1.getString("firstname");
-        lastname = bundle1.getString("lastname");
-        email = bundle1.getString("email");
-        gender = bundle1.getString("gender");
-        imgurl = bundle1.getString("imgurl");
+            type = bundle1.getString("type");
+            firstname = bundle1.getString("firstname");
+            lastname = bundle1.getString("lastname");
+            email = bundle1.getString("email");
+            gender = bundle1.getString("gender");
+            imgurl = bundle1.getString("imgurl");
 
 
         first_name1 = (EditText) findViewById(R.id.first_name);
@@ -287,7 +289,6 @@ public class signup extends AppCompatActivity implements IPickResult, CropIwaRes
 
             }
         });
-
 
 
         genderspin = (Spinner) findViewById(R.id.gender);
@@ -451,7 +452,6 @@ public class signup extends AppCompatActivity implements IPickResult, CropIwaRes
             public void onClick(View v) {
 
                 try {
-
                     Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN).build(signup.this);
                     startActivityForResult(intent, 1000);
 
@@ -521,7 +521,6 @@ public class signup extends AppCompatActivity implements IPickResult, CropIwaRes
                     }
                     else
                     {
-
                         storeSPData("firstname", first_name1.getText().toString());
                         storeSPData("lastname", last_name1.getText().toString());
                         storeSPData("email", email1.getText().toString());
@@ -575,14 +574,6 @@ public class signup extends AppCompatActivity implements IPickResult, CropIwaRes
 
             }
         });
-
-
-
-
-        //image cropper
-        cropResultReceiver = new CropIwaResultReceiver();
-        cropResultReceiver.setListener(this);
-        cropResultReceiver.register(this);
 
 
         loadimageprogress = (ProgressBar) findViewById(R.id.loadimageprogress);
@@ -667,6 +658,12 @@ public class signup extends AppCompatActivity implements IPickResult, CropIwaRes
 
         if(requestCode == REQUEST_IMAGE_LOAD) {
             if(resultCode == Activity.RESULT_OK) {
+
+                loadimageprogress.setVisibility(View.GONE);
+                String final_path = data.getStringExtra("saved_path");
+                profile_image1.setImageURI(Uri.parse(final_path));
+
+            } else {
                 loadimageprogress.setVisibility(View.GONE);
             }
         }
@@ -753,8 +750,7 @@ public class signup extends AppCompatActivity implements IPickResult, CropIwaRes
             };
 
     private void showDate(int year, int month, int day) {
-        dob1.setText(new StringBuilder().append(month).append("/")
-                .append(day).append("/").append(year));
+        dob1.setText(new StringBuilder().append(day).append("/").append(month).append("/").append(year));
     }
 
 
@@ -783,26 +779,4 @@ public class signup extends AppCompatActivity implements IPickResult, CropIwaRes
 
     }
 
-
-
-
-    //cropped image
-
-    @Override
-    public void onCropSuccess(Uri croppedUri) {
-        loadimageprogress.setVisibility(View.GONE);
-        profile_image1.setImageURI(croppedUri);
-    }
-
-    @Override
-    public void onCropFailed(Throwable e) {
-        Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
-        e.printStackTrace();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        cropResultReceiver.unregister(this);
-    }
 }

@@ -74,4 +74,15 @@
     <color name="details_item_header">@color/details_name_color</color>
     <color name="details_item_text">#858d92</color>
     <color name="details_item_separator">@color/item_separator_color</color>
+
+
+
+
+
+
+    <!--Image Filters-->
+    <color name="color_option_menu">#FF3990</color>
+    <color name="filter_label_normal">#8A8889</color>
+    <color name="filter_label_selected">#53DBD0</color>
+
 </resources>

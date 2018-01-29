@@ -21,6 +21,7 @@ import com.twenty.four.crafts.Main2Activity;
 import com.twenty.four.crafts.Main3Activity;
 import com.twenty.four.crafts.PushNotifMain;
 import com.twenty.four.crafts.R;
+import com.twenty.four.crafts.registration.filter.FilterActivity;
 
 public class Login extends AppCompatActivity {
 
@@ -86,6 +87,8 @@ public class Login extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
 
 
 
