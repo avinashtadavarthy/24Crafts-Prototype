@@ -24,7 +24,7 @@
         android:layout_below="@id/Subscribe2"
         android:text="24 Crafts"
         android:gravity="center_horizontal"
-        android:textSize="25sp"
+        android:textSize="25dp"
         />
 
     <TextView
@@ -34,7 +34,7 @@
         android:text="NOTE:"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:layout_below="@id/subscribe_text2"
         />
 
@@ -44,7 +44,7 @@
         android:id="@+id/Subscription2"
         android:layout_marginTop="10dp"
         android:layout_below="@id/note_textview"
-        android:textSize="18sp"
+        android:textSize="18dp"
         android:text="Free Account only gives you access to the DIRECTORY. Producers/Directors will not be able to contact you..."/>
 
     <TextView
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_below="@id/Subscription2"
-        android:textSize="18sp"
+        android:textSize="18dp"
         android:text="Do you really want to continue Free ?"
         />
 
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="25dp"
             android:layout_alignParentBottom="true"
             android:text="Yes"
             />
@@ -77,7 +77,7 @@
             android:layout_alignParentBottom="true"
             android:id="@+id/NoButton"
             android:text="No"
-            android:textSize="25sp"
+            android:textSize="25dp"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

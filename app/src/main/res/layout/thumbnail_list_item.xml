@@ -15,8 +15,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/thumbnail"
-        android:layout_width="80sp"
-        android:layout_height="80sp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:src="@mipmap/ic_launcher_round" />
 
 </LinearLayout>

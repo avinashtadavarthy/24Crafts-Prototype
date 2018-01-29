@@ -47,7 +47,7 @@
                         android:orientation="vertical"
                         android:layout_gravity="bottom"
                         android:layout_width="match_parent"
-                        android:layout_height="90sp">
+                        android:layout_height="90dp">
 
                         <TextView
                             android:id="@+id/profile_personname"
@@ -57,9 +57,9 @@
                             android:layout_gravity="end"
                             android:textAlignment="textEnd"
                             android:textColor="@android:color/white"
-                            android:textSize="25sp"
-                            android:paddingRight="16sp"
-                            android:paddingTop="10sp"/>
+                            android:textSize="25dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp"/>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -89,7 +89,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="end"
                                 android:layout_marginTop="4dp"
-                                android:paddingRight="16sp"
+                                android:paddingRight="16dp"
                                 android:text="Age"
                                 android:textAlignment="textEnd"
                                 android:textColor="@android:color/white" />
@@ -100,9 +100,9 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profile_picture"
-                    android:layout_width="120sp"
-                    android:layout_height="120sp"
-                    android:layout_marginLeft="16sp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="16dp"
                     android:src="@drawable/sample1"/>
 
             </FrameLayout>
@@ -120,10 +120,10 @@
 
                     <ImageButton
                         android:id="@+id/profile_back"
-                        android:layout_width="25sp"
+                        android:layout_width="25dp"
                         android:layout_height="?attr/actionBarSize"
-                        android:paddingTop="15sp"
-                        android:paddingBottom="15sp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
                         android:src="@drawable/back"
                         android:scaleType="centerCrop"
                         android:tint="#ffffff"
@@ -132,32 +132,32 @@
 
                     <ImageButton
                         android:id="@+id/edit_profile"
-                        android:layout_width="25sp"
+                        android:layout_width="25dp"
                         android:layout_height="?attr/actionBarSize"
-                        android:paddingTop="15sp"
-                        android:paddingBottom="15sp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
                         android:src="@drawable/edit_white"
                         android:scaleType="centerCrop"
                         android:layout_alignParentRight="true"
                         android:tint="#ffffff"
                         android:background="#00000000"
-                        android:layout_marginLeft="16sp"
-                        android:layout_marginTop="16sp"
-                        android:layout_marginRight="60sp"
-                        android:layout_marginBottom="16sp"/>
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="60dp"
+                        android:layout_marginBottom="16dp"/>
 
                     <ImageButton
                         android:id="@+id/fav_profile"
-                        android:layout_width="35sp"
+                        android:layout_width="35dp"
                         android:layout_height="?attr/actionBarSize"
-                        android:paddingTop="15sp"
-                        android:paddingBottom="15sp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
                         android:src="@drawable/heart_outline"
                         android:layout_alignParentRight="true"
                         android:scaleType="centerCrop"
                         android:tint="#ffffff"
                         android:background="#00000000"
-                        android:layout_marginRight="10sp"/>
+                        android:layout_marginRight="10dp"/>
 
 
                 </RelativeLayout>
@@ -188,10 +188,10 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5sp"
-                android:layout_marginBottom="5sp"
-                android:layout_marginRight="5sp"
-                android:layout_marginTop="20sp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="20dp"
                 app:cardBackgroundColor="#90ffffff"
                 app:cardElevation="8dp"
                 app:contentPadding="10dp">
@@ -208,7 +208,7 @@
                         android:text="BIO"
                         android:textColor="#000000"
                         android:textAlignment="center"
-                        android:textSize="15sp" />
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/profile_bio"
@@ -224,7 +224,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="#90000000"
                         android:fontFamily="sans-serif-condensed"
-                        android:layout_marginTop="5sp"
+                        android:layout_marginTop="5dp"
                         android:textAlignment="center"
                         android:text="Interested Roles: Roles that the person is interested in can be added"/>
 
@@ -236,9 +236,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="10sp"
-                android:layout_marginTop="5sp"
-                android:layout_marginBottom="5sp"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="#60ffffff">
 
                 <TextView
@@ -247,14 +247,14 @@
                     android:lineSpacingExtra="8dp"
                     android:text="FEATURED PHOTOS"
                     android:textColor="#000000"
-                    android:textSize="15sp" />
+                    android:textSize="15dp" />
 
                 <HorizontalScrollView
                     android:layout_width="wrap_content"
-                    android:layout_height="100sp">
+                    android:layout_height="100dp">
 
                     <LinearLayout
-                        android:paddingLeft="20sp"
+                        android:paddingLeft="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
@@ -262,36 +262,36 @@
 
                         <com.makeramen.roundedimageview.RoundedImageView
                             android:layout_gravity="center"
-                            android:layout_width="90sp"
-                            android:layout_height="90sp"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
                             android:src="@drawable/sample1"
                             android:scaleType="centerCrop"
-                            android:layout_margin="5sp"
-                            app:riv_corner_radius="10sp"/>
+                            android:layout_margin="5dp"
+                            app:riv_corner_radius="10dp"/>
 
                         <com.makeramen.roundedimageview.RoundedImageView
                             android:layout_gravity="center"
-                            android:layout_width="90sp"
-                            android:layout_height="90sp"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
                             android:src="@drawable/sample1"
                             android:scaleType="centerCrop"
-                            android:layout_margin="5sp"
-                            app:riv_corner_radius="10sp"/>
+                            android:layout_margin="5dp"
+                            app:riv_corner_radius="10dp"/>
 
                         <com.makeramen.roundedimageview.RoundedImageView
                             android:layout_gravity="center"
-                            android:layout_width="90sp"
-                            android:layout_height="90sp"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
                             android:src="@drawable/sample1"
                             android:scaleType="centerCrop"
-                            android:layout_margin="5sp"
-                            app:riv_corner_radius="10sp"/>
+                            android:layout_margin="5dp"
+                            app:riv_corner_radius="10dp"/>
 
                         <ImageView
                             android:layout_gravity="center"
-                            android:layout_width="90sp"
-                            android:layout_height="90sp"
-                            android:padding="25sp"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:padding="25dp"
                             android:src="@drawable/add"
                             android:background="@drawable/box_dense"/>
 
@@ -305,9 +305,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="10sp"
-                android:layout_marginTop="5sp"
-                android:layout_marginBottom="5sp"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="#60ffffff">
 
                 <TextView
@@ -316,11 +316,11 @@
                     android:lineSpacingExtra="8dp"
                     android:text="FEATURED VIDEOS"
                     android:textColor="#000000"
-                    android:textSize="15sp" />
+                    android:textSize="15dp" />
 
                 <HorizontalScrollView
                     android:layout_width="wrap_content"
-                    android:layout_height="100sp">
+                    android:layout_height="100dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -333,25 +333,25 @@
                             android:layout_gravity="center"
                             android:onClick="playVideo"
                             android:id="@+id/profileVideo2"
-                            android:layout_width="120sp"
-                            android:layout_height="90sp"
+                            android:layout_width="120dp"
+                            android:layout_height="90dp"
                             android:scaleType="centerCrop"
-                            android:layout_margin="5sp" />
+                            android:layout_margin="5dp" />
 
                         <ImageView
                             android:id="@+id/profileVideo3"
-                            android:layout_width="120sp"
-                            android:layout_height="90sp"
+                            android:layout_width="120dp"
+                            android:layout_height="90dp"
                             android:layout_gravity="center"
-                            android:layout_margin="5sp"
+                            android:layout_margin="5dp"
                             android:onClick="playVideo"
                             android:scaleType="centerCrop" />
 
                         <ImageView
                             android:layout_gravity="center"
-                            android:layout_width="90sp"
-                            android:layout_height="90sp"
-                            android:padding="25sp"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:padding="25dp"
                             android:onClick="playVideo"
                             android:src="@drawable/add"
                             android:background="@drawable/box_dense"/>
@@ -366,9 +366,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="10sp"
-                android:layout_marginTop="5sp"
-                android:layout_marginBottom="5sp"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="#60ffffff">
 
                     <TextView
@@ -377,10 +377,10 @@
                         android:lineSpacingExtra="8dp"
                         android:text="PERSONAL DETAILS"
                         android:textColor="#000000"
-                        android:textSize="15sp" />
+                        android:textSize="15dp" />
 
                 <LinearLayout
-                    android:layout_marginTop="5sp"
+                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -402,7 +402,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="5sp"
+                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -424,7 +424,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="5sp"
+                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -437,7 +437,7 @@
                         android:textStyle="bold"/>
 
                     <TextView
-                        android:id="@+id/profile_languagesspoken"
+                        android:id="@+id/profile_languagesdpoken"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
@@ -451,9 +451,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="10sp"
-                android:layout_marginTop="5sp"
-                android:layout_marginBottom="5sp"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="#60ffffff">
 
                 <TextView
@@ -462,8 +462,8 @@
                     android:lineSpacingExtra="8dp"
                     android:text="PHYSICAL ATTRIBUTES"
                     android:textColor="#000000"
-                    android:layout_marginBottom="5sp"
-                    android:textSize="15sp" />
+                    android:layout_marginBottom="5dp"
+                    android:textSize="15dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -472,7 +472,7 @@
                     android:weightSum="2">
 
                     <TextView
-                        android:layout_width="0sp"
+                        android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
@@ -480,12 +480,12 @@
                         android:textAlignment="center"
                         android:textStyle="bold"
                         android:background="@drawable/box4"
-                        android:layout_marginLeft="10sp"
-                        android:layout_marginRight="15sp"
-                        android:padding="4sp"/>
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:padding="4dp"/>
 
                     <TextView
-                        android:layout_width="0sp"
+                        android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
@@ -493,9 +493,9 @@
                         android:textAlignment="center"
                         android:textStyle="bold"
                         android:background="@drawable/box4"
-                        android:layout_marginLeft="15sp"
-                        android:layout_marginRight="15sp"
-                        android:padding="4sp"/>
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:padding="4dp"/>
 
 
                 </LinearLayout>
@@ -508,41 +508,41 @@
 
                     <TextView
                         android:id="@+id/profile_height"
-                        android:layout_width="0sp"
+                        android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:text="Text Height"
                         android:textAlignment="center"
                         android:background="@drawable/box5"
-                        android:layout_marginLeft="10sp"
-                        android:layout_marginRight="15sp"
-                        android:padding="4sp"/>
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:padding="4dp"/>
 
                     <TextView
                         android:id="@+id/profile_weight"
-                        android:layout_width="0sp"
+                        android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:text="Text Weight"
                         android:textAlignment="center"
                         android:background="@drawable/box5"
-                        android:layout_marginLeft="15sp"
-                        android:layout_marginRight="15sp"
-                        android:padding="4sp"/>
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:padding="4dp"/>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="10sp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
                     <TextView
-                        android:layout_width="0sp"
+                        android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
@@ -550,12 +550,12 @@
                         android:textAlignment="center"
                         android:textStyle="bold"
                         android:background="@drawable/box4"
-                        android:layout_marginLeft="10sp"
-                        android:layout_marginRight="15sp"
-                        android:padding="4sp"/>
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:padding="4dp"/>
 
                     <TextView
-                        android:layout_width="0sp"
+                        android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
@@ -563,9 +563,9 @@
                         android:textAlignment="center"
                         android:textStyle="bold"
                         android:background="@drawable/box4"
-                        android:layout_marginLeft="15sp"
-                        android:layout_marginRight="15sp"
-                        android:padding="4sp"/>
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:padding="4dp"/>
 
 
                 </LinearLayout>
@@ -578,34 +578,34 @@
 
                     <TextView
                         android:id="@+id/profile_chest"
-                        android:layout_width="0sp"
+                        android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:text="Text Chest"
                         android:textAlignment="center"
                         android:background="@drawable/box5"
-                        android:layout_marginLeft="10sp"
-                        android:layout_marginRight="15sp"
-                        android:padding="4sp"/>
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:padding="4dp"/>
 
                     <TextView
                         android:id="@+id/profile_waist"
-                        android:layout_width="0sp"
+                        android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
                         android:text="Text Waist"
                         android:textAlignment="center"
                         android:background="@drawable/box5"
-                        android:layout_marginLeft="15sp"
-                        android:layout_marginRight="15sp"
-                        android:padding="4sp"/>
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:padding="4dp"/>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="5sp"
+                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -627,7 +627,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="5sp"
+                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -654,8 +654,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="10sp"
-                android:layout_marginBottom="5sp"
+                android:padding="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="#60ffffff">
 
                 <TextView
@@ -664,10 +664,10 @@
                     android:lineSpacingExtra="8dp"
                     android:text="CHECKLIST"
                     android:textColor="#000000"
-                    android:textSize="15sp" />
+                    android:textSize="15dp" />
 
                 <LinearLayout
-                    android:layout_marginTop="5sp"
+                    android:layout_marginTop="5dp"
                     android:id="@+id/howtodance"
                     android:paddingRight="10dp"
                     android:paddingLeft="15dp"
@@ -730,7 +730,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/playsports"
+                    android:id="@+id/playdports"
                     android:paddingRight="10dp"
                     android:paddingLeft="15dp"
                     android:layout_below="@id/howtosing"
@@ -743,9 +743,9 @@
                         android:layout_width="0dp"
                         android:layout_height="30dp"
                         android:layout_weight="3"
-                        android:id="@+id/playsportsquestion"
+                        android:id="@+id/playdportsquestion"
                         android:gravity="center_vertical"
-                        android:text="Do I play any sports?"
+                        android:text="Do I play any dports?"
                         android:textColor="#000000"/>
                     <ImageView
                         android:id="@+id/result3"
@@ -765,7 +765,7 @@
                     android:id="@+id/traveldocuments"
                     android:paddingRight="10dp"
                     android:paddingLeft="15dp"
-                    android:layout_below="@id/playsports"
+                    android:layout_below="@id/playdports"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">

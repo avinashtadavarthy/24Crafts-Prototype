@@ -16,7 +16,7 @@
 
             android:layout_marginLeft="30dp"
             android:layout_marginTop="50dp"
-            android:layout_height="40sp"
+            android:layout_height="40dp"
             android:hint="   Project name"
 
             android:layout_marginBottom="10dp"
@@ -27,7 +27,7 @@
             android:layout_marginLeft="30dp"
             android:id="@+id/e2"
 
-            android:layout_height="40sp"
+            android:layout_height="40dp"
             android:hint="   Project type"
             android:layout_marginBottom="10dp"
             android:background="@drawable/box"/>
@@ -37,13 +37,13 @@
 
             android:id="@+id/e3"
             android:gravity="top"
-            android:layout_height="160sp"
+            android:layout_height="160dp"
             android:hint="   Project description"
             android:layout_marginBottom="10dp"
             android:background="@drawable/box"/>
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="40sp"
+            android:layout_height="40dp"
             android:id="@+id/e4"
 
             android:layout_marginLeft="30dp"
@@ -53,7 +53,7 @@
         <EditText
             android:layout_width="match_parent"
 
-            android:layout_height="40sp"
+            android:layout_height="40dp"
 
             android:id="@+id/e5"
             android:hint="   Shooting location"
@@ -67,7 +67,7 @@
             android:layout_marginLeft="30dp"
 
             android:id="@+id/e6"
-            android:layout_height="40sp"
+            android:layout_height="40dp"
             android:hint="   Audition Location"
             android:background="@drawable/box"/>
         <EditText
@@ -76,7 +76,7 @@
             android:layout_marginBottom="10dp"
 
 
-            android:layout_height="40sp"
+            android:layout_height="40dp"
             android:id="@+id/e7"
             android:hint="   Valid From date (dd mm yy)"
             android:background="@drawable/box"/>
@@ -84,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_marginLeft="30dp"
             android:layout_marginBottom="10dp"
-            android:layout_height="40sp"
+            android:layout_height="40dp"
 
             android:id="@+id/e8"
 
@@ -96,7 +96,7 @@
             android:layout_marginLeft="30dp"
             android:inputType="number"
             android:id="@+id/e9"
-            android:layout_height="40sp"
+            android:layout_height="40dp"
 
             android:hint="   Contact number"
             android:background="@drawable/box"/>

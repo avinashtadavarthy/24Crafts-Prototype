@@ -8,11 +8,11 @@
    <com.makeramen.roundedimageview.RoundedImageView
        xmlns:app="http://schemas.android.com/apk/res-auto"
        android:id="@+id/fav_item"
-       android:layout_height="110sp"
-       android:layout_width="110sp"
-       android:layout_marginBottom="3sp"
-       android:layout_marginTop="3sp"
+       android:layout_height="110dp"
+       android:layout_width="110dp"
+       android:layout_marginBottom="3dp"
+       android:layout_marginTop="3dp"
        android:scaleType="centerCrop"
-       app:riv_corner_radius="10sp"/>
+       app:riv_corner_radius="10dp"/>
 
 </LinearLayout>

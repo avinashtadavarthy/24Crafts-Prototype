@@ -12,7 +12,7 @@
         android:layout_margin="10dp"
         android:orientation="vertical"
         android:background="@drawable/cardbottomround"
-        app:cardElevation="2sp"
+        app:cardElevation="2dp"
         app:cardPreventCornerOverlap="false"
         app:cardBackgroundColor="#fffff0">
 

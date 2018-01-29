@@ -13,7 +13,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_centerHorizontal="true"
-        android:textSize="40sp"
+        android:textSize="40dp"
         android:src="@drawable/logo"/>
 
     <TextView
@@ -24,7 +24,7 @@
         android:layout_below="@id/Subscribe"
         android:text="24 Crafts"
         android:gravity="center_horizontal"
-        android:textSize="25sp"
+        android:textSize="25dp"
         />
 
     <TextView
@@ -33,7 +33,7 @@
         android:id="@+id/Subscription"
         android:layout_marginTop="20dp"
         android:layout_below="@id/subscribe_text"
-        android:textSize="18sp"
+        android:textSize="18dp"
         android:gravity="left"
         android:text="Subscribe to 24Crafts to enjoy using the app's features. Subscription allows Producers/Directors to find you...."/>
 
@@ -46,7 +46,7 @@
         <Button
             android:id="@+id/SubscribeButton"
             android:layout_width="100dp"
-            android:textSize="10sp"
+            android:textSize="10dp"
             android:onClick="purchasecoinsIntent"
             android:layout_alignParentLeft="true"
             android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
             android:layout_alignParentBottom="true"
             android:id="@+id/ContinueButton"
             android:text="Continue Free"
-            android:textSize="10sp"
+            android:textSize="10dp"
             android:layout_alignParentRight="true"
             android:layout_width="100dp"
             android:layout_height="wrap_content"

@@ -27,12 +27,12 @@
         android:background="@drawable/bubble"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="280sp"
-        android:layout_marginLeft="30sp"
-        android:layout_marginRight="30sp"
+        android:layout_marginTop="280dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:inputType="textEmailAddress"
         android:hint="Email"
-        android:paddingLeft="20sp" />
+        android:paddingLeft="20dp" />
 
 
         <android.support.design.widget.TextInputLayout
@@ -41,9 +41,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:hintEnabled="false"
-            android:layout_marginTop="20sp"
-            android:layout_marginLeft="30sp"
-            android:layout_marginRight="30sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             app:passwordToggleEnabled="true">
 
     <android.support.design.widget.TextInputEditText
@@ -54,7 +54,7 @@
         android:background="@drawable/bubble"
         android:paddingRight="10dp"
         android:hint="Password"
-        android:paddingLeft="20sp"
+        android:paddingLeft="20dp"
         />
 
         </android.support.design.widget.TextInputLayout>

@@ -13,30 +13,30 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="3sp"
+        android:layout_height="3dp"
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
         android:weightSum="4">
 
         <TextView
-            android:layout_width="0sp"
+            android:layout_width="0dp"
             android:layout_weight="1"
             android:background="#dddddd"
             android:layout_height="match_parent" />
 
         <TextView
-            android:layout_width="0sp"
+            android:layout_width="0dp"
             android:layout_weight="1"
             android:background="#dddddd"
             android:layout_height="match_parent" />
 
         <TextView
-            android:layout_width="0sp"
+            android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent" />
 
         <TextView
-            android:layout_width="0sp"
+            android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent" />
 
@@ -47,7 +47,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="50sp">
+        android:paddingBottom="50dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,11 +56,11 @@
 
 
             <TextView
-                android:layout_marginTop="40sp"
+                android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
                 android:text="Welcome"
-                android:textSize="25sp"
-                android:paddingLeft="30sp"
+                android:textSize="25dp"
+                android:paddingLeft="30dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/welcome"/>
 
@@ -68,26 +68,26 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60sp"
+                android:layout_height="60dp"
                 android:orientation="vertical"
-                android:layout_marginTop="16sp"
-                android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp">
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
 
                 <TextView
                     android:id="@+id/bodytype_floatingtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4sp"
+                    android:layout_marginBottom="4dp"
                     android:hint="Body Type"
                     android:textColor="#808080"
-                    android:textSize="12sp"/>
+                    android:textSize="12dp"/>
 
                 <Spinner
                     android:id="@+id/body_type"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:gravity="center_vertical"
                     android:background="@drawable/underline"/>
 
@@ -96,26 +96,26 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60sp"
+                android:layout_height="60dp"
                 android:orientation="vertical"
-                android:layout_marginTop="16sp"
-                android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp">
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
 
                 <TextView
                     android:id="@+id/haircolor_floatingtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4sp"
+                    android:layout_marginBottom="4dp"
                     android:hint="Hair Color"
                     android:textColor="#808080"
-                    android:textSize="12sp"/>
+                    android:textSize="12dp"/>
 
                 <Spinner
                     android:id="@+id/hair_color"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:gravity="center_vertical"
                     android:background="@drawable/underline"/>
 
@@ -124,26 +124,26 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60sp"
+                android:layout_height="60dp"
                 android:orientation="vertical"
-                android:layout_marginTop="16sp"
-                android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp">
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
 
                 <TextView
                     android:id="@+id/hairlength_floatingtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4sp"
+                    android:layout_marginBottom="4dp"
                     android:hint="Hair Length"
                     android:textColor="#808080"
-                    android:textSize="12sp"/>
+                    android:textSize="12dp"/>
 
                 <Spinner
                     android:id="@+id/hair_length"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:gravity="center_vertical"
                     android:background="@drawable/underline"/>
 
@@ -152,26 +152,26 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60sp"
+                android:layout_height="60dp"
                 android:orientation="vertical"
-                android:layout_marginTop="16sp"
-                android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp">
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
 
                 <TextView
                     android:id="@+id/eyecolor_floatingtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4sp"
+                    android:layout_marginBottom="4dp"
                     android:hint="Eye Color"
                     android:textColor="#808080"
-                    android:textSize="12sp"/>
+                    android:textSize="12dp"/>
 
                 <Spinner
                     android:id="@+id/eye_color"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:gravity="center_vertical"
                     android:background="@drawable/underline"/>
 
@@ -182,24 +182,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="16sp"
-                android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp">
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
 
                 <TextView
                     android:id="@+id/skintone_floatingtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4sp"
+                    android:layout_marginBottom="4dp"
                     android:hint="Skin Tone"
                     android:textColor="#808080"
-                    android:textSize="12sp"/>
+                    android:textSize="12dp"/>
 
                 <Spinner
                     android:id="@+id/skin_tone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:gravity="center_vertical"
                     android:background="@drawable/underline"/>
 
@@ -209,26 +209,26 @@
             <LinearLayout
                 android:id="@+id/facialhairlayout"
                 android:layout_width="match_parent"
-                android:layout_height="60sp"
+                android:layout_height="60dp"
                 android:orientation="vertical"
-                android:layout_marginTop="16sp"
-                android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp">
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
 
                 <TextView
                     android:id="@+id/facialhair_floatingtext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4sp"
+                    android:layout_marginBottom="4dp"
                     android:hint="Facial Hair"
                     android:textColor="#808080"
-                    android:textSize="12sp"/>
+                    android:textSize="12dp"/>
 
                 <Spinner
                     android:id="@+id/facial_hair"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:gravity="center_vertical"
                     android:background="@drawable/underline"/>
 
@@ -239,22 +239,22 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_height"
                 android:layout_width="match_parent"
-                android:layout_height="60sp"
+                android:layout_height="60dp"
                 android:gravity="center"
-                android:layout_marginTop="16sp"
-                android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:hint="Height (ft)"
                 android:textColorHint="#ffffff"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:errorEnabled="true">
 
                 <EditText
                     android:id="@+id/height"
                     android:layout_width="match_parent"
-                    android:layout_height="50sp"
-                    android:paddingLeft="5sp"
-                    android:textSize="16sp"
+                    android:layout_height="50dp"
+                    android:paddingLeft="5dp"
+                    android:textSize="16dp"
                     android:layout_gravity="center"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
@@ -268,22 +268,22 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_weight"
                 android:layout_width="match_parent"
-                android:layout_height="60sp"
+                android:layout_height="60dp"
                 android:gravity="center"
-                android:layout_marginTop="16sp"
-                android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:hint="Weight (kg)"
                 android:textColorHint="#ffffff"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:errorEnabled="true">
 
                 <EditText
                     android:id="@+id/weight"
                     android:layout_width="match_parent"
-                    android:layout_height="50sp"
-                    android:paddingLeft="5sp"
-                    android:textSize="16sp"
+                    android:layout_height="50dp"
+                    android:paddingLeft="5dp"
+                    android:textSize="16dp"
                     android:layout_gravity="center"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
@@ -297,22 +297,22 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_hipsize"
                 android:layout_width="match_parent"
-                android:layout_height="60sp"
+                android:layout_height="60dp"
                 android:gravity="center"
-                android:layout_marginTop="16sp"
-                android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:hint="Hip Size (in)"
                 android:textColorHint="#ffffff"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:errorEnabled="true">
 
                 <EditText
                     android:id="@+id/hip_size"
                     android:layout_width="match_parent"
-                    android:layout_height="50sp"
-                    android:textSize="16sp"
-                    android:paddingLeft="5sp"
+                    android:layout_height="50dp"
+                    android:textSize="16dp"
+                    android:paddingLeft="5dp"
                     android:layout_gravity="center"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
@@ -325,22 +325,22 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_chestsize"
                 android:layout_width="match_parent"
-                android:layout_height="60sp"
+                android:layout_height="60dp"
                 android:gravity="center"
-                android:layout_marginTop="16sp"
-                android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:hint="Chest Size (in)"
                 android:textColorHint="#ffffff"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:errorEnabled="true">
 
                 <EditText
                     android:id="@+id/chest_size"
                     android:layout_width="match_parent"
-                    android:layout_height="50sp"
-                    android:textSize="16sp"
-                    android:paddingLeft="5sp"
+                    android:layout_height="50dp"
+                    android:textSize="16dp"
+                    android:paddingLeft="5dp"
                     android:layout_gravity="center"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
@@ -353,22 +353,22 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_waistsize"
                 android:layout_width="match_parent"
-                android:layout_height="60sp"
+                android:layout_height="60dp"
                 android:gravity="center"
-                android:layout_marginTop="16sp"
-                android:layout_marginLeft="16sp"
-                android:layout_marginRight="16sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:hint="Waist Size (in)"
                 android:textColorHint="#ffffff"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:errorEnabled="true">
 
                 <EditText
                     android:id="@+id/waist_size"
                     android:layout_width="match_parent"
-                    android:layout_height="50sp"
-                    android:paddingLeft="5sp"
-                    android:textSize="16sp"
+                    android:layout_height="50dp"
+                    android:paddingLeft="5dp"
+                    android:textSize="16dp"
                     android:layout_gravity="center"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
@@ -379,7 +379,7 @@
             
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="50sp" />
+                android:layout_height="50dp" />
 
         </LinearLayout>
     </ScrollView>
@@ -387,9 +387,9 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:layout_height="40sp"
+        android:layout_height="40dp"
         android:background="#004e92"
-        android:elevation="8sp"
+        android:elevation="8dp"
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center_horizontal"

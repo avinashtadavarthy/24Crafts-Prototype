@@ -18,7 +18,7 @@
     <TextView
         android:id="@+id/refandearntext"
         android:layout_marginTop="15dp"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:layout_below="@id/refandearnimage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,14 +29,14 @@
         android:layout_marginTop="15dp"
         android:layout_width="180dp"
         android:id="@+id/refcode"
-        android:layout_marginBottom="10sp"
-        android:layout_height="30sp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="30dp"
         android:layout_below="@id/refandearntext"
         android:layout_centerHorizontal="true"/>
 
 
     <LinearLayout
-        android:layout_marginTop="30sp"
+        android:layout_marginTop="30dp"
         android:onClick="shareIntent"
         android:background="@drawable/border"
         android:layout_centerHorizontal="true"
@@ -47,8 +47,8 @@
 
     <TextView
         android:gravity="center"
-        android:paddingLeft="10sp"
-        android:paddingRight="10sp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/refcode"

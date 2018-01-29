@@ -24,21 +24,21 @@
            android:id="@+id/directoryViewPager"
            android:layout_width="match_parent"
            android:layout_height="250dp"
-           android:layout_marginBottom="20sp"/>
+           android:layout_marginBottom="20dp"/>
 
        <!--<android.support.v7.widget.RecyclerView
-           android:layout_marginTop="10sp"
+           android:layout_marginTop="10dp"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:id="@+id/rv"/>-->
                   <GridView
-                      android:padding="5sp"
-                      android:horizontalSpacing="10sp"
-                      android:verticalSpacing="10sp"
+                      android:padding="5dp"
+                      android:horizontalSpacing="10dp"
+                      android:verticaldSpacing="10dp"
                       android:gravity="center"
                       android:numColumns="3"
                       android:id="@+id/gv"
-                      android:layout_marginTop="10sp"
+                      android:layout_marginTop="10dp"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"/>
 

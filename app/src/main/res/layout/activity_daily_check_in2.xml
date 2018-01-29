@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="DAY 1"
-        android:textSize="25sp"
+        android:textSize="25dp"
         android:gravity="center_horizontal"/>
 
 
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="16 Coins"
-        android:textSize="25sp"
+        android:textSize="25dp"
         android:id="@+id/startext"
         android:layout_marginLeft="20dp" />
 
@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/startext"
-        android:textSize="18sp"
+        android:textSize="18dp"
         android:text="Gain more coins by checking in everyday"
         android:id="@+id/starsentencetext"
         android:gravity="center_horizontal"/>

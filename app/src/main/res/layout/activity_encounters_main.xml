@@ -31,7 +31,7 @@
          />
 
     <LinearLayout
-        android:padding="5sp"
+        android:padding="5dp"
         android:background="@drawable/bg_gradient_reverse"
         android:id="@+id/rowOfIcons"
         android:layout_alignParentBottom="true"
@@ -50,20 +50,20 @@
             android:scaleX="0.9"
             android:scaleY="0.9"
             android:layout_weight="1"
-            android:layout_height="30sp" />
+            android:layout_height="30dp" />
 
         <ImageView
             android:src="@drawable/undo75"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="30sp" />
+            android:layout_height="30dp" />
 
 
         <ImageView
             android:src="@drawable/close_envelope5"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="30sp" />
+            android:layout_height="30dp" />
 
 
 
@@ -74,7 +74,7 @@
             android:scaleY="1.1"
             android:scaleX="1.1"
             android:layout_weight="1"
-            android:layout_height="30sp" />
+            android:layout_height="30dp" />
 
 
     </LinearLayout>

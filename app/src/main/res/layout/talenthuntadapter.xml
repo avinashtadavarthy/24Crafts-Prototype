@@ -9,7 +9,7 @@
     app:cardElevation="5dp"
     android:layout_height="wrap_content"
     android:id="@+id/overall"
-    android:layout_marginBottom="5sp">
+    android:layout_marginBottom="5dp">
 
 <RelativeLayout
     android:orientation="vertical"
@@ -24,7 +24,7 @@
         tools:text="HHHHHHH"
         android:layout_alignParentTop="true"
         android:textColor="#FFFFFF"
-        android:textSize="40sp"
+        android:textSize="40dp"
         android:fontFamily="cursive"
         android:id="@+id/craftname"/>
 
@@ -37,26 +37,26 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5sp"
+        android:layout_margin="5dp"
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/pic1"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:layout_margin="10sp"/>
+            android:layout_margin="10dp"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/pic2"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:layout_margin="10sp"/>
+            android:layout_margin="10dp"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/pic3"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:layout_margin="10sp"/>
+            android:layout_margin="10dp"/>
 
     </LinearLayout>
 

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         app:tabMode="fixed"
         android:background="#212121"
-        android:elevation="5sp"
+        android:elevation="5dp"
         app:tabGravity="fill"/>
 
     <android.support.v4.view.ViewPager

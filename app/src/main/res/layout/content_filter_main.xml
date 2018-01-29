@@ -14,32 +14,32 @@
         android:id="@+id/image_preview_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10sp"
+        android:paddingTop="10dp"
         android:background="#000000"
-        android:paddingBottom="10sp">
+        android:paddingBottom="10dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image_preview"
         android:layout_width="match_parent"
-        android:layout_height="360sp"
+        android:layout_height="360dp"
         android:scaleType="centerCrop"
         android:src="@drawable/com_facebook_profile_picture_blank_square"/>
 
         <ProgressBar
             android:id="@+id/loadimageprogress"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:indeterminate="true"
             android:indeterminateTint="#000000"
             android:layout_centerInParent="true"
-            android:elevation="15sp" />
+            android:elevation="15dp" />
 
     </RelativeLayout>
 
     <com.twenty.four.crafts.registration.filter.utils.NonSwipeableViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="100sp"
+        android:layout_height="100dp"
         android:layout_above="@+id/tabs"
         android:layout_below="@+id/image_preview_layout"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
@@ -47,7 +47,7 @@
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="50sp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         app:tabGravity="fill"
         app:tabMode="fixed" />

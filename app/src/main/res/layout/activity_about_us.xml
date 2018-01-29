@@ -17,10 +17,10 @@
 
             <ImageButton
                 android:id="@+id/profile_back2"
-                android:layout_width="25sp"
+                android:layout_width="25dp"
                 android:layout_height="?attr/actionBarSize"
-                android:paddingTop="15sp"
-                android:paddingBottom="15sp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
                 android:src="@drawable/back"
                 android:scaleType="centerCrop"
                 android:tint="#ffffff"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/profile_back2"
                 android:text="About Us"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:gravity="center_vertical"/>
 
 
@@ -51,9 +51,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:textSize="15sp"
-        android:padding="16sp"
-        android:layout_marginTop="5sp"
+        android:textSize="15dp"
+        android:padding="16dp"
+        android:layout_marginTop="5dp"
         android:text="Privacy Policy"
         android:textColor="#ffffff"
         android:background="?android:attr/selectableItemBackground"/>
@@ -63,8 +63,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:textSize="15sp"
-        android:padding="16sp"
+        android:textSize="15dp"
+        android:padding="16dp"
         android:text="Terms and Conditions"
         android:textColor="#ffffff"
         android:background="?android:attr/selectableItemBackground"/>
@@ -74,7 +74,7 @@
             android:id="@+id/website"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16sp"
+            android:padding="16dp"
             android:background="?android:attr/selectableItemBackground"
             android:orientation="vertical">
 
@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:text="Website"
                 android:textColor="#ffffff"/>
 
@@ -98,7 +98,7 @@
         android:id="@+id/copy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16sp"
+        android:padding="16dp"
         android:background="?android:attr/selectableItemBackground"
         android:orientation="vertical">
 
@@ -106,7 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:text="Copyright 2017 ©"
             android:textColor="#ffffff"/>
 
@@ -123,8 +123,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:textSize="15sp"
-        android:padding="16sp"
+        android:textSize="15dp"
+        android:padding="16dp"
         android:text="Change Log"
         android:textColor="#ffffff"
         android:background="?android:attr/selectableItemBackground"/>

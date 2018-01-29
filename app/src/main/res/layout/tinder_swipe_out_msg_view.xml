@@ -11,6 +11,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
         android:src="@drawable/ic_cancel"
-        android:textSize="32sp"
+        android:textSize="32dp"
         android:textStyle="bold" />
 </LinearLayout>
