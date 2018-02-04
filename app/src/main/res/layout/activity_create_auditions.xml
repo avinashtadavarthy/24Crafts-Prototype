@@ -32,7 +32,7 @@
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
                         android:background="#30ffffff"
-                        android:src="@drawable/logo"
+                        android:src="@drawable/logo169"
                         app:layout_constraintDimensionRatio="H,16:9"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
@@ -43,13 +43,15 @@
                     android:id="@+id/edit_aud_image"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_margin="10dp"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.6"
                     android:elevation="10dp"
                     android:src="@drawable/edit_profile"
                     app:civ_border_color="#50000000"
-                    app:civ_border_width="1dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"/>
+                    app:civ_border_width="1dp" />
 
                 <ProgressBar
                     android:id="@+id/loadimageprogress"
