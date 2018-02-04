@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
@@ -31,6 +32,9 @@ public class EncountersMain extends android.support.v4.app.Fragment {
     LinearLayout row;
 
 
+    ImageView forbiddenMark,undoButton,starInEncounters,closeEnvelope;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,6 +45,13 @@ public class EncountersMain extends android.support.v4.app.Fragment {
         row = myView.findViewById(R.id.rowOfIcons);
 
         User.getInstance().navbarpos = 0;
+
+        forbiddenMark = myView.findViewById(R.id.forbiddenMark);
+        undoButton = myView.findViewById(R.id.undoButton);
+        starInEncounters = myView.findViewById(R.id.starInEncounters);
+        closeEnvelope = myView.findViewById(R.id.closeEnvelope);
+
+
 
         progressBar = (ProgressBar) myView.findViewById(R.id.activity_main_progress_bar);
 
@@ -76,6 +87,31 @@ public class EncountersMain extends android.support.v4.app.Fragment {
             @Override
             public void onCardClicked(int index) {
                 Log.d("CardStackView", "onCardClicked: " + index);
+            }
+        });
+
+
+
+
+        forbiddenMark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    swipeLeft();
+            }
+        });
+
+
+        undoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    reverse();
+            }
+        });
+
+        starInEncounters.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    swipeRight();
             }
         });
         reload();

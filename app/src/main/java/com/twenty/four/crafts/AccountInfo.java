@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.twenty.four.crafts.app_startup.Login;
+import com.twenty.four.crafts.registration.StartingScreen;
 
 public class AccountInfo extends AppCompatActivity {
 
@@ -17,6 +19,9 @@ public class AccountInfo extends AppCompatActivity {
     TextView forgotPassword;
     TextView signout;
     Toolbar toolbar;
+
+    String dialogtext,dialogbuttontext;
+    int emailFound = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +91,40 @@ public class AccountInfo extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),ForgotPassword.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(getApplicationContext(),ForgotPassword.class);
+                startActivity(intent);*/
+
+
+                if(emailFound == 0)
+                {
+                    dialogtext = getString(R.string.unreg_email_text);
+                    dialogbuttontext = "REGISTER";
+                }
+
+                else
+                {
+                    dialogtext = getString(R.string.reg_email_text);
+                    dialogbuttontext = "OK";
+                }
+
+                AlertDialog dialog = new AlertDialog.Builder(AccountInfo.this).setMessage(dialogtext).
+                        setPositiveButton(dialogbuttontext, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                if(emailFound == 0)
+                                {
+                                    Intent intent = new Intent(AccountInfo.this, StartingScreen.class);
+                                    startActivity(intent);
+                                }
+
+                                else
+                                    dialogInterface.cancel();
+                            }
+                        })
+                        .show();
+                TextView textView = (TextView) dialog.findViewById(android.R.id.message);
+                textView.setGravity(Gravity.LEFT);
+                textView.setTextSize(15);
             }
         });
 

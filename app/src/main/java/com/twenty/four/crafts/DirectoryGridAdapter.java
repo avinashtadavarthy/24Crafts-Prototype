@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -67,7 +66,8 @@ public class DirectoryGridAdapter extends BaseAdapter{
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Toast.makeText(context, "You Clicked "+i, Toast.LENGTH_LONG).show();
+               // Toast.makeText(context, "You Clicked "+i, Toast.LENGTH_LONG).show();
+
             }
         });
 

@@ -59,6 +59,14 @@ public class Settings extends AppCompatActivity {
 
         } else if(type.equals("clients")) {
             //stuff
+            verify.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(),VerifyYourself.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.right_enter, R.anim.left_out);
+                }
+            });
         }
 
         morecoins.setOnClickListener(new View.OnClickListener() {
