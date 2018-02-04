@@ -269,6 +269,12 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
         //instagram signin integration
         login_for_instagram = (Button) findViewById(R.id.login_for_instagram);
+        login_for_instagram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login_for_instagram.setBackgroundResource(R.drawable.round_card_insta);
+            }
+        });
 
     }
 
@@ -278,6 +284,8 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
         switch (v.getId()) {
             case R.id.bn_login:
+
+                google.setBackgroundResource(R.drawable.round_card_google);
 
                 if (googleApiClient != null && googleApiClient.isConnected()) {
 
@@ -355,6 +363,8 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
     //facebook login
 
     public void fbLogin(View view) {
+
+        facebook.setBackgroundResource(R.drawable.round_card_fb);
 
         if(AccessToken.getCurrentAccessToken()!=null) {
             LoginManager.getInstance().logOut();

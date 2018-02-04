@@ -58,7 +58,6 @@
                 android:textAllCaps="false"
                 android:fontFamily="sans-serif-condensed"
                 android:gravity="center"
-                android:background="@drawable/round_card"
                 style="?android:attr/borderlessButtonStyle"/>
 
     </LinearLayout>
@@ -92,7 +91,6 @@
                 android:textAllCaps="false"
                 android:fontFamily="sans-serif-condensed"
                 android:gravity="center"
-                android:background="@drawable/round_card"
                 style="?android:attr/borderlessButtonStyle"/>
 
         <TextView
@@ -130,7 +128,6 @@
                 android:textAllCaps="false"
                 android:fontFamily="sans-serif-condensed"
                 android:gravity="center"
-                android:background="@drawable/round_card"
                 style="?android:attr/borderlessButtonStyle"/>
 
             <TextView

@@ -46,7 +46,6 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true"
                     android:layout_margin="10dp"
-                    android:adjustViewBounds="true"
                     android:alpha="0.6"
                     android:elevation="10dp"
                     android:src="@drawable/edit_profile"
@@ -142,7 +141,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="#000000"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
                     <Button
                         android:id="@+id/bn2"
@@ -156,7 +155,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="#000000"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
 
                     <Button
@@ -171,7 +170,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="#000000"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
                     <Button
                         android:id="@+id/bn4"
@@ -185,7 +184,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="#000000"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
@@ -207,7 +206,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="#000000"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
                     <Button
                         android:id="@+id/bn6"
@@ -221,7 +220,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="#000000"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
                     <Button
                         android:id="@+id/bn7"
@@ -235,7 +234,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="#000000"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
                     <Button
                         android:id="@+id/bn8"
@@ -249,7 +248,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="false"
                         android:textColor="#000000"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 

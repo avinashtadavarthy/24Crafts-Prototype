@@ -37,7 +37,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
     public void onBindViewHolder(FeedViewHolder holder, int position) {
 
         FeedItem current = feedItems.get(position);
-        holder.date.setText(current.getPubDate());
+        /*holder.date.setText(current.getPubDate());*/
         holder.title.setText(current.getTitle());
         holder.description.setText(current.getDecription());
         //Picasso.with(context).load(current.getThumbnailURL()).into(holder.thumbnail);
@@ -56,7 +56,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         public FeedViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.largeTextView);
-            date = itemView.findViewById(R.id.smallTextView);
+            /*date = itemView.findViewById(R.id.smallTextView);*/
             description = itemView.findViewById(R.id.mediumTextView);
             thumbnail = itemView.findViewById(R.id.imageView);
         }

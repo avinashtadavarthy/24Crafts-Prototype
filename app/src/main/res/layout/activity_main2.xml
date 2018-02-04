@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:openDrawer="start"
-    android:background="@mipmap/blur">
+    android:background="@drawable/bg_gradient">
 
     <include
         layout="@layout/app_bar_main2"

@@ -26,18 +26,17 @@ import javax.xml.parsers.DocumentBuilderFactory;
 public class ReadRss extends AsyncTask<Void,Void,Void> {
 
     Context context;
-    String address="http://www.sciencemag.org/rss/news_current.xml";
-
-    //String address = "http://cinema.dinakaran.com/Rss/RssBollywood.aspx";
     URL url;
     ProgressDialog progressDialog;
     ArrayList<FeedItem> feedItems;
     RecyclerView recyclerView;
+    String address;
 
-    ReadRss(Context context,RecyclerView recyclerView)
+    ReadRss(Context context, RecyclerView recyclerView, String chosenURL)
     {
         this.recyclerView = recyclerView;
         this.context = context;
+        this.address = chosenURL;
         progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Loading...");
     }
@@ -88,11 +87,11 @@ public class ReadRss extends AsyncTask<Void,Void,Void> {
                             feedItem.setDecription(current.getTextContent());
                         }
 
-                        else if(current.getNodeName().equalsIgnoreCase("pubDate"))
+                       /* else if(current.getNodeName().equalsIgnoreCase("pubDate"))
                         {
                             feedItem.setPubDate(current.getTextContent());
                         }
-
+*/
                         else if(current.getNodeName().equalsIgnoreCase("link"))
                         {
                             feedItem.setLink(current.getTextContent());

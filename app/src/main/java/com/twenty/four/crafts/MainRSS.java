@@ -13,18 +13,24 @@ public class MainRSS extends android.support.v4.app.Fragment {
 
     View myView;
 
+    String chosenURL;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.rss_main,container,false);
+        Bundle bundle = this.getArguments();
+
+        if(this.getArguments() != null)
+        chosenURL = bundle.getString("chosenURL");
 
         User.getInstance().navbarpos = 0;
 
         getActivity().setTitle("Newsfeed");
         RecyclerView recyclerView = myView.findViewById(R.id.recyclerview);
 
-        ReadRss readRss = new ReadRss(getContext(),recyclerView);
+        ReadRss readRss = new ReadRss(getContext(), recyclerView, chosenURL);
         readRss.execute();
 
         return myView;

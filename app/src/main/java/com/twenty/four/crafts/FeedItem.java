@@ -32,13 +32,13 @@ public class FeedItem {
         this.decription = decription;
     }
 
-    public String getPubDate() {
+   /* public String getPubDate() {
         return pubDate;
     }
 
     public void setPubDate(String pubDate) {
         this.pubDate = pubDate;
-    }
+    }*/
 
     public String getThumbnailURL() {
         return thumbnailURL;
