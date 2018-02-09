@@ -87,7 +87,7 @@ public class ClientDashboard extends Fragment {
 
     public class ClientDashboardAdapter extends FragmentStatePagerAdapter {
 
-        public String fragments [] = {"Auditions", "My Favourites", "Messages"};
+        public String fragments [] = {"Auditions", "Favourites", "Messages"};
 
         public ClientDashboardAdapter(FragmentManager supportFragmentManager, Context applicationContext) {
             super(supportFragmentManager);
