@@ -33,9 +33,10 @@
            android:id="@+id/rv"/>-->
                   <GridView
                       android:padding="5dp"
-                      android:horizontalSpacing="10dp"
-                      android:verticalSpacing="10dp"
+                      android:horizontalSpacing="20dp"
+                      android:verticalSpacing="30dp"
                       android:gravity="center"
+                      android:layout_gravity="center"
                       android:numColumns="3"
                       android:id="@+id/gv"
                       android:layout_marginTop="10dp"

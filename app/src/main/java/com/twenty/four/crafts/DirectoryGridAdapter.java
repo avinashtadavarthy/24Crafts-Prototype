@@ -1,6 +1,8 @@
 package com.twenty.four.crafts;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +61,8 @@ public class DirectoryGridAdapter extends BaseAdapter{
         holder.img=(ImageView) rowView.findViewById(R.id.imgview);
 
         holder.tv.setText(classobj.get(i).craft_name);
+        holder.tv.setTextColor(Color.WHITE);
+        holder.tv.setGravity(Gravity.CENTER);
         holder.img.setImageResource(classobj.get(i).img_id);
 
         rowView.setOnClickListener(new View.OnClickListener() {

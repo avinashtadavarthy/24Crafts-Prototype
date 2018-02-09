@@ -12,6 +12,7 @@ import com.twenty.four.crafts.registration.Verification;
 public class Settings extends AppCompatActivity {
 
     LinearLayout info, verify, coinsfree, morecoins, themes, daily, contactus, aboutus;
+    View baccinfo,bverify,bfreecoins,bbuymorecoins,bthemes,bdaily;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +33,21 @@ public class Settings extends AppCompatActivity {
         contactus = (LinearLayout) findViewById(R.id.contactus);
         aboutus = (LinearLayout) findViewById(R.id.aboutus);
 
+        baccinfo = findViewById(R.id.belowaccinfo);
+        bverify = findViewById(R.id.belowverify);
+        bfreecoins = findViewById(R.id.belowfreecoins);
+        bbuymorecoins = findViewById(R.id.belowbuymorecoins);
+        bthemes = findViewById(R.id.belowthemes);
+        bdaily = findViewById(R.id.belowdaily);
+
         if(type.equals("clients")) {
             coinsfree.setVisibility(View.GONE);
             morecoins.setVisibility(View.GONE);
             daily.setVisibility(View.GONE);
+
+            bfreecoins.setVisibility(View.GONE);
+            bbuymorecoins.setVisibility(View.GONE);
+            bdaily.setVisibility(View.GONE);
         }
 
         info.setOnClickListener(new View.OnClickListener() {

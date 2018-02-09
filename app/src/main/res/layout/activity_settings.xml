@@ -30,11 +30,22 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textSize="13dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="25dp"
             android:text="Account Information"
             android:textColor="#ffffff"/>
 
+
     </LinearLayout>
+
+    <View
+        android:id="@+id/belowaccinfo"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@id/info"
+        android:background="#ffffff"
+        />
 
     <LinearLayout
         android:id="@+id/verify"
@@ -57,11 +68,22 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textSize="13dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="25dp"
             android:text="Verify Yourself"
             android:textColor="#ffffff"/>
 
     </LinearLayout>
+
+
+    <View
+        android:id="@+id/belowverify"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@id/verify"
+        android:background="#ffffff"
+        />
 
     <LinearLayout
         android:id="@+id/coinsfree"
@@ -84,12 +106,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textSize="13dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="25dp"
             android:text="Free Coins"
             android:textColor="#ffffff"/>
 
     </LinearLayout>
 
+
+
+    <View
+        android:id="@+id/belowfreecoins"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@id/coinsfree"
+        android:background="#ffffff"
+        />
 
     <LinearLayout
         android:id="@+id/morecoins"
@@ -112,13 +145,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textSize="13dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="25dp"
             android:text="Buy More Coins"
             android:textColor="#ffffff"/>
 
     </LinearLayout>
 
 
+
+    <View
+        android:id="@+id/belowbuymorecoins"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@id/morecoins"
+        android:background="#ffffff"
+        />
 
     <LinearLayout
         android:id="@+id/themes"
@@ -141,13 +184,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textSize="13dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="25dp"
             android:text="Themes"
             android:textColor="#ffffff"/>
 
     </LinearLayout>
 
 
+
+    <View
+        android:id="@+id/belowthemes"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@id/themes"
+        android:background="#ffffff"
+        />
     <LinearLayout
         android:id="@+id/daily"
         android:layout_below="@+id/themes"
@@ -168,13 +221,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textSize="13dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="25dp"
             android:text="Daily Check-In"
             android:textColor="#ffffff"/>
 
     </LinearLayout>
 
 
+
+    <View
+        android:id="@+id/belowdaily"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@id/daily"
+        android:background="#ffffff"
+        />
 
     <TextView
         android:layout_above="@+id/contactus"

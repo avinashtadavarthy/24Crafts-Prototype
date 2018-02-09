@@ -4,10 +4,14 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +35,10 @@ public class EncountersMain extends android.support.v4.app.Fragment {
     private TouristSpotCardAdapter adapter;
     LinearLayout row;
 
+    int clickStar,clickCross,swipeRighttoLike,swipelefttoDislike,undo;
+
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
 
     ImageView forbiddenMark,undoButton,starInEncounters,closeEnvelope;
 
@@ -53,6 +61,13 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
 
 
+
+        pref = getActivity().getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        editor = pref.edit();
+
+
+
+
         progressBar = (ProgressBar) myView.findViewById(R.id.activity_main_progress_bar);
 
         cardStackView = (CardStackView) myView.findViewById(R.id.activity_main_card_stack_view);
@@ -66,6 +81,31 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
             @Override
             public void onCardSwiped(SwipeDirection direction) {
+
+                getSharedPreferences();
+
+
+                if(direction.toString().equalsIgnoreCase("right"))
+                {
+                    if(swipeRighttoLike == 0)
+                    {
+                        AlertDialogSwipeRight();
+                        editor.putInt("swipeRighttoLike",1);
+                        editor.commit();
+                    }
+                }
+
+                if(direction.toString().equalsIgnoreCase("left"))
+                {
+
+                    if(swipelefttoDislike == 0)
+                    {
+                        AlertDialogSwipeLeft();
+                        editor.putInt("swipeLefttoDislike",1);
+                        editor.commit();
+                    }
+
+                }
                 Log.d("CardStackView", "onCardSwiped: " + direction.toString());
                 Log.d("CardStackView", "topIndex: " + cardStackView.getTopIndex());
                 if (cardStackView.getTopIndex() == adapter.getCount() - 5) {
@@ -96,7 +136,19 @@ public class EncountersMain extends android.support.v4.app.Fragment {
         forbiddenMark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    swipeLeft();
+
+                getSharedPreferences();
+
+                if(clickCross == 0)
+                {
+                    AlertDialogPressDislike();
+                    editor.putInt("clickCross",1);
+                    editor.commit();
+                }
+
+                else
+                    swipeLeftClick();
+
             }
         });
 
@@ -104,6 +156,16 @@ public class EncountersMain extends android.support.v4.app.Fragment {
         undoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                getSharedPreferences();
+
+                if(undo == 0)
+                {
+                    AlertDialogUndo();
+                    editor.putInt("undo",1);
+                    editor.commit();
+                }
+
+                else
                     reverse();
             }
         });
@@ -111,7 +173,19 @@ public class EncountersMain extends android.support.v4.app.Fragment {
         starInEncounters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    swipeRight();
+
+                getSharedPreferences();
+
+                if(clickStar == 0)
+                {
+                    AlertDialogPressLike();
+                    editor.putInt("clickStar",1);
+                    editor.commit();
+                }
+
+                else
+                    swipeRightClick();
+
             }
         });
         reload();
@@ -120,6 +194,14 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
 
         return myView;
+    }
+
+    private void getSharedPreferences() {
+        clickStar = pref.getInt("clickStar",0);
+        clickCross = pref.getInt("clickCross",0);
+        swipeRighttoLike = pref.getInt("swipeRighttoLike",0);
+        swipelefttoDislike = pref.getInt("swipeLefttoDislike",0);
+        undo = pref.getInt("Undo",0);
     }
 
 
@@ -281,8 +363,9 @@ public class EncountersMain extends android.support.v4.app.Fragment {
         translateY.setDuration(500);
         AnimatorSet set = new AnimatorSet();
         set.playTogether(rotation, translateX, translateY);
-
         cardStackView.swipe(SwipeDirection.Left, set);
+
+
     }
 
     public void swipeRight() {
@@ -308,10 +391,177 @@ public class EncountersMain extends android.support.v4.app.Fragment {
         set.playTogether(rotation, translateX, translateY);
 
         cardStackView.swipe(SwipeDirection.Right, set);
+
+    }
+
+    public void swipeLeftClick()
+    {
+        List<TouristSpot> spots = extractRemainingTouristSpots();
+        if (spots.isEmpty()) {
+            return;
+        }
+
+        View target = cardStackView.getTopView();
+
+        ValueAnimator rotation = ObjectAnimator.ofPropertyValuesHolder(
+                target, PropertyValuesHolder.ofFloat("rotation", -10f));
+        rotation.setDuration(200);
+        ValueAnimator translateX = ObjectAnimator.ofPropertyValuesHolder(
+                target, PropertyValuesHolder.ofFloat("translationX", 0f, -2000f));
+        ValueAnimator translateY = ObjectAnimator.ofPropertyValuesHolder(
+                target, PropertyValuesHolder.ofFloat("translationY", 0f, 500f));
+        translateX.setStartDelay(100);
+        translateY.setStartDelay(100);
+        translateX.setDuration(500);
+        translateY.setDuration(500);
+        AnimatorSet set = new AnimatorSet();
+        set.playTogether(rotation, translateX, translateY);
+        cardStackView.swipe(SwipeDirection.Left, set);
+    }
+
+    public void swipeRightClick()
+    {
+        List<TouristSpot> spots = extractRemainingTouristSpots();
+        if (spots.isEmpty()) {
+            return;
+        }
+
+        View target = cardStackView.getTopView();
+
+        ValueAnimator rotation = ObjectAnimator.ofPropertyValuesHolder(
+                target, PropertyValuesHolder.ofFloat("rotation", 10f));
+        rotation.setDuration(200);
+        ValueAnimator translateX = ObjectAnimator.ofPropertyValuesHolder(
+                target, PropertyValuesHolder.ofFloat("translationX", 0f, 2000f));
+        ValueAnimator translateY = ObjectAnimator.ofPropertyValuesHolder(
+                target, PropertyValuesHolder.ofFloat("translationY", 0f, 500f));
+        translateX.setStartDelay(100);
+        translateY.setStartDelay(100);
+        translateX.setDuration(500);
+        translateY.setDuration(500);
+        AnimatorSet set = new AnimatorSet();
+        set.playTogether(rotation, translateX, translateY);
+
+        cardStackView.swipe(SwipeDirection.Right, set);
+
     }
 
     private void reverse() {
         cardStackView.reverse();
+    }
+
+
+
+    public void AlertDialogSwipeLeft()
+    {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Not Interested?")
+                .setMessage("Are you sure you're not interested in this person")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        reverse();
+                    }
+                })
+                .show();
+    }
+
+
+
+    public void AlertDialogSwipeRight()
+    {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Like")
+                .setMessage("Swiping Right will add <name> to favourites")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        reverse();
+                    }
+                })
+                .show();
+    }
+
+
+
+    public void AlertDialogPressLike()
+    {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Like")
+                .setMessage("Clicking on the star icon will add <name> to favourites")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+                        swipeRightClick();
+
+
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .show();
+    }
+
+
+    public void AlertDialogPressDislike()
+    {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Not Interested?")
+                .setMessage("Are you sure you're not interested in this person?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        swipeLeftClick();
+
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .show();
+    }
+
+
+
+    public void AlertDialogUndo()
+    {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Undo?")
+                .setMessage("Are you sure you want to Undo your last action?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        reverse();
+
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .show();
+
     }
 
 }

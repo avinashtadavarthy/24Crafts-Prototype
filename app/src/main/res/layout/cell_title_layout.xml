@@ -20,12 +20,13 @@
         android:paddingTop="20dp">
 
         <TextView
-            android:id="@+id/title_price"
+            android:id="@+id/locationAudition"
+            android:text="AUDITION :"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:textColor="@android:color/white"
-            android:textSize="26sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/title_time_label"
@@ -60,11 +61,11 @@
 
         <ImageView
             android:id="@+id/title_from_to_dots"
-            android:layout_width="wrap_content"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_marginEnd="10dp"
-            android:src="@drawable/from_to_purple" />
+            android:src="@drawable/location" />
 
         <TextView
             android:id="@+id/title_from_address"

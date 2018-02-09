@@ -9,68 +9,67 @@ import java.util.ArrayList;
  */
 public class Item {
 
-    private String price;
-    private String pledgePrice;
-    private String fromAddress;
-    private String toAddress;
-    private int requestsCount;
+    private String location;
+    private String auditionDate;
+    private String auditionTime;
+    private String projectName;
+    private String projectType;
+    private String projectDescription;
     private String date;
-    private String time;
+
 
     private View.OnClickListener requestBtnClickListener;
 
     public Item() {
     }
 
-    public Item(String price, String pledgePrice, String fromAddress, String toAddress, int requestsCount, String date, String time) {
-        this.price = price;
-        this.pledgePrice = pledgePrice;
-        this.fromAddress = fromAddress;
-        this.toAddress = toAddress;
-        this.requestsCount = requestsCount;
+    public Item(String location, String auditionDate, String auditionTime, String projectName, String projectType, String description, String date) {
+
+        this.location = location;
+        this.auditionDate = auditionDate;
+        this.auditionTime = auditionTime;
+        this.projectName = projectName;
+        this.projectType = projectType;
+        this.projectDescription = description;
         this.date = date;
-        this.time = time;
+
     }
 
-    public String getPrice() {
-        return price;
+    public String getLocation() {
+        return location;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public String getPledgePrice() {
-        return pledgePrice;
+    public String getAuditionDate() {
+        return auditionDate;
     }
 
-    public void setPledgePrice(String pledgePrice) {
-        this.pledgePrice = pledgePrice;
+    public void setAuditionDate(String auditionDate) {
+        this.auditionDate = auditionDate;
     }
 
-    public String getFromAddress() {
-        return fromAddress;
+    public String getAuditionTime() {
+        return auditionTime;
     }
 
-    public void setFromAddress(String fromAddress) {
-        this.fromAddress = fromAddress;
+    public void setAuditionTime(String auditionTime) {
+        this.auditionTime = auditionTime;
     }
 
-    public String getToAddress() {
-        return toAddress;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setToAddress(String toAddress) {
-        this.toAddress = toAddress;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
-    public int getRequestsCount() {
-        return requestsCount;
-    }
+    public String getProjectType() { return projectType;}
 
-    public void setRequestsCount(int requestsCount) {
-        this.requestsCount = requestsCount;
-    }
+    public void setProjectType() { this.projectType = projectType; }
 
     public String getDate() {
         return date;
@@ -78,14 +77,6 @@ public class Item {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 
     public View.OnClickListener getRequestBtnClickListener() {
@@ -96,7 +87,7 @@ public class Item {
         this.requestBtnClickListener = requestBtnClickListener;
     }
 
-    @Override
+   /* @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -127,17 +118,18 @@ public class Item {
         result = 31 * result + (time != null ? time.hashCode() : 0);
         return result;
     }
-
+*/
     /**
      * @return List of elements prepared for tests
      */
     public static ArrayList<Item> getTestingList() {
         ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item("$14", "$270", "W 79th St, NY, 10024", "W 139th St, NY, 10030", 3, "TODAY", "05:10 PM"));
-        items.add(new Item("$23", "$116", "W 36th St, NY, 10015", "W 114th St, NY, 10037", 10, "TODAY", "11:10 AM"));
-        items.add(new Item("$63", "$350", "W 36th St, NY, 10029", "56th Ave, NY, 10041", 0, "TODAY", "07:11 PM"));
-        items.add(new Item("$19", "$150", "12th Ave, NY, 10012", "W 57th St, NY, 10048", 8, "TODAY", "4:15 AM"));
-        items.add(new Item("$5", "$300", "56th Ave, NY, 10041", "W 36th St, NY, 10029", 0, "TODAY", "06:15 PM"));
+        items.add(new Item("Chennai", "20/01/2017", "5 PM", "","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
+        items.add(new Item("Chennai", "20/01/2017", "5 PM", "","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
+        items.add(new Item("Chennai", "20/01/2017", "5 PM", "","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
+        items.add(new Item("Chennai", "20/01/2017", "5 PM", "","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
+        items.add(new Item("Chennai", "20/01/2017", "5 PM", "","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
+        items.add(new Item("Chennai", "20/01/2017", "5 PM", "","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
         return items;
 
     }

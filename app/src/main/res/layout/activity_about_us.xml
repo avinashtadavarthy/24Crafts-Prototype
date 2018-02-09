@@ -49,25 +49,45 @@
     <TextView
         android:id="@+id/privacy"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_gravity="center_vertical"
         android:textSize="15dp"
         android:padding="16dp"
+        android:gravity="center_vertical"
         android:layout_marginTop="5dp"
         android:text="Privacy Policy"
         android:textColor="#ffffff"
         android:background="?android:attr/selectableItemBackground"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#ffffff"
+        />
+
+
     <TextView
         android:id="@+id/tandc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_gravity="center_vertical"
         android:textSize="15dp"
+        android:gravity="center_vertical"
         android:padding="16dp"
         android:text="Terms and Conditions"
         android:textColor="#ffffff"
         android:background="?android:attr/selectableItemBackground"/>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#ffffff"
+        />
 
 
         <LinearLayout
@@ -94,6 +114,14 @@
                 android:textColor="#80ffffff" />
         </LinearLayout>
 
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#ffffff"
+        />
     <LinearLayout
         android:id="@+id/copy"
         android:layout_width="match_parent"
@@ -107,7 +135,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textSize="15dp"
-            android:text="Copyright 2017 ©"
+            android:text="Copyright© 2017"
             android:textColor="#ffffff"/>
 
         <TextView
@@ -118,15 +146,35 @@
             android:textColor="#80ffffff" />
     </LinearLayout>
 
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#ffffff"
+        />
+
     <TextView
         android:id="@+id/change_log"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
         android:textSize="15dp"
         android:padding="16dp"
         android:text="Change Log"
         android:textColor="#ffffff"
         android:background="?android:attr/selectableItemBackground"/>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#ffffff"
+        />
 
 </LinearLayout>
