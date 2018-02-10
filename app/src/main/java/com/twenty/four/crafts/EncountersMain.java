@@ -35,7 +35,9 @@ public class EncountersMain extends android.support.v4.app.Fragment {
     private TouristSpotCardAdapter adapter;
     LinearLayout row;
 
-    int clickStar,clickCross,swipeRighttoLike,swipelefttoDislike,undo;
+    int right,left;
+    int undo;
+    //int clickStar,clickCross,swipeRighttoLike,swipelefttoDislike,undo;
 
     SharedPreferences pref;
     SharedPreferences.Editor editor;
@@ -87,21 +89,36 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
                 if(direction.toString().equalsIgnoreCase("right"))
                 {
-                    if(swipeRighttoLike == 0)
+                    /*if(swipeRighttoLike == 0 )
                     {
                         AlertDialogSwipeRight();
                         editor.putInt("swipeRighttoLike",1);
+                        editor.commit();
+                    }*/
+
+
+                    if(right==0)
+                    {
+                        AlertDialogSwipeRight();
+                        editor.putInt("right",1);
                         editor.commit();
                     }
                 }
 
                 if(direction.toString().equalsIgnoreCase("left"))
                 {
-
+/*
                     if(swipelefttoDislike == 0)
                     {
                         AlertDialogSwipeLeft();
                         editor.putInt("swipeLefttoDislike",1);
+                        editor.commit();
+                    }*/
+
+                    if(left==0)
+                    {
+                        AlertDialogSwipeLeft();
+                        editor.putInt("left",1);
                         editor.commit();
                     }
 
@@ -137,7 +154,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View view) {
 
-                getSharedPreferences();
+                /*getSharedPreferences();
 
                 if(clickCross == 0)
                 {
@@ -147,7 +164,20 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                 }
 
                 else
-                    swipeLeftClick();
+                    swipeLeft();*/
+
+                getSharedPreferences();
+
+                if(left == 0)
+                {
+                    swipeLeft();
+                    AlertDialogSwipeLeft();
+                    editor.putInt("left",1);
+                    editor.commit();
+                }
+
+                else
+                    swipeLeft();
 
             }
         });
@@ -174,7 +204,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View view) {
 
-                getSharedPreferences();
+             /*   getSharedPreferences();
 
                 if(clickStar == 0)
                 {
@@ -184,8 +214,21 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                 }
 
                 else
-                    swipeRightClick();
+                    swipeRight();
 
+
+*/
+
+             if(right == 0)
+             {
+                 swipeRight();
+                 AlertDialogSwipeRight();
+                 editor.putInt("right",1);
+                 editor.commit();
+             }
+
+             else
+                 swipeRight();
             }
         });
         reload();
@@ -197,11 +240,15 @@ public class EncountersMain extends android.support.v4.app.Fragment {
     }
 
     private void getSharedPreferences() {
-        clickStar = pref.getInt("clickStar",0);
+        /*clickStar = pref.getInt("clickStar",0);
         clickCross = pref.getInt("clickCross",0);
         swipeRighttoLike = pref.getInt("swipeRighttoLike",0);
         swipelefttoDislike = pref.getInt("swipeLefttoDislike",0);
-        undo = pref.getInt("Undo",0);
+        undo = pref.getInt("Undo",0);*/
+
+        right = pref.getInt("right",0);
+        left = pref.getInt("left",0);
+        undo = pref.getInt("undo",0);
     }
 
 
@@ -394,57 +441,6 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
     }
 
-    public void swipeLeftClick()
-    {
-        List<TouristSpot> spots = extractRemainingTouristSpots();
-        if (spots.isEmpty()) {
-            return;
-        }
-
-        View target = cardStackView.getTopView();
-
-        ValueAnimator rotation = ObjectAnimator.ofPropertyValuesHolder(
-                target, PropertyValuesHolder.ofFloat("rotation", -10f));
-        rotation.setDuration(200);
-        ValueAnimator translateX = ObjectAnimator.ofPropertyValuesHolder(
-                target, PropertyValuesHolder.ofFloat("translationX", 0f, -2000f));
-        ValueAnimator translateY = ObjectAnimator.ofPropertyValuesHolder(
-                target, PropertyValuesHolder.ofFloat("translationY", 0f, 500f));
-        translateX.setStartDelay(100);
-        translateY.setStartDelay(100);
-        translateX.setDuration(500);
-        translateY.setDuration(500);
-        AnimatorSet set = new AnimatorSet();
-        set.playTogether(rotation, translateX, translateY);
-        cardStackView.swipe(SwipeDirection.Left, set);
-    }
-
-    public void swipeRightClick()
-    {
-        List<TouristSpot> spots = extractRemainingTouristSpots();
-        if (spots.isEmpty()) {
-            return;
-        }
-
-        View target = cardStackView.getTopView();
-
-        ValueAnimator rotation = ObjectAnimator.ofPropertyValuesHolder(
-                target, PropertyValuesHolder.ofFloat("rotation", 10f));
-        rotation.setDuration(200);
-        ValueAnimator translateX = ObjectAnimator.ofPropertyValuesHolder(
-                target, PropertyValuesHolder.ofFloat("translationX", 0f, 2000f));
-        ValueAnimator translateY = ObjectAnimator.ofPropertyValuesHolder(
-                target, PropertyValuesHolder.ofFloat("translationY", 0f, 500f));
-        translateX.setStartDelay(100);
-        translateY.setStartDelay(100);
-        translateX.setDuration(500);
-        translateY.setDuration(500);
-        AnimatorSet set = new AnimatorSet();
-        set.playTogether(rotation, translateX, translateY);
-
-        cardStackView.swipe(SwipeDirection.Right, set);
-
-    }
 
     private void reverse() {
         cardStackView.reverse();
@@ -507,7 +503,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                     public void onClick(DialogInterface dialog, int which) {
 
                         dialog.dismiss();
-                        swipeRightClick();
+                        swipeRight();
 
 
                     }
@@ -529,7 +525,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        swipeLeftClick();
+                        swipeLeft();
 
                     }
                 })

@@ -14,25 +14,37 @@
         android:background="@color/bgTitleLeft"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:paddingBottom="20dp"
+        android:paddingBottom="10dp"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="20dp">
+        android:paddingRight="5dp"
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/Audition"
-            android:text="AUDITION :"
-            android:layout_width="wrap_content"
+            android:text="AUDITION"
+
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:textColor="@android:color/white"
             android:textSize="10sp" />
 
+        <ImageView
+            android:id="@+id/underlineAudition"
+            android:layout_width="50dp"
+            android:layout_height="1dp"
+            android:layout_below="@id/Audition"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="1dp"
+            android:alpha="0.6"
+            android:src="@color/contentDividerLine" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/locationAudition"
-            android:textSize="13dp"
+            android:text="Vadapalani, Chennai"
+            android:textSize="13sp"
             android:textColor="#ffffff"
             android:layout_alignParentBottom="true" />
 
@@ -41,15 +53,18 @@
             android:layout_above="@id/timeAudition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="left"
+            android:text="21 JAN 2018"
             android:textColor="@android:color/white"
-            android:textSize="10sp" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/timeAudition"
             android:layout_above="@id/locationAudition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="5:00 PM"
             android:textColor="@android:color/white"
             android:textSize="10sp" />
 

@@ -16,6 +16,7 @@
         android:paddingTop="7dp">
 
         <TextView
+            android:id="@+id/innerProjectname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -196,6 +197,17 @@
             android:layout_marginTop="9dp"
             android:src="@color/contentDividerLine" />
 
+        <TextView
+            android:id="@+id/content_from_to_placeholder"
+            style="@style/ContentMainBadgeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_alignParentStart="true"
+            android:text="APPLICATION OPEN: "
+            android:layout_marginBottom="5dp"/>
+
         <!-- addresses part -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -285,6 +297,132 @@
             </RelativeLayout>
 
         </LinearLayout>
+
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="9dp"
+            android:src="@color/contentDividerLine" />
+
+
+        <TextView
+            android:id="@+id/content_audition_on"
+            style="@style/ContentMainBadgeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:text="AUDITION ON: "
+            android:layout_marginBottom="5dp"/>
+
+        <!-- addresses part -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/content_audition_on_date_time"
+                    style="@style/ContentMainBadgeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="DATE/TIME" />
+
+                <TextView
+                    android:id="@+id/content_audition_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/content_audition_on_date_time"
+                    android:layout_below="@id/content_audition_on_date_time"
+                    android:text="12/03/2018"
+                    android:textColor="@color/mainTextColor"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/content_audition_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/content_audition_date"
+                    android:layout_below="@id/content_audition_date"
+                    android:text="5 PM"
+                    android:textColor="@color/mainTextColor"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <!--
+
+                                <TextView
+                                    android:id="@+id/content_from_address_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignStart="@id/content_from_address_1"
+                                    android:layout_below="@id/content_from_address_1"
+                                    android:text="@string/content_from2_mock"
+                                    android:textColor="@color/mainTextColor"
+                                    android:textSize="14sp" />
+                -->
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/content_audition_on_location"
+                    style="@style/ContentMainBadgeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="LOCATION" />
+
+                <TextView
+                    android:id="@+id/content_audition_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/content_audition_on_location"
+                    android:layout_below="@id/content_audition_on_location"
+                    android:text="Chennai"
+                    android:textColor="@color/mainTextColor"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!--<TextView-->
+                <!--android:id="@+id/content_to_address_2"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignStart="@id/content_to_address_1"-->
+                <!--android:layout_below="@id/content_to_address_1"-->
+                <!--android:text="@string/content_to2_mock"-->
+                <!--android:textColor="@color/mainTextColor"-->
+                <!--android:textSize="14sp" />-->
+
+                <!--<ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/arrow" />-->
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
 
         <!-- divider line -->
         <ImageView

@@ -15,15 +15,26 @@ public class Item {
     private String projectName;
     private String projectType;
     private String projectDescription;
-    private String date;
 
 
-    private View.OnClickListener requestBtnClickListener;
+    private String innerImageURL;
+
+    private String innerPhoneNumber;
+    private String innerName;
+    private String innerApplnFrom;
+    private String innerApplnTo;
+    private String innerAuditionLocation;
+    private String innerProjectDescription;
+
 
     public Item() {
     }
 
-    public Item(String location, String auditionDate, String auditionTime, String projectName, String projectType, String description, String date) {
+    public Item(String location, String auditionDate, String auditionTime, String projectName, String projectType, String description,
+                String innerPhoneNumber,
+                String innerName,String innerApplnFrom,String innerApplnTo,
+                String innerAuditionLocation, String innerProjectDescription) {
+
 
         this.location = location;
         this.auditionDate = auditionDate;
@@ -31,9 +42,86 @@ public class Item {
         this.projectName = projectName;
         this.projectType = projectType;
         this.projectDescription = description;
-        this.date = date;
+
+        this.innerApplnFrom = innerApplnFrom;
+        this.innerApplnTo = innerApplnTo;
+
+        this.innerPhoneNumber = innerPhoneNumber;
+        this.innerName = innerName;
+
+        this.innerAuditionLocation = innerAuditionLocation;
+        this.innerProjectDescription = innerProjectDescription;
 
     }
+
+
+    public void setProjectType(String projectType) {
+        this.projectType = projectType;
+    }
+
+    public String getInnerImageURL() {
+        return innerImageURL;
+    }
+
+    public void setInnerImageURL(String innerImageURL) {
+        this.innerImageURL = innerImageURL;
+    }
+
+
+
+    public String getInnerPhoneNumber() {
+        return innerPhoneNumber;
+    }
+
+    public void setInnerPhoneNumber(String innerPhoneNumber) {
+        this.innerPhoneNumber = innerPhoneNumber;
+    }
+
+    public String getInnerName() {
+        return innerName;
+    }
+
+    public void setInnerName(String innerName) {
+        this.innerName = innerName;
+    }
+
+    public String getInnerApplnFrom() {
+        return innerApplnFrom;
+    }
+
+    public void setInnerApplnFrom(String innerApplnFrom) {
+        this.innerApplnFrom = innerApplnFrom;
+    }
+
+    public String getInnerApplnTo() {
+        return innerApplnTo;
+    }
+
+    public void setInnerApplnTo(String innerApplnTo) {
+        this.innerApplnTo = innerApplnTo;
+    }
+
+
+
+    public String getInnerAuditionLocation() {
+        return innerAuditionLocation;
+    }
+
+    public void setInnerAuditionLocation(String innerAuditionLocation) {
+        this.innerAuditionLocation = innerAuditionLocation;
+    }
+
+    public String getInnerProjectDescription() {
+        return innerProjectDescription;
+    }
+
+    public void setInnerProjectDescription(String innerProjectDescription) {
+        this.innerProjectDescription = innerProjectDescription;
+    }
+
+
+    private View.OnClickListener requestBtnClickListener;
+
 
     public String getLocation() {
         return location;
@@ -71,13 +159,6 @@ public class Item {
 
     public void setProjectType() { this.projectType = projectType; }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 
     public String getProjectDescription() { return projectDescription;}
 
@@ -128,12 +209,18 @@ public class Item {
      */
     public static ArrayList<Item> getTestingList() {
         ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item("Chennai", "20/01/2017", "5 PM", "Chennai Silks","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
-        items.add(new Item("Chennai", "20/01/2017", "5 PM", "Chennai Silks","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
-        items.add(new Item("Chennai", "20/01/2017", "5 PM", "Chennai Silks","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
-        items.add(new Item("Chennai", "20/01/2017", "5 PM", "Chennai Silks","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
-        items.add(new Item("Chennai", "20/01/2017", "5 PM", "Chennai Silks","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
-        items.add(new Item("Chennai", "20/01/2017", "5 PM", "Chennai Silks","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
+        items.add(new Item("Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film"));
+        items.add(new Item("Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application"));
+        items.add(new Item("Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition"));
+
+        items.add(new Item("Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film"));
+        items.add(new Item("Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application"));
+        items.add(new Item("Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition"));
+
+
+        items.add(new Item("Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film"));
+        items.add(new Item("Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application"));
+        items.add(new Item("Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition"));
         return items;
 
     }

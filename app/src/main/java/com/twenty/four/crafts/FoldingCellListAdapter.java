@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ramotion.foldingcell.FoldingCell;
@@ -46,6 +47,17 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
             viewHolder.projectDescription = (TextView) cell.findViewById(R.id.ProjectDescription);
             viewHolder.contentRequestBtn = (TextView) cell.findViewById(R.id.content_request_btn);
             viewHolder.date = (TextView) cell.findViewById(R.id.publishDate);
+            viewHolder.innerProjectName = cell.findViewById(R.id.innerProjectname);
+            viewHolder.innerImageURL = cell.findViewById(R.id.head_image);
+            viewHolder.innerName = cell.findViewById(R.id.content_name_view);
+            viewHolder.innerPhoneNumber = cell.findViewById(R.id.content_phoneno_view);
+            viewHolder.innerApplnFrom = cell.findViewById(R.id.content_from_date_1);
+            viewHolder.innerApplnTo = cell.findViewById(R.id.content_to_date_1);
+            viewHolder.innerAuditionDate = cell.findViewById(R.id.content_audition_date);
+            viewHolder.innerAuditionTime = cell.findViewById(R.id.content_audition_time);
+            viewHolder.innerAuditionLocation = cell.findViewById(R.id.content_audition_location);
+            viewHolder.innerProjectDescription = cell.findViewById(R.id.content_project_desc);
+
             cell.setTag(viewHolder);
         } else {
             // for existing cell set valid valid state(without animation)
@@ -64,7 +76,18 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         viewHolder.projectName.setText(item.getProjectName());
         viewHolder.projectType.setText(item.getProjectType());
         viewHolder.projectDescription.setText(item.getProjectDescription());
-        viewHolder.date.setText(item.getDate());
+        viewHolder.innerProjectName.setText(item.getProjectName());
+        //include image
+        viewHolder.innerName.setText(item.getInnerName());
+        viewHolder.innerPhoneNumber.setText(item.getInnerPhoneNumber());
+        viewHolder.innerApplnFrom.setText(item.getInnerApplnFrom());
+        viewHolder.innerApplnTo.setText(item.getInnerApplnTo());
+        viewHolder.innerAuditionDate.setText(item.getAuditionDate());
+        viewHolder.innerAuditionTime.setText(item.getAuditionTime());
+        viewHolder.innerAuditionLocation.setText(item.getInnerAuditionLocation());
+        viewHolder.innerProjectDescription.setText(item.getInnerProjectDescription());
+
+
 
         // set custom btn handler for list item from that item
         if (item.getRequestBtnClickListener() != null) {
@@ -102,8 +125,23 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         this.defaultRequestBtnClickListener = defaultRequestBtnClickListener;
     }
 
+
+
     // View lookup cache
     private static class ViewHolder {
+
+        ImageView innerImageURL;
+        TextView innerProjectName;
+        TextView innerPhoneNumber;
+        TextView innerName;
+        TextView innerApplnFrom;
+        TextView innerApplnTo;
+        TextView innerAuditionDate;
+        TextView innerAuditionTime;
+        TextView innerAuditionLocation;
+        TextView innerProjectDescription;
+
+
         TextView locationAudition;
         TextView contentRequestBtn;
         TextView dateAudition;
