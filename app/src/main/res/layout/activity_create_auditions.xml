@@ -415,18 +415,18 @@
 
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/input_7"
+                android:id="@+id/input_11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:hint="Valid From ? (dd/mm/yyyy)"
+                android:hint="Audition Date? (dd/mm/yyyy)"
                 android:paddingTop="5dp"
                 android:textColorHint="#ffffff">
 
                 <EditText
-                    android:id="@+id/e7"
+                    android:id="@+id/e11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/box"
@@ -465,13 +465,38 @@
 
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:hint="Application Valid From? (dd/mm/yyyy)"
+                android:paddingTop="5dp"
+                android:textColorHint="#ffffff">
+
+                <EditText
+                    android:id="@+id/e7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/box"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:padding="10dp"
+                    android:textSize="16dp" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:hint="Valid To ? (dd/mm/yyyy)"
+                android:hint="Application Valid To? (dd/mm/yyyy)"
                 android:paddingTop="5dp"
                 android:textColorHint="#ffffff">
 

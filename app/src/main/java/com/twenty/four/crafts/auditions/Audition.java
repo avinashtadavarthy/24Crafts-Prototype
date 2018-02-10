@@ -13,6 +13,7 @@ public class Audition {
     String proj_audiloc;
     String proj_validfrom;
     String proj_validto;
+    String proj_audion;
 
     public String getProj_name() {
         return proj_name;
@@ -62,6 +63,14 @@ public class Audition {
         this.proj_audiloc = proj_audiloc;
     }
 
+    public String getProj_audion() {
+        return proj_audion;
+    }
+
+    public void setProj_audion(String proj_audion) {
+        this.proj_audion = proj_audion;
+    }
+
     public String getProj_validfrom() {
         return proj_validfrom;
     }
@@ -87,4 +96,5 @@ public class Audition {
     }
 
     String proj_contact;
+
 }
