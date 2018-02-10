@@ -79,6 +79,10 @@ public class Item {
         this.date = date;
     }
 
+    public String getProjectDescription() { return projectDescription;}
+
+    public void setProjectDescription(String projectDescription) { this.projectDescription = projectDescription; }
+
     public View.OnClickListener getRequestBtnClickListener() {
         return requestBtnClickListener;
     }
@@ -124,12 +128,12 @@ public class Item {
      */
     public static ArrayList<Item> getTestingList() {
         ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item("Chennai", "20/01/2017", "5 PM", "","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
-        items.add(new Item("Chennai", "20/01/2017", "5 PM", "","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
-        items.add(new Item("Chennai", "20/01/2017", "5 PM", "","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
-        items.add(new Item("Chennai", "20/01/2017", "5 PM", "","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
-        items.add(new Item("Chennai", "20/01/2017", "5 PM", "","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
-        items.add(new Item("Chennai", "20/01/2017", "5 PM", "","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
+        items.add(new Item("Chennai", "20/01/2017", "5 PM", "Chennai Silks","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
+        items.add(new Item("Chennai", "20/01/2017", "5 PM", "Chennai Silks","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
+        items.add(new Item("Chennai", "20/01/2017", "5 PM", "Chennai Silks","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
+        items.add(new Item("Chennai", "20/01/2017", "5 PM", "Chennai Silks","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
+        items.add(new Item("Chennai", "20/01/2017", "5 PM", "Chennai Silks","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
+        items.add(new Item("Chennai", "20/01/2017", "5 PM", "Chennai Silks","Feature Film", "dajdasda dajdasjdaksdasjkdhaskjdhaskdhakjdada","10/02/2018"));
         return items;
 
     }

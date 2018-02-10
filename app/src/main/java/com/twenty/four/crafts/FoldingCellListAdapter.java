@@ -1,7 +1,6 @@
 package com.twenty.four.crafts;
 
 import android.content.Context;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.ramotion.foldingcell.FoldingCell;
+
 import java.util.HashSet;
 import java.util.List;
 
@@ -38,14 +38,14 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
             LayoutInflater vi = LayoutInflater.from(getContext());
             cell = (FoldingCell) vi.inflate(R.layout.cell, parent, false);
             // binding view parts to view holder
-            viewHolder.price = (TextView) cell.findViewById(R.id.title_price);
-            viewHolder.time = (TextView) cell.findViewById(R.id.title_time_label);
-            viewHolder.date = (TextView) cell.findViewById(R.id.title_date_label);
-            viewHolder.fromAddress = (TextView) cell.findViewById(R.id.title_from_address);
-            viewHolder.toAddress = (TextView) cell.findViewById(R.id.title_to_address);
-            viewHolder.requestsCount = (TextView) cell.findViewById(R.id.title_requests_count);
-            viewHolder.pledgePrice = (TextView) cell.findViewById(R.id.title_pledge);
+            viewHolder.locationAudition = (TextView) cell.findViewById(R.id.locationAudition);
+            viewHolder.dateAudition = (TextView) cell.findViewById(R.id.dateAudition);
+            viewHolder.timeAudition = (TextView) cell.findViewById(R.id.timeAudition);
+            viewHolder.projectName = (TextView) cell.findViewById(R.id.ProjectName);
+            viewHolder.projectType = (TextView) cell.findViewById(R.id.ProjectType);
+            viewHolder.projectDescription = (TextView) cell.findViewById(R.id.ProjectDescription);
             viewHolder.contentRequestBtn = (TextView) cell.findViewById(R.id.content_request_btn);
+            viewHolder.date = (TextView) cell.findViewById(R.id.publishDate);
             cell.setTag(viewHolder);
         } else {
             // for existing cell set valid valid state(without animation)
@@ -58,13 +58,13 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         }
 
         // bind data from selected element to view through view holder
-        viewHolder.price.setText(item.getPrice());
-        viewHolder.time.setText(item.getTime());
+        viewHolder.locationAudition.setText(item.getLocation());
+        viewHolder.dateAudition.setText(item.getAuditionDate());
+        viewHolder.timeAudition.setText(item.getAuditionTime());
+        viewHolder.projectName.setText(item.getProjectName());
+        viewHolder.projectType.setText(item.getProjectType());
+        viewHolder.projectDescription.setText(item.getProjectDescription());
         viewHolder.date.setText(item.getDate());
-        viewHolder.fromAddress.setText(item.getFromAddress());
-        viewHolder.toAddress.setText(item.getToAddress());
-        viewHolder.requestsCount.setText(String.valueOf(item.getRequestsCount()));
-        viewHolder.pledgePrice.setText(item.getPledgePrice());
 
         // set custom btn handler for list item from that item
         if (item.getRequestBtnClickListener() != null) {
@@ -104,13 +104,13 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
 
     // View lookup cache
     private static class ViewHolder {
-        TextView price;
+        TextView locationAudition;
         TextView contentRequestBtn;
-        TextView pledgePrice;
-        TextView fromAddress;
-        TextView toAddress;
-        TextView requestsCount;
+        TextView dateAudition;
+        TextView timeAudition;
+        TextView projectName;
+        TextView projectType;
         TextView date;
-        TextView time;
+        TextView projectDescription;
     }
 }

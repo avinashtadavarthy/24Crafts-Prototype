@@ -20,7 +20,7 @@
         android:paddingTop="20dp">
 
         <TextView
-            android:id="@+id/locationAudition"
+            android:id="@+id/Audition"
             android:text="AUDITION :"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,22 +29,31 @@
             android:textSize="10sp" />
 
         <TextView
-            android:id="@+id/title_time_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:textColor="@android:color/white"
-            android:textSize="14sp" />
+            android:id="@+id/locationAudition"
+            android:textSize="13dp"
+            android:textColor="#ffffff"
+            android:layout_alignParentBottom="true" />
 
         <TextView
-            android:id="@+id/title_date_label"
+            android:id="@+id/dateAudition"
+            android:layout_above="@id/timeAudition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@id/title_time_label"
-            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp"
             android:textColor="@android:color/white"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/timeAudition"
+            android:layout_above="@id/locationAudition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="10sp" />
+
+
 
 
     </RelativeLayout>
@@ -59,21 +68,14 @@
         android:paddingStart="15dp"
         android:paddingTop="20dp">
 
-        <ImageView
-            android:id="@+id/title_from_to_dots"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/location" />
 
         <TextView
-            android:id="@+id/title_from_address"
+            android:id="@+id/ProjectName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/title_from_to_dots"
+
             android:layout_marginTop="-5dp"
-            android:layout_toEndOf="@+id/title_from_to_dots"
+
             android:ellipsize="marquee"
             android:fadingEdge="horizontal"
             android:singleLine="true"
@@ -84,18 +86,17 @@
             android:id="@+id/title_from_to_dots_divider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_below="@id/title_from_address"
+            android:layout_below="@id/ProjectName"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:layout_toEndOf="@+id/title_from_to_dots"
             android:src="@color/contentDividerLine" />
 
         <TextView
-            android:id="@+id/title_to_address"
+            android:id="@+id/ProjectType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/title_from_to_dots_divider"
-            android:layout_toEndOf="@id/title_from_to_dots"
+
             android:ellipsize="marquee"
             android:fadingEdge="horizontal"
             android:singleLine="true"
@@ -103,7 +104,7 @@
             android:textSize="16sp" />
 
 
-        <TextView
+       <!-- <TextView
             android:id="@+id/title_requests_count"
             style="@style/TitleBadgeText"
             android:layout_width="wrap_content"
@@ -150,7 +151,25 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/title_pledge"
             android:layout_alignStart="@id/title_pledge"
-            android:text="@string/pledge_badge" />
+            android:text="@string/pledge_badge" />-->
+
+
+        <TextView
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/ProjectDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ProjectType"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/publishDate"
+            android:layout_below="@id/ProjectDescription"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
 </LinearLayout>
