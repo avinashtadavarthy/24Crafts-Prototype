@@ -25,6 +25,7 @@ import android.widget.RelativeLayout;
 
 import com.kila.apprater_dialog.lars.AppRater;
 import com.twenty.four.crafts.auditions.AuditionsTab;
+import com.yarolegovich.lovelydialog.LovelyCustomDialog;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -284,8 +285,43 @@ public class Main2Activity extends AppCompatActivity
            //fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new SecondFragment()).commit();
 
         } else if (id == R.id.subscribe) {
-           Intent i = new Intent(getApplicationContext(),SubscribePopUp.class);
-           startActivity(i);
+           /*Intent i = new Intent(getApplicationContext(),SubscribePopUp.class);
+           startActivity(i);*/
+
+
+           final LovelyCustomDialog lovelyCustomDialog = new LovelyCustomDialog(this);
+
+           lovelyCustomDialog.setView(R.layout.activity_subscribe_pop_up)
+                   .setTopColorRes(R.color.indigo_500)
+                   .setIcon(R.mipmap.ic_launcher)
+                   .setTitle("Subscribe")
+                   .setMessage("Subscribe to 24Crafts to enjoy using the app's features. Subscription allows Producers/Directors to find you....")
+                   .setListener(R.id.SubscribeButton, new View.OnClickListener() {
+                       @Override
+                       public void onClick(View view) {
+                           Intent intent = new Intent(Main2Activity.this,PurchaseCoins.class);
+                           startActivity(intent);
+                       }
+                   })
+                   .setListener(R.id.ContinueButton, new View.OnClickListener() {
+                       @Override
+                       public void onClick(View view) {
+
+                           android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(Main2Activity.this);
+                           builder.setMessage("Free Account only gives you access to the DIRECTORY. Producers/Directors will not be able to contact you...")
+                                   .setCancelable(false)
+                                   .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                       public void onClick(DialogInterface dialog, int id) {
+                                           //do things
+                                           dialog.cancel();
+                                       }
+                                   });
+
+                           android.app.AlertDialog alert = builder.create();
+                           alert.show();
+                       }
+                   })
+                   .show();
 
           /* new PanterDialog(Main2Activity.this)
                    .setHeaderBackground(R.drawable.bg_gradient)

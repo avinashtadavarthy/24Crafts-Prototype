@@ -5,13 +5,11 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 import com.yuyakaido.android.cardstackview.CardStackView;
 import com.yuyakaido.android.cardstackview.SwipeDirection;
 
@@ -450,7 +449,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
     public void AlertDialogSwipeLeft()
     {
-        new AlertDialog.Builder(getActivity())
+        /*new AlertDialog.Builder(getActivity())
                 .setTitle("Not Interested?")
                 .setMessage("Are you sure you're not interested in this person")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
@@ -466,6 +465,27 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                         reverse();
                     }
                 })
+                .show();*/
+
+
+        new LovelyStandardDialog(getActivity(),LovelyStandardDialog.ButtonLayout.VERTICAL)
+                .setTopColorRes(R.color.indigo_500)
+                .setButtonsColorRes(R.color.indigo_500)
+                .setIcon(R.drawable.star75)
+                .setTitle("Not Interested?")
+                .setMessage("Are you sure you're not interested in this person?")
+                .setPositiveButton("OK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                })
+                .setNegativeButton("CANCEL", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        reverse();
+                    }
+                })
                 .show();
     }
 
@@ -473,7 +493,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
     public void AlertDialogSwipeRight()
     {
-        new AlertDialog.Builder(getActivity())
+        /*new AlertDialog.Builder(getActivity())
                 .setTitle("Like")
                 .setMessage("Swiping Right will add <name> to favourites")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
@@ -489,12 +509,33 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                         reverse();
                     }
                 })
+                .show();*/
+
+
+        new LovelyStandardDialog(getActivity(),LovelyStandardDialog.ButtonLayout.VERTICAL)
+                .setTopColorRes(R.color.indigo_500)
+                .setButtonsColorRes(R.color.indigo_500)
+                .setIcon(R.drawable.star75)
+                .setTitle("Like?")
+                .setMessage("Swiping Right or Clicking on the star icon will add people to favorites")
+                .setPositiveButton("OK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                })
+                .setNegativeButton("CANCEL", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        reverse();
+                    }
+                })
                 .show();
     }
 
 
 
-    public void AlertDialogPressLike()
+    /*public void AlertDialogPressLike()
     {
         new AlertDialog.Builder(getActivity())
                 .setTitle("Like")
@@ -537,11 +578,11 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                 .show();
     }
 
-
+*/
 
     public void AlertDialogUndo()
     {
-        new AlertDialog.Builder(getActivity())
+       /* new AlertDialog.Builder(getActivity())
                 .setTitle("Undo?")
                 .setMessage("Are you sure you want to Undo your last action?")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
@@ -556,8 +597,28 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                         dialog.dismiss();
                     }
                 })
-                .show();
+                .show();*/
 
+
+        new LovelyStandardDialog(getActivity(),LovelyStandardDialog.ButtonLayout.VERTICAL)
+                .setTopColorRes(R.color.indigo_500)
+                .setButtonsColorRes(R.color.indigo_500)
+                .setIcon(R.drawable.star75)
+                .setTitle("Undo?")
+                .setMessage("Are you sure you want to undo your last action?")
+                .setPositiveButton("OK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        reverse();
+                    }
+                })
+                .setNegativeButton("CANCEL", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    }
+                })
+                .show();
     }
 
 }
