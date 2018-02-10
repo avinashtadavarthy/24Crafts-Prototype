@@ -116,7 +116,7 @@ public class ReadRss extends AsyncTask<Void,Void,Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         progressDialog.dismiss();
-        FeedAdapter adapter = new FeedAdapter(context,feedItems);
+        FeedAdapter adapter = new FeedAdapter(context,recyclerView,feedItems);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
 

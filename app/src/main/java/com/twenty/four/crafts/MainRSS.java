@@ -30,6 +30,8 @@ public class MainRSS extends android.support.v4.app.Fragment {
         getActivity().setTitle("Newsfeed");
         RecyclerView recyclerView = myView.findViewById(R.id.recyclerview);
 
+
+
         ReadRss readRss = new ReadRss(getContext(), recyclerView, chosenURL);
         readRss.execute();
 

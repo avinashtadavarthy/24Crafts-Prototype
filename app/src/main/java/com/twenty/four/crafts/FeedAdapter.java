@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.thefinestartist.finestwebview.FinestWebView;
+
 import java.util.ArrayList;
 
 /**
@@ -18,9 +20,12 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
 
     ArrayList<FeedItem> feedItems;
     Context context;
+    RecyclerView recyclerView;
 
-    FeedAdapter(Context context,ArrayList<FeedItem> feedItems)
+    FeedAdapter(Context context,RecyclerView recyclerView,ArrayList<FeedItem> feedItems)
     {
+
+        this.recyclerView = recyclerView;
         this.context = context;
         this.feedItems  =feedItems;
     }
@@ -41,6 +46,19 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         holder.title.setText(current.getTitle());
         holder.description.setText(current.getDecription());
         //Picasso.with(context).load(current.getThumbnailURL()).into(holder.thumbnail);
+
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(context, recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+
+                new FinestWebView.Builder(context).show(feedItems.get(position).getLink());
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+        }));
 
     }
 
