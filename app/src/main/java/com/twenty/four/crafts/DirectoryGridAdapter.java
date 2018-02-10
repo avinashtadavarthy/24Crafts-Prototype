@@ -1,7 +1,9 @@
 package com.twenty.four.crafts;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +47,11 @@ public class DirectoryGridAdapter extends BaseAdapter{
         return i;
     }
 
+    @Override
+    public boolean isEnabled(int position) {
+        return true;
+    }
+
     public class Holder
     {
         TextView tv;
@@ -71,11 +78,26 @@ public class DirectoryGridAdapter extends BaseAdapter{
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                // Toast.makeText(context, "You Clicked "+i, Toast.LENGTH_LONG).show();
+                fireIntent(i);
+                //Log.i("Hello",desc[i]);//returns fine
+
 
             }
         });
 
         return rowView;
+
+    }
+
+
+
+    public void fireIntent(int i)
+    {
+        Intent intent = new Intent(context,Contacts.class);
+
+        Log.i("hi",classobj.get(i).getUrl_param());
+        intent.putExtra("craft",classobj.get(i).getUrl_param());
+        context.startActivity(intent);
 
     }
 

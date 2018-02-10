@@ -1,12 +1,15 @@
 package com.twenty.four.crafts;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.google.android.gms.ads.AdRequest;
@@ -171,6 +174,19 @@ public class DirectoryFragment extends android.support.v4.app.Fragment {
 
         gv1.setNestedScrollingEnabled(false);
         mViewPager.setNestedScrollingEnabled(false);
+
+        gv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Log.i("Hello",desc[i]);//returns fine
+                Intent I = new Intent(getActivity(),Contacts.class);
+                Log.i("hi",class_obj.get(i).getUrl_param());
+                I.putExtra("craft",class_obj.get(i).getUrl_param());
+
+                startActivity(I);
+            }
+        });
 
 
         //DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity().getApplicationContext(),layoutManager.getOrientation());
