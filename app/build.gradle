@@ -56,6 +56,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
 
+    //Tap Target View
+    compile 'com.getkeepsafe.taptargetview:taptargetview:1.11.0'
+
     //crop images
     compile 'com.steelkiwi:cropiwa:1.0.3'
 

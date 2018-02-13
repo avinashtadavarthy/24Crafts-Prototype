@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.ramotion.foldingcell.*;
 import com.ramotion.foldingcell.FoldingCell;
 
@@ -67,7 +69,6 @@ public class AuditionsMain extends android.support.v4.app.Fragment {
             }
         });
 
-
         createaudition = (FloatingActionButton) myView.findViewById(R.id.createaudition);
         createaudition.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +77,6 @@ public class AuditionsMain extends android.support.v4.app.Fragment {
                 startActivity(i);
             }
         });
-
 
         return myView;
     }

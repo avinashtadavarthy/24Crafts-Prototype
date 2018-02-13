@@ -6,6 +6,7 @@ import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -18,6 +19,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 import com.yuyakaido.android.cardstackview.CardStackView;
 import com.yuyakaido.android.cardstackview.SwipeDirection;
@@ -47,6 +51,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         myView = inflater.from(container.getContext()).inflate(R.layout.activity_encounters_main,container,false);
 
         getActivity().setTitle("Encounters");
@@ -61,13 +66,8 @@ public class EncountersMain extends android.support.v4.app.Fragment {
         closeEnvelope = myView.findViewById(R.id.closeEnvelope);
 
 
-
-
         pref = getActivity().getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         editor = pref.edit();
-
-
-
 
         progressBar = (ProgressBar) myView.findViewById(R.id.activity_main_progress_bar);
 
@@ -232,11 +232,108 @@ public class EncountersMain extends android.support.v4.app.Fragment {
         });
         reload();
 
+        // Tap Target View - Implementation for a Fragment - Haiz,,,,
+        TapTargetSequence sequence = new TapTargetSequence(getActivity())
+                .targets(
+                        // Specify the target radius (in dp)
+                        TapTarget.forView(starInEncounters, "Add to Favorites", "Click on the Star Button or Swipe Right to add Profile to your Favorites!")
+                                // All options below are optional
+                                .outerCircleColor(R.color.colorPrimary)      // Specify a color for the outer circle
+                                .targetCircleColor(R.color.mainTextColor)   // Specify a color for the target circle
+                                .titleTextSize(20)                  // Specify the size (in sp) of the title text
+                                .titleTextColor(R.color.textPrimary)      // Specify the color of the title text
+                                .descriptionTextSize(18)            // Specify the size (in sp) of the description text
+                                .descriptionTextColor(R.color.textPrimary)  // Specify the color of the description text
+                                .textColor(R.color.textPrimary)            // Specify a color for both the title and description text
+                                .textTypeface(Typeface.SANS_SERIF)  // Specify a typeface for the text
+                                .dimColor(R.color.Color_Azure)            // If set, will dim behind the view with 30% opacity of the given color
+                                .drawShadow(true)                   // Whether to draw a drop shadow or not
+                                .cancelable(true)                  // Whether tapping outside the outer circle dismisses the view
+                                .tintTarget(false)                   // Whether to tint the target view's color
+                                .transparentTarget(false)           // Specify whether the target is transparent (displays the content underneath)
+                                .targetRadius(50)
+                                .id(1)
+                )
+                .targets(
+                        TapTarget.forView(closeEnvelope, "Send a Message", "Click here to send a personal message")
+                                .outerCircleColor(R.color.colorPrimary)
+                                .targetCircleColor(R.color.mainTextColor)
+                                .titleTextSize(20)
+                                .titleTextColor(R.color.textPrimary)
+                                .descriptionTextSize(18)
+                                .descriptionTextColor(R.color.textPrimary)
+                                .textColor(R.color.textPrimary)
+                                .textTypeface(Typeface.SANS_SERIF)
+                                .dimColor(R.color.Color_Azure)
+                                .drawShadow(true)
+                                .cancelable(true)
+                                .tintTarget(false)
+                                .transparentTarget(false)
+                                .targetRadius(50)
+                                .id(1)
+                )
+                .targets(
+                        TapTarget.forView(undoButton, "Undo Action", "Made a wrong Swipe? We got you covered!")
+                                .outerCircleColor(R.color.colorPrimary)
+                                .targetCircleColor(R.color.mainTextColor)
+                                .titleTextSize(20)
+                                .titleTextColor(R.color.textPrimary)
+                                .descriptionTextSize(18)
+                                .descriptionTextColor(R.color.textPrimary)
+                                .textColor(R.color.textPrimary)
+                                .textTypeface(Typeface.SANS_SERIF)
+                                .dimColor(R.color.Color_Azure)
+                                .drawShadow(true)
+                                .cancelable(true)
+                                .tintTarget(false)
+                                .transparentTarget(false)
+                                .targetRadius(50)
+                                .id(1)
+                )
+                .targets(
+                        TapTarget.forView(forbiddenMark, "Skip Profile", "Clicking on the X or Swiping Left will skip the Profile")
+                                .outerCircleColor(R.color.colorPrimary)
+                                .targetCircleColor(R.color.mainTextColor)
+                                .titleTextSize(20)
+                                .titleTextColor(R.color.textPrimary)
+                                .descriptionTextSize(18)
+                                .descriptionTextColor(R.color.textPrimary)
+                                .textColor(R.color.textPrimary)
+                                .textTypeface(Typeface.SANS_SERIF)
+                                .dimColor(R.color.Color_Azure)
+                                .drawShadow(true)
+                                .cancelable(true)
+                                .tintTarget(false)
+                                .transparentTarget(false)
+                                .targetRadius(50)
+                                .id(1)
+                )
+                .listener(new TapTargetSequence.Listener() {
+                    @Override
+                    public void onSequenceFinish() {
+
+                    }
+
+                    @Override
+                    public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
+
+                    }
+
+                    @Override
+                    public void onSequenceCanceled(TapTarget lastTarget) {
+
+                    }
+                    // This listener will tell us when interesting(tm) events happen in regards
+                    // to the sequence
 
 
-
+                });
+        sequence.considerOuterCircleCanceled(true);
+        sequence.continueOnCancel(true);
+        sequence.start();
         return myView;
     }
+
 
     private void getSharedPreferences() {
         /*clickStar = pref.getInt("clickStar",0);
