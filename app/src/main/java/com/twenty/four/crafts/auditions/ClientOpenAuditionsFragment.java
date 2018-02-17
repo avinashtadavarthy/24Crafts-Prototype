@@ -18,6 +18,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.twenty.four.crafts.CreateAuditions;
 import com.twenty.four.crafts.DataModel;
 import com.twenty.four.crafts.ForgotPassword;
@@ -44,8 +47,7 @@ public class ClientOpenAuditionsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.activity_client_dashboard_layout,container,false);
 
-
-        myOnClickListener = new ClientOpenAuditionsFragment.MyOnClickListener(getActivity().getApplicationContext());
+         myOnClickListener = new ClientOpenAuditionsFragment.MyOnClickListener(getActivity().getApplicationContext());
 
         recyclerView = (RecyclerView) myView.findViewById(R.id.my_recycler_view_clientdashboard);
         recyclerView.setHasFixedSize(true);
@@ -116,7 +118,6 @@ public class ClientOpenAuditionsFragment extends Fragment {
                 startActivity(i);
             }
         });
-
         return myView;
     }
 

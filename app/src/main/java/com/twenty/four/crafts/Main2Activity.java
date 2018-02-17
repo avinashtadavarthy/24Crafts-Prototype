@@ -23,6 +23,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.kila.apprater_dialog.lars.AppRater;
 import com.twenty.four.crafts.auditions.AuditionsTab;
 import com.yarolegovich.lovelydialog.LovelyCustomDialog;
@@ -60,7 +63,6 @@ public class Main2Activity extends AppCompatActivity
         final ImageView aud_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.aud_handy);
         final ImageView fav_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.fav_handy);
         final ImageView inbox_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.inbox_handy);
-
 
         if(User.getInstance().navbarpos == 1)
       {
