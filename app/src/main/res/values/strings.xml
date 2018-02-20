@@ -119,18 +119,19 @@
     <string name="seek_to">Jump To</string>
     <string name="seek_to_hint">Seconds</string>
 
+    <!--API KEYS-->
+    <!--Facebook & Account Kit-->
     <string name="facebook_app_id">106468900132564</string>
-
     <string name="FACEBOOK_APP_IDnew">1497155203735641</string>
-
     <string name="ACCOUNT_KIT_CLIENT_TOKEN">b6c8bbc8c2ad7fabe72e82871fd71d65</string>
-
     <string name="fb_login_protocol_scheme">fb1497155203735641</string>
-
-
+    <!--Instagram-->
     <string name="instagram_client_id">1669cbcf37994f0fb1c1b4ee97ed54e6</string>
     <string name="instagram_client_secret">70d6d7783f9d4d4a82beb4f70b5894f8</string>
     <string name="instagram_redirect_uri">http://24crafts.tk:3000/login/instagram/callback</string>
+    <!--Twitter-->
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">15K4caHHMJIwLhHJkX3PD2NiJ</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">ZSHIYP0hqNyxwNerjG4rjP09vIuCeami4GUG5znFp9j4l0rU1v</string>
 
     <string-array name="who">
         <item>Who</item>

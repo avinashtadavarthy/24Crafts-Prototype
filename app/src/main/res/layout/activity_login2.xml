@@ -107,6 +107,44 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/twitter_login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/round_card"
+            android:layout_margin="5dp" >
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/circle_filled"
+                android:padding="2dp"
+                android:src="@drawable/twitter_icon" />
+
+            <Button
+                android:id="@+id/twitter"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:text="Login with Twitter"
+                android:textColor="#000000"
+                android:textAllCaps="false"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center"
+                style="?android:attr/borderlessButtonStyle"/>
+
+            <TextView
+                android:visibility="gone"
+                android:text="Login with Twitter"
+                android:textColor="#000000"
+                android:layout_width="180dp"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:background="?android:attr/selectableItemBackground"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/instagram_login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -141,18 +141,14 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:11.8.0'
     implementation 'com.google.android.gms:play-services-places:11.8.0'
 
+    // Fines Webview
     compile 'com.thefinestartist:finestwebview:1.2.7'
+
+    // Lovely Custom Dialog
     compile 'com.yarolegovich:lovely-dialog:1.1.0'
 
-
-
-
+    //All Twitter APIs
+    compile 'com.twitter.sdk.android:twitter:3.1.1'
 }
-
-
-
-
-
-
 
 apply plugin: 'com.google.gms.google-services'
