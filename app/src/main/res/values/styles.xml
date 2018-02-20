@@ -130,4 +130,10 @@
         <item name="android:actionMenuTextColor">@color/color_option_menu</item>
     </style>
 
+
+    <style name="AlertDialog">
+        <item name="android:radius">13dp</item>
+        <item name="android:background">@drawable/b1</item>
+    </style>
+
 </resources>

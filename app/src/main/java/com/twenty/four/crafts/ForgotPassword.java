@@ -1,12 +1,16 @@
 package com.twenty.four.crafts;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -61,7 +65,7 @@ public class ForgotPassword extends AppCompatActivity {
                     dialogbuttontext = "OK";
                 }
 
-                AlertDialog dialog = new AlertDialog.Builder(ForgotPassword.this).setMessage(dialogtext).
+                final AlertDialog dialog = new AlertDialog.Builder(new ContextThemeWrapper(ForgotPassword.this,R.style.AlertDialog)).setMessage(dialogtext).
                 setPositiveButton(dialogbuttontext, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -72,10 +76,12 @@ public class ForgotPassword extends AppCompatActivity {
                         }
 
                         else
+
                             dialogInterface.cancel();
                     }
                 })
                 .show();
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.R.color.transparent));
                 TextView textView = (TextView) dialog.findViewById(android.R.id.message);
                 textView.setGravity(Gravity.LEFT);
                 textView.setTextSize(15);
