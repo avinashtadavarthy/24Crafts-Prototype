@@ -4,18 +4,29 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 
 import com.twenty.four.crafts.registration.Verification;
 
 public class Settings extends AppCompatActivity {
 
-    LinearLayout info, verify, coinsfree, morecoins, themes, daily, contactus, aboutus;
-    View baccinfo,bverify,bfreecoins,bbuymorecoins,bthemes,bdaily;
+    LinearLayout info, verify, coinsfree, morecoins, daily, contactus, aboutus;
+    View baccinfo,bverify,bfreecoins,bbuymorecoins,bdaily;
+    Switch darkSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Theme Stuff ---- Start
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.day);
+        }
+        else {setTheme(R.style.night);}
+        //Theme Stuff ---- End
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
@@ -28,7 +39,7 @@ public class Settings extends AppCompatActivity {
         verify = (LinearLayout) findViewById(R.id.verify);
         coinsfree = (LinearLayout) findViewById(R.id.coinsfree);
         morecoins = (LinearLayout) findViewById(R.id.morecoins);
-        themes = (LinearLayout) findViewById(R.id.themes);
+
         daily = (LinearLayout) findViewById(R.id.daily);
         contactus = (LinearLayout) findViewById(R.id.contactus);
         aboutus = (LinearLayout) findViewById(R.id.aboutus);
@@ -37,7 +48,7 @@ public class Settings extends AppCompatActivity {
         bverify = findViewById(R.id.belowverify);
         bfreecoins = findViewById(R.id.belowfreecoins);
         bbuymorecoins = findViewById(R.id.belowbuymorecoins);
-        bthemes = findViewById(R.id.belowthemes);
+
         bdaily = findViewById(R.id.belowdaily);
 
         if(type.equals("clients")) {
@@ -96,13 +107,7 @@ public class Settings extends AppCompatActivity {
             }
         });
 
-        themes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //stuff
-                overridePendingTransition(R.anim.right_enter, R.anim.left_out);
-            }
-        });
+
 
         daily.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,5 +140,30 @@ public class Settings extends AppCompatActivity {
             }
         });
 
+        //Theme stuff #2
+        darkSwitch=findViewById(R.id.darkSwitch);
+        if (AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            darkSwitch.setChecked(true);
+        }
+        darkSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    refreshApp();
+                }
+                else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    refreshApp();
+                }
+            }
+        });
+
+    }
+    //Theme stuff #3
+    public void refreshApp(){
+        Intent i = new Intent(getApplicationContext(), MainRSS.class);
+        startActivity(i);
+        finish();
     }
 }

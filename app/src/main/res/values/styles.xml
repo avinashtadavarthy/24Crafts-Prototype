@@ -136,4 +136,19 @@
         <item name="android:background">@drawable/b1</item>
     </style>
 
+    <style name="day" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="dayNnightBg">@mipmap/blur</item>
+        <item name="dayNnightCard">#FFFFFF</item>
+        <item name="dayNnightText">#FFFFFF</item>
+        <item name="dayNnightTint">#FFFFFF</item>
+        <item name="dayNnightBtn">#004E92</item>
+    </style>
+    <style name="night" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="dayNnightBg">@drawable/bg_gradient</item>
+        <item name="dayNnightCard">#000000</item>
+        <item name="dayNnightText">#FFFFFF</item>
+        <item name="dayNnightTint">#FFFFFF</item>
+        <item name="dayNnightBtn">#004E92</item>
+    </style>
+
 </resources>

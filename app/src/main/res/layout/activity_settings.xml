@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/content_frame_settings"
-    android:background="@mipmap/blur"
+    android:background="?attr/dayNnightBg"
     tools:context="com.twenty.four.crafts.Settings">
 
     <LinearLayout
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="5dp"
-        android:background="?android:attr/selectableItemBackground">
+        >
 
         <ImageView
             android:layout_width="30dp"
@@ -32,7 +32,8 @@
             android:textSize="13dp"
             android:layout_marginLeft="25dp"
             android:text="Account Information"
-            android:textColor="#ffffff"/>
+            android:textColor="?attr/dayNnightText"
+            />
 
 
     </LinearLayout>
@@ -53,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="?android:attr/selectableItemBackground"
+
         android:padding="5dp">
 
         <ImageView
@@ -92,7 +93,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp"
-        android:background="?android:attr/selectableItemBackground">
+        >
 
         <ImageView
             android:layout_width="30dp"
@@ -130,7 +131,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="?android:attr/selectableItemBackground"
+
         android:padding="5dp">
 
         <ImageView
@@ -169,7 +170,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="?android:attr/selectableItemBackground"
+
         android:padding="5dp">
 
         <ImageView
@@ -179,18 +180,24 @@
             android:tint="#ffffff"
             android:layout_margin="5dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textSize="13dp"
-            android:layout_marginLeft="25dp"
-            android:text="Themes"
-            android:textColor="#ffffff"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="25dp"
+            >
+
+            <Switch
+                android:id="@+id/darkSwitch"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Night Mode"
+                android:textColor="?attr/dayNnightText"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-
 
     <View
         android:id="@+id/belowthemes"
@@ -207,7 +214,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="5dp">
+        android:padding="5dp"
+        >
 
         <ImageView
             android:layout_width="30dp"
