@@ -138,11 +138,12 @@
     </style>
 
     <style name="day" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="dayNnightBg">@mipmap/blur</item>
+        <item name="dayNnightBg">@drawable/b2</item>
         <item name="dayNnightCard">#FFFFFF</item>
-        <item name="dayNnightText">#FFFFFF</item>
-        <item name="dayNnightTint">#FFFFFF</item>
+        <item name="dayNnightText">#000000</item>
+        <item name="dayNnightTint">#000000</item>
         <item name="dayNnightBtn">#004E92</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
     <style name="night" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <item name="dayNnightBg">@drawable/bg_gradient</item>
@@ -150,6 +151,12 @@
         <item name="dayNnightText">#FFFFFF</item>
         <item name="dayNnightTint">#FFFFFF</item>
         <item name="dayNnightBtn">#004E92</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+    </style>
+
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
 </resources>

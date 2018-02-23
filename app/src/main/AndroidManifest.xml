@@ -4,6 +4,7 @@
     package="com.twenty.four.crafts">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <uses-feature android:name="android.hardware.camera" />
 
@@ -255,7 +256,7 @@
             android:name=".Settings"
             android:parentActivityName=".Main2Activity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme3" />
+            android:theme="@style/day" />
         <activity
             android:name=".AccountInfo"
             android:parentActivityName=".Settings"
