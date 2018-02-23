@@ -83,7 +83,7 @@
         android:layout_marginLeft="60dp"
         android:layout_marginRight="5dp"
         android:layout_below="@id/verify"
-        android:background="#ffffff"
+        android:background="#9e9e9e"
         />
 
     <LinearLayout

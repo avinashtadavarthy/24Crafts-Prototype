@@ -3,9 +3,12 @@ package com.twenty.four.crafts;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
@@ -64,7 +67,7 @@ public class AccountInfo extends AppCompatActivity {
                 }*/
 
 
-                AlertDialog.Builder a_builder = new AlertDialog.Builder(AccountInfo.this);
+                AlertDialog.Builder a_builder = new AlertDialog.Builder(new ContextThemeWrapper(AccountInfo.this, R.style.AlertDialog));
                 a_builder.setMessage("Do You Want to Sign Out of 24 Crafts?")
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -82,6 +85,7 @@ public class AccountInfo extends AppCompatActivity {
                         });
 
                 AlertDialog alert = a_builder.create();
+                alert.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 alert.show();
             }
         });
@@ -107,7 +111,7 @@ public class AccountInfo extends AppCompatActivity {
                     dialogbuttontext = "OK";
                 }
 
-                AlertDialog dialog = new AlertDialog.Builder(AccountInfo.this).setMessage(dialogtext).
+                AlertDialog dialog = new AlertDialog.Builder(new ContextThemeWrapper(AccountInfo.this, R.style.AlertDialog)).setMessage(dialogtext).
                         setPositiveButton(dialogbuttontext, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -122,6 +126,9 @@ public class AccountInfo extends AppCompatActivity {
                             }
                         })
                         .show();
+                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
                 TextView textView = (TextView) dialog.findViewById(android.R.id.message);
                 textView.setGravity(Gravity.LEFT);
                 textView.setTextSize(15);

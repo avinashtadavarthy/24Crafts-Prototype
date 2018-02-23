@@ -3,6 +3,7 @@ package com.twenty.four.crafts;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -16,6 +17,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -218,7 +220,7 @@ public class Main2Activity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
 
-            new AlertDialog.Builder(Main2Activity.this)
+            AlertDialog alert = new AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this,R.style.AlertDialog))
                     .setMessage("Do you really want to exit?")
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
@@ -232,6 +234,10 @@ public class Main2Activity extends AppCompatActivity
                         }
                     })
                     .show();
+                    alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
+
 
         }
 
@@ -309,7 +315,7 @@ public class Main2Activity extends AppCompatActivity
                        @Override
                        public void onClick(View view) {
 
-                           android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(Main2Activity.this);
+                           android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this, R.style.AlertDialog));
                            builder.setMessage("Free Account only gives you access to the DIRECTORY. Producers/Directors will not be able to contact you...")
                                    .setCancelable(false)
                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -320,6 +326,7 @@ public class Main2Activity extends AppCompatActivity
                                    });
 
                            android.app.AlertDialog alert = builder.create();
+                           alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                            alert.show();
                        }
                    })

@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -28,7 +31,7 @@ public class ProfileViewEdit extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                AlertDialog.Builder a_builder = new AlertDialog.Builder(ProfileViewEdit.this);
+                AlertDialog.Builder a_builder = new AlertDialog.Builder(new ContextThemeWrapper(ProfileViewEdit.this, R.style.AlertDialog));
                 a_builder.setMessage("Discard your changes and quit editing?")
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -46,6 +49,7 @@ public class ProfileViewEdit extends AppCompatActivity {
 
                 AlertDialog alert = a_builder.create();
                 alert.show();
+                alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
             }
         });
@@ -54,7 +58,7 @@ public class ProfileViewEdit extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                AlertDialog.Builder a_builder = new AlertDialog.Builder(ProfileViewEdit.this);
+                AlertDialog.Builder a_builder = new AlertDialog.Builder(new ContextThemeWrapper(ProfileViewEdit.this, R.style.AlertDialog));
                 a_builder.setMessage("Save your changes and quit editing?")
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -72,6 +76,7 @@ public class ProfileViewEdit extends AppCompatActivity {
 
                 AlertDialog alert = a_builder.create();
                 alert.show();
+                alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
             }
         });

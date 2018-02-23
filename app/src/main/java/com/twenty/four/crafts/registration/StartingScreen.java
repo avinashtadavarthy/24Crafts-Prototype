@@ -3,8 +3,12 @@ package com.twenty.four.crafts.registration;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -88,7 +92,7 @@ public class StartingScreen extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        new android.support.v7.app.AlertDialog.Builder(StartingScreen.this)
+        AlertDialog alert = new android.support.v7.app.AlertDialog.Builder(new ContextThemeWrapper(StartingScreen.this, R.style.AlertDialog))
                 .setMessage("Do you want to exit the registration process?")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -101,6 +105,7 @@ public class StartingScreen extends AppCompatActivity {
                     }
                 })
                 .show();
+                alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
     }
 
