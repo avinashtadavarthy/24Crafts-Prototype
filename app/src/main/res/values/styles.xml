@@ -134,6 +134,7 @@
     <style name="AlertDialog">
         <item name="android:radius">13dp</item>
         <item name="android:background">@drawable/b1</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
     <style name="day" parent="Theme.AppCompat.DayNight.DarkActionBar">

@@ -81,7 +81,7 @@ public class ForgotPassword extends AppCompatActivity {
                     }
                 })
                 .show();
-               dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
                 TextView textView = (TextView) dialog.findViewById(android.R.id.message);
                 textView.setGravity(Gravity.LEFT);

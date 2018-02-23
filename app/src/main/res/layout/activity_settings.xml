@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="5dp"
+        android:layout_margin="10dp"
         >
 
         <ImageView
@@ -29,10 +29,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="13dp"
+            android:textSize="18dp"
             android:layout_marginLeft="25dp"
             android:text="Account Information"
-            android:textColor="?attr/dayNnightText"
+            android:textColor="#ffffff"
             />
 
 
@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-
+        android:layout_margin="10dp"
         android:padding="5dp">
 
         <ImageView
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="13dp"
+            android:textSize="18dp"
             android:layout_marginLeft="25dp"
             android:text="Verify Yourself"
             android:textColor="#ffffff"/>
@@ -93,6 +93,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp"
+        android:layout_margin="10dp"
         >
 
         <ImageView
@@ -106,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="13dp"
+            android:textSize="18dp"
             android:layout_marginLeft="25dp"
             android:text="Free Coins"
             android:textColor="#ffffff"/>
@@ -131,7 +132,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-
+        android:layout_margin="10dp"
         android:padding="5dp">
 
         <ImageView
@@ -145,7 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="13dp"
+            android:textSize="18dp"
             android:layout_marginLeft="25dp"
             android:text="Buy More Coins"
             android:textColor="#ffffff"/>
@@ -170,7 +171,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-
+        android:layout_margin="10dp"
         android:padding="5dp">
 
         <ImageView
@@ -192,6 +193,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Night Mode"
+                android:textSize="18dp"
                 android:textColor="?attr/dayNnightText"
                 />
 
@@ -215,6 +217,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp"
+        android:layout_margin="10dp"
         >
 
         <ImageView
@@ -228,7 +231,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="13dp"
+            android:textSize="18dp"
             android:layout_marginLeft="25dp"
             android:text="Daily Check-In"
             android:textColor="#ffffff"/>
@@ -236,16 +239,6 @@
     </LinearLayout>
 
 
-
-    <View
-        android:id="@+id/belowdaily"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="5dp"
-        android:layout_below="@id/daily"
-        android:background="#ffffff"
-        />
 
     <TextView
         android:layout_above="@+id/contactus"

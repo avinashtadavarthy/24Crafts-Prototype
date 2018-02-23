@@ -15,7 +15,7 @@ import com.twenty.four.crafts.registration.Verification;
 public class Settings extends AppCompatActivity {
 
     LinearLayout info, verify, coinsfree, morecoins, daily, contactus, aboutus;
-    View baccinfo,bverify,bfreecoins,bbuymorecoins,bdaily;
+    View baccinfo,bverify,bfreecoins,bbuymorecoins;
     Switch darkSwitch;
 
     @Override
@@ -49,16 +49,14 @@ public class Settings extends AppCompatActivity {
         bfreecoins = findViewById(R.id.belowfreecoins);
         bbuymorecoins = findViewById(R.id.belowbuymorecoins);
 
-        bdaily = findViewById(R.id.belowdaily);
+
 
         if(type.equals("clients")) {
             coinsfree.setVisibility(View.GONE);
             morecoins.setVisibility(View.GONE);
             daily.setVisibility(View.GONE);
-
             bfreecoins.setVisibility(View.GONE);
             bbuymorecoins.setVisibility(View.GONE);
-            bdaily.setVisibility(View.GONE);
         }
 
         info.setOnClickListener(new View.OnClickListener() {
