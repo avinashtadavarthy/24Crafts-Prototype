@@ -1,6 +1,7 @@
 package com.twenty.four.crafts;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ public class Settings extends AppCompatActivity {
     View baccinfo,bverify,bfreecoins,bbuymorecoins;
     Switch darkSwitch;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Theme Stuff ---- Start
@@ -29,6 +31,7 @@ public class Settings extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
 
         getSupportActionBar().setTitle("Settings");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -156,6 +159,28 @@ public class Settings extends AppCompatActivity {
                 }
             }
         });
+
+    }
+
+
+
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
 
     }
 

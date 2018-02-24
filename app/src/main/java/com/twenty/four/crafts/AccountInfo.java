@@ -3,6 +3,7 @@ package com.twenty.four.crafts;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,9 @@ import android.widget.TextView;
 import com.twenty.four.crafts.app_startup.Login;
 import com.twenty.four.crafts.registration.StartingScreen;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class AccountInfo extends AppCompatActivity {
 
     TextView nameText,birthdayText,mobiletext, emailText;
@@ -23,8 +27,14 @@ public class AccountInfo extends AppCompatActivity {
     TextView signout;
     Toolbar toolbar;
 
+    String response = null;
+    JSONObject object = null;
+
+
+
     String dialogtext,dialogbuttontext;
     int emailFound = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +45,38 @@ public class AccountInfo extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
 
+        response = getSPData("userdatamain");
+
+        try {
+            object = new JSONObject(response);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Account Info");
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         nameText = findViewById(R.id.AccInfoNameText);
+        nameText.setText(object.optString("name"));
+
         birthdayText = findViewById(R.id.AccInfoBirthdayText);
+        birthdayText.setText(getDateAsString(object.optString("dob").substring(0,10)));
+
         mobiletext = findViewById(R.id.AccInfoMobileText);
+        mobiletext.setText("Random number 9999999999");
+
         emailText = findViewById(R.id.AccInfoEmailText);
+        emailText.setText(object.optString("email"));
+
         forgotPassword = findViewById(R.id.ForgotPassButton);
         signout = findViewById(R.id.SignOutButton);
+
+
+
+
+
+
 
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +105,11 @@ public class AccountInfo extends AppCompatActivity {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+
+                                storeSPData("uname", "");
+                                storeSPData("pword", "");
+                                storeSPData("userdatamain", "");
+
                                 Intent intent = new Intent(getApplicationContext(), Login.class).putExtra("status", "logout");
                                 startActivity(intent);
                             }
@@ -135,16 +172,60 @@ public class AccountInfo extends AppCompatActivity {
             }
         });
 
+    }
 
-        nameText.setText("Ragav");
-        birthdayText.setText("25/02/1992");
-        mobiletext.setText("9876543210");
-        emailText.setText("Ragav@gmail.com");
+    private String getDateAsString(String dob) {
+        String day, month, year, dateAsString;
+
+        year = dob.substring(0,4);
+        month = dob.substring(5,7);
+        day = dob.substring(8,10);
+
+        switch(month) {
+            case "01": month = "January"; break;
+            case "02": month = "February"; break;
+            case "03": month = "March"; break;
+            case "04": month = "April"; break;
+            case "05": month = "May"; break;
+            case "06": month = "June"; break;
+            case "07": month = "July"; break;
+            case "08": month = "August"; break;
+            case "09": month = "September"; break;
+            case "10": month = "October"; break;
+            case "11": month = "November"; break;
+            case "12": month = "December"; break;
+        }
+
+        dateAsString = day + " " + month + ", " + year;
+
+        return dateAsString;
     }
 
 
     public void goBack(View view)
     {
         onBackPressed();
+    }
+
+
+
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
+
     }
 }

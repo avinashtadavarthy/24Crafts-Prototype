@@ -13,6 +13,21 @@
     android:focusableInTouchMode="true"
     android:screenOrientation="portrait">
 
+<!--
+    <ProgressDialog
+        android:id="@+id/progressbar"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_centerInParent="true"/>-->
+
+
+    <TextView
+        android:id="@+id/ifwrongpass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Color_DarkRed"
+        android:textAlignment="center"
+        android:layout_marginTop="150sp" />
 
     <RelativeLayout
         android:id="@+id/rel"

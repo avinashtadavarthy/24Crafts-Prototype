@@ -1,6 +1,7 @@
 package com.twenty.four.crafts.app_startup;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,10 +27,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.facebook.AccessToken;
@@ -52,6 +55,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.twenty.four.crafts.Main2Activity;
+import com.twenty.four.crafts.Main3Activity;
 import com.twenty.four.crafts.MySingleton;
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.User;
@@ -65,7 +69,9 @@ import org.json.JSONObject;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Login2 extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener{
 
@@ -108,6 +114,9 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
     ImageView splashlogo;
 
+    ProgressDialog progressbar;
+    String jwtToken, subscribed;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +125,15 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         /* */ FacebookSdk.sdkInitialize(getApplicationContext()); /* */
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
         setContentView(R.layout.activity_login2);
+
+
+        if(!getSPData("uname").equals("") && !getSPData("pword").equals("")) {
+
+            progressbar = new ProgressDialog(Login2.this);
+
+            loginUser();
+
+        }
 
         ImageView openinggif = (ImageView) findViewById(R.id.openinggif);
         GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(openinggif);
@@ -430,6 +448,113 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
             imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
         }
     }
+
+
+
+    private void loginUser() {
+
+        progressbar.show();
+        progressbar.setMessage("Getting existing logged in status...");
+
+
+        String url = "http://192.168.0.113:3000/login";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+
+                try {
+
+                    JSONObject jsonObject = new JSONObject(response);
+
+                        jwtToken = jsonObject.optString("token");
+                        subscribed = jsonObject.optString("subscribed");
+
+                        //to get the user data
+                        String newurl = "http://192.168.0.113:3000/user";
+
+                        StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+                                progressbar.dismiss();
+
+                                storeSPData("userdatamain",response);
+
+                                try {
+
+                                    JSONObject obj = new JSONObject(response);
+                                    String isClient = obj.optString("isClient");
+
+                                    if(isClient.equals("true")) {
+                                        Intent i = new Intent(Login2.this,Main3Activity.class)
+                                                .putExtra("userdata", response).putExtra("subscribed", subscribed);
+                                        Log.e("userdata",response);
+                                        startActivity(i);
+                                    } else {
+                                        Intent i = new Intent(Login2.this,Main2Activity.class)
+                                                .putExtra("userdata", response).putExtra("subscribed", subscribed);
+                                        Log.e("userdata",response);
+                                        startActivity(i);
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                error.printStackTrace();
+                            }
+                        }){
+                            @Override
+                            public Map<String, String> getHeaders() throws AuthFailureError {
+
+                                Map<String, String> params = new HashMap<String, String>();
+
+                                params.put("authorization", jwtToken);
+
+                                return params;
+                            }
+                        };
+
+                        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(getRequest);
+                        //to get the user data
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("username", getSPData("uname"));
+                params.put("password", getSPData("pword"));
+
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+
+
+    }
+
+
+
 
 
 

@@ -24,6 +24,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
@@ -32,11 +34,20 @@ import com.kila.apprater_dialog.lars.AppRater;
 import com.twenty.four.crafts.auditions.AuditionsTab;
 import com.yarolegovich.lovelydialog.LovelyCustomDialog;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
     AppBarLayout appBarLayout;
+    DrawerLayout mDrawerLayout;
+
+    JSONObject userdatamain = null;
+    String userdata, subscribed;
+
+    TextView nav_name, nav_craft, coinCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,15 +63,74 @@ public class Main2Activity extends AppCompatActivity
 
         setContentView(R.layout.activity_main2);
 
-      /*  SharedPreferences sharedPref = this.getPreferences(MODE_PRIVATE);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+
+       /* nav_name = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_name);
+        nav_craft = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_craft);
+        coinCount = (TextView) navigationView.getHeaderView(0).findViewById(R.id.coinCount);
+
+        nav_name.setText(userdatamain.optString("name"));
+        nav_craft.setText(userdatamain.optString("category"));
+        coinCount.setText(userdatamain.optString("coinCount"));*/
+
+        /*  SharedPreferences sharedPref = this.getPreferences(MODE_PRIVATE);
         String jwttoken = sharedPref.getString(getString(R.string.jwtTokenKey), null);
         if(jwttoken==null){
             Intent intent = new Intent(this, Login2.class);
             startActivity(intent);
         }
-
         */
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        userdata = getIntent().getStringExtra("userdata");
+        subscribed = getIntent().getStringExtra("subscribed");
+
+        try {
+            userdatamain = new JSONObject(userdata);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if(subscribed.equals("false")) {
+            final LovelyCustomDialog lovelyCustomDialog = new LovelyCustomDialog(this);
+
+            lovelyCustomDialog.setView(R.layout.activity_subscribe_pop_up)
+                    .setTopColorRes(R.color.indigo_500)
+                    .setIcon(R.mipmap.ic_launcher)
+                    .setTitle("Subscribe")
+                    .setMessage("Subscribe to 24Crafts to enjoy using the app's features. Subscription allows Producers/Directors to find you....")
+                    .setListener(R.id.SubscribeButton, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(Main2Activity.this,PurchaseCoins.class);
+                            startActivity(intent);
+                        }
+                    })
+                    .setListener(R.id.ContinueButton, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this, R.style.AlertDialog));
+                            builder.setMessage("Free Account only gives you access to the DIRECTORY. Producers/Directors will not be able to contact you...")
+                                    .setCancelable(false)
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            //do things
+                                            dialog.cancel();
+                                        }
+                                    });
+
+                            android.app.AlertDialog alert = builder.create();
+                            alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            alert.show();
+                        }
+                    })
+                    .show();
+        }
+
+
+
         navigationView.setNavigationItemSelectedListener(this);
         final ImageView aud_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.aud_handy);
         final ImageView fav_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.fav_handy);
@@ -115,10 +185,9 @@ public class Main2Activity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+                this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawerLayout.setDrawerListener(toggle);
         toggle.syncState();
 
 
@@ -160,8 +229,6 @@ public class Main2Activity extends AppCompatActivity
                 fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new AuditionsTab()).commit();
                 appBarLayout.setTargetElevation(0);
 
-                DrawerLayout mDrawerLayout;
-                mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
                 mDrawerLayout.closeDrawers();
 
             }
@@ -182,8 +249,6 @@ public class Main2Activity extends AppCompatActivity
                 fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new CraftsmenFavouritesTabFragment()).commit();
                 appBarLayout.setTargetElevation(8);
 
-                DrawerLayout mDrawerLayout;
-                mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
                 mDrawerLayout.closeDrawers();
             }
         });
@@ -204,8 +269,6 @@ public class Main2Activity extends AppCompatActivity
                 fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, fragment).commit();
                 appBarLayout.setTargetElevation(0);
 
-                DrawerLayout mDrawerLayout;
-                mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
                 mDrawerLayout.closeDrawers();
 
             }
@@ -275,21 +338,45 @@ public class Main2Activity extends AppCompatActivity
 
         } else if (id == R.id.nearby) {
           // fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new MapsFragment()).commit();
-           Intent i = new Intent(getApplicationContext(),MapsActivity.class);
-           startActivity(i);
+
+           if(subscribed.equals("true"))
+           {
+               Intent i = new Intent(getApplicationContext(), MapsActivity.class);
+               startActivity(i);
+           } else {
+               // grey out the option
+               mDrawerLayout.closeDrawers();
+               Toast.makeText(this, "Access Denied. Please Subscribe.", Toast.LENGTH_SHORT).show();
+           }
+
            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.encounters) {
+           if(subscribed.equals("true")) {
            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new EncountersMain()).commit();
+           } else {
+               // grey out the option
+               mDrawerLayout.closeDrawers();
+               Toast.makeText(this, "Access Denied. Please Subscribe.", Toast.LENGTH_SHORT).show();
+           }
+
            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
        } else if (id == R.id.directory) {
+
            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new DirectoryFragment()).commit();
            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.promote) {
+           if(subscribed.equals("true")) {
            Intent i = new Intent(getApplicationContext(),PromoteProfilePopUp.class);
            startActivity(i);
+           } else {
+               // grey out the option
+               mDrawerLayout.closeDrawers();
+               Toast.makeText(this, "Access Denied. Please Subscribe.", Toast.LENGTH_SHORT).show();
+           }
+
            //fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new SecondFragment()).commit();
 
         } else if (id == R.id.subscribe) {
