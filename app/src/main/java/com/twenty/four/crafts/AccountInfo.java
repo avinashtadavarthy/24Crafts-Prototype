@@ -64,7 +64,7 @@ public class AccountInfo extends AppCompatActivity {
         birthdayText.setText(getDateAsString(object.optString("dob").substring(0,10)));
 
         mobiletext = findViewById(R.id.AccInfoMobileText);
-        mobiletext.setText("Random number 9999999999");
+        mobiletext.setText(object.optString("mobileNumber"));
 
         emailText = findViewById(R.id.AccInfoEmailText);
         emailText.setText(object.optString("email"));

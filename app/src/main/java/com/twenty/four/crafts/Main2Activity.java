@@ -27,9 +27,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.getkeepsafe.taptargetview.TapTarget;
-import com.getkeepsafe.taptargetview.TapTargetSequence;
-import com.getkeepsafe.taptargetview.TapTargetView;
+
 import com.kila.apprater_dialog.lars.AppRater;
 import com.twenty.four.crafts.auditions.AuditionsTab;
 import com.yarolegovich.lovelydialog.LovelyCustomDialog;

@@ -32,6 +32,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class ProfileView extends AppCompatActivity implements OnMenuItemClickListener, OnMenuItemLongClickListener {
@@ -41,9 +42,21 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
     NestedScrollView nestedScrollView;
     ImageView video1, video2, video3;
     int i = 0;
+
+    ImageView result1,result2,result3,result4;
     private FragmentManager fragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;
     String togetback = "Hello", fromwhom = "Hey";
+
+    boolean arrowDownDS = true,arrowDownSP = true;
+
+
+    String userdatamain;
+    String dob;
+
+    TextView danceStyles,sportsPlayed;
+
+    ImageView subresult1,subresult3;
 
 
 
@@ -57,6 +70,8 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_profile);
 
+        userdatamain = getSPData("userdatamain");
+
         fragmentManager = getSupportFragmentManager();
         edit_profile = (ImageButton) findViewById(R.id.edit_profile);
         profile_back = (ImageButton) findViewById(R.id.profile_back);
@@ -64,6 +79,17 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
         //video1 = findViewById(R.id.profileVideo1);
         video2 = findViewById(R.id.profileVideo2);
         video3 = findViewById(R.id.profileVideo3);
+
+        result1 = findViewById(R.id.result1);
+        result2 = findViewById(R.id.result2);
+        result3 = findViewById(R.id.result3);
+        result4 = findViewById(R.id.result4);
+
+        subresult1 = findViewById(R.id.subresult1);
+        subresult3 = findViewById(R.id.subresult3);
+
+        danceStyles = findViewById(R.id.danceStyles);
+        sportsPlayed = findViewById(R.id.sportsPlayed);
 
         //Picasso.with(getApplicationContext()).load("https://img.youtube.com/vi/eGCM444_mN0/mqdefault.jpg").into(video1);
         Picasso.with(getApplicationContext()).load("https://img.youtube.com/vi/eGCM444_mN0/mqdefault.jpg").into(video2);
@@ -116,6 +142,7 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
         //on the profileview page
 
         profile_personname = (TextView) findViewById(R.id.profile_personname);
+
         profile_craft = (TextView) findViewById(R.id.profile_craft);
         profile_age = (TextView) findViewById(R.id.profile_age);
         profile_bio = (TextView) findViewById(R.id.profile_bio);
@@ -131,14 +158,90 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
         profile_skintone = (TextView) findViewById(R.id.profile_skintone);
 
         try {
-
-            JSONObject allTheUserDataJson = new JSONObject(getSPData("allTheUserData"));
-
-
-
+             dob = new JSONObject(userdatamain).optString("dob");
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        int year = Integer.parseInt(dob.substring(0,4));
+        int month = Integer.parseInt(dob.substring(5,7));
+        int day = Integer.parseInt(dob.substring(8,10));
+
+        String Age = getAge(year,month,day);
+
+        try {
+
+                if(new JSONObject(userdatamain).optString("gender").equals("female"))
+                    profile_facialhair.setVisibility(View.GONE);
+
+                profile_personname.setText(new JSONObject(userdatamain).optString("name"));
+                profile_craft.setText(new JSONObject(userdatamain).optString("category"));
+
+                profile_age.setText(Age);
+
+                profile_bio.setText(new JSONObject(userdatamain).optString("bio"));
+                profile_introles.setText(new JSONObject(userdatamain).optString("interestedRoles"));;
+
+                profile_hometown.setText(new JSONObject(userdatamain).optString("native"));
+                profile_residingin.setText(new JSONObject(userdatamain).optString("residingIn"));
+                profile_skintone.setText(new JSONObject(userdatamain).optString("skinTone"));
+                profile_chest.setText(new JSONObject(userdatamain).optString("chestSize"));
+                profile_waist.setText(new JSONObject(userdatamain).optString("waistSize"));
+                profile_facialhair.setText(new JSONObject(userdatamain).optString("facialHair"));
+
+                profile_languagesspoken.setText(new JSONObject(userdatamain).optString("languagesSpoken"));
+                profile_height.setText(new JSONObject(userdatamain).optString("height"));
+                profile_weight.setText(new JSONObject(userdatamain).optString("weight"));
+                //profile_age.setText(new JSONObject(userdatamain).optString("age"));
+
+                if(new JSONObject(userdatamain).optBoolean("canDance") == true)
+                {
+                    result1.setImageResource(R.drawable.icon_green_tick);
+                    subresult1.setImageResource(R.drawable.arrowicon);
+                }
+
+                else
+                    result1.setImageResource(R.drawable.icon_red_cross);
+
+
+                if(new JSONObject(userdatamain).optBoolean("canSwim") == true)
+                {
+                    result2.setImageResource(R.drawable.icon_green_tick);
+                }
+
+
+                else
+                    result2.setImageResource(R.drawable.icon_red_cross);
+
+
+
+                if(new JSONObject(userdatamain).optBoolean("playsSports") == true)
+                {
+                    result3.setImageResource(R.drawable.icon_green_tick);
+                    subresult3.setImageResource(R.drawable.arrowicon);
+
+                }
+
+
+                else
+                    result3.setImageResource(R.drawable.icon_red_cross);
+
+
+                if(new JSONObject(userdatamain).optBoolean("havePassport") == true)
+                {
+                    result4.setImageResource(R.drawable.icon_green_tick);
+                }
+
+
+                else
+                    result4.setImageResource(R.drawable.icon_red_cross);
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
 
     }
 
@@ -190,6 +293,52 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
         menuObjects.add(block);
         return menuObjects;
     }
+
+    public void makeDSVisible(View view)
+    {
+        if(arrowDownDS == true)
+        {
+            arrowDownDS = false;
+            danceStyles.setVisibility(View.VISIBLE);
+            subresult1.setImageResource(R.drawable.arrowiconinverted); //180
+            try {
+                danceStyles.setText(new JSONObject(userdatamain).optString("danceStyles"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        else
+        {
+            arrowDownDS = true;
+            danceStyles.setVisibility(View.GONE);
+            subresult1.setImageResource(R.drawable.arrowicon);
+        }
+    }
+
+    public void makeSPVisible(View view)
+    {
+        if(arrowDownSP == true)
+        {
+            arrowDownSP = false;
+            sportsPlayed.setVisibility(View.VISIBLE);
+            subresult3.setImageResource(R.drawable.arrowiconinverted);
+            try {
+                sportsPlayed.setText(new JSONObject(userdatamain).optString("sportsPlayed"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        else
+        {
+            arrowDownSP = true;
+            sportsPlayed.setVisibility(View.GONE);
+            subresult3.setImageResource(R.drawable.arrowicon);
+        }
+    }
+
 
     private void initMenuFragment() {
         MenuParams menuParams = new MenuParams();
@@ -306,6 +455,26 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
 
         return data;
 
+    }
+
+
+
+    private String getAge(int year,int month,int day)
+    {
+        Calendar dob = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
+
+        dob.set(year,month,day);
+
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
+        if(today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR))
+            age--;
+
+        Integer ageInt = new Integer(age);
+        String ageS = ageInt.toString();
+
+        return ageS;
     }
 
 }

@@ -18,7 +18,7 @@
     <TextView
         android:id="@+id/refandearntext"
         android:layout_marginTop="15dp"
-        android:textSize="20dp"
+        android:textSize="18sp"
         android:layout_below="@id/refandearnimage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +27,11 @@
     <TextView
         android:background="@drawable/rectangularborder"
         android:layout_marginTop="15dp"
-        android:layout_width="180dp"
+        android:layout_width="130dp"
+        android:gravity="center"
+        android:text="dgashdjha"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:id="@+id/refcode"
         android:layout_marginBottom="10dp"
         android:layout_height="30dp"

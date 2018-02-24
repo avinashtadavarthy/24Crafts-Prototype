@@ -21,7 +21,6 @@ import android.widget.ProgressBar;
 
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
-import com.getkeepsafe.taptargetview.TapTargetView;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 import com.yuyakaido.android.cardstackview.CardStackView;
 import com.yuyakaido.android.cardstackview.SwipeDirection;
@@ -144,11 +143,11 @@ public class EncountersMain extends android.support.v4.app.Fragment {
         });
 
 
-        forbiddenMark.setOnClickListener(new View.OnClickListener() {
+      /*  forbiddenMark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                /*getSharedPreferences();
+                *//*getSharedPreferences();
 
                 if(clickCross == 0)
                 {
@@ -158,7 +157,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                 }
 
                 else
-                    swipeLeft();*/
+                    swipeLeft();*//*
 
                 getSharedPreferences();
 
@@ -171,7 +170,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                     swipeLeft();
 
             }
-        });
+        });*/
 
 
         undoButton.setOnClickListener(new View.OnClickListener() {
@@ -188,11 +187,11 @@ public class EncountersMain extends android.support.v4.app.Fragment {
             }
         });
 
-        starInEncounters.setOnClickListener(new View.OnClickListener() {
+        /*starInEncounters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-             /*   getSharedPreferences();
+             *//*   getSharedPreferences();
 
                 if(clickStar == 0)
                 {
@@ -205,7 +204,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                     swipeRight();
 
 
-*/
+*//*
 
                 if (right == 0) {
                     swipeRight();
@@ -215,7 +214,9 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                 } else
                     swipeRight();
             }
-        });
+        });*/
+
+
         reload();
 
         // Tap Target View - Implementation for a Fragment - Haiz,,,,
@@ -521,7 +522,34 @@ public class EncountersMain extends android.support.v4.app.Fragment {
         translateY.setStartDelay(100);
         translateX.setDuration(500);
         translateY.setDuration(500);
-        AnimatorSet set = new AnimatorSet();
+        AnimatorSet set = new AnimatorSet();/*starInEncounters.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+             *//*   getSharedPreferences();
+
+                if(clickStar == 0)
+                {
+                    AlertDialogPressLike();
+                    editor.putInt("clickStar",1);
+                    editor.commit();
+                }
+
+                else
+                    swipeRight();
+
+
+*//*
+
+                if (right == 0) {
+                    swipeRight();
+                    AlertDialogSwipeRight();
+                    editor.putInt("right", 1);
+                    editor.commit();
+                } else
+                    swipeRight();
+            }
+        });*/
         set.playTogether(rotation, translateX, translateY);
 
         cardStackView.swipe(SwipeDirection.Right, set);
@@ -537,24 +565,6 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
     public void AlertDialogSwipeLeft()
     {
-        /*new AlertDialog.Builder(getActivity())
-                .setTitle("Not Interested?")
-                .setMessage("Are you sure you're not interested in this person")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        dialog.dismiss();
-
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        reverse();
-                    }
-                })
-                .show();*/
-
 
         new LovelyStandardDialog(getActivity(),LovelyStandardDialog.ButtonLayout.VERTICAL)
                 .setTopColorRes(R.color.indigo_500)
@@ -581,23 +591,6 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
     public void AlertDialogSwipeRight()
     {
-        /*new AlertDialog.Builder(getActivity())
-                .setTitle("Like")
-                .setMessage("Swiping Right will add <name> to favourites")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        dialog.dismiss();
-
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        reverse();
-                    }
-                })
-                .show();*/
 
 
         new LovelyStandardDialog(getActivity(),LovelyStandardDialog.ButtonLayout.VERTICAL)
@@ -670,22 +663,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
     public void AlertDialogUndo()
     {
-       /* new AlertDialog.Builder(getActivity())
-                .setTitle("Undo?")
-                .setMessage("Are you sure you want to Undo your last action?")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        reverse();
 
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .show();*/
 
 
         new LovelyStandardDialog(getActivity(),LovelyStandardDialog.ButtonLayout.VERTICAL)

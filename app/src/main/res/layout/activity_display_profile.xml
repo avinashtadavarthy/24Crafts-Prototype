@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/blur">
+    android:background="#000000">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/profileview_appbar"
@@ -691,14 +691,24 @@
                         android:src="@drawable/icon_green_tick"/>
 
                     <ImageView
+                        android:layout_marginLeft="4dp"
+                        android:id="@+id/subresult1"
+                        android:onClick="makeDSVisible"
                         android:layout_width="0dp"
                         android:layout_height="30dp"
                         android:layout_weight="0.2"/>
 
                 </LinearLayout>
 
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/danceStyles"/>
+
                 <LinearLayout
-                    android:id="@+id/howtosing"
+                    android:id="@+id/howtoswim"
                     android:paddingRight="10dp"
                     android:paddingLeft="15dp"
                     android:layout_below="@id/howtodance"
@@ -710,9 +720,9 @@
                         android:layout_width="0dp"
                         android:layout_height="30dp"
                         android:layout_weight="3"
-                        android:id="@+id/howtosingquestion"
+                        android:id="@+id/howtoswimquestion"
                         android:gravity="center_vertical"
-                        android:text="Do I know how to sing?"
+                        android:text="Do I know how to swim?"
                         android:textColor="#000000"/>
                     <ImageView
                         android:id="@+id/result2"
@@ -722,6 +732,7 @@
                         android:src="@drawable/icon_red_cross"/>
 
                     <ImageView
+
                         android:layout_width="0dp"
                         android:layout_height="30dp"
                         android:layout_weight="0.2"/>
@@ -730,10 +741,10 @@
 
 
                 <LinearLayout
-                    android:id="@+id/playdports"
+                    android:id="@+id/playSports"
                     android:paddingRight="10dp"
                     android:paddingLeft="15dp"
-                    android:layout_below="@id/howtosing"
+                    android:layout_below="@id/howtoswim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -743,9 +754,9 @@
                         android:layout_width="0dp"
                         android:layout_height="30dp"
                         android:layout_weight="3"
-                        android:id="@+id/playdportsquestion"
+                        android:id="@+id/playsportsquestion"
                         android:gravity="center_vertical"
-                        android:text="Do I play any dports?"
+                        android:text="Do I play any sports?"
                         android:textColor="#000000"/>
                     <ImageView
                         android:id="@+id/result3"
@@ -755,17 +766,26 @@
                         android:src="@drawable/icon_green_tick"/>
 
                     <ImageView
+                        android:layout_marginLeft="4dp"
+                        android:id="@+id/subresult3"
+                        android:onClick="makeSPVisible"
                         android:layout_width="0dp"
                         android:layout_height="30dp"
                         android:layout_weight="0.2"/>
 
                 </LinearLayout>
 
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sportsPlayed"/>
+
                 <LinearLayout
                     android:id="@+id/traveldocuments"
                     android:paddingRight="10dp"
                     android:paddingLeft="15dp"
-                    android:layout_below="@id/playdports"
+                    android:layout_below="@id/playSports"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -776,7 +796,7 @@
                         android:layout_weight="3"
                         android:id="@+id/traveldocumentsquestion"
                         android:gravity="center_vertical"
-                        android:text="Valid Travel Documents?"
+                        android:text="Valid Travel Documents(Passport)?"
                         android:textColor="#000000"/>
                     <ImageView
                         android:id="@+id/result4"
