@@ -5,285 +5,287 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient"
+    android:background="#000000"
     tools:context="com.twenty.four.crafts.PurchaseCoins">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="150sp"
         android:id="@+id/RelativeLayout1"
-        android:background="#40ffffff"
-        android:padding="25dp">
+        android:background="@drawable/rounded_white_corners"
+        android:layout_margin="25sp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/Image1"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="100sp"
+            android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="14dp"
-            android:layout_marginStart="14dp"
+            android:layout_marginLeft="14sp"
+            android:layout_marginStart="14sp"
+            android:elevation="10sp"
             android:src="@drawable/taigamod2" />
 
         <TextView
-            android:id="@+id/Textview1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:gravity="left"
-            android:layout_alignParentRight="true"
+            android:id="@+id/divider"
+            android:layout_width="1sp"
+            android:layout_height="match_parent"
             android:layout_toRightOf="@id/Image1"
-            android:text="Ragav"/>
+            android:layout_centerInParent="true"
+            android:background="#40404040"
+            android:layout_margin="20sp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Graphic Designer"
-            android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@id/Image1"
-            android:layout_below="@id/Textview1"/>
+        <LinearLayout
+            android:layout_toRightOf="@id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/usersname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="left"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/divider"
+                android:text="Ragav"/>
+
+            <TextView
+                android:id="@+id/craft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Graphic Designer"
+                android:textColor="#000000"
+                android:textSize="13sp"
+                android:textStyle="italic"/>
+
+        </LinearLayout>
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_below="@id/RelativeLayout1"
-        android:id="@+id/RelativeLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
         <LinearLayout
-            android:paddingLeft="100dp"
-            android:paddingTop="30dp"
-            android:paddingBottom="30dp"
+            android:id="@+id/linearlayoutt"
+            android:layout_below="@id/RelativeLayout1"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:background="@drawable/rounded_white_corners"
+            android:gravity="center"
+            android:padding="10sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:textSize="18dp"
-                android:text="Current Coins : "
+                android:textSize="20sp"
+                android:text="current coins   "
+                android:layout_margin="5sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textColor="#000000"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
+                android:layout_height="wrap_content" />
 
             <TextView
-                android:textSize="18dp"
+                android:id="@+id/coincount"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:layout_margin="5sp"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="250"/>
+
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/coins1"/>
+                android:layout_width="20sp"
+                android:layout_height="20sp"
+                android:src="@drawable/single_coin"/>
+
         </LinearLayout>
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:padding="15dp"
         android:id="@+id/RelativeLayout3"
-        android:layout_below="@id/RelativeLayout2"
+        android:layout_margin="28sp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/linearlayoutt"
         android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view_1"
-        android:padding="10dp"
-        android:layout_width="130dp"
-        android:layout_height="100dp"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="2dp"
-        app:cardElevation="8dp"
+        android:layout_width="120sp"
+        android:layout_height="100sp"
+        app:cardCornerRadius="5sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="20sp"
+        android:layout_marginBottom="20sp"
+        app:cardBackgroundColor="#ffffff"
+        app:cardElevation="8sp"
         app:cardPreventCornerOverlap="false"
-        app:contentPadding="0dp">
+        app:contentPadding="0sp">
 
-        <RelativeLayout
-            android:layout_width="130dp"
-            android:layout_height="100dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
         <ImageView
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/coins1"
             android:id="@+id/RelativeLayout3Image1"
-            android:layout_marginTop="5dp"
-            android:layout_width="70dp"
-            android:layout_height="70dp" />
+            android:src="@drawable/coins1"
+            android:layout_marginTop="5sp"
+            android:layout_width="match_parent"
+            android:layout_height="70sp"
+            android:layout_marginBottom="5dp"/>
+
         <TextView
-            android:layout_below="@id/RelativeLayout3Image1"
             android:id="@+id/FrameLayout1Text1"
-            android:layout_width="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
             android:text="50 Coins - ₹ 9"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:background="#40808080"
             android:layout_height="wrap_content" />
 
-        </RelativeLayout>
+        </LinearLayout>
 
 
     </android.support.v7.widget.CardView>
-
-
-
-
-
-
 
 
         <android.support.v7.widget.CardView
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view_2"
-            android:padding="10dp"
-            android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/card_view_1"
-            android:layout_width="130dp"
-            android:layout_height="100dp"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="2dp"
-            app:cardElevation="8dp"
+            android:layout_width="120sp"
+            android:layout_height="100sp"
+            app:cardCornerRadius="5sp"
+            app:cardBackgroundColor="#ffffff"
+            app:cardElevation="8sp"
+            android:layout_toRightOf="@+id/card_view_1"
+            android:layout_marginLeft="20sp"
+            android:layout_marginBottom="20sp"
             app:cardPreventCornerOverlap="false"
-            app:contentPadding="0dp">
+            app:contentPadding="0sp">
 
-            <RelativeLayout
-                android:layout_width="130dp"
-                android:layout_height="100dp">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
                 <ImageView
                     android:src="@drawable/coins2"
-                    android:layout_centerHorizontal="true"
                     android:id="@+id/RelativeLayout3Image2"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp" />
-                <TextView
-                    android:layout_below="@id/RelativeLayout3Image2"
-                    android:id="@+id/FrameLayout1Text2"
-                    android:layout_width="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:text="125 Coins - ₹ 19"
-                    android:layout_height="wrap_content" />
+                    android:layout_marginTop="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="70sp"
+                    android:layout_marginBottom="5dp"/>
 
-            </RelativeLayout>
+                <TextView
+                    android:text="125 Coins - ₹ 19"
+                    android:id="@+id/FrameLayout1Text2"
+                    android:layout_width="match_parent"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:background="#40808080"
+                    android:layout_height="wrap_content"  />
+
+            </LinearLayout>
 
 
         </android.support.v7.widget.CardView>
-
-
-
-
-
-
-
-
-
-
-
 
 
         <android.support.v7.widget.CardView
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view_3"
-            android:padding="10dp"
+            android:layout_width="120sp"
+            android:layout_height="100sp"
+            app:cardCornerRadius="5sp"
+            android:layout_marginRight="20sp"
+            android:layout_marginTop="20sp"
             android:layout_below="@id/card_view_1"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_width="130dp"
-            android:layout_height="100dp"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="2dp"
-            app:cardElevation="8dp"
+            app:cardBackgroundColor="#ffffff"
+            app:cardElevation="8sp"
             app:cardPreventCornerOverlap="false"
-            app:contentPadding="0dp">
+            app:contentPadding="0sp">
 
-            <RelativeLayout
-                android:layout_width="130dp"
-                android:layout_height="100dp">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
                 <ImageView
                     android:src="@drawable/coins3"
-                    android:layout_centerHorizontal="true"
                     android:id="@+id/RelativeLayout3Image3"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp" />
+                    android:layout_marginTop="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="70sp"
+                    android:layout_marginBottom="5dp"/>
                 <TextView
-                    android:layout_below="@id/RelativeLayout3Image3"
                     android:id="@+id/FrameLayout1Text3"
-                    android:layout_width="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
                     android:text="350 Coins - ₹ 49"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="match_parent"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:background="#40808080"
+                    android:layout_height="wrap_content"
+                    />
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
         </android.support.v7.widget.CardView>
-
-
-
-
-
-
 
 
         <android.support.v7.widget.CardView
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view_4"
-            android:padding="10dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_width="130dp"
-            android:layout_height="100dp"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="2dp"
-            app:cardElevation="8dp"
+            android:layout_width="120sp"
+            android:layout_height="100sp"
+            android:layout_below="@id/card_view_2"
+            android:layout_toRightOf="@id/card_view_3"
+            android:layout_marginLeft="20sp"
+            android:layout_marginTop="20sp"
+            app:cardCornerRadius="5sp"
+            app:cardBackgroundColor="#ffffff"
+            app:cardElevation="8sp"
             app:cardPreventCornerOverlap="false"
-            app:contentPadding="0dp">
+            app:contentPadding="0sp">
 
-            <RelativeLayout
-                android:layout_width="130dp"
-                android:layout_height="100dp">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
                 <ImageView
                     android:src="@drawable/coins4"
-                    android:layout_centerHorizontal="true"
                     android:id="@+id/RelativeLayout3Image4"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp" />
+                    android:layout_marginTop="5sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="70sp"
+                    android:layout_marginBottom="5dp"/>
+
                 <TextView
-                    android:layout_below="@id/RelativeLayout3Image4"
                     android:id="@+id/FrameLayout1Text4"
-                    android:layout_width="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
                     android:text="900 Coins - ₹ 99"
+                    android:layout_width="match_parent"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:background="#40808080"
                     android:layout_height="wrap_content" />
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
         </android.support.v7.widget.CardView>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     </RelativeLayout>

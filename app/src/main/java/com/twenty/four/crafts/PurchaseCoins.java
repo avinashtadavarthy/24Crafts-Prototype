@@ -1,15 +1,25 @@
 package com.twenty.four.crafts;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class PurchaseCoins extends AppCompatActivity {
 
     CardView twenty_coins,fifty_coins,onefifty_coins,threefifty_coins;
-     @Override
+
+    TextView usersname, craft, coincount;
+
+    JSONObject jsonObject;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase_coins);
@@ -20,6 +30,21 @@ public class PurchaseCoins extends AppCompatActivity {
         fifty_coins = findViewById(R.id.card_view_2);
         onefifty_coins = findViewById(R.id.card_view_3);
         threefifty_coins = findViewById(R.id.card_view_4);
+
+        usersname = findViewById(R.id.usersname);
+        craft = findViewById(R.id.craft);
+        coincount = findViewById(R.id.coincount);
+
+        try {
+            jsonObject = new JSONObject(getSPData("userdatamain"));
+
+            usersname.setText(jsonObject.optString("name"));
+            craft.setText(jsonObject.optString("category"));
+            coincount.setText(jsonObject.optString("coinCount"));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         twenty_coins.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,5 +80,29 @@ public class PurchaseCoins extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+
+
+
+
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
+
     }
 }
