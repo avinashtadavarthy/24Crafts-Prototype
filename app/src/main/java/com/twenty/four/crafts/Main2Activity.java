@@ -2,8 +2,11 @@ package com.twenty.four.crafts;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -35,6 +38,8 @@ import com.yarolegovich.lovelydialog.LovelyCustomDialog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import jp.wasabeef.blurry.Blurry;
+
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -46,6 +51,7 @@ public class Main2Activity extends AppCompatActivity
     String userdata, subscribed;
 
     TextView nav_name, nav_craft, coinCount;
+    ImageView coverpic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +71,6 @@ public class Main2Activity extends AppCompatActivity
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
-       /* nav_name = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_name);
-        nav_craft = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_craft);
-        coinCount = (TextView) navigationView.getHeaderView(0).findViewById(R.id.coinCount);
-
-        nav_name.setText(userdatamain.optString("name"));
-        nav_craft.setText(userdatamain.optString("category"));
-        coinCount.setText(userdatamain.optString("coinCount"));*/
-
         /*  SharedPreferences sharedPref = this.getPreferences(MODE_PRIVATE);
         String jwttoken = sharedPref.getString(getString(R.string.jwtTokenKey), null);
         if(jwttoken==null){
@@ -89,6 +87,17 @@ public class Main2Activity extends AppCompatActivity
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        nav_name = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_name);
+        nav_craft = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_craft);
+        coinCount = (TextView) navigationView.getHeaderView(0).findViewById(R.id.coinCount);
+        coverpic = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.coverpic);
+
+        nav_name.setText(userdatamain.optString("name"));
+        nav_craft.setText(userdatamain.optString("category"));
+        coinCount.setText(userdatamain.optString("coinCount"));
+        Bitmap icon = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.sample1);
+        Blurry.with(getApplicationContext()).from(icon).into(coverpic);
 
         if(subscribed.equals("false")) {
             final LovelyCustomDialog lovelyCustomDialog = new LovelyCustomDialog(this);
