@@ -29,7 +29,6 @@ public class AuditionsTab extends Fragment {
         myView = inflater.inflate(R.layout.activity_auditions_tab,container,false);
 
         User.getInstance().navbarpos = 1;
-        getActivity().setTitle("Auditions");
 
         auditions_tabbed = (ViewPager) myView.findViewById(R.id.auditions_tabbed);
         auditions_tabbed.setAdapter(new AudAdapter(getChildFragmentManager(), getActivity().getApplicationContext()));

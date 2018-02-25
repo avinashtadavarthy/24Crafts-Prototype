@@ -16,6 +16,7 @@
        android:numColumns="3"
        android:verticalSpacing="2dp"
        android:horizontalSpacing="2dp"
+       android:nestedScrollingEnabled="true"
        android:layout_gravity="center_horizontal"
        android:layout_marginRight="5dp"
        android:layout_marginLeft="5dp"

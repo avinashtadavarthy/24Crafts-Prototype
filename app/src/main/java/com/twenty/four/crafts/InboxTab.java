@@ -30,8 +30,6 @@ public class InboxTab extends Fragment {
 
         User.getInstance().navbarpos = 3;
 
-        getActivity().setTitle("Messages");
-
         inbox_tabbed = (ViewPager) myView.findViewById(R.id.inbox_tabbed);
         inbox_tabbed.setAdapter(new InboxTab.InboxAdapter(getChildFragmentManager(), getActivity().getApplicationContext()));
 
