@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.thefinestartist.finestwebview.FinestWebView;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         /*holder.date.setText(current.getPubDate());*/
         holder.title.setText(current.getTitle());
         holder.description.setText(current.getDecription());
-        //Picasso.with(context).load(current.getThumbnailURL()).into(holder.thumbnail);
+        Picasso.with(context).load(current.getThumbnailURL()).into(holder.thumbnail);
 
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(context, recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
             @Override

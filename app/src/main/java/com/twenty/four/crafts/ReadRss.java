@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -97,12 +98,23 @@ public class ReadRss extends AsyncTask<Void,Void,Void> {
                             feedItem.setLink(current.getTextContent());
                         }
 
-                      /*  else if(current.getNodeName().equalsIgnoreCase("media:thumbnail"))
+                      /*  else if(current.getNodeName().equalsIgnoreCase("enclosure"))
                         {
                             String url = current.getAttributes().item(0).getTextContent();
                             feedItem.setThumbnailURL(url);
+                        }*/
+
+
+                        switch(address) {
+                            case "http://tamil.thehindu.com/tamilnadu/rss/": feedItem.setThumbnailURL("http://www.thehindu.com/social/article16670585.ece/BINARY/original/thhindu.jpg"); break;
+                            default: if(current.getNodeName().equalsIgnoreCase("enclosure"))
+                            {
+                                String url = current.getAttributes().item(0).getTextContent();
+                                feedItem.setThumbnailURL(url);
+                            }
+                            break;
                         }
-*/
+
                     }
 
                     feedItems.add(feedItem);
