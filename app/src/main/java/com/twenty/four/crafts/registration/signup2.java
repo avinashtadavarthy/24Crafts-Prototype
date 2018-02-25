@@ -2,12 +2,16 @@ package com.twenty.four.crafts.registration;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -16,6 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -26,18 +31,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class signup2 extends AppCompatActivity {
-
-    String[] bodytypeString={"Choose Body Type",
-            "Athletic","Average","Petite","Thin","Heavy","Other"};
-
-    String[] haircolorString={"Choose Hair Color",
-            "Black", "Brown", "White","Red", "Blonde", "Burgundy", "Ginger", "Other"};
-
-    String[] hairlengthString={"Choose Hair Length",
-            "Short", "Medium", "Long", "Bald", "Shaved", "Other"};
-
-    String[] eyecolorString={"Choose Eye Color",
-            "Black", "Brown", "Blue", "Amber", "Grey", "Green", "Hazel", "Other"};
 
     Integer[] imageArraymale = {
             R.drawable.ic_person, R.drawable.veryfair, R.drawable.fair,  R.drawable.medium,  R.drawable.olive,  R.drawable.brown, R.drawable.dark};
@@ -51,17 +44,12 @@ public class signup2 extends AppCompatActivity {
             "Beard","Moustache", "Beard & Moustache", "Stubble / Goatie", "None", "Other"};
 
 
-    String bodyTypeSelector = "null";
-    String hairColorSelector = "null";
-    String hairLengthSelector = "null";
-    String eyeColorSelector = "null";
-    String facialHairSelector = "null";
     String skinToneSelector = "null";
 
-    TextView bodytype_floatingtext, haircolor_floatingtext, hairlength_floatingtext, eyecolor_floatingtext, skintone_floatingtext, facialhair_floatingtext;
-    Spinner bodytype, haircolor, hairlength, eyecolor, skintone, facialhair;
     LinearLayout facialhairlayout;
-    TextInputLayout input_height, input_weight, input_hipsize, input_chestsize, input_waistsize ;
+
+    TextInputLayout input_bodytype, input_haircolor, input_hairlength, input_eyecolor, input_skintone, input_facialhair, input_height, input_weight, input_hipsize, input_chestsize, input_waistsize;
+    EditText bodytype, haircolor, hairlength, eyecolor, skintone, facialhair, height, weight, hipsize, chestsize, waistsize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,21 +65,26 @@ public class signup2 extends AppCompatActivity {
         textView.setText("Hello, " + name);
 
 
-        final EditText height = (EditText) findViewById(R.id.height);
-        final EditText weight = (EditText) findViewById(R.id.weight);
-        final EditText hipsize = (EditText) findViewById(R.id.hip_size);
-        final EditText waistsize = (EditText) findViewById(R.id.waist_size);
-        final EditText chestsize = (EditText) findViewById(R.id.chest_size);
+        bodytype = (EditText) findViewById(R.id.bodytype);
+        haircolor = (EditText) findViewById(R.id.haircolor);
+        hairlength = (EditText) findViewById(R.id.hairlength);
+        eyecolor = (EditText) findViewById(R.id.eyecolor);
+        skintone = (EditText) findViewById(R.id.skintone);
+        facialhair = (EditText) findViewById(R.id.facialhair);
+        height = (EditText) findViewById(R.id.height);
+        weight = (EditText) findViewById(R.id.weight);
+        hipsize = (EditText) findViewById(R.id.hip_size);
+        chestsize = (EditText) findViewById(R.id.chest_size);
+        waistsize = (EditText) findViewById(R.id.waist_size);
 
 
 
-        bodytype_floatingtext = (TextView) findViewById(R.id.bodytype_floatingtext);
-        haircolor_floatingtext = (TextView) findViewById(R.id.haircolor_floatingtext);
-        hairlength_floatingtext = (TextView) findViewById(R.id.hairlength_floatingtext);
-        eyecolor_floatingtext = (TextView) findViewById(R.id.eyecolor_floatingtext);
-        skintone_floatingtext = (TextView) findViewById(R.id.skintone_floatingtext);
-        facialhair_floatingtext = (TextView) findViewById(R.id.facialhair_floatingtext);
-
+        input_bodytype = (TextInputLayout) findViewById(R.id.input_bodytype);
+        input_haircolor = (TextInputLayout) findViewById(R.id.input_haircolor);
+        input_hairlength = (TextInputLayout) findViewById(R.id.input_hairlength);
+        input_eyecolor = (TextInputLayout) findViewById(R.id.input_eyecolor);
+        input_skintone = (TextInputLayout) findViewById(R.id.input_skintone);
+        input_facialhair = (TextInputLayout) findViewById(R.id.input_facialhair);
         input_height = (TextInputLayout) findViewById(R.id.input_height);
         input_weight = (TextInputLayout) findViewById(R.id.input_weight);
         input_hipsize = (TextInputLayout) findViewById(R.id.input_hipsize);
@@ -100,115 +93,551 @@ public class signup2 extends AppCompatActivity {
 
 
 
-        bodytype = (Spinner) findViewById(R.id.body_type);
-        haircolor = (Spinner) findViewById(R.id.hair_color);
-        hairlength = (Spinner) findViewById(R.id.hair_length);
-        eyecolor = (Spinner) findViewById(R.id.eye_color);
-        skintone = (Spinner) findViewById(R.id.skin_tone);
-        facialhair = (Spinner) findViewById(R.id.facial_hair);
 
-
-
-        CustomAdapterSpinner bodytypeAdapter=new CustomAdapterSpinner(getApplicationContext(),bodytypeString);
-        bodytype.setAdapter(bodytypeAdapter);
-        bodytype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        bodytype.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
 
-                switch(position) {
-                    case 1: bodyTypeSelector = "Athletic"; break;
-                    case 2: bodyTypeSelector = "Average"; break;
-                    case 3: bodyTypeSelector = "Petite"; break;
-                    case 4: bodyTypeSelector = "Thin"; break;
-                    case 5: bodyTypeSelector = "Heavy"; break;
-                    case 6: bodyTypeSelector = "Other"; break;
+                    final CharSequence[] items = {"Athletic","Average","Petite","Thin","Heavy","Other"};
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                    alertDialogBuilder.setTitle("Choose Body Type");
+                    alertDialogBuilder
+                            .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ListView lw = ((AlertDialog) dialog).getListView();
+                                    Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                                    String selectedgend = checkedItem.toString();
+                                    bodytype.setText(selectedgend);
+                                    dialog.dismiss();
+                                }
+                            });
+
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+
                 }
+            }
+        });
+
+        bodytype.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final CharSequence[] items = {"Athletic","Average","Petite","Thin","Heavy","Other"};
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                alertDialogBuilder.setTitle("Choose Body Type");
+                alertDialogBuilder
+                        .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ListView lw = ((AlertDialog) dialog).getListView();
+                                Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                                String selectedgend = checkedItem.toString();
+                                bodytype.setText(selectedgend);
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+
+            }
+        });
+
+        bodytype.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
 
             }
         });
 
 
 
-        CustomAdapterSpinner haircolorAdapter=new CustomAdapterSpinner(getApplicationContext(),haircolorString);
-        haircolor.setAdapter(haircolorAdapter);
-        haircolor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                switch(position) {
-                    case 1: hairColorSelector = "Black"; break;
-                    case 2: hairColorSelector = "Brown"; break;
-                    case 3: hairColorSelector = "White"; break;
-                    case 4: hairColorSelector = "Red"; break;
-                    case 5: hairColorSelector = "Blonde"; break;
-                    case 6: hairColorSelector = "Burgundy"; break;
-                    case 7: hairColorSelector = "Ginger"; break;
-                    case 8: hairColorSelector = "Other"; break;
+        haircolor.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+
+                    final CharSequence[] items = { "Black", "Brown", "White","Red", "Blonde", "Burgundy", "Ginger", "Other"};
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                    alertDialogBuilder.setTitle("Choose Hair Colour");
+                    alertDialogBuilder
+                            .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ListView lw = ((AlertDialog) dialog).getListView();
+                                    Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                                    String selectedgend = checkedItem.toString();
+                                    haircolor.setText(selectedgend);
+                                    dialog.dismiss();
+                                }
+                            });
+
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+
                 }
+            }
+        });
+
+        haircolor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final CharSequence[] items = { "Black", "Brown", "White","Red", "Blonde", "Burgundy", "Ginger", "Other"};
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                alertDialogBuilder.setTitle("Choose Hair Colour");
+                alertDialogBuilder
+                        .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ListView lw = ((AlertDialog) dialog).getListView();
+                                Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                                String selectedgend = checkedItem.toString();
+                                haircolor.setText(selectedgend);
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+
+            }
+        });
+
+        haircolor.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        hairlength.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+
+                    final CharSequence[] items = {"Short", "Medium", "Long", "Bald", "Shaved", "Other"};
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                    alertDialogBuilder.setTitle("Choose Hair Length");
+                    alertDialogBuilder
+                            .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ListView lw = ((AlertDialog) dialog).getListView();
+                                    Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                                    String selectedgend = checkedItem.toString();
+                                    hairlength.setText(selectedgend);
+                                    dialog.dismiss();
+                                }
+                            });
+
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+
+                }
+            }
+        });
+
+        hairlength.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final CharSequence[] items = {"Short", "Medium", "Long", "Bald", "Shaved", "Other"};
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                alertDialogBuilder.setTitle("Choose Hair Length");
+                alertDialogBuilder
+                        .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ListView lw = ((AlertDialog) dialog).getListView();
+                                Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                                String selectedgend = checkedItem.toString();
+                                hairlength.setText(selectedgend);
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+
+            }
+        });
+
+        hairlength.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
 
-        CustomAdapterSpinner hairlengthAdapter=new CustomAdapterSpinner(getApplicationContext(),hairlengthString);
-        hairlength.setAdapter(hairlengthAdapter);
-        hairlength.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                switch(position) {
-                    case 1: hairLengthSelector = "Short"; break;
-                    case 2: hairLengthSelector = "Medium"; break;
-                    case 3: hairLengthSelector = "Long"; break;
-                    case 4: hairLengthSelector = "Bald"; break;
-                    case 5: hairLengthSelector = "Shaved"; break;
-                    case 6: hairLengthSelector = "Other"; break;
+
+        eyecolor.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+
+                    final CharSequence[] items = {"Black", "Brown", "Blue", "Amber", "Grey", "Green", "Hazel", "Other"};
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                    alertDialogBuilder.setTitle("Choose Eye Color");
+                    alertDialogBuilder
+                            .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ListView lw = ((AlertDialog) dialog).getListView();
+                                    Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                                    String selectedgend = checkedItem.toString();
+                                    eyecolor.setText(selectedgend);
+                                    dialog.dismiss();
+                                }
+                            });
+
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+
                 }
+            }
+        });
+
+        eyecolor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final CharSequence[] items = {"Black", "Brown", "Blue", "Amber", "Grey", "Green", "Hazel", "Other"};
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                alertDialogBuilder.setTitle("Choose Eye Color");
+                alertDialogBuilder
+                        .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ListView lw = ((AlertDialog) dialog).getListView();
+                                Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                                String selectedgend = checkedItem.toString();
+                                eyecolor.setText(selectedgend);
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+
+            }
+        });
+
+        eyecolor.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
 
-        CustomAdapterSpinner eyecolorAdapter=new CustomAdapterSpinner(getApplicationContext(),eyecolorString);
-        eyecolor.setAdapter(eyecolorAdapter);
-        eyecolor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                switch(position) {
-                    case 1: eyeColorSelector = "Black"; break;
-                    case 2: eyeColorSelector = "Brown"; break;
-                    case 3: eyeColorSelector = "Blue"; break;
-                    case 4: eyeColorSelector = "Amber"; break;
-                    case 5: eyeColorSelector = "Grey"; break;
-                    case 6: eyeColorSelector = "Green"; break;
-                    case 7: eyeColorSelector = "Hazel"; break;
-                    case 8: eyeColorSelector = "Other"; break;
+        skintone.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+
+                    final CharSequence[] items = {"Very Fair", "Fair", "Medium", "Olive", "Brown", "Dark"};
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                    alertDialogBuilder.setTitle("Choose Skin Tone");
+                    alertDialogBuilder
+                            .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ListView lw = ((AlertDialog) dialog).getListView();
+                                    Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                                    String selectedgend = checkedItem.toString();
+                                    skintone.setText(selectedgend);
+                                    dialog.dismiss();
+                                }
+                            });
+
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+
                 }
+            }
+        });
+
+        skintone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final CharSequence[] items = {"Very Fair", "Fair", "Medium", "Olive", "Brown", "Dark"};
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                alertDialogBuilder.setTitle("Choose Skin Tone");
+                alertDialogBuilder
+                        .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ListView lw = ((AlertDialog) dialog).getListView();
+                                Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                                String selectedgend = checkedItem.toString();
+                                skintone.setText(selectedgend);
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
+
+        skintone.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
 
 
-        if(getSPData("gender").equals("Male")){
+
+        facialhair.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+
+                    final CharSequence[] items = {"Beard","Moustache", "Beard & Moustache", "Stubble / Goatie", "None", "Other"};
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                    alertDialogBuilder.setTitle("Choose Facial Hair");
+                    alertDialogBuilder
+                            .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ListView lw = ((AlertDialog) dialog).getListView();
+                                    Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                                    String selectedgend = checkedItem.toString();
+                                    facialhair.setText(selectedgend);
+                                    dialog.dismiss();
+                                }
+                            });
+
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+
+                }
+            }
+        });
+
+        facialhair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final CharSequence[] items = {"Beard","Moustache", "Beard & Moustache", "Stubble / Goatie", "None", "Other"};
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                alertDialogBuilder.setTitle("Choose Facial Hair");
+                alertDialogBuilder
+                        .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ListView lw = ((AlertDialog) dialog).getListView();
+                                Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                                String selectedgend = checkedItem.toString();
+                                facialhair.setText(selectedgend);
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+
+            }
+        });
+
+        facialhair.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+
+
+
+        height.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+
+
+        weight.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+
+
+
+        hipsize.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+
+
+
+
+        chestsize.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+
+
+
+        waistsize.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+
+       /* if(getSPData("gender").equals("Male")){
             SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.custom, skintoneString, imageArraymale);
             skintone.setAdapter(adapter);
         } else if(getSPData("gender").equals("Female") || getSPData("gender").equals("Other")) {
@@ -232,73 +661,37 @@ public class signup2 extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
-        });
+        });*/
 
 
-
-        CustomAdapterSpinner facialhairAdapter=new CustomAdapterSpinner(getApplicationContext(),facialhairString);
-        facialhair.setAdapter(facialhairAdapter);
-        facialhair.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                switch(position) {
-                    case 1: facialHairSelector = "Beard"; break;
-                    case 2: facialHairSelector = "Moustache"; break;
-                    case 3: facialHairSelector = "Beard & moustache"; break;
-                    case 4: facialHairSelector = "Stubble / goatie"; break;
-                    case 5: facialHairSelector = "None"; break;
-                    case 6: facialHairSelector = "Other";  break;
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-
-        Button button = (Button)findViewById(R.id.button2);
+        Button button = (Button) findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                if(!bodyTypeSelector.equals("null")) storeSPData("bodyType", bodyTypeSelector);
+                if(!bodytype.getText().toString().equals("")) storeSPData("bodyType", bodytype.getText().toString());
 
-                if(!hairColorSelector.equals("null")) storeSPData("hairColor", hairColorSelector);
+                if(!haircolor.getText().toString().equals("")) storeSPData("hairColor", haircolor.getText().toString());
 
-                if(!hairLengthSelector.equals("null")) storeSPData("hairLength", hairLengthSelector);
+                if(!hairlength.getText().toString().equals("")) storeSPData("hairLength", hairlength.getText().toString());
 
-                if(!eyeColorSelector.equals("null")) storeSPData("eyeColor", eyeColorSelector);
+                if(!eyecolor.getText().toString().equals("")) storeSPData("eyeColor", eyecolor.getText().toString());
 
-                if(!facialHairSelector.equals("null")) storeSPData("facialHair", facialHairSelector);
+                if(!facialhair.getText().toString().equals("")) storeSPData("facialHair", facialhair.getText().toString());
 
                 if(!skinToneSelector.equals("null")) storeSPData("skinTone", skinToneSelector);
 
-                if(!facialHairSelector.equals("null")) storeSPData("facialHair", facialHairSelector);
+                if(!height.getText().toString().equals("")) storeSPData("height", height.getText().toString());
 
+                if(!weight.getText().toString().equals("")) storeSPData("weight", weight.getText().toString());
 
-                if(!height.getText().toString().equals("")) {
-                    storeSPData("height", height.getText().toString());
-                }
+                if(!hipsize.getText().toString().equals("")) storeSPData("hipsize", hipsize.getText().toString());
 
-                if(!weight.getText().toString().equals("")) {
-                    storeSPData("weight", weight.getText().toString());
-                }
+                if(!chestsize.getText().toString().equals("")) storeSPData("chestSize", chestsize.getText().toString());
 
-                if(!hipsize.getText().toString().equals("")) {
-                    storeSPData("hipsize", hipsize.getText().toString());
-                }
+                if(!waistsize.getText().toString().equals("")) storeSPData("waistSize", waistsize.getText().toString());
 
-                if(!chestsize.getText().toString().equals("")) {
-                    storeSPData("chestSize", chestsize.getText().toString());
-                }
-
-                if(!waistsize.getText().toString().equals("")) {
-                    storeSPData("waistSize", waistsize.getText().toString());
-                }
 
 
                 Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
@@ -321,8 +714,7 @@ public class signup2 extends AppCompatActivity {
         {
             case "Child Artist":
 
-                facialhairlayout = (LinearLayout) findViewById(R.id.facialhairlayout);
-                facialhairlayout.setVisibility(View.GONE);
+                input_facialhair.setVisibility(View.GONE);
                 input_hipsize.setVisibility(View.GONE);
                 input_chestsize.setVisibility(View.GONE);
                 input_waistsize.setVisibility(View.GONE);

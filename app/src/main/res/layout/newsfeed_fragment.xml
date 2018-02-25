@@ -118,7 +118,6 @@
         android:layout_below="@id/choose_news"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:paddingTop="10sp"
         android:paddingRight="10sp"
         android:paddingLeft="10sp"/>
 

@@ -224,13 +224,6 @@
                 android:ems="10" />
 
         </android.support.design.widget.TextInputLayout>
-        
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#80ffffff"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
 
 
         <LinearLayout
@@ -243,220 +236,171 @@
             android:layout_marginRight="16dp"
             android:weightSum="10">
 
-            <LinearLayout
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_gender"
                 android:layout_width="0dp"
                 android:layout_weight="5"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="Select Gender"
+                android:textColorHint="#ffffff"
+                android:textSize="16dp"
+                app:errorEnabled="true">
 
-                <TextView
-                    android:id="@+id/gender_floatingtext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:hint=""
-                    android:textColor="#808080"
-                    android:textSize="12dp"/>
-
-                <Spinner
+                <EditText
                     android:id="@+id/gender"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
+                    android:paddingLeft="5dp"
                     android:textSize="16dp"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/underline"/>
+                    android:layout_gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:ems="10" />
 
-            </LinearLayout>
+            </android.support.design.widget.TextInputLayout>
 
-            <!--<com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-                android:id="@+id/gender"
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_dob"
                 android:layout_width="0dp"
                 android:layout_weight="5"
-                android:layout_height="match_parent"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:hint="Select Gender"
-                android:textSize="16dp"
-                app:met_floatingLabelText="Gender"
-                app:met_floatingLabel="highlight"
-                android:textColor="#ffffff"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="16dp"
+                android:hint="Click to set DOB"
                 android:textColorHint="#ffffff"
-                app:met_baseColor="#ffffff"
-                app:met_primaryColor="#53dbd0"
-                android:ems="10" />-->
+                android:textSize="16dp"
+                app:errorEnabled="true">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="5"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:onClick="setDate">
+                <EditText
+                    android:id="@+id/dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingLeft="5dp"
+                    android:textSize="16dp"
+                    android:layout_gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:ems="10" />
 
-                    <TextView
-                        android:id="@+id/dob_floatingtext"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:hint=""
-                        android:textColor="#808080"
-                        android:textSize="12dp"/>
-
-                    <TextView
-                        android:id="@+id/dob"
-                        android:layout_width="match_parent"
-                        android:layout_height="fill_parent"
-                        android:hint="Click to set DOB"
-                        android:textColorHint="#ffffff"
-                        android:gravity="center_vertical"
-                        android:textColor="#ffffff"
-                        android:paddingLeft="2dp"
-                        android:textSize="16dp"
-                        android:background="@drawable/underline"/>
-
-                </LinearLayout>
+            </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
 
 
-        <LinearLayout
-            android:id="@+id/layout_residing"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp">
-
-            <TextView
-                android:id="@+id/residing_floatingtext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:hint=""
-                android:textColor="#808080"
-                android:textSize="12dp"/>
-
-            <TextView
-                android:id="@+id/residing"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:hint="Select Residing In"
-                android:textColorHint="#ffffff"
-                android:textColor="#ffffff"
-                android:paddingLeft="2dp"
-                android:textSize="16dp"
-                android:gravity="center_vertical" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="#ffffff" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp">
-
-            <TextView
-                android:id="@+id/hometown_floatingtext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:hint=""
-                android:textColor="#808080"
-                android:textSize="12dp"/>
-
-            <TextView
-                android:id="@+id/hometown"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:hint="Select Native (Hometown)"
-                android:textColorHint="#ffffff"
-                android:textColor="#ffffff"
-                android:paddingLeft="2dp"
-                android:textSize="16dp"
-                android:gravity="center_vertical" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="#ffffff" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp">
-
-            <TextView
-                android:id="@+id/langs_floatingtext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:hint=""
-                android:textColor="#808080"
-                android:textSize="12dp"/>
-
-            <TextView
-                android:id="@+id/display_languages"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:hint="Select Languages Spoken"
-                android:textColorHint="#ffffff"
-                android:textColor="#ffffff"
-                android:paddingLeft="2dp"
-                android:textSize="16dp"
-                android:gravity="center_vertical" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="#ffffff" />
-
-        </LinearLayout>
-
-            <LinearLayout
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_residingin"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:orientation="vertical"
-            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="50dp">
+            android:hint="Select Place of Residence"
+            android:textColorHint="#ffffff"
+            android:textSize="16dp"
+            app:errorEnabled="true">
 
-            <TextView
-                android:id="@+id/who_floatingtext"
+            <EditText
+                android:id="@+id/residingin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:hint="Who am I?"
-                android:textColor="#808080"
-                android:textSize="12dp"/>
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
+                android:paddingLeft="5dp"
+                android:layout_gravity="center"
                 android:textSize="16dp"
-                android:gravity="center_vertical"
-                android:background="@drawable/underline"/>
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:inputType="textCapWords|textCapSentences" />
 
-        </LinearLayout>
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_nativeplace"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="Select Native Place (Hometown)"
+            android:textColorHint="#ffffff"
+            android:textSize="16dp"
+            app:errorEnabled="true">
+
+            <EditText
+                android:id="@+id/nativeplace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:layout_gravity="center"
+                android:textSize="16dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:inputType="textCapWords|textCapSentences" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_languagesspoken"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="Select Languages Spoken"
+            android:textColorHint="#ffffff"
+            android:textSize="16dp"
+            app:errorEnabled="true">
+
+            <EditText
+                android:id="@+id/languagesspoken"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="5dp"
+                android:layout_gravity="center"
+                android:textSize="16dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:inputType="textCapWords|textCapSentences" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_whoami"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="60dp"
+            android:hint="Who am I?"
+            android:textColorHint="#ffffff"
+            android:textSize="16dp"
+            app:errorEnabled="true">
+
+            <EditText
+                android:id="@+id/whoami"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="5dp"
+                android:layout_gravity="center"
+                android:textSize="16dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:inputType="textCapWords|textCapSentences" />
+
+        </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
 

@@ -12,10 +12,12 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.view.Gravity;
@@ -26,12 +28,16 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -70,6 +76,7 @@ public class signup extends AppCompatActivity implements IPickResult {
 
     private static final int LANGUAGES_SPOKEN = 25;
     private static final int REQUEST_IMAGE_LOAD = 5555;
+    private static final int CHOOSE_CATEGORY = 12093;
 
     //TODO: Add languages spoken "multi select spinner"
 
@@ -136,28 +143,6 @@ public class signup extends AppCompatActivity implements IPickResult {
             "wwwnew.eu", "xagloo.com", "xemaps.com", "xents.com", "xmaily.com", "xoxy.net", "yep.it", "yogamaven.com", "yopmail.com", "yopmail.fr", "yopmail.net",
             "ypmail.webarnak.fr.eu.org", "yuurok.com", "zehnminutenmail.de", "zippymail.info", "zoaxe.com", "zoemail.org" };
 
-    String[] whoNcrafts = {"Who am I?",
-            "Actor","Actress","Child Artist","Singer","Dancer",
-            "Side Artists","Assistant Director","Lyric Writer / Lyricist",
-            "Dialouge Writer","Script / Screenplay Writers", "Story Board Artist",
-            "Choreographer","Director of Photography", "Still Photographer",
-            "PRO", "Designer", "Production Manager",
-            "Focus Puller", "Vehicle Driver", "Mic Department",
-            "Music Director", "Makeup Man", "Hair Dresser",
-            "Costumer", "Art Department", "Set Department",
-            "Stuntman", "Editor", "Location Manager",
-            "Production (Food)", "Dubbing Artists", "Sound Recording Engineers",
-            "Sound Mixing Engineers", "Digital Intermediate", "VFX / CG",
-            "SFX", "Pet Suppliers / Pet Doctors / AWBI Certifications"};
-
-
-    String[] whoNclients = {"Who am I?",
-            "Casting Agent","Co-Director","Co-Producer","Director","Director Assistant",
-            "Director Audition","Executive Producer","Model Coordinator",
-            "Producer","Production House Manager"};
-
-    String[] genderString = { "Select Gender",
-            "Male", "Female", "Other" };
 
     String name, selectedcraft = "null", selectedgender = "null";
 
@@ -170,18 +155,14 @@ public class signup extends AppCompatActivity implements IPickResult {
     String gender;
     String imgurl;
 
-    EditText first_name1, last_name1, email1,
-            password1, confirm_password1;
+    EditText first_name1, last_name1, email1, password1, confirm_password1, gender1, dob1, residingin1, nativeplace1, languagesspoken1, whoami1;
+    public int vfirst_name = 0, vlast_name = 0, vemail = 0, vpassword = 0, vconfirm_password = 0, vgender = 0, vdob = 0, vresidingin = 0, vnativeplace = 0, vlanguagesspoken = 0, vwhoami = 0;
     Spinner craft,genderspin;
     CircleImageView profile_image1, edit_profile_btn;
-    TextView display_languages;
-    TextView residing1;
-    TextView hometown1;
 
-    TextInputLayout input_firstname, input_lastname, input_email, input_password, input_confirmpassword;
+    TextInputLayout input_firstname, input_lastname, input_email, input_password, input_confirmpassword, input_gender, input_dob, input_residingin, input_nativeplace, input_languagesspoken, input_whoami;
 
     //datepicker
-    TextView dob1;
     Calendar cal = Calendar.getInstance();
     int year = cal.get(Calendar.YEAR);
     int month = cal.get(Calendar.MONTH);
@@ -204,6 +185,28 @@ public class signup extends AppCompatActivity implements IPickResult {
         input_email = (TextInputLayout) findViewById(R.id.input_email);
         input_password = (TextInputLayout) findViewById(R.id.input_password);
         input_confirmpassword = (TextInputLayout) findViewById(R.id.input_confirmpassword);
+        input_gender = (TextInputLayout) findViewById(R.id.input_gender);
+        input_dob = (TextInputLayout) findViewById(R.id.input_dob);
+        input_residingin = (TextInputLayout) findViewById(R.id.input_residingin);
+        input_nativeplace = (TextInputLayout) findViewById(R.id.input_nativeplace);
+        input_languagesspoken = (TextInputLayout) findViewById(R.id.input_languagesspoken);
+        input_whoami = (TextInputLayout) findViewById(R.id.input_whoami);
+
+
+        profile_image1 = (CircleImageView) findViewById(R.id.profile_image);
+
+
+        first_name1 = (EditText) findViewById(R.id.first_name);
+        last_name1 = (EditText) findViewById(R.id.last_name);
+        email1 = (EditText) findViewById(R.id.email);
+        password1 = (EditText) findViewById(R.id.password);
+        confirm_password1 = (EditText) findViewById(R.id.confirm_password);
+        gender1 = (EditText) findViewById(R.id.gender); gender1.setShowSoftInputOnFocus(false); gender1.setInputType(InputType.TYPE_NULL);
+        dob1 = (EditText) findViewById(R.id.dob); dob1.setShowSoftInputOnFocus(false); dob1.setInputType(InputType.TYPE_NULL);
+        residingin1 = (EditText) findViewById(R.id.residingin); residingin1.setShowSoftInputOnFocus(false); residingin1.setInputType(InputType.TYPE_NULL);
+        nativeplace1 = (EditText) findViewById(R.id.nativeplace); nativeplace1.setShowSoftInputOnFocus(false); nativeplace1.setInputType(InputType.TYPE_NULL);
+        languagesspoken1 = (EditText) findViewById(R.id.languagesspoken); languagesspoken1.setShowSoftInputOnFocus(false); languagesspoken1.setInputType(InputType.TYPE_NULL);
+        whoami1 = (EditText) findViewById(R.id.whoami); whoami1.setShowSoftInputOnFocus(false); whoami1.setInputType(InputType.TYPE_NULL);
 
 
 
@@ -240,20 +243,98 @@ public class signup extends AppCompatActivity implements IPickResult {
             imgurl = bundle1.getString("imgurl");
 
 
-        first_name1 = (EditText) findViewById(R.id.first_name);
-        last_name1 = (EditText) findViewById(R.id.last_name);
-        email1 = (EditText) findViewById(R.id.email);
-        password1 = (EditText) findViewById(R.id.password);
-        confirm_password1 = (EditText) findViewById(R.id.confirm_password);
-        profile_image1 = (CircleImageView) findViewById(R.id.profile_image);
-        dob1 = (TextView) findViewById(R.id.dob);
+        first_name1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(vfirst_name != 0) {
+                    vfirst_name = 0;
+                    input_firstname.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(vfirst_name != 0) {
+                    vfirst_name = 0;
+                    input_firstname.setError(null);
+                }
+            }
+        });
+
+        last_name1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(vlast_name != 0) {
+                    vlast_name = 0;
+                    input_lastname.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(vlast_name != 0) {
+                    vlast_name = 0;
+                    input_lastname.setError(null);
+                }
+            }
+        });
+
+        email1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(vemail != 0) {
+                    vemail = 0;
+                    input_email.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(vemail != 0) {
+                    vemail = 0;
+                    input_email.setError(null);
+                }
+            }
+        });
 
 
-        /*calendar = Calendar.getInstance();
-        year = calendar.get(Calendar.YEAR);
-        month = calendar.get(Calendar.MONTH);
-        day = calendar.get(Calendar.DAY_OF_MONTH);
-        date = day + "/" + month + "/" + year;*/
+        password1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(vpassword != 0) {
+                    vpassword = 0;
+                    input_password.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(vpassword != 0) {
+                    vpassword = 0;
+                    input_password.setError(null);
+                }
+            }
+        });
 
         password1.setTransformationMethod(new PasswordTransformationMethod());
         confirm_password1.setTransformationMethod(new PasswordTransformationMethod());
@@ -291,125 +372,312 @@ public class signup extends AppCompatActivity implements IPickResult {
         });
 
 
-        genderspin = (Spinner) findViewById(R.id.gender);
-        CustomAdapterSpinner genderAdapter=new CustomAdapterSpinner(getApplicationContext(),genderString);
-        genderspin.setAdapter(genderAdapter);
-
-        genderspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        gender1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
 
-                TextView gender_floatingtext = (TextView) findViewById(R.id.gender_floatingtext);
+                    final CharSequence[] items = { "Male", "Female", "Other" };
 
-                switch(genderString[position])
-                {
-                    case "Male": selectedgender = "Male";
-                        gender_floatingtext.setText("Gender");break;
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup.this);
+                    alertDialogBuilder.setTitle("Choose Gender");
+                    alertDialogBuilder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ListView lw = ((AlertDialog) dialog).getListView();
+                                    Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                                    String selectedgend = checkedItem.toString();
+                                    gender1.setText(selectedgend);
+                                    dialog.dismiss();
+                                }
+                            });
 
-                    case "Female": selectedgender = "Female";
-                        gender_floatingtext.setText("Gender");break;
-                    case "Other": selectedgender = "Other";
-                        gender_floatingtext.setText("Gender");break;
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+                }
+            }
+        });
 
+        gender1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final CharSequence[] items = { "Male", "Female", "Other" };
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup.this);
+                alertDialogBuilder.setTitle("Choose Gender");
+                alertDialogBuilder
+                        .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ListView lw = ((AlertDialog) dialog).getListView();
+                                Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                                String selectedgend = checkedItem.toString();
+                                gender1.setText(selectedgend);
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
+
+
+        gender1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(vgender != 0) {
+                    vgender = 0;
+                    input_gender.setError(null);
                 }
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
 
 
-        craft = (Spinner) findViewById(R.id.spinner);
-        if(type.equals("craftsman")) {
+        dob1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) showDialog(999);
+            }
+        });
 
-            CustomAdapterSpinner craftAdapter;
+        dob1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(999);
+            }
+        });
 
-            craftAdapter = new CustomAdapterSpinner(getApplicationContext(), whoNcrafts);
-            craft.setAdapter(craftAdapter);
+        dob1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(vdob != 0) {
+                    vdob = 0;
+                    input_dob.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(vdob != 0) {
+                    vdob = 0;
+                    input_dob.setError(null);
+                }
+            }
+        });
 
 
-            craft.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    switch(whoNcrafts[position])
-                    {
-                        case "Actor": selectedcraft = "Actor"; break;
-                        case "Actress": selectedcraft = "Actress"; break;
-                        case "Child Artist": selectedcraft = "Child Artist"; break;
-                        case "Singer": selectedcraft = "Singer"; break;
-                        case "Dancer": selectedcraft = "Dancer"; break;
-                        case "Side Artists": selectedcraft = "Side Artists"; break;
-                        case "Assistant Director": selectedcraft = "Assistant Director"; break;
-                        case "Lyric Writer / Lyricist": selectedcraft = "Lyric Writer / Lyricist"; break;
-                        case "Dialouge Writer": selectedcraft = "Dialouge Writer"; break;
-                        case "Script / Screenplay Writers": selectedcraft = "Script / Screenplay Writers"; break;
-                        case "Story Board Artist": selectedcraft = "Story Board Artist"; break;
-                        case "Choreographer": selectedcraft = "Choreographer"; break;
-                        case "Director of Photography": selectedcraft = "Director of Photography"; break;
-                        case "Still Photographer": selectedcraft = "Still Photographer"; break;
-                        case "PRO": selectedcraft = "PRO"; break;
-                        case "Designer": selectedcraft = "Designer"; break;
-                        case "Production Manager": selectedcraft = "Production Manager"; break;
-                        case  "Focus Puller": selectedcraft =  "Focus Puller"; break;
-                        case "Vehicle Driver": selectedcraft = "Vehicle Driver"; break;
-                        case "Mic Department": selectedcraft = "Mic Department"; break;
-                        case "Music Director": selectedcraft = "Music Director"; break;
-                        case "Makeup Man": selectedcraft = "Makeup Man"; break;
-                        case "Hair Dresser": selectedcraft = "Hair Dresser"; break;
-                        case "Costumer": selectedcraft = "Costumer"; break;
-                        case "Art Department": selectedcraft = "Art Department"; break;
-                        case "Set Department": selectedcraft = "Set Department"; break;
-                        case "Stuntman": selectedcraft = "Stuntman"; break;
-                        case "Editor": selectedcraft = "Editor"; break;
-                        case "Location Manager": selectedcraft = "Location Manager"; break;
-                        case "Production (Food)": selectedcraft = "Production (Food)"; break;
-                        case  "Dubbing Artists": selectedcraft =  "Dubbing Artists"; break;
-                        case "Sound Recording Engineers": selectedcraft = "Sound Recording Engineers"; break;
-                        case "Sound Mixing Engineers": selectedcraft = "Sound Mixing Engineers"; break;
-                        case "Digital Intermediate": selectedcraft = "Digital Intermediate"; break;
-                        case "VFX / CG": selectedcraft = "VFX / CG"; break;
-                        case "SFX": selectedcraft = "SFX"; break;
-                        case "Pet Suppliers / Pet Doctors / AWBI Certifications": selectedcraft = "Pet Suppliers / Pet Doctors / AWBI Certifications"; break;
+        residingin1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    try {
+                        Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN).build(signup.this);
+                        startActivityForResult(intent, 1000);
 
+                    } catch (GooglePlayServicesRepairableException e) {
+                        e.printStackTrace();
+                    } catch (GooglePlayServicesNotAvailableException e) {
+                        e.printStackTrace();
                     }
                 }
+            }
+        });
 
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
+        residingin1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN).build(signup.this);
+                    startActivityForResult(intent, 1000);
+
+                } catch (GooglePlayServicesRepairableException e) {
+                    e.printStackTrace();
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    e.printStackTrace();
                 }
-            });
+            }
+        });
 
-        } else if(type.equals("client")) {
 
-            CustomAdapterSpinner craftAdapter=new CustomAdapterSpinner(getApplicationContext(),whoNclients);
-            craft.setAdapter(craftAdapter);
-            craft.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    switch(whoNclients[position])
-                    {
-                        case "Casting Agent": selectedcraft = "Casting Agent"; break;
-                        case "Co-Director": selectedcraft = "Co-Director"; break;
-                        case "Co-Producer": selectedcraft = "Co-Producer"; break;
-                        case "Director": selectedcraft = "Director"; break;
-                        case "Director Assistant": selectedcraft = "Director Assistant"; break;
-                        case "Director Audition": selectedcraft = "Director Audition"; break;
-                        case "Executive Producer": selectedcraft = "Executive Producer"; break;
-                        case "Model Coordinator": selectedcraft = "Model Coordinator"; break;
-                        case "Producer": selectedcraft = "Producer"; break;
-                        case "Production House Manager": selectedcraft = "Production House Manager"; break;
+
+        residingin1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(vresidingin != 0) {
+                    vresidingin = 0;
+                    input_residingin.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(vresidingin != 0) {
+                    vresidingin = 0;
+                    input_residingin.setError(null);
+                }
+            }
+        });
+
+
+        nativeplace1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    try {
+                        Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN).build(signup.this);
+                        startActivityForResult(intent, 2000);
+
+                    } catch (GooglePlayServicesRepairableException e) {
+                        e.printStackTrace();
+                    } catch (GooglePlayServicesNotAvailableException e) {
+                        e.printStackTrace();
                     }
                 }
+            }
+        });
 
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
+        nativeplace1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN).build(signup.this);
+                    startActivityForResult(intent, 2000);
+
+                } catch (GooglePlayServicesRepairableException e) {
+                    e.printStackTrace();
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    e.printStackTrace();
                 }
-            });
+            }
+        });
 
-        }
+        nativeplace1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(vnativeplace != 0) {
+                    vnativeplace = 0;
+                    input_nativeplace.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(vnativeplace != 0) {
+                    vnativeplace = 0;
+                    input_nativeplace.setError(null);
+                }
+            }
+        });
+
+        languagesspoken1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    Intent i = new Intent(getApplicationContext(),LanguagesPopUp.class).putExtra("languagesspoken", User.getInstance().languagesspokendirty);
+                    startActivityForResult(i,LANGUAGES_SPOKEN);
+                }
+            }
+        });
+
+
+        languagesspoken1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), LanguagesPopUp.class).putExtra("languagesspoken", User.getInstance().languagesspokendirty);
+                startActivityForResult(i, LANGUAGES_SPOKEN);
+            }
+        });
+
+        languagesspoken1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(vlanguagesspoken != 0) {
+                    vlanguagesspoken = 0;
+                    input_languagesspoken.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(vlanguagesspoken != 0) {
+                    vlanguagesspoken = 0;
+                    input_languagesspoken.setError(null);
+                }
+            }
+        });
+
+
+        whoami1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Intent i = new Intent(getApplicationContext(), ChooseCraftOrClient.class).putExtra("category", type);
+                startActivityForResult(i, CHOOSE_CATEGORY);
+            }
+        });
+
+        whoami1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ChooseCraftOrClient.class).putExtra("category", type);
+                startActivityForResult(i, CHOOSE_CATEGORY);
+            }
+        });
+
+        whoami1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(vwhoami != 0) {
+                    vwhoami = 0;
+                    input_whoami.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(vwhoami != 0) {
+                    vwhoami = 0;
+                    input_whoami.setError(null);
+                }
+            }
+        });
 
 
 
@@ -428,68 +696,71 @@ public class signup extends AppCompatActivity implements IPickResult {
         }
 
 
-
-
-
-        display_languages = (TextView) findViewById(R.id.display_languages);
-
-        display_languages.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent i = new Intent(getApplicationContext(),LanguagesPopUp.class).putExtra("languagesspoken", User.getInstance().languagesspokendirty);
-                startActivityForResult(i,LANGUAGES_SPOKEN);
-            }
-        });
-
-
-        residing1 = (TextView) findViewById(R.id.residing);
-        hometown1 = (TextView) findViewById(R.id.hometown);
-
-
-        residing1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                try {
-                    Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN).build(signup.this);
-                    startActivityForResult(intent, 1000);
-
-                } catch (GooglePlayServicesRepairableException e) {
-                        e.printStackTrace();
-                } catch (GooglePlayServicesNotAvailableException e) {
-                        e.printStackTrace();
-                }
-
-
-            }
-        });
-
-
-
-        hometown1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                try {
-
-                    Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN).build(signup.this);
-                    startActivityForResult(intent, 2000);
-
-                } catch (GooglePlayServicesRepairableException e) {
-                    e.printStackTrace();
-                } catch (GooglePlayServicesNotAvailableException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-
-
         Button next = (Button)findViewById(R.id.button11);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //check for empty fields
+                if(first_name1.getText().toString().equals("")) {
+                    input_firstname.setError("Enter your first name.");
+                    vfirst_name = 1;
+                } else input_firstname.setError(null);
+
+                if(last_name1.getText().toString().equals("")) {
+                    input_lastname.setError("Enter your last name.");
+                    vlast_name = 1;
+                } else input_lastname.setError(null);
+
+                if(email1.getText().toString().equals("")) {
+                    input_email.setError("Enter your email.");
+                    vemail = 1;
+                } else input_email.setError(null);
+
+                if(password1.getText().toString().equals("")) {
+                    input_password.setError("Enter your password.");
+                    vpassword = 1;
+                } else input_password.setError(null);
+
+                if(confirm_password1.getText().toString().equals("")) {
+                    input_confirmpassword.setError("Confirm the password.");
+                    vconfirm_password = 1;
+                } else confirm_password1.setError(null);
+
+                if(gender1.getText().toString().equals("")) {
+                    input_gender.setError("Select your Gender");
+                    vgender = 1;
+                } else gender1.setError(null);
+
+                if(dob1.getText().toString().equals("")) {
+                    input_dob.setError("Select your Date of Birth");
+                    vdob = 1;
+                } else dob1.setError(null);
+
+                if(residingin1.getText().toString().equals("")) {
+                    input_residingin.setError("Select your Residing In");
+                    vresidingin = 1;
+                } else residingin1.setError(null);
+
+                if(nativeplace1.getText().toString().equals("")) {
+                    input_nativeplace.setError("Select your Native Place");
+                    vnativeplace = 1;
+                } else nativeplace1.setError(null);
+
+                if(languagesspoken1.getText().toString().equals("")) {
+                    input_languagesspoken.setError("Select your Languages Spoken");
+                    vlanguagesspoken = 1;
+                } else languagesspoken1.setError(null);
+
+                if(whoami1.getText().toString().equals("")) {
+                    input_whoami.setError("Select your Category");
+                    vwhoami = 1;
+                } else whoami1.setError(null);
+
+
+
+
+                if(!first_name1.getText().toString().equals("") && !last_name1.getText().toString().equals("") && !email1.getText().toString().equals("") && !password1.getText().toString().equals("") && !confirm_password1.getText().toString().equals("") && !gender1.getText().toString().equals("") && !dob1.getText().toString().equals("") && !residingin1.getText().toString().equals("") && !nativeplace1.getText().toString().equals("") && !languagesspoken1.getText().toString().equals("") && !whoami1.getText().toString().equals("")) {
 
                 if(type.equals("craftsman")) {
 
@@ -500,8 +771,8 @@ public class signup extends AppCompatActivity implements IPickResult {
                         storeSPData("email", email1.getText().toString());
                         storeSPData("password", password1.getText().toString());
                         storeSPData("dob", dob1.getText().toString());
-                        storeSPData("gender", selectedgender);
-                        storeSPData("category", selectedcraft);
+                        storeSPData("gender", gender1.getText().toString());
+                        storeSPData("category", whoami1.getText().toString());
 
                         name=first_name1.getText().toString();
                         Intent goToNextActivity = new Intent(getApplicationContext(), signup2.class);
@@ -511,23 +782,15 @@ public class signup extends AppCompatActivity implements IPickResult {
                         bundle.putString("type",type);
                         goToNextActivity.putExtras(bundle);
                         startActivity(goToNextActivity);
-                    } else if(selectedcraft.equals("null"))
-                    {
-                        Toast.makeText(getApplicationContext(),"Please select appropriate Portfolio to continue", Toast.LENGTH_LONG).show();
-                    } else if(selectedgender.equals("null")) {
-                        Toast.makeText(getApplicationContext(),"Please select appropriate gender to continue", Toast.LENGTH_LONG).show();
-                    } else if(selectedcraft.equals("null") && selectedgender.equals("null")) {
-                        Toast.makeText(getApplicationContext(), "Select all mandatory fields to continue", Toast.LENGTH_SHORT).show();
-                    }
-                    else
-                    {
+
+                    } else {
                         storeSPData("firstname", first_name1.getText().toString());
                         storeSPData("lastname", last_name1.getText().toString());
                         storeSPData("email", email1.getText().toString());
                         storeSPData("password", password1.getText().toString());
                         storeSPData("dob", dob1.getText().toString());
-                        storeSPData("gender", selectedgender);
-                        storeSPData("category", selectedcraft);
+                        storeSPData("gender", gender1.getText().toString());
+                        storeSPData("category", whoami1.getText().toString());
 
                         name=first_name1.getText().toString();
                         Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
@@ -543,22 +806,13 @@ public class signup extends AppCompatActivity implements IPickResult {
 
                 } else if(type.equals("client")) {
 
-                    if(selectedcraft.equals("null")) {
-                        Toast.makeText(getApplicationContext(),"Please select appropriate Portfolio to continue",Toast.LENGTH_LONG).show();
-                    } else if(selectedgender.equals("null")) {
-                        Toast.makeText(getApplicationContext(),"Please select appropriate gender to continue",Toast.LENGTH_LONG).show();
-                    } else if(selectedcraft.equals("null") && selectedgender.equals("null")) {
-                        Toast.makeText(getApplicationContext(), "Select all mandatory fields to continue", Toast.LENGTH_SHORT).show();
-                    } else {
-
-
                         storeSPData("firstname", first_name1.getText().toString());
                         storeSPData("lastname", last_name1.getText().toString());
                         storeSPData("email", email1.getText().toString());
                         storeSPData("password", password1.getText().toString());
                         storeSPData("dob", dob1.getText().toString().trim());
-                        storeSPData("gender", selectedgender);
-                        storeSPData("category", selectedcraft);
+                        storeSPData("gender", gender1.getText().toString());
+                        storeSPData("category", whoami1.getText().toString());
 
                         name = first_name1.getText().toString();
                         Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
@@ -568,7 +822,8 @@ public class signup extends AppCompatActivity implements IPickResult {
                         bundle.putString("type",type);
                         goToNextActivity.putExtras(bundle);
                         startActivity(goToNextActivity);
-                    }
+
+                }
 
                 }
 
@@ -625,11 +880,10 @@ public class signup extends AppCompatActivity implements IPickResult {
         if (requestCode == 1000) {
             if (resultCode == RESULT_OK) {
 
-                TextView residing_floatingtext = (TextView) findViewById(R.id.residing_floatingtext);
-                residing_floatingtext.setText("Residing In");
+                residingin1.setText("Residing In");
 
                 Place place = PlaceAutocomplete.getPlace(this, data);
-                residing1.setText(place.getName());
+                residingin1.setText(place.getName());
                 storeSPData("residingIn", place.getName().toString());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
@@ -642,11 +896,10 @@ public class signup extends AppCompatActivity implements IPickResult {
         if (requestCode == 2000) {
             if (resultCode == RESULT_OK) {
 
-                TextView hometown_floatingtext = (TextView) findViewById(R.id.hometown_floatingtext);
-                hometown_floatingtext.setText("Native (Hometown)");
+                nativeplace1.setText("Native (Hometown)");
 
                 Place place = PlaceAutocomplete.getPlace(this, data);
-                hometown1.setText(place.getName());
+                nativeplace1.setText(place.getName());
                 storeSPData("homeTown", place.getName().toString());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
@@ -669,21 +922,41 @@ public class signup extends AppCompatActivity implements IPickResult {
         }
 
 
-        if(requestCode == LANGUAGES_SPOKEN) {
+        if(requestCode == CHOOSE_CATEGORY) {
             if(resultCode == Activity.RESULT_OK) {
 
-                TextView langs_floatingtext = (TextView) findViewById(R.id.langs_floatingtext);
-                langs_floatingtext.setText("Languages Spoken");
+                whoami1.setText("Who am I?");
 
-                String languagesspoken = data.getStringExtra("languagesspoken");
-                if(languagesspoken.equals("")) {
-                    display_languages.setText("Select Languages Spoken");
-                    langs_floatingtext.setText("");
+                String chosencategory = data.getStringExtra("selectedcategory");
+                if(chosencategory.equals("")) {
+                    whoami1.setText("Select Languages Spoken");
+                    whoami1.setText("");
+                } else {
+                    selectedcraft = chosencategory;
+                    whoami1.setText(chosencategory);
                 }
-                else display_languages.setText(languagesspoken);
 
             }
         }
+
+
+        if(requestCode == LANGUAGES_SPOKEN) {
+            if(resultCode == Activity.RESULT_OK) {
+
+                languagesspoken1.setText("Languages Spoken");
+
+                String languagesspoken = data.getStringExtra("languagesspoken");
+                if(languagesspoken.equals("")) {
+                    languagesspoken1.setText("Select Languages Spoken");
+                    languagesspoken1.setText("");
+                }
+
+                else languagesspoken1.setText(languagesspoken);
+
+            }
+        }
+
+
     }
 
 
@@ -720,12 +993,6 @@ public class signup extends AppCompatActivity implements IPickResult {
 
     //datepicker
     @SuppressWarnings("deprecation")
-    public void setDate(View view) {
-        TextView dob_floatingtext = (TextView) findViewById(R.id.dob_floatingtext);
-        dob_floatingtext.setText("Date of Birth");
-        showDialog(999);
-    }
-
     @Override
     protected Dialog onCreateDialog(int id) {
         // TODO Auto-generated method stub

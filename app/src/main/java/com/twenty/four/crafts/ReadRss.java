@@ -16,6 +16,9 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -86,6 +89,17 @@ public class ReadRss extends AsyncTask<Void,Void,Void> {
                         else if(current.getNodeName().equalsIgnoreCase("description"))
                         {
                             feedItem.setDecription(current.getTextContent());
+
+                          /*  List<String> characters=new ArrayList<String>();
+                            Pattern pat = Pattern.compile("\\p{L}\\p{M}*");
+                            Matcher matcher = pat.matcher(current.getTextContent());
+                            while (matcher.find()) {
+                                characters.add(matcher.group());
+                            }
+
+                            String description = characters.subList(0,50).toString();
+                            feedItem.setDecription(description);*/
+
                         }
 
                        /* else if(current.getNodeName().equalsIgnoreCase("pubDate"))

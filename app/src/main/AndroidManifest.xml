@@ -109,6 +109,7 @@
             android:name=".EditPictureforAuditions"
             android:screenOrientation="portrait" />
 
+
         <!-- import images from gallery/camera -->
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -245,6 +246,10 @@
             android:name=".LanguagesPopUp"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.CustomThemeLangs" />
+        <activity
+            android:name=".registration.ChooseCraftOrClient"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.CustomThemeLangs"/>
 
         <!-- Settings -->
         <activity
@@ -314,10 +319,10 @@
         </service>
         <service
             android:name=".pushnotif.RegistrationIntentService"
-            android:exported="false"></service>
+            android:exported="false" />
 
         <activity android:name=".PushNotifMain" />
-        <activity android:name=".CraftsmenDashboard"></activity>
+
     </application>
 
 </manifest>
