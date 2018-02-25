@@ -13,17 +13,19 @@ import android.widget.Switch;
 
 import com.twenty.four.crafts.registration.Verification;
 
+
 public class Settings extends AppCompatActivity {
 
     LinearLayout info, verify, coinsfree, morecoins, daily, contactus, aboutus;
     View baccinfo,bverify,bfreecoins,bbuymorecoins;
     Switch darkSwitch;
-
+    SharedPref sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Theme Stuff ---- Start
-        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+        sharedPref = new SharedPref(this);
+        if(sharedPref.loadNightModeState()){
             setTheme(R.style.night);
         }
         else {setTheme(R.style.day);}
@@ -143,18 +145,18 @@ public class Settings extends AppCompatActivity {
 
         //Theme stuff #2
         darkSwitch=findViewById(R.id.darkSwitch);
-        if (AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+        if (sharedPref.loadNightModeState()){
             darkSwitch.setChecked(true);
         }
         darkSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    sharedPref.setNightModeState(true);
                     recreate();
                 }
                 else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    sharedPref.setNightModeState(false);
                     recreate();
                 }
             }
