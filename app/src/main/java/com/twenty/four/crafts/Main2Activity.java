@@ -191,7 +191,7 @@ public class Main2Activity extends AppCompatActivity
 
 
         if(savedInstanceState==null){
-            navigationView.getMenu().performIdentifierAction(R.id.newsfeed,0);
+            navigationView.getMenu().performIdentifierAction(R.id.dashboard,0);
         }
 
         ImageView purchase_coins = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.purchase_coins);
@@ -215,6 +215,7 @@ public class Main2Activity extends AppCompatActivity
         });
 
 
+        final Bundle data = new Bundle();//Use bundle to pass data
 
         aud_handy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -223,10 +224,15 @@ public class Main2Activity extends AppCompatActivity
                 aud_handy.setBackgroundColor(Color.parseColor("#123456"));
                 fav_handy.setBackgroundColor(Color.parseColor("#000000"));
                 inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
-                android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new AuditionsTab()).commit();
-                appBarLayout.setTargetElevation(0);
 
+                Fragment fragment = new CraftsmenDashboard();//Get Fragment Instance
+                data.putString("tab", "audition");//put string, int, etc in bundle with a key value
+                fragment.setArguments(data);//Finally set argument bundle to fragment
+                android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, fragment).commit();
+
+                DrawerLayout mDrawerLayout;
+                mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
                 mDrawerLayout.closeDrawers();
 
             }
@@ -243,10 +249,14 @@ public class Main2Activity extends AppCompatActivity
                 aud_handy.setBackgroundColor(Color.parseColor("#000000"));
                 inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
 
+                Fragment fragment = new CraftsmenDashboard();//Get Fragment Instance
+                data.putString("tab", "fav");//put string, int, etc in bundle with a key value
+                fragment.setArguments(data);//Finally set argument bundle to fragment
                 android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new CraftsmenFavouritesTabFragment()).commit();
-                appBarLayout.setTargetElevation(8);
+                fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, fragment).commit();
 
+                DrawerLayout mDrawerLayout;
+                mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
                 mDrawerLayout.closeDrawers();
             }
         });
@@ -258,15 +268,19 @@ public class Main2Activity extends AppCompatActivity
             @Override
             public void onClick(View v) {
 
-                inbox_handy.setBackgroundColor(Color.parseColor("#123456"));
+                 inbox_handy.setBackgroundColor(Color.parseColor("#123456"));
                 fav_handy.setBackgroundColor(Color.parseColor("#000000"));
                 aud_handy.setBackgroundColor(Color.parseColor("#000000"));
 
-                Fragment fragment = new InboxTab();
+
+                Fragment fragment = new CraftsmenDashboard();//Get Fragment Instance
+                data.putString("tab", "message");//put string, int, etc in bundle with a key value
+                fragment.setArguments(data);//Finally set argument bundle to fragment
                 android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, fragment).commit();
-                appBarLayout.setTargetElevation(0);
 
+                DrawerLayout mDrawerLayout;
+                mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
                 mDrawerLayout.closeDrawers();
 
             }
@@ -329,7 +343,16 @@ public class Main2Activity extends AppCompatActivity
 
         } else */
 
-       if (id == R.id.newsfeed) {
+        if(id == R.id.dashboard) {
+
+            Bundle data = new Bundle();
+            Fragment fragment = new CraftsmenDashboard();
+            data.putString("tab", "audition"); //put string, int, etc in bundle with a key value
+            fragment.setArguments(data);
+            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, fragment).commit();
+            appBarLayout.setTargetElevation(0);
+
+        } else if (id == R.id.newsfeed) {
 
            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new NewsfeedFragment()).commit();
            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);

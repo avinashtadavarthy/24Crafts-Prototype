@@ -32,7 +32,7 @@ public class AuditionsTab extends Fragment {
         getActivity().setTitle("Auditions");
 
         auditions_tabbed = (ViewPager) myView.findViewById(R.id.auditions_tabbed);
-        auditions_tabbed.setAdapter(new AudAdapter(getFragmentManager(), getActivity().getApplicationContext()));
+        auditions_tabbed.setAdapter(new AudAdapter(getChildFragmentManager(), getActivity().getApplicationContext()));
 
         auditions_tabs = (TabLayout) myView.findViewById(R.id.auditions_tabs);
         auditions_tabs.setupWithViewPager(auditions_tabbed);

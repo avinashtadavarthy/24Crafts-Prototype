@@ -191,9 +191,8 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
                 mDrawerLayout.closeDrawers();
             }
         });
-
-
     }
+
 
     @Override
     public void onBackPressed() {
@@ -217,12 +216,9 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
                     })
                     .show();
                     alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-
-
-
         }
     }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -234,7 +230,7 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         if(id == R.id.dashboard){
             Bundle data = new Bundle();
             Fragment fragment = new ClientDashboard();
-            data.putString("tab", "audition");//put string, int, etc in bundle with a key value
+            data.putString("tab", "audition"); //put string, int, etc in bundle with a key value
             fragment.setArguments(data);
             fragmentManager.beginTransaction().replace(R.id.content_frame_clients, fragment).commit();
             appBarLayout.setTargetElevation(0);

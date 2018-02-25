@@ -131,6 +131,8 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
             progressbar = new ProgressDialog(Login2.this);
 
+            progressbar.setCancelable(false);
+
             loginUser();
 
         }
@@ -455,6 +457,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
         progressbar.show();
         progressbar.setMessage("Getting existing logged in status...");
+        progressbar.setCancelable(false);
 
 
         String url = "http://192.168.0.113:3000/login";

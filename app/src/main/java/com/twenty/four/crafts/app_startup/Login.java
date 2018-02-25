@@ -145,6 +145,7 @@ public class Login extends AppCompatActivity {
     private void loginUser() {
 
         progressbar.show();
+        progressbar.setCancelable(false);
 
 
         String url = "http://192.168.0.113:3000/login";

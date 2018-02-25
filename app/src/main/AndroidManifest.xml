@@ -15,16 +15,14 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <permission
         android:name="com.twenty.four.crafts.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
+
     <uses-permission android:name="com.twenty.four.crafts.permission.C2D_MESSAGE" />
-
-
 
     <application
         android:name=".GarlandApp"
@@ -42,14 +40,11 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-
-
-        <activity android:name="com.thefinestartist.finestwebview.FinestWebViewActivity"
+        <activity
+            android:name="com.thefinestartist.finestwebview.FinestWebViewActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="sensor"
-            android:theme="@style/FinestWebViewTheme.Light"/>
-
-
+            android:theme="@style/FinestWebViewTheme.Light" />
 
         <!-- starting screen -->
         <activity
@@ -105,11 +100,11 @@
         <activity
             android:name=".registration.EditPictureActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme3"/>
+            android:theme="@style/AppTheme3" />
         <activity
             android:name=".registration.filter.FilterActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme2"/>
+            android:theme="@style/AppTheme2" />
         <activity
             android:name=".EditPictureforAuditions"
             android:screenOrientation="portrait" />
@@ -172,12 +167,12 @@
         <!-- Main App -->
         <activity
             android:name=".Main2Activity"
-            android:theme="@style/AppTheme2"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2" />
         <activity
             android:name=".Main3Activity"
-            android:theme="@style/AppTheme2"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2" />
         <activity
             android:name=".PurchaseCoins"
             android:screenOrientation="portrait"
@@ -192,8 +187,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ProfileView"
-            android:theme="@style/AppTheme2"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2" />
         <activity
             android:name=".YoutubePlayerActivity"
             android:screenOrientation="portrait" />
@@ -279,8 +274,8 @@
             android:theme="@style/AppTheme3" />
         <activity
             android:name=".ProfileViewEdit"
-            android:theme="@style/AppTheme2"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2" />
         <activity
             android:name=".RateUs"
             android:screenOrientation="portrait"
@@ -295,36 +290,34 @@
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
                 <category android:name="com.example.gcm" />
             </intent-filter>
         </receiver>
 
         <service
-            android:name="com.twenty.four.crafts.pushnotif.GCMService"
-            android:exported="false" >
+            android:name=".pushnotif.GCMService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
-
         <service
-            android:name="com.twenty.four.crafts.pushnotif.GCMInstanceIDListenerService"
+            android:name=".pushnotif.GCMInstanceIDListenerService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID"/>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
         </service>
-
         <service
-            android:name="com.twenty.four.crafts.pushnotif.RegistrationIntentService"
-            android:exported="false">
-        </service>
+            android:name=".pushnotif.RegistrationIntentService"
+            android:exported="false"></service>
 
-        <activity android:name=".PushNotifMain"/>
-
-
+        <activity android:name=".PushNotifMain" />
+        <activity android:name=".CraftsmenDashboard"></activity>
     </application>
+
 </manifest>

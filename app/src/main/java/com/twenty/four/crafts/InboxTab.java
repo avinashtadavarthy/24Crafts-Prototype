@@ -33,7 +33,7 @@ public class InboxTab extends Fragment {
         getActivity().setTitle("Messages");
 
         inbox_tabbed = (ViewPager) myView.findViewById(R.id.inbox_tabbed);
-        inbox_tabbed.setAdapter(new InboxTab.InboxAdapter(getFragmentManager(), getActivity().getApplicationContext()));
+        inbox_tabbed.setAdapter(new InboxTab.InboxAdapter(getChildFragmentManager(), getActivity().getApplicationContext()));
 
         inbox_tabs = (TabLayout) myView.findViewById(R.id.inbox_tabs);
         inbox_tabs.setupWithViewPager(inbox_tabbed);
