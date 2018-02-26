@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.ContextThemeWrapper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -101,7 +102,7 @@ public class signup2 extends AppCompatActivity {
 
                     final CharSequence[] items = {"Athletic","Average","Petite","Thin","Heavy","Other"};
 
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup2.this,R.style.AlertDialogSignup));
                     alertDialogBuilder.setTitle("Choose Body Type");
                     int position;
                     if (bodytype.getText().toString().equals("Athletic")){
@@ -145,7 +146,7 @@ public class signup2 extends AppCompatActivity {
 
                 final CharSequence[] items = {"Athletic","Average","Petite","Thin","Heavy","Other"};
 
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup2.this,R.style.AlertDialogSignup));
                 alertDialogBuilder.setTitle("Choose Body Type");
                 int position;
                     if (bodytype.getText().toString().equals("Athletic")){
@@ -209,7 +210,7 @@ public class signup2 extends AppCompatActivity {
 
                     final CharSequence[] items = { "Black", "Brown", "White","Red", "Blonde", "Burgundy", "Ginger", "Other"};
 
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup2.this,R.style.AlertDialogSignup));
                     alertDialogBuilder.setTitle("Choose Hair Colour");
                     int position;
                     if (haircolor.getText().toString().equals("Black")){
@@ -257,7 +258,7 @@ public class signup2 extends AppCompatActivity {
 
                 final CharSequence[] items = { "Black", "Brown", "White","Red", "Blonde", "Burgundy", "Ginger", "Other"};
 
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup2.this,R.style.AlertDialogSignup));
                 alertDialogBuilder.setTitle("Choose Hair Colour");
                 int position;
                     if (haircolor.getText().toString().equals("Black")){
@@ -322,7 +323,7 @@ public class signup2 extends AppCompatActivity {
 
                     final CharSequence[] items = {"Short", "Medium", "Long", "Bald", "Shaved", "Other"};
 
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup2.this,R.style.AlertDialogSignup));
                     alertDialogBuilder.setTitle("Choose Hair Length");
                     int position;
                     if (hairlength.getText().toString().equals("Short")){
@@ -366,7 +367,7 @@ public class signup2 extends AppCompatActivity {
 
                 final CharSequence[] items = {"Short", "Medium", "Long", "Bald", "Shaved", "Other"};
 
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup2.this,R.style.AlertDialogSignup));
                 alertDialogBuilder.setTitle("Choose Hair Length");
                 int position;
                     if (hairlength.getText().toString().equals("Short")){
@@ -430,7 +431,7 @@ public class signup2 extends AppCompatActivity {
 
                     final CharSequence[] items = {"Black", "Brown", "Blue", "Amber", "Grey", "Green", "Hazel", "Other"};
 
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup2.this,R.style.AlertDialogSignup));
                     alertDialogBuilder.setTitle("Choose Eye Color");
                     int position;
                     if (eyecolor.getText().toString().equals("Black")){
@@ -478,7 +479,7 @@ public class signup2 extends AppCompatActivity {
 
                 final CharSequence[] items = {"Black", "Brown", "Blue", "Amber", "Grey", "Green", "Hazel", "Other"};
 
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup2.this,R.style.AlertDialogSignup));
                 alertDialogBuilder.setTitle("Choose Eye Color");
                 int position;
                     if (eyecolor.getText().toString().equals("Black")){
@@ -545,7 +546,7 @@ public class signup2 extends AppCompatActivity {
 
                     final CharSequence[] items = {"Very Fair", "Fair", "Medium", "Olive", "Brown", "Dark"};
 
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup2.this,R.style.AlertDialogSignup));
                     alertDialogBuilder.setTitle("Choose Skin Tone");
                     int position;
                     if (skintone.getText().toString().equals("Very Fair")){
@@ -589,7 +590,7 @@ public class signup2 extends AppCompatActivity {
 
                 final CharSequence[] items = {"Very Fair", "Fair", "Medium", "Olive", "Brown", "Dark"};
 
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup2.this,R.style.AlertDialogSignup));
                 alertDialogBuilder.setTitle("Choose Skin Tone");
                 int position;
                     if (skintone.getText().toString().equals("Very Fair")){
@@ -652,7 +653,7 @@ public class signup2 extends AppCompatActivity {
 
                     final CharSequence[] items = {"Beard","Moustache", "Beard & Moustache", "Stubble / Goatie", "None", "Other"};
 
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup2.this,R.style.AlertDialogSignup));
                     alertDialogBuilder.setTitle("Choose Facial Hair");
                     int position;
                     if (facialhair.getText().toString().equals("Beard")){
@@ -696,7 +697,7 @@ public class signup2 extends AppCompatActivity {
 
                 final CharSequence[] items = {"Beard","Moustache", "Beard & Moustache", "Stubble / Goatie", "None", "Other"};
 
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup2.this,R.style.AlertDialogSignup));
                 alertDialogBuilder.setTitle("Choose Facial Hair");
                 int position;
                     if (facialhair.getText().toString().equals("Beard")){

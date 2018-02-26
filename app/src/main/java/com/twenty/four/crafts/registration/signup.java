@@ -20,6 +20,7 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
+import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -379,7 +380,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(hasFocus) {
                     final CharSequence[] items = { "Male", "Female", "Other" };
 
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup.this);
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup.this,R.style.AlertDialogSignup));
                     alertDialogBuilder.setTitle("Choose Gender");
                     int position;
                     if (gender1.getText().toString().equals("Male")){
@@ -415,7 +416,7 @@ public class signup extends AppCompatActivity implements IPickResult {
 
                 final CharSequence[] items = { "Male", "Female", "Other" };
 
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup.this);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup.this,R.style.AlertDialogSignup));
                 alertDialogBuilder.setTitle("Choose Gender");
                 int position;
                 if (gender1.getText().toString().equals("Male")){
