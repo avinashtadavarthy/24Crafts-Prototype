@@ -103,14 +103,31 @@ public class signup2 extends AppCompatActivity {
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
                     alertDialogBuilder.setTitle("Choose Body Type");
+                    int position;
+                    if (bodytype.getText().toString().equals("Athletic")){
+                        position = 0;
+                    } else if (bodytype.getText().toString().equals("Average")){
+                        position = 1;
+                    } else if (bodytype.getText().toString().equals("Petite")){
+                        position = 2;
+                    }else if (bodytype.getText().toString().equals("Thin")){
+                        position = 3;
+                    }else if (bodytype.getText().toString().equals("Heavy")){
+                        position = 4;
+                    }else if (bodytype.getText().toString().equals("Other")){
+                        position = 5;
+                    }
+                    else {
+                        position = -1;
+                    }
                     alertDialogBuilder
-                            .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                            .setSingleChoiceItems(items, position, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     ListView lw = ((AlertDialog) dialog).getListView();
                                     Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
-                                    String selectedgend = checkedItem.toString();
-                                    bodytype.setText(selectedgend);
+                                    String selectedbodyType = checkedItem.toString();
+                                    bodytype.setText(selectedbodyType);
                                     dialog.dismiss();
                                 }
                             });
@@ -130,14 +147,31 @@ public class signup2 extends AppCompatActivity {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
                 alertDialogBuilder.setTitle("Choose Body Type");
+                int position;
+                    if (bodytype.getText().toString().equals("Athletic")){
+                        position = 0;
+                    } else if (bodytype.getText().toString().equals("Average")){
+                        position = 1;
+                    } else if (bodytype.getText().toString().equals("Petite")){
+                        position = 2;
+                    }else if (bodytype.getText().toString().equals("Thin")){
+                        position = 3;
+                    }else if (bodytype.getText().toString().equals("Heavy")){
+                        position = 4;
+                    }else if (bodytype.getText().toString().equals("Other")){
+                        position = 5;
+                    }
+                    else {
+                        position = -1;
+                    }
                 alertDialogBuilder
-                        .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                        .setSingleChoiceItems(items, position, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 ListView lw = ((AlertDialog) dialog).getListView();
                                 Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
-                                String selectedgend = checkedItem.toString();
-                                bodytype.setText(selectedgend);
+                                String selectedbodyType = checkedItem.toString();
+                                bodytype.setText(selectedbodyType);
                                 dialog.dismiss();
                             }
                         });
@@ -177,14 +211,35 @@ public class signup2 extends AppCompatActivity {
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
                     alertDialogBuilder.setTitle("Choose Hair Colour");
+                    int position;
+                    if (haircolor.getText().toString().equals("Black")){
+                        position = 0;
+                    } else if (haircolor.getText().toString().equals("Brown")){
+                        position = 1;
+                    } else if (haircolor.getText().toString().equals("White")){
+                        position = 2;
+                    }else if (haircolor.getText().toString().equals("Red")){
+                        position = 3;
+                    }else if (haircolor.getText().toString().equals("Blonde")){
+                        position = 4;
+                    }else if (haircolor.getText().toString().equals("Burgundy")){
+                        position = 5;
+                    }else if (haircolor.getText().toString().equals("Ginger")){
+                        position = 6;
+                    }else if (haircolor.getText().toString().equals("Other")){
+                        position = 7;
+                    }
+                    else {
+                        position = -1;
+                    }
                     alertDialogBuilder
-                            .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                            .setSingleChoiceItems(items, position, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     ListView lw = ((AlertDialog) dialog).getListView();
                                     Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
-                                    String selectedgend = checkedItem.toString();
-                                    haircolor.setText(selectedgend);
+                                    String selectedHairColor = checkedItem.toString();
+                                    haircolor.setText(selectedHairColor);
                                     dialog.dismiss();
                                 }
                             });
@@ -204,14 +259,35 @@ public class signup2 extends AppCompatActivity {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
                 alertDialogBuilder.setTitle("Choose Hair Colour");
+                int position;
+                    if (haircolor.getText().toString().equals("Black")){
+                        position = 0;
+                    } else if (haircolor.getText().toString().equals("Brown")){
+                        position = 1;
+                    } else if (haircolor.getText().toString().equals("White")){
+                        position = 2;
+                    }else if (haircolor.getText().toString().equals("Red")){
+                        position = 3;
+                    }else if (haircolor.getText().toString().equals("Blonde")){
+                        position = 4;
+                    }else if (haircolor.getText().toString().equals("Burgundy")){
+                        position = 5;
+                    }else if (haircolor.getText().toString().equals("Ginger")){
+                        position = 6;
+                    }else if (haircolor.getText().toString().equals("Other")){
+                        position = 7;
+                    }
+                    else {
+                        position = -1;
+                    }
                 alertDialogBuilder
-                        .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                        .setSingleChoiceItems(items, position, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 ListView lw = ((AlertDialog) dialog).getListView();
                                 Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
-                                String selectedgend = checkedItem.toString();
-                                haircolor.setText(selectedgend);
+                                String selectedHairColor = checkedItem.toString();
+                                haircolor.setText(selectedHairColor);
                                 dialog.dismiss();
                             }
                         });
@@ -248,14 +324,31 @@ public class signup2 extends AppCompatActivity {
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
                     alertDialogBuilder.setTitle("Choose Hair Length");
+                    int position;
+                    if (hairlength.getText().toString().equals("Short")){
+                        position = 0;
+                    } else if (hairlength.getText().toString().equals("Medium")){
+                        position = 1;
+                    } else if (hairlength.getText().toString().equals("Long")){
+                        position = 2;
+                    }else if (hairlength.getText().toString().equals("Bald")){
+                        position = 3;
+                    }else if (hairlength.getText().toString().equals("Shaved")){
+                        position = 4;
+                    }else if (hairlength.getText().toString().equals("Other")){
+                        position = 5;
+                    }
+                    else {
+                        position = -1;
+                    }
                     alertDialogBuilder
-                            .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                            .setSingleChoiceItems(items, position, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     ListView lw = ((AlertDialog) dialog).getListView();
                                     Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
-                                    String selectedgend = checkedItem.toString();
-                                    hairlength.setText(selectedgend);
+                                    String selectedHairLength = checkedItem.toString();
+                                    hairlength.setText(selectedHairLength);
                                     dialog.dismiss();
                                 }
                             });
@@ -275,14 +368,31 @@ public class signup2 extends AppCompatActivity {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
                 alertDialogBuilder.setTitle("Choose Hair Length");
+                int position;
+                    if (hairlength.getText().toString().equals("Short")){
+                        position = 0;
+                    } else if (hairlength.getText().toString().equals("Medium")){
+                        position = 1;
+                    } else if (hairlength.getText().toString().equals("Long")){
+                        position = 2;
+                    }else if (hairlength.getText().toString().equals("Bald")){
+                        position = 3;
+                    }else if (hairlength.getText().toString().equals("Shaved")){
+                        position = 4;
+                    }else if (hairlength.getText().toString().equals("Other")){
+                        position = 5;
+                    }
+                    else {
+                        position = -1;
+                    }
                 alertDialogBuilder
-                        .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                        .setSingleChoiceItems(items, position, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 ListView lw = ((AlertDialog) dialog).getListView();
                                 Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
-                                String selectedgend = checkedItem.toString();
-                                hairlength.setText(selectedgend);
+                                String selectedHairLength = checkedItem.toString();
+                                hairlength.setText(selectedHairLength);
                                 dialog.dismiss();
                             }
                         });
@@ -322,14 +432,35 @@ public class signup2 extends AppCompatActivity {
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
                     alertDialogBuilder.setTitle("Choose Eye Color");
+                    int position;
+                    if (eyecolor.getText().toString().equals("Black")){
+                        position = 0;
+                    } else if (eyecolor.getText().toString().equals("Brown")){
+                        position = 1;
+                    } else if (eyecolor.getText().toString().equals("Blue")){
+                        position = 2;
+                    }else if (eyecolor.getText().toString().equals("Amber")){
+                        position = 3;
+                    }else if (eyecolor.getText().toString().equals("Grey")){
+                        position = 4;
+                    }else if (eyecolor.getText().toString().equals("Green")){
+                        position = 5;
+                    }else if (eyecolor.getText().toString().equals("Hazel")){
+                        position = 6;
+                    }else if (eyecolor.getText().toString().equals("Other")){
+                        position = 7;
+                    }
+                    else {
+                        position = -1;
+                    }
                     alertDialogBuilder
-                            .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                            .setSingleChoiceItems(items, position, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     ListView lw = ((AlertDialog) dialog).getListView();
                                     Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
-                                    String selectedgend = checkedItem.toString();
-                                    eyecolor.setText(selectedgend);
+                                    String selectedEyeColor = checkedItem.toString();
+                                    eyecolor.setText(selectedEyeColor);
                                     dialog.dismiss();
                                 }
                             });
@@ -349,14 +480,35 @@ public class signup2 extends AppCompatActivity {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
                 alertDialogBuilder.setTitle("Choose Eye Color");
+                int position;
+                    if (eyecolor.getText().toString().equals("Black")){
+                        position = 0;
+                    } else if (eyecolor.getText().toString().equals("Brown")){
+                        position = 1;
+                    } else if (eyecolor.getText().toString().equals("Blue")){
+                        position = 2;
+                    }else if (eyecolor.getText().toString().equals("Amber")){
+                        position = 3;
+                    }else if (eyecolor.getText().toString().equals("Grey")){
+                        position = 4;
+                    }else if (eyecolor.getText().toString().equals("Green")){
+                        position = 5;
+                    }else if (eyecolor.getText().toString().equals("Hazel")){
+                        position = 6;
+                    }else if (eyecolor.getText().toString().equals("Other")){
+                        position = 7;
+                    }
+                    else {
+                        position = -1;
+                    }
                 alertDialogBuilder
-                        .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                        .setSingleChoiceItems(items, position, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 ListView lw = ((AlertDialog) dialog).getListView();
                                 Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
-                                String selectedgend = checkedItem.toString();
-                                eyecolor.setText(selectedgend);
+                                String selectedEyeColor = checkedItem.toString();
+                                eyecolor.setText(selectedEyeColor);
                                 dialog.dismiss();
                             }
                         });
@@ -395,14 +547,31 @@ public class signup2 extends AppCompatActivity {
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
                     alertDialogBuilder.setTitle("Choose Skin Tone");
+                    int position;
+                    if (skintone.getText().toString().equals("Very Fair")){
+                        position = 0;
+                    } else if (skintone.getText().toString().equals("Fair")){
+                        position = 1;
+                    } else if (skintone.getText().toString().equals("Medium")){
+                        position = 2;
+                    }else if (skintone.getText().toString().equals("Olive")){
+                        position = 3;
+                    }else if (skintone.getText().toString().equals("Brown")){
+                        position = 4;
+                    }else if (skintone.getText().toString().equals("Dark")){
+                        position = 5;
+                    }
+                    else {
+                        position = -1;
+                    }
                     alertDialogBuilder
-                            .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                            .setSingleChoiceItems(items,position, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     ListView lw = ((AlertDialog) dialog).getListView();
                                     Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
-                                    String selectedgend = checkedItem.toString();
-                                    skintone.setText(selectedgend);
+                                    String selectedSkinTone = checkedItem.toString();
+                                    skintone.setText(selectedSkinTone);
                                     dialog.dismiss();
                                 }
                             });
@@ -422,14 +591,31 @@ public class signup2 extends AppCompatActivity {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
                 alertDialogBuilder.setTitle("Choose Skin Tone");
+                int position;
+                    if (skintone.getText().toString().equals("Very Fair")){
+                        position = 0;
+                    } else if (skintone.getText().toString().equals("Fair")){
+                        position = 1;
+                    } else if (skintone.getText().toString().equals("Medium")){
+                        position = 2;
+                    }else if (skintone.getText().toString().equals("Olive")){
+                        position = 3;
+                    }else if (skintone.getText().toString().equals("Brown")){
+                        position = 4;
+                    }else if (skintone.getText().toString().equals("Dark")){
+                        position = 5;
+                    }
+                    else {
+                        position = -1;
+                    }
                 alertDialogBuilder
-                        .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                        .setSingleChoiceItems(items,position, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 ListView lw = ((AlertDialog) dialog).getListView();
                                 Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
-                                String selectedgend = checkedItem.toString();
-                                skintone.setText(selectedgend);
+                                String selectedSkinTone = checkedItem.toString();
+                                skintone.setText(selectedSkinTone);
                                 dialog.dismiss();
                             }
                         });
@@ -468,14 +654,31 @@ public class signup2 extends AppCompatActivity {
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
                     alertDialogBuilder.setTitle("Choose Facial Hair");
+                    int position;
+                    if (facialhair.getText().toString().equals("Beard")){
+                        position = 0;
+                    } else if (facialhair.getText().toString().equals("Moustache")){
+                        position = 1;
+                    } else if (facialhair.getText().toString().equals("Beard & Moustache")){
+                        position = 2;
+                    }else if (facialhair.getText().toString().equals("Stubble / Goatie")){
+                        position = 3;
+                    }else if (facialhair.getText().toString().equals("None")){
+                        position = 4;
+                    }else if (facialhair.getText().toString().equals("Other")){
+                        position = 5;
+                    }
+                    else {
+                        position = -1;
+                    }
                     alertDialogBuilder
-                            .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                            .setSingleChoiceItems(items, position, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     ListView lw = ((AlertDialog) dialog).getListView();
                                     Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
-                                    String selectedgend = checkedItem.toString();
-                                    facialhair.setText(selectedgend);
+                                    String selectedFacialHair = checkedItem.toString();
+                                    facialhair.setText(selectedFacialHair);
                                     dialog.dismiss();
                                 }
                             });
@@ -495,14 +698,31 @@ public class signup2 extends AppCompatActivity {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup2.this);
                 alertDialogBuilder.setTitle("Choose Facial Hair");
+                int position;
+                    if (facialhair.getText().toString().equals("Beard")){
+                        position = 0;
+                    } else if (facialhair.getText().toString().equals("Moustache")){
+                        position = 1;
+                    } else if (facialhair.getText().toString().equals("Beard & Moustache")){
+                        position = 2;
+                    }else if (facialhair.getText().toString().equals("Stubble / Goatie")){
+                        position = 3;
+                    }else if (facialhair.getText().toString().equals("None")){
+                        position = 4;
+                    }else if (facialhair.getText().toString().equals("Other")){
+                        position = 5;
+                    }
+                    else {
+                        position = -1;
+                    }
                 alertDialogBuilder
-                        .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                        .setSingleChoiceItems(items, position, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 ListView lw = ((AlertDialog) dialog).getListView();
                                 Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
-                                String selectedgend = checkedItem.toString();
-                                facialhair.setText(selectedgend);
+                                String selectedFacialHair = checkedItem.toString();
+                                facialhair.setText(selectedFacialHair);
                                 dialog.dismiss();
                             }
                         });
