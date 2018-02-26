@@ -137,6 +137,10 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <style name="AlertDialogSignup">
+        <item name="android:background">@drawable/b3</item>
+    </style>
+
     <style name="day" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <item name="dayNnightBg">@drawable/b2</item>
         <item name="dayNnightCard">#FFFFFF</item>
