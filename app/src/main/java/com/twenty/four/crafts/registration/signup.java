@@ -372,16 +372,27 @@ public class signup extends AppCompatActivity implements IPickResult {
         });
 
 
+
         gender1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus) {
-
                     final CharSequence[] items = { "Male", "Female", "Other" };
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup.this);
                     alertDialogBuilder.setTitle("Choose Gender");
-                    alertDialogBuilder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                    int position;
+                    if (gender1.getText().toString().equals("Male")){
+                        position = 0;
+                    } else if (gender1.getText().toString().equals("Female")){
+                        position = 1;
+                    } else if (gender1.getText().toString().equals("Other")){
+                        position = 2;
+                    }
+                    else {
+                        position = -1;
+                    }
+                    alertDialogBuilder.setSingleChoiceItems(items, position, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     ListView lw = ((AlertDialog) dialog).getListView();
@@ -391,7 +402,6 @@ public class signup extends AppCompatActivity implements IPickResult {
                                     dialog.dismiss();
                                 }
                             });
-
                     AlertDialog alertDialog = alertDialogBuilder.create();
                     alertDialog.show();
                 }
@@ -399,6 +409,7 @@ public class signup extends AppCompatActivity implements IPickResult {
         });
 
         gender1.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
@@ -406,8 +417,19 @@ public class signup extends AppCompatActivity implements IPickResult {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(signup.this);
                 alertDialogBuilder.setTitle("Choose Gender");
+                int position;
+                if (gender1.getText().toString().equals("Male")){
+                    position = 0;
+                } else if (gender1.getText().toString().equals("Female")){
+                    position = 1;
+                } else if (gender1.getText().toString().equals("Other")){
+                    position = 2;
+                }
+                else {
+                    position = -1;
+                }
                 alertDialogBuilder
-                        .setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                        .setSingleChoiceItems(items, position, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 ListView lw = ((AlertDialog) dialog).getListView();
@@ -417,7 +439,6 @@ public class signup extends AppCompatActivity implements IPickResult {
                                 dialog.dismiss();
                             }
                         });
-
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
             }
