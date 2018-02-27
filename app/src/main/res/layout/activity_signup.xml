@@ -93,7 +93,8 @@
             android:hint="First Name"
             android:textColorHint="#ffffff"
             android:textSize="16dp"
-            app:errorEnabled="true">
+            app:errorEnabled="true"
+            >
 
             <EditText
                 android:id="@+id/first_name"
