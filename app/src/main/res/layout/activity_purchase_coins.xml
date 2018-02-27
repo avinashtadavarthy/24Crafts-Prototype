@@ -100,8 +100,8 @@
                 android:text="250"/>
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:src="@drawable/single_coin"/>
 
         </LinearLayout>
@@ -109,7 +109,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/RelativeLayout3"
-        android:layout_margin="28dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_below="@id/linearlayoutt"
@@ -119,13 +121,12 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view_1"
-        android:layout_width="120dp"
+        android:layout_width="145dp"
         android:layout_height="100dp"
         app:cardCornerRadius="5dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginRight="21dp"
         app:cardBackgroundColor="#ffffff"
         app:cardElevation="8dp"
         app:cardPreventCornerOverlap="false"
@@ -163,14 +164,12 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view_2"
-            android:layout_width="120dp"
+            android:layout_width="145dp"
             android:layout_height="100dp"
             app:cardCornerRadius="5dp"
             app:cardBackgroundColor="#ffffff"
             app:cardElevation="8dp"
             android:layout_toRightOf="@+id/card_view_1"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="20dp"
             app:cardPreventCornerOverlap="false"
             app:contentPadding="0dp">
 
@@ -206,7 +205,7 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view_3"
-            android:layout_width="120dp"
+            android:layout_width="145dp"
             android:layout_height="100dp"
             app:cardCornerRadius="5dp"
             android:layout_marginRight="20dp"
@@ -248,11 +247,10 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view_4"
-            android:layout_width="120dp"
+            android:layout_width="145dp"
             android:layout_height="100dp"
             android:layout_below="@id/card_view_2"
             android:layout_toRightOf="@id/card_view_3"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             app:cardCornerRadius="5dp"
             app:cardBackgroundColor="#ffffff"
