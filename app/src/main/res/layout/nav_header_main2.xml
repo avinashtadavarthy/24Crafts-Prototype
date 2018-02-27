@@ -96,8 +96,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:gravity="center">
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:id="@+id/coin_purchase_layout"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackgroundBorderless">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -112,8 +115,6 @@
                 android:id="@+id/purchase_coins"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:focusable="true"
                 android:padding="5dp"
                 android:src="@drawable/single_coin" />
 

@@ -26,6 +26,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -203,8 +204,8 @@ public class Main2Activity extends AppCompatActivity
             navigationView.getMenu().performIdentifierAction(R.id.dashboard,0);
         }
 
-        ImageView purchase_coins = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.purchase_coins);
-        purchase_coins.setOnClickListener(new View.OnClickListener() {
+        LinearLayout coin_purchase = navigationView.getHeaderView(0).findViewById(R.id.coin_purchase_layout);
+        coin_purchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Main2Activity.this, PurchaseCoins.class);
