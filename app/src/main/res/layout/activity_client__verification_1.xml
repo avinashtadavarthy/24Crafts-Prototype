@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.twenty.four.crafts.ClientVerification1"
+    android:background="@drawable/client_verify">
+
+
+
+
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="21dp"
+        android:layout_marginEnd="30dp"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:text="Continue"
+        android:drawableRight="@drawable/right_arrow"
+        android:drawablePadding="10dp"
+        android:drawableTint="#0ca795"
+        android:textColor="#0ca795"
+        android:background="@drawable/client_verification_button"/>
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button3"
+        android:layout_marginBottom="287dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginStart="25dp"
+        android:layout_toStartOf="@+id/button3"
+        android:paddingTop="0dp"
+        android:scaleX="1.05"
+        android:src="@drawable/female1" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/imageView9"
+        android:layout_marginTop="185dp"
+        android:text="Provide your ID"
+        android:textColor="@android:color/white"
+        android:textSize="38sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView7"
+        android:layout_below="@+id/textView7"
+        android:paddingRight="13dp"
+        android:paddingTop="10dp"
+        android:text="Thanks for choosing to provide your ID."
+        android:textColor="@android:color/white"
+        android:textSize="25sp" />
+
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView7"
+        android:layout_below="@+id/textView8"
+        android:layout_marginTop="75dp"
+        android:text="Read how it works.."
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView8"
+        android:layout_below="@+id/textView8"
+        android:src="@drawable/book"
+        android:paddingTop="20dp"
+        android:tint="@android:color/white">
+
+    </ImageView>
+
+
+</RelativeLayout>
