@@ -460,7 +460,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         progressbar.setCancelable(false);
 
 
-        String url = "http://192.168.0.113:3000/login";
+        String url = "http://24crafts.cf:3000/login";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -475,7 +475,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
                         subscribed = jsonObject.optString("subscribed");
 
                         //to get the user data
-                        String newurl = "http://192.168.0.113:3000/user";
+                        String newurl = "http://24crafts.cf:3000/user";
 
                         StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new Response.Listener<String>() {
                             @Override

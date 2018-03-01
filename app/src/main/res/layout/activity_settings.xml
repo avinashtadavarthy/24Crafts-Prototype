@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="10dp"
+        android:background="?android:attr/selectableItemBackground"
         >
 
         <ImageView
@@ -56,6 +57,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="10dp"
+        android:background="?android:attr/selectableItemBackground"
         android:padding="5dp">
 
         <ImageView
@@ -94,6 +96,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_margin="10dp"
         >
 
@@ -129,6 +132,7 @@
 
     <LinearLayout
         android:id="@+id/morecoins"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_below="@+id/coinsfree"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -168,6 +172,7 @@
 
     <LinearLayout
         android:id="@+id/themes"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_below="@+id/morecoins"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -213,6 +218,7 @@
         />
     <LinearLayout
         android:id="@+id/daily"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_below="@+id/themes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
