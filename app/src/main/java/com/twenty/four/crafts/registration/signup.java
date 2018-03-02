@@ -68,6 +68,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -302,6 +304,11 @@ public class signup extends AppCompatActivity implements IPickResult {
                     vemail = 0;
                     input_email.setError(null);
                 }
+
+                if(!isEmailValid(s)) input_email.setError("Not a valid email ID");
+                else input_email.setError(null);
+
+
             }
 
             @Override
@@ -781,9 +788,9 @@ public class signup extends AppCompatActivity implements IPickResult {
 
                 if(!first_name1.getText().toString().equals("") && !last_name1.getText().toString().equals("") && !email1.getText().toString().equals("") && !password1.getText().toString().equals("") && !confirm_password1.getText().toString().equals("") && !gender1.getText().toString().equals("") && !dob1.getText().toString().equals("") && !residingin1.getText().toString().equals("") && !nativeplace1.getText().toString().equals("") && !languagesspoken1.getText().toString().equals("") && !whoami1.getText().toString().equals(""))
                 {
+                    if(isDomainValid(email1.getText().toString())) {
 
-                    if(confirm_password1.getText().toString().equals(password1.getText().toString()))
-                    {
+                    if(confirm_password1.getText().toString().equals(password1.getText().toString())) {
 
                 if(type.equals("craftsman"))
                 {
@@ -849,6 +856,10 @@ public class signup extends AppCompatActivity implements IPickResult {
 
                 }
 
+                    }
+
+                    } else {
+                        email1.setError("Domain is not valid");
                     }
 
                 }
@@ -1048,6 +1059,27 @@ public class signup extends AppCompatActivity implements IPickResult {
         dob1.setText(new StringBuilder().append(day).append("/").append(month).append("/").append(year));
     }
 
+
+
+
+
+
+    boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    boolean isDomainValid(String email) {
+        boolean valid = true;
+        String domain = email.substring(email.indexOf("@") + 1);
+
+        for(int i=0; i<restricteddomains.length ; i++) {
+            if(restricteddomains[i].equalsIgnoreCase(domain)) {
+                valid = false;
+                break;
+            }
+        }
+        return valid;
+    }
 
 
 
