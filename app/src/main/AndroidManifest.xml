@@ -322,7 +322,8 @@
 
         <activity android:name=".PushNotifMain" />
         <activity android:name=".ClientVerification1Activity" />
-        <activity android:name=".ClientVerification2Activity"></activity>
+        <activity android:name=".ClientVerification2Activity" />
+        <activity android:name=".ClientVerification3Activity"></activity>
     </application>
 
 </manifest>
