@@ -15,6 +15,14 @@ public class User {
     public int navbarpos = 0;
     public int navbarposclient = 1;
 
+
+    ///url///
+    public String BASE_URL = "http://24crafts.cf:3000/";
+    /////////
+
+
+
+
     protected User(){}
 
     public static synchronized User getInstance(){

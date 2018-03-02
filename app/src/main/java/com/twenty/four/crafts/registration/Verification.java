@@ -307,7 +307,7 @@ public class Verification extends AppCompatActivity {
 
     private void loginWithVolley() {
 
-        String url = "http://24crafts.tk:3000/login";
+        String url = User.getInstance().BASE_URL + "login";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -325,7 +325,7 @@ public class Verification extends AppCompatActivity {
 
                     //to get the data
 
-                    String newurl = "http://24crafts.tk:3000/user";
+                    String newurl = User.getInstance().BASE_URL + "user";
 
                     StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new Response.Listener<String>() {
                         @Override

@@ -157,11 +157,12 @@ public class signup extends AppCompatActivity implements IPickResult {
     String imgurl;
 
     EditText first_name1, last_name1, email1, password1, confirm_password1, gender1, dob1, residingin1, nativeplace1, languagesspoken1, whoami1;
-    public int vfirst_name = 0, vlast_name = 0, vemail = 0, vpassword = 0, vconfirm_password = 0, vgender = 0, vdob = 0, vresidingin = 0, vnativeplace = 0, vlanguagesspoken = 0, vwhoami = 0;
     Spinner craft,genderspin;
     CircleImageView profile_image1, edit_profile_btn;
-
     TextInputLayout input_firstname, input_lastname, input_email, input_password, input_confirmpassword, input_gender, input_dob, input_residingin, input_nativeplace, input_languagesspoken, input_whoami;
+
+    //for verification sake
+    public int vfirst_name = 0, vlast_name = 0, vemail = 0, vpassword = 0, vconfirm_password = 0, vgender = 0, vdob = 0, vresidingin = 0, vnativeplace = 0, vlanguagesspoken = 0, vwhoami = 0;
 
     //datepicker
     Calendar cal = Calendar.getInstance();
@@ -171,7 +172,6 @@ public class signup extends AppCompatActivity implements IPickResult {
 
     //password checker
     ProgressBar progress;
-
     ProgressBar loadimageprogress;
 
 
@@ -383,11 +383,11 @@ public class signup extends AppCompatActivity implements IPickResult {
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup.this,R.style.AlertDialogSignup));
                     alertDialogBuilder.setTitle("Choose Gender");
                     int position;
-                    if (gender1.getText().toString().equals("Male")){
+                    if (gender1.getText().toString().equals("Male")) {
                         position = 0;
-                    } else if (gender1.getText().toString().equals("Female")){
+                    } else if (gender1.getText().toString().equals("Female")) {
                         position = 1;
-                    } else if (gender1.getText().toString().equals("Other")){
+                    } else if (gender1.getText().toString().equals("Other")) {
                         position = 2;
                     }
                     else {
@@ -712,9 +712,8 @@ public class signup extends AppCompatActivity implements IPickResult {
             if(!imgurl.equals("null")) Picasso.with(getApplicationContext()).load(imgurl).into(profile_image1);
             else profile_image1.setImageResource(R.drawable.com_facebook_profile_picture_blank_square);
 
-            if(gender.equals("male")) genderspin.setSelection(1);
-            else if(gender.equals("female")) genderspin.setSelection(2);
-
+            if(gender.equals("male")) gender1.setText("Male");
+            else if(gender.equals("female")) gender1.setText("Female");
         }
 
 
@@ -780,11 +779,14 @@ public class signup extends AppCompatActivity implements IPickResult {
                 } else whoami1.setError(null);
 
 
+                if(!first_name1.getText().toString().equals("") && !last_name1.getText().toString().equals("") && !email1.getText().toString().equals("") && !password1.getText().toString().equals("") && !confirm_password1.getText().toString().equals("") && !gender1.getText().toString().equals("") && !dob1.getText().toString().equals("") && !residingin1.getText().toString().equals("") && !nativeplace1.getText().toString().equals("") && !languagesspoken1.getText().toString().equals("") && !whoami1.getText().toString().equals(""))
+                {
 
+                    if(confirm_password1.getText().toString().equals(password1.getText().toString()))
+                    {
 
-                if(!first_name1.getText().toString().equals("") && !last_name1.getText().toString().equals("") && !email1.getText().toString().equals("") && !password1.getText().toString().equals("") && !confirm_password1.getText().toString().equals("") && !gender1.getText().toString().equals("") && !dob1.getText().toString().equals("") && !residingin1.getText().toString().equals("") && !nativeplace1.getText().toString().equals("") && !languagesspoken1.getText().toString().equals("") && !whoami1.getText().toString().equals("")) {
-
-                if(type.equals("craftsman")) {
+                if(type.equals("craftsman"))
+                {
 
                     if(selectedcraft.equals("Actor") || selectedcraft.equals("Actress") || selectedcraft.equals("Child Artist") || selectedcraft.equals("Dancer") || selectedcraft.equals("Side Artists")){
 
@@ -847,7 +849,11 @@ public class signup extends AppCompatActivity implements IPickResult {
 
                 }
 
+                    }
+
                 }
+
+                //
 
             }
         });

@@ -52,6 +52,9 @@ public class signup2 extends AppCompatActivity {
     TextInputLayout input_bodytype, input_haircolor, input_hairlength, input_eyecolor, input_skintone, input_facialhair, input_height, input_weight, input_hipsize, input_chestsize, input_waistsize;
     EditText bodytype, haircolor, hairlength, eyecolor, skintone, facialhair, height, weight, hipsize, chestsize, waistsize;
 
+    //for verification sake
+    public int vbodytype = 0, vhaircolor = 0, vhairlength = 0, veyecolor = 0, vskintone = 0, vfacialhair = 0, vheight = 0, vweight = 0, vhipsize = 0, vchestsize = 0, vwaistsize = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -191,12 +194,18 @@ public class signup2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if(vbodytype != 0) {
+                    vbodytype = 0;
+                    input_bodytype.setError(null);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if(vbodytype != 0) {
+                    vbodytype = 0;
+                    input_bodytype.setError(null);
+                }
             }
         });
 
@@ -307,12 +316,18 @@ public class signup2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if(vhaircolor != 0) {
+                    vhaircolor = 0;
+                    input_haircolor.setError(null);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if(vhaircolor != 0) {
+                    vhaircolor = 0;
+                    input_haircolor.setError(null);
+                }
             }
         });
 
@@ -412,12 +427,18 @@ public class signup2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if(vhairlength!= 0) {
+                    vhairlength = 0;
+                    input_hairlength.setError(null);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if(vhairlength!= 0) {
+                    vhairlength = 0;
+                    input_hairlength.setError(null);
+                }
             }
         });
 
@@ -528,12 +549,18 @@ public class signup2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if(veyecolor!= 0) {
+                    veyecolor = 0;
+                    input_eyecolor.setError(null);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if(veyecolor!= 0) {
+                    veyecolor = 0;
+                    input_eyecolor.setError(null);
+                }
             }
         });
 
@@ -634,12 +661,18 @@ public class signup2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if(vskintone!= 0) {
+                    vskintone = 0;
+                    input_skintone.setError(null);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if(vskintone!= 0) {
+                    vskintone = 0;
+                    input_skintone.setError(null);
+                }
             }
         });
 
@@ -742,12 +775,18 @@ public class signup2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if(vfacialhair!= 0) {
+                    vfacialhair = 0;
+                    input_facialhair.setError(null);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if(vfacialhair!= 0) {
+                    vfacialhair = 0;
+                    input_facialhair.setError(null);
+                }
             }
         });
 
@@ -763,12 +802,18 @@ public class signup2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if(vheight!= 0) {
+                    vheight = 0;
+                    input_height.setError(null);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if(vheight!= 0) {
+                    vheight = 0;
+                    input_height.setError(null);
+                }
             }
         });
 
@@ -783,12 +828,18 @@ public class signup2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if(vweight!= 0) {
+                    vweight = 0;
+                    input_weight.setError(null);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if(vweight!= 0) {
+                    vweight = 0;
+                    input_weight.setError(null);
+                }
             }
         });
 
@@ -804,12 +855,18 @@ public class signup2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if(vhipsize!= 0) {
+                    vhipsize = 0;
+                    input_hipsize.setError(null);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if(vhipsize!= 0) {
+                    vhipsize = 0;
+                    input_hipsize.setError(null);
+                }
             }
         });
 
@@ -826,12 +883,18 @@ public class signup2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if(vchestsize!= 0) {
+                    vchestsize = 0;
+                    input_chestsize.setError(null);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if(vchestsize!= 0) {
+                    vchestsize = 0;
+                    input_chestsize.setError(null);
+                }
             }
         });
 
@@ -847,12 +910,18 @@ public class signup2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if(vwaistsize!= 0) {
+                    vwaistsize = 0;
+                    input_waistsize.setError(null);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if(vwaistsize!= 0) {
+                    vwaistsize = 0;
+                    input_waistsize.setError(null);
+                }
             }
         });
 
@@ -891,37 +960,93 @@ public class signup2 extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                if(!bodytype.getText().toString().equals("")) storeSPData("bodyType", bodytype.getText().toString());
 
-                if(!haircolor.getText().toString().equals("")) storeSPData("hairColor", haircolor.getText().toString());
+                // EditText bodytype, haircolor, hairlength, eyecolor, skintone, facialhair, height, weight, hipsize, chestsize, waistsize;
+                //check for empty fields
+                if(bodytype.getText().toString().equals("")) {
+                    input_bodytype.setError("Enter your body type.");
+                    vbodytype = 1;
+                } else input_bodytype.setError(null);
 
-                if(!hairlength.getText().toString().equals("")) storeSPData("hairLength", hairlength.getText().toString());
+                if(haircolor.getText().toString().equals("")) {
+                    input_haircolor.setError("Enter your hair color.");
+                    vhaircolor = 1;
+                } else input_haircolor.setError(null);
 
-                if(!eyecolor.getText().toString().equals("")) storeSPData("eyeColor", eyecolor.getText().toString());
+                if(hairlength.getText().toString().equals("")) {
+                    input_hairlength.setError("Enter your hair length.");
+                    vhairlength = 1;
+                } else input_hairlength.setError(null);
 
-                if(!facialhair.getText().toString().equals("")) storeSPData("facialHair", facialhair.getText().toString());
+                if(eyecolor.getText().toString().equals("")) {
+                    input_eyecolor.setError("Enter your eye color.");
+                    veyecolor = 1;
+                } else input_eyecolor.setError(null);
 
-                if(!skinToneSelector.equals("null")) storeSPData("skinTone", skinToneSelector);
+                if(skintone.getText().toString().equals("")) {
+                    input_skintone.setError("Confirm the skin tone.");
+                    vskintone = 1;
+                } else input_skintone.setError(null);
 
-                if(!height.getText().toString().equals("")) storeSPData("height", height.getText().toString());
+                if(facialhair.getText().toString().equals("")) {
+                    input_facialhair.setError("Select your facial hair.");
+                    vfacialhair = 1;
+                } else input_facialhair.setError(null);
 
-                if(!weight.getText().toString().equals("")) storeSPData("weight", weight.getText().toString());
+                if(height.getText().toString().equals("")) {
+                    input_height.setError("Select your height.");
+                    vheight = 1;
+                } else input_height.setError(null);
 
-                if(!hipsize.getText().toString().equals("")) storeSPData("hipsize", hipsize.getText().toString());
+                if(weight.getText().toString().equals("")) {
+                    input_weight.setError("Select your weight.");
+                    vweight = 1;
+                } else input_weight.setError(null);
 
-                if(!chestsize.getText().toString().equals("")) storeSPData("chestSize", chestsize.getText().toString());
+                if(hipsize.getText().toString().equals("")) {
+                    input_hipsize.setError("Select your hip size.");
+                    vhipsize = 1;
+                } else input_hipsize.setError(null);
 
-                if(!waistsize.getText().toString().equals("")) storeSPData("waistSize", waistsize.getText().toString());
+                if(chestsize.getText().toString().equals("")) {
+                    input_chestsize.setError("Select your chest size.");
+                    vchestsize = 1;
+                } else input_chestsize.setError(null);
+
+                if(waistsize.getText().toString().equals("")) {
+                    input_waistsize.setError("Select your waist size.");
+                    vwaistsize = 1;
+                } else input_waistsize.setError(null);
 
 
 
-                Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("name", name);
-                bundle.putString("craft", craft);
-                bundle.putString("type", type);
-                goToNextActivity.putExtras(bundle);
-                startActivity(goToNextActivity);
+
+
+              if(!bodytype.getText().toString().equals("") && !haircolor.getText().toString().equals("") && !hairlength.getText().toString().equals("") && !eyecolor.getText().toString().equals("") && !facialhair.getText().toString().equals("") && !skintone.getText().toString().equals("") && !height.getText().toString().equals("") && !weight.getText().toString().equals("") && !hipsize.getText().toString().equals("") && !chestsize.getText().toString().equals("") && !waistsize.getText().toString().equals(""))
+              {
+                  storeSPData("bodyType", bodytype.getText().toString());
+                  storeSPData("hairColor", haircolor.getText().toString());
+                  storeSPData("hairLength", hairlength.getText().toString());
+                  storeSPData("eyeColor", eyecolor.getText().toString());
+                  storeSPData("facialHair", facialhair.getText().toString());
+                  storeSPData("skinTone", skinToneSelector);
+                  storeSPData("height", height.getText().toString());
+                  storeSPData("weight", weight.getText().toString());
+                  storeSPData("hipsize", hipsize.getText().toString());
+                  storeSPData("chestSize", chestsize.getText().toString());
+                  storeSPData("waistSize", waistsize.getText().toString());
+
+
+
+                  Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
+                  Bundle bundle = new Bundle();
+                  bundle.putString("name", name);
+                  bundle.putString("craft", craft);
+                  bundle.putString("type", type);
+                  goToNextActivity.putExtras(bundle);
+                  startActivity(goToNextActivity);
+              }
+
 
             }
 

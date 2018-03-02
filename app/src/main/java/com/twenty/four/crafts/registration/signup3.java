@@ -38,6 +38,7 @@ import com.facebook.accountkit.PhoneNumber;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
+import com.twenty.four.crafts.User;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -1898,7 +1899,7 @@ public class signup3 extends AppCompatActivity {
 
     void addUserWithVolley() {
 
-        String url = "http://24crafts.tk:3000/adduser";
+        String url = User.getInstance().BASE_URL + "adduser";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override

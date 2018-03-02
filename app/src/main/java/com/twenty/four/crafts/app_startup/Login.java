@@ -32,6 +32,7 @@ import com.twenty.four.crafts.Main3Activity;
 import com.twenty.four.crafts.MySingleton;
 import com.twenty.four.crafts.PushNotifMain;
 import com.twenty.four.crafts.R;
+import com.twenty.four.crafts.User;
 import com.twenty.four.crafts.registration.filter.FilterActivity;
 
 import org.json.JSONException;
@@ -148,7 +149,7 @@ public class Login extends AppCompatActivity {
         progressbar.setCancelable(false);
 
 
-        String url = "http://24crafts.cf:3000/login";
+        String url = User.getInstance().BASE_URL + "login";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -174,7 +175,7 @@ public class Login extends AppCompatActivity {
                         subscribed = jsonObject.optString("subscribed");
 
                         //to get the user data
-                        String newurl = "http://24crafts.cf:3000/user";
+                        String newurl = User.getInstance().BASE_URL + "user";
 
                         StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new Response.Listener<String>() {
                             @Override
