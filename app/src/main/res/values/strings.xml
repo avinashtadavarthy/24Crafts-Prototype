@@ -399,6 +399,7 @@ Praesent tincidunt lorem sit amet mi consequat cursus. Interdum et malesuada fam
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="clientVerify2">Verify your ID to contact any profile that matches your casting requirement! Your ID info wont be displayed anywhere.</string>
 
 
 </resources>

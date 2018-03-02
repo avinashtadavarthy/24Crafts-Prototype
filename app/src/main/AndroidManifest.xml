@@ -321,7 +321,8 @@
             android:exported="false" />
 
         <activity android:name=".PushNotifMain" />
-        <activity android:name=".ClientVerification1"></activity>
+        <activity android:name=".ClientVerification1Activity" />
+        <activity android:name=".ClientVerification2Activity"></activity>
     </application>
 
 </manifest>
