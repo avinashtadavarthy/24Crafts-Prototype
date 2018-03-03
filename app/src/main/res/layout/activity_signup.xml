@@ -85,7 +85,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_firstname"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="16dp"
@@ -93,13 +93,13 @@
             android:hint="First Name"
             android:textColorHint="#ffffff"
             android:textSize="16dp"
-            app:errorEnabled="true"
+             
             >
 
             <EditText
                 android:id="@+id/first_name"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:textSize="16dp"
                 android:layout_gravity="center"
@@ -114,7 +114,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_lastname"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="16dp"
@@ -122,12 +122,12 @@
             android:hint="Last Name"
             android:textColorHint="#ffffff"
             android:textSize="16dp"
-            app:errorEnabled="true">
+             >
 
             <EditText
                 android:id="@+id/last_name"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:layout_gravity="center"
                 android:textSize="16dp"
@@ -142,7 +142,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_email"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="16dp"
@@ -150,12 +150,12 @@
             android:hint="Email"
             android:textColorHint="#ffffff"
             android:textSize="16dp"
-            app:errorEnabled="true">
+             >
 
             <EditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:layout_gravity="center"
                 android:layout_alignParentTop="true"
@@ -171,7 +171,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_password"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="16dp"
@@ -180,12 +180,12 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:textColorHint="#ffffff"
-            app:errorEnabled="true">
+             >
 
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:layout_gravity="center"
                 android:inputType="textPassword"
@@ -209,12 +209,12 @@
             android:inputType="textPassword"
             android:textColorHint="#ffffff"
             android:textSize="16dp"
-            app:errorEnabled="true">
+             >
 
             <EditText
                 android:id="@+id/confirm_password"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:textSize="16dp"
                 android:inputType="textPassword"
@@ -228,11 +228,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="horizontal"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
             android:weightSum="10">
 
             <android.support.design.widget.TextInputLayout
@@ -244,12 +245,12 @@
                 android:hint="Select Gender"
                 android:textColorHint="#ffffff"
                 android:textSize="16dp"
-                app:errorEnabled="true">
+                 >
 
                 <EditText
                     android:id="@+id/gender"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:textSize="16dp"
                     android:layout_gravity="center"
@@ -271,12 +272,12 @@
                 android:hint="Click to set DOB"
                 android:textColorHint="#ffffff"
                 android:textSize="16dp"
-                app:errorEnabled="true">
+                 >
 
                 <EditText
                     android:id="@+id/dob"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:textSize="16dp"
                     android:layout_gravity="center"
@@ -292,7 +293,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_residingin"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="16dp"
@@ -300,12 +301,12 @@
             android:hint="Select Place of Residence"
             android:textColorHint="#ffffff"
             android:textSize="16dp"
-            app:errorEnabled="true">
+             >
 
             <EditText
                 android:id="@+id/residingin"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:layout_gravity="center"
                 android:textSize="16dp"
@@ -320,7 +321,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_nativeplace"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="16dp"
@@ -328,7 +329,7 @@
             android:hint="Select Native Place (Hometown)"
             android:textColorHint="#ffffff"
             android:textSize="16dp"
-            app:errorEnabled="true">
+             >
 
             <EditText
                 android:id="@+id/nativeplace"
@@ -349,7 +350,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_languagesspoken"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="16dp"
@@ -357,12 +358,12 @@
             android:hint="Select Languages Spoken"
             android:textColorHint="#ffffff"
             android:textSize="16dp"
-            app:errorEnabled="true">
+             >
 
             <EditText
                 android:id="@+id/languagesspoken"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:layout_gravity="center"
                 android:textSize="16dp"
@@ -376,7 +377,7 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_whoami"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="16dp"
@@ -385,12 +386,12 @@
             android:hint="Who am I?"
             android:textColorHint="#ffffff"
             android:textSize="16dp"
-            app:errorEnabled="true">
+             >
 
             <EditText
                 android:id="@+id/whoami"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:layout_gravity="center"
                 android:textSize="16dp"

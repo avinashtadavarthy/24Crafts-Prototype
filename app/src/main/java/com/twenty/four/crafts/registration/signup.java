@@ -8,6 +8,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
@@ -20,6 +22,7 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -43,6 +46,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
@@ -51,8 +59,12 @@ import com.squareup.picasso.Picasso;
 import com.steelkiwi.cropiwa.image.CropIwaResultReceiver;
 import com.twenty.four.crafts.CustomAdapterSpinner;
 import com.twenty.four.crafts.LanguagesPopUp;
+import com.twenty.four.crafts.Main2Activity;
+import com.twenty.four.crafts.Main3Activity;
+import com.twenty.four.crafts.MySingleton;
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.User;
+import com.twenty.four.crafts.app_startup.Login;
 import com.vansuita.pickimage.bean.PickResult;
 import com.vansuita.pickimage.bundle.PickSetup;
 import com.vansuita.pickimage.dialog.PickImageDialog;
@@ -61,6 +73,8 @@ import com.vansuita.pickimage.listeners.IPickClick;
 import com.vansuita.pickimage.listeners.IPickResult;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
@@ -68,6 +82,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -145,7 +161,6 @@ public class signup extends AppCompatActivity implements IPickResult {
             "willselfdestruct.com", "winemaven.info", "wronghead.com", "wuzup.net", "wuzupmail.net", "www.e4ward.com", "www.gishpuppy.com", "www.mailinator.com",
             "wwwnew.eu", "xagloo.com", "xemaps.com", "xents.com", "xmaily.com", "xoxy.net", "yep.it", "yogamaven.com", "yopmail.com", "yopmail.fr", "yopmail.net",
             "ypmail.webarnak.fr.eu.org", "yuurok.com", "zehnminutenmail.de", "zippymail.info", "zoaxe.com", "zoemail.org" };
-
 
     String name, selectedcraft = "null", selectedgender = "null";
 
@@ -257,6 +272,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vfirst_name != 0) {
                     vfirst_name = 0;
                     input_firstname.setError(null);
+                    input_firstname.setErrorEnabled(false);
                 }
             }
 
@@ -265,6 +281,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vfirst_name != 0) {
                     vfirst_name = 0;
                     input_firstname.setError(null);
+                    input_firstname.setErrorEnabled(false);
                 }
             }
         });
@@ -280,6 +297,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vlast_name != 0) {
                     vlast_name = 0;
                     input_lastname.setError(null);
+                    input_lastname.setErrorEnabled(false);
                 }
             }
 
@@ -288,6 +306,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vlast_name != 0) {
                     vlast_name = 0;
                     input_lastname.setError(null);
+                    input_lastname.setErrorEnabled(false);
                 }
             }
         });
@@ -303,12 +322,8 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vemail != 0) {
                     vemail = 0;
                     input_email.setError(null);
+                    input_email.setErrorEnabled(false);
                 }
-
-                if(!isEmailValid(s)) input_email.setError("Not a valid email ID");
-                else input_email.setError(null);
-
-
             }
 
             @Override
@@ -316,7 +331,24 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vemail != 0) {
                     vemail = 0;
                     input_email.setError(null);
+                    input_email.setErrorEnabled(false);
                 }
+
+
+                if(isEmailValid(s.toString())) {
+                    if(isDomainValid(s.toString())) {
+                        input_email.setError(null);
+                        input_email.setErrorEnabled(false);
+                    } else {
+                        input_email.setErrorEnabled(true);
+                        input_email.setError("Domain is invalid");
+                    }
+                } else {
+                    input_email.setErrorEnabled(true);
+                    input_email.setError("Invalid email format");
+                }
+
+
             }
         });
 
@@ -332,6 +364,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vpassword != 0) {
                     vpassword = 0;
                     input_password.setError(null);
+                    input_password.setErrorEnabled(false);
                 }
             }
 
@@ -340,6 +373,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vpassword != 0) {
                     vpassword = 0;
                     input_password.setError(null);
+                    input_password.setErrorEnabled(false);
                 }
             }
         });
@@ -351,17 +385,28 @@ public class signup extends AppCompatActivity implements IPickResult {
         confirm_password1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if(confirm_password1.getText().toString().equals("")) input_confirmpassword.setError(null);
+                if(confirm_password1.getText().toString().equals("")) {
+                    input_confirmpassword.setError(null);
+                    input_confirmpassword.setErrorEnabled(false);
+                }
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if(!password1.getText().toString().equals("") && password1.getText().toString().equals(confirm_password1.getText().toString()))
+                if(!password1.getText().toString().equals("") && password1.getText().toString().equals(confirm_password1.getText().toString())) {
                     input_confirmpassword.setError(null);
-                else input_confirmpassword.setError("Passwords don't match");
+                    input_confirmpassword.setErrorEnabled(false);
+                }
+                else {
+                    input_confirmpassword.setErrorEnabled(true);
+                    input_confirmpassword.setError("Passwords don't match");
+                }
 
-                if(confirm_password1.getText().toString().equals("")) input_confirmpassword.setError(null);
+                if(confirm_password1.getText().toString().equals("")) {
+                    input_confirmpassword.setError(null);
+                    input_confirmpassword.setErrorEnabled(false);
+                }
 
             }
 
@@ -370,12 +415,17 @@ public class signup extends AppCompatActivity implements IPickResult {
 
                 if(!password1.getText().toString().equals("") && password1.getText().toString().equals(confirm_password1.getText().toString())) {
                     input_confirmpassword.setError(null);
-                } else {
+                    input_confirmpassword.setErrorEnabled(false);
+                }
+                else {
+                    input_confirmpassword.setErrorEnabled(true);
                     input_confirmpassword.setError("Passwords don't match");
                 }
 
-                if(confirm_password1.getText().toString().equals("")) input_confirmpassword.setError(null);
-
+                if(confirm_password1.getText().toString().equals("")) {
+                    input_confirmpassword.setError(null);
+                    input_confirmpassword.setErrorEnabled(false);
+                }
             }
         });
 
@@ -464,12 +514,17 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vgender != 0) {
                     vgender = 0;
                     input_gender.setError(null);
+                    input_gender.setErrorEnabled(false);
                 }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if(vgender != 0) {
+                    vgender = 0;
+                    input_gender.setError(null);
+                    input_gender.setErrorEnabled(false);
+                }
             }
         });
 
@@ -500,6 +555,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vdob != 0) {
                     vdob = 0;
                     input_dob.setError(null);
+                    input_dob.setErrorEnabled(false);
                 }
             }
 
@@ -508,6 +564,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vdob != 0) {
                     vdob = 0;
                     input_dob.setError(null);
+                    input_dob.setErrorEnabled(false);
                 }
             }
         });
@@ -558,6 +615,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vresidingin != 0) {
                     vresidingin = 0;
                     input_residingin.setError(null);
+                    input_residingin.setErrorEnabled(false);
                 }
             }
 
@@ -566,6 +624,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vresidingin != 0) {
                     vresidingin = 0;
                     input_residingin.setError(null);
+                    input_residingin.setErrorEnabled(false);
                 }
             }
         });
@@ -614,6 +673,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vnativeplace != 0) {
                     vnativeplace = 0;
                     input_nativeplace.setError(null);
+                    input_nativeplace.setErrorEnabled(false);
                 }
             }
 
@@ -622,6 +682,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vnativeplace != 0) {
                     vnativeplace = 0;
                     input_nativeplace.setError(null);
+                    input_nativeplace.setErrorEnabled(false);
                 }
             }
         });
@@ -656,6 +717,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vlanguagesspoken != 0) {
                     vlanguagesspoken = 0;
                     input_languagesspoken.setError(null);
+                    input_languagesspoken.setErrorEnabled(false);
                 }
             }
 
@@ -664,6 +726,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vlanguagesspoken != 0) {
                     vlanguagesspoken = 0;
                     input_languagesspoken.setError(null);
+                    input_languagesspoken.setErrorEnabled(false);
                 }
             }
         });
@@ -672,16 +735,16 @@ public class signup extends AppCompatActivity implements IPickResult {
         whoami1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Intent i = new Intent(getApplicationContext(), ChooseCraftOrClient.class).putExtra("category", type);
-                startActivityForResult(i, CHOOSE_CATEGORY);
+                Intent intnt = new Intent(getApplicationContext(), ChooseCraftOrClient.class).putExtra("category", type);
+                startActivityForResult(intnt, CHOOSE_CATEGORY);
             }
         });
 
         whoami1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ChooseCraftOrClient.class).putExtra("category", type);
-                startActivityForResult(i, CHOOSE_CATEGORY);
+                Intent intnt = new Intent(getApplicationContext(), ChooseCraftOrClient.class).putExtra("category", type);
+                startActivityForResult(intnt, CHOOSE_CATEGORY);
             }
         });
 
@@ -696,6 +759,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vwhoami != 0) {
                     vwhoami = 0;
                     input_whoami.setError(null);
+                    input_whoami.setErrorEnabled(false);
                 }
             }
 
@@ -704,6 +768,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                 if(vwhoami != 0) {
                     vwhoami = 0;
                     input_whoami.setError(null);
+                    input_whoami.setErrorEnabled(false);
                 }
             }
         });
@@ -731,136 +796,260 @@ public class signup extends AppCompatActivity implements IPickResult {
 
                 //check for empty fields
                 if(first_name1.getText().toString().equals("")) {
+                    input_firstname.setErrorEnabled(true);
                     input_firstname.setError("Enter your first name.");
                     vfirst_name = 1;
-                } else input_firstname.setError(null);
+                } else {
+                    input_firstname.setError(null);
+                    input_firstname.setErrorEnabled(false);
+                }
 
                 if(last_name1.getText().toString().equals("")) {
+                    input_lastname.setErrorEnabled(true);
                     input_lastname.setError("Enter your last name.");
                     vlast_name = 1;
-                } else input_lastname.setError(null);
+                } else {
+                    input_lastname.setError(null);
+                    input_lastname.setErrorEnabled(false);
+                }
 
                 if(email1.getText().toString().equals("")) {
+                    input_email.setErrorEnabled(true);
                     input_email.setError("Enter your email.");
                     vemail = 1;
-                } else input_email.setError(null);
+                } else {
+                    input_email.setError(null);
+                    input_email.setErrorEnabled(false);
+                }
 
                 if(password1.getText().toString().equals("")) {
+                    input_password.setErrorEnabled(true);
                     input_password.setError("Enter your password.");
                     vpassword = 1;
-                } else input_password.setError(null);
+                } else {
+                    input_password.setError(null);
+                    input_password.setErrorEnabled(false);
+                }
 
                 if(confirm_password1.getText().toString().equals("")) {
+                    input_confirmpassword.setErrorEnabled(true);
                     input_confirmpassword.setError("Confirm the password.");
                     vconfirm_password = 1;
-                } else confirm_password1.setError(null);
+                } else {
+                    input_confirmpassword.setError(null);
+                    input_confirmpassword.setErrorEnabled(false);
+                }
 
                 if(gender1.getText().toString().equals("")) {
+                    input_gender.setErrorEnabled(true);
                     input_gender.setError("Select your Gender");
                     vgender = 1;
-                } else gender1.setError(null);
+                } else {
+                    input_gender.setError(null);
+                    input_gender.setErrorEnabled(false);
+                }
 
                 if(dob1.getText().toString().equals("")) {
+                    input_dob.setErrorEnabled(true);
                     input_dob.setError("Select your Date of Birth");
                     vdob = 1;
-                } else dob1.setError(null);
+                } else {
+                    input_dob.setError(null);
+                    input_dob.setErrorEnabled(false);
+                }
 
                 if(residingin1.getText().toString().equals("")) {
+                    input_residingin.setErrorEnabled(true);
                     input_residingin.setError("Select your Residing In");
                     vresidingin = 1;
-                } else residingin1.setError(null);
+                } else {
+                    input_residingin.setError(null);
+                    input_residingin.setErrorEnabled(false);
+                }
 
                 if(nativeplace1.getText().toString().equals("")) {
+                    input_nativeplace.setErrorEnabled(true);
                     input_nativeplace.setError("Select your Native Place");
                     vnativeplace = 1;
-                } else nativeplace1.setError(null);
+                } else {
+                    input_nativeplace.setError(null);
+                    input_nativeplace.setErrorEnabled(false);
+                }
 
                 if(languagesspoken1.getText().toString().equals("")) {
+                    input_languagesspoken.setErrorEnabled(true);
                     input_languagesspoken.setError("Select your Languages Spoken");
                     vlanguagesspoken = 1;
-                } else languagesspoken1.setError(null);
+                } else {
+                    input_languagesspoken.setError(null);
+                    input_languagesspoken.setErrorEnabled(false);
+                }
 
                 if(whoami1.getText().toString().equals("")) {
+                    input_whoami.setErrorEnabled(true);
                     input_whoami.setError("Select your Category");
                     vwhoami = 1;
-                } else whoami1.setError(null);
+                } else {
+                    input_whoami.setError(null);
+                    input_whoami.setErrorEnabled(false);
+                }
+                //check for empty fields
 
 
                 if(!first_name1.getText().toString().equals("") && !last_name1.getText().toString().equals("") && !email1.getText().toString().equals("") && !password1.getText().toString().equals("") && !confirm_password1.getText().toString().equals("") && !gender1.getText().toString().equals("") && !dob1.getText().toString().equals("") && !residingin1.getText().toString().equals("") && !nativeplace1.getText().toString().equals("") && !languagesspoken1.getText().toString().equals("") && !whoami1.getText().toString().equals(""))
                 {
-                    if(isDomainValid(email1.getText().toString())) {
+                    final ProgressBar pb = new ProgressBar(signup.this);
+                    pb.setIndeterminate(true);
+                    pb.setVisibility(pb.VISIBLE);
 
-                    if(confirm_password1.getText().toString().equals(password1.getText().toString())) {
+                     if(isEmailValid(email1.getText().toString())) {
 
-                if(type.equals("craftsman"))
-                {
-
-                    if(selectedcraft.equals("Actor") || selectedcraft.equals("Actress") || selectedcraft.equals("Child Artist") || selectedcraft.equals("Dancer") || selectedcraft.equals("Side Artists")){
-
-                        storeSPData("firstname", first_name1.getText().toString());
-                        storeSPData("lastname", last_name1.getText().toString());
-                        storeSPData("email", email1.getText().toString());
-                        storeSPData("password", password1.getText().toString());
-                        storeSPData("dob", dob1.getText().toString());
-                        storeSPData("gender", gender1.getText().toString());
-                        storeSPData("category", whoami1.getText().toString());
-
-                        name=first_name1.getText().toString();
-                        Intent goToNextActivity = new Intent(getApplicationContext(), signup2.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("name",name);
-                        bundle.putString("craft",selectedcraft);
-                        bundle.putString("type",type);
-                        goToNextActivity.putExtras(bundle);
-                        startActivity(goToNextActivity);
-
-                    } else {
-                        storeSPData("firstname", first_name1.getText().toString());
-                        storeSPData("lastname", last_name1.getText().toString());
-                        storeSPData("email", email1.getText().toString());
-                        storeSPData("password", password1.getText().toString());
-                        storeSPData("dob", dob1.getText().toString());
-                        storeSPData("gender", gender1.getText().toString());
-                        storeSPData("category", whoami1.getText().toString());
-
-                        name=first_name1.getText().toString();
-                        Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("name",name);
-                        bundle.putString("craft",selectedcraft);
-                        bundle.putString("type",type);
-                        goToNextActivity.putExtras(bundle);
-                        startActivity(goToNextActivity);
-                    }
+                         if(isDomainValid(email1.getText().toString())) {
 
 
 
-                } else if(type.equals("client")) {
+                             StringRequest stringRequest = new StringRequest(Request.Method.POST, User.getInstance().BASE_URL + "login" , new Response.Listener<String>() {
+                                 @Override
+                                 public void onResponse(String response) {
 
-                        storeSPData("firstname", first_name1.getText().toString());
-                        storeSPData("lastname", last_name1.getText().toString());
-                        storeSPData("email", email1.getText().toString());
-                        storeSPData("password", password1.getText().toString());
-                        storeSPData("dob", dob1.getText().toString().trim());
-                        storeSPData("gender", gender1.getText().toString());
-                        storeSPData("category", whoami1.getText().toString());
+                                     try {
 
-                        name = first_name1.getText().toString();
-                        Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("name", name);
-                        bundle.putString("craft", selectedcraft);
-                        bundle.putString("type",type);
-                        goToNextActivity.putExtras(bundle);
-                        startActivity(goToNextActivity);
+                                         JSONObject jsonObject = new JSONObject(response);
 
-                }
+                                         if(jsonObject.optString("message").equals("Incorrect password.") || !jsonObject.optString("token").equals("")) {
 
-                    }
+                                             pb.setVisibility(pb.GONE);
 
-                    } else {
-                        email1.setError("Domain is not valid");
-                    }
+                                             AlertDialog alert = new android.support.v7.app.AlertDialog.Builder(new ContextThemeWrapper(signup.this, R.style.AlertDialog))
+                                                     .setMessage("This email has already been registered.")
+                                                     .setCancelable(false)
+                                                     .setPositiveButton("Redirect to login", new DialogInterface.OnClickListener() {
+                                                         public void onClick(DialogInterface dialog, int which) {
+                                                             Intent i = new Intent(signup.this, Login.class);
+                                                             startActivity(i);
+                                                         }
+                                                     })
+                                                     .setNegativeButton("Change email", new DialogInterface.OnClickListener() {
+                                                         public void onClick(DialogInterface dialog, int which) {
+                                                             dialog.dismiss();
+                                                         }
+                                                     })
+                                                     .show();
+                                             alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                                         } else {
+
+                                             pb.setVisibility(pb.GONE);
+
+
+
+                                             if(confirm_password1.getText().toString().equals(password1.getText().toString())) {
+
+                                                 if (type.equals("craftsman")) {
+
+                                                     if (selectedcraft.equals("Actor") || selectedcraft.equals("Actress") || selectedcraft.equals("Child Artist") || selectedcraft.equals("Dancer") || selectedcraft.equals("Side Artists")) {
+
+                                                         storeSPData("firstname", first_name1.getText().toString());
+                                                         storeSPData("lastname", last_name1.getText().toString());
+                                                         storeSPData("email", email1.getText().toString());
+                                                         storeSPData("password", password1.getText().toString());
+                                                         storeSPData("dob", dob1.getText().toString());
+                                                         storeSPData("gender", gender1.getText().toString());
+                                                         storeSPData("category", whoami1.getText().toString());
+
+                                                         name = first_name1.getText().toString();
+                                                         Intent goToNextActivity = new Intent(getApplicationContext(), signup2.class);
+                                                         Bundle bundle = new Bundle();
+                                                         bundle.putString("name", name);
+                                                         bundle.putString("craft", selectedcraft);
+                                                         bundle.putString("type", type);
+                                                         goToNextActivity.putExtras(bundle);
+                                                         startActivity(goToNextActivity);
+
+                                                     } else {
+                                                         storeSPData("firstname", first_name1.getText().toString());
+                                                         storeSPData("lastname", last_name1.getText().toString());
+                                                         storeSPData("email", email1.getText().toString());
+                                                         storeSPData("password", password1.getText().toString());
+                                                         storeSPData("dob", dob1.getText().toString());
+                                                         storeSPData("gender", gender1.getText().toString());
+                                                         storeSPData("category", whoami1.getText().toString());
+
+                                                         name = first_name1.getText().toString();
+                                                         Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
+                                                         Bundle bundle = new Bundle();
+                                                         bundle.putString("name", name);
+                                                         bundle.putString("craft", selectedcraft);
+                                                         bundle.putString("type", type);
+                                                         goToNextActivity.putExtras(bundle);
+                                                         startActivity(goToNextActivity);
+                                                     }
+
+
+                                                 } else if (type.equals("client")) {
+
+                                                     storeSPData("firstname", first_name1.getText().toString());
+                                                     storeSPData("lastname", last_name1.getText().toString());
+                                                     storeSPData("email", email1.getText().toString());
+                                                     storeSPData("password", password1.getText().toString());
+                                                     storeSPData("dob", dob1.getText().toString().trim());
+                                                     storeSPData("gender", gender1.getText().toString());
+                                                     storeSPData("category", whoami1.getText().toString());
+
+                                                     name = first_name1.getText().toString();
+                                                     Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
+                                                     Bundle bundle = new Bundle();
+                                                     bundle.putString("name", name);
+                                                     bundle.putString("craft", selectedcraft);
+                                                     bundle.putString("type", type);
+                                                     goToNextActivity.putExtras(bundle);
+                                                     startActivity(goToNextActivity);
+
+                                                 }
+
+                                             }
+
+                                         }
+
+                                     } catch (JSONException e) {
+                                         e.printStackTrace();
+                                     }
+
+                                 }
+                             }, new Response.ErrorListener() {
+                                 @Override
+                                 public void onErrorResponse(VolleyError error) {
+                                     error.printStackTrace();
+                                 }
+                             }){
+                                 @Override
+                                 protected Map<String, String> getParams() throws AuthFailureError {
+
+                                     Map<String, String> params = new HashMap<String, String>();
+
+                                     params.put("username", email1.getText().toString());
+                                     params.put("password", password1.getText().toString());
+
+                                     return params;
+                                 }
+                             };
+
+                             MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+
+
+
+
+                         } else {
+                             pb.setVisibility(pb.GONE);
+                             input_email.setErrorEnabled(true);
+                             input_email.setError("Domain is invalid");
+                         }
+
+                     } else {
+                         pb.setVisibility(pb.GONE);
+                         input_email.setErrorEnabled(true);
+                         input_email.setError("Invalid email format");
+                     }
 
                 }
 
@@ -906,9 +1095,6 @@ public class signup extends AppCompatActivity implements IPickResult {
             Toast.makeText(this, r.getError().getMessage(), Toast.LENGTH_LONG).show();
         }
     }
-
-
-
 
 
     @Override

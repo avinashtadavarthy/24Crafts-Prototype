@@ -197,6 +197,7 @@ public class signup2 extends AppCompatActivity {
                 if(vbodytype != 0) {
                     vbodytype = 0;
                     input_bodytype.setError(null);
+                    input_bodytype.setErrorEnabled(false);
                 }
             }
 
@@ -205,6 +206,7 @@ public class signup2 extends AppCompatActivity {
                 if(vbodytype != 0) {
                     vbodytype = 0;
                     input_bodytype.setError(null);
+                    input_bodytype.setErrorEnabled(false);
                 }
             }
         });
@@ -319,6 +321,7 @@ public class signup2 extends AppCompatActivity {
                 if(vhaircolor != 0) {
                     vhaircolor = 0;
                     input_haircolor.setError(null);
+                    input_haircolor.setErrorEnabled(false);
                 }
             }
 
@@ -327,6 +330,7 @@ public class signup2 extends AppCompatActivity {
                 if(vhaircolor != 0) {
                     vhaircolor = 0;
                     input_haircolor.setError(null);
+                    input_haircolor.setErrorEnabled(false);
                 }
             }
         });
@@ -430,6 +434,7 @@ public class signup2 extends AppCompatActivity {
                 if(vhairlength!= 0) {
                     vhairlength = 0;
                     input_hairlength.setError(null);
+                    input_hairlength.setErrorEnabled(false);
                 }
             }
 
@@ -438,6 +443,7 @@ public class signup2 extends AppCompatActivity {
                 if(vhairlength!= 0) {
                     vhairlength = 0;
                     input_hairlength.setError(null);
+                    input_hairlength.setErrorEnabled(false);
                 }
             }
         });
@@ -552,6 +558,7 @@ public class signup2 extends AppCompatActivity {
                 if(veyecolor!= 0) {
                     veyecolor = 0;
                     input_eyecolor.setError(null);
+                    input_eyecolor.setErrorEnabled(false);
                 }
             }
 
@@ -560,6 +567,7 @@ public class signup2 extends AppCompatActivity {
                 if(veyecolor!= 0) {
                     veyecolor = 0;
                     input_eyecolor.setError(null);
+                    input_eyecolor.setErrorEnabled(false);
                 }
             }
         });
@@ -664,6 +672,7 @@ public class signup2 extends AppCompatActivity {
                 if(vskintone!= 0) {
                     vskintone = 0;
                     input_skintone.setError(null);
+                    input_skintone.setErrorEnabled(false);
                 }
             }
 
@@ -672,6 +681,7 @@ public class signup2 extends AppCompatActivity {
                 if(vskintone!= 0) {
                     vskintone = 0;
                     input_skintone.setError(null);
+                    input_skintone.setErrorEnabled(false);
                 }
             }
         });
@@ -778,6 +788,7 @@ public class signup2 extends AppCompatActivity {
                 if(vfacialhair!= 0) {
                     vfacialhair = 0;
                     input_facialhair.setError(null);
+                    input_facialhair.setErrorEnabled(false);
                 }
             }
 
@@ -786,6 +797,7 @@ public class signup2 extends AppCompatActivity {
                 if(vfacialhair!= 0) {
                     vfacialhair = 0;
                     input_facialhair.setError(null);
+                    input_facialhair.setErrorEnabled(false);
                 }
             }
         });
@@ -805,6 +817,7 @@ public class signup2 extends AppCompatActivity {
                 if(vheight!= 0) {
                     vheight = 0;
                     input_height.setError(null);
+                    input_height.setErrorEnabled(false);
                 }
             }
 
@@ -813,6 +826,7 @@ public class signup2 extends AppCompatActivity {
                 if(vheight!= 0) {
                     vheight = 0;
                     input_height.setError(null);
+                    input_height.setErrorEnabled(false);
                 }
             }
         });
@@ -831,6 +845,7 @@ public class signup2 extends AppCompatActivity {
                 if(vweight!= 0) {
                     vweight = 0;
                     input_weight.setError(null);
+                    input_weight.setErrorEnabled(false);
                 }
             }
 
@@ -839,6 +854,7 @@ public class signup2 extends AppCompatActivity {
                 if(vweight!= 0) {
                     vweight = 0;
                     input_weight.setError(null);
+                    input_weight.setErrorEnabled(false);
                 }
             }
         });
@@ -858,6 +874,7 @@ public class signup2 extends AppCompatActivity {
                 if(vhipsize!= 0) {
                     vhipsize = 0;
                     input_hipsize.setError(null);
+                    input_hipsize.setErrorEnabled(false);
                 }
             }
 
@@ -866,6 +883,7 @@ public class signup2 extends AppCompatActivity {
                 if(vhipsize!= 0) {
                     vhipsize = 0;
                     input_hipsize.setError(null);
+                    input_hipsize.setErrorEnabled(false);
                 }
             }
         });
@@ -886,6 +904,7 @@ public class signup2 extends AppCompatActivity {
                 if(vchestsize!= 0) {
                     vchestsize = 0;
                     input_chestsize.setError(null);
+                    input_chestsize.setErrorEnabled(false);
                 }
             }
 
@@ -894,6 +913,7 @@ public class signup2 extends AppCompatActivity {
                 if(vchestsize!= 0) {
                     vchestsize = 0;
                     input_chestsize.setError(null);
+                    input_chestsize.setErrorEnabled(false);
                 }
             }
         });
@@ -913,6 +933,7 @@ public class signup2 extends AppCompatActivity {
                 if(vwaistsize!= 0) {
                     vwaistsize = 0;
                     input_waistsize.setError(null);
+                    input_waistsize.setErrorEnabled(false);
                 }
             }
 
@@ -921,6 +942,7 @@ public class signup2 extends AppCompatActivity {
                 if(vwaistsize!= 0) {
                     vwaistsize = 0;
                     input_waistsize.setError(null);
+                    input_waistsize.setErrorEnabled(false);
                 }
             }
         });
@@ -964,65 +986,109 @@ public class signup2 extends AppCompatActivity {
                 // EditText bodytype, haircolor, hairlength, eyecolor, skintone, facialhair, height, weight, hipsize, chestsize, waistsize;
                 //check for empty fields
                 if(bodytype.getText().toString().equals("")) {
+                    input_bodytype.setErrorEnabled(true);
                     input_bodytype.setError("Enter your body type.");
                     vbodytype = 1;
-                } else input_bodytype.setError(null);
+                } else {
+                    input_bodytype.setError(null);
+                    input_bodytype.setErrorEnabled(false);
+                }
 
                 if(haircolor.getText().toString().equals("")) {
+                    input_haircolor.setErrorEnabled(true);
                     input_haircolor.setError("Enter your hair color.");
                     vhaircolor = 1;
-                } else input_haircolor.setError(null);
+                } else {
+                    input_haircolor.setError(null);
+                    input_haircolor.setErrorEnabled(false);
+                }
 
                 if(hairlength.getText().toString().equals("")) {
+                    input_hairlength.setErrorEnabled(true);
                     input_hairlength.setError("Enter your hair length.");
                     vhairlength = 1;
-                } else input_hairlength.setError(null);
+                } else {
+                    input_hairlength.setError(null);
+                    input_hairlength.setErrorEnabled(false);
+                }
 
                 if(eyecolor.getText().toString().equals("")) {
+                    input_eyecolor.setErrorEnabled(true);
                     input_eyecolor.setError("Enter your eye color.");
                     veyecolor = 1;
-                } else input_eyecolor.setError(null);
+                } else {
+                    input_eyecolor.setError(null);
+                    input_eyecolor.setErrorEnabled(false);
+                }
 
                 if(skintone.getText().toString().equals("")) {
+                    input_skintone.setErrorEnabled(true);
                     input_skintone.setError("Confirm the skin tone.");
                     vskintone = 1;
-                } else input_skintone.setError(null);
+                } else {
+                    input_skintone.setError(null);
+                    input_skintone.setErrorEnabled(false);
+                }
 
                 if(facialhair.getText().toString().equals("")) {
+                    input_facialhair.setErrorEnabled(true);
                     input_facialhair.setError("Select your facial hair.");
                     vfacialhair = 1;
-                } else input_facialhair.setError(null);
+                } else {
+                    input_facialhair.setError(null);
+                    input_facialhair.setErrorEnabled(false);
+                }
 
                 if(height.getText().toString().equals("")) {
+                    input_height.setErrorEnabled(true);
                     input_height.setError("Select your height.");
                     vheight = 1;
-                } else input_height.setError(null);
+                } else {
+                    input_height.setError(null);
+                    input_height.setErrorEnabled(false);
+                }
 
                 if(weight.getText().toString().equals("")) {
+                    input_weight.setErrorEnabled(true);
                     input_weight.setError("Select your weight.");
                     vweight = 1;
-                } else input_weight.setError(null);
+                } else {
+                    input_weight.setError(null);
+                    input_weight.setErrorEnabled(false);
+                }
 
                 if(hipsize.getText().toString().equals("")) {
+                    input_hipsize.setErrorEnabled(true);
                     input_hipsize.setError("Select your hip size.");
                     vhipsize = 1;
-                } else input_hipsize.setError(null);
+                } else {
+                    input_hipsize.setError(null);
+                    input_hipsize.setErrorEnabled(false);
+                }
 
                 if(chestsize.getText().toString().equals("")) {
+                    input_chestsize.setErrorEnabled(true);
                     input_chestsize.setError("Select your chest size.");
                     vchestsize = 1;
-                } else input_chestsize.setError(null);
+                } else {
+                    input_chestsize.setError(null);
+                    input_chestsize.setErrorEnabled(false);
+                }
 
                 if(waistsize.getText().toString().equals("")) {
+                    input_waistsize.setErrorEnabled(true);
                     input_waistsize.setError("Select your waist size.");
                     vwaistsize = 1;
-                } else input_waistsize.setError(null);
+                } else {
+                    input_waistsize.setError(null);
+                    input_waistsize.setErrorEnabled(false);
+                }
 
 
 
 
 
-              if(!bodytype.getText().toString().equals("") && !haircolor.getText().toString().equals("") && !hairlength.getText().toString().equals("") && !eyecolor.getText().toString().equals("") && !facialhair.getText().toString().equals("") && !skintone.getText().toString().equals("") && !height.getText().toString().equals("") && !weight.getText().toString().equals("") && !hipsize.getText().toString().equals("") && !chestsize.getText().toString().equals("") && !waistsize.getText().toString().equals(""))
+                if(!bodytype.getText().toString().equals("") && !haircolor.getText().toString().equals("") && !hairlength.getText().toString().equals("") && !eyecolor.getText().toString().equals("") && !facialhair.getText().toString().equals("") && !skintone.getText().toString().equals("") && !height.getText().toString().equals("") && !weight.getText().toString().equals("") && !hipsize.getText().toString().equals("") && !chestsize.getText().toString().equals("") && !waistsize.getText().toString().equals(""))
               {
                   storeSPData("bodyType", bodytype.getText().toString());
                   storeSPData("hairColor", haircolor.getText().toString());

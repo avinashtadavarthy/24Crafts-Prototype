@@ -143,6 +143,8 @@ public class Login extends AppCompatActivity {
     }
 
 
+
+
     private void loginUser() {
 
         progressbar.show();
@@ -255,9 +257,10 @@ public class Login extends AppCompatActivity {
         };
 
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
-
-
     }
+
+
+
 
     @Override
     public void onBackPressed() {

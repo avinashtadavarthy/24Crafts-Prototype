@@ -69,7 +69,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_bodytype"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="16dp"
@@ -77,12 +77,12 @@
                 android:hint="Body Type"
                 android:textColorHint="#ffffff"
                 android:textSize="16dp"
-                app:errorEnabled="true">
+                  >
 
                 <EditText
                     android:id="@+id/bodytype"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:textSize="16dp"
                     android:layout_gravity="center"
@@ -97,7 +97,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_haircolor"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="16dp"
@@ -105,12 +105,12 @@
                 android:hint="Hair Color"
                 android:textColorHint="#ffffff"
                 android:textSize="16dp"
-                app:errorEnabled="true">
+                  >
 
                 <EditText
                     android:id="@+id/haircolor"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:textSize="16dp"
                     android:layout_gravity="center"
@@ -127,7 +127,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_hairlength"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="16dp"
@@ -135,12 +135,12 @@
                 android:hint="Hair Length"
                 android:textColorHint="#ffffff"
                 android:textSize="16dp"
-                app:errorEnabled="true">
+                  >
 
                 <EditText
                     android:id="@+id/hairlength"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:textSize="16dp"
                     android:layout_gravity="center"
@@ -156,7 +156,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_eyecolor"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="16dp"
@@ -164,12 +164,12 @@
                 android:hint="Eye Color"
                 android:textColorHint="#ffffff"
                 android:textSize="16dp"
-                app:errorEnabled="true">
+                  >
 
                 <EditText
                     android:id="@+id/eyecolor"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:textSize="16dp"
                     android:layout_gravity="center"
@@ -185,7 +185,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_skintone"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="16dp"
@@ -193,12 +193,12 @@
                 android:hint="Skin Tone"
                 android:textColorHint="#ffffff"
                 android:textSize="16dp"
-                app:errorEnabled="true">
+                  >
 
                 <EditText
                     android:id="@+id/skintone"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:textSize="16dp"
                     android:layout_gravity="center"
@@ -240,7 +240,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_facialhair"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="16dp"
@@ -248,12 +248,12 @@
                 android:hint="Facial Hair"
                 android:textColorHint="#ffffff"
                 android:textSize="16dp"
-                app:errorEnabled="true">
+                  >
 
                 <EditText
                     android:id="@+id/facialhair"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:textSize="16dp"
                     android:layout_gravity="center"
@@ -268,7 +268,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_height"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
@@ -276,12 +276,12 @@
                 android:hint="Height (ft)"
                 android:textColorHint="#ffffff"
                 android:textSize="16dp"
-                app:errorEnabled="true">
+                  >
 
                 <EditText
                     android:id="@+id/height"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:textSize="16dp"
                     android:layout_gravity="center"
@@ -297,7 +297,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_weight"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
@@ -305,12 +305,12 @@
                 android:hint="Weight (kg)"
                 android:textColorHint="#ffffff"
                 android:textSize="16dp"
-                app:errorEnabled="true">
+                  >
 
                 <EditText
                     android:id="@+id/weight"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:textSize="16dp"
                     android:layout_gravity="center"
@@ -326,7 +326,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_hipsize"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
@@ -334,12 +334,12 @@
                 android:hint="Hip Size (in)"
                 android:textColorHint="#ffffff"
                 android:textSize="16dp"
-                app:errorEnabled="true">
+                  >
 
                 <EditText
                     android:id="@+id/hip_size"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:textSize="16dp"
                     android:paddingLeft="5dp"
                     android:layout_gravity="center"
@@ -354,7 +354,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_chestsize"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
@@ -362,12 +362,12 @@
                 android:hint="Chest Size (in)"
                 android:textColorHint="#ffffff"
                 android:textSize="16dp"
-                app:errorEnabled="true">
+                  >
 
                 <EditText
                     android:id="@+id/chest_size"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:textSize="16dp"
                     android:paddingLeft="5dp"
                     android:layout_gravity="center"
@@ -382,7 +382,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_waistsize"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
@@ -390,12 +390,12 @@
                 android:hint="Waist Size (in)"
                 android:textColorHint="#ffffff"
                 android:textSize="16dp"
-                app:errorEnabled="true">
+                  >
 
                 <EditText
                     android:id="@+id/waist_size"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
                     android:textSize="16dp"
                     android:layout_gravity="center"
