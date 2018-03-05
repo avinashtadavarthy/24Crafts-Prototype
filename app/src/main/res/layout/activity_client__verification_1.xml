@@ -5,21 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.twenty.four.crafts.ClientVerification1Activity"
-    android:background="@drawable/client_verify">
+    android:background="@drawable/client_verify"
+    android:id="@+id/clientlayout1">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/ContinueButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="15dp"
         android:layout_marginEnd="15dp"
-        android:paddingRight="15dp"
-        android:paddingLeft="15dp"
+        android:paddingRight="5dp"
+        android:paddingLeft="10dp"
         android:text="Continue"
-        android:drawableRight="@drawable/right_arrow"
-        android:drawablePadding="10dp"
+        android:drawableRight="@drawable/right_arrow_drawable"
         android:drawableTint="#0ca795"
         android:textColor="#0ca795"
         android:background="@drawable/client_verification_button"/>
@@ -28,11 +28,11 @@
         android:id="@+id/imageView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button3"
+        android:layout_above="@+id/ContinueButton"
         android:layout_marginBottom="287dp"
         android:layout_marginEnd="105dp"
         android:layout_marginStart="25dp"
-        android:layout_toStartOf="@+id/button3"
+        android:layout_toStartOf="@+id/ContinueButton"
         android:paddingTop="0dp"
         android:scaleX="1.05"
         android:src="@drawable/female1" />
