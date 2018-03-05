@@ -3,14 +3,10 @@ package com.twenty.four.crafts;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
-import android.view.ContextThemeWrapper;
 import android.view.View;
-
-import com.twenty.four.crafts.registration.StartingScreen;
 
 public class SubscribePopUp extends AppCompatActivity {
 
@@ -18,7 +14,6 @@ public class SubscribePopUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subscribe_pop_up);
-
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);

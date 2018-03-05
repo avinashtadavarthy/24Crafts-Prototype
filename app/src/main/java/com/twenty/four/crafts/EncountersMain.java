@@ -96,7 +96,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
 
                     if (right == 0) {
-                        AlertDialogSwipeRight();
+                       // AlertDialogSwipeRight();
                         editor.putInt("right", 1);
                         editor.commit();
                     }
@@ -112,7 +112,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                     }*/
 
                     if (left == 0) {
-                        AlertDialogSwipeLeft();
+                      //  AlertDialogSwipeLeft();
                         editor.putInt("left", 1);
                         editor.commit();
                     }
@@ -142,6 +142,34 @@ public class EncountersMain extends android.support.v4.app.Fragment {
             }
         });
 
+
+        forbiddenMark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                swipeLeft();
+            }
+        });
+
+        starInEncounters.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                swipeRight();
+            }
+        });
+
+        undoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reverse();
+            }
+        });
+
+        closeEnvelope.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
       /*  forbiddenMark.setOnClickListener(new View.OnClickListener() {
             @Override
