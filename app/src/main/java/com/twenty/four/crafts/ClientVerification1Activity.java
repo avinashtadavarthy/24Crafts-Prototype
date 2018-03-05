@@ -23,7 +23,6 @@ public class ClientVerification1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_client__verification_1);
 
         Button btn = findViewById(R.id.ContinueButton);
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,6 +30,16 @@ public class ClientVerification1Activity extends AppCompatActivity {
                 ClientVerification1Activity.this.startActivity(intent);
             }
         });
+
+
+        ImageButton cross = findViewById(R.id.cross);
+        cross.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
 
     }
 }

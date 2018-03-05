@@ -8,7 +8,7 @@
     android:background="@drawable/client_verify">
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/cross"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_alignParentStart="true"
@@ -24,8 +24,8 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/imageButton2"
-        android:layout_below="@+id/imageButton2"
+        android:layout_alignStart="@+id/cross"
+        android:layout_below="@+id/cross"
         android:layout_marginTop="25dp"
         android:text="Pick an ID type"
         android:textColor="@android:color/white"
@@ -110,7 +110,7 @@
         />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/launchCamera"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:tint="#0ca795"

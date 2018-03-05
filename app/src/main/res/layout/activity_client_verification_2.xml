@@ -12,8 +12,8 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/imageButton2"
-        android:layout_below="@+id/imageButton2"
+        android:layout_alignStart="@+id/cross"
+        android:layout_below="@+id/cross"
         android:layout_marginTop="10dp"
         android:text="Take a photo of your Government ID"
         android:textColor="@android:color/white"
@@ -34,7 +34,7 @@
         android:textSize="15sp" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/cross"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_alignParentStart="true"

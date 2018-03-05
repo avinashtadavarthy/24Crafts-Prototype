@@ -256,7 +256,6 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         } else if (id == R.id.clientverify){
             Intent i = new Intent(this, ClientVerification1Activity.class);
             startActivity(i);
-            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
