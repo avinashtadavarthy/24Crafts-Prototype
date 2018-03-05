@@ -5,34 +5,42 @@
         <item
             android:id="@+id/dashboard"
             android:icon="@drawable/dashboard"
+            android:iconTint="#ffffff"
             android:title="Dashboard" />
         <item
             android:id="@+id/newsfeed"
             android:icon="@drawable/newsfeed"
+            android:iconTint="#ffffff"
             android:title="News Feed" />
         <item
             android:id="@+id/nearby"
             android:icon="@drawable/location"
+            android:iconTint="#ffffff"
             android:title="People Nearby" />
         <item
             android:id="@+id/encounters"
             android:icon="@drawable/people"
+            android:iconTint="#ffffff"
             android:title="Encounters" />
         <item
             android:id="@+id/directory"
             android:icon="@drawable/contact"
+            android:iconTint="#ffffff"
             android:title="Directory" />
         <item
             android:id="@+id/promote"
             android:icon="@drawable/promote"
+            android:iconTint="#ffffff"
             android:title="Promote Your Profile" />
         <item
             android:id="@+id/subscribe"
             android:icon="@drawable/subscribe"
+            android:iconTint="#ffffff"
             android:title="Subscribe" />
         <item
             android:id="@+id/settings"
             android:icon="@drawable/settings"
+            android:iconTint="#ffffff"
             android:title="Settings" />
     </group>
 
@@ -41,15 +49,18 @@
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/smiley"
+                android:iconTint="#ffffff"
                 android:title="Profile 1" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/smiley"
+                android:iconTint="#ffffff"
                 android:title="Profile 2" />
 
             <item
                 android:id="@+id/nav_send1"
                 android:icon="@drawable/smiley"
+                android:iconTint="#ffffff"
                 android:title="Profile 3" />
         </menu>
     </item>

@@ -5,26 +5,32 @@
         <item
             android:id="@+id/dashboard"
             android:icon="@drawable/dashboard"
+            android:iconTint="#ffffff"
             android:title="Dashboard" />
         <item
             android:id="@+id/talent_hunt"
             android:icon="@drawable/talent_hunt"
+            android:iconTint="#ffffff"
             android:title="Talent Hunter - Cast &amp; Crew" />
         <item
             android:id="@+id/nearby"
             android:icon="@drawable/location"
+            android:iconTint="#ffffff"
             android:title="People Nearby" />
         <item
             android:id="@+id/directory"
             android:icon="@drawable/contact"
+            android:iconTint="#ffffff"
             android:title="Directory" />
         <item
             android:id="@+id/clientverify"
-            android:icon="@drawable/client_verify_shield"
+            android:icon="@drawable/verified_user"
+            android:iconTint="#ffffff"
             android:title="Verify Your Account" />
         <item
             android:id="@+id/settings"
             android:icon="@drawable/settings"
+            android:iconTint="#ffffff"
             android:title="Settings" />
     </group>
 
