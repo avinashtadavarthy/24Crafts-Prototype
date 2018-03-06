@@ -2,6 +2,7 @@ package com.twenty.four.crafts;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -17,6 +18,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
@@ -31,8 +37,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
@@ -43,9 +54,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final int MY_PERMISSIONS_REQUEST_LOCATION = 300;
     GoogleMap mMap;
     int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
+    String jwtToken = "";
     ImageButton location;
     TextView text;
     double latitude, longitude;
+    double latitudeGPS,longitudeGPS;
     LocationManager locationManager;
     String searchedPlace = "";
 
@@ -54,6 +67,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_maps);
+
+
 
 
         User.getInstance().navbarpos = 0;
@@ -85,6 +100,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         currentLocation();
 
 
+
+
     }
 
     public void currentLocation()
@@ -111,14 +128,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 public void onLocationChanged(Location location) {
 
                     String str = "";
-                    double latitude = location.getLatitude();
-                    double longitude = location.getLongitude();
-                    LatLng latLng = new LatLng(latitude,longitude);
-                    Log.e("listener",latitude + " " + longitude);
+                     latitudeGPS = location.getLatitude();
+                     longitudeGPS = location.getLongitude();
+                    LatLng latLng = new LatLng(latitudeGPS,longitudeGPS);
+                    locationOfUser();
+                    Log.e("listener",latitudeGPS + " " + longitudeGPS);
 
                     Geocoder geocoder = new Geocoder(getApplicationContext());
                     try {
-                        List<Address> addressList = geocoder.getFromLocation(latitude,longitude,1);
+                        List<Address> addressList = geocoder.getFromLocation(latitudeGPS,longitudeGPS,1);
 
                         str = addressList.get(0).getLocality() + addressList.get(0).getCountryName();
                     } catch (IOException e) {
@@ -161,14 +179,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 public void onLocationChanged(Location location) {
 
                     String str = "";
-                    double latitude = location.getLatitude();
-                    double longitude = location.getLongitude();
-                    Log.e("listener",latitude + " " + longitude);
-                    LatLng latLng = new LatLng(latitude,longitude);
+                     latitudeGPS = location.getLatitude();
+                     longitudeGPS = location.getLongitude();
+                    locationOfUser();
+                    Log.e("listener",latitudeGPS + " " + longitudeGPS);
+                    LatLng latLng = new LatLng(latitudeGPS,longitudeGPS);
 
                     Geocoder geocoder = new Geocoder(getApplicationContext());
                     try {
-                        List<Address> addressList = geocoder.getFromLocation(latitude,longitude,1);
+                        List<Address> addressList = geocoder.getFromLocation(latitudeGPS,longitudeGPS,1);
 
                         str = addressList.get(0).getLocality() + addressList.get(0).getCountryName();
                     } catch (IOException e) {
@@ -347,4 +366,94 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         return true;
     }
+
+
+
+
+    private void locationOfUser() {
+
+
+
+
+        //to get the user data
+        String newurl = User.getInstance().BASE_URL + "user/geolocation/update/" + latitudeGPS + "/" + longitudeGPS;
+
+
+        jwtToken = getSPData("jwtToken");
+
+        Log.e("jwtToken",jwtToken);
+
+
+        StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+
+                Toast.makeText(getApplicationContext(),"response: " + response+ " " + latitudeGPS + " " + longitudeGPS,Toast.LENGTH_SHORT).show();
+
+                try {
+
+
+                    JSONObject obj = new JSONObject(response);
+                    Log.e("response",response);
+
+                    //String isClient = obj.optString("isClient");
+
+                   /* if(isClient.equals("true")) {
+
+                        Log.e("responseClients",response);;
+
+                    } else {
+
+                        Log.e("responseCraftsmen",response);
+                    }*/
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("authorization", jwtToken);
+
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(getRequest);
+        //to get the user data
+    }
+
+
+
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = getApplicationContext().getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = getApplicationContext().getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
+
+    }
+
 }

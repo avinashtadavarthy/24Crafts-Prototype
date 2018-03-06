@@ -3,8 +3,9 @@ package com.twenty.four.crafts;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
@@ -19,6 +20,7 @@ public class Settings extends AppCompatActivity {
     View baccinfo,bverify,bfreecoins,bbuymorecoins;
     Switch darkSwitch;
     SharedPref sharedPref;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,11 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
 
+        toolbar = findViewById(R.id.toolbarSettings);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Settings");
+
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final String type = getIntent().getStringExtra("type");
@@ -183,6 +189,12 @@ public class Settings extends AppCompatActivity {
 
         return data;
 
+    }
+
+
+    public void goBackSettings(View view)
+    {
+        onBackPressed();
     }
 
 

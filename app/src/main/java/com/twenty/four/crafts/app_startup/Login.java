@@ -6,9 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
+import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,7 +24,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.google.android.gms.auth.GoogleAuthException;
 import com.twenty.four.crafts.ForgotPassword;
 import com.twenty.four.crafts.Main2Activity;
 import com.twenty.four.crafts.Main3Activity;
@@ -33,7 +31,6 @@ import com.twenty.four.crafts.MySingleton;
 import com.twenty.four.crafts.PushNotifMain;
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.User;
-import com.twenty.four.crafts.registration.filter.FilterActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -175,6 +172,8 @@ public class Login extends AppCompatActivity {
 
                         jwtToken = jsonObject.optString("token");
                         subscribed = jsonObject.optString("subscribed");
+
+                        storeSPData("jwtToken",jwtToken);
 
                         //to get the user data
                         String newurl = User.getInstance().BASE_URL + "user";

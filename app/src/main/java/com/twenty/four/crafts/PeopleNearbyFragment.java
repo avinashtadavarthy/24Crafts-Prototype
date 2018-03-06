@@ -1,5 +1,6 @@
 package com.twenty.four.crafts;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -19,6 +20,8 @@ import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static android.content.Context.MODE_PRIVATE;
+
 /**
  * Created by Avinash Tadavarthy on 04-Nov-17.
  */
@@ -27,6 +30,7 @@ public class PeopleNearbyFragment extends android.support.v4.app.Fragment {
 
     View myView;
 
+    String jwtToken = "";
     ImageView imageView;
     CircleImageView imageView1;
     CircleImageView imageView2;
@@ -43,6 +47,8 @@ public class PeopleNearbyFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.activity_people_nearby, container, false);
+
+        //locationOfUser();
 
         getActivity().setTitle("People Nearby");
         User.getInstance().navbarposclient = 0;
@@ -198,6 +204,105 @@ public class PeopleNearbyFragment extends android.support.v4.app.Fragment {
         }
 
     }
-    
-    
+
+
+
+
+
+    /*private void locationOfUser() {
+
+
+
+
+                        //to get the user data
+        String newurl = User.getInstance().BASE_URL + "user/geolocation/update/100/100";
+
+
+        jwtToken = getSPData("jwtToken");
+
+        Log.e("jwtToken",jwtToken);
+
+
+                        StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+
+
+                                try {
+
+
+                                    JSONObject obj = new JSONObject(response);
+                                    String isClient = obj.optString("isClient");
+
+                                    if(isClient.equals("true")) {
+
+                                        Log.e("response",response);;
+
+                                    } else {
+
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                error.printStackTrace();
+                            }
+                        }){
+                            @Override
+                            public Map<String, String> getHeaders() throws AuthFailureError {
+
+                                Map<String, String> params = new HashMap<String, String>();
+
+                                params.put("authorization", jwtToken);
+
+                                return params;
+                            }
+                        };
+
+                        MySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(getRequest);
+                        //to get the user data
+                    }
+
+*/
+
+
+
+
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = getActivity().getApplicationContext().getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = getActivity().getApplicationContext().getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }

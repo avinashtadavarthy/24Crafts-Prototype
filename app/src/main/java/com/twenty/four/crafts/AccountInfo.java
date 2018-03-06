@@ -109,6 +109,7 @@ public class AccountInfo extends AppCompatActivity {
                                 storeSPData("uname", "");
                                 storeSPData("pword", "");
                                 storeSPData("userdatamain", "");
+                                storeSPData("jwtToken","");
 
                                 Intent intent = new Intent(getApplicationContext(), Login.class).putExtra("status", "logout");
                                 startActivity(intent);
