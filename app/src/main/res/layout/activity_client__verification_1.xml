@@ -24,8 +24,9 @@
         android:textColor="#0ca795"
         android:background="@drawable/client_verification_button"/>
 
+
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/profileImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/ContinueButton"
@@ -42,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/imageView9"
+        android:layout_alignStart="@+id/profileImg"
         android:layout_marginTop="185dp"
         android:text="Provide your ID"
         android:textColor="@android:color/white"
