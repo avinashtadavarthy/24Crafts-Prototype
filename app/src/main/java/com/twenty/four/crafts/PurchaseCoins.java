@@ -3,9 +3,11 @@ package com.twenty.four.crafts;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -19,6 +21,12 @@ public class PurchaseCoins extends AppCompatActivity {
 
     JSONObject jsonObject;
 
+    RelativeLayout mainLayout;
+
+    String dialogtextverifyemail = "Please verify your email to continue using the app";
+
+    String userdatamain;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +34,7 @@ public class PurchaseCoins extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Purchase Coins");
 
+        mainLayout = findViewById(R.id.mainPurchaseCoins);
         twenty_coins = findViewById(R.id.card_view_1);
         fifty_coins = findViewById(R.id.card_view_2);
         onefifty_coins = findViewById(R.id.card_view_3);
@@ -80,12 +89,38 @@ public class PurchaseCoins extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
 
 
+
+        if(jsonObject.optString("emailVerification").equals("false"))
+        {
+            Snackbar snackbar = Snackbar.make(mainLayout,"Unverified Email", Snackbar.LENGTH_INDEFINITE);
+
+            snackbar.setAction("REFRESH", new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    recreate();
+                }
+            });
+
+            View snackbarView = snackbar.getView();
+
+            snackbarView.setBackgroundColor(getResources().getColor(R.color.snackbarBackground));
+
+            snackbar.show();
+        }
+    }
 
     //Shared Preferences
     private void storeSPData(String key, String data) {

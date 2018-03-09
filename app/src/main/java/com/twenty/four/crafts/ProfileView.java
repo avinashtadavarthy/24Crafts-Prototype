@@ -8,6 +8,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
@@ -48,11 +50,14 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
     private ContextMenuDialogFragment mMenuDialogFragment;
     String togetback = "Hello", fromwhom = "Hey";
 
+
+    String dialogtextverifyemail = "Please verify your email to continue using the app";
     boolean arrowDownDS = true,arrowDownSP = true;
 
 
     String userdatamain;
     String dob;
+
 
     TextView danceStyles,sportsPlayed;
 
@@ -64,6 +69,7 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
     //on the profileview page
     TextView profile_personname, profile_craft, profile_age, profile_bio, profile_introles, profile_hometown, profile_residingin, profile_languagesspoken, profile_height, profile_weight, profile_chest, profile_waist, profile_facialhair, profile_skintone;
 
+    CoordinatorLayout mainlayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +77,8 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
         setContentView(R.layout.activity_display_profile);
 
         userdatamain = getSPData("userdatamain");
+
+        mainlayout = findViewById(R.id.mainProfileViewLayout);
 
         fragmentManager = getSupportFragmentManager();
         edit_profile = (ImageButton) findViewById(R.id.edit_profile);
@@ -292,6 +300,37 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
         menuObjects.add(addFav);
         menuObjects.add(block);
         return menuObjects;
+    }
+//f26b3a
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        try {
+            if(new JSONObject(userdatamain).optString("emailVerification").equals("false"))
+            {
+                Snackbar snackbar = Snackbar.make(mainlayout,"Unverified Email", Snackbar.LENGTH_INDEFINITE);
+
+                snackbar.setAction("REFRESH", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        recreate();
+                    }
+                });
+
+                View snackbarView = snackbar.getView();
+
+                snackbarView.setBackgroundColor(getResources().getColor(R.color.snackbarBackground));
+
+                snackbar.show();
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void makeDSVisible(View view)

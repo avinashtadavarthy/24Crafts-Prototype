@@ -2,15 +2,16 @@ package com.twenty.four.crafts;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -20,6 +21,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,13 +33,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.kila.apprater_dialog.lars.AppRater;
-import com.twenty.four.crafts.auditions.AuditionsTab;
 import com.yarolegovich.lovelydialog.LovelyCustomDialog;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import jp.wasabeef.blurry.Blurry;
 
@@ -47,10 +55,13 @@ public class Main2Activity extends AppCompatActivity
 
     AppBarLayout appBarLayout;
     DrawerLayout mDrawerLayout;
+    String jwtToken = "";
+
+    int check = 0;
+    String dialogtextverifyemail = "Please verify your email to continue using the app";
 
     JSONObject userdatamain = null;
-    String userdata, subscribed;
-
+    String userdata, subscribed,emailVerified;
     TextView nav_name, nav_craft, coinCount;
     ImageView coverpic;
 
@@ -83,11 +94,16 @@ public class Main2Activity extends AppCompatActivity
         userdata = getIntent().getStringExtra("userdata");
         subscribed = getIntent().getStringExtra("subscribed");
 
+        jwtToken = getSPData("jwtToken");
+
+
         try {
             userdatamain = new JSONObject(userdata);
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        emailVerified = userdatamain.optString("emailVerification");
 
         nav_name = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_name);
         nav_craft = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_craft);
@@ -99,6 +115,22 @@ public class Main2Activity extends AppCompatActivity
         coinCount.setText(userdatamain.optString("coinCount"));
         Bitmap icon = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.sample1);
         Blurry.with(getApplicationContext()).from(icon).into(coverpic);
+
+
+        if(emailVerified.equals("false"))
+        {
+            final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this,R.style.AlertDialog)).setMessage(dialogtextverifyemail).
+                    setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    })
+                    .show();
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        }
+
 
         if(subscribed.equals("false")) {
             final LovelyCustomDialog lovelyCustomDialog = new LovelyCustomDialog(this);
@@ -298,6 +330,115 @@ public class Main2Activity extends AppCompatActivity
 
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(emailVerified.equals("false"))
+        {
+            showSnackbar();
+        }
+
+    }
+
+    private void showSnackbar() {
+
+         final Snackbar snackbar = Snackbar.make(mDrawerLayout,"Unverified Email",Snackbar.LENGTH_INDEFINITE);
+
+        snackbar.setAction("REFRESH", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int c = userRequest();
+
+            }
+        });
+
+        View snackbarView = snackbar.getView();
+
+        snackbarView.setBackgroundColor(getResources().getColor(R.color.snackbarBackground));
+
+        if(check == 0)
+        snackbar.show();
+
+        else
+            snackbar.dismiss();
+
+    }
+
+    private int userRequest() {
+
+        //to get the user data
+        String newurl = User.getInstance().BASE_URL + "user";
+
+        StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+
+                Log.e("userRequest",response);
+                try {
+
+                    storeSPData("userdatamain", response);
+
+                    JSONObject obj = new JSONObject(response);
+
+
+                    emailVerified = obj.optString("emailVerification");
+                    Log.e("emailverified",emailVerified);
+
+                    check = check(emailVerified);
+
+                    switch (check)
+                    {
+                        case 0:showSnackbar();break;
+                        case 1:showSnackbar();break;
+                    }
+
+                    Log.e("check",check+"");
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("authorization", jwtToken);
+
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(getRequest);
+
+
+
+        return check;
+    }
+
+    private int check(String emailVerified) {
+
+        if(emailVerified.equals("false"))
+            return 0;
+
+        else
+            return 1;
+
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -470,6 +611,27 @@ public class Main2Activity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
+
     }
 
 }

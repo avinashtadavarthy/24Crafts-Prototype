@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.ContextThemeWrapper;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,9 +18,18 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class ProfileViewEdit extends AppCompatActivity {
 
     ImageButton profile_back, edit_done;
+
+    CoordinatorLayout mainLayout;
+
+    String userdatamain;
+
+    String dialogtextverifyemail = "Please verify your email to continue using the app";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +38,10 @@ public class ProfileViewEdit extends AppCompatActivity {
 
         profile_back = (ImageButton) findViewById(R.id.profile_back);
         edit_done = (ImageButton) findViewById(R.id.edit_done);
+
+        mainLayout = findViewById(R.id.mainProfileViewEditLayout);
+
+        userdatamain = getSPData("userdatamain");
 
         profile_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +99,39 @@ public class ProfileViewEdit extends AppCompatActivity {
 
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+
+        try {
+            if(new JSONObject(userdatamain).optString("emailVerification").equals("false"))
+            {
+
+                Snackbar snackbar = Snackbar.make(mainLayout,"Unverified Email", Snackbar.LENGTH_INDEFINITE);
+
+                snackbar.setAction("REFRESH", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        recreate();
+                    }
+                });
+
+                View snackbarView = snackbar.getView();
+
+                snackbarView.setBackgroundColor(getResources().getColor(R.color.snackbarBackground));
+
+                snackbar.show();
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     //keyboard disappears when you click outside
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -109,6 +158,28 @@ public class ProfileViewEdit extends AppCompatActivity {
             imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
         }
     }
+
+
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
+
+    }
+
 
 
 }

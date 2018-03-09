@@ -31,6 +31,9 @@
     <color name="demo_dark_transparent">#24000000</color>
 
 
+    <color name="snackbarBackground">#f26b3a</color>
+
+
 
 
     <color name="bgBackSideColor">#f4f0ff</color>
