@@ -61,7 +61,7 @@ public class Main2Activity extends AppCompatActivity
     String dialogtextverifyemail = "Please verify your email to continue using the app";
 
     JSONObject userdatamain = null;
-    String userdata, subscribed,emailVerified;
+    String userdata, subscribed,emailVerified = "";
     TextView nav_name, nav_craft, coinCount;
     ImageView coverpic;
 
@@ -104,6 +104,8 @@ public class Main2Activity extends AppCompatActivity
         }
 
         emailVerified = userdatamain.optString("emailVerification");
+        storeSPData("emailVerified",emailVerified);
+
 
         nav_name = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_name);
         nav_craft = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_craft);
@@ -335,6 +337,7 @@ public class Main2Activity extends AppCompatActivity
     protected void onResume() {
         super.onResume();
 
+        emailVerified = getSPData("emailVerified");
         if(emailVerified.equals("false"))
         {
             showSnackbar();
@@ -387,6 +390,7 @@ public class Main2Activity extends AppCompatActivity
 
                     emailVerified = obj.optString("emailVerification");
                     Log.e("emailverified",emailVerified);
+                    storeSPData("emailVerified",emailVerified);
 
                     check = check(emailVerified);
 

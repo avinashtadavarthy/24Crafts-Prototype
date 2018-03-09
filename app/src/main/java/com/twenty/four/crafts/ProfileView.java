@@ -13,6 +13,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,6 +24,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.squareup.picasso.Picasso;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 import com.yalantis.contextmenu.lib.MenuObject;
@@ -35,7 +41,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProfileView extends AppCompatActivity implements OnMenuItemClickListener, OnMenuItemLongClickListener {
 
@@ -54,6 +62,9 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
     String dialogtextverifyemail = "Please verify your email to continue using the app";
     boolean arrowDownDS = true,arrowDownSP = true;
 
+
+    int check = 0;
+    String emailVerified = "",jwtToken = "";
 
     String userdatamain;
     String dob;
@@ -78,6 +89,7 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
 
         userdatamain = getSPData("userdatamain");
 
+        jwtToken = getSPData("jwtToken");
         mainlayout = findViewById(R.id.mainProfileViewLayout);
 
         fragmentManager = getSupportFragmentManager();
@@ -307,31 +319,113 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
     protected void onResume() {
         super.onResume();
 
-        try {
-            if(new JSONObject(userdatamain).optString("emailVerification").equals("false"))
-            {
-                Snackbar snackbar = Snackbar.make(mainlayout,"Unverified Email", Snackbar.LENGTH_INDEFINITE);
-
-                snackbar.setAction("REFRESH", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        recreate();
-                    }
-                });
-
-                View snackbarView = snackbar.getView();
-
-                snackbarView.setBackgroundColor(getResources().getColor(R.color.snackbarBackground));
-
-                snackbar.show();
-
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
+        emailVerified = getSPData("emailVerified");
+        if(emailVerified.equals("false"))
+        {
+            showSnackbar();
         }
     }
+
+
+
+    private void showSnackbar() {
+
+        final Snackbar snackbar = Snackbar.make(mainlayout,"Unverified Email",Snackbar.LENGTH_INDEFINITE);
+
+        snackbar.setAction("REFRESH", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int c = userRequest();
+
+            }
+        });
+
+        View snackbarView = snackbar.getView();
+
+        snackbarView.setBackgroundColor(getResources().getColor(R.color.snackbarBackground));
+
+        if(check == 0)
+            snackbar.show();
+
+        else
+            snackbar.dismiss();
+
+    }
+
+    private int userRequest() {
+
+        //to get the user data
+        String newurl = User.getInstance().BASE_URL + "user";
+
+        StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+
+                Log.e("userRequest",response);
+                try {
+
+                    storeSPData("userdatamain", response);
+
+                    JSONObject obj = new JSONObject(response);
+
+
+                    emailVerified = obj.optString("emailVerification");
+                    Log.e("emailverified",emailVerified);
+                    storeSPData("emailVerified",emailVerified);
+
+                    check = check(emailVerified);
+
+                    switch (check)
+                    {
+                        case 0:showSnackbar();break;
+                        case 1:showSnackbar();break;
+                    }
+
+                    Log.e("check",check+"");
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("authorization", jwtToken);
+
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(getRequest);
+
+
+
+        return check;
+    }
+
+    private int check(String emailVerified) {
+
+        if(emailVerified.equals("false"))
+            return 0;
+
+        else
+            return 1;
+
+    }
+
 
     public void makeDSVisible(View view)
     {
