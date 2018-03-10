@@ -100,7 +100,7 @@ public class Main2Activity extends AppCompatActivity
 
 
 
-        Log.e("jwtToken",jwtToken);
+        /*Log.e("jwtToken",jwtToken);
         String payLoadJWT = jwtToken.substring(jwtToken.indexOf(".")+1);
         payLoadJWT = payLoadJWT.substring(0,payLoadJWT.indexOf("."));
         Log.e("payLoadJWT",payLoadJWT);
@@ -111,7 +111,7 @@ public class Main2Activity extends AppCompatActivity
             e.printStackTrace();
         }
 
-        Log.e("decodedJWT",decodedJWT);
+        Log.e("decodedJWT",decodedJWT);*/
 
 
 

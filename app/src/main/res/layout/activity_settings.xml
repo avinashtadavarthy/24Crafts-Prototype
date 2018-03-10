@@ -10,65 +10,21 @@
     tools:context="com.twenty.four.crafts.Settings">
 
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbarSettings"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#212121"
-        app:popupTheme="@style/PopupOverlay">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/profile_back_Settings"
-                android:layout_width="25dp"
-                android:layout_height="?attr/actionBarSize"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:src="@drawable/back"
-                android:scaleType="centerCrop"
-                android:tint="#ffffff"
-                android:onClick="goBackSettings"
-                android:background="#00ffffff"
-                android:layout_alignParentLeft="true"/>
-
-            <TextView
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/profile_back_Settings"
-                android:text="Settings"
-                android:textSize="20dp"
-                android:gravity="center_vertical"/>
-
-
-
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.Toolbar>
-
     <LinearLayout
-        android:layout_below="@id/toolbarSettings"
         android:id="@+id/info"
         android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="10dp"
-        android:background="?android:attr/selectableItemBackground"
-        >
+        android:background="?android:attr/selectableItemBackground">
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/account_info"
             android:tint="?attr/dayNnightTint"
-            android:layout_margin="5dp"
-            />
+            android:layout_margin="5dp" />
 
         <TextView
             android:layout_width="wrap_content"

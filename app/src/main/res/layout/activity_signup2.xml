@@ -273,10 +273,9 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:hint="Height (ft)"
+                android:hint="Height (cm)"
                 android:textColorHint="#ffffff"
-                android:textSize="16dp"
-                  >
+                android:textSize="16dp">
 
                 <EditText
                     android:id="@+id/height"

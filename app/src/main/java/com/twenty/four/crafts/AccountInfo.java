@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -25,14 +26,13 @@ public class AccountInfo extends AppCompatActivity {
     TextView nameText,birthdayText,mobiletext, emailText;
     TextView forgotPassword;
     TextView signout;
-    Toolbar toolbar;
 
     String response = null;
     JSONObject object = null;
 
 
 
-    String dialogtext,dialogbuttontext;
+    String dialogtext, dialogbuttontext;
     int emailFound = 1;
 
 
@@ -40,10 +40,6 @@ public class AccountInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_info);
-
-
-
-        toolbar = findViewById(R.id.toolbar);
 
         response = getSPData("userdatamain");
 
@@ -53,9 +49,7 @@ public class AccountInfo extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Account Info");
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         nameText = findViewById(R.id.AccInfoNameText);
         nameText.setText(object.optString("name"));
@@ -200,6 +194,17 @@ public class AccountInfo extends AppCompatActivity {
         dateAsString = day + " " + month + ", " + year;
 
         return dateAsString;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home: finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

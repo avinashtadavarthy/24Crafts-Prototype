@@ -2,6 +2,7 @@ package com.twenty.four.crafts.registration;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -122,6 +123,7 @@ public class ChooseCraftOrClient extends AppCompatActivity {
                     case "Production House Manager": selectedcategory = "Productionhousemanager"; break;
                 }
 
+                storeSPData("category", selectedcategory);
 
                 intent.putExtra("selectedcategory", selectedcategory);
                 setResult(Activity.RESULT_OK, intent);
@@ -150,4 +152,18 @@ public class ChooseCraftOrClient extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+    //shared pref
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
 }

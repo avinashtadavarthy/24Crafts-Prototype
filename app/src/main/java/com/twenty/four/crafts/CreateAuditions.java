@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -51,7 +53,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CreateAuditions extends AppCompatActivity implements IPickResult, CropIwaResultReceiver.Listener {
 
-    static final int REQUEST_SHOOT_LOCATION = 1000, REQUEST_AUDITION_LOCATION = 2000, AUDITION_FROM=100, AUDITION_TO=200, AUDITION_ON=300;
+    static final int REQUEST_SHOOT_LOCATION = 1000, REQUEST_AUDITION_LOCATION = 2000, AUDITION_FROM=100, AUDITION_TO=200;
     static final int TIME_DIALOG_ID = 1111;
     static final int REQUEST_IMAGE_LOAD = 9999;
 
@@ -59,8 +61,8 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
     CropIwaResultReceiver cropResultReceiver;
     ProgressBar loadimageprogress;
     CircleImageView edit_aud_image;
-    EditText e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11;
-    TextInputLayout input_1, input_2, input_3, input_4, input_5, input_6, input_7, input_8, input_9, input_10, input_11;
+    EditText e1, e2, e3, e4, e5, e6, e7, e8, e9, e10;
+    TextInputLayout input_1, input_2, input_3, input_4, input_5, input_6, input_7, input_8, input_9, input_10;
     LinearLayout project_type_layout;
     Button bn1, bn2, bn3, bn4, bn5, bn6, bn7, bn8;
 
@@ -71,7 +73,7 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
     int day = cal.get(Calendar.DAY_OF_MONTH);
     int hr = cal.get(Calendar.HOUR_OF_DAY);
     int min = cal.get(Calendar.MINUTE);
-    DatePickerDialog.OnDateSetListener from_dateListener, to_dateListener, on_dateListener;
+    DatePickerDialog.OnDateSetListener from_dateListener, to_dateListener;
     TimePickerDialog.OnTimeSetListener timePickerListener;
 
     TextView errmsg;
@@ -250,31 +252,12 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         }
     };
 
-    private TextWatcher filterTextWatchere11 = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int before, int count) {
-            restore(e11);
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_auditions);
 
-
         getSupportActionBar().setTitle("Create an Audition");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         aud_image = (ImageView) findViewById(R.id.aud_image);
@@ -314,7 +297,6 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         e8 = (EditText) findViewById(R.id.e8);
         e9 = (EditText) findViewById(R.id.e9);
         e10 = (EditText) findViewById(R.id.e10);
-        e11 = (EditText) findViewById(R.id.e11);
 
         project_type_layout = (LinearLayout) findViewById(R.id.project_type_layout);
 
@@ -338,7 +320,6 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         input_8 = (TextInputLayout) findViewById(R.id.input_8);
         input_9 = (TextInputLayout) findViewById(R.id.input_9);
         input_10 = (TextInputLayout) findViewById(R.id.input_10);
-        input_11 = (TextInputLayout) findViewById(R.id.input_11);
 
 
         e1.addTextChangedListener(filterTextWatchere1);
@@ -350,7 +331,6 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         e7.addTextChangedListener(filterTextWatchere7);
         e8.addTextChangedListener(filterTextWatchere8);
         e9.addTextChangedListener(filterTextWatchere9);
-        e11.addTextChangedListener(filterTextWatchere11);
 
 
 
@@ -566,30 +546,6 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         });
 
 
-        e11.setShowSoftInputOnFocus(false);
-        e11.setInputType(InputType.TYPE_NULL);
-        e11.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog(AUDITION_FROM);
-            }
-        });
-        e11.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus) {
-                    input_11.setBackgroundResource(R.drawable.box);
-
-                    showDialog(AUDITION_ON);
-
-                } else {
-                    if(!e11.getText().toString().equals("")) input_11.setBackgroundResource(R.drawable.box);
-                    else input_11.setBackgroundColor(Color.parseColor("#00ffffff"));
-                }
-            }
-        });
-
-
         e9.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -649,15 +605,6 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
             }
         };
 
-        on_dateListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                e11.setText(new StringBuilder().append(dayOfMonth).append("/").append(month+1).append("/").append(year));
-
-            }
-        };
-
         timePickerListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minutes) {
@@ -684,6 +631,16 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
     }
 
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home: finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     protected Dialog onCreateDialog(int id) {
@@ -694,8 +651,6 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
                 return new DatePickerDialog(this, from_dateListener, year, month, day);
             case AUDITION_TO:
                 return new DatePickerDialog(this, to_dateListener, year, month, day);
-            case AUDITION_ON:
-                return new DatePickerDialog(this, on_dateListener, year, month, day);
             case TIME_DIALOG_ID:
                 return new TimePickerDialog(this, timePickerListener, hr, min, false);
         }
@@ -799,7 +754,7 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
 
     public void post(View view) {
         Log.i("here","hi");
-        boolean i1,i2,i3,i4,i5,i6,i7,i8,i9,i11;
+        boolean i1,i2,i3,i4,i5,i6,i7,i8,i9;
         i1=check(e1);
         i2=check(e2);
         i3=check(e3);
@@ -809,8 +764,7 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         i7=check(e7);
         i8=check(e8);
         i9=check(e9);
-        i11=check(e11);
-        if(i1&&i2&&i3&&i4&&i5&&i6&&i7&&i8&&i9&&i11)
+        if(i1&&i2&&i3&&i4&&i5&&i6&&i7&&i8&&i9)
         {
             Toast.makeText(getApplicationContext(), "Posted!",
                     Toast.LENGTH_SHORT).show();//post it
@@ -823,7 +777,6 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
             c.setProj_validfrom(e7.getText().toString());
             c.setProj_validto(e8.getText().toString());
             c.setProj_contact(e9.getText().toString());
-            c.setProj_audion(e11.getText().toString());
             Log.i("Details:",c.getProj_audiloc()+c.getProj_contact()+c.getProj_desc()+c.getProj_features());
             finish();
         }
