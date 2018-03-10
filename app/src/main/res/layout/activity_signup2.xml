@@ -416,6 +416,7 @@
 
     <Button
         android:id="@+id/button2"
+        android:text="NEXT"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#004e92"
@@ -423,7 +424,6 @@
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center_horizontal"
-        android:text="NEXT"
         android:textColor="#ffffff" />
 
 </RelativeLayout>

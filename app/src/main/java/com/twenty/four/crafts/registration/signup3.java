@@ -1743,9 +1743,6 @@ public class signup3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //add user onto the app
-                addUserWithVolley();
-
                 initAccountKitSmsFlow();
 
             }
@@ -1827,23 +1824,6 @@ public class signup3 extends AppCompatActivity {
 
                     //toastMessage = "Success:" + loginResult.getAccessToken().getAccountId();
                     getAccount();
-
-                    if(type.equals("craftsman")){
-
-                        Intent intent = new Intent(this, Verification.class)
-                                .putExtra("fromhere", "PhoneVerified")
-                                .putExtra("fromwhom", "Crafts");
-                        startActivity(intent);
-
-                    } else if(type.equals("client")){
-
-                        Intent intent = new Intent(this, Verification.class)
-                                .putExtra("fromhere", "PhoneVerified")
-                                .putExtra("fromwhom", "Clients");
-                        startActivity(intent);
-
-                    }
-
                 }
             }
         }
@@ -1866,6 +1846,9 @@ public class signup3 extends AppCompatActivity {
 
                 storeSPData("phonenumber", phoneNumberString);
                 storeSPData("phone_verified", "true");
+
+                //add user onto the app
+                addUserWithVolley();
 
                /* // Surface the result to your user in an appropriate way.
                 Toast.makeText(
@@ -1907,6 +1890,23 @@ public class signup3 extends AppCompatActivity {
 
                 Toast.makeText(signup3.this, response, Toast.LENGTH_SHORT).show();
 
+
+                if(type.equals("craftsman")){
+
+                    Intent intent = new Intent(signup3.this, Verification.class)
+                            .putExtra("fromhere", "PhoneVerified")
+                            .putExtra("fromwhom", "Crafts");
+                    startActivity(intent);
+
+                } else if(type.equals("client")){
+
+                    Intent intent = new Intent(signup3.this, Verification.class)
+                            .putExtra("fromhere", "PhoneVerified")
+                            .putExtra("fromwhom", "Clients");
+                    startActivity(intent);
+
+                }
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -1930,7 +1930,7 @@ public class signup3 extends AppCompatActivity {
                 params.put("category", getSPData("category"));
                 params.put("gender", getSPData("gender"));
                 params.put("email", getSPData("email"));
-                params.put("phoneNumber", getSPData("phonenumber"));
+                params.put("mobileNumber", getSPData("phonenumber"));
                 params.put("phoneVerificationAccountKit", getSPData("phone_verified"));
                 params.put("bodyType", getSPData("bodyType"));
                 params.put("hairColor", getSPData("hairColor"));
@@ -1944,6 +1944,7 @@ public class signup3 extends AppCompatActivity {
                 params.put("waistSize", getSPData("waistSize"));
                 params.put("residingIn", getSPData("residingIn"));
                 params.put("native", getSPData("homeTown"));
+                params.put("emailVerification", "false");
                 params.put("facebook", getSPData("facebookJSON"));
 
                 String[] languagesspoken = getSPData("languagesspoken_dirty").split(", ");
@@ -1960,8 +1961,6 @@ public class signup3 extends AppCompatActivity {
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
 
     }
-
-
 
 
     //Shared Preferences

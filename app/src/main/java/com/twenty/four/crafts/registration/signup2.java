@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.ContextThemeWrapper;
 import android.view.MotionEvent;
@@ -42,7 +43,7 @@ public class signup2 extends AppCompatActivity {
     String[] skintoneString = { "Choose Skin Tone", "Very Fair", "Fair", "Medium", "Olive", "Brown", "Dark" };
 
     String[] facialhairString={"Choose Facial Hair",
-            "Beard","Moustache", "Beard & Moustache", "Stubble / Goatie", "None", "Other"};
+            "Beard","Moustache", "Beard & moustache", "Stubble / goatie", "None", "Other"};
 
 
     String skinToneSelector = "null";
@@ -80,6 +81,22 @@ public class signup2 extends AppCompatActivity {
         hipsize = (EditText) findViewById(R.id.hip_size);
         chestsize = (EditText) findViewById(R.id.chest_size);
         waistsize = (EditText) findViewById(R.id.waist_size);
+
+
+        bodytype.setShowSoftInputOnFocus(false);
+        haircolor.setShowSoftInputOnFocus(false);
+        hairlength.setShowSoftInputOnFocus(false);
+        eyecolor.setShowSoftInputOnFocus(false);
+        skintone.setShowSoftInputOnFocus(false);
+        facialhair.setShowSoftInputOnFocus(false);
+
+
+        bodytype.setInputType(InputType.TYPE_NULL);
+        haircolor.setInputType(InputType.TYPE_NULL);
+        hairlength.setInputType(InputType.TYPE_NULL);
+        eyecolor.setInputType(InputType.TYPE_NULL);
+        skintone.setInputType(InputType.TYPE_NULL);
+        facialhair.setInputType(InputType.TYPE_NULL);
 
 
 
@@ -694,7 +711,7 @@ public class signup2 extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus) {
 
-                    final CharSequence[] items = {"Beard","Moustache", "Beard & Moustache", "Stubble / Goatie", "None", "Other"};
+                    final CharSequence[] items = {"Beard","Moustache", "Beard & moustache", "Stubble / goatie", "None", "Other"};
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup2.this,R.style.AlertDialogSignup));
                     alertDialogBuilder.setTitle("Choose Facial Hair");
@@ -703,9 +720,9 @@ public class signup2 extends AppCompatActivity {
                         position = 0;
                     } else if (facialhair.getText().toString().equals("Moustache")){
                         position = 1;
-                    } else if (facialhair.getText().toString().equals("Beard & Moustache")){
+                    } else if (facialhair.getText().toString().equals("Beard & moustache")){
                         position = 2;
-                    }else if (facialhair.getText().toString().equals("Stubble / Goatie")){
+                    }else if (facialhair.getText().toString().equals("Stubble / goatie")){
                         position = 3;
                     }else if (facialhair.getText().toString().equals("None")){
                         position = 4;
@@ -738,7 +755,7 @@ public class signup2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final CharSequence[] items = {"Beard","Moustache", "Beard & Moustache", "Stubble / Goatie", "None", "Other"};
+                final CharSequence[] items = {"Beard","Moustache", "Beard & moustache", "Stubble / goatie", "None", "Other"};
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup2.this,R.style.AlertDialogSignup));
                 alertDialogBuilder.setTitle("Choose Facial Hair");
@@ -747,9 +764,9 @@ public class signup2 extends AppCompatActivity {
                         position = 0;
                     } else if (facialhair.getText().toString().equals("Moustache")){
                         position = 1;
-                    } else if (facialhair.getText().toString().equals("Beard & Moustache")){
+                    } else if (facialhair.getText().toString().equals("Beard & moustache")){
                         position = 2;
-                    }else if (facialhair.getText().toString().equals("Stubble / Goatie")){
+                    }else if (facialhair.getText().toString().equals("Stubble / goatie")){
                         position = 3;
                     }else if (facialhair.getText().toString().equals("None")){
                         position = 4;
@@ -1095,7 +1112,7 @@ public class signup2 extends AppCompatActivity {
                   storeSPData("hairLength", hairlength.getText().toString());
                   storeSPData("eyeColor", eyecolor.getText().toString());
                   storeSPData("facialHair", facialhair.getText().toString());
-                  storeSPData("skinTone", skinToneSelector);
+                  storeSPData("skinTone", skintone.getText().toString());
                   storeSPData("height", height.getText().toString());
                   storeSPData("weight", weight.getText().toString());
                   storeSPData("hipsize", hipsize.getText().toString());

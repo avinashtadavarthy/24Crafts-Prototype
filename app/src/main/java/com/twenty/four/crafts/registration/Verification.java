@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
@@ -293,10 +294,7 @@ public class Verification extends AppCompatActivity {
 
                 loginWithVolley();
 
-                Intent next = new Intent(getApplicationContext(), ProfileView.class)
-                        .putExtra("thisistogetback", "getback")
-                        .putExtra("fromwhom", fromwhom);
-                startActivity(next);
+
 
             }
         });
@@ -316,13 +314,6 @@ public class Verification extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     jwtToken = jsonObject.optString("token");
 
-
-
-
-
-
-
-
                     //to get the data
 
                     String newurl = User.getInstance().BASE_URL + "user";
@@ -332,7 +323,13 @@ public class Verification extends AppCompatActivity {
                         public void onResponse(String response) {
 
                             Toast.makeText(Verification.this, response, Toast.LENGTH_LONG).show();
-                            storeSPData("allTheUserData", response);
+                            Log.e("userdatamain", response);
+                            storeSPData("userdatamain", response);
+
+                            Intent next = new Intent(getApplicationContext(), ProfileView.class)
+                                    .putExtra("thisistogetback", "getback")
+                                    .putExtra("fromwhom", fromwhom);
+                            startActivity(next);
 
                         }
                     }, new Response.ErrorListener() {
@@ -360,14 +357,6 @@ public class Verification extends AppCompatActivity {
 
                 //to get the data
 
-
-
-
-
-
-
-
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -380,7 +369,7 @@ public class Verification extends AppCompatActivity {
 
                 Map<String, String> params = new HashMap<String, String>();
 
-                params.put("username", getSPData("useremail"));
+                params.put("username", getSPData("email"));
                 params.put("password", getSPData("password"));
 
                 return params;
@@ -418,14 +407,6 @@ public class Verification extends AppCompatActivity {
     }
 
 }
-
-
-
-
-
-
-
-
 
 
 

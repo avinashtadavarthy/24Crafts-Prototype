@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@mipmap/wall"
+    android:background="@drawable/bg_gradient"
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context="com.twenty.four.crafts.registration.Verification"
@@ -306,29 +306,27 @@
 
     <Button
         android:id="@+id/verification_skip"
-        android:layout_width="360dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/button_round"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"
         android:text="Skip"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#004e92"
+        android:elevation="8dp"
+        android:gravity="center"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
         android:textColor="#ffffff" />
 
 
     <Button
         android:id="@+id/verification_done"
-        android:layout_width="360dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/button_round"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"
         android:text="Finish"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#004e92"
+        android:elevation="8dp"
+        android:gravity="center"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
         android:textColor="#ffffff" />
 
 

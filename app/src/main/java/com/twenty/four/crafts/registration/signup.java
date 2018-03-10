@@ -430,6 +430,8 @@ public class signup extends AppCompatActivity implements IPickResult {
         });
 
 
+        gender1.setShowSoftInputOnFocus(false);
+        gender1.setInputType(InputType.TYPE_NULL);
 
         gender1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -992,7 +994,7 @@ public class signup extends AppCompatActivity implements IPickResult {
                                                      storeSPData("lastname", last_name1.getText().toString());
                                                      storeSPData("email", email1.getText().toString());
                                                      storeSPData("password", password1.getText().toString());
-                                                     storeSPData("dob", dob1.getText().toString().trim());
+                                                     storeSPData("dob", dob1.getText().toString());
                                                      storeSPData("gender", gender1.getText().toString());
                                                      storeSPData("category", whoami1.getText().toString());
 
