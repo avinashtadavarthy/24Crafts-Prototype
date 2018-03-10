@@ -41,8 +41,6 @@ public class Settings extends AppCompatActivity {
         getSupportActionBar().setTitle("Settings");
 
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         final String type = getIntent().getStringExtra("type");
 
         info = (LinearLayout) findViewById(R.id.info);

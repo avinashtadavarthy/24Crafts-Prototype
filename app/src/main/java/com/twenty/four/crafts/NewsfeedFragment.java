@@ -198,7 +198,7 @@ public class NewsfeedFragment extends android.support.v4.app.Fragment implements
                 bn6.setBackgroundResource(R.drawable.button_box);
                 bn7.setBackgroundResource(R.drawable.button_box_selected);
 
-                chosenURL = "http://cinema.dinakaran.com/Rss/RssKollywood.aspx";
+                chosenURL = "http://rss.vikatan.com/?cat=av";
                 bundle.putString("chosenURL", chosenURL);
                 frag.setArguments(bundle);
                 fragmentManager.beginTransaction().replace(R.id.content_frame_newsfeed, frag).commit();

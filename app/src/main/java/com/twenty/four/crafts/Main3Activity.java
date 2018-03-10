@@ -35,6 +35,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.kila.apprater_dialog.lars.AppRater;
 import com.twenty.four.crafts.garlandview.main.TalentHunterMain;
 
 import org.json.JSONException;
@@ -62,6 +63,17 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+
+
+        new AppRater.StarBuilder(this,"com.twenty.four.crafts")
+                .showDefault()
+                .minimumNumberOfStars(3)
+                .email("raku18998@gmail.com")
+                .timesToLaunch(3)
+                .daysToWait(1)
+                .appLaunched();
+
+
 
         drawer = findViewById(R.id.drawer_layout);
 

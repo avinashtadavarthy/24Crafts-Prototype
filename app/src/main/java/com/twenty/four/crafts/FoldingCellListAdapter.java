@@ -1,17 +1,24 @@
 package com.twenty.four.crafts;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ramotion.foldingcell.FoldingCell;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashSet;
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Simple example of ListAdapter for using with Folding Cell
@@ -22,9 +29,15 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
     private HashSet<Integer> unfoldedIndexes = new HashSet<>();
     private View.OnClickListener defaultRequestBtnClickListener;
 
+    List<Item> items;
+
+
+    Context context;
 
     public FoldingCellListAdapter(Context context, List<Item> objects) {
         super(context, 0, objects);
+        this.context = context;
+        this.items = objects;
     }
 
     @Override
@@ -45,7 +58,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
             viewHolder.projectName = (TextView) cell.findViewById(R.id.ProjectName);
             viewHolder.projectType = (TextView) cell.findViewById(R.id.ProjectType);
             viewHolder.projectDescription = (TextView) cell.findViewById(R.id.ProjectDescription);
-            viewHolder.contentRequestBtn = (TextView) cell.findViewById(R.id.content_request_btn);
+
             viewHolder.date = (TextView) cell.findViewById(R.id.publishDate);
             viewHolder.innerProjectName = cell.findViewById(R.id.innerProjectname);
             viewHolder.innerImageURL = cell.findViewById(R.id.head_image);
@@ -57,6 +70,9 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
             viewHolder.innerAuditionTime = cell.findViewById(R.id.content_audition_time);
             viewHolder.innerAuditionLocation = cell.findViewById(R.id.content_audition_location);
             viewHolder.innerProjectDescription = cell.findViewById(R.id.content_project_desc);
+            viewHolder.contentRequestBtn = (TextView) cell.findViewById(R.id.content_request_btn);
+
+
 
             cell.setTag(viewHolder);
         } else {
@@ -88,6 +104,24 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         viewHolder.innerProjectDescription.setText(item.getInnerProjectDescription());
 
 
+        String isClient = "";
+        String userdata =  getSPData("userdatamain");
+        try {
+            JSONObject object = new JSONObject(userdata);
+            isClient = object.optString("isClient");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if(isClient.equals("false"))
+        {
+            viewHolder.contentRequestBtn.setText("APPLY");
+        }
+
+        else
+        {
+            viewHolder.contentRequestBtn.setText("EDIT/DELETE");
+        }
 
         // set custom btn handler for list item from that item
         if (item.getRequestBtnClickListener() != null) {
@@ -126,6 +160,26 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
     }
 
 
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = context.getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = context.getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
+
+    }
+
+
 
     // View lookup cache
     private static class ViewHolder {
@@ -150,5 +204,8 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         TextView projectType;
         TextView date;
         TextView projectDescription;
+        RelativeLayout contentRequestBtnClient;
+        TextView contentRequestBtnClientEdit;
+        TextView contentRequestBtnClientDelete;
     }
 }

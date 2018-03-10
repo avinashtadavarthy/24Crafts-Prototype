@@ -1,11 +1,12 @@
 package com.twenty.four.crafts;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,18 +14,21 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.getkeepsafe.taptargetview.TapTarget;
-import com.getkeepsafe.taptargetview.TapTargetView;
-import com.ramotion.foldingcell.*;
 import com.ramotion.foldingcell.FoldingCell;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class AuditionsMain extends android.support.v4.app.Fragment {
+import static android.content.Context.MODE_PRIVATE;
+
+public class AuditionsMain extends android.support.v4.app.Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     View myView;
 
     private FloatingActionButton createaudition;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
     @Override
@@ -32,6 +36,14 @@ public class AuditionsMain extends android.support.v4.app.Fragment {
         myView = inflater.from(container.getContext()).inflate(R.layout.activity_auditions_main,container,false);
 
         ListView theListView = (ListView) myView.findViewById(R.id.mainListView);
+        swipeRefreshLayout = myView.findViewById(R.id.swipe_container);
+
+
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(android.R.color.holo_green_dark),
+                getResources().getColor(android.R.color.holo_red_dark),
+                getResources().getColor(android.R.color.holo_blue_dark),
+                getResources().getColor(android.R.color.holo_orange_dark));
 
         // prepare elements to display
         final ArrayList<Item> items = Item.getTestingList();
@@ -78,9 +90,52 @@ public class AuditionsMain extends android.support.v4.app.Fragment {
             }
         });
 
+        String isClient = "";
+        String userdata =  getSPData("userdatamain");
+        try {
+            JSONObject object = new JSONObject(userdata);
+            isClient = object.optString("isClient");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if(isClient.equals("false"))
+            createaudition.setVisibility(View.GONE);
+
         return myView;
     }
+
+
+
+
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = getActivity().getApplicationContext().getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = getActivity().getApplicationContext().getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
+
+    }
+
+    @Override
+    public void onRefresh() {
+        getActivity().recreate();
+    }
 }
+
+
+
    /* @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -178,7 +178,6 @@ public class Login extends AppCompatActivity {
 
                         JSONObject object = new JSONObject(decodedJWT);
 
-                        String isClient = object.optString("isClient");
                         String newurl = User.getInstance().BASE_URL + "user";
 
                         //to get the user data

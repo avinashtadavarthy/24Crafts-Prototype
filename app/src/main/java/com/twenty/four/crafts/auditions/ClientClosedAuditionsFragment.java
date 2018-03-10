@@ -1,120 +1,165 @@
 package com.twenty.four.crafts.auditions;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.ContextThemeWrapper;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
 
-import com.twenty.four.crafts.DataModel;
+import com.ramotion.foldingcell.FoldingCell;
+import com.twenty.four.crafts.FoldingCellListAdapter;
+import com.twenty.four.crafts.Item;
 import com.twenty.four.crafts.R;
-import com.twenty.four.crafts.RecyclerViewClickListener;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-/**
- * Created by Avinash Tadavarthy on 05-Nov-17.
- */
+import static android.content.Context.MODE_PRIVATE;
 
-public class ClientClosedAuditionsFragment extends Fragment {
+public class ClientClosedAuditionsFragment extends android.support.v4.app.Fragment {
 
     View myView;
 
-    private static RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
-    private static RecyclerView recyclerView;
-    private static ArrayList<DataModel> data;
-    static View.OnClickListener myOnClickListener;
-    private static ArrayList<Integer> removedItems;
+    private FloatingActionButton createaudition;
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.activity_client_dashboard_layout2,container,false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        myView = inflater.from(container.getContext()).inflate(R.layout.activity_auditions_main,container,false);
 
-        myOnClickListener = new ClientClosedAuditionsFragment.MyOnClickListener(getActivity().getApplicationContext());
+        ListView theListView = (ListView) myView.findViewById(R.id.mainListView);
 
-        recyclerView = (RecyclerView) myView.findViewById(R.id.my_recycler_view_clientdashboard);
-        recyclerView.setHasFixedSize(true);
+        // prepare elements to display
+        final ArrayList<Item> items = Item.getTestingList();
 
-        layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        // add custom btn handler to first list item
+        items.get(0).setRequestBtnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity().getApplicationContext(), "CUSTOM HANDLER FOR FIRST BUTTON", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        data = new ArrayList<>();
-        for (int i = 0; i < MyData.nameArray.length-1; i++) {
-            data.add(new DataModel(
-                    MyData.nameArray[i],
-                    MyData.versionArray[i],
-                    MyData.id_[i],
-                    MyData.drawableArray[i]
-            ));
+        // create custom adapter that holds elements and their state (we need hold a id's of unfolded elements for reusable elements)
+        final FoldingCellListAdapter adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items);
+
+        // add default btn handler for each request btn on each item if custom handler not found
+        adapter.setDefaultRequestBtnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity().getApplicationContext(), "DEFAULT HANDLER FOR ALL BUTTONS", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // set elements to adapter
+        theListView.setAdapter(adapter);
+
+        // set on click event listener to list view
+        theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                // toggle clicked cell state
+                ((FoldingCell) view).toggle(false);
+                // register in adapter that state for selected cell is toggled
+                adapter.registerToggle(pos);
+            }
+        });
+
+        createaudition = (FloatingActionButton) myView.findViewById(R.id.createaudition);
+        createaudition.setVisibility(View.GONE);
+
+        String isClient = "";
+        String userdata =  getSPData("userdatamain");
+        try {
+            JSONObject object = new JSONObject(userdata);
+            isClient = object.optString("isClient");
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
-        removedItems = new ArrayList<Integer>();
-
-        RecyclerViewClickListener listener = new RecyclerViewClickListener() {
-            @Override
-            public void onCLick(View view, int position) {
-
-            }
-
-            @Override
-            public void delClick(ImageView delButton, int position) {
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getContext(), R.style.AlertDialog));
-                builder.setMessage("Are you sure you want to permanently delete the audition?")
-                        .setCancelable(false)
-                        .setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                //do things
-                            }
-                        })
-                        .setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.cancel();
-                            }
-                        });
-
-                AlertDialog alert = builder.create();
-                alert.show();
-                alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            }
-
-            @Override
-            public void editClick(ImageView editbutton, int position) {
-
-            }
-        };
-
-        adapter = new ClientCustomAdapterClosedAuditions(data,listener);
-        recyclerView.setAdapter(adapter);
+        if(isClient.equals("false"))
+            createaudition.setVisibility(View.GONE);
 
         return myView;
     }
 
-    private static class MyOnClickListener implements View.OnClickListener {
 
-        private MyOnClickListener(Context context) {
-        }
 
-        @Override
-        public void onClick(View view) {
 
-        }
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = getActivity().getApplicationContext().getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
     }
 
+    private String getSPData(String key) {
 
+        SharedPreferences mUserData = getActivity().getApplicationContext().getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
+
+    }
 }
+
+
+
+   /* @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_auditions_main);
+
+        // get our list view
+        ListView theListView = (ListView) findViewById(R.id.mainListView);
+
+        // prepare elements to display
+        final ArrayList<Item> items = Item.getTestingList();
+
+        // add custom btn handler to first list item
+        items.get(0).setRequestBtnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "CUSTOM HANDLER FOR FIRST BUTTON", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // create custom adapter that holds elements and their state (we need hold a id's of unfolded elements for reusable elements)
+        final FoldingCellListAdapter adapter = new FoldingCellListAdapter(this, items);
+
+        // add default btn handler for each request btn on each item if custom handler not found
+        adapter.setDefaultRequestBtnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "DEFAULT HANDLER FOR ALL BUTTONS", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // set elements to adapter
+        theListView.setAdapter(adapter);
+
+        // set on click event listener to list view
+        theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                // toggle clicked cell state
+                ((FoldingCell) view).toggle(false);
+                // register in adapter that state for selected cell is toggled
+                adapter.registerToggle(pos);
+            }
+        });
+
+    }*/
+

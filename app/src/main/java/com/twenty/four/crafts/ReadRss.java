@@ -3,9 +3,10 @@ package com.twenty.four.crafts;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
+import android.util.Log;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -16,9 +17,6 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -27,7 +25,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
  * Created by rakesh on 13/1/18.
  */
 
-public class ReadRss extends AsyncTask<Void,Void,Void> {
+public class ReadRss extends AsyncTask<Void,Void,Void> implements SwipeRefreshLayout.OnRefreshListener{
 
     Context context;
     URL url;
@@ -35,14 +33,16 @@ public class ReadRss extends AsyncTask<Void,Void,Void> {
     ArrayList<FeedItem> feedItems;
     RecyclerView recyclerView;
     String address;
+    SwipeRefreshLayout swipeRefreshLayout;
 
-    ReadRss(Context context, RecyclerView recyclerView, String chosenURL)
+    ReadRss(Context context, RecyclerView recyclerView, String chosenURL,SwipeRefreshLayout swipeRefreshLayout)
     {
         this.recyclerView = recyclerView;
         this.context = context;
         this.address = chosenURL;
         progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Loading...");
+        this.swipeRefreshLayout = swipeRefreshLayout;
     }
 
     @Override
@@ -146,6 +146,9 @@ public class ReadRss extends AsyncTask<Void,Void,Void> {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
 
+        swipeRefreshLayout.setRefreshing(false);
+
+
 
     }
 
@@ -159,11 +162,17 @@ public class ReadRss extends AsyncTask<Void,Void,Void> {
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
             xmlDoc = builder.parse(inputStream);
+            Log.e("xmlDoc",xmlDoc + "");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return xmlDoc;
+    }
+
+    @Override
+    public void onRefresh() {
+
     }
 }
