@@ -101,7 +101,7 @@
         android:layout_marginTop="29dp" />
 
         <Button
-            android:id="@+id/btnClients"
+            android:id="@+id/btnCraftsmen"
             android:layout_width="100dp"
             android:layout_height="48dp"
             android:layout_below="@+id/forgot_password"
@@ -109,20 +109,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/button_round"
             android:gravity="center"
-            android:text="LOGIN CLIENTS"
-            android:textColor="#ffffff" />
-
-        <Button
-            android:id="@+id/btnCraftsmen"
-            android:layout_width="100dp"
-            android:layout_height="48dp"
-            android:layout_alignLeft="@+id/btnClients"
-            android:layout_alignStart="@+id/btnClients"
-            android:layout_below="@+id/btnClients"
-            android:layout_marginTop="13dp"
-            android:background="@drawable/button_round"
-            android:gravity="center"
-            android:text="LOGIN CRAFTSMEN"
+            android:text="LOGIN"
             android:textColor="#ffffff" />
 
     </RelativeLayout>

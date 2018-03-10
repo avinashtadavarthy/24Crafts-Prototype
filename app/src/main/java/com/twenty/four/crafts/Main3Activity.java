@@ -3,6 +3,8 @@ package com.twenty.four.crafts;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -26,6 +28,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -40,6 +43,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import jp.wasabeef.blurry.Blurry;
+
 public class Main3Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     AppBarLayout appBarLayout;
@@ -49,6 +54,9 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
     String dialogtextverifyemail = "Please verify your email to continue using the app";
     String userdata,subscribed,jwtToken;
     JSONObject userdatamain;
+
+    TextView nav_name, nav_craft, coinCount;
+    ImageView coverpic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +87,19 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
 
         emailVerified = userdatamain.optString("emailVerification");
         storeSPData("emailVerified",emailVerified);
+
+
+
+        nav_name = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_name);
+        nav_craft = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_craft);
+  //      coinCount = (TextView) navigationView.getHeaderView(0).findViewById(R.id.coinCount);
+        coverpic = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.coverpic);
+
+        nav_name.setText(userdatamain.optString("name"));
+        nav_craft.setText(userdatamain.optString("category"));
+//        coinCount.setText(userdatamain.optString("coinCount"));
+        Bitmap icon = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.sample1);
+        Blurry.with(getApplicationContext()).from(icon).into(coverpic);
 
 
 

@@ -58,7 +58,6 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         btnCraftsmen = (Button) findViewById(R.id.btnCraftsmen);
-        btnClients = (Button) findViewById(R.id.btnClients);
         forgotPassword = findViewById(R.id.forgot_password);
 
         parent = findViewById(R.id.parentLayout);
@@ -115,16 +114,6 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
-
-      /*  btnClients.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Login.this,Main3Activity.class);
-                startActivity(i);
-            }
-        });*/
-
-
 
 
 
