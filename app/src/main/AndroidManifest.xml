@@ -89,7 +89,7 @@
         <activity
             android:name=".registration.Verification"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
+            android:theme="@style/AppTheme3"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ForgotPassword"
@@ -261,12 +261,12 @@
             android:name=".AccountInfo"
             android:parentActivityName=".Settings"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme2" />
+            android:theme="@style/AppTheme3" />
         <activity
             android:name=".AboutUs"
             android:parentActivityName=".Settings"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme2" />
+            android:theme="@style/AppTheme3" />
         <activity
             android:name=".TermsConditions"
             android:parentActivityName=".AboutUs"

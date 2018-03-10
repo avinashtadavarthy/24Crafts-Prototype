@@ -162,7 +162,7 @@ public class signup extends AppCompatActivity implements IPickResult {
             "wwwnew.eu", "xagloo.com", "xemaps.com", "xents.com", "xmaily.com", "xoxy.net", "yep.it", "yogamaven.com", "yopmail.com", "yopmail.fr", "yopmail.net",
             "ypmail.webarnak.fr.eu.org", "yuurok.com", "zehnminutenmail.de", "zippymail.info", "zoaxe.com", "zoemail.org" };
 
-    String name, selectedcraft = "null", selectedgender = "null";
+    String name, selectedcraft = "null";
 
 
     //integrating logins
@@ -174,7 +174,6 @@ public class signup extends AppCompatActivity implements IPickResult {
     String imgurl;
 
     EditText first_name1, last_name1, email1, password1, confirm_password1, gender1, dob1, residingin1, nativeplace1, languagesspoken1, whoami1;
-    Spinner craft,genderspin;
     CircleImageView profile_image1, edit_profile_btn;
     TextInputLayout input_firstname, input_lastname, input_email, input_password, input_confirmpassword, input_gender, input_dob, input_residingin, input_nativeplace, input_languagesspoken, input_whoami;
 
@@ -957,7 +956,10 @@ public class signup extends AppCompatActivity implements IPickResult {
                                                          storeSPData("password", password1.getText().toString());
                                                          storeSPData("dob", dob1.getText().toString());
                                                          storeSPData("gender", gender1.getText().toString());
-                                                         storeSPData("category", whoami1.getText().toString());
+
+                                                         //for auto-login
+                                                         storeSPData("uname", email1.getText().toString());
+                                                         storeSPData("pword", password1.getText().toString());
 
                                                          name = first_name1.getText().toString();
                                                          Intent goToNextActivity = new Intent(getApplicationContext(), signup2.class);
@@ -975,7 +977,11 @@ public class signup extends AppCompatActivity implements IPickResult {
                                                          storeSPData("password", password1.getText().toString());
                                                          storeSPData("dob", dob1.getText().toString());
                                                          storeSPData("gender", gender1.getText().toString());
-                                                         storeSPData("category", whoami1.getText().toString());
+
+                                                         //for auto-login
+                                                         storeSPData("uname", email1.getText().toString());
+                                                         storeSPData("pword", password1.getText().toString());
+
 
                                                          name = first_name1.getText().toString();
                                                          Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
@@ -996,7 +1002,10 @@ public class signup extends AppCompatActivity implements IPickResult {
                                                      storeSPData("password", password1.getText().toString());
                                                      storeSPData("dob", dob1.getText().toString());
                                                      storeSPData("gender", gender1.getText().toString());
-                                                     storeSPData("category", whoami1.getText().toString());
+
+                                                     //for auto-login
+                                                     storeSPData("uname", email1.getText().toString());
+                                                     storeSPData("pword", password1.getText().toString());
 
                                                      name = first_name1.getText().toString();
                                                      Intent goToNextActivity = new Intent(getApplicationContext(), signup3.class);
@@ -1156,11 +1165,63 @@ public class signup extends AppCompatActivity implements IPickResult {
 
                 String chosencategory = data.getStringExtra("selectedcategory");
                 if(chosencategory.equals("")) {
-                    whoami1.setText("Select Languages Spoken");
+                    whoami1.setText("Who am I?");
                     whoami1.setText("");
                 } else {
-                    selectedcraft = chosencategory;
-                    whoami1.setText(chosencategory);
+
+                    switch(chosencategory) {
+                        //craftsmen
+                        case "Actor": selectedcraft = "Actor"; break;
+                        case "Actress": selectedcraft = "Actress"; break;
+                        case "Childartist": selectedcraft = "Child Artist"; break;
+                        case "Singer": selectedcraft = "Singer"; break;
+                        case "Dancer": selectedcraft = "Dancer"; break;
+                        case "Sideartist": selectedcraft = "Side Artist"; break;
+                        case "Assistantdirector": selectedcraft = "Assistant Director"; break;
+                        case "Lyricwriter": selectedcraft = "Lyric Writer / Lyricist"; break;
+                        case "Dialoguewriter": selectedcraft = "Dialouge Writer"; break;
+                        case "Scriptwriter": selectedcraft = "Script / Screenplay Writers"; break;
+                        case "Storyboardartist": selectedcraft = "Story Board Artist"; break;
+                        case "Choreographer": selectedcraft = "Choreographer"; break;
+                        case "Directorofphotography": selectedcraft = "Director of Photography"; break;
+                        case "Stillphotographer": selectedcraft = "Still Photographer"; break;
+                        case "Pro": selectedcraft = "PRO"; break;
+                        case "Designer": selectedcraft = "Designer"; break;
+                        case "Productionmanager": selectedcraft = "Production Manager"; break;
+                        case "Focuspuller": selectedcraft = "Focus Puller"; break;
+                        case "Vehicledriver": selectedcraft = "Vehicle Driver"; break;
+                        case "Micdepartment": selectedcraft = "Mic Department"; break;
+                        case "Musicdirector": selectedcraft = "Music Director"; break;
+                        case "Makeupman": selectedcraft = "Make-up Man"; break;
+                        case "Hairdresser": selectedcraft = "Hair Dresser"; break;
+                        case "Costumer": selectedcraft = "Costumer"; break;
+                        case "Artdepartment": selectedcraft = "Art Department"; break;
+                        case "Setdepartment": selectedcraft = "Set Department"; break;
+                        case "Stuntman": selectedcraft = "Stuntman"; break;
+                        case "Editor": selectedcraft = "Editor"; break;
+                        case "Locationmanager": selectedcraft = "Location Manager"; break;
+                        case "Productionfood": selectedcraft = "Production (Food)"; break;
+                        case "Dubbingartist": selectedcraft = "Dubbing Artist"; break;
+                        case "Soundrecordingengineer": selectedcraft = "Sound Recording Engineer"; break;
+                        case "Soundmixingengineer": selectedcraft = "Sound Mixing Engineer"; break;
+                        case "Di": selectedcraft = "Digital Intermediate"; break;
+                        case "Vfx": selectedcraft = "VFX / CG"; break;
+                        case "Sfx": selectedcraft = "SFX"; break;
+                        case "Petsupplier": selectedcraft = "Pet Supplier / Pet Doctor / AWBI Certifications"; break;
+
+                        //client
+                        case "Castingagent": selectedcraft = "Casting Agent";
+                        case "Codirector": selectedcraft = "Co-Director";
+                        case "Coproducer": selectedcraft = "Co-Producer";
+                        case "Director": selectedcraft = "Director";
+                        case "Directorassistant": selectedcraft = "Director Assistant";
+                        case "Executiveproducer": selectedcraft = "Executive Producer";
+                        case "Modelcoordinator": selectedcraft = "Model Coordinator";
+                        case "Producer": selectedcraft = "Producer";
+                        case "Productionhousemanager": selectedcraft = "Production House Manager";
+                    }
+
+                    whoami1.setText(selectedcraft);
                 }
 
             }
@@ -1222,7 +1283,6 @@ public class signup extends AppCompatActivity implements IPickResult {
     @SuppressWarnings("deprecation")
     @Override
     protected Dialog onCreateDialog(int id) {
-        // TODO Auto-generated method stub
         if (id == 999) {
             return new DatePickerDialog(this,
                     myDateListener, year, month, day);
@@ -1235,7 +1295,6 @@ public class signup extends AppCompatActivity implements IPickResult {
                 @Override
                 public void onDateSet(DatePicker arg0,
                                       int arg1, int arg2, int arg3) {
-                    // TODO Auto-generated method stub
                     // arg1 = year
                     // arg2 = month
                     // arg3 = day
@@ -1244,7 +1303,7 @@ public class signup extends AppCompatActivity implements IPickResult {
             };
 
     private void showDate(int year, int month, int day) {
-        dob1.setText(new StringBuilder().append(day).append("/").append(month).append("/").append(year));
+        dob1.setText(new StringBuilder().append(month).append("/").append(day).append("/").append(year));
     }
 
 

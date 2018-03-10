@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
@@ -20,7 +21,6 @@ public class Settings extends AppCompatActivity {
     View baccinfo,bverify,bfreecoins,bbuymorecoins;
     Switch darkSwitch;
     SharedPref sharedPref;
-    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +35,6 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-
-        toolbar = findViewById(R.id.toolbarSettings);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Settings");
 
 
@@ -165,6 +162,17 @@ public class Settings extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home: finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

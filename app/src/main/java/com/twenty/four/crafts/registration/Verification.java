@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -54,6 +55,9 @@ public class Verification extends AppCompatActivity {
         /* */ FacebookSdk.sdkInitialize(getApplicationContext());
         /* * * */
         setContentView(R.layout.activity_verification);
+
+        getSupportActionBar().setTitle("Verification");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         phone_layout = (LinearLayout) findViewById(R.id.phone_layout);
         fb_layout = (LinearLayout) findViewById(R.id.fb_layout);
@@ -303,6 +307,19 @@ public class Verification extends AppCompatActivity {
 
 
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home: finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+
     private void loginWithVolley() {
 
         String url = User.getInstance().BASE_URL + "login";
@@ -378,13 +395,6 @@ public class Verification extends AppCompatActivity {
 
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
-
-
-
-
-
-
-
 
 
     //Shared Preferences

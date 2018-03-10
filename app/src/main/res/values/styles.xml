@@ -141,14 +141,18 @@
         <item name="android:background">@drawable/b3</item>
     </style>
 
-    <style name="day" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="day" parent="AppTheme3">
         <item name="dayNnightBg">@drawable/b2</item>
         <item name="dayNnightCard">#FFFFFF</item>
         <item name="dayNnightText">#000000</item>
         <item name="dayNnightTint">#000000</item>
         <item name="dayNnightBtn">#004E92</item>
     </style>
-    <style name="night" parent="Theme.AppCompat.DayNight.NoActionBar">
+
+  <!--  Theme.AppCompat.DayNight.NoActionBar-->
+
+
+    <style name="night" parent="AppTheme3">
         <item name="dayNnightBg">@drawable/bg_gradient</item>
         <item name="dayNnightCard">#000000</item>
         <item name="dayNnightText">#FFFFFF</item>
