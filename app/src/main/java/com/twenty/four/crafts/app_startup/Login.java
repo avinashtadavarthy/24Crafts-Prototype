@@ -25,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.twenty.four.crafts.ForgotPassword;
+import com.twenty.four.crafts.JWTUtils;
 import com.twenty.four.crafts.Main2Activity;
 import com.twenty.four.crafts.Main3Activity;
 import com.twenty.four.crafts.MySingleton;
@@ -49,7 +50,7 @@ public class Login extends AppCompatActivity {
     ProgressDialog progressbar;
     AnimationDrawable animationDrawable;
 
-    String uname, pword, jwtToken, subscribed;
+    String uname, pword, jwtToken, subscribed, decodedJWT = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,13 +116,13 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        btnClients.setOnClickListener(new View.OnClickListener() {
+      /*  btnClients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Login.this,Main3Activity.class);
                 startActivity(i);
             }
-        });
+        });*/
 
 
 
@@ -175,8 +176,32 @@ public class Login extends AppCompatActivity {
 
                         storeSPData("jwtToken",jwtToken);
 
-                        //to get the user data
+                        Log.e("jwtToken",jwtToken);
+                        String payLoadJWT = jwtToken.substring(jwtToken.indexOf(".")+1);
+                        payLoadJWT = payLoadJWT.substring(0,payLoadJWT.indexOf("."));
+                        Log.e("payLoadJWT",payLoadJWT);
+
+                        try {
+                            decodedJWT = JWTUtils.getJson(payLoadJWT);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        JSONObject object = new JSONObject(decodedJWT);
+
+                        String isClient = object.optString("isClient");
                         String newurl = User.getInstance().BASE_URL + "user";
+
+                        //to get the user data
+                    /*    if(isClient.equals("false"))
+                         newurl = User.getInstance().BASE_URL + "user";
+
+                        else
+                            newurl = User.getInstance().BASE_URL + "client";*/
+
+
+                       // Log.e("newURL",newurl);
+
 
                         StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new Response.Listener<String>() {
                             @Override
@@ -193,13 +218,13 @@ public class Login extends AppCompatActivity {
                                    JSONObject obj = new JSONObject(response);
                                     String isClient = obj.optString("isClient");
 
-                                    if(isClient.equals("true")) {
-                                        Intent i = new Intent(Login.this,Main3Activity.class)
+                                    if(isClient.equals("false")) {
+                                        Intent i = new Intent(Login.this,Main2Activity.class)
                                                 .putExtra("userdata", response).putExtra("subscribed", subscribed);
                                         Log.e("userdata",response);
                                         startActivity(i);
                                     } else {
-                                        Intent i = new Intent(Login.this,Main2Activity.class)
+                                        Intent i = new Intent(Login.this,Main3Activity.class)
                                                 .putExtra("userdata", response).putExtra("subscribed", subscribed);
                                         Log.e("userdata",response);
                                         startActivity(i);
@@ -294,11 +319,6 @@ public class Login extends AppCompatActivity {
             InputMethodManager imm = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
         }
-    }
-
-    public void login(View view) {
-        Intent i = new Intent(getApplicationContext(),Main2Activity.class);
-        startActivity(i);
     }
 
 

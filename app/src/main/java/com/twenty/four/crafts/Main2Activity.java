@@ -56,6 +56,7 @@ public class Main2Activity extends AppCompatActivity
     AppBarLayout appBarLayout;
     DrawerLayout mDrawerLayout;
     String jwtToken = "";
+    String decodedJWT = "";
 
     int check = 0;
     String dialogtextverifyemail = "Please verify your email to continue using the app";
@@ -95,6 +96,23 @@ public class Main2Activity extends AppCompatActivity
         subscribed = getIntent().getStringExtra("subscribed");
 
         jwtToken = getSPData("jwtToken");
+
+
+
+
+        Log.e("jwtToken",jwtToken);
+        String payLoadJWT = jwtToken.substring(jwtToken.indexOf(".")+1);
+        payLoadJWT = payLoadJWT.substring(0,payLoadJWT.indexOf("."));
+        Log.e("payLoadJWT",payLoadJWT);
+
+        try {
+            decodedJWT = JWTUtils.getJson(payLoadJWT);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Log.e("decodedJWT",decodedJWT);
+
 
 
         try {
