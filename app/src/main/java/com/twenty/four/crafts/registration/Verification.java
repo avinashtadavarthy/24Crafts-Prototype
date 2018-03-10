@@ -57,6 +57,7 @@ public class Verification extends AppCompatActivity {
         setContentView(R.layout.activity_verification);
 
         getSupportActionBar().setTitle("Verification");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         phone_layout = (LinearLayout) findViewById(R.id.phone_layout);
         fb_layout = (LinearLayout) findViewById(R.id.fb_layout);
@@ -394,13 +395,6 @@ public class Verification extends AppCompatActivity {
 
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
-
-
-
-
-
-
-
 
 
     //Shared Preferences
