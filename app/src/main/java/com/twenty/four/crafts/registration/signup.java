@@ -1156,11 +1156,63 @@ public class signup extends AppCompatActivity implements IPickResult {
 
                 String chosencategory = data.getStringExtra("selectedcategory");
                 if(chosencategory.equals("")) {
-                    whoami1.setText("Select Languages Spoken");
+                    whoami1.setText("Who am I?");
                     whoami1.setText("");
                 } else {
-                    selectedcraft = chosencategory;
-                    whoami1.setText(chosencategory);
+
+                    switch(chosencategory) {
+                        //craftsmen
+                        case "Actor": selectedcraft = "Actor"; break;
+                        case "Actress": selectedcraft = "Actress"; break;
+                        case "Childartist": selectedcraft = "Child Artist"; break;
+                        case "Singer": selectedcraft = "Singer"; break;
+                        case "Dancer": selectedcraft = "Dancer"; break;
+                        case "Sideartist": selectedcraft = "Side Artist"; break;
+                        case "Assistantdirector": selectedcraft = "Assistant Director"; break;
+                        case "Lyricwriter": selectedcraft = "Lyric Writer / Lyricist"; break;
+                        case "Dialoguewriter": selectedcraft = "Dialouge Writer"; break;
+                        case "Scriptwriter": selectedcraft = "Script / Screenplay Writers"; break;
+                        case "Storyboardartist": selectedcraft = "Story Board Artist"; break;
+                        case "Choreographer": selectedcraft = "Choreographer"; break;
+                        case "Directorofphotography": selectedcraft = "Director of Photography"; break;
+                        case "Stillphotographer": selectedcraft = "Still Photographer"; break;
+                        case "Pro": selectedcraft = "PRO"; break;
+                        case "Designer": selectedcraft = "Designer"; break;
+                        case "Productionmanager": selectedcraft = "Production Manager"; break;
+                        case "Focuspuller": selectedcraft = "Focus Puller"; break;
+                        case "Vehicledriver": selectedcraft = "Vehicle Driver"; break;
+                        case "Micdepartment": selectedcraft = "Mic Department"; break;
+                        case "Musicdirector": selectedcraft = "Music Director"; break;
+                        case "Makeupman": selectedcraft = "Make-up Man"; break;
+                        case "Hairdresser": selectedcraft = "Hair Dresser"; break;
+                        case "Costumer": selectedcraft = "Costumer"; break;
+                        case "Artdepartment": selectedcraft = "Art Department"; break;
+                        case "Setdepartment": selectedcraft = "Set Department"; break;
+                        case "Stuntman": selectedcraft = "Stuntman"; break;
+                        case "Editor": selectedcraft = "Editor"; break;
+                        case "Locationmanager": selectedcraft = "Location Manager"; break;
+                        case "Productionfood": selectedcraft = "Production (Food)"; break;
+                        case "Dubbingartist": selectedcraft = "Dubbing Artist"; break;
+                        case "Soundrecordingengineer": selectedcraft = "Sound Recording Engineer"; break;
+                        case "Soundmixingengineer": selectedcraft = "Sound Mixing Engineer"; break;
+                        case "Di": selectedcraft = "Digital Intermediate"; break;
+                        case "Vfx": selectedcraft = "VFX / CG"; break;
+                        case "Sfx": selectedcraft = "SFX"; break;
+                        case "Petsupplier": selectedcraft = "Pet Supplier / Pet Doctor / AWBI Certifications"; break;
+
+                        //client
+                        case "Castingagent": selectedcraft = "Casting Agent";
+                        case "Codirector": selectedcraft = "Co-Director";
+                        case "Coproducer": selectedcraft = "Co-Producer";
+                        case "Director": selectedcraft = "Director";
+                        case "Directorassistant": selectedcraft = "Director Assistant";
+                        case "Executiveproducer": selectedcraft = "Executive Producer";
+                        case "Modelcoordinator": selectedcraft = "Model Coordinator";
+                        case "Producer": selectedcraft = "Producer";
+                        case "Productionhousemanager": selectedcraft = "Production House Manager";
+                    }
+
+                    whoami1.setText(selectedcraft);
                 }
 
             }

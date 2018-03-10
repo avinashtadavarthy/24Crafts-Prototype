@@ -18,29 +18,30 @@ public class ChooseCraftOrClient extends AppCompatActivity {
 
     String[] whoNcrafts = {
             "Actor","Actress","Child Artist","Singer","Dancer",
-            "Side Artists","Assistant Director","Lyric Writer / Lyricist",
+            "Side Artist","Assistant Director","Lyric Writer / Lyricist",
             "Dialouge Writer","Script / Screenplay Writers", "Story Board Artist",
             "Choreographer","Director of Photography", "Still Photographer",
             "PRO", "Designer", "Production Manager",
             "Focus Puller", "Vehicle Driver", "Mic Department",
-            "Music Director", "Makeup Man", "Hair Dresser",
+            "Music Director", "Make-up Man", "Hair Dresser",
             "Costumer", "Art Department", "Set Department",
             "Stuntman", "Editor", "Location Manager",
-            "Production (Food)", "Dubbing Artists", "Sound Recording Engineers",
-            "Sound Mixing Engineers", "Digital Intermediate", "VFX / CG",
-            "SFX", "Pet Suppliers / Pet Doctors / AWBI Certifications"};
+            "Production (Food)", "Dubbing Artist", "Sound Recording Engineer",
+            "Sound Mixing Engineer", "Digital Intermediate", "VFX / CG",
+            "SFX", "Pet Supplier / Pet Doctor / AWBI Certifications"};
 
 
     String[] whoNclients = {
             "Casting Agent","Co-Director","Co-Producer","Director","Director Assistant",
-            "Director Audition","Executive Producer","Model Coordinator",
-            "Producer","Production House Manager"};
+            "Executive Producer","Model Coordinator", "Producer","Production House Manager"};
 
 
     private EditText filterText;
     private ListView itemList;
     private ArrayAdapter<String> listAdapter;
     private String category;
+
+    String selectedcategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +69,61 @@ public class ChooseCraftOrClient extends AppCompatActivity {
                 filterText.setText(listAdapter.getItem(position));
 
                 Intent intent = new Intent();
-                intent.putExtra("selectedcategory", listAdapter.getItem(position));
+
+                switch(listAdapter.getItem(position)) {
+                    //craftsmen
+                    case "Actor": selectedcategory = "Actor"; break;
+                    case "Actress": selectedcategory = "Actress"; break;
+                    case "Child Artist": selectedcategory = "Childartist"; break;
+                    case "Singer": selectedcategory = "Singer"; break;
+                    case "Dancer": selectedcategory = "Dancer"; break;
+                    case "Side Artist": selectedcategory = "Sideartist"; break;
+                    case "Assistant Director": selectedcategory = "Assistantdirector"; break;
+                    case "Lyric Writer / Lyricist": selectedcategory = "Lyricwriter"; break;
+                    case "Dialouge Writer": selectedcategory = "Dialoguewriter"; break;
+                    case "Script / Screenplay Writers": selectedcategory = "Scriptwriter"; break;
+                    case "Story Board Artist": selectedcategory = "Storyboardartist"; break;
+                    case "Choreographer": selectedcategory = "Choreographer"; break;
+                    case "Director of Photography": selectedcategory = "Directorofphotography"; break;
+                    case "Still Photographer": selectedcategory = "Stillphotographer"; break;
+                    case "PRO": selectedcategory = "Pro"; break;
+                    case "Designer": selectedcategory = "Designer"; break;
+                    case "Production Manager": selectedcategory = "Productionmanager"; break;
+                    case "Focus Puller": selectedcategory = "Focuspuller"; break;
+                    case "Vehicle Driver": selectedcategory = "Vehicledriver"; break;
+                    case "Mic Department": selectedcategory = "Micdepartment"; break;
+                    case "Music Director": selectedcategory = "Musicdirector"; break;
+                    case "Make-up Man": selectedcategory = "Makeupman"; break;
+                    case "Hair Dresser": selectedcategory = "Hairdresser"; break;
+                    case "Costumer": selectedcategory = "Costumer"; break;
+                    case "Art Department": selectedcategory = "Artdepartment"; break;
+                    case "Set Department": selectedcategory = "Setdepartment"; break;
+                    case "Stuntman": selectedcategory = "Stuntman"; break;
+                    case "Editor": selectedcategory = "Editor"; break;
+                    case "Location Manager": selectedcategory = "Locationmanager"; break;
+                    case "Production (Food)": selectedcategory = "Productionfood"; break;
+                    case "Dubbing Artist": selectedcategory = "Dubbingartist"; break;
+                    case "Sound Recording Engineer": selectedcategory = "Soundrecordingengineer"; break;
+                    case "Sound Mixing Engineer": selectedcategory = "Soundmixingengineer"; break;
+                    case "Digital Intermediate": selectedcategory = "Di"; break;
+                    case "VFX / CG": selectedcategory = "Vfx"; break;
+                    case "SFX": selectedcategory = "Sfx"; break;
+                    case "Pet Supplier / Pet Doctor / AWBI Certifications": selectedcategory = "Petsupplier"; break;
+
+                    //clients
+                    case "Casting Agent": selectedcategory = "Castingagent"; break;
+                    case "Co-Director": selectedcategory = "Codirector"; break;
+                    case "Co-Producer": selectedcategory = "Coproducer"; break;
+                    case "Director": selectedcategory = "Director"; break;
+                    case "Director Assistant": selectedcategory = "Directorassistant"; break;
+                    case "Executive Producer": selectedcategory = "Executiveproducer"; break;
+                    case "Model Coordinator": selectedcategory = "Modelcoordinator"; break;
+                    case "Producer": selectedcategory = "Producer"; break;
+                    case "Production House Manager": selectedcategory = "Productionhousemanager"; break;
+                }
+
+
+                intent.putExtra("selectedcategory", selectedcategory);
                 setResult(Activity.RESULT_OK, intent);
 
                 finish();

@@ -146,6 +146,8 @@ public class Login extends AppCompatActivity {
 
                 try {
 
+                    Log.e("responseForLogin", response);
+
                     JSONObject jsonObject = new JSONObject(response);
 
                     if(jsonObject.optString("message").equals("Incorrect password.")) {
