@@ -85,10 +85,11 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         final ImageView inbox_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.inbox_handy);
 
 
+        if(getIntent() != null)
         userdata = getIntent().getStringExtra("userdata");
-        subscribed = getIntent().getStringExtra("subscribed");
 
         jwtToken = getSPData("jwtToken");
+        subscribed = getSPData("subscribed");
 
 
         try {

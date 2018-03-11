@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -138,7 +139,12 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
             @Override
             public void onCardClicked(int index) {
-                Log.d("CardStackView", "onCardClicked: " + index);
+
+                Intent page = new Intent(getActivity().getApplicationContext(), ProfileView.class)
+                        .putExtra("thisistogetback", "do nothing")
+                        .putExtra("fromwhom", "do nothing");
+                startActivity(page);
+
             }
         });
 

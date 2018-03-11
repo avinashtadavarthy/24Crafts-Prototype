@@ -62,7 +62,7 @@ public class Main2Activity extends AppCompatActivity
     String dialogtextverifyemail = "Please verify your email to continue using the app";
 
     JSONObject userdatamain = null;
-    String userdata, subscribed,emailVerified = "";
+    String userdata, subscribed, emailVerified = "";
     TextView nav_name, nav_craft, coinCount;
     ImageView coverpic;
 
@@ -92,10 +92,15 @@ public class Main2Activity extends AppCompatActivity
         }
         */
 
-        userdata = getIntent().getStringExtra("userdata");
-        subscribed = getIntent().getStringExtra("subscribed");
+
+
+        if(getIntent() != null) {
+            userdata = getIntent().getStringExtra("userdata");
+        }
+
 
         jwtToken = getSPData("jwtToken");
+        subscribed = getSPData("subscribed");
 
 
 
@@ -116,13 +121,13 @@ public class Main2Activity extends AppCompatActivity
 
 
         try {
-            userdatamain = new JSONObject(userdata);
+            userdatamain = new JSONObject(getSPData("userdatamain"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         emailVerified = userdatamain.optString("emailVerification");
-        storeSPData("emailVerified",emailVerified);
+        storeSPData("emailVerified", emailVerified);
 
 
         nav_name = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_name);

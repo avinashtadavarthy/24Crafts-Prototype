@@ -8,7 +8,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.NestedScrollView;
@@ -18,7 +21,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.BounceInterpolator;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -48,7 +55,7 @@ import java.util.Map;
 public class ProfileView extends AppCompatActivity implements OnMenuItemClickListener, OnMenuItemLongClickListener {
 
 
-    ImageButton edit_profile, profile_back, fav_profile;
+    ImageButton edit_profile, profile_back;
     NestedScrollView nestedScrollView;
     ImageView video1, video2, video3;
     int i = 0;
@@ -74,6 +81,8 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
 
     ImageView subresult1,subresult3;
 
+    FloatingActionButton fav_profile, message_profile;
+    Boolean isfav = false;
 
 
 
@@ -95,7 +104,7 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
         fragmentManager = getSupportFragmentManager();
         edit_profile = (ImageButton) findViewById(R.id.edit_profile);
         profile_back = (ImageButton) findViewById(R.id.profile_back);
-        fav_profile = (ImageButton) findViewById(R.id.fav_profile);
+
         //video1 = findViewById(R.id.profileVideo1);
         video2 = findViewById(R.id.profileVideo2);
         video3 = findViewById(R.id.profileVideo3);
@@ -110,6 +119,48 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
 
         danceStyles = findViewById(R.id.danceStyles);
         sportsPlayed = findViewById(R.id.sportsPlayed);
+
+        fav_profile = findViewById(R.id.fav_profile);
+        message_profile = findViewById(R.id.message_profile);
+
+        fav_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Animation myAnim = AnimationUtils.loadAnimation(ProfileView.this, R.anim.bounce);
+                // Use bounce interpolator with amplitude 0.2 and frequency 20
+                MyBounceInterpolator interpolator = new MyBounceInterpolator(0.1, 20);
+                myAnim.setInterpolator(interpolator);
+
+                if(!isfav){
+                    isfav = true;
+                    fav_profile.setImageResource(R.drawable.star_full);
+                    fav_profile.startAnimation(myAnim);
+                    Toast.makeText(ProfileView.this, "Added to favourites!", Toast.LENGTH_SHORT).show();
+                } else {
+                    isfav = false;
+                    fav_profile.setImageResource(R.drawable.star);
+                    fav_profile.startAnimation(myAnim);
+                    Toast.makeText(ProfileView.this, "Removed from favourites!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+        message_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Animation myAnim = AnimationUtils.loadAnimation(ProfileView.this, R.anim.bounce);
+                // Use bounce interpolator with amplitude 0.2 and frequency 20
+                MyBounceInterpolator interpolator = new MyBounceInterpolator(0.1, 20);
+                myAnim.setInterpolator(interpolator);
+
+                message_profile.startAnimation(myAnim);
+                Toast.makeText(ProfileView.this, "Redirect to messaging page", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
 
         //Picasso.with(getApplicationContext()).load("https://img.youtube.com/vi/eGCM444_mN0/mqdefault.jpg").into(video1);
         Picasso.with(getApplicationContext()).load("https://img.youtube.com/vi/eGCM444_mN0/mqdefault.jpg").into(video2);
@@ -132,32 +183,26 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
             }
         });
 
-        fav_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                i++;
-                if (i % 2 != 0) {
-                    ObjectAnimator animY = ObjectAnimator.ofFloat(fav_profile, "translationY", -100f, 0f);
-                    animY.setDuration(800);
-                    animY.setInterpolator(new BounceInterpolator());
-                    animY.start();
-                    fav_profile.setImageResource(R.drawable.heart_full);
-                } else {
-                    ObjectAnimator animY = ObjectAnimator.ofFloat(fav_profile, "translationY", -100f, 0f);
-                    animY.setDuration(800);
-                    animY.setInterpolator(new BounceInterpolator());
-                    animY.start();
-                    fav_profile.setImageResource(R.drawable.heart_outline);
-                }
-            }
-        });
-
 
         //ViewPager viewPager = (ViewPager) findViewById(R.id.coverphotoviewpager);
         //ImageAdapter adapter = new ImageAdapter(this); //Here we are defining the Imageadapter object
         //viewPager.setAdapter(adapter); // Here we are passing and setting the adapter for the images
 
 
+        nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+
+                if (scrollY > oldScrollY) {
+                    fav_profile.hide();
+                    message_profile.hide();
+                } else if (scrollY < oldScrollY) {
+                    fav_profile.show();
+                    message_profile.show();
+                }
+
+            }
+        });
 
         //on the profileview page
 
@@ -546,7 +591,6 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
 
         if (mMenuDialogFragment != null && mMenuDialogFragment.isAdded()) {
             mMenuDialogFragment.dismiss();

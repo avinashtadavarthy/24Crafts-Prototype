@@ -75,15 +75,13 @@
         android:id="@+id/fb_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-       android:elevation="8dp"
+        android:elevation="8dp"
         android:paddingLeft="40dp"
         android:paddingRight="30dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
         android:background="#ffffff">
 
         <ImageView
@@ -124,6 +122,46 @@
 
     </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/fb_layout_verified"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="40dp"
+            android:paddingRight="30dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="#90ffffff">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="55dp"
+                android:layout_height="53dp"
+                android:id="@+id/fb_dp"
+                android:src="@drawable/facebook_black"
+                android:clickable="true"
+                android:layout_gravity="center_vertical" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/fb_uname"
+                    android:layout_width="wrap_content"
+                    android:text="User name on fb"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
     <LinearLayout
         android:id="@+id/google_layout"
         android:layout_width="match_parent"
@@ -136,7 +174,7 @@
         android:paddingBottom="10dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         android:background="#ffffff">
 
         <ImageView
@@ -181,59 +219,44 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/insta_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-       android:elevation="5dp"
-        android:paddingLeft="40dp"
-        android:paddingRight="30dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="#ffffff">
-
-        <ImageView
-            android:layout_width="55dp"
-            android:layout_height="50dp"
-            android:clickable="true"
-            android:src="@drawable/insta_black"
-            android:id="@+id/insta"
-            android:layout_gravity="center_vertical"
-            />
-
         <LinearLayout
-
+            android:id="@+id/google_layout_verified"
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent"
-            android:paddingLeft="16dp"
-            android:weightSum="2"
-            android:gravity="center">
+            android:layout_height="wrap_content"
+            android:paddingLeft="40dp"
+            android:paddingRight="30dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="#90ffffff">
 
-            <TextView
-                android:layout_width="100dp"
-                android:text="Instagram"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                android:layout_height="0dp"
-                android:layout_weight="1.25"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="55dp"
+                android:layout_height="53dp"
+                android:id="@+id/goog_dp"
+                android:src="@drawable/googleg_disabled_color_18"
+                android:clickable="true"
+                android:layout_gravity="center_vertical" />
 
-            <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:gravity="center">
 
-                android:layout_height="0dp"
-                android:layout_weight="0.75"
-                android:layout_width="100dp"
-                android:id="@+id/insta_text_veri"
-                android:text="Not verified !"
-                android:textColor="#ff4e4e"/>
+                <TextView
+                    android:id="@+id/goog_uname"
+                    android:layout_width="wrap_content"
+                    android:text="User name on google"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
 
 
     <LinearLayout
@@ -248,7 +271,7 @@
         android:paddingBottom="10dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         android:background="#ffffff">
 
         <ImageView
@@ -288,6 +311,46 @@
 
         </LinearLayout>
     </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/twitter_layout_verified"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="40dp"
+            android:paddingRight="30dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#90ffffff">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="55dp"
+                android:layout_height="53dp"
+                android:id="@+id/twit_dp"
+                android:src="@drawable/twitter_black"
+                android:clickable="true"
+                android:layout_gravity="center_vertical" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/twit_uname"
+                    android:layout_width="wrap_content"
+                    android:text="User name on twitter"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

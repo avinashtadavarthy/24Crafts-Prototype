@@ -32,7 +32,7 @@ public class StartingScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting_screen);
 
-        storeSPData("languagesspoken_neat", "");
+        clearSelectedSharedPrefs();
 
         craftsman_reg = (ImageView) findViewById(R.id.craftsman_reg);
         client_reg = (ImageView) findViewById(R.id.client_reg);
@@ -96,6 +96,7 @@ public class StartingScreen extends AppCompatActivity {
                 .setMessage("Do you want to exit the registration process?")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
+                        clearSharedPrefs();
                         finish();
                     }
                 })
@@ -129,7 +130,80 @@ public class StartingScreen extends AppCompatActivity {
         String data = mUserData.getString(key, "");
 
         return data;
-
     }
+
+
+    private void clearSharedPrefs() {
+
+        //registration purpose
+        storeSPData("isClient", "");
+        storeSPData("firstname", "");
+        storeSPData("lastname", "");
+        storeSPData("email", "");
+        storeSPData("password", "");
+        storeSPData("dob", "");
+        storeSPData("gender", "");
+        storeSPData("residingin", "");
+        storeSPData("hometown", "");
+        storeSPData("languagesspoken", "");
+        storeSPData("category", "");
+        storeSPData("bodyType", "");
+        storeSPData("hairColor", "");
+        storeSPData("hairLength", "");
+        storeSPData("eyeColor", "");
+        storeSPData("skinTone", "");
+        storeSPData("facialHair", "");
+        storeSPData("height", "");
+        storeSPData("weight", "");
+        storeSPData("hipsize", "");
+        storeSPData("chestSize", "");
+        storeSPData("waistSize", "");
+        storeSPData("phonenumber", "");
+        storeSPData("name", "");
+        storeSPData("facebookJSON", "");
+        storeSPData("googleJSON", "");
+        storeSPData("twitterJSON", "");
+
+        //app purpose
+        storeSPData("phone_verified", "");
+        storeSPData("facebook_verified", "");
+        storeSPData("google_verified", "");
+        storeSPData("twitter_verified", "");
+        storeSPData("userdatamain", "");
+        storeSPData("jwtToken", "");
+        storeSPData("uname", "");
+        storeSPData("pword", "");
+    }
+
+
+    private void clearSelectedSharedPrefs() {
+
+        //registration purpose
+        storeSPData("isClient", "");
+        storeSPData("firstname", "");
+        storeSPData("lastname", "");
+        storeSPData("email", "");
+        storeSPData("password", "");
+        storeSPData("dob", "");
+        storeSPData("gender", "");
+        storeSPData("residingin", "");
+        storeSPData("hometown", "");
+        storeSPData("languagesspoken", "");
+        storeSPData("category", "");
+        storeSPData("bodyType", "");
+        storeSPData("hairColor", "");
+        storeSPData("hairLength", "");
+        storeSPData("eyeColor", "");
+        storeSPData("skinTone", "");
+        storeSPData("facialHair", "");
+        storeSPData("height", "");
+        storeSPData("weight", "");
+        storeSPData("hipsize", "");
+        storeSPData("chestSize", "");
+        storeSPData("waistSize", "");
+        storeSPData("phonenumber", "");
+        storeSPData("name", "");
+    }
+
 
 }

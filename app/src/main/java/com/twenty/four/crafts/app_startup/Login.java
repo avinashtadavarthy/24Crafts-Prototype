@@ -69,6 +69,7 @@ public class Login extends AppCompatActivity {
         progressbar.setMessage("Logging in...");
 
         email.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        email.setText(getSPData("uname"));
 
         animationDrawable = (AnimationDrawable) parent.getBackground();
 
@@ -165,7 +166,8 @@ public class Login extends AppCompatActivity {
                         jwtToken = jsonObject.optString("token");
                         subscribed = jsonObject.optString("subscribed");
 
-                        storeSPData("jwtToken",jwtToken);
+                        storeSPData("jwtToken", jwtToken);
+                        storeSPData("subscribed", subscribed);
 
                         Log.e("jwtToken",jwtToken);
                         String payLoadJWT = jwtToken.substring(jwtToken.indexOf(".")+1);
@@ -177,8 +179,6 @@ public class Login extends AppCompatActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-
-                        JSONObject object = new JSONObject(decodedJWT);
 
                         String newurl = User.getInstance().BASE_URL + "user";
 
@@ -205,6 +205,8 @@ public class Login extends AppCompatActivity {
                                     storeSPData("pword", pword);
                                     storeSPData("userdatamain", response);
 
+                                    assignSPData();
+
                                    JSONObject obj = new JSONObject(response);
                                     String isClient = obj.optString("isClient");
 
@@ -214,6 +216,7 @@ public class Login extends AppCompatActivity {
                                         Log.e("userdata",response);
                                         startActivity(i);
                                     } else {
+
                                         Intent i = new Intent(Login.this,Main3Activity.class)
                                                 .putExtra("userdata", response).putExtra("subscribed", subscribed);
                                         Log.e("userdata",response);
@@ -330,6 +333,29 @@ public class Login extends AppCompatActivity {
         String data = mUserData.getString(key, "");
 
         return data;
+    }
+
+
+    void assignSPData() {
+
+        try {
+            JSONObject jsonObject = new JSONObject(getSPData("userdatamain"));
+
+            storeSPData("phone_verified", "true");
+
+            if(jsonObject.optString("facebook").equals("")) storeSPData("facebook_verified", "false");
+            else storeSPData("facebook_verified", "true");
+
+            if(jsonObject.optString("google").equals("")) storeSPData("google_verified", "false");
+            else storeSPData("google_verified", "true");
+
+            if(jsonObject.optString("twitter").equals("")) storeSPData("twitter_verified", "false");
+            else storeSPData("twitter_verified", "true");
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 

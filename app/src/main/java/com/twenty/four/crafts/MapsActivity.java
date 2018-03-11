@@ -388,9 +388,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onResponse(String response) {
 
-
-                Toast.makeText(getApplicationContext(),"response: " + response+ " " + latitudeGPS + " " + longitudeGPS,Toast.LENGTH_SHORT).show();
-
                 try {
 
 

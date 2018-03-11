@@ -58,7 +58,7 @@ public class AccountInfo extends AppCompatActivity {
         birthdayText.setText(getDateAsString(object.optString("dob").substring(0,10)));
 
         mobiletext = findViewById(R.id.AccInfoMobileText);
-        mobiletext.setText(object.optString("mobileNumber"));
+        mobiletext.setText("+ " + object.optString("mobileNumber"));
 
         emailText = findViewById(R.id.AccInfoEmailText);
         emailText.setText(object.optString("email"));
@@ -100,10 +100,7 @@ public class AccountInfo extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
-                                storeSPData("uname", "");
-                                storeSPData("pword", "");
-                                storeSPData("userdatamain", "");
-                                storeSPData("jwtToken","");
+                                clearSharedPrefs();
 
                                 Intent intent = new Intent(getApplicationContext(), Login.class).putExtra("status", "logout");
                                 startActivity(intent);
@@ -234,4 +231,47 @@ public class AccountInfo extends AppCompatActivity {
         return data;
 
     }
+
+    private void clearSharedPrefs() {
+
+        //registration purpose
+        storeSPData("isClient", "");
+        storeSPData("firstname", "");
+        storeSPData("lastname", "");
+        storeSPData("email", "");
+        storeSPData("password", "");
+        storeSPData("dob", "");
+        storeSPData("gender", "");
+        storeSPData("residingin", "");
+        storeSPData("hometown", "");
+        storeSPData("languagesspoken", "");
+        storeSPData("category", "");
+        storeSPData("bodyType", "");
+        storeSPData("hairColor", "");
+        storeSPData("hairLength", "");
+        storeSPData("eyeColor", "");
+        storeSPData("skinTone", "");
+        storeSPData("facialHair", "");
+        storeSPData("height", "");
+        storeSPData("weight", "");
+        storeSPData("hipsize", "");
+        storeSPData("chestSize", "");
+        storeSPData("waistSize", "");
+        storeSPData("phonenumber", "");
+        storeSPData("name", "");
+        storeSPData("facebookJSON", "");
+        storeSPData("googleJSON", "");
+        storeSPData("twitterJSON", "");
+
+        //app purpose
+        storeSPData("phone_verified", "");
+        storeSPData("facebook_verified", "");
+        storeSPData("google_verified", "");
+        storeSPData("twitter_verified", "");
+        storeSPData("userdatamain", "");
+        storeSPData("jwtToken", "");
+        storeSPData("subscribed", "");
+        storeSPData("pword", "");
+    }
+
 }

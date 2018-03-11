@@ -54,8 +54,8 @@
                 android:layout_width="180dp"
                 android:layout_height="40dp"
                 android:text="Login with Facebook"
-                android:textColor="#000000"
                 android:onClick="fbLogin"
+                android:textColor="#000000"
                 android:textAllCaps="false"
                 android:fontFamily="sans-serif-condensed"
                 android:gravity="center"
@@ -144,7 +144,8 @@
 
         </LinearLayout>
 
-        <LinearLayout
+
+       <!-- <LinearLayout
             android:id="@+id/instagram_login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -179,7 +180,7 @@
                 android:gravity="center"
                 android:background="?android:attr/selectableItemBackground"/>
 
-        </LinearLayout>
+        </LinearLayout>-->
 
 
         <LinearLayout

@@ -6,7 +6,9 @@ package com.twenty.four.crafts;
 
 public class Urls {
 
-    String BASE_URL = "http://24crafts.tk:3000";
+    //this class is just for reference purpose. The BASE_URL can be accessed by typing "User.getInstance().BASE_URL"
+
+    String BASE_URL = "http://24crafts.cf:3000";
     String ADD_USER = "/adduser"; //post
     String USER = "/user"; //get
     String LOGIN = "/login"; //post

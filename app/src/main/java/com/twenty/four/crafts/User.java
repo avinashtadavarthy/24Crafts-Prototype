@@ -1,5 +1,9 @@
 package com.twenty.four.crafts;
 
+import android.content.SharedPreferences;
+
+import static android.content.Context.MODE_PRIVATE;
+
 /**
  * Created by avinash on 27/12/17.
  */
@@ -20,9 +24,6 @@ public class User {
     public String BASE_URL = "http://24crafts.cf:3000/";
     /////////
 
-
-
-
     protected User(){}
 
     public static synchronized User getInstance(){
@@ -38,7 +39,7 @@ public class User {
                                 MODE_PRIVATE
                           "All of them are Strings"
 
-
+       REGISTRATION ONLY - cleared out in signup and signup3
        +================+==========================+===============+
        |      Page      |  Shared Preferences Tag  |  Compulsary?  |
        +================+==========================+===============+
@@ -63,7 +64,7 @@ public class User {
        |       3        |       facialHair         |               |
        |                |       height             |               |
        |                |       weight             |               |
-       |                |       //hipsize          |               |
+       |                |       hipsize            |               |
        |                |       chestSize          |               |
        |                |       waistSize          |               |
        |----------------|--------------------------|---------------|

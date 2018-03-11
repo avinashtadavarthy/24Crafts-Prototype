@@ -28,6 +28,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.twenty.four.crafts.CustomAdapterSpinner;
 import com.twenty.four.crafts.MySingleton;
+import com.twenty.four.crafts.ProfileView;
 import com.twenty.four.crafts.R;
 import com.facebook.accountkit.Account;
 import com.facebook.accountkit.AccountKit;
@@ -41,6 +42,7 @@ import com.facebook.accountkit.ui.LoginType;
 import com.twenty.four.crafts.User;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -50,6 +52,7 @@ public class signup3 extends AppCompatActivity {
 
     public static int APP_REQUEST_CODE = 99;
 
+    private String jwtToken;
 
     Bundle bundle;
     String type, name, craft;
@@ -1803,11 +1806,9 @@ public class signup3 extends AppCompatActivity {
 
 
     @Override
-    protected void onActivityResult(
-            final int requestCode,
-            final int resultCode,
-            final Intent data) {
+    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == APP_REQUEST_CODE) { // confirm that this response matches your request
             AccountKitLoginResult loginResult = data.getParcelableExtra(AccountKitLoginResult.RESULT_KEY);
 
@@ -1889,22 +1890,13 @@ public class signup3 extends AppCompatActivity {
             public void onResponse(String response) {
 
                 Toast.makeText(signup3.this, response, Toast.LENGTH_SHORT).show();
+                Log.e("Registration Response", response);
 
+                if(response.equals("Registration successful!")) {
 
-                if(type.equals("craftsman")){
+                    clearSharedPrefs();
 
-                    Intent intent = new Intent(signup3.this, Verification.class)
-                            .putExtra("fromhere", "PhoneVerified")
-                            .putExtra("fromwhom", "Crafts");
-                    startActivity(intent);
-
-                } else if(type.equals("client")){
-
-                    Intent intent = new Intent(signup3.this, Verification.class)
-                            .putExtra("fromhere", "PhoneVerified")
-                            .putExtra("fromwhom", "Clients");
-                    startActivity(intent);
-
+                    loginWithVolley();
                 }
 
             }
@@ -1946,6 +1938,8 @@ public class signup3 extends AppCompatActivity {
                 params.put("native", getSPData("homeTown"));
                 params.put("emailVerification", "false");
                 params.put("facebook", getSPData("facebookJSON"));
+                params.put("google", getSPData("googleJSON"));
+                params.put("twitter", getSPData("twitterJSON"));
 
                 String[] languagesspoken = getSPData("languagesspoken_dirty").split(", ");
                 Gson gson = new GsonBuilder().create();
@@ -1961,6 +1955,99 @@ public class signup3 extends AppCompatActivity {
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
 
     }
+
+
+    // login user into app
+
+    private void loginWithVolley() {
+
+        String url = User.getInstance().BASE_URL + "login";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    jwtToken = jsonObject.optString("token");
+
+                    storeSPData("jwtToken", jwtToken);
+                    storeSPData("subscribed", jsonObject.optString("subscribed"));
+
+                    //to get the data
+
+                    String newurl = User.getInstance().BASE_URL + "user";
+
+                    StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                            if(type.equals("craftsman")){
+
+                                Intent intent = new Intent(signup3.this, Verification.class)
+                                        .putExtra("fromhere", "PhoneVerified")
+                                        .putExtra("fromwhom", "Crafts");
+                                startActivity(intent);
+
+                            } else if(type.equals("client")){
+
+                                Intent intent = new Intent(signup3.this, Verification.class)
+                                        .putExtra("fromhere", "PhoneVerified")
+                                        .putExtra("fromwhom", "Clients");
+                                startActivity(intent);
+                            }
+
+                           Log.e("userdatamain", response);
+                            storeSPData("userdatamain", response);
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            error.printStackTrace();
+                        }
+                    }){
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+
+                            Map<String, String> params = new HashMap<String, String>();
+
+                            params.put("authorization", jwtToken);
+
+                            return params;
+                        }
+                    };
+
+                    MySingleton.getInstance(getApplicationContext()).addToRequestQueue(getRequest);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                //to get the data
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("username", getSPData("uname"));
+                params.put("password", getSPData("pword"));
+
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+    }
+
+
 
 
     //Shared Preferences
@@ -1980,6 +2067,38 @@ public class signup3 extends AppCompatActivity {
 
         return data;
 
+    }
+
+
+    private void clearSharedPrefs() {
+        //registration purpose
+        storeSPData("isClient", "");
+        storeSPData("firstname", "");
+        storeSPData("lastname", "");
+        storeSPData("email", "");
+        storeSPData("password", "");
+        storeSPData("dob", "");
+        storeSPData("gender", "");
+        storeSPData("residingin", "");
+        storeSPData("hometown", "");
+        storeSPData("languagesspoken", "");
+        storeSPData("category", "");
+        storeSPData("bodyType", "");
+        storeSPData("hairColor", "");
+        storeSPData("hairLength", "");
+        storeSPData("eyeColor", "");
+        storeSPData("skinTone", "");
+        storeSPData("facialHair", "");
+        storeSPData("height", "");
+        storeSPData("weight", "");
+        storeSPData("hipsize", "");
+        storeSPData("chestSize", "");
+        storeSPData("waistSize", "");
+        storeSPData("phonenumber", "");
+        storeSPData("name", "");
+        storeSPData("facebookJSON", "");
+        storeSPData("googleJSON", "");
+        storeSPData("twitterJSON", "");
     }
 
 

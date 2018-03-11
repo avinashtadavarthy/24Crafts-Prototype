@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -57,9 +56,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Login2 extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener{
+public class Login2 extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
 
-    LinearLayout facebook, google, instagram;
+    LinearLayout facebook, google;
     LinearLayout sign_up_button, login_button;
 
     ImageView signup_iconz, login_iconz;
@@ -114,7 +113,6 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         if(!getSPData("uname").equals("") && !getSPData("pword").equals("")) {
 
             progressbar = new ProgressDialog(Login2.this);
-
             progressbar.setCancelable(false);
 
             loginUser();
@@ -125,14 +123,13 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(openinggif);
         Glide.with(this).load(R.raw.samplevideo).into(imageViewTarget);
 
-         splashlogo = (ImageView) findViewById(R.id.splashlogo);
+        splashlogo = (ImageView) findViewById(R.id.splashlogo);
         if (android.os.Build.VERSION.SDK_INT >= 21) splashlogo.setElevation(10);
 
         bundle = new Bundle();
 
         facebook = (LinearLayout) findViewById(R.id.fb_login_button);
         google = (LinearLayout) findViewById(R.id.gl_login_button);
-        instagram = (LinearLayout) findViewById(R.id.instagram_login_button);
 
         otherlogins = (TextView) findViewById(R.id.otherlogins);
         sign_up_button = (LinearLayout) findViewById(R.id.sign_up_button);
@@ -147,16 +144,15 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
             login_iconz.setElevation(6);
             facebook.setElevation(5);
             google.setElevation(5);
-            instagram.setElevation(5);
         }
 
         sign_up_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                storeSPData("phone_verified", "false");
                 storeSPData("facebook_verified", "false");
                 storeSPData("google_verified", "false");
-                storeSPData("instagram_verified", "false");
                 storeSPData("twitter_verified", "false");
 
                bundle.putString("firstname", "null");
@@ -174,6 +170,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                clearSharedPrefs();
                 Intent nextpage = new Intent(getApplicationContext(),Login.class);
                 startActivity(nextpage);
             }
@@ -270,16 +267,6 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         signIn = (Button) findViewById(R.id.bn_login);
         signIn.setOnClickListener(this);
 
-
-        //instagram signin integration
-        login_for_instagram = (Button) findViewById(R.id.login_for_instagram);
-        login_for_instagram.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login_for_instagram.setBackgroundResource(R.drawable.round_card_insta);
-            }
-        });
-
     }
 
 
@@ -341,6 +328,20 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
                 imgurl = "null";
             }
 
+                JSONObject google = new JSONObject();
+                try {
+                    google.put("firstname", firstname);
+                    google.put("lastname", lastname);
+                    google.put("email", email);
+                    google.put("imgurl", imgurl);
+
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+                storeSPData("googleJSON", google.toString());
+
             if(firstname.contains(" "))
                 firstname = firstname.substring(0, firstname.indexOf(" "));
 
@@ -368,8 +369,6 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
     public void fbLogin(View view) {
 
-        facebook.setBackgroundResource(R.drawable.round_card_fb);
-
         if(AccessToken.getCurrentAccessToken()!=null) {
             LoginManager.getInstance().logOut();
             LoginManager.getInstance().logInWithReadPermissions(
@@ -389,12 +388,16 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        //google
         if(requestCode == REQ_CODE && resultCode == Activity.RESULT_OK) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleResult(result);
         }
 
+        //facebook
         callbackManager.onActivityResult(requestCode, resultCode, data);
+
+        //twitter
 
     }
 
@@ -457,6 +460,9 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
                         jwtToken = jsonObject.optString("token");
                         subscribed = jsonObject.optString("subscribed");
+
+                    storeSPData("jwtToken", jwtToken);
+                    storeSPData("subscribed", subscribed);
 
                         //to get the user data
                         String newurl = User.getInstance().BASE_URL + "user";
@@ -562,7 +568,38 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         String data = mUserData.getString(key, "");
 
         return data;
+    }
 
+    private void clearSharedPrefs() {
+        storeSPData("isClient", "");
+        storeSPData("firstname", "");
+        storeSPData("lastname", "");
+        storeSPData("email", "");
+        storeSPData("password", "");
+        storeSPData("dob", "");
+        storeSPData("gender", "");
+        storeSPData("category", "");
+        storeSPData("residingin", "");
+        storeSPData("hometown", "");
+        storeSPData("languagesspoken", "");
+        storeSPData("bodyType", "");
+        storeSPData("hairColor", "");
+        storeSPData("hairLength", "");
+        storeSPData("eyeColor", "");
+        storeSPData("skinTone", "");
+        storeSPData("facialHair", "");
+        storeSPData("height", "");
+        storeSPData("weight", "");
+        storeSPData("hipsize", "");
+        storeSPData("chestSize", "");
+        storeSPData("waistSize", "");
+        storeSPData("phonenumber", "");
+        storeSPData("name", "");
+        storeSPData("phone_verified", "false");
+        storeSPData("facebook_verified", "false");
+        storeSPData("google_verified", "false");
+        storeSPData("twitter_verified", "false");
+        storeSPData("allTheUserData", "");
     }
 
 }
