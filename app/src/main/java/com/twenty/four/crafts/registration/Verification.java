@@ -48,6 +48,14 @@ import com.twenty.four.crafts.ProfileView;
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.User;
 import com.twenty.four.crafts.app_startup.Login2;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterApiClient;
+import com.twitter.sdk.android.core.TwitterCore;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterAuthClient;
+import com.twitter.sdk.android.core.services.AccountService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -57,14 +65,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
 
 public class Verification extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
-    ImageView fb,twitter,phone,googleim;
+    ImageView fb,twitterim,phone,googleim;
     TextView fb_text,google_text,twitter_text,phone_text;
     Button verification_done, verification_skip;
 
-    LinearLayout phone_layout, fb_layout, google_layout, insta_layout, twitter_layout;
+    LinearLayout phone_layout, fb_layout, google_layout, twitter_layout;
 
     String fromhere = "Hello";
     String fromwhom = "hey";
@@ -83,6 +92,7 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
 
 
     //twitter login integration
+    TwitterAuthClient client;
     LinearLayout twitter_layout_verified;
     Boolean twit_open = false;
     CircleImageView twit_dp;
@@ -130,7 +140,7 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
         }
 
         fb = (ImageView)findViewById(R.id.fb);
-        twitter = (ImageView) findViewById(R.id.twitter);
+        twitterim = (ImageView) findViewById(R.id.twitter);
         phone = (ImageView) findViewById(R.id.phone);
         googleim = (ImageView) findViewById(R.id.google);
 
@@ -153,7 +163,7 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
         }
 
         if(getSPData("twitter_verified").equals("true")) {
-            twitter.setImageResource(R.drawable.twitter);
+            twitterim.setImageResource(R.drawable.twitter);
             twitter_text.setTextColor(Color.parseColor("#ff99cc00"));
             twitter_text.setText("Verified!");
         }
@@ -316,7 +326,65 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
 
                 } else {
 
-                    Toast.makeText(Verification.this, "Perform twitter login to connect account", Toast.LENGTH_SHORT).show();
+                    client = new TwitterAuthClient();
+                    client.authorize(Verification.this, new Callback<TwitterSession>() {
+                        @Override
+                        public void success(Result<TwitterSession> result) {
+                            TwitterApiClient twitterApiClient = TwitterCore.getInstance().getApiClient();
+                            AccountService accountService = twitterApiClient.getAccountService();
+                            Call<com.twitter.sdk.android.core.models.User> call = accountService.verifyCredentials(true, true, true);
+                            call.enqueue(new Callback<com.twitter.sdk.android.core.models.User>() {
+                                @Override
+                                public void success(Result<com.twitter.sdk.android.core.models.User> result) {
+                                    String fullname = result.data.name;
+
+                                    storeSPData("twitter_verified", "true");
+
+                                    firstname = fullname.substring(0, fullname.lastIndexOf(" "));
+                                    lastname = fullname.substring(fullname.lastIndexOf(" ")+1);
+                                    email = result.data.email;
+                                    imgurl = result.data.profileImageUrl.replace("_normal", "_400x400");
+
+                                    JSONObject twitter = new JSONObject();
+                                    try {
+                                        twitter.put("firstname", firstname);
+                                        twitter.put("lastname", lastname);
+                                        twitter.put("email", email);
+                                        twitter.put("imgurl", imgurl);
+
+                                    } catch (JSONException e) {
+                                        // TODO Auto-generated catch block
+                                        e.printStackTrace();
+                                    }
+
+                                    storeSPData("twitterJSON", twitter.toString());
+
+                                    twitter_layout_verified.setVisibility(View.VISIBLE);
+                                    twitterim.setImageResource(R.drawable.googleg_standard_color_18);
+                                    twitter_text.setTextColor(Color.parseColor("#ff99cc00"));
+                                    twitter_text.setText("Verified!");
+
+                                    updateStatusOfSocialLogin();
+
+                                    Toast.makeText(Verification.this, "Successfully connected your account to Twitter!", Toast.LENGTH_SHORT).show();
+
+                                }
+
+                                @Override
+                                public void failure(TwitterException exception) {
+
+                                    Toast.makeText(Verification.this, "Login Unsuccessful", Toast.LENGTH_SHORT).show();
+                                    exception.printStackTrace();
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void failure(TwitterException e) {
+                            Toast.makeText(Verification.this, "Login Unsuccessful", Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                        }
+                    });
 
                 }
 
@@ -434,12 +502,17 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        //google
         if(requestCode == REQ_CODE && resultCode == Activity.RESULT_OK) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleResult(result);
         }
 
+        //facebook
         callbackManager.onActivityResult(requestCode, resultCode, data);
+
+        //twitter
+        client.onActivityResult(requestCode, resultCode, data);
 
     }
 
@@ -486,8 +559,21 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
 
             }
 
-            if(jsonObject.optString("twitter").equals("")) storeSPData("twitter_verified", "false");
-            else storeSPData("twitter_verified", "true");
+            if(jsonObject.optString("twitter").equals("")) {
+                storeSPData("twitter_verified", "false");
+                twitter_layout_verified.setVisibility(View.GONE);
+            }
+            else {
+                storeSPData("twitter_verified", "true");
+                storeSPData("twitterJSON", jsonObject.optString("twitter"));
+                twitter_layout_verified.setVisibility(View.VISIBLE);
+
+                JSONObject twitter = new JSONObject(jsonObject.optString("twitter"));
+
+                twit_uname.setText(twitter.optString("firstname") + " " + twitter.optString("lastname"));
+                Picasso.with(getApplicationContext()).load(twitter.optString("imgurl")).into(twit_dp);
+
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();

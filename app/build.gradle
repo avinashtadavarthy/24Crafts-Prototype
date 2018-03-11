@@ -51,6 +51,10 @@ dependencies {
     //google
     compile 'com.google.android.gms:play-services-auth:11.8.0'
 
+    // Includes all the Twitter APIs
+    compile 'com.twitter.sdk.android:twitter:3.1.1'
+    compile 'com.twitter.sdk.android:twitter-core:3.1.1'
+
     //other libraries
     compile('com.weiwangcn.betterspinner:library-material:1.1.0') {
         exclude group: 'com.android.support', module: 'appcompat-v7'

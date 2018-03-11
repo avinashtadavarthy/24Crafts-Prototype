@@ -75,7 +75,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="Body Type"
-                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
                 android:textSize="16dp"
                   >
 
@@ -103,7 +103,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="Hair Color"
-                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
                 android:textSize="16dp"
                   >
 
@@ -133,7 +133,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="Hair Length"
-                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
                 android:textSize="16dp"
                   >
 
@@ -162,7 +162,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="Eye Color"
-                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
                 android:textSize="16dp"
                   >
 
@@ -191,7 +191,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="Skin Tone"
-                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
                 android:textSize="16dp"
                   >
 
@@ -246,7 +246,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="Facial Hair"
-                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
                 android:textSize="16dp"
                   >
 
@@ -274,7 +274,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="Height (cm)"
-                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
                 android:textSize="16dp">
 
                 <EditText
@@ -302,7 +302,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="Weight (kg)"
-                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
                 android:textSize="16dp"
                   >
 
@@ -331,7 +331,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="Hip Size (in)"
-                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
                 android:textSize="16dp"
                   >
 
@@ -359,7 +359,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="Chest Size (in)"
-                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
                 android:textSize="16dp"
                   >
 
@@ -387,7 +387,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:hint="Waist Size (in)"
-                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
                 android:textSize="16dp"
                   >
 

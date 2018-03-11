@@ -91,7 +91,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:hint="First Name"
-            android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
             android:textSize="16dp"
              
             >
@@ -120,7 +120,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:hint="Last Name"
-            android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
             android:textSize="16dp"
              >
 
@@ -148,7 +148,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:hint="Email"
-            android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
             android:textSize="16dp"
              >
 
@@ -179,7 +179,7 @@
             android:textSize="16dp"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
              >
 
             <EditText
@@ -207,7 +207,7 @@
             android:layout_marginRight="16dp"
             android:hint="Confirm Password"
             android:inputType="textPassword"
-            android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
             android:textSize="16dp"
              >
 
@@ -243,7 +243,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:hint="Select Gender"
-                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
                 android:textSize="16dp"
                  >
 
@@ -270,7 +270,7 @@
                 android:gravity="center"
                 android:layout_marginLeft="16dp"
                 android:hint="Click to set DOB"
-                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
                 android:textSize="16dp"
                  >
 
@@ -299,7 +299,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:hint="Select Place of Residence"
-            android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
             android:textSize="16dp"
              >
 
@@ -327,7 +327,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:hint="Select Native Place (Hometown)"
-            android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
             android:textSize="16dp"
              >
 
@@ -356,7 +356,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:hint="Select Languages Spoken"
-            android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
             android:textSize="16dp"
              >
 
@@ -384,7 +384,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="60dp"
             android:hint="Who am I?"
-            android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
             android:textSize="16dp"
              >
 

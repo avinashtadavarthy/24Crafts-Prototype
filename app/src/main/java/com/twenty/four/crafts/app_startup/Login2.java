@@ -48,6 +48,18 @@ import com.twenty.four.crafts.MySingleton;
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.User;
 import com.twenty.four.crafts.registration.StartingScreen;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.Twitter;
+import com.twitter.sdk.android.core.TwitterApiClient;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterAuthToken;
+import com.twitter.sdk.android.core.TwitterCore;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterAuthClient;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+import com.twitter.sdk.android.core.services.AccountService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -55,6 +67,8 @@ import org.json.JSONObject;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+import retrofit2.Call;
 
 public class Login2 extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
 
@@ -78,6 +92,10 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
     GoogleApiClient googleApiClient;
     GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
     private static final int REQ_CODE = 9001;
+
+    //twitter login integration
+    TwitterAuthClient client;
+    Button twitter;
 
     //instagram login integration
     public static final String CLIENT_ID = "1669cbcf37994f0fb1c1b4ee97ed54e6";
@@ -106,6 +124,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         super.onCreate(savedInstanceState);
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
         /* */ FacebookSdk.sdkInitialize(getApplicationContext()); /* */
+        /* */           Twitter.initialize(this);          /* */
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
         setContentView(R.layout.activity_login2);
 
@@ -178,9 +197,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
         //facebook signin integration
         callbackManager = CallbackManager.Factory.create();
-        LoginManager.getInstance().registerCallback(
-                callbackManager,
-                new FacebookCallback < LoginResult > () {
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback < LoginResult > () {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
 
@@ -266,6 +283,79 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
         signIn = (Button) findViewById(R.id.bn_login);
         signIn.setOnClickListener(this);
+
+
+        //twitter signin integration
+        client = new TwitterAuthClient();
+        twitter = findViewById(R.id.twitter);
+        twitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                client.authorize(Login2.this, new Callback<TwitterSession>() {
+                    @Override
+                    public void success(Result<TwitterSession> result) {
+                        TwitterApiClient twitterApiClient = TwitterCore.getInstance().getApiClient();
+                        AccountService accountService = twitterApiClient.getAccountService();
+                        Call<com.twitter.sdk.android.core.models.User> call = accountService.verifyCredentials(true, true, true);
+                        call.enqueue(new Callback<com.twitter.sdk.android.core.models.User>() {
+                            @Override
+                            public void success(Result<com.twitter.sdk.android.core.models.User> result) {
+                                String fullname = result.data.name;
+
+                                storeSPData("twitter_verified", "true");
+
+                                firstname = fullname.substring(0, fullname.lastIndexOf(" "));
+                                lastname = fullname.substring(fullname.lastIndexOf(" ")+1);
+                                email = result.data.email;
+                                imgurl = result.data.profileImageUrl.replace("_normal", "_400x400");
+
+                                JSONObject twitter = new JSONObject();
+                                try {
+                                    twitter.put("firstname", firstname);
+                                    twitter.put("lastname", lastname);
+                                    twitter.put("email", email);
+                                    twitter.put("imgurl", imgurl);
+
+                                } catch (JSONException e) {
+                                    // TODO Auto-generated catch block
+                                    e.printStackTrace();
+                                }
+
+                                storeSPData("twitterJSON", twitter.toString());
+
+
+                                bundle.putString("firstname", firstname);
+                                bundle.putString("lastname", lastname);
+                                bundle.putString("email", email);
+                                bundle.putString("gender", " ");
+                                bundle.putString("imgurl", imgurl);
+
+                                Toast.makeText(Login2.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
+                                Intent i = new Intent(Login2.this, StartingScreen.class);
+                                i.putExtras(bundle);
+                                startActivity(i);
+                            }
+
+                            @Override
+                            public void failure(TwitterException exception) {
+
+                                Toast.makeText(Login2.this, "Login Unsuccessful", Toast.LENGTH_SHORT).show();
+                                exception.printStackTrace();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void failure(TwitterException e) {
+                        Toast.makeText(Login2.this, "Login Unsuccessful", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
+                });
+            }
+        });
+
+
 
     }
 
@@ -384,6 +474,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -398,6 +489,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         callbackManager.onActivityResult(requestCode, resultCode, data);
 
         //twitter
+        client.onActivityResult(requestCode, resultCode, data);
 
     }
 

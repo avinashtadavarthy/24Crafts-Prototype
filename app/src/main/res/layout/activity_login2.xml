@@ -144,7 +144,6 @@
 
         </LinearLayout>
 
-
        <!-- <LinearLayout
             android:id="@+id/instagram_login_button"
             android:layout_width="wrap_content"
