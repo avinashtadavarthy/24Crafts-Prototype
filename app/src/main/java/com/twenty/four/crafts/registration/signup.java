@@ -1210,15 +1210,15 @@ public class signup extends AppCompatActivity implements IPickResult {
                         case "Petsupplier": selectedcraft = "Pet Supplier / Pet Doctor / AWBI Certifications"; break;
 
                         //client
-                        case "Castingagent": selectedcraft = "Casting Agent";
-                        case "Codirector": selectedcraft = "Co-Director";
-                        case "Coproducer": selectedcraft = "Co-Producer";
-                        case "Director": selectedcraft = "Director";
-                        case "Directorassistant": selectedcraft = "Director Assistant";
-                        case "Executiveproducer": selectedcraft = "Executive Producer";
-                        case "Modelcoordinator": selectedcraft = "Model Coordinator";
-                        case "Producer": selectedcraft = "Producer";
-                        case "Productionhousemanager": selectedcraft = "Production House Manager";
+                        case "Castingagent": selectedcraft = "Casting Agent"; break;
+                        case "Codirector": selectedcraft = "Co-Director"; break;
+                        case "Coproducer": selectedcraft = "Co-Producer"; break;
+                        case "Director": selectedcraft = "Director"; break;
+                        case "Directorassistant": selectedcraft = "Director Assistant"; break;
+                        case "Executiveproducer": selectedcraft = "Executive Producer"; break;
+                        case "Modelcoordinator": selectedcraft = "Model Coordinator"; break;
+                        case "Producer": selectedcraft = "Producer"; break;
+                        case "Productionhousemanager": selectedcraft = "Production House Manager"; break;
                     }
 
                     whoami1.setText(selectedcraft);
