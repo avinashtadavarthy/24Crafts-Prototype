@@ -31,7 +31,7 @@ public class Contacts extends AppCompatActivity  {
         final List<ContactsHelper> obj_list = new ArrayList<>();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://24crafts.cf")//base url is what does not change for any query from app side
+                .baseUrl("http://24crafts.cf:3001")//base url is what does not change for any query from app side
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         Retrofitextract r = retrofit.create(Retrofitextract.class);
@@ -41,7 +41,6 @@ public class Contacts extends AppCompatActivity  {
         call.enqueue(new Callback<List<ContactsHelper>>() {
             @Override
             public void onResponse(Call<List<ContactsHelper>> call, Response<List<ContactsHelper>> response) {
-
 
                 obj_list.addAll(response.body());
                 Log.i("Resp : ", String.valueOf(response.body().size()));
