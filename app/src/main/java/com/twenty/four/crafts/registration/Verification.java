@@ -340,9 +340,16 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
 
                                     storeSPData("twitter_verified", "true");
 
-                                    firstname = fullname.substring(0, fullname.lastIndexOf(" "));
-                                    lastname = fullname.substring(fullname.lastIndexOf(" ")+1);
-                                    email = result.data.email;
+                                    if(!fullname.contains(" ")) {
+                                        firstname = fullname;
+                                        lastname = "null";
+                                    }
+                                    else {
+                                        firstname = fullname.substring(0, fullname.lastIndexOf(" "));
+                                        lastname = fullname.substring(fullname.lastIndexOf(" ")+1);
+                                    }
+                                    if(result.data.email.equals("")) email = result.data.email;
+                                    else email = "null";
                                     imgurl = result.data.profileImageUrl.replace("_normal", "_400x400");
 
                                     JSONObject twitter = new JSONObject();
