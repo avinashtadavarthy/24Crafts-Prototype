@@ -8,8 +8,19 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.twenty.four.crafts.registration.Verification;
+import com.twenty.four.crafts.registration.signup3;
+
+import org.json.JSONException;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,20 +33,27 @@ public class Contacts extends AppCompatActivity  {
     LinearLayoutManager manager;
     ContactsAdapter adapter;
 
+    String occupation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
+
         Intent intent = getIntent();
-        final String occupation = intent.getExtras().getString("craft");//populate according to craft
-        final List<ContactsHelper> obj_list = new ArrayList<>();
+
+        occupation = intent.getExtras().getString("craft");//populate according to craft
+
+        /*final List<ContactsHelper> obj_list = new ArrayList<>();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://24crafts.cf:3001")//base url is what does not change for any query from app side
+                .baseUrl("http://24crafts.cf:3001/")//base url is what does not change for any query from app side
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
         Retrofitextract r = retrofit.create(Retrofitextract.class);
-        Log.i("Failure",occupation);
+
+        Log.i("Failure", occupation);
         Call<List<ContactsHelper>> call= r.getLongUrl(occupation);
         adapter=new ContactsAdapter(this,obj_list);
         call.enqueue(new Callback<List<ContactsHelper>>() {
@@ -54,20 +72,46 @@ public class Contacts extends AppCompatActivity  {
             }
         });
 
+*/
 
 
 
-
-        TextView head = (TextView) findViewById(R.id.heading);
-        head.setText(occupation);
-        recycler = (RecyclerView)findViewById(R.id.rv3);
-        manager=new LinearLayoutManager(getApplicationContext());
-        recycler.setLayoutManager(manager);
-        recycler.setAdapter(adapter);
-
-        adapter.notifyDataSetChanged();
+        //to get the data
+        populateArray();
+    }
 
 
+
+    void populateArray() {
+        String newurl = "http://24crafts.cf:3001/" + occupation;
+
+        StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                adapter = new ContactsAdapter(Contacts.this, response);
+
+                TextView head = (TextView) findViewById(R.id.heading);
+                head.setText(occupation);
+
+                recycler = (RecyclerView)findViewById(R.id.rv3);
+                manager = new LinearLayoutManager(getApplicationContext());
+                recycler.setLayoutManager(manager);
+                recycler.setAdapter(adapter);
+
+                adapter.notifyDataSetChanged();
+
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(getRequest);
+
+        //to get the data
     }
 
 

@@ -60,6 +60,7 @@ public class DirectoryGridAdapter extends BaseAdapter{
 
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
+
         Holder holder=new Holder();
         View rowView;
 
@@ -93,7 +94,7 @@ public class DirectoryGridAdapter extends BaseAdapter{
 
     public void fireIntent(int i)
     {
-        Intent intent = new Intent(context,Contacts.class);
+        Intent intent = new Intent(context, Contacts.class);
 
         Log.i("hi",classobj.get(i).getUrl_param());
         intent.putExtra("craft",classobj.get(i).getUrl_param());

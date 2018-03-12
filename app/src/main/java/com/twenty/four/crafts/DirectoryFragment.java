@@ -35,6 +35,7 @@ public class DirectoryFragment extends android.support.v4.app.Fragment {
     CustomPagerAdapter mCustomPagerAdapter;
     ViewPager mViewPager;
     ArrayList<IconsClass> class_obj=new ArrayList<>();
+
     String[] desc = {"Ad and Corporate Filmmakers","Advertising and Marketing","Agency","Art Directors","Audigraphers","Auditorium","Dance","Directors",
             "Cine Banners","Cine Designers","Cinema Laboratories","Cinematographers", "Classical Singers","Colour Lab","Costumers","Dialogue Writers",
             "Dubbing and Recording Studios","Dubbing Artist","Editing Studio-Editing Suite","Event Managers","Exhibitors Associations","Film Directors","Film Distributors","Film Editors",
@@ -169,7 +170,7 @@ public class DirectoryFragment extends android.support.v4.app.Fragment {
         class_obj.add(new IconsClass(R.drawable.videopostproduction,"Video Post Production","videopostproduction"));
 
         gv1.setNumColumns(3);
-        gv1.setAdapter(new DirectoryGridAdapter(getActivity().getApplicationContext(),class_obj));
+        gv1.setAdapter(new DirectoryGridAdapter(getActivity().getApplicationContext(), class_obj));
 
 
         gv1.setNestedScrollingEnabled(false);

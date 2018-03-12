@@ -7,6 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 /**
@@ -16,13 +20,13 @@ import java.util.List;
 public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.DirectoryViewHolder>{
 
     Context context;
-    List<ContactsHelper> object;
+    String data;
     int no;
 
-    ContactsAdapter(Context c, List<ContactsHelper> obj)
+    ContactsAdapter(Context c, String data)
     {
         this.context = c;
-       object=obj;
+        this.data = data;
     }
 
 
@@ -38,41 +42,44 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Direct
     @Override
     public void onBindViewHolder(DirectoryViewHolder holder, int position) {
 
-        if(!(object.get(position).getNAME().equals("")))
-        holder.name1.setText(object.get(position).getNAME());
-        else
-            holder.name1.setVisibility(View.GONE);
+        try {
+            JSONArray jsonArray = new JSONArray(data);
+
+            JSONObject jsonObject = jsonArray.getJSONObject(position);
+
+            if(jsonObject.optString("NAME").equals("")) holder.name1.setVisibility(View.GONE);
+            else holder.name1.setText(jsonObject.optString("NAME"));
+            if(jsonObject.optString("PHONE").equals("")) holder.phone1.setVisibility(View.GONE);
+            else holder.phone1.setText(jsonObject.optString("PHONE"));
+            if(jsonObject.optString("EMAIL").equals("")) holder.email1.setVisibility(View.GONE);
+            else holder.email1.setText(jsonObject.optString("EMAIL"));
+            if(jsonObject.optString("WEBSITE").equals("")) holder.website1.setVisibility(View.GONE);
+            else holder.website1.setText(jsonObject.optString("WEBSITE"));
+            if(jsonObject.optString("ADDRESS").equals("")) holder.address1.setVisibility(View.GONE);
+            else holder.address1.setText(jsonObject.optString("ADDRESS"));
 
 
-        if(!(object.get(position).getPHONE().equals("")))
-        holder.phone1.setText(object.get(position).getPHONE());
-        else
-            holder.phone1.setVisibility(View.GONE);
 
-
-        if(!(object.get(position).getEMAIL().equals("")))
-        holder.email1.setText(object.get(position).getEMAIL());
-        else
-            holder.email1.setVisibility(View.GONE);
-
-
-        if(!(object.get(position).getWEBSITE().equals("")))
-        holder.website1.setText(object.get(position).getWEBSITE());
-        else
-            holder.website1.setVisibility(View.GONE);
-
-
-        if(!(object.get(position).getADDRESS().equals("")))
-        holder.address1.setText(object.get(position).getADDRESS());
-        else
-            holder.address1.setVisibility(View.GONE);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
 
     @Override
     public int getItemCount() {
-        return object.size();
+
+        JSONArray jsonArray = null;
+        try {
+
+            jsonArray = new JSONArray(data);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return jsonArray.length();
     }
 
     public class DirectoryViewHolder extends RecyclerView.ViewHolder{
