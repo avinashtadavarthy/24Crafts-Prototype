@@ -63,6 +63,9 @@ dependencies {
     //Tap Target View
     compile 'com.getkeepsafe.taptargetview:taptargetview:1.11.0'
 
+    //On Boarding Pages
+    compile 'com.ramotion.paperonboarding:paper-onboarding:1.1.1'
+
     //crop images
     compile 'com.steelkiwi:cropiwa:1.0.3'
 
@@ -154,6 +157,7 @@ dependencies {
     //All Twitter APIs
     compile 'com.twitter.sdk.android:twitter:3.1.1'
 }
+
 
 
 

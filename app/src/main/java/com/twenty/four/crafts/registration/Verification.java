@@ -411,10 +411,15 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
             @Override
             public void onClick(View v) {
 
-                Intent next = new Intent(getApplicationContext(), ProfileView.class)
+                Intent next = new Intent(getApplicationContext(), OnBoardingPage.class)
                         .putExtra("thisistogetback", "getback")
                         .putExtra("fromwhom", fromwhom);
                 startActivity(next);
+
+               /* Intent next = new Intent(getApplicationContext(), ProfileView.class)
+                        .putExtra("thisistogetback", "getback")
+                        .putExtra("fromwhom", fromwhom);
+                startActivity(next);*/
 
             }
         });

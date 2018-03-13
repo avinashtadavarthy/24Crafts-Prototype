@@ -25,7 +25,6 @@
 
     <uses-permission android:name="com.twenty.four.crafts.permission.C2D_MESSAGE" />
 
-
     <application
         android:name=".GarlandApp"
         android:allowBackup="true"
@@ -56,13 +55,18 @@
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="oauth" android:host="t4jsample"/>
+
+                <data
+                    android:host="t4jsample"
+                    android:scheme="oauth" />
             </intent-filter>
         </activity>
         <activity
@@ -330,7 +334,8 @@
         <activity android:name=".PushNotifMain" />
         <activity android:name=".ClientVerification1Activity" />
         <activity android:name=".ClientVerification2Activity" />
-        <activity android:name=".ClientVerification3Activity"></activity>
+        <activity android:name=".ClientVerification3Activity" />
+        <activity android:name=".registration.OnBoardingPage"></activity>
     </application>
 
 </manifest>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:elevation="8sp"
+<LinearLayout android:elevation="8sp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="15sp">
+    android:layout_margin="15sp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
         android:layout_width="60dp"
@@ -14,10 +14,10 @@
         android:id="@+id/imgview"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="#ffffff"
+        android:fontFamily="sans-serif-condensed"
         android:id="@+id/txtview"/>
 
 </LinearLayout>

@@ -20,10 +20,10 @@ import java.util.List;
 public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.DirectoryViewHolder>{
 
     Context context;
-    String data;
+    JSONArray data;
     int no;
 
-    ContactsAdapter(Context c, String data)
+    ContactsAdapter(Context c, JSONArray data)
     {
         this.context = c;
         this.data = data;
@@ -43,9 +43,8 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Direct
     public void onBindViewHolder(DirectoryViewHolder holder, int position) {
 
         try {
-            JSONArray jsonArray = new JSONArray(data);
 
-            JSONObject jsonObject = jsonArray.getJSONObject(position);
+            JSONObject jsonObject = data.getJSONObject(position);
 
             if(jsonObject.optString("NAME").equals("")) holder.name1.setVisibility(View.GONE);
             else holder.name1.setText(jsonObject.optString("NAME"));
@@ -70,16 +69,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Direct
     @Override
     public int getItemCount() {
 
-        JSONArray jsonArray = null;
-        try {
-
-            jsonArray = new JSONArray(data);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return jsonArray.length();
+        return data.length();
     }
 
     public class DirectoryViewHolder extends RecyclerView.ViewHolder{

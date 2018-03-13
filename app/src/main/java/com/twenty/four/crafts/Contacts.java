@@ -11,10 +11,12 @@ import android.widget.TextView;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.twenty.four.crafts.registration.Verification;
 import com.twenty.four.crafts.registration.signup3;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
@@ -85,9 +87,9 @@ public class Contacts extends AppCompatActivity  {
     void populateArray() {
         String newurl = "http://24crafts.cf:3001/" + occupation;
 
-        StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new com.android.volley.Response.Listener<String>() {
+        JsonArrayRequest getRequest = new JsonArrayRequest(Request.Method.GET, newurl, null, new com.android.volley.Response.Listener<JSONArray>() {
             @Override
-            public void onResponse(String response) {
+            public void onResponse(JSONArray response) {
 
                 adapter = new ContactsAdapter(Contacts.this, response);
 
@@ -111,7 +113,6 @@ public class Contacts extends AppCompatActivity  {
 
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(getRequest);
 
-        //to get the data
     }
 
 
