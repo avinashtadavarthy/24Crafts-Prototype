@@ -2095,7 +2095,6 @@ public class signup3 extends AppCompatActivity {
         storeSPData("chestSize", "");
         storeSPData("waistSize", "");
         storeSPData("phonenumber", "");
-        storeSPData("name", "");
         storeSPData("facebookJSON", "");
         storeSPData("googleJSON", "");
         storeSPData("twitterJSON", "");

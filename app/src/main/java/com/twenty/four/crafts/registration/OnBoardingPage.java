@@ -1,6 +1,7 @@
 package com.twenty.four.crafts.registration;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -38,11 +39,15 @@ public class OnBoardingPage extends AppCompatActivity {
         PaperOnboardingPage scr3 = new PaperOnboardingPage("Stores",
                 "All local stores are categorized for your convenience",
                 Color.parseColor("#9B90BC"), R.drawable.com_facebook_button_icon_white, R.drawable.ic_check_white_48dp);
+        PaperOnboardingPage scr4 = new PaperOnboardingPage("Welcome to 24crafts",
+                "Hello, " + getSPData("name") + "\n Get ready to open your door to stardom!",
+                Color.parseColor("#808080"), R.drawable.classicalsingers, R.drawable.ic_warning_outline_white);
 
         ArrayList<PaperOnboardingPage> elements = new ArrayList<>();
         elements.add(scr1);
         elements.add(scr2);
         elements.add(scr3);
+        elements.add(scr4);
 
         PaperOnboardingFragment onBoardingFragment = PaperOnboardingFragment.newInstance(elements);
 
@@ -63,4 +68,27 @@ public class OnBoardingPage extends AppCompatActivity {
         });
 
     }
+
+
+
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
+
+    }
+
 }
