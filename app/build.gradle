@@ -79,6 +79,9 @@ dependencies {
     // dexter M permissions for crop
     compile 'com.karumi:dexter:4.1.0'
 
+    //simple animations
+    compile 'com.andkulikov:transitionseverywhere:1.7.9'
+
     compile 'com.github.jrvansuita:PickImage:+'
     compile 'com.android.support:recyclerview-v7:26.+'
     compile 'com.android.support:preference-v14:26.+'

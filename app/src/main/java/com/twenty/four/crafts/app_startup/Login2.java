@@ -46,6 +46,7 @@ import com.twenty.four.crafts.Main2Activity;
 import com.twenty.four.crafts.Main3Activity;
 import com.twenty.four.crafts.MySingleton;
 import com.twenty.four.crafts.R;
+import com.twenty.four.crafts.SharedPref;
 import com.twenty.four.crafts.User;
 import com.twenty.four.crafts.registration.StartingScreen;
 import com.twitter.sdk.android.core.Callback;
@@ -79,6 +80,8 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
     TextView otherlogins;
 
     Bundle bundle;
+
+    SharedPref sharedPref;
 
     //fb login integration
     CallbackManager callbackManager;
@@ -127,6 +130,8 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         /* */           Twitter.initialize(this);          /* */
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
         setContentView(R.layout.activity_login2);
+
+        sharedPref = new SharedPref(getApplicationContext());
 
 
         if(!getSPData("uname").equals("") && !getSPData("pword").equals("")) {
@@ -189,7 +194,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearSharedPrefs();
+                sharedPref.clearAllSharedPrefs(getApplicationContext());
                 Intent nextpage = new Intent(getApplicationContext(),Login.class);
                 startActivity(nextpage);
             }
@@ -667,38 +672,6 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         String data = mUserData.getString(key, "");
 
         return data;
-    }
-
-    private void clearSharedPrefs() {
-        storeSPData("isClient", "");
-        storeSPData("firstname", "");
-        storeSPData("lastname", "");
-        storeSPData("email", "");
-        storeSPData("password", "");
-        storeSPData("dob", "");
-        storeSPData("gender", "");
-        storeSPData("category", "");
-        storeSPData("residingin", "");
-        storeSPData("hometown", "");
-        storeSPData("languagesspoken", "");
-        storeSPData("bodyType", "");
-        storeSPData("hairColor", "");
-        storeSPData("hairLength", "");
-        storeSPData("eyeColor", "");
-        storeSPData("skinTone", "");
-        storeSPData("facialHair", "");
-        storeSPData("height", "");
-        storeSPData("weight", "");
-        storeSPData("hipsize", "");
-        storeSPData("chestSize", "");
-        storeSPData("waistSize", "");
-        storeSPData("phonenumber", "");
-        storeSPData("name", "");
-        storeSPData("phone_verified", "false");
-        storeSPData("facebook_verified", "false");
-        storeSPData("google_verified", "false");
-        storeSPData("twitter_verified", "false");
-        storeSPData("allTheUserData", "");
     }
 
 }

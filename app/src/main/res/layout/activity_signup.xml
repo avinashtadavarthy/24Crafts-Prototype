@@ -33,7 +33,8 @@
         android:focusableInTouchMode="true"
         android:layout_alignBottom="@+id/button11"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="50dp">
 
 
     <LinearLayout
@@ -81,7 +82,6 @@
 
         </RelativeLayout>
 
-
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_firstname"
             android:layout_width="match_parent"
@@ -92,9 +92,7 @@
             android:layout_marginRight="16dp"
             android:hint="First Name"
             android:textColor="#ffffff"
-            android:textSize="16dp"
-             
-            >
+            android:textSize="16dp">
 
             <EditText
                 android:id="@+id/first_name"
@@ -122,7 +120,7 @@
             android:hint="Last Name"
             android:textColor="#ffffff"
             android:textSize="16dp"
-             >
+            >
 
             <EditText
                 android:id="@+id/last_name"
@@ -150,7 +148,7 @@
             android:hint="Email"
             android:textColor="#ffffff"
             android:textSize="16dp"
-             >
+            >
 
             <EditText
                 android:id="@+id/email"
@@ -167,7 +165,6 @@
         </android.support.design.widget.TextInputLayout>
 
 
-
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_password"
             android:layout_width="match_parent"
@@ -180,7 +177,7 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:textColor="#ffffff"
-             >
+            >
 
             <EditText
                 android:id="@+id/password"
@@ -209,7 +206,7 @@
             android:inputType="textPassword"
             android:textColor="#ffffff"
             android:textSize="16dp"
-             >
+            >
 
             <EditText
                 android:id="@+id/confirm_password"
@@ -382,14 +379,65 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="60dp"
             android:hint="Who am I?"
             android:textColor="#ffffff"
-            android:textSize="16dp"
-             >
+            android:textSize="16dp" >
 
             <EditText
                 android:id="@+id/whoami"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:layout_gravity="center"
+                android:textSize="16dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:inputType="textCapWords|textCapSentences" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_haspreviousexp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="Do you have previous experience?"
+            android:textColor="#ffffff"
+            android:textSize="16dp" >
+
+            <EditText
+                android:id="@+id/haspreviousexp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:layout_gravity="center"
+                android:textSize="16dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:inputType="textCapWords|textCapSentences" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_whatpreviousexp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="16dp"
+            android:hint="What have you had an experience in?"
+            android:textColor="#ffffff"
+            android:textSize="16dp" >
+
+            <EditText
+                android:id="@+id/whatpreviousexp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"

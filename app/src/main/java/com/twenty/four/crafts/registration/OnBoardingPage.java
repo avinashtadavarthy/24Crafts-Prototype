@@ -3,13 +3,17 @@ package com.twenty.four.crafts.registration;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.ramotion.paperonboarding.PaperOnboardingFragment;
 import com.ramotion.paperonboarding.PaperOnboardingPage;
+import com.ramotion.paperonboarding.listeners.PaperOnboardingOnChangeListener;
 import com.ramotion.paperonboarding.listeners.PaperOnboardingOnRightOutListener;
 import com.twenty.four.crafts.ProfileView;
 import com.twenty.four.crafts.R;
@@ -19,15 +23,20 @@ import java.util.ArrayList;
 
 public class OnBoardingPage extends AppCompatActivity {
 
-    String togetback, fromwhom;
+    String fromhere, fromwhom;
+
+    FloatingActionButton nextbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_boarding_page);
 
-        togetback = getIntent().getStringExtra("thisistogetback");
+        fromhere = getIntent().getStringExtra("fromhere");
         fromwhom = getIntent().getStringExtra("fromwhom");
+
+        nextbtn = (FloatingActionButton) findViewById(R.id.nextbtn);
+        nextbtn.setVisibility(View.GONE);
 
 
         PaperOnboardingPage scr1 = new PaperOnboardingPage("Hotels",
@@ -56,12 +65,30 @@ public class OnBoardingPage extends AppCompatActivity {
         fragmentTransaction.commit();
 
 
+        onBoardingFragment.setOnChangeListener(new PaperOnboardingOnChangeListener() {
+            @Override
+            public void onPageChanged(int prev, int present) {
+                if(present == 3) {
+                    nextbtn.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        nextbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent next = new Intent(OnBoardingPage.this, Verification.class)
+                        .putExtra("fromhere", fromhere)
+                        .putExtra("fromwhom", fromwhom);
+                startActivity(next);
+            }
+        });
 
         onBoardingFragment.setOnRightOutListener(new PaperOnboardingOnRightOutListener() {
             @Override
             public void onRightOut() {
-                Intent next = new Intent(OnBoardingPage.this, ProfileView.class)
-                        .putExtra("thisistogetback", togetback)
+                Intent next = new Intent(OnBoardingPage.this, Verification.class)
+                        .putExtra("fromhere", fromhere)
                         .putExtra("fromwhom", fromwhom);
                 startActivity(next);
             }

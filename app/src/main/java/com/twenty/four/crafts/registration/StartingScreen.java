@@ -5,16 +5,28 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
+import com.transitionseverywhere.ArcMotion;
+import com.transitionseverywhere.ChangeBounds;
+import com.transitionseverywhere.TransitionManager;
 import com.twenty.four.crafts.R;
+import com.twenty.four.crafts.SharedPref;
 import com.twenty.four.crafts.User;
 
 public class StartingScreen extends AppCompatActivity {
@@ -27,12 +39,17 @@ public class StartingScreen extends AppCompatActivity {
     String gender;
     String imgurl;
 
+    SharedPref sharedPref;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting_screen);
 
-        clearSelectedSharedPrefs();
+        sharedPref = new SharedPref(getApplicationContext());
+
+        sharedPref.clearSelectedSharedPrefs(getApplicationContext());
 
         craftsman_reg = (ImageView) findViewById(R.id.craftsman_reg);
         client_reg = (ImageView) findViewById(R.id.client_reg);
@@ -46,6 +63,7 @@ public class StartingScreen extends AppCompatActivity {
         imgurl = bundle1.getString("imgurl");
 
         craftsman_reg.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
@@ -96,7 +114,7 @@ public class StartingScreen extends AppCompatActivity {
                 .setMessage("Do you want to exit the registration process?")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        clearSharedPrefs();
+                        sharedPref.clearAllSharedPrefs(getApplicationContext());
                         finish();
                     }
                 })
@@ -131,79 +149,5 @@ public class StartingScreen extends AppCompatActivity {
 
         return data;
     }
-
-
-    private void clearSharedPrefs() {
-
-        //registration purpose
-        storeSPData("isClient", "");
-        storeSPData("firstname", "");
-        storeSPData("lastname", "");
-        storeSPData("email", "");
-        storeSPData("password", "");
-        storeSPData("dob", "");
-        storeSPData("gender", "");
-        storeSPData("residingin", "");
-        storeSPData("hometown", "");
-        storeSPData("languagesspoken", "");
-        storeSPData("category", "");
-        storeSPData("bodyType", "");
-        storeSPData("hairColor", "");
-        storeSPData("hairLength", "");
-        storeSPData("eyeColor", "");
-        storeSPData("skinTone", "");
-        storeSPData("facialHair", "");
-        storeSPData("height", "");
-        storeSPData("weight", "");
-        storeSPData("hipsize", "");
-        storeSPData("chestSize", "");
-        storeSPData("waistSize", "");
-        storeSPData("phonenumber", "");
-        storeSPData("name", "");
-        storeSPData("facebookJSON", "");
-        storeSPData("googleJSON", "");
-        storeSPData("twitterJSON", "");
-
-        //app purpose
-        storeSPData("phone_verified", "");
-        storeSPData("facebook_verified", "");
-        storeSPData("google_verified", "");
-        storeSPData("twitter_verified", "");
-        storeSPData("userdatamain", "");
-        storeSPData("jwtToken", "");
-        storeSPData("uname", "");
-        storeSPData("pword", "");
-    }
-
-
-    private void clearSelectedSharedPrefs() {
-
-        //registration purpose
-        storeSPData("isClient", "");
-        storeSPData("firstname", "");
-        storeSPData("lastname", "");
-        storeSPData("email", "");
-        storeSPData("password", "");
-        storeSPData("dob", "");
-        storeSPData("gender", "");
-        storeSPData("residingin", "");
-        storeSPData("hometown", "");
-        storeSPData("languagesspoken", "");
-        storeSPData("category", "");
-        storeSPData("bodyType", "");
-        storeSPData("hairColor", "");
-        storeSPData("hairLength", "");
-        storeSPData("eyeColor", "");
-        storeSPData("skinTone", "");
-        storeSPData("facialHair", "");
-        storeSPData("height", "");
-        storeSPData("weight", "");
-        storeSPData("hipsize", "");
-        storeSPData("chestSize", "");
-        storeSPData("waistSize", "");
-        storeSPData("phonenumber", "");
-        storeSPData("name", "");
-    }
-
 
 }

@@ -30,6 +30,7 @@ public class AccountInfo extends AppCompatActivity {
     String response = null;
     JSONObject object = null;
 
+    SharedPref sharedPref;
 
 
     String dialogtext, dialogbuttontext;
@@ -40,6 +41,8 @@ public class AccountInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_info);
+
+        sharedPref = new SharedPref(getApplicationContext());
 
         response = getSPData("userdatamain");
 
@@ -100,7 +103,7 @@ public class AccountInfo extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
-                                clearSharedPrefs();
+                                sharedPref.clearAllSharedPrefs(getApplicationContext());
 
                                 Intent intent = new Intent(getApplicationContext(), Login.class).putExtra("status", "logout");
                                 startActivity(intent);
@@ -232,46 +235,5 @@ public class AccountInfo extends AppCompatActivity {
 
     }
 
-    private void clearSharedPrefs() {
-
-        //registration purpose
-        storeSPData("isClient", "");
-        storeSPData("firstname", "");
-        storeSPData("lastname", "");
-        storeSPData("email", "");
-        storeSPData("password", "");
-        storeSPData("dob", "");
-        storeSPData("gender", "");
-        storeSPData("residingin", "");
-        storeSPData("hometown", "");
-        storeSPData("languagesspoken", "");
-        storeSPData("category", "");
-        storeSPData("bodyType", "");
-        storeSPData("hairColor", "");
-        storeSPData("hairLength", "");
-        storeSPData("eyeColor", "");
-        storeSPData("skinTone", "");
-        storeSPData("facialHair", "");
-        storeSPData("height", "");
-        storeSPData("weight", "");
-        storeSPData("hipsize", "");
-        storeSPData("chestSize", "");
-        storeSPData("waistSize", "");
-        storeSPData("phonenumber", "");
-        storeSPData("name", "");
-        storeSPData("facebookJSON", "");
-        storeSPData("googleJSON", "");
-        storeSPData("twitterJSON", "");
-
-        //app purpose
-        storeSPData("phone_verified", "");
-        storeSPData("facebook_verified", "");
-        storeSPData("google_verified", "");
-        storeSPData("twitter_verified", "");
-        storeSPData("userdatamain", "");
-        storeSPData("jwtToken", "");
-        storeSPData("subscribed", "");
-        storeSPData("pword", "");
-    }
 
 }

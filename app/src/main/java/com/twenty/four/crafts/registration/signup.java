@@ -173,12 +173,12 @@ public class signup extends AppCompatActivity implements IPickResult {
     String gender;
     String imgurl;
 
-    EditText first_name1, last_name1, email1, password1, confirm_password1, gender1, dob1, residingin1, nativeplace1, languagesspoken1, whoami1;
+    EditText first_name1, last_name1, email1, password1, confirm_password1, gender1, dob1, residingin1, nativeplace1, languagesspoken1, whoami1, haspreviousexp1, whatpreviousexp1;
     CircleImageView profile_image1, edit_profile_btn;
-    TextInputLayout input_firstname, input_lastname, input_email, input_password, input_confirmpassword, input_gender, input_dob, input_residingin, input_nativeplace, input_languagesspoken, input_whoami;
+    TextInputLayout input_firstname, input_lastname, input_email, input_password, input_confirmpassword, input_gender, input_dob, input_residingin, input_nativeplace, input_languagesspoken, input_whoami, input_haspreviousexp, input_whatpreviousexp;
 
     //for verification sake
-    public int vfirst_name = 0, vlast_name = 0, vemail = 0, vpassword = 0, vconfirm_password = 0, vgender = 0, vdob = 0, vresidingin = 0, vnativeplace = 0, vlanguagesspoken = 0, vwhoami = 0;
+    public int vfirst_name = 0, vlast_name = 0, vemail = 0, vpassword = 0, vconfirm_password = 0, vgender = 0, vdob = 0, vresidingin = 0, vnativeplace = 0, vlanguagesspoken = 0, vwhoami = 0, vhaspreviousexp = 0, vwhatpreviousexp = 0;
 
     //datepicker
     Calendar cal = Calendar.getInstance();
@@ -208,6 +208,8 @@ public class signup extends AppCompatActivity implements IPickResult {
         input_nativeplace = (TextInputLayout) findViewById(R.id.input_nativeplace);
         input_languagesspoken = (TextInputLayout) findViewById(R.id.input_languagesspoken);
         input_whoami = (TextInputLayout) findViewById(R.id.input_whoami);
+        input_haspreviousexp = (TextInputLayout) findViewById(R.id.input_haspreviousexp);
+        input_whatpreviousexp = (TextInputLayout) findViewById(R.id.input_whatpreviousexp); input_whatpreviousexp.setVisibility(View.GONE);
 
 
         profile_image1 = (CircleImageView) findViewById(R.id.profile_image);
@@ -224,7 +226,8 @@ public class signup extends AppCompatActivity implements IPickResult {
         nativeplace1 = (EditText) findViewById(R.id.nativeplace); nativeplace1.setShowSoftInputOnFocus(false); nativeplace1.setInputType(InputType.TYPE_NULL);
         languagesspoken1 = (EditText) findViewById(R.id.languagesspoken); languagesspoken1.setShowSoftInputOnFocus(false); languagesspoken1.setInputType(InputType.TYPE_NULL);
         whoami1 = (EditText) findViewById(R.id.whoami); whoami1.setShowSoftInputOnFocus(false); whoami1.setInputType(InputType.TYPE_NULL);
-
+        haspreviousexp1 = (EditText) findViewById(R.id.haspreviousexp); haspreviousexp1.setShowSoftInputOnFocus(false); haspreviousexp1.setInputType(InputType.TYPE_NULL);
+        whatpreviousexp1 = (EditText) findViewById(R.id.whatpreviousexp); whatpreviousexp1.setShowSoftInputOnFocus(false); whatpreviousexp1.setInputType(InputType.TYPE_NULL);
 
 
         //import image
@@ -429,8 +432,6 @@ public class signup extends AppCompatActivity implements IPickResult {
         });
 
 
-        gender1.setShowSoftInputOnFocus(false);
-        gender1.setInputType(InputType.TYPE_NULL);
 
         gender1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -736,8 +737,10 @@ public class signup extends AppCompatActivity implements IPickResult {
         whoami1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Intent intnt = new Intent(getApplicationContext(), ChooseCraftOrClient.class).putExtra("category", type);
-                startActivityForResult(intnt, CHOOSE_CATEGORY);
+                if(hasFocus) {
+                    Intent intnt = new Intent(getApplicationContext(), ChooseCraftOrClient.class).putExtra("category", type);
+                    startActivityForResult(intnt, CHOOSE_CATEGORY);
+                }
             }
         });
 
@@ -776,6 +779,267 @@ public class signup extends AppCompatActivity implements IPickResult {
 
 
 
+        haspreviousexp1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus)
+                {
+                    final CharSequence[] items = { "Yes, I do", "No, I don't" };
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup.this,R.style.AlertDialogSignup));
+                    alertDialogBuilder.setTitle("Do you have previous experience?");
+                    int position;
+                    if (haspreviousexp1.getText().toString().equals("Yes, I do")) {
+                        position = 0;
+                    } else if (haspreviousexp1.getText().toString().equals("No, I don't")) {
+                        position = 1;
+                    } else {
+                        position = -1;
+                    }
+
+                    alertDialogBuilder.setSingleChoiceItems(items, position, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ListView lw = ((AlertDialog) dialog).getListView();
+                            Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                            String selectedexp = checkedItem.toString();
+                            haspreviousexp1.setText(selectedexp);
+                            dialog.dismiss();
+                        }
+                    });
+
+                    alertDialogBuilder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            if(haspreviousexp1.getText().toString().equals("Yes, I do")) {
+                                input_whatpreviousexp.setVisibility(View.VISIBLE);
+                                whatpreviousexp1.setVisibility(View.VISIBLE);
+                            } else if(haspreviousexp1.getText().toString().equals("No, I don't")) {
+                                input_whatpreviousexp.setVisibility(View.GONE);
+                                whatpreviousexp1.setVisibility(View.GONE);
+                            }
+                        }
+                    });
+
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+
+                }
+            }
+        });
+
+        haspreviousexp1.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                final CharSequence[] items = { "Yes, I do", "No, I don't" };
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup.this,R.style.AlertDialogSignup));
+                alertDialogBuilder.setTitle("Do you have previous experience?");
+                int position;
+                if (haspreviousexp1.getText().toString().equals("Yes, I do")) {
+                    position = 0;
+                } else if (haspreviousexp1.getText().toString().equals("No, I don't")) {
+                    position = 1;
+                } else {
+                    position = -1;
+                }
+
+                alertDialogBuilder.setSingleChoiceItems(items, position, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ListView lw = ((AlertDialog) dialog).getListView();
+                        Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                        String selectedexp = checkedItem.toString();
+                        haspreviousexp1.setText(selectedexp);
+                        dialog.dismiss();
+                    }
+                });
+
+                alertDialogBuilder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        if(haspreviousexp1.getText().toString().equals("Yes, I do")) {
+                            input_whatpreviousexp.setVisibility(View.VISIBLE);
+                            whatpreviousexp1.setVisibility(View.VISIBLE);
+                        } else if(haspreviousexp1.getText().toString().equals("No, I don't")) {
+                            input_whatpreviousexp.setVisibility(View.GONE);
+                            whatpreviousexp1.setVisibility(View.GONE);
+                        }
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
+
+
+        haspreviousexp1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(vhaspreviousexp != 0) {
+                    vhaspreviousexp = 0;
+                    input_haspreviousexp.setError(null);
+                    input_haspreviousexp.setErrorEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(vhaspreviousexp != 0) {
+                    vhaspreviousexp = 0;
+                    input_haspreviousexp.setError(null);
+                    input_haspreviousexp.setErrorEnabled(false);
+                }
+            }
+        });
+
+
+
+
+        ///////
+        whatpreviousexp1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    final CharSequence[] items = { "Feature Films", "Tv Shows", "Short Films", "College Culturals", "Web Series", "YouTube Channel", "Other" };
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup.this, R.style.AlertDialogSignup));
+                    alertDialogBuilder.setTitle("What have you had an experience in?");
+                    int position;
+                    if(whatpreviousexp1.getText().toString().equals("Feature Films")){
+                        position = 0;
+                    }
+                    else if(whatpreviousexp1.getText().toString().equals("Tv Shows")){
+                        position = 1;
+                    }
+                    else if(whatpreviousexp1.getText().toString().equals("Short Films")){
+                        position = 2;
+                    }
+                    else if(whatpreviousexp1.getText().toString().equals("College Culturals")){
+                        position = 3;
+                    }
+                    else if(whatpreviousexp1.getText().toString().equals("Web Series")){
+                        position = 4;
+                    }
+                    else if(whatpreviousexp1.getText().toString().equals("YouTube Channel")){
+                        position = 5;
+                    }
+                    else if(whatpreviousexp1.getText().toString().equals("Other")){
+                        position = 6;
+                    }
+                    else {
+                        position = -1;
+                    }
+                    alertDialogBuilder.setSingleChoiceItems(items, position, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ListView lw = ((AlertDialog) dialog).getListView();
+                            Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                            String selectedexp = checkedItem.toString();
+                            whatpreviousexp1.setText(selectedexp);
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+                }
+            }
+        });
+
+        whatpreviousexp1.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                final CharSequence[] items = { "Feature Films", "Tv Shows", "Short Films", "College Culturals", "Web Series", "YouTube Channel", "Other" };
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(signup.this,R.style.AlertDialogSignup));
+                alertDialogBuilder.setTitle("What have you had an experience in?");
+                int position;
+                if(whatpreviousexp1.getText().toString().equals("Feature Films")){
+                    position = 0;
+                }
+                else if(whatpreviousexp1.getText().toString().equals("Tv Shows")){
+                    position = 1;
+                }
+                else if(whatpreviousexp1.getText().toString().equals("Short Films")){
+                    position = 2;
+                }
+                else if(whatpreviousexp1.getText().toString().equals("College Culturals")){
+                    position = 3;
+                }
+                else if(whatpreviousexp1.getText().toString().equals("Web Series")){
+                    position = 4;
+                }
+                else if(whatpreviousexp1.getText().toString().equals("YouTube Channel")){
+                    position = 5;
+                }
+                else if(whatpreviousexp1.getText().toString().equals("Other")){
+                    position = 6;
+                }
+                else {
+                    position = -1;
+                }
+                alertDialogBuilder.setSingleChoiceItems(items, position, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ListView lw = ((AlertDialog) dialog).getListView();
+                        Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                        String selectedexp = checkedItem.toString();
+                        whatpreviousexp1.setText(selectedexp);
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
+
+
+        whatpreviousexp1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(vwhatpreviousexp != 0) {
+                    vwhatpreviousexp = 0;
+                    input_whatpreviousexp.setError(null);
+                    input_whatpreviousexp.setErrorEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(vwhatpreviousexp != 0) {
+                    vwhatpreviousexp = 0;
+                    input_whatpreviousexp.setError(null);
+                    input_whatpreviousexp.setErrorEnabled(false);
+                }
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
         if(!firstname.equals("null")) {
 
             first_name1.setText(firstname);
@@ -790,7 +1054,7 @@ public class signup extends AppCompatActivity implements IPickResult {
         }
 
 
-        Button next = (Button)findViewById(R.id.button11);
+        Button next = (Button) findViewById(R.id.button11);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -894,10 +1158,30 @@ public class signup extends AppCompatActivity implements IPickResult {
                     input_whoami.setError(null);
                     input_whoami.setErrorEnabled(false);
                 }
+
+                if(haspreviousexp1.getText().toString().equals("")) {
+                    input_haspreviousexp.setErrorEnabled(true);
+                    input_haspreviousexp.setError("Mention your Experience");
+                    vhaspreviousexp = 1;
+                } else {
+                    input_haspreviousexp.setError(null);
+                    input_haspreviousexp.setErrorEnabled(false);
+                }
+
+                if(whatpreviousexp1.getVisibility() == View.VISIBLE){
+                    if(whatpreviousexp1.getText().toString().equals("")) {
+                        input_whatpreviousexp.setErrorEnabled(true);
+                        input_whatpreviousexp.setError("Enter details of Experience");
+                        vwhatpreviousexp = 1;
+                    } else {
+                        input_whatpreviousexp.setError(null);
+                        input_whatpreviousexp.setErrorEnabled(false);
+                    }
+                }
                 //check for empty fields
 
 
-                if(!first_name1.getText().toString().equals("") && !last_name1.getText().toString().equals("") && !email1.getText().toString().equals("") && !password1.getText().toString().equals("") && !confirm_password1.getText().toString().equals("") && !gender1.getText().toString().equals("") && !dob1.getText().toString().equals("") && !residingin1.getText().toString().equals("") && !nativeplace1.getText().toString().equals("") && !languagesspoken1.getText().toString().equals("") && !whoami1.getText().toString().equals(""))
+                if(!first_name1.getText().toString().equals("") && !last_name1.getText().toString().equals("") && !email1.getText().toString().equals("") && !password1.getText().toString().equals("") && !confirm_password1.getText().toString().equals("") && !gender1.getText().toString().equals("") && !dob1.getText().toString().equals("") && !residingin1.getText().toString().equals("") && !nativeplace1.getText().toString().equals("") && !languagesspoken1.getText().toString().equals("") && !whoami1.getText().toString().equals("") && !haspreviousexp1.getText().toString().equals(""))
                 {
                     final ProgressBar pb = new ProgressBar(signup.this);
                     pb.setIndeterminate(true);
@@ -956,6 +1240,14 @@ public class signup extends AppCompatActivity implements IPickResult {
                                                          storeSPData("password", password1.getText().toString());
                                                          storeSPData("dob", dob1.getText().toString());
                                                          storeSPData("gender", gender1.getText().toString());
+                                                         if(haspreviousexp1.getText().toString().equals("Yes, I do")) {
+                                                             storeSPData("hasPrevExp", "true");
+                                                             storeSPData("prevExp", whatpreviousexp1.getText().toString());
+                                                         }
+                                                         else {
+                                                             storeSPData("hasPrevExp", "false");
+                                                             storeSPData("prevExp", "Other");
+                                                         }
 
                                                          //for auto-login
                                                          storeSPData("uname", email1.getText().toString());
@@ -977,6 +1269,14 @@ public class signup extends AppCompatActivity implements IPickResult {
                                                          storeSPData("password", password1.getText().toString());
                                                          storeSPData("dob", dob1.getText().toString());
                                                          storeSPData("gender", gender1.getText().toString());
+                                                         if(haspreviousexp1.getText().toString().equals("Yes, I do")) {
+                                                             storeSPData("hasPrevExp", "true");
+                                                             storeSPData("prevExp", whatpreviousexp1.getText().toString());
+                                                         }
+                                                         else {
+                                                             storeSPData("hasPrevExp", "false");
+                                                             storeSPData("prevExp", "Other");
+                                                         }
 
                                                          //for auto-login
                                                          storeSPData("uname", email1.getText().toString());
@@ -1002,6 +1302,14 @@ public class signup extends AppCompatActivity implements IPickResult {
                                                      storeSPData("password", password1.getText().toString());
                                                      storeSPData("dob", dob1.getText().toString());
                                                      storeSPData("gender", gender1.getText().toString());
+                                                     if(haspreviousexp1.getText().toString().equals("Yes, I do")) {
+                                                         storeSPData("hasPrevExp", "true");
+                                                         storeSPData("prevExp", whatpreviousexp1.getText().toString());
+                                                     }
+                                                     else {
+                                                         storeSPData("hasPrevExp", "false");
+                                                         storeSPData("prevExp", "Other");
+                                                     }
 
                                                      //for auto-login
                                                      storeSPData("uname", email1.getText().toString());

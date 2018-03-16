@@ -39,6 +39,7 @@ import com.facebook.accountkit.PhoneNumber;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
+import com.twenty.four.crafts.SharedPref;
 import com.twenty.four.crafts.User;
 
 import org.json.JSONArray;
@@ -53,6 +54,8 @@ public class signup3 extends AppCompatActivity {
     public static int APP_REQUEST_CODE = 99;
 
     private String jwtToken;
+
+    SharedPref sharedPref;
 
     Bundle bundle;
     String type, name, craft;
@@ -134,6 +137,7 @@ public class signup3 extends AppCompatActivity {
         String usersname = getSPData("firstname") + " " + getSPData("lastname");
         storeSPData("name", usersname);
 
+        sharedPref = new SharedPref(getApplicationContext());
 
 
         bundle = getIntent().getExtras();
@@ -1894,7 +1898,7 @@ public class signup3 extends AppCompatActivity {
 
                 if(response.equals("Registration successful!")) {
 
-                    clearSharedPrefs();
+                    sharedPref.clearSelectedSharedPrefs(getApplicationContext());
 
                     loginWithVolley();
                 }
@@ -1940,6 +1944,8 @@ public class signup3 extends AppCompatActivity {
                 params.put("facebook", getSPData("facebookJSON"));
                 params.put("google", getSPData("googleJSON"));
                 params.put("twitter", getSPData("twitterJSON"));
+                params.put("hasPreviousExperience", getSPData("hasPrevExp"));
+                params.put("previousExperience", getSPData("prevExp"));
 
                 String[] languagesspoken = getSPData("languagesspoken_dirty").split(", ");
                 Gson gson = new GsonBuilder().create();
@@ -1983,14 +1989,14 @@ public class signup3 extends AppCompatActivity {
 
                             if(type.equals("craftsman")){
 
-                                Intent intent = new Intent(signup3.this, Verification.class)
+                                Intent intent = new Intent(signup3.this, OnBoardingPage.class)
                                         .putExtra("fromhere", "PhoneVerified")
                                         .putExtra("fromwhom", "Crafts");
                                 startActivity(intent);
 
                             } else if(type.equals("client")){
 
-                                Intent intent = new Intent(signup3.this, Verification.class)
+                                Intent intent = new Intent(signup3.this, OnBoardingPage.class)
                                         .putExtra("fromhere", "PhoneVerified")
                                         .putExtra("fromwhom", "Clients");
                                 startActivity(intent);
@@ -2068,37 +2074,5 @@ public class signup3 extends AppCompatActivity {
         return data;
 
     }
-
-
-    private void clearSharedPrefs() {
-        //registration purpose
-        storeSPData("isClient", "");
-        storeSPData("firstname", "");
-        storeSPData("lastname", "");
-        storeSPData("email", "");
-        storeSPData("password", "");
-        storeSPData("dob", "");
-        storeSPData("gender", "");
-        storeSPData("residingin", "");
-        storeSPData("hometown", "");
-        storeSPData("languagesspoken", "");
-        storeSPData("category", "");
-        storeSPData("bodyType", "");
-        storeSPData("hairColor", "");
-        storeSPData("hairLength", "");
-        storeSPData("eyeColor", "");
-        storeSPData("skinTone", "");
-        storeSPData("facialHair", "");
-        storeSPData("height", "");
-        storeSPData("weight", "");
-        storeSPData("hipsize", "");
-        storeSPData("chestSize", "");
-        storeSPData("waistSize", "");
-        storeSPData("phonenumber", "");
-        storeSPData("facebookJSON", "");
-        storeSPData("googleJSON", "");
-        storeSPData("twitterJSON", "");
-    }
-
 
 }

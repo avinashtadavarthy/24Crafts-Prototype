@@ -51,6 +51,7 @@ import com.twenty.four.crafts.app_startup.Login2;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterApiClient;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
@@ -367,7 +368,7 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
                                     storeSPData("twitterJSON", twitter.toString());
 
                                     twitter_layout_verified.setVisibility(View.VISIBLE);
-                                    twitterim.setImageResource(R.drawable.googleg_standard_color_18);
+                                    twitterim.setImageResource(R.drawable.twitter);
                                     twitter_text.setTextColor(Color.parseColor("#ff99cc00"));
                                     twitter_text.setText("Verified!");
 
@@ -411,7 +412,7 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
             @Override
             public void onClick(View v) {
 
-                Intent next = new Intent(getApplicationContext(), OnBoardingPage.class)
+                Intent next = new Intent(getApplicationContext(), ProfileView.class)
                         .putExtra("thisistogetback", "getback")
                         .putExtra("fromwhom", fromwhom);
                 startActivity(next);
@@ -524,7 +525,9 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
         callbackManager.onActivityResult(requestCode, resultCode, data);
 
         //twitter
-        client.onActivityResult(requestCode, resultCode, data);
+        if(TwitterAuthConfig.DEFAULT_AUTH_REQUEST_CODE == requestCode) {
+            client.onActivityResult(requestCode, resultCode, data);
+        }
 
     }
 

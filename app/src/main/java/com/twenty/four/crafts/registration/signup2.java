@@ -67,7 +67,7 @@ public class signup2 extends AppCompatActivity {
         final String type = bundle.getString("type");
 
         TextView textView =(TextView)findViewById(R.id.welcome);
-        textView.setText("Hello, " + name);
+        textView.setText("Hello, " + getSPData("firstname") + " " + getSPData("lastname"));
 
 
         bodytype = (EditText) findViewById(R.id.bodytype);
