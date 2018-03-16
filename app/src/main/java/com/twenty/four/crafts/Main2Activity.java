@@ -1,5 +1,6 @@
 package com.twenty.four.crafts;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -57,9 +58,12 @@ public class Main2Activity extends AppCompatActivity
     DrawerLayout mDrawerLayout;
     String jwtToken = "";
     String decodedJWT = "";
+    String isSubscribed = "";
 
+    final int REQUEST_PROMOTE_PROFILE = 9640;
     int check = 0;
     String dialogtextverifyemail = "Please verify your email to continue using the app";
+    String dialogtextsubscription = "Profile Successfully Subscribed!";
 
     JSONObject userdatamain = null;
     String userdata, subscribed, emailVerified = "";
@@ -126,6 +130,7 @@ public class Main2Activity extends AppCompatActivity
             e.printStackTrace();
         }
 
+        isSubscribed = userdatamain.optString("isSubscribed");
         emailVerified = userdatamain.optString("emailVerification");
         storeSPData("emailVerified", emailVerified);
 
@@ -157,41 +162,10 @@ public class Main2Activity extends AppCompatActivity
         }
 
 
-        if(subscribed.equals("false")) {
-            final LovelyCustomDialog lovelyCustomDialog = new LovelyCustomDialog(this);
+        if(subscribed.equals("false") && isSubscribed.equals("false")) {
 
-            lovelyCustomDialog.setView(R.layout.activity_subscribe_pop_up)
-                    .setTopColorRes(R.color.indigo_500)
-                    .setIcon(R.mipmap.ic_launcher)
-                    .setTitle("Subscribe")
-                    .setMessage("Subscribe to 24Crafts to enjoy using the app's features. Subscription allows Producers/Directors to find you....")
-                    .setListener(R.id.SubscribeButton, new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Main2Activity.this,PurchaseCoins.class);
-                            startActivity(intent);
-                        }
-                    })
-                    .setListener(R.id.ContinueButton, new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+            lovelyDialogSubscribe();
 
-                            android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this, R.style.AlertDialog));
-                            builder.setMessage("Free Account only gives you access to the DIRECTORY. Producers/Directors will not be able to contact you...")
-                                    .setCancelable(false)
-                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int id) {
-                                            //do things
-                                            dialog.cancel();
-                                        }
-                                    });
-
-                            android.app.AlertDialog alert = builder.create();
-                            alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                            alert.show();
-                        }
-                    })
-                    .show();
         }
 
 
@@ -425,6 +399,7 @@ public class Main2Activity extends AppCompatActivity
 
                     Log.e("check",check+"");
 
+                    recreate();
 
 
                 } catch (JSONException e) {
@@ -538,7 +513,7 @@ public class Main2Activity extends AppCompatActivity
         } else if (id == R.id.nearby) {
           // fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new MapsFragment()).commit();
 
-           if(subscribed.equals("true"))
+           if(subscribed.equals("true") || isSubscribed.equals("true"))
            {
                Intent i = new Intent(getApplicationContext(), MapsActivity.class);
                startActivity(i);
@@ -551,7 +526,7 @@ public class Main2Activity extends AppCompatActivity
            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.encounters) {
-           if(subscribed.equals("true")) {
+           if(subscribed.equals("true") || isSubscribed.equals("true")) {
            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new EncountersMain()).commit();
            } else {
                // grey out the option
@@ -567,9 +542,9 @@ public class Main2Activity extends AppCompatActivity
            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.promote) {
-           if(subscribed.equals("true")) {
+           if(subscribed.equals("true") || isSubscribed.equals("true")) {
            Intent i = new Intent(getApplicationContext(),PromoteProfilePopUp.class);
-           startActivity(i);
+           startActivityForResult(i,REQUEST_PROMOTE_PROFILE);
            } else {
                // grey out the option
                mDrawerLayout.closeDrawers();
@@ -582,42 +557,15 @@ public class Main2Activity extends AppCompatActivity
            /*Intent i = new Intent(getApplicationContext(),SubscribePopUp.class);
            startActivity(i);*/
 
+           if(subscribed.equals("true") && isSubscribed.equals("false"))
+               Toast.makeText(Main2Activity.this,"Enjoy your 4 day free Trial",Toast.LENGTH_LONG).show();
 
-           final LovelyCustomDialog lovelyCustomDialog = new LovelyCustomDialog(this);
 
-           lovelyCustomDialog.setView(R.layout.activity_subscribe_pop_up)
-                   .setTopColorRes(R.color.indigo_500)
-                   .setIcon(R.mipmap.ic_launcher)
-                   .setTitle("Subscribe")
-                   .setMessage("Subscribe to 24Crafts to enjoy using the app's features. Subscription allows Producers/Directors to find you....")
-                   .setListener(R.id.SubscribeButton, new View.OnClickListener() {
-                       @Override
-                       public void onClick(View view) {
-                           Intent intent = new Intent(Main2Activity.this,PurchaseCoins.class);
-                           startActivity(intent);
-                       }
-                   })
-                   .setListener(R.id.ContinueButton, new View.OnClickListener() {
-                       @Override
-                       public void onClick(View view) {
+            else if(subscribed.equals("false") && isSubscribed.equals("false"))
+               lovelyDialogSubscribe();
 
-                           android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this, R.style.AlertDialog));
-                           builder.setMessage("Free Account only gives you access to the DIRECTORY. Producers/Directors will not be able to contact you...")
-                                   .setCancelable(false)
-                                   .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                       public void onClick(DialogInterface dialog, int id) {
-                                           //do things
-                                           dialog.cancel();
-                                       }
-                                   });
-
-                           android.app.AlertDialog alert = builder.create();
-                           alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                           alert.show();
-                       }
-                   })
-                   .show();
-
+            else if(subscribed.equals("true") && isSubscribed.equals("true"))
+                Toast.makeText(Main2Activity.this,"Already Subscribed",Toast.LENGTH_LONG).show();
           /* new PanterDialog(Main2Activity.this)
                    .setHeaderBackground(R.drawable.bg_gradient)
                    .setHeaderLogo(R.drawable.logo)
@@ -642,6 +590,124 @@ public class Main2Activity extends AppCompatActivity
 
 
 
+
+    public void lovelyDialogSubscribe()
+    {
+        final LovelyCustomDialog lovelyCustomDialog = new LovelyCustomDialog(this);
+
+        lovelyCustomDialog.setView(R.layout.activity_subscribe_pop_up)
+                .setTopColorRes(R.color.indigo_500)
+                .setIcon(R.mipmap.ic_launcher)
+                .setTitle("Subscribe")
+                .setMessage("Subscribe to 24Crafts to enjoy using the app's features. Subscription allows Producers/Directors to find you....")
+                .setListener(R.id.SubscribeButton, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                       /* Intent intent = new Intent(Main2Activity.this,PurchaseCoins.class);
+                        startActivity(intent);*/
+                       lovelyCustomDialog.dismiss();
+                        routeToSubscribe();
+                    }
+                })
+                .setListener(R.id.ContinueButton, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this, R.style.AlertDialog));
+                        builder.setMessage("Free Account only gives you access to the DIRECTORY. Producers/Directors will not be able to contact you...")
+                                .setCancelable(false)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        //do things
+                                        lovelyCustomDialog.dismiss();
+                                        dialog.cancel();
+                                    }
+                                });
+
+                        android.app.AlertDialog alert = builder.create();
+                        alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        alert.show();
+                    }
+                })
+                .show();
+    }
+
+    private void routeToSubscribe() {
+
+        jwtToken = getSPData("jwtToken");
+
+        String newurl = User.getInstance().BASE_URL + "user/coins/payment/subscription/69";
+
+        StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                Log.e("subscription",response);
+
+                checkforResponseSubscribe(response);
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("authorization", jwtToken);
+
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(getRequest);
+
+
+
+
+
+    }
+
+    private void checkforResponseSubscribe(String response) {
+
+        if(response.equals("Profile successfully subscribed!"))
+        {
+
+
+
+
+            //alertdialog
+            final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this,R.style.AlertDialog)).setMessage(dialogtextsubscription).
+                    setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            dialogInterface.cancel();
+                            userRequest();
+                        }
+                    })
+                    .show();
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
+
+        }
+
+
+        else
+        {
+            Intent intent = new Intent(Main2Activity.this,PurchaseCoins.class);
+            startActivity(intent);
+            Toast.makeText(Main2Activity.this,"Not enough coins. Please purchase them",Toast.LENGTH_LONG).show();
+        }
+    }
+
+
     //Shared Preferences
     private void storeSPData(String key, String data) {
 
@@ -660,5 +726,61 @@ public class Main2Activity extends AppCompatActivity
         return data;
 
     }
+
+
+    private void checkResponsePromoteProfile(String response) {
+
+        if(response.equals("Profile successfully promoted!"))
+        {
+            final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this,R.style.AlertDialog)).setMessage("Profile Successfully Promoted").
+                    setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            dialogInterface.cancel();
+                            userRequest();
+                        }
+                    })
+                    .show();
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+
+        else if(response.equals("User profile already promoted!!"))
+        {
+            Toast.makeText(Main2Activity.this,"Your profile has already been promoted!",Toast.LENGTH_LONG).show();
+        }
+
+
+        else
+        {
+            Intent intent = new Intent(Main2Activity.this,PurchaseCoins.class);
+            startActivity(intent);
+            Toast.makeText(Main2Activity.this,"Not enough coins. Please purchase them",Toast.LENGTH_LONG).show();
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == REQUEST_PROMOTE_PROFILE)
+        {
+            if(resultCode == Activity.RESULT_OK)
+            {
+                String responsePromoteProfile = data.getStringExtra("responsePromoteProfile");
+                Log.e("main2activity",responsePromoteProfile);
+                checkResponsePromoteProfile(responsePromoteProfile);
+
+            }
+        }
+    }
+
+
+
+
+
+
 
 }

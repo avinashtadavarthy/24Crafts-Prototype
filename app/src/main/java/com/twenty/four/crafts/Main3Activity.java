@@ -448,7 +448,10 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
               if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.nearby) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new PeopleNearbyFragment()).commit();
+            //fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new PeopleNearbyFragment()).commit();
+            Intent intent = new Intent(Main3Activity.this,RadarView.class);
+            startActivity(intent);
+
             if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.directory) {
