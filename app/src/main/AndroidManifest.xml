@@ -201,6 +201,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
+            android:name=".ProfileViewNew"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2"/>
+        <activity
             android:name=".YoutubePlayerActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -336,7 +340,8 @@
         <activity android:name=".ClientVerification3Activity" />
         <activity android:name=".registration.OnBoardingPage" />
         <activity android:name=".RadarView" />
-        <activity android:name=".ReferAndEarn2"></activity>
+        <activity android:name=".ReferAndEarn2" />
+
     </application>
 
 </manifest>
