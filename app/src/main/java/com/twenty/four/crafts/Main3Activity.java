@@ -36,7 +36,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.kila.apprater_dialog.lars.AppRater;
-import com.twenty.four.crafts.garlandview.main.TalentHunterMain;
+import com.twenty.four.crafts.talenthunter.GarlandViewMain;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -85,9 +85,7 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         final ImageView inbox_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.inbox_handy);
 
 
-        if(getIntent() != null)
-        userdata = getIntent().getStringExtra("userdata");
-
+        userdata = getSPData("userdatamain");
         jwtToken = getSPData("jwtToken");
         subscribed = getSPData("subscribed");
 
@@ -442,9 +440,7 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
             appBarLayout.setTargetElevation(0);
 
         } else if (id == R.id.talent_hunt) {
-//            fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new TalentHuntFragment()).commit();
-                Intent intent = new Intent(Main3Activity.this,TalentHunterMain.class);
-                startActivity(intent);
+            fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new GarlandViewMain()).commit();
               if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.nearby) {
