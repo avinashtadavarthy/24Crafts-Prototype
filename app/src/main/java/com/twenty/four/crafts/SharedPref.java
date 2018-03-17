@@ -72,6 +72,7 @@ public class SharedPref {
         storeSPData(c, "jwtToken", "");
         storeSPData(c, "subscribed", "");
         storeSPData(c, "pword", "");
+        storeSPData(c, "encountersView", "");
     }
 
 
@@ -106,7 +107,7 @@ public class SharedPref {
 
 
 
-    private void storeSPData(Context c, String key, String data) {
+    public void storeSPData(Context c, String key, String data) {
 
         SharedPreferences mUserData = c.getSharedPreferences("UserData", MODE_PRIVATE);
         SharedPreferences.Editor mUserEditor = mUserData.edit();
@@ -115,7 +116,7 @@ public class SharedPref {
 
     }
 
-    private String getSPData(Context c, String key) {
+    public String getSPData(Context c, String key) {
 
         SharedPreferences mUserData = c.getSharedPreferences("UserData", MODE_PRIVATE);
         String data = mUserData.getString(key, "");
