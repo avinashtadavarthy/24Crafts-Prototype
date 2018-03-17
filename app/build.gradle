@@ -159,6 +159,9 @@ dependencies {
 
     //All Twitter APIs
     compile 'com.twitter.sdk.android:twitter:3.1.1'
+
+    //Fast Android Networking
+    compile 'com.amitshekhar.android:android-networking:1.0.1'
 }
 
 
