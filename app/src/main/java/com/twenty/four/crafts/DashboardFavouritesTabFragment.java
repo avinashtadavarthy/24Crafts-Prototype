@@ -49,9 +49,12 @@ public class DashboardFavouritesTabFragment extends android.support.v4.app.Fragm
                 new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Intent page = new Intent(getActivity().getApplicationContext(), ProfileView.class)
+                        /*Intent page = new Intent(getActivity().getApplicationContext(), ProfileView.class)
                                 .putExtra("thisistogetback", "do nothing")
                                 .putExtra("fromwhom", "do nothing");
+                        startActivity(page);*/
+
+                        Intent page = new Intent(getActivity().getApplicationContext(), ProfileViewNew.class);
                         startActivity(page);
                     }
 

@@ -1,92 +1,73 @@
-package com.twenty.four.crafts.garlandview.profile;
+package com.twenty.four.crafts;
 
-import android.app.Activity;
-import android.app.ActivityOptions;
-import android.content.Intent;
 import android.content.res.TypedArray;
-import android.databinding.DataBindingUtil;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.support.v7.widget.Toolbar;
 import android.transition.Transition;
-import android.util.Pair;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
-import com.twenty.four.crafts.R;
-import com.twenty.four.crafts.garlandview.details.DetailsData;
+import com.twenty.four.crafts.talenthunter.HorizontalAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileViewNew extends AppCompatActivity {
 
-    private static final String BUNDLE_NAME = "BUNDLE_NAME";
-    private static final String BUNDLE_INFO = "BUNDLE_INFO";
-    private static final String BUNDLE_STATUS = "BUNDLE_STATUS";
-    private static final String BUNDLE_AVATAR_URL = "BUNDLE_AVATAR_URL";
-    private static final String BUNDLE_LIST_DATA = "BUNDLE_LIST_DATA";
-
-    public static void start(Activity activity,
-                             String url, String name, String info, String status,
-                             View avatar, View card, View image, View list,
-                             ArrayList<DetailsData> listData) {
-        Intent starter = new Intent(activity, ProfileActivity.class);
-        starter.putExtra(BUNDLE_NAME, name);
-        starter.putExtra(BUNDLE_INFO, info);
-        starter.putExtra(BUNDLE_STATUS, status);
-        starter.putExtra(BUNDLE_AVATAR_URL, url);
-        starter.putParcelableArrayListExtra(BUNDLE_LIST_DATA, listData);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            final Pair<View, String> p1 = Pair.create(avatar, activity.getString(R.string.transition_avatar_border));
-            final Pair<View, String> p2 = Pair.create(card, activity.getString(R.string.transition_card));
-            final Pair<View, String> p3 = Pair.create(image, activity.getString(R.string.transition_background));
-            final Pair<View, String> p4 = Pair.create(list, activity.getString(R.string.transition_list));
-
-            final ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(activity, p1, p2, p3, p4);
-            activity.startActivity(starter, options.toBundle());
-        } else {
-            activity.startActivity(starter);
-        }
-    }
+    SharedPref sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DataBindingUtil.setContentView(this, R.layout.activity_profile);
+        setContentView(R.layout.activity_profile_view_new);
+
+        sharedPref = new SharedPref(getApplicationContext());
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final String fullName = getIntent().getStringExtra(BUNDLE_NAME);
-        final String title = fullName.split(" ")[0] + getString(R.string.profile);
+        final String fullName = sharedPref.getSPData(getApplicationContext(), "name");
+        final String title = fullName.split(" ")[0] + "'s Profile";
+
 
         ((TextView) findViewById(R.id.tv_title)).setText(title);
         ((TextView) findViewById(R.id.tv_name)).setText(fullName);
-        ((TextView) findViewById(R.id.tv_info)).setText(getIntent().getStringExtra(BUNDLE_INFO));
-        ((TextView) findViewById(R.id.tv_status)).setText(getIntent().getStringExtra(BUNDLE_STATUS));
+        ((TextView) findViewById(R.id.tv_info)).setText("The bio goes here");
+        ((TextView) findViewById(R.id.tv_status)).setText("The status goes here");
 
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        final ArrayList<DetailsData> listData = getIntent().getParcelableArrayListExtra(BUNDLE_LIST_DATA);
-        recyclerView.setAdapter(new ProfileAdapter(listData));
+        /*final ArrayList<DetailsData> listData = getIntent().getParcelableArrayListExtra(BUNDLE_LIST_DATA);
+        recyclerView.setAdapter(new ProfileAdapter(listData));*/
 
         Glide.with(this)
-                .load(getIntent().getStringExtra(BUNDLE_AVATAR_URL))
+                .load("https://homepages.cae.wisc.edu/~ece533/images/airplane.png")
                 .placeholder(R.drawable.avatar_placeholder)
                 .bitmapTransform(new CropCircleTransformation(this))
                 .into((ImageView) findViewById(R.id.avatar));
+
+
 
         final AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
@@ -179,7 +160,13 @@ public class ProfileActivity extends AppCompatActivity {
                 @Override public void onTransitionResume(Transition transition) {}
             });
         }
+
     }
+
+
+
+
+
 
     @Override
     public boolean onSupportNavigateUp() {

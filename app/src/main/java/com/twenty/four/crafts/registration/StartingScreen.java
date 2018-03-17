@@ -49,8 +49,6 @@ public class StartingScreen extends AppCompatActivity {
 
         sharedPref = new SharedPref(getApplicationContext());
 
-        sharedPref.clearSelectedSharedPrefs(getApplicationContext());
-
         craftsman_reg = (ImageView) findViewById(R.id.craftsman_reg);
         client_reg = (ImageView) findViewById(R.id.client_reg);
 

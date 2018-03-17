@@ -26,7 +26,7 @@
     <uses-permission android:name="com.twenty.four.crafts.permission.C2D_MESSAGE" />
 
     <application
-        android:name=".GarlandApp"
+        android:name=".NetworkController"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
@@ -201,6 +201,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
+            android:name=".ProfileViewNew"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2"/>
+        <activity
             android:name=".YoutubePlayerActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -300,7 +304,6 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".RSSMain" />
         <activity android:name=".LuckyWheelMain" />
-        <activity android:name=".garlandview.main.TalentHunterMain" />
 
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
@@ -337,7 +340,8 @@
         <activity android:name=".ClientVerification3Activity" />
         <activity android:name=".registration.OnBoardingPage" />
         <activity android:name=".RadarView" />
-        <activity android:name=".ReferAndEarn2"></activity>
+        <activity android:name=".ReferAndEarn2" />
+
     </application>
 
 </manifest>

@@ -232,7 +232,7 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
         int month = Integer.parseInt(dob.substring(5,7));
         int day = Integer.parseInt(dob.substring(8,10));
 
-        String Age = getAge(year,month,day);
+        String Age = User.getInstance().getAge(year,month,day);
 
         try {
 
@@ -635,26 +635,6 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
 
         return data;
 
-    }
-
-
-
-    private String getAge(int year,int month,int day)
-    {
-        Calendar dob = Calendar.getInstance();
-        Calendar today = Calendar.getInstance();
-
-        dob.set(year,month,day);
-
-        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
-
-        if(today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR))
-            age--;
-
-        Integer ageInt = new Integer(age);
-        String ageS = ageInt.toString();
-
-        return ageS;
     }
 
 }

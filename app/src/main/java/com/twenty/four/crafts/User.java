@@ -2,6 +2,8 @@ package com.twenty.four.crafts;
 
 import android.content.SharedPreferences;
 
+import java.util.Calendar;
+
 import static android.content.Context.MODE_PRIVATE;
 
 /**
@@ -18,6 +20,24 @@ public class User {
 
     public int navbarpos = 0;
     public int navbarposclient = 1;
+
+    public String getAge(int year,int month,int day)
+    {
+        Calendar dob = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
+
+        dob.set(year,month,day);
+
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
+        if(today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR))
+            age--;
+
+        Integer ageInt = new Integer(age);
+        String ageS = ageInt.toString();
+
+        return ageS;
+    }
 
     ///url///
     public String BASE_URL = "http://24crafts.cf:3000/";
