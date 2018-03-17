@@ -527,7 +527,12 @@ public class Main2Activity extends AppCompatActivity
 
         } else if (id == R.id.encounters) {
            if(subscribed.equals("true") || isSubscribed.equals("true")) {
-           fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new EncountersMain()).commit();
+
+               if(getSPData("encountersView").equals("") || getSPData("encountersView").equals("GridOff"))
+                   fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new EncountersMain()).commit();
+               else if(getSPData("encountersView").equals("GridOn"))
+                   fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new EncountersGrid()).commit();
+
            } else {
                // grey out the option
                mDrawerLayout.closeDrawers();

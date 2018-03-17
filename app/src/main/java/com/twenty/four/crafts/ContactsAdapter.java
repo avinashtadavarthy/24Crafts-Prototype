@@ -76,8 +76,6 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Direct
 
         TextView name1,address1,email1,website1,phone1;
 
-
-
         public DirectoryViewHolder(View itemView) {
             super(itemView);
 

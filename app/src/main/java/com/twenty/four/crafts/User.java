@@ -19,12 +19,6 @@ public class User {
     public int navbarpos = 0;
     public int navbarposclient = 1;
 
-
-    //clearing shared prefs
-
-    //clearing shared prefs
-
-
     ///url///
     public String BASE_URL = "http://24crafts.cf:3000/";
     /////////

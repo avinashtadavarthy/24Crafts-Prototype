@@ -28,9 +28,7 @@
                     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                     android:background="?attr/colorPrimary"
                     app:popupTheme="@style/AppTheme.PopupOverlay"
-                    app:layout_collapseMode="pin">
-
-                </android.support.v7.widget.Toolbar>
+                    app:layout_collapseMode="pin"/>
 
             </android.support.design.widget.CollapsingToolbarLayout>
 

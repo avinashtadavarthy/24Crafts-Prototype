@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.bumptech.glide.Glide;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 /**
@@ -16,11 +17,11 @@ public class FavsAdapter extends BaseAdapter {
 
     private Context context;
 
-    private int[] mThumbIds;
+    private String[] mThumbIds;
 
     private LayoutInflater inflater;
 
-    public FavsAdapter(Context context, int mThumbIds[]) {
+    public FavsAdapter(Context context, String[] mThumbIds) {
         this.context = context;
         this.mThumbIds = mThumbIds;
     }
@@ -45,14 +46,15 @@ public class FavsAdapter extends BaseAdapter {
 
         View gridView = convertView;
 
-        if(convertView == null){
+        if(convertView == null) {
 
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             gridView = inflater.inflate(R.layout.favs_item, null);
         }
 
         RoundedImageView fav_item = (RoundedImageView) gridView.findViewById(R.id.fav_item);
-        fav_item.setImageResource(mThumbIds[position]);
+        Glide.with(context).load(mThumbIds[position]).into(fav_item);
+//        fav_item.setImageResource(mThumbIds[position]);
 
         return gridView;
     }

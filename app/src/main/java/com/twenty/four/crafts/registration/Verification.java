@@ -134,7 +134,7 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
         fromhere = getIntent().getStringExtra("fromhere");
         fromwhom = getIntent().getStringExtra("fromwhom");
 
-        if(fromhere.equals("PhoneVerified")) {
+      if(fromhere.equals("PhoneVerified")) {
             verification_done.setVisibility(View.GONE);
         } else if(fromhere.equals("FromSettings")) {
             verification_skip.setVisibility(View.GONE);
