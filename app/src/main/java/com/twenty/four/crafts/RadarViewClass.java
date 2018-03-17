@@ -21,7 +21,7 @@ import java.util.Random;
  * Created by rakesh on 13/3/18.
  */
 
-public class RadarViewClass extends View{
+public class RadarViewClass extends View implements View.OnClickListener{
 
     String url = "http://24crafts.cf:3000/users/5a9e814e0a462e6e1f7fa9c5/photos/24 Logo.png";
     private Context mContext;
@@ -70,6 +70,7 @@ public class RadarViewClass extends View{
                 mContext.getResources(), R.drawable.taigamod2));
         this.mDefaultPointBmp = Bitmap.createScaledBitmap(mDefaultPointBmp,10,10,false);
         this.mLightPointBmp = Bitmap.createScaledBitmap(mLightPointBmp,120,120,false);
+
     }
 
     /**
@@ -245,11 +246,10 @@ public class RadarViewClass extends View{
         return result;
     }
 
+    @Override
+    public void onClick(View view) {
 
-
-
-
-
+    }
 
 
     public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {

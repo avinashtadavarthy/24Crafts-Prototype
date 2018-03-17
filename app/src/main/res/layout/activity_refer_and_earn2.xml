@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1196de">
+
+    <RelativeLayout
+        android:id="@+id/r1RAE"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_marginTop="0dp"
+        android:background="#ffff">
+
+
+        <EditText
+            android:layout_centerHorizontal="true"
+            android:id="@+id/editTextRAE"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/corner_rounded"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:hint="enter promo code"
+            android:textAlignment="center"
+            android:textColorHint="#1196de"
+            android:textSize="15sp" />
+
+
+        <Button
+            android:id="@+id/buttonRAE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextRAE"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/buttonshape2"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/circle_done"
+            android:drawableTint="@android:color/white"
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp"
+            android:text="Verify"
+            android:textColor="#ffff"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/imageViewRAE"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="145dp"
+        app:srcCompat="@drawable/logo1" />
+
+
+    <TextView
+        android:id="@+id/textViewRAE"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_below="@+id/imageViewRAE"
+        android:layout_marginTop="-25dp"
+        android:gravity="center_horizontal"
+        android:text="Refer Your Friend and Earn Free 15 coins"
+        android:textColor="@color/colorblue2"
+        android:textSize="25sp" />
+
+
+    <Button
+        android:id="@+id/button2RAE"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_below="@+id/textView3RAE"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/buttonshape1"
+        android:drawablePadding="5dp"
+        android:drawableRight="@drawable/multimedia"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:text="share"
+        android:textColor="#1196de"
+        android:textSize="15sp" />
+
+
+
+    <TextView
+        android:id="@+id/textView2RAE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewRAE"
+        android:layout_marginTop="17dp"
+        android:gravity="center_horizontal"
+        android:paddingLeft="88dp"
+        android:text="Share your referral Code"
+        android:textColor="@color/colorblue2"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView3RAE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2RAE"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="REFGHVB28"
+        android:textColor="@color/colorblue2"
+        android:textSize="25sp" />
+
+
+</RelativeLayout>

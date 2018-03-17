@@ -59,6 +59,7 @@ public class Main2Activity extends AppCompatActivity
     String jwtToken = "";
     String decodedJWT = "";
     String isSubscribed = "";
+    String subscription = null;
 
     final int REQUEST_PROMOTE_PROFILE = 9640;
     int check = 0;
@@ -131,6 +132,7 @@ public class Main2Activity extends AppCompatActivity
         }
 
         isSubscribed = userdatamain.optString("isSubscribed");
+        subscription = userdatamain.optString("subscription");
         emailVerified = userdatamain.optString("emailVerification");
         storeSPData("emailVerified", emailVerified);
 
@@ -162,7 +164,7 @@ public class Main2Activity extends AppCompatActivity
         }
 
 
-        if(subscribed.equals("false") && isSubscribed.equals("false")) {
+        if((subscribed.equals("true") && isSubscribed.equals("false") && !subscription.equals(""))|| (subscribed.equals("false") && isSubscribed.equals("false") && subscription.equals(""))) {
 
             lovelyDialogSubscribe();
 
@@ -333,6 +335,51 @@ public class Main2Activity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
+
+
+        if(getIntent() != null) {
+            userdata = getIntent().getStringExtra("userdata");
+        }
+
+
+        jwtToken = getSPData("jwtToken");
+        subscribed = getSPData("subscribed");
+
+
+
+
+        /*Log.e("jwtToken",jwtToken);
+        String payLoadJWT = jwtToken.substring(jwtToken.indexOf(".")+1);
+        payLoadJWT = payLoadJWT.substring(0,payLoadJWT.indexOf("."));
+        Log.e("payLoadJWT",payLoadJWT);
+
+        try {
+            decodedJWT = JWTUtils.getJson(payLoadJWT);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Log.e("decodedJWT",decodedJWT);*/
+
+
+
+        try {
+            userdatamain = new JSONObject(getSPData("userdatamain"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        isSubscribed = userdatamain.optString("isSubscribed");
+        emailVerified = userdatamain.optString("emailVerification");
+        storeSPData("emailVerified", emailVerified);
+
+
+        nav_name.setText(userdatamain.optString("name"));
+        nav_craft.setText(userdatamain.optString("category"));
+        coinCount.setText(userdatamain.optString("coinCount"));
+        Bitmap icon = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.sample1);
+        Blurry.with(getApplicationContext()).from(icon).into(coverpic);
+
 
         emailVerified = getSPData("emailVerified");
         if(emailVerified.equals("false"))
@@ -557,14 +604,14 @@ public class Main2Activity extends AppCompatActivity
            /*Intent i = new Intent(getApplicationContext(),SubscribePopUp.class);
            startActivity(i);*/
 
-           if(subscribed.equals("true") && isSubscribed.equals("false"))
+           if(subscribed.equals("true") && isSubscribed.equals("false") && subscription.equals(""))
                Toast.makeText(Main2Activity.this,"Enjoy your 4 day free Trial",Toast.LENGTH_LONG).show();
 
 
-            else if(subscribed.equals("false") && isSubscribed.equals("false"))
+            else if((subscribed.equals("true") && isSubscribed.equals("false") && !subscription.equals(""))|| (subscribed.equals("false") && isSubscribed.equals("false") && subscription.equals("")))
                lovelyDialogSubscribe();
 
-            else if(subscribed.equals("true") && isSubscribed.equals("true"))
+            else if(subscribed.equals("true") && isSubscribed.equals("true") && !subscription.equals(""))
                 Toast.makeText(Main2Activity.this,"Already Subscribed",Toast.LENGTH_LONG).show();
           /* new PanterDialog(Main2Activity.this)
                    .setHeaderBackground(R.drawable.bg_gradient)
@@ -692,6 +739,8 @@ public class Main2Activity extends AppCompatActivity
                         }
                     })
                     .show();
+
+            dialog.setCanceledOnTouchOutside(false);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
 
@@ -776,10 +825,6 @@ public class Main2Activity extends AppCompatActivity
             }
         }
     }
-
-
-
-
 
 
 

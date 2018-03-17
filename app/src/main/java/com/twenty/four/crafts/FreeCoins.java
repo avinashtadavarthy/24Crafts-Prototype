@@ -24,7 +24,7 @@ public class FreeCoins extends AppCompatActivity {
 
     public void referAndEarn(View view)
     {
-        Intent i = new Intent(getApplicationContext(),RefAndEarn.class);
+        Intent i = new Intent(getApplicationContext(),ReferAndEarn2.class);
         startActivity(i);
     }
 

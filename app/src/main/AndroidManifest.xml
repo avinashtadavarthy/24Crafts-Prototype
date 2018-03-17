@@ -336,7 +336,8 @@
         <activity android:name=".ClientVerification2Activity" />
         <activity android:name=".ClientVerification3Activity" />
         <activity android:name=".registration.OnBoardingPage" />
-        <activity android:name=".RadarView"></activity>
+        <activity android:name=".RadarView" />
+        <activity android:name=".ReferAndEarn2"></activity>
     </application>
 
 </manifest>

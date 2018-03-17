@@ -35,6 +35,10 @@
 
 
 
+    <color name="colorblue">#3bb9cf</color>
+    <color name="colorblue1">#1196de</color>
+    <color name="colorblue2">#49bcfa</color>
+
 
     <color name="bgBackSideColor">#f4f0ff</color>
     <color name="bgTitleLeft">#594691</color>
