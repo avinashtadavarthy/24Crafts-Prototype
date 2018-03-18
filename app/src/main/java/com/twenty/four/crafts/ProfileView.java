@@ -36,6 +36,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.StringRequestListener;
 import com.squareup.picasso.Picasso;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 import com.yalantis.contextmenu.lib.MenuObject;
@@ -97,6 +101,7 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
         setContentView(R.layout.activity_display_profile);
 
         userdatamain = getSPData("userdatamain");
+        AndroidNetworking.initialize(getApplicationContext());
 
         jwtToken = getSPData("jwtToken");
         mainlayout = findViewById(R.id.mainProfileViewLayout);
@@ -397,6 +402,31 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
             snackbar.dismiss();
 
     }
+
+    /*private void resendEmailRequest() {
+
+        jwtToken = getSPData("jwtToken");
+        String url = User.getInstance().BASE_URL + "resendVerificationMail";
+
+        AndroidNetworking.get(url)
+                .addHeaders("authorization",jwtToken)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("resendEmail",response);
+
+                        Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }*/
+
 
     private int userRequest() {
 

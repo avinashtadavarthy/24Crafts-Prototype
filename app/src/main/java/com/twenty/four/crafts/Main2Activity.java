@@ -39,6 +39,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.StringRequestListener;
 import com.kila.apprater_dialog.lars.AppRater;
 import com.yarolegovich.lovelydialog.LovelyCustomDialog;
 
@@ -82,6 +86,8 @@ public class Main2Activity extends AppCompatActivity
                 .timesToLaunch(3)
                 .daysToWait(1)
                 .appLaunched();
+
+        AndroidNetworking.initialize(getApplicationContext());
 
         setContentView(R.layout.activity_main2);
 
@@ -156,6 +162,12 @@ public class Main2Activity extends AppCompatActivity
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();
+                        }
+                    })
+                    .setNegativeButton("RESEND EMAIL", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            resendEmailRequest();
                         }
                     })
                     .show();
@@ -412,6 +424,31 @@ public class Main2Activity extends AppCompatActivity
         else
             snackbar.dismiss();
 
+    }
+
+    private void resendEmailRequest() {
+
+        jwtToken = getSPData("jwtToken");
+        String url = User.getInstance().BASE_URL + "resendVerificationMail";
+
+        AndroidNetworking.get(url)
+                .addHeaders("authorization",jwtToken)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("resendEmail",response);
+
+                        Toast.makeText(Main2Activity.this, response, Toast.LENGTH_LONG).show();
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
     }
 
     private int userRequest() {

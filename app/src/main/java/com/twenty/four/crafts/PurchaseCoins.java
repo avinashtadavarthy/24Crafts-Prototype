@@ -11,12 +11,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.StringRequestListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,6 +52,8 @@ public class PurchaseCoins extends AppCompatActivity {
         setContentView(R.layout.activity_purchase_coins);
 
         getSupportActionBar().setTitle("Purchase Coins");
+
+        AndroidNetworking.initialize(getApplicationContext());
 
         jwtToken = getSPData("jwtToken");
         mainLayout = findViewById(R.id.mainPurchaseCoins);
@@ -118,6 +125,34 @@ public class PurchaseCoins extends AppCompatActivity {
             showSnackbar();
         }
     }
+
+
+
+   /* private void resendEmailRequest() {
+
+        jwtToken = getSPData("jwtToken");
+        String url = User.getInstance().BASE_URL + "resendVerificationMail";
+
+        AndroidNetworking.get(url)
+                .addHeaders("authorization",jwtToken)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("resendEmail",response);
+
+                        Toast.makeText(PurchaseCoins.this, response, Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }
+*/
 
 
 
