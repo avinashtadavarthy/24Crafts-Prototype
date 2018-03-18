@@ -203,7 +203,7 @@
         <activity
             android:name=".ProfileViewNew"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme2"/>
+            android:theme="@style/AppTheme2" />
         <activity
             android:name=".YoutubePlayerActivity"
             android:screenOrientation="portrait" />
@@ -341,7 +341,7 @@
         <activity android:name=".registration.OnBoardingPage" />
         <activity android:name=".RadarView" />
         <activity android:name=".ReferAndEarn2" />
-
+        <activity android:name=".ChangePassword"></activity>
     </application>
 
 </manifest>

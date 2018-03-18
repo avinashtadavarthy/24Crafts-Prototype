@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class AccountInfo extends AppCompatActivity {
 
     TextView nameText,birthdayText,mobiletext, emailText;
-    TextView forgotPassword;
+    TextView changePassword;
     TextView signout;
 
     String response = null;
@@ -66,7 +66,7 @@ public class AccountInfo extends AppCompatActivity {
         emailText = findViewById(R.id.AccInfoEmailText);
         emailText.setText(object.optString("email"));
 
-        forgotPassword = findViewById(R.id.ForgotPassButton);
+        changePassword = findViewById(R.id.ForgotPassButton);
         signout = findViewById(R.id.SignOutButton);
 
 
@@ -124,25 +124,17 @@ public class AccountInfo extends AppCompatActivity {
 
 
 
-        forgotPassword.setOnClickListener(new View.OnClickListener() {
+        changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 /*Intent intent = new Intent(getApplicationContext(),ForgotPassword.class);
                 startActivity(intent);*/
 
+                Intent intent = new Intent(AccountInfo.this,ChangePassword.class);
+                startActivity(intent);
 
-                if(emailFound == 0)
-                {
-                    dialogtext = getString(R.string.unreg_email_text);
-                    dialogbuttontext = "REGISTER";
-                }
 
-                else
-                {
-                    dialogtext = getString(R.string.reg_email_text);
-                    dialogbuttontext = "OK";
-                }
-
+                /*
                 AlertDialog dialog = new AlertDialog.Builder(new ContextThemeWrapper(AccountInfo.this, R.style.AlertDialog)).setMessage(dialogtext).
                         setPositiveButton(dialogbuttontext, new DialogInterface.OnClickListener() {
                             @Override
@@ -163,7 +155,7 @@ public class AccountInfo extends AppCompatActivity {
 
                 TextView textView = (TextView) dialog.findViewById(android.R.id.message);
                 textView.setGravity(Gravity.LEFT);
-                textView.setTextSize(15);
+                textView.setTextSize(15);*/
             }
         });
 

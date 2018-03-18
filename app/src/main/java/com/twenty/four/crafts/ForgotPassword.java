@@ -25,7 +25,14 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.androidnetworking.interfaces.StringRequestListener;
 import com.twenty.four.crafts.registration.StartingScreen;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -56,6 +63,8 @@ public class ForgotPassword extends AppCompatActivity {
         animationDrawable.setEnterFadeDuration(1000);
         animationDrawable.setExitFadeDuration(2000);
 
+        AndroidNetworking.initialize(getApplicationContext());
+
 
 
         animationDrawable.start();
@@ -79,7 +88,7 @@ public class ForgotPassword extends AppCompatActivity {
     }
 
 
-    public void alertDialog()
+    public void alertDialog(String dialogtext)
     {
         final AlertDialog dialog = new AlertDialog.Builder(new ContextThemeWrapper(ForgotPassword.this,R.style.AlertDialog)).setMessage(dialogtext).
                 setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -99,7 +108,7 @@ public class ForgotPassword extends AppCompatActivity {
 
     }
 
-    private void routeToForgotPassword(final String emailID) {
+    /*private void routeToForgotPassword(final String emailID) {
 
         text = emailID;
 
@@ -141,19 +150,70 @@ public class ForgotPassword extends AppCompatActivity {
 
 
     }
+*/
+
+
+
+
+
+    public void routeToForgotPassword(String emailID)
+    {
+        text = emailID;
+        regEmailId.setText("");
+        jwtToken = getSPData("jwtToken");
+
+        String newurl = User.getInstance().BASE_URL + "user/update/reset_password";
+
+
+        AndroidNetworking.post(newurl)
+                .addBodyParameter("email",text)
+                .setPriority(Priority.MEDIUM)
+                .addHeaders("authorization",jwtToken)
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Log.e("forgotPassword",response);
+
+                        // Toast.makeText(ForgotPassword.this, response, Toast.LENGTH_SHORT).show();
+
+                        checkForResponse(response);
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                        Toast.makeText(ForgotPassword.this, "Please contact support: support@geass.technology", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+    }
+
 
     private void checkForResponse(String response) {
 
+
         if(response.equals("successfully updated features."))
-            alertDialog();
+        {
+            dialogtext = "Please check your email for further instructions";
+            alertDialog(dialogtext);
+        }
 
 
-        else
+        else if(response.equals("User not found, try again"))
         {
             Toast.makeText(ForgotPassword.this, "Email not found. Kindly Register", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(ForgotPassword.this, StartingScreen.class);
             startActivity(intent);
             finish();
+        }
+
+        else
+        {
+            dialogtext = "Kindly verify your email before resetting your password";
+            alertDialog(dialogtext);
         }
     }
 

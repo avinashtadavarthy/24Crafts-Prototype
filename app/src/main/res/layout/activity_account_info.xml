@@ -102,7 +102,7 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forgot Password ?"
+        android:text="Change Password"
         android:id="@+id/ForgotPassButton"
         android:layout_alignParentBottom="true" />
 
