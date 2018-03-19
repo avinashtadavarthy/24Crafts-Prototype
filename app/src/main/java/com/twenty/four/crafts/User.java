@@ -1,8 +1,18 @@
 package com.twenty.four.crafts;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -21,6 +31,8 @@ public class User {
     public int navbarpos = 0;
     public int navbarposclient = 1;
 
+    public int[] uploadedpics = new int[]{0,0,0};
+
     public String getAge(int year,int month,int day)
     {
         Calendar dob = Calendar.getInstance();
@@ -38,6 +50,7 @@ public class User {
 
         return ageS;
     }
+
 
 
     public String getCategoryFromTag(String tag) {

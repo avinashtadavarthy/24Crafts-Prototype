@@ -174,13 +174,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:id="@+id/featuredphotoslayout"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
                 <TextView
                     android:background="#ffffff"
                     android:layout_width="match_parent"
@@ -190,27 +183,39 @@
                     android:textColor="#000000"
                     android:textSize="15dp" />
 
-                    <android.support.v7.widget.RecyclerView
-                        android:layout_marginTop="10dp"
-                        android:id="@+id/featuredPhotos"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
 
-                </LinearLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/featuredPhotos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
-
-
-                <LinearLayout
-                    android:id="@+id/featuredvideoslayout"
+                <HorizontalScrollView
+                    android:layout_marginTop="10dp"
+                    android:background="#ffffff"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:padding="5dp"
+                        android:id="@+id/linlayoutimagesprofview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+
+
 
                 <TextView
                     android:background="#ffffff"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lineSpacingExtra="8dp"
+                    android:layout_marginTop="10dp"
                     android:text="FEATURED VIDEOS"
                     android:textColor="#000000"
                     android:textSize="15dp" />
@@ -231,8 +236,6 @@
                     </LinearLayout>
 
                 </HorizontalScrollView>
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -694,29 +697,5 @@
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
-
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fav_profile"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom|center"
-        android:src="@drawable/star"
-        android:layout_alignParentBottom="true"
-
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="70dp"/>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/message_profile"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom|center"
-        android:src="@drawable/inbox"
-        android:layout_alignParentBottom="true"
-
-        android:layout_marginBottom ="16dp"
-        android:layout_marginRight ="70dp"/>
-
 
 </android.support.design.widget.CoordinatorLayout>

@@ -21,8 +21,6 @@ import static com.thefinestartist.utils.content.ContextUtil.startActivity;
 public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.MyViewHolder> {
 
     private Context context;
-//    private List<String> horizontalList;
-//    private ArrayList<String> craftinfo;
 
     private String[] who;
     private String[] craftinfo;
@@ -62,7 +60,7 @@ public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.My
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.horizontal_item_view, parent, false);
 
-        return new MyViewHolder(itemView,mListener);
+        return new MyViewHolder(itemView, mListener);
     }
 
     @Override

@@ -14,7 +14,10 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.support.v7.widget.Toolbar;
 import android.transition.Transition;
 import android.util.Log;
@@ -50,6 +53,7 @@ import com.vansuita.pickimage.dialog.PickImageDialog;
 import com.vansuita.pickimage.enums.EPickType;
 import com.vansuita.pickimage.listeners.IPickResult;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -64,7 +68,7 @@ import java.util.Map;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
-public class ProfileView extends AppCompatActivity implements IPickResult{
+public class ProfileView extends AppCompatActivity{
 
     SharedPref sharedPref;
     RecyclerView recyclerView;
@@ -88,10 +92,12 @@ public class ProfileView extends AppCompatActivity implements IPickResult{
 
     NestedScrollView nestedScrollView;
 
+    LinearLayout featuredphotoslayout, featuredvideoslayout;
+    RecyclerView featuredPhotos;
+    FeaturedPhotosHorizontalAdapter featuredPhotosHorizontalAdapter;
 
     ImageView video;
 
-    LinearLayout mainLayoutImage,mainLayoutVideo;
     TextView text;
     View cellImage,cellVideo;
     int[] images;
@@ -110,11 +116,7 @@ public class ProfileView extends AppCompatActivity implements IPickResult{
 
         sharedPref = new SharedPref(getApplicationContext());
 
-
         mainlayout = findViewById(R.id.mainNewProfileView);
-
-        mainLayoutImage = findViewById(R.id.linlayoutimagesprofview);
-        mainLayoutVideo = findViewById(R.id.linlayoutvideosprofview);
 
         userdatamain = getSPData("userdatamain");
         jwtToken = getSPData("jwtToken");
@@ -189,9 +191,65 @@ public class ProfileView extends AppCompatActivity implements IPickResult{
             images = new int[]{R.drawable.maleleft, R.drawable.male_front, R.drawable.maleright};
 
 
+        featuredphotoslayout = (LinearLayout) findViewById(R.id.featuredphotoslayout);
+        featuredvideoslayout = (LinearLayout) findViewById(R.id.featuredvideoslayout);
+        featuredPhotos = (RecyclerView) findViewById(R.id.featuredPhotos);
+
+        try {
+
+            int photosUploaded = Integer.parseInt(new JSONObject(userdatamain).optString("photosUploaded"));
+
+            if(photosUploaded == 0) {
+                featuredphotoslayout.setVisibility(View.GONE);
+            } else {
+                /*String[] photourls = new String[photosUploaded];
+                String id = new JSONObject(userdatamain).optString("_id");
+
+                for(int i = 1; i<=photosUploaded; i++) {
+                   photourls[i-1] = User.getInstance().BASE_URL + "users/" + id + "/photos/Image" + i + ".png";
+                }*/
+
+                JSONArray photoUrlsjson = new JSONObject(userdatamain).optJSONArray("photoURLS");
+                ArrayList<String> photoUrlslist = new ArrayList<>();
+
+                for(int i = 0; i<photoUrlsjson.length(); i++) {
+                    photoUrlslist.add(i,photoUrlsjson.getString(i));
+                }
+
+                String[] photoUrls = photoUrlslist.toArray(new String[0]);
+
+                for (String photoUrl : photoUrls) {
+                    Log.e("array", photoUrl + '\n');
+                }
+
+                featuredPhotosHorizontalAdapter = new FeaturedPhotosHorizontalAdapter(getApplicationContext(), photoUrls);
+                LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                featuredPhotos.setLayoutManager(horizontalLayoutManager);
+                featuredPhotos.setAdapter(featuredPhotosHorizontalAdapter);
+
+            }
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
 
 
-        for (int i = 0; i < images.length; i++) {
+
+        featuredPhotos.addOnItemTouchListener(new RecyclerItemClickListener(ProfileView.this, featuredPhotos ,
+                new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Toast.makeText(ProfileView.this, "Make a gallery like view to display the images", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+
+                    }
+                })
+        );
+
+
+
+       /* for (int i = 0; i < images.length; i++) {
 
             cellImage = getLayoutInflater().inflate(R.layout.imageviewcellnewprofview, null);
 
@@ -201,12 +259,12 @@ public class ProfileView extends AppCompatActivity implements IPickResult{
                 @Override
                 public void onClick(View v) {
                     // do whatever you want ...
-                    Toast.makeText(ProfileView.this,
-                            (CharSequence) imageView.getTag(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProfileView.this, (CharSequence) imageView.getTag(), Toast.LENGTH_SHORT).show();
                     tag = imageView.getTag().toString();
 
                     selectImage();
                 }
+
             });
 
             imageView.setTag("Image"+(i+1));
@@ -218,11 +276,11 @@ public class ProfileView extends AppCompatActivity implements IPickResult{
 
             mainLayoutImage.addView(cellImage);
         }
+*/
 
 
 
-
-        for (int i = 0; i < 4; i++) {
+      /*  for (int i = 0; i < 4; i++) {
 
             cellVideo = getLayoutInflater().inflate(R.layout.videocellnewprofview, null);
 
@@ -243,7 +301,8 @@ public class ProfileView extends AppCompatActivity implements IPickResult{
 
 
             mainLayoutVideo.addView(cellVideo);
-        }
+        }*/
+
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -486,7 +545,7 @@ public class ProfileView extends AppCompatActivity implements IPickResult{
 
     }
 
-    private void selectImage() {
+   /* private void selectImage() {
 
         PickSetup setup = new PickSetup()
                 .setTitle("Choose Image from: ")
@@ -500,7 +559,7 @@ public class ProfileView extends AppCompatActivity implements IPickResult{
         PickImageDialog.build(setup).show(ProfileView.this);
 
     }
-
+*/
 
     public void playVideo()
     {
@@ -519,7 +578,12 @@ public class ProfileView extends AppCompatActivity implements IPickResult{
         }
     }
 
-
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
 
     private void showSnackbar() {
 
@@ -691,20 +755,21 @@ public class ProfileView extends AppCompatActivity implements IPickResult{
 
 
 
-    @Override
+  /*  @Override
     public void onPickResult(PickResult pickResult) {
 
         if(pickResult.getError() == null)
         {
             Bitmap bitmap = pickResult.getBitmap();
 
-
             setImageinCorrectLocation(bitmap);
             uploadImage(bitmap);
         }
     }
+*/
 
-    private void setImageinCorrectLocation(Bitmap bitmap) {
+
+   /* private void setImageinCorrectLocation(Bitmap bitmap) {
 
         mainLayoutImage.removeAllViews();
 
@@ -734,11 +799,11 @@ public class ProfileView extends AppCompatActivity implements IPickResult{
 
             mainLayoutImage.addView(cellImage);
         }
-    }
+    }*/
 
     private void uploadImage(Bitmap bitmap) {
 
-        File f = new File(getApplicationContext().getCacheDir(),tag+".png");
+        File f = new File(getApplicationContext().getCacheDir(),tag + ".png");
 
         try {
             f.createNewFile();
@@ -798,6 +863,7 @@ public class ProfileView extends AppCompatActivity implements IPickResult{
 
                     }
                 });
+
     }
 
 
@@ -840,7 +906,8 @@ public class ProfileView extends AppCompatActivity implements IPickResult{
 
         switch (item.getItemId()) {
             case  R.id.action_edit:
-                Toast.makeText(this, "Redirect to profile view edit page", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), ProfileViewEdit.class);
+                startActivity(intent);
                 break;
         }
 

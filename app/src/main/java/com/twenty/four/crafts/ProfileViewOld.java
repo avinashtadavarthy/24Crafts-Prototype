@@ -174,7 +174,7 @@ public class ProfileViewOld extends AppCompatActivity implements OnMenuItemClick
         edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), ProfileViewEdit.class);
+                Intent i = new Intent(getApplicationContext(), ProfileViewEditOld.class);
                 startActivity(i);
             }
         });

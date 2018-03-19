@@ -204,6 +204,15 @@
             android:name=".ProfileView"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
+
+        <activity
+            android:name=".ProfileViewEdit"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2"/>
+        <activity
+            android:name=".ProfileViewEditOld"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2" />
         <activity
             android:name=".YoutubePlayerActivity"
             android:screenOrientation="portrait" />
@@ -292,10 +301,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme3" />
         <activity
-            android:name=".ProfileViewEdit"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme2" />
-        <activity
             android:name=".RateUs"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.CustomTheme" />
@@ -341,7 +346,7 @@
         <activity android:name=".registration.OnBoardingPage" />
         <activity android:name=".RadarView" />
         <activity android:name=".ReferAndEarn2" />
-        <activity android:name=".ChangePassword"></activity>
+        <activity android:name=".ChangePassword" />
     </application>
 
 </manifest>

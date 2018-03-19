@@ -2,6 +2,16 @@ package com.twenty.four.crafts;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -27,6 +37,43 @@ public class SharedPref {
         Boolean state = mySharedPref.getBoolean("NightMode",false);
         return state;
     }
+
+
+
+    public void updateUserDataMain(final Context c) {
+        //to update userdatamain
+        String newurl = User.getInstance().BASE_URL + "user";
+
+        StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                Log.e("userdataonupdate", response);
+                storeSPData(c, "userdatamain", response);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("authorization", getSPData(c, "jwtToken"));
+
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(c).addToRequestQueue(getRequest);
+        //to update userdatamain
+    }
+
+
 
 
 

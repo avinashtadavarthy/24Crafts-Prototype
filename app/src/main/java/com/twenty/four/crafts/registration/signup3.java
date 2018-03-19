@@ -59,6 +59,8 @@ public class signup3 extends AppCompatActivity {
     String type, name, craft;
     LinearLayout questions_crafts, questions_clients;
 
+    EditText editBio, editInterestedroles, editHobbies;
+
 
     String[] actor_61string={"If yes, then what kind?",
             "Feature Films", "TV Shows", "Short Films", "College Culturals", "Anchor", "Hosts", "Other"};
@@ -151,6 +153,14 @@ public class signup3 extends AppCompatActivity {
         } else if(type.equals("client")) {
             questions_crafts.setVisibility(View.GONE);
         }
+
+
+        //for the last three fields - start
+        editBio = (EditText) findViewById(R.id.editText1);
+        editInterestedroles = (EditText) findViewById(R.id.editText2);
+        editHobbies = (EditText) findViewById(R.id.editText3);
+        //for the last three fields - end
+
 
         //craftsmen
 
@@ -1944,11 +1954,15 @@ public class signup3 extends AppCompatActivity {
                 params.put("twitter", getSPData("twitterJSON"));
                 params.put("hasPreviousExperience", getSPData("hasPrevExp"));
                 params.put("previousExperience", getSPData("prevExp"));
+                params.put("bio", editBio.getText().toString());
+                params.put("interestedRoles", editInterestedroles.getText().toString());
+                params.put("hobbies", editHobbies.getText().toString());
 
-                String[] languagesspoken = getSPData("languagesspoken_dirty").split(", ");
+
+                /*String[] languagesspoken = getSPData("languagesspoken_dirty").split(", ");
                 Gson gson = new GsonBuilder().create();
-                String jsonArray = gson.toJson(languagesspoken);
-                params.put("languagesSpoken", jsonArray);
+                String jsonArray = gson.toJson(languagesspoken);*/
+                params.put("languagesSpoken", getSPData("languagesspoken_dirty"));
 
                 return params;
             }
