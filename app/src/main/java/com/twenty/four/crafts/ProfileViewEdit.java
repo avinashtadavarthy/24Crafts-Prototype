@@ -145,7 +145,7 @@ public class ProfileViewEdit extends AppCompatActivity implements IPickResult{
         try {
 
             int photosUploaded = Integer.parseInt(new JSONObject(userdatamain).optString("photosUploaded"));
-            int photoCount = Integer.parseInt(new JSONObject(userdatamain).optString("photoCount"));
+            final int photoCount = Integer.parseInt(new JSONObject(userdatamain).optString("photoCount"));
 
                 /*String[] photourls = new String[photosUploaded];
                 String id = new JSONObject(userdatamain).optString("_id");
@@ -193,6 +193,8 @@ public class ProfileViewEdit extends AppCompatActivity implements IPickResult{
 
                                 if (ct > 0) {
                                     Toast.makeText(ProfileViewEdit.this, "delete image in url", Toast.LENGTH_SHORT).show();
+                                } else if(position == photoCount) {
+                                    Toast.makeText(ProfileViewEdit.this, "sootha kaluvu", Toast.LENGTH_SHORT).show();
                                 } else {
                                     num = position;
                                     selectImage();
@@ -815,11 +817,6 @@ public class ProfileViewEdit extends AppCompatActivity implements IPickResult{
 
                         //to update userdatamain in shared prefs
                         sharedPref.updateUserDataMain(getApplicationContext());
-
-                        editFeatPhotosHorizontalAdapter.notifyDataSetChanged();
-
-                        recreate();
-
                     }
 
                     @Override

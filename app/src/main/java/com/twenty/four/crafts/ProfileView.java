@@ -203,11 +203,16 @@ public class ProfileView extends AppCompatActivity{
                 featuredphotoslayout.setVisibility(View.GONE);
             } else {
                 /*String[] photourls = new String[photosUploaded];
-                String id = new JSONObject(userdatamain).optString("_id");
 
                 for(int i = 1; i<=photosUploaded; i++) {
                    photourls[i-1] = User.getInstance().BASE_URL + "users/" + id + "/photos/Image" + i + ".png";
                 }*/
+
+                Glide.with(this)
+                        .load("http://" + new JSONObject(userdatamain).optString("profileImageURL"))
+                        .placeholder(R.drawable.avatar_placeholder)
+                        .bitmapTransform(new CropCircleTransformation(this))
+                        .into((ImageView) findViewById(R.id.avatar));
 
                 JSONArray photoUrlsjson = new JSONObject(userdatamain).optJSONArray("photoURLS");
                 ArrayList<String> photoUrlslist = new ArrayList<>();
@@ -442,12 +447,6 @@ public class ProfileView extends AppCompatActivity{
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         /*final ArrayList<DetailsData> listData = getIntent().getParcelableArrayListExtra(BUNDLE_LIST_DATA);
         recyclerView.setAdapter(new ProfileAdapter(listData));*/
-
-        Glide.with(this)
-                .load("https://homepages.cae.wisc.edu/~ece533/images/airplane.png")
-                .placeholder(R.drawable.avatar_placeholder)
-                .bitmapTransform(new CropCircleTransformation(this))
-                .into((ImageView) findViewById(R.id.avatar));
 
 
 

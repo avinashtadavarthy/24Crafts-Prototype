@@ -85,6 +85,7 @@ public class EditFeatPhotosHorizontalAdapter extends RecyclerView.Adapter<EditFe
                             holder.image.setImageResource(R.drawable.maleleft);
                         }
                         break;
+
                     case 1:
                         if(reqdno == position) {
                         Glide.with(context).load(User.getInstance().BASE_URL + "users/" + id + "/photos/Image" + position + ".png").diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(holder.image);
@@ -92,6 +93,7 @@ public class EditFeatPhotosHorizontalAdapter extends RecyclerView.Adapter<EditFe
                         holder.image.setImageResource(R.drawable.male_front);
                     }
                     break;
+
                     case 2:
                         if(reqdno == position) {
                             Glide.with(context).load(User.getInstance().BASE_URL + "users/" + id + "/photos/Image" + position + ".png").diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(holder.image);
@@ -99,9 +101,12 @@ public class EditFeatPhotosHorizontalAdapter extends RecyclerView.Adapter<EditFe
                             holder.image.setImageResource(R.drawable.maleright);
                         }
                         break;
+
                     default:
                         if(reqdno == position) {
                             Glide.with(context).load(User.getInstance().BASE_URL + "users/" + id + "/photos/Image" + position + ".png").diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(holder.image);
+                        } else if(position == photoCount) {
+                            holder.image.setImageResource(R.drawable.btn_add);
                         } else {
                             holder.image.setImageResource(R.drawable.male_front);
                         }
@@ -111,12 +116,11 @@ public class EditFeatPhotosHorizontalAdapter extends RecyclerView.Adapter<EditFe
 
             }
 
-
     }
 
     @Override
     public int getItemCount() {
-        return photoCount;
+        return photoCount+1;
     }
 }
 
