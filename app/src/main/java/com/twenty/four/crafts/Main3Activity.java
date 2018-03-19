@@ -107,7 +107,7 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         coverpic = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.coverpic);
 
         nav_name.setText(userdatamain.optString("name"));
-        nav_craft.setText(userdatamain.optString("category"));
+        nav_craft.setText(User.getInstance().getCategoryFromTag(userdatamain.optString("category")));
 //        coinCount.setText(userdatamain.optString("coinCount"));
         Bitmap icon = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.sample1);
         Blurry.with(getApplicationContext()).from(icon).into(coverpic);

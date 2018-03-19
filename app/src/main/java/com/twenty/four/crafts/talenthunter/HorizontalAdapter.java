@@ -1,7 +1,6 @@
 package com.twenty.four.crafts.talenthunter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,9 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.twenty.four.crafts.ProfileView;
 import com.twenty.four.crafts.R;
-import com.twenty.four.crafts.RecyclerItemClickListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;

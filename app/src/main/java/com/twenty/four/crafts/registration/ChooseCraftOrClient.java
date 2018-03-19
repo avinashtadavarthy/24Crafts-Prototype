@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.twenty.four.crafts.R;
+import com.twenty.four.crafts.User;
 
 public class ChooseCraftOrClient extends AppCompatActivity {
 
@@ -71,57 +72,7 @@ public class ChooseCraftOrClient extends AppCompatActivity {
 
                 Intent intent = new Intent();
 
-                switch(listAdapter.getItem(position)) {
-                    //craftsmen
-                    case "Actor": selectedcategory = "Actor"; break;
-                    case "Actress": selectedcategory = "Actress"; break;
-                    case "Child Artist": selectedcategory = "Childartist"; break;
-                    case "Singer": selectedcategory = "Singer"; break;
-                    case "Dancer": selectedcategory = "Dancer"; break;
-                    case "Side Artist": selectedcategory = "Sideartist"; break;
-                    case "Assistant Director": selectedcategory = "Assistantdirector"; break;
-                    case "Lyric Writer / Lyricist": selectedcategory = "Lyricwriter"; break;
-                    case "Dialouge Writer": selectedcategory = "Dialoguewriter"; break;
-                    case "Script / Screenplay Writers": selectedcategory = "Scriptwriter"; break;
-                    case "Story Board Artist": selectedcategory = "Storyboardartist"; break;
-                    case "Choreographer": selectedcategory = "Choreographer"; break;
-                    case "Director of Photography": selectedcategory = "Directorofphotography"; break;
-                    case "Still Photographer": selectedcategory = "Stillphotographer"; break;
-                    case "PRO": selectedcategory = "Pro"; break;
-                    case "Designer": selectedcategory = "Designer"; break;
-                    case "Production Manager": selectedcategory = "Productionmanager"; break;
-                    case "Focus Puller": selectedcategory = "Focuspuller"; break;
-                    case "Vehicle Driver": selectedcategory = "Vehicledriver"; break;
-                    case "Mic Department": selectedcategory = "Micdepartment"; break;
-                    case "Music Director": selectedcategory = "Musicdirector"; break;
-                    case "Make-up Man": selectedcategory = "Makeupman"; break;
-                    case "Hair Dresser": selectedcategory = "Hairdresser"; break;
-                    case "Costumer": selectedcategory = "Costumer"; break;
-                    case "Art Department": selectedcategory = "Artdepartment"; break;
-                    case "Set Department": selectedcategory = "Setdepartment"; break;
-                    case "Stuntman": selectedcategory = "Stuntman"; break;
-                    case "Editor": selectedcategory = "Editor"; break;
-                    case "Location Manager": selectedcategory = "Locationmanager"; break;
-                    case "Production (Food)": selectedcategory = "Productionfood"; break;
-                    case "Dubbing Artist": selectedcategory = "Dubbingartist"; break;
-                    case "Sound Recording Engineer": selectedcategory = "Soundrecordingengineer"; break;
-                    case "Sound Mixing Engineer": selectedcategory = "Soundmixingengineer"; break;
-                    case "Digital Intermediate": selectedcategory = "Di"; break;
-                    case "VFX / CG": selectedcategory = "Vfx"; break;
-                    case "SFX": selectedcategory = "Sfx"; break;
-                    case "Pet Supplier / Pet Doctor / AWBI Certifications": selectedcategory = "Petsupplier"; break;
-
-                    //clients
-                    case "Casting Agent": selectedcategory = "Castingagent"; break;
-                    case "Co-Director": selectedcategory = "Codirector"; break;
-                    case "Co-Producer": selectedcategory = "Coproducer"; break;
-                    case "Director": selectedcategory = "Director"; break;
-                    case "Director Assistant": selectedcategory = "Directorassistant"; break;
-                    case "Executive Producer": selectedcategory = "Executiveproducer"; break;
-                    case "Model Coordinator": selectedcategory = "Modelcoordinator"; break;
-                    case "Producer": selectedcategory = "Producer"; break;
-                    case "Production House Manager": selectedcategory = "Productionhousemanager"; break;
-                }
+                selectedcategory = User.getInstance().getTagFromCategory(listAdapter.getItem(position));
 
                 storeSPData("category", selectedcategory);
 

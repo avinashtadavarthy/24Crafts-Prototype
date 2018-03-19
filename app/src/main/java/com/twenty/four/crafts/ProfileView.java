@@ -1,33 +1,33 @@
 package com.twenty.four.crafts;
 
-
-import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
+import android.os.Build;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutCompat;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.transition.Transition;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.BounceInterpolator;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,90 +40,89 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
+import com.androidnetworking.interfaces.UploadProgressListener;
+import com.bumptech.glide.Glide;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
-import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
-import com.yalantis.contextmenu.lib.MenuObject;
-import com.yalantis.contextmenu.lib.MenuParams;
-import com.yalantis.contextmenu.lib.interfaces.OnMenuItemClickListener;
-import com.yalantis.contextmenu.lib.interfaces.OnMenuItemLongClickListener;
+import com.vansuita.pickimage.bean.PickResult;
+import com.vansuita.pickimage.bundle.PickSetup;
+import com.vansuita.pickimage.dialog.PickImageDialog;
+import com.vansuita.pickimage.enums.EPickType;
+import com.vansuita.pickimage.listeners.IPickResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class ProfileView extends AppCompatActivity implements OnMenuItemClickListener, OnMenuItemLongClickListener {
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
+public class ProfileView extends AppCompatActivity implements IPickResult{
 
-    ImageButton edit_profile, profile_back;
-    NestedScrollView nestedScrollView;
-    ImageView video1, video2, video3;
-    int i = 0;
+    SharedPref sharedPref;
+    RecyclerView recyclerView;
+    String userdatamain,jwtToken;
 
-    ImageView result1,result2,result3,result4;
-    private FragmentManager fragmentManager;
-    private ContextMenuDialogFragment mMenuDialogFragment;
+    CoordinatorLayout mainlayout;
+
     String togetback = "Hello", fromwhom = "Hey";
 
 
-    String dialogtextverifyemail = "Please verify your email to continue using the app";
-    boolean arrowDownDS = true,arrowDownSP = true;
-
-
+    boolean arrowDownDS = true, arrowDownSP = true;
     int check = 0;
-    String emailVerified = "",jwtToken = "";
-
-    String userdatamain;
-    String dob;
-
-
+    String tag;
     TextView danceStyles,sportsPlayed;
 
     ImageView subresult1,subresult3;
+
+    ImageView result1,result2,result3,result4;
+
+    TextView profile_personnameTitle, profile_personname, profile_craftnage, profile_bio, profile_introles, profile_hometown, profile_residingin, profile_languagesspoken, profile_height, profile_weight, profile_chest, profile_waist, profile_facialhair, profile_skintone;
+
+    NestedScrollView nestedScrollView;
+
+
+    ImageView video;
+
+    LinearLayout mainLayoutImage,mainLayoutVideo;
+    TextView text;
+    View cellImage,cellVideo;
+    int[] images;
+
+    String dob,emailVerified;
 
     FloatingActionButton fav_profile, message_profile;
     Boolean isfav = false;
 
 
 
-    //on the profileview page
-    TextView profile_personname, profile_craft, profile_age, profile_bio, profile_introles, profile_hometown, profile_residingin, profile_languagesspoken, profile_height, profile_weight, profile_chest, profile_waist, profile_facialhair, profile_skintone;
-
-    CoordinatorLayout mainlayout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_profile);
+        setContentView(R.layout.activity_profile_view_new);
+
+        sharedPref = new SharedPref(getApplicationContext());
+
+
+        mainlayout = findViewById(R.id.mainNewProfileView);
+
+        mainLayoutImage = findViewById(R.id.linlayoutimagesprofview);
+        mainLayoutVideo = findViewById(R.id.linlayoutvideosprofview);
 
         userdatamain = getSPData("userdatamain");
+        jwtToken = getSPData("jwtToken");
+
         AndroidNetworking.initialize(getApplicationContext());
 
-        jwtToken = getSPData("jwtToken");
-        mainlayout = findViewById(R.id.mainProfileViewLayout);
+        nestedScrollView = findViewById(R.id.nestedScrollView);
 
-        fragmentManager = getSupportFragmentManager();
-        edit_profile = (ImageButton) findViewById(R.id.edit_profile);
-        profile_back = (ImageButton) findViewById(R.id.profile_back);
-
-        //video1 = findViewById(R.id.profileVideo1);
-        video2 = findViewById(R.id.profileVideo2);
-        video3 = findViewById(R.id.profileVideo3);
-
-        result1 = findViewById(R.id.result1);
-        result2 = findViewById(R.id.result2);
-        result3 = findViewById(R.id.result3);
-        result4 = findViewById(R.id.result4);
-
-        subresult1 = findViewById(R.id.subresult1);
-        subresult3 = findViewById(R.id.subresult3);
-
-        danceStyles = findViewById(R.id.danceStyles);
-        sportsPlayed = findViewById(R.id.sportsPlayed);
 
         fav_profile = findViewById(R.id.fav_profile);
         message_profile = findViewById(R.id.message_profile);
@@ -167,33 +166,6 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
         });
 
 
-        //Picasso.with(getApplicationContext()).load("https://img.youtube.com/vi/eGCM444_mN0/mqdefault.jpg").into(video1);
-        Picasso.with(getApplicationContext()).load("https://img.youtube.com/vi/eGCM444_mN0/mqdefault.jpg").into(video2);
-        Picasso.with(getApplicationContext()).load("https://img.youtube.com/vi/eGCM444_mN0/mqdefault.jpg").into(video3);
-        //DownloadThumbnailImageYoutubeVideo("https://www.youtube.com/watch?v=eGCM444_mN0");
-        nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
-
-        profile_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
-
-        edit_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), ProfileViewEdit.class);
-                startActivity(i);
-            }
-        });
-
-
-        //ViewPager viewPager = (ViewPager) findViewById(R.id.coverphotoviewpager);
-        //ImageAdapter adapter = new ImageAdapter(this); //Here we are defining the Imageadapter object
-        //viewPager.setAdapter(adapter); // Here we are passing and setting the adapter for the images
-
-
         nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
@@ -209,14 +181,99 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
             }
         });
 
-        //on the profileview page
 
-        profile_personname = (TextView) findViewById(R.id.profile_personname);
+        if(getSPData("gender").equals("male"))
+            images = new int[]{R.drawable.femaleleft, R.drawable.female, R.drawable.femaleright};
 
-        profile_craft = (TextView) findViewById(R.id.profile_craft);
-        profile_age = (TextView) findViewById(R.id.profile_age);
-        profile_bio = (TextView) findViewById(R.id.profile_bio);
-        profile_introles = (TextView) findViewById(R.id.profile_introles);
+        else
+            images = new int[]{R.drawable.maleleft, R.drawable.male_front, R.drawable.maleright};
+
+
+
+
+        for (int i = 0; i < images.length; i++) {
+
+            cellImage = getLayoutInflater().inflate(R.layout.imageviewcellnewprofview, null);
+
+            final RoundedImageView imageView =  cellImage.findViewById(R.id._image);
+            imageView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    // do whatever you want ...
+                    Toast.makeText(ProfileView.this,
+                            (CharSequence) imageView.getTag(), Toast.LENGTH_SHORT).show();
+                    tag = imageView.getTag().toString();
+
+                    selectImage();
+                }
+            });
+
+            imageView.setTag("Image"+(i+1));
+
+            text = (TextView) cellImage.findViewById(R.id._imageName);
+
+            imageView.setImageResource(images[i]);
+            text.setText("Image"+(i+1));
+
+            mainLayoutImage.addView(cellImage);
+        }
+
+
+
+
+        for (int i = 0; i < 4; i++) {
+
+            cellVideo = getLayoutInflater().inflate(R.layout.videocellnewprofview, null);
+
+            video =  cellVideo.findViewById(R.id._video);
+            video.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    // do whatever you want ...
+                  playVideo();
+                }
+            });
+
+
+
+            video.setTag("Video"+(i+1));
+            Picasso.with(getApplicationContext()).load("https://img.youtube.com/vi/eGCM444_mN0/mqdefault.jpg").into(video);
+
+
+            mainLayoutVideo.addView(cellVideo);
+        }
+
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        final String fullName = sharedPref.getSPData(getApplicationContext(), "name");
+        final String title = fullName.split(" ")[0] + "'s Profile";
+
+
+        profile_personnameTitle = findViewById(R.id.tv_title); profile_personnameTitle.setText(title);
+
+        profile_craftnage = findViewById(R.id.tv_info); profile_craftnage.setText("craft and age");
+
+        profile_personname = findViewById(R.id.tv_name); profile_personname.setText(fullName);
+
+
+        profile_bio = findViewById(R.id.tv_status); profile_bio.setText("The bio goes here");
+
+        result1 = findViewById(R.id.result1);
+        result2 = findViewById(R.id.result2);
+        result3 = findViewById(R.id.result3);
+        result4 = findViewById(R.id.result4);
+
+        subresult1 = findViewById(R.id.subresult1);
+        subresult3 = findViewById(R.id.subresult3);
+
+        danceStyles = findViewById(R.id.danceStyles);
+        sportsPlayed = findViewById(R.id.sportsPlayed);
+
         profile_hometown = (TextView) findViewById(R.id.profile_hometown);
         profile_residingin = (TextView) findViewById(R.id.profile_residingin);
         profile_languagesspoken = (TextView) findViewById(R.id.profile_languagesspoken);
@@ -227,8 +284,14 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
         profile_facialhair = (TextView) findViewById(R.id.profile_facialhair);
         profile_skintone = (TextView) findViewById(R.id.profile_skintone);
 
+
+
+
+
+
+
         try {
-             dob = new JSONObject(userdatamain).optString("dob");
+            dob = new JSONObject(userdatamain).optString("dob");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -239,131 +302,211 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
 
         String Age = User.getInstance().getAge(year,month,day);
 
+
+
+
+
         try {
 
-                if(new JSONObject(userdatamain).optString("gender").equals("female"))
-                    profile_facialhair.setVisibility(View.GONE);
+            if(new JSONObject(userdatamain).optString("gender").equals("female"))
+                profile_facialhair.setVisibility(View.GONE);
 
-                profile_personname.setText(new JSONObject(userdatamain).optString("name"));
-                profile_craft.setText(new JSONObject(userdatamain).optString("category"));
+            profile_personnameTitle.setText(new JSONObject(userdatamain).optString("name").split(" ")[0] + "'s Profile");
 
-                profile_age.setText(Age);
+            profile_personname.setText(new JSONObject(userdatamain).optString("name"));
+            profile_craftnage.setText(User.getInstance().getCategoryFromTag(new JSONObject(userdatamain).optString("category")) + ", " + Age);
 
-                profile_bio.setText(new JSONObject(userdatamain).optString("bio"));
-                profile_introles.setText(new JSONObject(userdatamain).optString("interestedRoles"));;
+            profile_bio.setText(new JSONObject(userdatamain).optString("bio"));
+            //profile_introles.setText(new JSONObject(userdatamain).optString("interestedRoles"));;
 
-                profile_hometown.setText(new JSONObject(userdatamain).optString("native"));
-                profile_residingin.setText(new JSONObject(userdatamain).optString("residingIn"));
-                profile_skintone.setText(new JSONObject(userdatamain).optString("skinTone"));
-                profile_chest.setText(new JSONObject(userdatamain).optString("chestSize"));
-                profile_waist.setText(new JSONObject(userdatamain).optString("waistSize"));
-                profile_facialhair.setText(new JSONObject(userdatamain).optString("facialHair"));
+            profile_hometown.setText(new JSONObject(userdatamain).optString("native"));
+            profile_residingin.setText(new JSONObject(userdatamain).optString("residingIn"));
+            profile_skintone.setText(new JSONObject(userdatamain).optString("skinTone"));
+            profile_chest.setText(new JSONObject(userdatamain).optString("chestSize"));
+            profile_waist.setText(new JSONObject(userdatamain).optString("waistSize"));
+            profile_facialhair.setText(new JSONObject(userdatamain).optString("facialHair"));
 
-                profile_languagesspoken.setText(new JSONObject(userdatamain).optString("languagesSpoken"));
-                profile_height.setText(new JSONObject(userdatamain).optString("height"));
-                profile_weight.setText(new JSONObject(userdatamain).optString("weight"));
-                //profile_age.setText(new JSONObject(userdatamain).optString("age"));
+            profile_languagesspoken.setText(new JSONObject(userdatamain).optString("languagesSpoken"));
+            profile_height.setText(new JSONObject(userdatamain).optString("height"));
+            profile_weight.setText(new JSONObject(userdatamain).optString("weight"));
+            //profile_age.setText(new JSONObject(userdatamain).optString("age"));
 
-                if(new JSONObject(userdatamain).optBoolean("canDance") == true)
-                {
-                    result1.setImageResource(R.drawable.icon_green_tick);
-                    subresult1.setImageResource(R.drawable.arrowicon);
-                }
+            if(new JSONObject(userdatamain).optBoolean("canDance"))
+            {
+                result1.setImageResource(R.drawable.icon_green_tick);
+                subresult1.setImageResource(R.drawable.arrowicon);
+            }
 
-                else
-                    result1.setImageResource(R.drawable.icon_red_cross);
-
-
-                if(new JSONObject(userdatamain).optBoolean("canSwim") == true)
-                {
-                    result2.setImageResource(R.drawable.icon_green_tick);
-                }
+            else
+                result1.setImageResource(R.drawable.icon_grey_tick);
 
 
-                else
-                    result2.setImageResource(R.drawable.icon_red_cross);
-
-
-
-                if(new JSONObject(userdatamain).optBoolean("playsSports") == true)
-                {
-                    result3.setImageResource(R.drawable.icon_green_tick);
-                    subresult3.setImageResource(R.drawable.arrowicon);
-
-                }
-
-
-                else
-                    result3.setImageResource(R.drawable.icon_red_cross);
-
-
-                if(new JSONObject(userdatamain).optBoolean("havePassport") == true)
-                {
-                    result4.setImageResource(R.drawable.icon_green_tick);
-                }
-
-
-                else
-                    result4.setImageResource(R.drawable.icon_red_cross);
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
+            if(new JSONObject(userdatamain).optBoolean("canSwim"))
+            {
+                result2.setImageResource(R.drawable.icon_green_tick);
             }
 
 
+            else
+                result2.setImageResource(R.drawable.icon_grey_tick);
+
+
+
+            if(new JSONObject(userdatamain).optBoolean("playsSports"))
+            {
+                result3.setImageResource(R.drawable.icon_green_tick);
+                subresult3.setImageResource(R.drawable.arrowicon);
+
+            }
+
+
+            else
+                result3.setImageResource(R.drawable.icon_grey_tick);
+
+
+            if(new JSONObject(userdatamain).optBoolean("havePassport"))
+            {
+                result4.setImageResource(R.drawable.icon_green_tick);
+            }
+
+
+            else
+                result4.setImageResource(R.drawable.icon_grey_tick);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        /*final ArrayList<DetailsData> listData = getIntent().getParcelableArrayListExtra(BUNDLE_LIST_DATA);
+        recyclerView.setAdapter(new ProfileAdapter(listData));*/
+
+        Glide.with(this)
+                .load("https://homepages.cae.wisc.edu/~ece533/images/airplane.png")
+                .placeholder(R.drawable.avatar_placeholder)
+                .bitmapTransform(new CropCircleTransformation(this))
+                .into((ImageView) findViewById(R.id.avatar));
+
+
+
+        final AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+
+            final View headerImage = findViewById(R.id.header_image);
+            final View headerInfo = findViewById(R.id.header_info);
+            final View avatar = findViewById(R.id.avatar_border);
+            final LinearLayout texts = (LinearLayout) findViewById(R.id.texts);
+
+            final int avatarHOffset = getResources().getDimensionPixelSize(R.dimen.profile_avatar_h_offset);
+            final int avatarVOffset = getResources().getDimensionPixelSize(R.dimen.profile_avatar_v_offset);
+            final int avatarSize = getResources().getDimensionPixelSize(R.dimen.profile_avatar_size);
+            final int textHOffset = getResources().getDimensionPixelSize(R.dimen.profile_texts_h_offset);
+            final int textVMinOffset = getResources().getDimensionPixelSize(R.dimen.profile_texts_v_min_offset);
+            final int textVMaxOffset = getResources().getDimensionPixelSize(R.dimen.profile_texts_v_max_offset);
+            final int textVDiff = textVMaxOffset - textVMinOffset;
+            final int header160 = getResources().getDimensionPixelSize(R.dimen.dp160);
+            final int toolBarHeight;
+
+            {
+                final TypedArray styledAttributes = getTheme().obtainStyledAttributes(
+                        new int[] { android.R.attr.actionBarSize });
+                toolBarHeight = (int) styledAttributes.getDimension(0, 0) + getStatusBarHeight();
+                styledAttributes.recycle();
+
+                avatar.setPivotX(0);
+                avatar.setPivotY(0);
+                texts.setPivotX(0);
+                texts.setPivotY(0);
+            }
+
+            final ArrayList<Float> textStart = new ArrayList<>();
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                final int diff = toolBarHeight + verticalOffset;
+                final int y = diff < 0 ? header160 - diff : header160;
+                headerInfo.setTop(y);
+
+                final FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) headerImage.getLayoutParams();
+                lp.height = y;
+                headerImage.setLayoutParams(lp);
+
+                final int totalScrollRange = appBarLayout.getTotalScrollRange();
+                final float ratio = ((float)totalScrollRange + verticalOffset) / totalScrollRange;
+
+                final int avatarHalf = avatar.getMeasuredHeight() / 2;
+                final int avatarRightest = appBarLayout.getMeasuredWidth() / 2 - avatarHalf - avatarHOffset;
+                final int avatarTopest = avatarHalf + avatarVOffset;
+
+                avatar.setX(avatarHOffset + avatarRightest * ratio);
+                avatar.setY(avatarVOffset - avatarTopest * ratio);
+                avatar.setScaleX(0.5f + 0.5f * ratio);
+                avatar.setScaleY(0.5f + 0.5f * ratio);
+
+                if (textStart.isEmpty() && verticalOffset == 0) {
+                    for (int i = 0; i < texts.getChildCount(); i++) {
+                        textStart.add(texts.getChildAt(i).getX());
+                    }
+                }
+
+                texts.setX(textHOffset + (avatarSize * 0.5f - avatarVOffset) * (1f - ratio));
+                texts.setY(textVMinOffset + textVDiff * ratio);
+                texts.setScaleX(0.8f + 0.2f * ratio);
+                texts.setScaleY(0.8f + 0.2f * ratio);
+                for (int i = 0; i < textStart.size(); i++) {
+                    texts.getChildAt(i).setX(textStart.get(i) * ratio);
+                }
+            }
+        });
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().getSharedElementEnterTransition().addListener(new Transition.TransitionListener() {
+
+                boolean isStarting = true;
+
+                @Override
+                public void onTransitionStart(Transition transition) {
+                    if (isStarting) {
+                        isStarting = false;
+
+                        ViewCompat.setTransitionName(findViewById(R.id.header_image), null);
+                        ViewCompat.setTransitionName(findViewById(R.id.recycler_view), null);
+                    }
+                }
+
+                @Override public void onTransitionEnd(Transition transition) {}
+                @Override public void onTransitionCancel(Transition transition) {}
+                @Override public void onTransitionPause(Transition transition) {}
+                @Override public void onTransitionResume(Transition transition) {}
+            });
+        }
 
     }
 
-    private List<MenuObject> getMenuObjects() {
-        // You can use any [resource, bitmap, drawable, color] as image:
-        // item.setResource(...)
-        // item.setBitmap(...)
-        // item.setDrawable(...)
-        // item.setColor(...)
-        // You can set image ScaleType:
-        // item.setScaleType(ScaleType.FIT_XY)
-        // You can use any [resource, drawable, color] as background:
-        // item.setBgResource(...)
-        // item.setBgDrawable(...)
-        // item.setBgColor(...)
-        // You can use any [color] as text color:
-        // item.setTextColor(...)
-        // You can set any [color] as divider color:
-        // item.setDividerColor(...)
+    private void selectImage() {
 
-        List<MenuObject> menuObjects = new ArrayList<>();
+        PickSetup setup = new PickSetup()
+                .setTitle("Choose Image from: ")
+                .setFlip(true)
+                .setMaxSize(500)
+                .setPickTypes(EPickType.CAMERA,EPickType.GALLERY)
+                .setIconGravity(Gravity.CENTER)
+                .setButtonOrientation(LinearLayoutCompat.VERTICAL)
+                .setSystemDialog(true);
 
-        MenuObject close = new MenuObject();
-        close.setResource(R.drawable.icn_close);
+        PickImageDialog.build(setup).show(ProfileView.this);
 
-        MenuObject send = new MenuObject("Send message");
-        send.setResource(R.drawable.icn_1);
-
-        MenuObject like = new MenuObject("Like profile");
-        Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.icn_2);
-        like.setBitmap(b);
-
-        MenuObject addFr = new MenuObject("Add to friends");
-        BitmapDrawable bd = new BitmapDrawable(getResources(),
-                BitmapFactory.decodeResource(getResources(), R.drawable.icn_3));
-        addFr.setDrawable(bd);
-
-        MenuObject addFav = new MenuObject("Add to favorites");
-        addFav.setResource(R.drawable.icn_4);
-
-        MenuObject block = new MenuObject("Block user");
-        block.setResource(R.drawable.icn_5);
-
-        menuObjects.add(close);
-        menuObjects.add(send);
-        menuObjects.add(like);
-        menuObjects.add(addFr);
-        menuObjects.add(addFav);
-        menuObjects.add(block);
-        return menuObjects;
     }
-//f26b3a
+
+
+    public void playVideo()
+    {
+        Intent i = new Intent(getApplicationContext(),YoutubePlayerActivity.class);
+        startActivity(i);
+    }
 
     @Override
     protected void onResume() {
@@ -403,29 +546,8 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
 
     }
 
-    /*private void resendEmailRequest() {
 
-        jwtToken = getSPData("jwtToken");
-        String url = User.getInstance().BASE_URL + "resendVerificationMail";
 
-        AndroidNetworking.get(url)
-                .addHeaders("authorization",jwtToken)
-                .setPriority(Priority.MEDIUM)
-                .build()
-                .getAsString(new StringRequestListener() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.e("resendEmail",response);
-
-                        Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onError(ANError anError) {
-
-                    }
-                });
-    }*/
 
 
     private int userRequest() {
@@ -548,83 +670,140 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
     }
 
 
-    private void initMenuFragment() {
-        MenuParams menuParams = new MenuParams();
-        //menuParams.setActionBarSize((int) getResources().getDimension(R.dimen.tool_bar_height));
-        menuParams.setMenuObjects(getMenuObjects());
-        menuParams.setClosableOutside(false);
-        mMenuDialogFragment = ContextMenuDialogFragment.newInstance(menuParams);
-        mMenuDialogFragment.setItemClickListener(this);
-        mMenuDialogFragment.setItemLongClickListener(this);
-    }
-
     @Override
-    public boolean onCreateOptionsMenu(final Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main2, menu);
+    public boolean onSupportNavigateUp() {
+        super.onBackPressed();
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.context_menu:
-                if (fragmentManager.findFragmentByTag(ContextMenuDialogFragment.TAG) == null) {
-                    mMenuDialogFragment.show(fragmentManager, ContextMenuDialogFragment.TAG);
-                }
-                break;
+    private int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
         }
-        return super.onOptionsItemSelected(item);
+        return result;
     }
+
+
+
+
+
 
 
     @Override
-    public void onMenuItemClick(View clickedView, int position) {
-        Toast.makeText(this, "Clicked on position: " + position, Toast.LENGTH_SHORT).show();
+    public void onPickResult(PickResult pickResult) {
+
+        if(pickResult.getError() == null)
+        {
+            Bitmap bitmap = pickResult.getBitmap();
+
+
+            setImageinCorrectLocation(bitmap);
+            uploadImage(bitmap);
+        }
     }
 
-    @Override
-    public void onMenuItemLongClick(View clickedView, int position) {
-        Toast.makeText(this, "Long clicked on position: " + position, Toast.LENGTH_SHORT).show();
-    }
+    private void setImageinCorrectLocation(Bitmap bitmap) {
 
-    /*  public void DownloadThumbnailImageYoutubeVideo(final String imgurl) {
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    final Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(imgurl).getContent());
-                    video1.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (bitmap != null) {
-                                video1.setImageBitmap(bitmap);
-                                video2.setImageBitmap(bitmap);
-                                video3.setImageBitmap(bitmap);
-                            }
+        mainLayoutImage.removeAllViews();
 
-                        }
-                    });
-                } catch (Exception e) {
+        for (int i = 0; i < 3; i++) {
+
+            cellImage = getLayoutInflater().inflate(R.layout.imageviewcellnewprofview, null);
+
+            final RoundedImageView imageView =  cellImage.findViewById(R.id._image);
+            imageView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    // do whatever you want ...
+                    Toast.makeText(ProfileView.this, (CharSequence) imageView.getTag(), Toast.LENGTH_SHORT).show();
+
                 }
-            }
-        }).start();
-*/
+            });
 
-    public void playVideo(View view)
-    {
-        Intent i = new Intent(getApplicationContext(),YoutubePlayerActivity.class);
-        startActivity(i);
+            imageView.setTag("Image"+(i+1));
+
+
+            if(imageView.getTag().equals(tag))
+            imageView.setImageBitmap(bitmap);
+
+            else
+                imageView.setImageResource(images[i]);
+
+            mainLayoutImage.addView(cellImage);
+        }
     }
 
+    private void uploadImage(Bitmap bitmap) {
+
+        File f = new File(getApplicationContext().getCacheDir(),tag+".png");
+
+        try {
+            f.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,0,byteArrayOutputStream);
+
+        byte[] bitmapdata = byteArrayOutputStream.toByteArray();
+
+        FileOutputStream fos;
+
+        try {
+            fos = new FileOutputStream(f);
+            fos.write(bitmapdata);
+            fos.flush();
+            fos.close();
+
+
+            postRequest(f);
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void postRequest(File f) {
+
+        String url = User.getInstance().BASE_URL + "user/upload/photo";
+        AndroidNetworking.upload(url)
+                .addMultipartFile("image",f)
+                .setPriority(Priority.MEDIUM)
+                .addHeaders("authorization",getSPData("jwtToken"))
+                .build()
+                .setUploadProgressListener(new UploadProgressListener() {
+                    @Override
+                    public void onProgress(long bytesUploaded, long totalBytes) {
+
+                    }
+                })
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(ProfileView.this,response,Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Toast.makeText(ProfileView.this,"Error: " + anError.getErrorBody(),Toast.LENGTH_LONG).show();
+
+                    }
+                });
+    }
 
 
 
     @Override
     public void onBackPressed() {
-
-        if (mMenuDialogFragment != null && mMenuDialogFragment.isAdded()) {
-            mMenuDialogFragment.dismiss();
-        }
 
         togetback = getIntent().getStringExtra("thisistogetback");
         fromwhom = getIntent().getStringExtra("fromwhom");
@@ -647,8 +826,31 @@ public class ProfileView extends AppCompatActivity implements OnMenuItemClickLis
 
 
 
+    //options menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_profileview, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
-    //Shared Preferences
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case  R.id.action_edit:
+                Toast.makeText(this, "Redirect to profile view edit page", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+
+    //shared Preferences
     private void storeSPData(String key, String data) {
 
         SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);

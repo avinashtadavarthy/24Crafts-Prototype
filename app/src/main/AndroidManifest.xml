@@ -197,11 +197,11 @@
             android:name=".Contacts"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ProfileView"
+            android:name=".ProfileViewOld"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity
-            android:name=".ProfileViewNew"
+            android:name=".ProfileView"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
         <activity

@@ -8,8 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridView;
 
 /**
  * Created by Avinash Tadavarthy on 04-Nov-17.
@@ -49,13 +47,12 @@ public class DashboardFavouritesTabFragment extends android.support.v4.app.Fragm
                 new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        /*Intent page = new Intent(getActivity().getApplicationContext(), ProfileView.class)
+
+                        Intent page = new Intent(getActivity().getApplicationContext(), ProfileView.class)
                                 .putExtra("thisistogetback", "do nothing")
                                 .putExtra("fromwhom", "do nothing");
-                        startActivity(page);*/
-
-                        Intent page = new Intent(getActivity().getApplicationContext(), ProfileViewNew.class);
                         startActivity(page);
+                        
                     }
 
                     @Override public void onLongItemClick(View view, int position) {

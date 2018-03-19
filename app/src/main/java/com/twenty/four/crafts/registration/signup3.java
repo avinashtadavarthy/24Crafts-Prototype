@@ -28,7 +28,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.twenty.four.crafts.CustomAdapterSpinner;
 import com.twenty.four.crafts.MySingleton;
-import com.twenty.four.crafts.ProfileView;
 import com.twenty.four.crafts.R;
 import com.facebook.accountkit.Account;
 import com.facebook.accountkit.AccountKit;
@@ -42,7 +41,6 @@ import com.facebook.accountkit.ui.LoginType;
 import com.twenty.four.crafts.SharedPref;
 import com.twenty.four.crafts.User;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
