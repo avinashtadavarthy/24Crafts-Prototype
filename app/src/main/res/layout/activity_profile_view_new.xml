@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
+    android:id="@+id/mainNewProfileView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -81,6 +82,7 @@
 
                 </FrameLayout>
 
+
                 <LinearLayout
                     android:id="@+id/texts"
                     android:layout_width="match_parent"
@@ -89,6 +91,9 @@
                     android:layout_marginTop="@dimen/profile_texts_v_max_offset"
                     android:layout_marginStart="@dimen/profile_texts_h_offset"
                     android:layout_marginEnd="@dimen/profile_texts_h_offset">
+
+
+
 
                     <TextView
                         android:id="@+id/tv_name"
@@ -143,16 +148,560 @@
                 app:layout_collapseMode="pin"
                 android:textColor="@android:color/white"/>
 
+
         </android.support.design.widget.CollapsingToolbarLayout>
+
+
+        <LinearLayout
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:padding="10dp"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8dp"
+            android:text="FEATURED PHOTOS"
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+
+        <HorizontalScrollView
+            android:layout_marginTop="10dp"
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:padding="5dp" android:id="@+id/linlayoutimagesprofview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+
+
+
+            <TextView
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:text="FEATURED VIDEOS"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+
+            <HorizontalScrollView
+                android:layout_marginTop="10dp"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:padding="5dp" android:id="@+id/linlayoutvideosprofview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="#ffffff">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:text="PERSONAL DETAILS"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Home Town: "
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/profile_hometown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Text Home Town"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Residing In: "
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/profile_residingin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Text Residing In"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Languages Spoken: "
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/profile_languagesspoken"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Text Languages Spoken"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="#ffffff">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:text="PHYSICAL ATTRIBUTES"
+                android:textColor="#000000"
+                android:layout_marginBottom="5dp"
+                android:textSize="15dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Height(cm) "
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:background="@drawable/box"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="4dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Weight(kg)"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:background="@drawable/box4"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="4dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/profile_height"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Text Height"
+                    android:textAlignment="center"
+                    android:background="@drawable/box5"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="4dp"/>
+
+                <TextView
+                    android:id="@+id/profile_weight"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Text Weight"
+                    android:textAlignment="center"
+                    android:background="@drawable/box5"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="4dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Chest(cm)"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:background="@drawable/box4"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="4dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Waist(cm)"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:background="@drawable/box4"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="4dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/profile_chest"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Text Chest"
+                    android:textAlignment="center"
+                    android:background="@drawable/box5"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="4dp"/>
+
+                <TextView
+                    android:id="@+id/profile_waist"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Text Waist"
+                    android:textAlignment="center"
+                    android:background="@drawable/box5"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="4dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Facial Hair: "
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/profile_facialhair"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Text Facial Hair"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Skin Tone: "
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/profile_skintone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="Text Skin Tone"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="#60ffffff">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="8dp"
+                    android:text="CHECKLIST"
+                    android:textColor="#000000"
+                    android:textSize="15dp" />
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/howtodance"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="3"
+                        android:id="@+id/howtodancequestion"
+                        android:gravity="center_vertical"
+                        android:text="Do I know how to dance?"
+                        android:textColor="#000000"/>
+                    <ImageView
+                        android:id="@+id/result1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/icon_green_tick"/>
+
+                    <ImageView
+                        android:layout_marginLeft="4dp"
+                        android:id="@+id/subresult1"
+                        android:onClick="makeDSVisible"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="0.2"/>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/danceStyles"/>
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/howtoswim"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="15dp"
+                    android:layout_below="@id/howtodance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="3"
+                        android:id="@+id/howtoswimquestion"
+                        android:gravity="center_vertical"
+                        android:text="Do I know how to swim?"
+                        android:textColor="#000000"/>
+                    <ImageView
+                        android:id="@+id/result2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/icon_grey_tick"/>
+
+                    <ImageView
+                        android:layout_marginLeft="4dp"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="0.2"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/playSports"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="15dp"
+                    android:layout_below="@id/howtoswim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:textColor="#000000">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="3"
+                        android:id="@+id/playsportsquestion"
+                        android:gravity="center_vertical"
+                        android:text="Do I play any sports?"
+                        android:textColor="#000000"/>
+                    <ImageView
+                        android:id="@+id/result3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/icon_green_tick"/>
+
+                    <ImageView
+                        android:layout_marginLeft="4dp"
+                        android:id="@+id/subresult3"
+                        android:onClick="makeSPVisible"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="0.2"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sportsPlayed"/>
+
+                <LinearLayout
+                    android:id="@+id/traveldocuments"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="15dp"
+                    android:layout_below="@id/playSports"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="3"
+                        android:id="@+id/traveldocumentsquestion"
+                        android:gravity="center_vertical"
+                        android:text="Valid Travel Documents(Passport)?"
+                        android:textColor="#000000"/>
+                    <ImageView
+                        android:id="@+id/result4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/icon_green_tick"/>
+
+                    <ImageView
+                        android:layout_marginLeft="4dp"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="0.2"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+
+
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/details_list_color"
-        android:transitionName="@string/transition_list"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_profile_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="@color/details_list_color"
+            android:transitionName="@string/transition_list"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+
+
+
 
 </android.support.design.widget.CoordinatorLayout>
