@@ -105,11 +105,13 @@ public class EditFeatPhotosHorizontalAdapter extends RecyclerView.Adapter<EditFe
                     default:
                         if(reqdno == position) {
                             Glide.with(context).load(User.getInstance().BASE_URL + "users/" + id + "/photos/Image" + position + ".png").diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(holder.image);
-                        } else if(position == photoCount) {
-                            holder.image.setImageResource(R.drawable.btn_add);
                         } else {
                             holder.image.setImageResource(R.drawable.male_front);
                         }
+
+                        /*else if(position == photoCount) {
+                        holder.image.setImageResource(R.drawable.btn_add);
+                    }*/
                         break;
                     //for each case, if the photo exists in that position, then populate, else, fuck it!
                 }
@@ -120,7 +122,7 @@ public class EditFeatPhotosHorizontalAdapter extends RecyclerView.Adapter<EditFe
 
     @Override
     public int getItemCount() {
-        return photoCount+1;
+        return photoCount;
     }
 }
 

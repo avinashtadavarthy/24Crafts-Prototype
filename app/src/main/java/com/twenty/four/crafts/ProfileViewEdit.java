@@ -193,12 +193,14 @@ public class ProfileViewEdit extends AppCompatActivity implements IPickResult{
 
                                 if (ct > 0) {
                                     Toast.makeText(ProfileViewEdit.this, "delete image in url", Toast.LENGTH_SHORT).show();
-                                } else if(position == photoCount) {
-                                    Toast.makeText(ProfileViewEdit.this, "sootha kaluvu", Toast.LENGTH_SHORT).show();
                                 } else {
                                     num = position;
                                     selectImage();
                                 }
+
+                            /*if(position == photoCount) {
+                                Toast.makeText(ProfileViewEdit.this, "sootha kaluvu", Toast.LENGTH_SHORT).show();
+                            } else*/
 
                         }
 
