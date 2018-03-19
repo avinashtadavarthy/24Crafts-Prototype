@@ -7,8 +7,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -38,6 +41,7 @@ public class RadarViewClass extends View implements View.OnClickListener{
     int mOutWidth;// 外圆宽度(w/4/5*2=w/10)
     int mCx, mCy;// x、y轴中心点
     int mOutsideRadius, mInsideRadius;// 外、内圆半径
+    ArrayList<Integer> mPointArrayX,mPointArrayY;
 
     public RadarViewClass(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -69,7 +73,9 @@ public class RadarViewClass extends View implements View.OnClickListener{
         this.mLightPointBmp = Bitmap.createBitmap(BitmapFactory.decodeResource(
                 mContext.getResources(), R.drawable.taigamod2));
         this.mDefaultPointBmp = Bitmap.createScaledBitmap(mDefaultPointBmp,10,10,false);
-        this.mLightPointBmp = Bitmap.createScaledBitmap(mLightPointBmp,120,120,false);
+        this.mLightPointBmp = Bitmap.createScaledBitmap(mLightPointBmp,150,150,false);
+        this.mPointArrayX = new ArrayList<>();
+        this.mPointArrayY = new ArrayList<>();
 
     }
 
@@ -112,6 +118,7 @@ public class RadarViewClass extends View implements View.OnClickListener{
         // TODO Auto-generated method stub
         super.onDraw(canvas);
         // 开始绘制最外层的圆
+
         mPaint.setAntiAlias(true);// 设置抗锯齿
         mPaint.setStyle(Paint.Style.FILL);// 设置填充样式
         mPaint.setColor(0xffB8DCFC);// 设置画笔颜色
@@ -186,11 +193,18 @@ public class RadarViewClass extends View implements View.OnClickListener{
                 int mx = mInsideRadius + mRandom.nextInt(mInsideRadius * 6);
                 int my = mInsideRadius + mRandom.nextInt(mInsideRadius * 6);
                 mPointArray.add(mx + "/" + my);
+                mPointArrayX.add(mx);
+                mPointArrayY.add(my);
             }
 
             // 开始绘制坐标点
+            Log.e("mpointarray",mPointArray.size()+"");
             for (int i = 0; i < mPointArray.size(); i++) {
                 String[] result = mPointArray.get(i).split("/");
+                int mx = Integer.parseInt(result[0]);
+                int my = Integer.parseInt(result[1]);
+
+                Log.e("mpointarray","Mpointarray[" + i + "] = " + mx + " " + my);
 
                 // 开始绘制动态点
                 if (i < mPointArray.size() - 1)
@@ -247,6 +261,29 @@ public class RadarViewClass extends View implements View.OnClickListener{
     }
 
     @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        int action = event.getAction();
+        int x = (int) event.getX();
+        int y = (int) event.getY();
+
+        switch (action)
+        {
+            case MotionEvent.ACTION_DOWN:
+                for(int i = 0;i<mPointArray.size();i++)
+                {
+                    if(x >= mPointArrayX.get(i) && x < (mPointArrayX.get(i) + mLightPointBmp.getWidth())
+                            && y >= mPointArrayY.get(i) && y < (mPointArrayY.get(i) + mLightPointBmp.getHeight()))
+                    {
+                        Toast.makeText(mContext,x + " " + y,Toast.LENGTH_LONG).show();
+                    }
+                }
+        }
+
+
+        return true;
+    }
+
+    @Override
     public void onClick(View view) {
 
     }
@@ -255,11 +292,9 @@ public class RadarViewClass extends View implements View.OnClickListener{
     public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
 
         private String url;
-        private ImageView imageView;
 
         public ImageLoadTask(String url, ImageView imageView) {
             this.url = url;
-            this.imageView = imageView;
         }
 
         @Override
@@ -282,7 +317,7 @@ public class RadarViewClass extends View implements View.OnClickListener{
         @Override
         protected void onPostExecute(Bitmap result) {
             super.onPostExecute(result);
-            imageView.setImageBitmap(result);
+
         }
     }
 }
