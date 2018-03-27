@@ -346,7 +346,9 @@
         <activity android:name=".RadarView" />
         <activity android:name=".ReferAndEarn2" />
         <activity android:name=".ChangePassword" />
-        <activity android:name=".ClientVerification4Activity"></activity>
+        <activity android:name=".ClientVerification4Activity" />
+        <activity android:name=".ClientVerification5Activity" />
+        <activity android:name=".ClientVerification6Activity"></activity>
     </application>
 
 </manifest>
