@@ -110,13 +110,13 @@ public class StartingScreen extends AppCompatActivity {
 
         AlertDialog alert = new android.support.v7.app.AlertDialog.Builder(new ContextThemeWrapper(StartingScreen.this, R.style.AlertDialog))
                 .setMessage("Do you want to exit the registration process?")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         sharedPref.clearAllSharedPrefs(getApplicationContext());
                         finish();
                     }
                 })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }

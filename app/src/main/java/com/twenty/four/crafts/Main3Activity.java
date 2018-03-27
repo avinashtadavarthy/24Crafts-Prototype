@@ -407,13 +407,13 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
 
             AlertDialog alert = new AlertDialog.Builder(new ContextThemeWrapper(Main3Activity.this, R.style.AlertDialog))
                     .setMessage("Do you really want to exit?")
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             ActivityCompat.finishAffinity(Main3Activity.this);
                             finish();
                         }
                     })
-                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
                         }
