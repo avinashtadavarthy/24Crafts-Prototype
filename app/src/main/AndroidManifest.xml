@@ -204,11 +204,10 @@
             android:name=".ProfileView"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme2" />
-
         <activity
             android:name=".ProfileViewEdit"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme2"/>
+            android:theme="@style/AppTheme2" />
         <activity
             android:name=".ProfileViewEditOld"
             android:screenOrientation="portrait"
@@ -347,6 +346,7 @@
         <activity android:name=".RadarView" />
         <activity android:name=".ReferAndEarn2" />
         <activity android:name=".ChangePassword" />
+        <activity android:name=".ClientVerification4Activity"></activity>
     </application>
 
 </manifest>
