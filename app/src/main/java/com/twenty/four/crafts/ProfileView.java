@@ -42,6 +42,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.androidnetworking.interfaces.ParsedRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.androidnetworking.interfaces.UploadProgressListener;
 import com.bumptech.glide.Glide;
@@ -75,8 +77,11 @@ public class ProfileView extends AppCompatActivity{
     String userdatamain,jwtToken;
 
     CoordinatorLayout mainlayout;
+    String responsePhotos;
 
     String togetback = "Hello", fromwhom = "Hey";
+
+    final ArrayList<String> videoIDs = new ArrayList<>();
 
 
     boolean arrowDownDS = true, arrowDownSP = true;
@@ -93,8 +98,9 @@ public class ProfileView extends AppCompatActivity{
     NestedScrollView nestedScrollView;
 
     LinearLayout featuredphotoslayout, featuredvideoslayout;
-    RecyclerView featuredPhotos;
+    RecyclerView featuredPhotos,featuredVideos;
     FeaturedPhotosHorizontalAdapter featuredPhotosHorizontalAdapter;
+    FeaturedVideosHorizontalAdapter featuredVideosHorizontalAdapter;
 
     ImageView video;
 
@@ -191,24 +197,94 @@ public class ProfileView extends AppCompatActivity{
             images = new int[]{R.drawable.maleleft, R.drawable.male_front, R.drawable.maleright};
 
 
+
+
         featuredphotoslayout = (LinearLayout) findViewById(R.id.featuredphotoslayout);
         featuredvideoslayout = (LinearLayout) findViewById(R.id.featuredvideoslayout);
         featuredPhotos = (RecyclerView) findViewById(R.id.featuredPhotos);
+        featuredVideos = (RecyclerView) findViewById(R.id.featuredVideos);
 
-        try {
 
-            int photosUploaded = Integer.parseInt(new JSONObject(userdatamain).optString("photosUploaded"));
 
-            if(photosUploaded == 0) {
-                featuredphotoslayout.setVisibility(View.GONE);
-            } else {
+
+
+
+                AndroidNetworking.get(User.getInstance().BASE_URL + "user")
+                        .setTag(this)
+                        .addHeaders("authorization",jwtToken)
+                        .setPriority(Priority.MEDIUM)
+                        .build()
+                        .getAsJSONObject(new JSONObjectRequestListener() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                JSONArray jsonArray = response.optJSONArray("videoYoutubeURLS");
+
+
+                                for(int i=0;i<jsonArray.length();i++)
+                                {
+                                    try {
+                                        int photosUploaded = Integer.parseInt(new JSONObject(userdatamain).optString("photosUploaded"));
+                                        JSONObject current = (JSONObject) jsonArray.get(i);
+                                        Log.e("vidID",current.optString("id"));
+                                        videoIDs.add(current.optString("id"));
+
+                                        featuredVideosHorizontalAdapter = new FeaturedVideosHorizontalAdapter(getApplicationContext(), videoIDs);
+                                        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                                        featuredVideos.setLayoutManager(horizontalLayoutManager);
+                                        featuredVideos.setAdapter(featuredVideosHorizontalAdapter);
+
+
+
+
+
+
+                                        if(photosUploaded == 0) {
+                                            featuredphotoslayout.setVisibility(View.GONE);
+                                        } else {
                 /*String[] photourls = new String[photosUploaded];
 
                 for(int i = 1; i<=photosUploaded; i++) {
                    photourls[i-1] = User.getInstance().BASE_URL + "users/" + id + "/photos/Image" + i + ".png";
                 }*/
 
-                Glide.with(this)
+                                            Glide.with(ProfileView.this)
+                                                    .load("http://" + new JSONObject(userdatamain).optString("profileImageURL"))
+                                                    .placeholder(R.drawable.avatar_placeholder)
+                                                    .bitmapTransform(new CropCircleTransformation(ProfileView.this))
+                                                    .into((ImageView) findViewById(R.id.avatar));
+
+                                            JSONArray photoUrlsjson = new JSONObject(userdatamain).optJSONArray("photoURLS");
+                                            ArrayList<String> photoUrlslist = new ArrayList<>();
+
+                                            for(int j = 0; j<photoUrlsjson.length(); j++) {
+                                                photoUrlslist.add(j,photoUrlsjson.getString(j));
+                                            }
+
+                                            String[] photoUrls = photoUrlslist.toArray(new String[0]);
+
+                                            for (String photoUrl : photoUrls) {
+                                                Log.e("array", photoUrl + '\n');
+                                            }
+
+                                            featuredPhotosHorizontalAdapter = new FeaturedPhotosHorizontalAdapter(getApplicationContext(), photoUrls);
+                                            LinearLayoutManager horizontalLayoutManager1 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                                            featuredPhotos.setLayoutManager(horizontalLayoutManager1);
+                                            featuredPhotos.setAdapter(featuredPhotosHorizontalAdapter);
+
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+                            }
+
+                            @Override
+                            public void onError(ANError anError) {
+
+                            }
+                        });
+               /* Glide.with(this)
                         .load("http://" + new JSONObject(userdatamain).optString("profileImageURL"))
                         .placeholder(R.drawable.avatar_placeholder)
                         .bitmapTransform(new CropCircleTransformation(this))
@@ -225,17 +301,20 @@ public class ProfileView extends AppCompatActivity{
 
                 for (String photoUrl : photoUrls) {
                     Log.e("array", photoUrl + '\n');
-                }
+                }*/
 
-                featuredPhotosHorizontalAdapter = new FeaturedPhotosHorizontalAdapter(getApplicationContext(), photoUrls);
+                /*featuredVideosHorizontalAdapter = new FeaturedVideosHorizontalAdapter(getApplicationContext(), photoUrls);
                 LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-                featuredPhotos.setLayoutManager(horizontalLayoutManager);
-                featuredPhotos.setAdapter(featuredPhotosHorizontalAdapter);
+                featuredVideos.setLayoutManager(horizontalLayoutManager);
+                featuredVideos.setAdapter(featuredPhotosHorizontalAdapter);
 
-            }
-        } catch (JSONException e){
-            e.printStackTrace();
-        }
+*/
+
+
+
+
+
+
 
 
 
@@ -251,6 +330,21 @@ public class ProfileView extends AppCompatActivity{
                     }
                 })
         );
+
+        featuredVideos.addOnItemTouchListener(new RecyclerItemClickListener(ProfileView.this, featuredVideos,
+                new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+
+                        playVideo(position);
+
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+
+                    }
+                }));
 
 
 
@@ -544,6 +638,12 @@ public class ProfileView extends AppCompatActivity{
 
     }
 
+
+    public void displayPhotos()
+    {
+
+    }
+
    /* private void selectImage() {
 
         PickSetup setup = new PickSetup()
@@ -560,9 +660,10 @@ public class ProfileView extends AppCompatActivity{
     }
 */
 
-    public void playVideo()
+    public void playVideo(int position)
     {
         Intent i = new Intent(getApplicationContext(),YoutubePlayerActivity.class);
+        i.putExtra("videoID",videoIDs.get(position));
         startActivity(i);
     }
 

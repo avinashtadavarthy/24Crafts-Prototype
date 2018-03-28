@@ -221,6 +221,13 @@
                     android:textSize="15dp" />
 
 
+                <android.support.v7.widget.RecyclerView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/featuredVideos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
                 <HorizontalScrollView
                     android:layout_marginTop="10dp"
                     android:background="#ffffff"

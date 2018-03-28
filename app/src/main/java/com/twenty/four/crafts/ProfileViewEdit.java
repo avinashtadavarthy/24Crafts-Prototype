@@ -105,8 +105,9 @@ public class ProfileViewEdit extends AppCompatActivity implements IPickResult{
 
     String dob,emailVerified;
 
-    RecyclerView featuredPhotos;
+    RecyclerView featuredPhotos,featuredVideos;
     EditFeatPhotosHorizontalAdapter editFeatPhotosHorizontalAdapter;
+    EditFeatVideosHorizontalAdapter editFeatVideosHorizontalAdapter;
     public int num;
 
 
@@ -141,11 +142,14 @@ public class ProfileViewEdit extends AppCompatActivity implements IPickResult{
 
 
         featuredPhotos = (RecyclerView) findViewById(R.id.featuredPhotos);
+        featuredVideos = (RecyclerView) findViewById(R.id.featuredVideos);
 
         try {
 
             int photosUploaded = Integer.parseInt(new JSONObject(userdatamain).optString("photosUploaded"));
             final int photoCount = Integer.parseInt(new JSONObject(userdatamain).optString("photoCount"));
+
+            final int videoCount = Integer.parseInt(new JSONObject(userdatamain).optString("videoCount"));
 
                 /*String[] photourls = new String[photosUploaded];
                 String id = new JSONObject(userdatamain).optString("_id");
@@ -157,6 +161,13 @@ public class ProfileViewEdit extends AppCompatActivity implements IPickResult{
             JSONArray photoUrlsjson = new JSONObject(userdatamain).optJSONArray("photoURLS");
             ArrayList<String> photoUrlslist = new ArrayList<>();
 
+            JSONArray videoUrlsjson = new JSONObject(userdatamain).optJSONArray("videoYoutubeURLs");
+            ArrayList<String> videoUrlslist = new ArrayList<>();
+
+
+
+
+
             for(int i = 0; i<photoUrlsjson.length(); i++) {
                 photoUrlslist.add(i,photoUrlsjson.getString(i));
             }
@@ -166,6 +177,18 @@ public class ProfileViewEdit extends AppCompatActivity implements IPickResult{
             for (String photoUrl : photoUrls) {
                 Log.e("array", photoUrl + '\n');
             }
+
+
+
+            /*for(int i=0;i<videoUrlsjson.length();i++){
+                videoUrlslist.add(i,videoUrlsjson.getString(i));
+            }
+
+            final String[] videoUrls = videoUrlslist.toArray(new String[0]);
+
+            for(String videoUrl : videoUrls){
+                Log.e("videoarray",videoUrl + "\n");
+            }*/
 
 
             editFeatPhotosHorizontalAdapter = new EditFeatPhotosHorizontalAdapter(getApplicationContext(), photoUrls, photoCount);
@@ -212,6 +235,33 @@ public class ProfileViewEdit extends AppCompatActivity implements IPickResult{
 
 
 
+
+
+            /*editFeatVideosHorizontalAdapter = new EditFeatVideosHorizontalAdapter(getApplicationContext(), videoUrls, videoCount);
+            LinearLayoutManager horizontalVideoLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+            featuredVideos.setLayoutManager(horizontalVideoLayoutManager);
+            featuredVideos.setAdapter(editFeatVideosHorizontalAdapter);
+
+
+
+
+            featuredVideos.addOnItemTouchListener(new RecyclerItemClickListener(ProfileViewEdit.this, featuredVideos,
+                    new RecyclerItemClickListener.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(View view, int position) {
+
+
+                        }
+
+                        @Override public void onLongItemClick(View view, int position) {
+
+                        }
+                    })
+            );*/
+
+
+
+
         } catch (JSONException e){
             e.printStackTrace();
         }
@@ -250,7 +300,7 @@ public class ProfileViewEdit extends AppCompatActivity implements IPickResult{
 */
 
 
-
+/*
         for (int i = 0; i < 4; i++) {
 
             cellVideo = getLayoutInflater().inflate(R.layout.videocellnewprofview, null);
@@ -272,7 +322,7 @@ public class ProfileViewEdit extends AppCompatActivity implements IPickResult{
 
 
             mainLayoutVideo.addView(cellVideo);
-        }
+        }*/
 
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

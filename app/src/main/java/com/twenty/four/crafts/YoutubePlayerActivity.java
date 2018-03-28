@@ -13,6 +13,7 @@ public class YoutubePlayerActivity extends YouTubeBaseActivity implements YouTub
 
         private static final int RECOVERY_REQUEST = 1;
         private YouTubePlayerView youTubeView;
+        String videoID;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +22,17 @@ public class YoutubePlayerActivity extends YouTubeBaseActivity implements YouTub
 
                 youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
                 youTubeView.initialize(Config.YOUTUBE_API_KEY, this);
+
+                Intent intent = getIntent();
+                videoID = intent.getStringExtra("videoID");
+
         }
 
         @Override
         public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
                 if (!wasRestored) {
 
-                        player.loadVideo("eGCM444_mN0"); // Plays https://www.youtube.com/watch?v=eGCM444_mN0
+                        player.loadVideo(videoID); // Plays https://www.youtube.com/watch?v=eGCM444_mN0
                 }
         }
 
