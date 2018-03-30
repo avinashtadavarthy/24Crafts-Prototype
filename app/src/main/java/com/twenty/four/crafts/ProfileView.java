@@ -38,6 +38,8 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -49,6 +51,7 @@ import com.androidnetworking.interfaces.UploadProgressListener;
 import com.bumptech.glide.Glide;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
+import com.twenty.four.crafts.registration.signup3;
 import com.vansuita.pickimage.bean.PickResult;
 import com.vansuita.pickimage.bundle.PickSetup;
 import com.vansuita.pickimage.dialog.PickImageDialog;
@@ -97,7 +100,7 @@ public class ProfileView extends AppCompatActivity{
 
     NestedScrollView nestedScrollView;
 
-    LinearLayout featuredphotoslayout, featuredvideoslayout;
+    LinearLayout featuredphotoslayout, featuredvideoslayout, photosandvideoslayout;
     RecyclerView featuredPhotos,featuredVideos;
     FeaturedPhotosHorizontalAdapter featuredPhotosHorizontalAdapter;
     FeaturedVideosHorizontalAdapter featuredVideosHorizontalAdapter;
@@ -108,32 +111,130 @@ public class ProfileView extends AppCompatActivity{
     View cellImage,cellVideo;
     int[] images;
 
-    String dob,emailVerified;
+    String dob, emailVerified;
 
     FloatingActionButton fav_profile, message_profile;
     Boolean isfav = false;
 
+    String viewingmyprofile="false";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_view_new);
-
-        sharedPref = new SharedPref(getApplicationContext());
-
-        mainlayout = findViewById(R.id.mainNewProfileView);
-
-        userdatamain = getSPData("userdatamain");
-        jwtToken = getSPData("jwtToken");
-
         AndroidNetworking.initialize(getApplicationContext());
 
+
+        sharedPref = new SharedPref(getApplicationContext());
+        mainlayout = findViewById(R.id.mainNewProfileView);
         nestedScrollView = findViewById(R.id.nestedScrollView);
-
-
         fav_profile = findViewById(R.id.fav_profile);
         message_profile = findViewById(R.id.message_profile);
+
+        featuredphotoslayout = (LinearLayout) findViewById(R.id.featuredphotoslayout);
+        featuredvideoslayout = (LinearLayout) findViewById(R.id.featuredvideoslayout);
+        photosandvideoslayout = findViewById(R.id.photosandvideoslayout);
+        featuredPhotos = (RecyclerView) findViewById(R.id.featuredPhotos);
+        featuredVideos = (RecyclerView) findViewById(R.id.featuredVideos);
+
+        result1 = findViewById(R.id.result1);
+        result2 = findViewById(R.id.result2);
+        result3 = findViewById(R.id.result3);
+        result4 = findViewById(R.id.result4);
+
+        subresult1 = findViewById(R.id.subresult1);
+        subresult3 = findViewById(R.id.subresult3);
+
+        danceStyles = findViewById(R.id.danceStyles);
+        sportsPlayed = findViewById(R.id.sportsPlayed);
+
+        profile_personnameTitle = findViewById(R.id.tv_title);
+        profile_craftnage = findViewById(R.id.tv_info);
+        profile_personname = findViewById(R.id.tv_name);
+        profile_bio = findViewById(R.id.tv_status);
+        profile_hometown = (TextView) findViewById(R.id.profile_hometown);
+        profile_residingin = (TextView) findViewById(R.id.profile_residingin);
+        profile_languagesspoken = (TextView) findViewById(R.id.profile_languagesspoken);
+        profile_height = (TextView) findViewById(R.id.profile_height);
+        profile_weight = (TextView) findViewById(R.id.profile_weight);
+        profile_chest = (TextView) findViewById(R.id.profile_chest);
+        profile_waist = (TextView) findViewById(R.id.profile_waist);
+        profile_facialhair = (TextView) findViewById(R.id.profile_facialhair);
+        profile_skintone = (TextView) findViewById(R.id.profile_skintone);
+
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        //userdatamain = getSPData("userdatamain");
+        jwtToken = getSPData("jwtToken");
+
+        viewingmyprofile = getIntent().getStringExtra("viewingmyprofile");
+
+        if(viewingmyprofile.equals("true")) {
+            fav_profile.setVisibility(View.GONE);
+            message_profile.setVisibility(View.GONE);
+
+            AndroidNetworking.get(User.getInstance().BASE_URL + "user")
+                    .setTag(this)
+                    .addHeaders("authorization", jwtToken)
+                    .setPriority(Priority.MEDIUM)
+                    .build()
+                    .getAsJSONObject(new JSONObjectRequestListener() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            storeSPData("userdatamain", response.toString());
+                            populateFields(response);
+                        }
+
+                        @Override
+                        public void onError(ANError anError) {
+                            anError.printStackTrace();
+                        }
+                    });
+        } else {
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                    User.getInstance().BASE_URL + "user/getDetails",
+                    new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.e("otherresponse", response);
+                    try {
+                        JSONArray jsonArray = new JSONArray(response);
+                        populateFields(jsonArray.getJSONObject(0));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            }){
+                @Override
+                public Map<String,String> getHeaders() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("authorization", jwtToken);
+                    return params;
+                }
+
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("idArray", "5abcdf1704d14d07a50f534a");
+                    return params;
+                }
+            };
+            MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
+
+        }
+
+
 
         fav_profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,134 +291,6 @@ public class ProfileView extends AppCompatActivity{
         });
 
 
-        if(getSPData("gender").equals("male"))
-            images = new int[]{R.drawable.femaleleft, R.drawable.female, R.drawable.femaleright};
-
-        else
-            images = new int[]{R.drawable.maleleft, R.drawable.male_front, R.drawable.maleright};
-
-
-
-
-        featuredphotoslayout = (LinearLayout) findViewById(R.id.featuredphotoslayout);
-        featuredvideoslayout = (LinearLayout) findViewById(R.id.featuredvideoslayout);
-        featuredPhotos = (RecyclerView) findViewById(R.id.featuredPhotos);
-        featuredVideos = (RecyclerView) findViewById(R.id.featuredVideos);
-
-
-
-
-
-
-                AndroidNetworking.get(User.getInstance().BASE_URL + "user")
-                        .setTag(this)
-                        .addHeaders("authorization",jwtToken)
-                        .setPriority(Priority.MEDIUM)
-                        .build()
-                        .getAsJSONObject(new JSONObjectRequestListener() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                JSONArray jsonArray = response.optJSONArray("videoYoutubeURLS");
-
-
-                                for(int i=0;i<jsonArray.length();i++)
-                                {
-                                    try {
-                                        int photosUploaded = Integer.parseInt(new JSONObject(userdatamain).optString("photosUploaded"));
-                                        JSONObject current = (JSONObject) jsonArray.get(i);
-                                        Log.e("vidID",current.optString("id"));
-                                        videoIDs.add(current.optString("id"));
-
-                                        featuredVideosHorizontalAdapter = new FeaturedVideosHorizontalAdapter(getApplicationContext(), videoIDs);
-                                        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-                                        featuredVideos.setLayoutManager(horizontalLayoutManager);
-                                        featuredVideos.setAdapter(featuredVideosHorizontalAdapter);
-
-
-
-
-
-
-                                        if(photosUploaded == 0) {
-                                            featuredphotoslayout.setVisibility(View.GONE);
-                                        } else {
-                /*String[] photourls = new String[photosUploaded];
-
-                for(int i = 1; i<=photosUploaded; i++) {
-                   photourls[i-1] = User.getInstance().BASE_URL + "users/" + id + "/photos/Image" + i + ".png";
-                }*/
-
-                                            Glide.with(ProfileView.this)
-                                                    .load("http://" + new JSONObject(userdatamain).optString("profileImageURL"))
-                                                    .placeholder(R.drawable.avatar_placeholder)
-                                                    .bitmapTransform(new CropCircleTransformation(ProfileView.this))
-                                                    .into((ImageView) findViewById(R.id.avatar));
-
-                                            JSONArray photoUrlsjson = new JSONObject(userdatamain).optJSONArray("photoURLS");
-                                            ArrayList<String> photoUrlslist = new ArrayList<>();
-
-                                            for(int j = 0; j<photoUrlsjson.length(); j++) {
-                                                photoUrlslist.add(j,photoUrlsjson.getString(j));
-                                            }
-
-                                            String[] photoUrls = photoUrlslist.toArray(new String[0]);
-
-                                            for (String photoUrl : photoUrls) {
-                                                Log.e("array", photoUrl + '\n');
-                                            }
-
-                                            featuredPhotosHorizontalAdapter = new FeaturedPhotosHorizontalAdapter(getApplicationContext(), photoUrls);
-                                            LinearLayoutManager horizontalLayoutManager1 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-                                            featuredPhotos.setLayoutManager(horizontalLayoutManager1);
-                                            featuredPhotos.setAdapter(featuredPhotosHorizontalAdapter);
-
-                                        }
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-
-                                }
-                            }
-
-                            @Override
-                            public void onError(ANError anError) {
-
-                            }
-                        });
-               /* Glide.with(this)
-                        .load("http://" + new JSONObject(userdatamain).optString("profileImageURL"))
-                        .placeholder(R.drawable.avatar_placeholder)
-                        .bitmapTransform(new CropCircleTransformation(this))
-                        .into((ImageView) findViewById(R.id.avatar));
-
-                JSONArray photoUrlsjson = new JSONObject(userdatamain).optJSONArray("photoURLS");
-                ArrayList<String> photoUrlslist = new ArrayList<>();
-
-                for(int i = 0; i<photoUrlsjson.length(); i++) {
-                    photoUrlslist.add(i,photoUrlsjson.getString(i));
-                }
-
-                String[] photoUrls = photoUrlslist.toArray(new String[0]);
-
-                for (String photoUrl : photoUrls) {
-                    Log.e("array", photoUrl + '\n');
-                }*/
-
-                /*featuredVideosHorizontalAdapter = new FeaturedVideosHorizontalAdapter(getApplicationContext(), photoUrls);
-                LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-                featuredVideos.setLayoutManager(horizontalLayoutManager);
-                featuredVideos.setAdapter(featuredPhotosHorizontalAdapter);
-
-*/
-
-
-
-
-
-
-
-
-
         featuredPhotos.addOnItemTouchListener(new RecyclerItemClickListener(ProfileView.this, featuredPhotos ,
                 new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
@@ -330,6 +303,7 @@ public class ProfileView extends AppCompatActivity{
                     }
                 })
         );
+
 
         featuredVideos.addOnItemTouchListener(new RecyclerItemClickListener(ProfileView.this, featuredVideos,
                 new RecyclerItemClickListener.OnItemClickListener() {
@@ -345,203 +319,6 @@ public class ProfileView extends AppCompatActivity{
 
                     }
                 }));
-
-
-
-       /* for (int i = 0; i < images.length; i++) {
-
-            cellImage = getLayoutInflater().inflate(R.layout.imageviewcellnewprofview, null);
-
-            final RoundedImageView imageView =  cellImage.findViewById(R.id._image);
-            imageView.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    // do whatever you want ...
-                    Toast.makeText(ProfileView.this, (CharSequence) imageView.getTag(), Toast.LENGTH_SHORT).show();
-                    tag = imageView.getTag().toString();
-
-                    selectImage();
-                }
-
-            });
-
-            imageView.setTag("Image"+(i+1));
-
-            text = (TextView) cellImage.findViewById(R.id._imageName);
-
-            imageView.setImageResource(images[i]);
-            text.setText("Image"+(i+1));
-
-            mainLayoutImage.addView(cellImage);
-        }
-*/
-
-
-
-      /*  for (int i = 0; i < 4; i++) {
-
-            cellVideo = getLayoutInflater().inflate(R.layout.videocellnewprofview, null);
-
-            video =  cellVideo.findViewById(R.id._video);
-            video.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    // do whatever you want ...
-                  playVideo();
-                }
-            });
-
-
-
-            video.setTag("Video"+(i+1));
-            Picasso.with(getApplicationContext()).load("https://img.youtube.com/vi/eGCM444_mN0/mqdefault.jpg").into(video);
-
-
-            mainLayoutVideo.addView(cellVideo);
-        }*/
-
-
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        final String fullName = sharedPref.getSPData(getApplicationContext(), "name");
-        final String title = fullName.split(" ")[0] + "'s Profile";
-
-
-        profile_personnameTitle = findViewById(R.id.tv_title); profile_personnameTitle.setText(title);
-
-        profile_craftnage = findViewById(R.id.tv_info); profile_craftnage.setText("craft and age");
-
-        profile_personname = findViewById(R.id.tv_name); profile_personname.setText(fullName);
-
-
-        profile_bio = findViewById(R.id.tv_status); profile_bio.setText("The bio goes here");
-
-        result1 = findViewById(R.id.result1);
-        result2 = findViewById(R.id.result2);
-        result3 = findViewById(R.id.result3);
-        result4 = findViewById(R.id.result4);
-
-        subresult1 = findViewById(R.id.subresult1);
-        subresult3 = findViewById(R.id.subresult3);
-
-        danceStyles = findViewById(R.id.danceStyles);
-        sportsPlayed = findViewById(R.id.sportsPlayed);
-
-        profile_hometown = (TextView) findViewById(R.id.profile_hometown);
-        profile_residingin = (TextView) findViewById(R.id.profile_residingin);
-        profile_languagesspoken = (TextView) findViewById(R.id.profile_languagesspoken);
-        profile_height = (TextView) findViewById(R.id.profile_height);
-        profile_weight = (TextView) findViewById(R.id.profile_weight);
-        profile_chest = (TextView) findViewById(R.id.profile_chest);
-        profile_waist = (TextView) findViewById(R.id.profile_waist);
-        profile_facialhair = (TextView) findViewById(R.id.profile_facialhair);
-        profile_skintone = (TextView) findViewById(R.id.profile_skintone);
-
-
-
-
-
-
-
-        try {
-            dob = new JSONObject(userdatamain).optString("dob");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        int year = Integer.parseInt(dob.substring(0,4));
-        int month = Integer.parseInt(dob.substring(5,7));
-        int day = Integer.parseInt(dob.substring(8,10));
-
-        String Age = User.getInstance().getAge(year,month,day);
-
-
-
-
-
-        try {
-
-            if(new JSONObject(userdatamain).optString("gender").equals("female"))
-                profile_facialhair.setVisibility(View.GONE);
-
-            profile_personnameTitle.setText(new JSONObject(userdatamain).optString("name").split(" ")[0] + "'s Profile");
-
-            profile_personname.setText(new JSONObject(userdatamain).optString("name"));
-            profile_craftnage.setText(User.getInstance().getCategoryFromTag(new JSONObject(userdatamain).optString("category")) + ", " + Age);
-
-            profile_bio.setText(new JSONObject(userdatamain).optString("bio"));
-            //profile_introles.setText(new JSONObject(userdatamain).optString("interestedRoles"));;
-
-            profile_hometown.setText(new JSONObject(userdatamain).optString("native"));
-            profile_residingin.setText(new JSONObject(userdatamain).optString("residingIn"));
-            profile_skintone.setText(new JSONObject(userdatamain).optString("skinTone"));
-            profile_chest.setText(new JSONObject(userdatamain).optString("chestSize"));
-            profile_waist.setText(new JSONObject(userdatamain).optString("waistSize"));
-            profile_facialhair.setText(new JSONObject(userdatamain).optString("facialHair"));
-
-            profile_languagesspoken.setText(new JSONObject(userdatamain).optString("languagesSpoken"));
-            profile_height.setText(new JSONObject(userdatamain).optString("height"));
-            profile_weight.setText(new JSONObject(userdatamain).optString("weight"));
-            //profile_age.setText(new JSONObject(userdatamain).optString("age"));
-
-            if(new JSONObject(userdatamain).optBoolean("canDance"))
-            {
-                result1.setImageResource(R.drawable.icon_green_tick);
-                subresult1.setImageResource(R.drawable.arrowicon);
-            }
-
-            else
-                result1.setImageResource(R.drawable.icon_grey_tick);
-
-
-            if(new JSONObject(userdatamain).optBoolean("canSwim"))
-            {
-                result2.setImageResource(R.drawable.icon_green_tick);
-            }
-
-
-            else
-                result2.setImageResource(R.drawable.icon_grey_tick);
-
-
-
-            if(new JSONObject(userdatamain).optBoolean("playsSports"))
-            {
-                result3.setImageResource(R.drawable.icon_green_tick);
-                subresult3.setImageResource(R.drawable.arrowicon);
-
-            }
-
-
-            else
-                result3.setImageResource(R.drawable.icon_grey_tick);
-
-
-            if(new JSONObject(userdatamain).optBoolean("havePassport"))
-            {
-                result4.setImageResource(R.drawable.icon_green_tick);
-            }
-
-
-            else
-                result4.setImageResource(R.drawable.icon_grey_tick);
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-
-
-        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        /*final ArrayList<DetailsData> listData = getIntent().getParcelableArrayListExtra(BUNDLE_LIST_DATA);
-        recyclerView.setAdapter(new ProfileAdapter(listData));*/
-
 
 
         final AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
@@ -637,6 +414,158 @@ public class ProfileView extends AppCompatActivity{
         }
 
     }
+
+
+
+    void populateFields(JSONObject jsonObject) {
+
+        try {
+
+            if(jsonObject.optString("gender").equals("female"))
+                profile_facialhair.setVisibility(View.GONE);
+
+            Glide.with(ProfileView.this)
+                    .load("http://" + jsonObject.optString("profileImageURL"))
+                    .placeholder(R.drawable.avatar_placeholder)
+                    .bitmapTransform(new CropCircleTransformation(ProfileView.this))
+                    .into((ImageView) findViewById(R.id.avatar));
+
+            profile_personnameTitle.setText(jsonObject.optString("name").split(" ")[0] + "'s Profile");
+
+            profile_personname.setText(jsonObject.optString("name"));
+
+            dob = jsonObject.optString("dob");
+            int year = Integer.parseInt(dob.substring(0,4));
+            int month = Integer.parseInt(dob.substring(5,7));
+            int day = Integer.parseInt(dob.substring(8,10));
+            String Age = User.getInstance().getAge(year,month,day);
+
+            profile_craftnage.setText(User.getInstance().getCategoryFromTag(jsonObject.optString("category")) + ", " + Age);
+
+            profile_bio.setText(jsonObject.optString("bio"));
+            //profile_introles.setText(jsonObject.optString("interestedRoles"));;
+
+            profile_hometown.setText(jsonObject.optString("native"));
+            profile_residingin.setText(jsonObject.optString("residingIn"));
+            profile_skintone.setText(jsonObject.optString("skinTone"));
+            profile_chest.setText(jsonObject.optString("chestSize"));
+            profile_waist.setText(jsonObject.optString("waistSize"));
+            profile_facialhair.setText(jsonObject.optString("facialHair"));
+            profile_height.setText(jsonObject.optString("height"));
+            profile_weight.setText(jsonObject.optString("weight"));
+
+            String strlangs = jsonObject.optString("languagesSpoken");
+            profile_languagesspoken.setText(strlangs.substring(2, strlangs.length()-4));
+
+
+            int photosUploaded = Integer.parseInt(jsonObject.optString("photosUploaded"));
+            if(photosUploaded == 0) {
+                featuredphotoslayout.setVisibility(View.GONE);
+            } else {
+
+                /*String[] photourls = new String[photosUploaded];
+
+                for(int i = 1; i<=photosUploaded; i++) {
+                   photourls[i-1] = User.getInstance().BASE_URL + "users/" + id + "/photos/Image" + i + ".png";
+                }*/
+
+                JSONArray photoUrlsjson = jsonObject.optJSONArray("photoURLS");
+                ArrayList<String> photoUrlslist = new ArrayList<>();
+
+                for(int j = 0; j<photoUrlsjson.length(); j++) {
+                    photoUrlslist.add(j,photoUrlsjson.getString(j));
+                }
+
+                String[] photoUrls = photoUrlslist.toArray(new String[0]);
+
+                for (String photoUrl : photoUrls) {
+                    Log.e("array", photoUrl + '\n');
+                }
+
+                featuredPhotosHorizontalAdapter = new FeaturedPhotosHorizontalAdapter(getApplicationContext(), photoUrls);
+                LinearLayoutManager horizontalLayoutManager1 = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                featuredPhotos.setLayoutManager(horizontalLayoutManager1);
+                featuredPhotos.setAdapter(featuredPhotosHorizontalAdapter);
+            }
+
+
+            int videosUploaded = Integer.parseInt(jsonObject.optString("videosUploaded"));
+            if(videosUploaded == 0) {
+                featuredvideoslayout.setVisibility(View.GONE);
+            } else {
+
+                JSONArray jsonArray = jsonObject.optJSONArray("videoYoutubeURLS");
+
+                for(int i=0;i<jsonArray.length();i++) {
+                    JSONObject current = (JSONObject) jsonArray.get(i);
+                    Log.e("vidID", current.optString("id"));
+                    videoIDs.add(current.optString("id"));
+                }
+
+                featuredVideosHorizontalAdapter = new FeaturedVideosHorizontalAdapter(getApplicationContext(), videoIDs);
+                LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                featuredVideos.setLayoutManager(horizontalLayoutManager);
+                featuredVideos.setAdapter(featuredVideosHorizontalAdapter);
+
+            }
+
+
+            if(photosUploaded==0 && videosUploaded==0) {
+                photosandvideoslayout.setVisibility(View.GONE);
+            }
+
+
+
+            if(jsonObject.optBoolean("canDance"))
+            {
+                result1.setImageResource(R.drawable.icon_green_tick);
+                subresult1.setImageResource(R.drawable.arrowicon);
+            }
+
+            else
+                result1.setImageResource(R.drawable.icon_grey_tick);
+
+
+            if(jsonObject.optBoolean("canSwim"))
+            {
+                result2.setImageResource(R.drawable.icon_green_tick);
+            }
+
+
+            else
+                result2.setImageResource(R.drawable.icon_grey_tick);
+
+
+
+            if(jsonObject.optBoolean("playsSports"))
+            {
+                result3.setImageResource(R.drawable.icon_green_tick);
+                subresult3.setImageResource(R.drawable.arrowicon);
+
+            }
+
+            else
+                result3.setImageResource(R.drawable.icon_grey_tick);
+
+
+            if(jsonObject.optBoolean("havePassport"))
+            {
+                result4.setImageResource(R.drawable.icon_green_tick);
+            }
+
+
+            else
+                result4.setImageResource(R.drawable.icon_grey_tick);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
 
 
     public void displayPhotos()
@@ -995,8 +924,12 @@ public class ProfileView extends AppCompatActivity{
     //options menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_profileview, menu);
+
+        if(viewingmyprofile.equals("true")) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.menu_profileview, menu);
+        }
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -1005,6 +938,10 @@ public class ProfileView extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+
             case  R.id.action_edit:
                 Intent intent = new Intent(getApplicationContext(), ProfileViewEdit.class);
                 startActivity(intent);
@@ -1037,3 +974,120 @@ public class ProfileView extends AppCompatActivity{
     }
 
 }
+
+
+
+
+
+
+
+       /* if(getSPData("gender").equals("male"))
+            images = new int[]{R.drawable.femaleleft, R.drawable.female, R.drawable.femaleright};
+        else
+            images = new int[]{R.drawable.maleleft, R.drawable.male_front, R.drawable.maleright};
+*/
+
+
+
+
+               /* AndroidNetworking.get(User.getInstance().BASE_URL + "user")
+                        .setTag(this)
+                        .addHeaders("authorization",jwtToken)
+                        .setPriority(Priority.MEDIUM)
+                        .build()
+                        .getAsJSONObject(new JSONObjectRequestListener() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+
+                            }
+
+                            @Override
+                            public void onError(ANError anError) {
+
+                            }
+                        });*/
+
+               /* Glide.with(this)
+                        .load("http://" + new JSONObject(userdatamain).optString("profileImageURL"))
+                        .placeholder(R.drawable.avatar_placeholder)
+                        .bitmapTransform(new CropCircleTransformation(this))
+                        .into((ImageView) findViewById(R.id.avatar));
+
+                JSONArray photoUrlsjson = new JSONObject(userdatamain).optJSONArray("photoURLS");
+                ArrayList<String> photoUrlslist = new ArrayList<>();
+
+                for(int i = 0; i<photoUrlsjson.length(); i++) {
+                    photoUrlslist.add(i,photoUrlsjson.getString(i));
+                }
+
+                String[] photoUrls = photoUrlslist.toArray(new String[0]);
+
+                for (String photoUrl : photoUrls) {
+                    Log.e("array", photoUrl + '\n');
+                }*/
+
+                /*featuredVideosHorizontalAdapter = new FeaturedVideosHorizontalAdapter(getApplicationContext(), photoUrls);
+                LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                featuredVideos.setLayoutManager(horizontalLayoutManager);
+                featuredVideos.setAdapter(featuredPhotosHorizontalAdapter);
+
+*/
+
+
+
+
+       /* for (int i = 0; i < images.length; i++) {
+
+            cellImage = getLayoutInflater().inflate(R.layout.imageviewcellnewprofview, null);
+
+            final RoundedImageView imageView =  cellImage.findViewById(R.id._image);
+            imageView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    // do whatever you want ...
+                    Toast.makeText(ProfileView.this, (CharSequence) imageView.getTag(), Toast.LENGTH_SHORT).show();
+                    tag = imageView.getTag().toString();
+
+                    selectImage();
+                }
+
+            });
+
+            imageView.setTag("Image"+(i+1));
+
+            text = (TextView) cellImage.findViewById(R.id._imageName);
+
+            imageView.setImageResource(images[i]);
+            text.setText("Image"+(i+1));
+
+            mainLayoutImage.addView(cellImage);
+        }
+*/
+
+
+
+      /*  for (int i = 0; i < 4; i++) {
+
+            cellVideo = getLayoutInflater().inflate(R.layout.videocellnewprofview, null);
+
+            video =  cellVideo.findViewById(R.id._video);
+            video.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    // do whatever you want ...
+                  playVideo();
+                }
+            });
+
+
+
+            video.setTag("Video"+(i+1));
+            Picasso.with(getApplicationContext()).load("https://img.youtube.com/vi/eGCM444_mN0/mqdefault.jpg").into(video);
+
+
+            mainLayoutVideo.addView(cellVideo);
+        }*/
+
+

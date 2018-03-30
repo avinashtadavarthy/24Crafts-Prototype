@@ -1,7 +1,10 @@
 package com.twenty.four.crafts;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +12,33 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONArrayRequestListener;
+import com.androidnetworking.interfaces.StringRequestListener;
+import com.bumptech.glide.Glide;
 import com.ramotion.foldingcell.FoldingCell;
+import com.twenty.four.crafts.registration.OnBoardingPage;
+import com.twenty.four.crafts.registration.signup3;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -41,9 +63,9 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, final View convertView, ViewGroup parent) {
         // get item for selected view
-        Item item = getItem(position);
+        final Item item = getItem(position);
         // if cell is exists - reuse it, if not - create the new one from resource
         FoldingCell cell = (FoldingCell) convertView;
         ViewHolder viewHolder;
@@ -62,6 +84,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
             viewHolder.date = (TextView) cell.findViewById(R.id.publishDate);
             viewHolder.innerProjectName = cell.findViewById(R.id.innerProjectname);
             viewHolder.innerImageURL = cell.findViewById(R.id.head_image);
+            viewHolder.innerSenderImageURL = cell.findViewById(R.id.content_avatar);
             viewHolder.innerName = cell.findViewById(R.id.content_name_view);
             viewHolder.innerPhoneNumber = cell.findViewById(R.id.content_phoneno_view);
             viewHolder.innerApplnFrom = cell.findViewById(R.id.content_from_date_1);
@@ -71,8 +94,6 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
             viewHolder.innerAuditionLocation = cell.findViewById(R.id.content_audition_location);
             viewHolder.innerProjectDescription = cell.findViewById(R.id.content_project_desc);
             viewHolder.contentRequestBtn = (TextView) cell.findViewById(R.id.content_request_btn);
-
-
 
             cell.setTag(viewHolder);
         } else {
@@ -93,7 +114,11 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         viewHolder.projectType.setText(item.getProjectType());
         viewHolder.projectDescription.setText(item.getProjectDescription());
         viewHolder.innerProjectName.setText(item.getProjectName());
-        //include image
+
+       /* //Glide to populate images for auditions and profilepics of uploader
+        Glide.with(context).load("http://" + item.getInnerImageURL()).placeholder(R.drawable.avatar_placeholder).into(viewHolder.innerImageURL);
+        Glide.with(context).load("http://" + item.getInnerSenderImageURL()).placeholder(R.drawable.avatar_placeholder).into(viewHolder.innerSenderImageURL);
+*/
         viewHolder.innerName.setText(item.getInnerName());
         viewHolder.innerPhoneNumber.setText(item.getInnerPhoneNumber());
         viewHolder.innerApplnFrom.setText(item.getInnerApplnFrom());
@@ -102,6 +127,39 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         viewHolder.innerAuditionTime.setText(item.getAuditionTime());
         viewHolder.innerAuditionLocation.setText(item.getInnerAuditionLocation());
         viewHolder.innerProjectDescription.setText(item.getInnerProjectDescription());
+
+
+        viewHolder.contentRequestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //User.getInstance().BASE_URL + "user/audition/register/" + item.getId()
+
+                StringRequest getRequest = new StringRequest(Request.Method.GET, User.getInstance().BASE_URL + "user/audition/register/" + item.getId(),
+                        new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("applied?", response);
+                        Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                }) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("authorization", new SharedPref(context).getSPData(context,"jwtToken"));
+                        return params;
+                    }
+                };
+                MySingleton.getInstance(context).addToRequestQueue(getRequest);
+
+
+            }
+        });
 
 
         String isClient = "";
@@ -117,20 +175,19 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
         {
             viewHolder.contentRequestBtn.setText("APPLY");
         }
-
         else
         {
             viewHolder.contentRequestBtn.setText("EDIT/DELETE");
         }
 
-        // set custom btn handler for list item from that item
+        /*// set custom btn handler for list item from that item
         if (item.getRequestBtnClickListener() != null) {
             viewHolder.contentRequestBtn.setOnClickListener(item.getRequestBtnClickListener());
         } else {
             // (optionally) add "default" handler if no handler found in item
             viewHolder.contentRequestBtn.setOnClickListener(defaultRequestBtnClickListener);
         }
-
+*/
 
         return cell;
     }
@@ -185,6 +242,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
     private static class ViewHolder {
 
         ImageView innerImageURL;
+        ImageView innerSenderImageURL;
         TextView innerProjectName;
         TextView innerPhoneNumber;
         TextView innerName;

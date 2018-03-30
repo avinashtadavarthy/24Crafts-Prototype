@@ -211,7 +211,8 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
             public void onClick(View view){
                 Intent i = new Intent(Main3Activity.this, ProfileView.class)
                         .putExtra("thisistogetback", "do nothing")
-                        .putExtra("fromwhom", "do nothing");
+                        .putExtra("fromwhom", "do nothing")
+                        .putExtra("viewingmyprofile", "true");
                 startActivity(i);
             }
         });

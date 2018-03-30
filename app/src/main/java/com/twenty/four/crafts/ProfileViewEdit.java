@@ -98,7 +98,7 @@ public class ProfileViewEdit extends AppCompatActivity implements IPickResult{
 
     ImageView video;
 
-    LinearLayout mainLayoutImage,mainLayoutVideo;
+    LinearLayout mainLayoutImage, mainLayoutVideo;
     TextView text;
     View cellImage,cellVideo;
     int[] images;
@@ -121,25 +121,12 @@ public class ProfileViewEdit extends AppCompatActivity implements IPickResult{
 
         mainlayout = findViewById(R.id.mainNewProfileView);
 
-        mainLayoutImage = findViewById(R.id.linlayoutimagesprofview);
-        mainLayoutVideo = findViewById(R.id.linlayoutvideosprofview);
-
         userdatamain = getSPData("userdatamain");
         jwtToken = getSPData("jwtToken");
 
         AndroidNetworking.initialize(getApplicationContext());
 
         nestedScrollView = findViewById(R.id.nestedScrollView);
-
-
-        if(getSPData("gender").equals("male"))
-            images = new int[]{R.drawable.femaleleft, R.drawable.female, R.drawable.femaleright};
-
-        else
-            images = new int[]{R.drawable.maleleft, R.drawable.male_front, R.drawable.maleright};
-
-
-
 
         featuredPhotos = (RecyclerView) findViewById(R.id.featuredPhotos);
         featuredVideos = (RecyclerView) findViewById(R.id.featuredVideos);
@@ -163,9 +150,6 @@ public class ProfileViewEdit extends AppCompatActivity implements IPickResult{
 
             JSONArray videoUrlsjson = new JSONObject(userdatamain).optJSONArray("videoYoutubeURLs");
             ArrayList<String> videoUrlslist = new ArrayList<>();
-
-
-
 
 
             for(int i = 0; i<photoUrlsjson.length(); i++) {

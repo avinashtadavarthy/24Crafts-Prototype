@@ -1958,10 +1958,6 @@ public class signup3 extends AppCompatActivity {
                 params.put("interestedRoles", editInterestedroles.getText().toString());
                 params.put("hobbies", editHobbies.getText().toString());
 
-
-                /*String[] languagesspoken = getSPData("languagesspoken_dirty").split(", ");
-                Gson gson = new GsonBuilder().create();
-                String jsonArray = gson.toJson(languagesspoken);*/
                 params.put("languagesSpoken", getSPData("languagesspoken_dirty"));
 
                 return params;

@@ -40,7 +40,7 @@ public class ClientOpenAuditionsFragment extends android.support.v4.app.Fragment
         ListView theListView = (ListView) myView.findViewById(R.id.mainListView);
 
         // prepare elements to display
-        final ArrayList<Item> items = Item.getTestingList();
+        final ArrayList<Item> items = Item.getTestingList(getActivity().getApplicationContext(), "dfdgdf");
 
         // add custom btn handler to first list item
         items.get(0).setRequestBtnClickListener(new View.OnClickListener() {

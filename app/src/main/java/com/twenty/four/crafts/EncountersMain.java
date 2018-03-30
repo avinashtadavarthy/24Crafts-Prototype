@@ -161,7 +161,8 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
                 Intent page = new Intent(getActivity().getApplicationContext(), ProfileView.class)
                         .putExtra("thisistogetback", "do nothing")
-                        .putExtra("fromwhom", "do nothing");
+                        .putExtra("fromwhom", "do nothing")
+                        .putExtra("viewingmyprofile", "false");
                 startActivity(page);
 
             }

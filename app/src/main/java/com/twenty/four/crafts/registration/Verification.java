@@ -408,7 +408,8 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
 
                 Intent next = new Intent(getApplicationContext(), ProfileView.class)
                         .putExtra("thisistogetback", "getback")
-                        .putExtra("fromwhom", fromwhom);
+                        .putExtra("fromwhom", fromwhom)
+                        .putExtra("viewingmyprofile", "true");
                 startActivity(next);
 
             }
@@ -591,6 +592,8 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
     void updateStatusOfSocialLogin() {
         String url = User.getInstance().BASE_URL + "user/update";
 
+
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -655,8 +658,8 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
 
                 params.put("password", getSPData("pword"));
                 params.put("google", getSPData("googleJSON"));
-                params.put("facebook", getSPData("facebookJSON"));
                 params.put("twitter", getSPData("twitterJSON"));
+                params.put("facebook", getSPData("facebookJSON"));
 
                 return params;
             }

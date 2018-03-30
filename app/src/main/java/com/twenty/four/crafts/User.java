@@ -52,6 +52,11 @@ public class User {
     }
 
 
+    public String getFormattedDate(String date) {
+        return date.substring(0,10);
+    }
+
+
 
     public String getCategoryFromTag(String tag) {
         String category = "Category";

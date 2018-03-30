@@ -7,12 +7,14 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.twenty.four.crafts.AuditionsMain;
+import com.twenty.four.crafts.CraftsmenOpenAuditionsFrag;
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.User;
 
@@ -56,6 +58,8 @@ public class AuditionsTab extends Fragment {
         return myView;
     }
 
+
+
     private class AudAdapter extends FragmentStatePagerAdapter {
 
         private String fragments [] = {"Open","Closed","Applied"};
@@ -68,7 +72,7 @@ public class AuditionsTab extends Fragment {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    return new AuditionsMain();
+                    return new CraftsmenOpenAuditionsFrag();
                 case 1:
                     return new AuditionsMain();
                 case 2:

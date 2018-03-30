@@ -46,7 +46,7 @@ public class AuditionsMain extends android.support.v4.app.Fragment implements Sw
                 getResources().getColor(android.R.color.holo_orange_dark));
 
         // prepare elements to display
-        final ArrayList<Item> items = Item.getTestingList();
+        final ArrayList<Item> items = Item.getTestingList(getActivity().getApplicationContext(), "hello");
 
         // add custom btn handler to first list item
         items.get(0).setRequestBtnClickListener(new View.OnClickListener() {

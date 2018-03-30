@@ -1,10 +1,12 @@
-package com.twenty.four.crafts.auditions;
+package com.twenty.four.crafts;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +15,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ramotion.foldingcell.FoldingCell;
-import com.twenty.four.crafts.FoldingCellListAdapter;
-import com.twenty.four.crafts.Item;
-import com.twenty.four.crafts.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,11 +23,12 @@ import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class ClientClosedAuditionsFragment extends android.support.v4.app.Fragment {
+public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     View myView;
 
     private FloatingActionButton createaudition;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
     @Override
@@ -36,28 +36,38 @@ public class ClientClosedAuditionsFragment extends android.support.v4.app.Fragme
         myView = inflater.from(container.getContext()).inflate(R.layout.activity_auditions_main,container,false);
 
         ListView theListView = (ListView) myView.findViewById(R.id.mainListView);
+        swipeRefreshLayout = myView.findViewById(R.id.swipe_container);
+
+
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(android.R.color.holo_green_dark),
+                getResources().getColor(android.R.color.holo_red_dark),
+                getResources().getColor(android.R.color.holo_blue_dark),
+                getResources().getColor(android.R.color.holo_orange_dark));
 
         // prepare elements to display
-        final ArrayList<Item> items = Item.getTestingList(getActivity().getApplicationContext(), "vsdvs");
+        final ArrayList<Item> items = Item.getTestingList(getActivity().getApplicationContext(), "CraftsmenOpenAuditions");
 
-        // add custom btn handler to first list item
+       /* // add custom btn handler to first list item
         items.get(0).setRequestBtnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity().getApplicationContext(), "CUSTOM HANDLER FOR FIRST BUTTON", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
         // create custom adapter that holds elements and their state (we need hold a id's of unfolded elements for reusable elements)
         final FoldingCellListAdapter adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items);
 
-        // add default btn handler for each request btn on each item if custom handler not found
+       /* // add default btn handler for each request btn on each item if custom handler not found
         adapter.setDefaultRequestBtnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(getActivity().getApplicationContext(), "DEFAULT HANDLER FOR ALL BUTTONS", Toast.LENGTH_SHORT).show();
+
             }
-        });
+        });*/
 
         // set elements to adapter
         theListView.setAdapter(adapter);
@@ -74,7 +84,13 @@ public class ClientClosedAuditionsFragment extends android.support.v4.app.Fragme
         });
 
         createaudition = (FloatingActionButton) myView.findViewById(R.id.createaudition);
-        createaudition.setVisibility(View.GONE);
+        createaudition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity().getApplicationContext(),CreateAuditions.class);
+                startActivity(i);
+            }
+        });
 
         String isClient = "";
         String userdata =  getSPData("userdatamain");
@@ -112,6 +128,11 @@ public class ClientClosedAuditionsFragment extends android.support.v4.app.Fragme
 
         return data;
 
+    }
+
+    @Override
+    public void onRefresh() {
+        getActivity().recreate();
     }
 }
 

@@ -1,14 +1,42 @@
 package com.twenty.four.crafts;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.support.v4.util.LruCache;
+import android.util.Log;
 import android.view.View;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONArrayRequestListener;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.FutureTarget;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Simple POJO model for example
  */
+
 public class Item {
 
+    SharedPref sharedPref;
+
+    private String id;
     private String location;
     private String auditionDate;
     private String auditionTime;
@@ -18,6 +46,7 @@ public class Item {
 
 
     private String innerImageURL;
+    private String innerSenderImageURL;
 
     private String innerPhoneNumber;
     private String innerName;
@@ -30,12 +59,14 @@ public class Item {
     public Item() {
     }
 
-    public Item(String location, String auditionDate, String auditionTime, String projectName, String projectType, String description,
+    public Item(String id, String location, String auditionDate, String auditionTime, String projectName, String projectType, String description,
                 String innerPhoneNumber,
                 String innerName,String innerApplnFrom,String innerApplnTo,
-                String innerAuditionLocation, String innerProjectDescription) {
+                String innerAuditionLocation, String innerProjectDescription,
+                String innerImageURL, String innerSenderImageURL) {
 
 
+        this.id = id;
         this.location = location;
         this.auditionDate = auditionDate;
         this.auditionTime = auditionTime;
@@ -43,17 +74,27 @@ public class Item {
         this.projectType = projectType;
         this.projectDescription = description;
 
+     /*   this.innerImageURL = innerImageURL;
+        this.innerSenderImageURL = innerSenderImageURL;*/
+
         this.innerApplnFrom = innerApplnFrom;
         this.innerApplnTo = innerApplnTo;
-
         this.innerPhoneNumber = innerPhoneNumber;
         this.innerName = innerName;
-
         this.innerAuditionLocation = innerAuditionLocation;
         this.innerProjectDescription = innerProjectDescription;
 
     }
 
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public void setProjectType(String projectType) {
         this.projectType = projectType;
@@ -67,7 +108,13 @@ public class Item {
         this.innerImageURL = innerImageURL;
     }
 
+    public String getInnerSenderImageURL() {
+        return innerSenderImageURL;
+    }
 
+    public void setInnerSenderImageURL(String innerSenderImageURL) {
+        this.innerSenderImageURL = innerSenderImageURL;
+    }
 
     public String getInnerPhoneNumber() {
         return innerPhoneNumber;
@@ -207,22 +254,92 @@ public class Item {
     /**
      * @return List of elements prepared for tests
      */
-    public static ArrayList<Item> getTestingList() {
-        ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item("Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film"));
-        items.add(new Item("Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application"));
-        items.add(new Item("Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition"));
+    public static ArrayList<Item> getTestingList(final Context context, String fromwhere) {
 
-        items.add(new Item("Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film"));
-        items.add(new Item("Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application"));
-        items.add(new Item("Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition"));
+        final SharedPref sharedPref = new SharedPref(context);
+
+        final ArrayList<Item> items = new ArrayList<>();
+
+        switch(fromwhere) {
+            case "CraftsmenOpenAuditions" :
+
+                Log.e("yeah?", "code has been accessed");
+                Log.e("jwt", sharedPref.getSPData(context,"jwtToken"));
+
+                JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
+                        User.getInstance().BASE_URL + "user/audition/viewAll", null,
+                        new Response.Listener<JSONArray>() {
+                            @Override
+                            public void onResponse(JSONArray response) {
+                                Log.e("auditionsresponse", response.toString());
+                                try {
+
+                                    for(int i=0; i<response.length(); i++) {
+                                        JSONObject jsonObject = response.getJSONObject(i);
+
+                                        String id = jsonObject.optString("_id"),
+                                                location = jsonObject.optString("auditionLocation"),
+                                                auditionDate = User.getInstance().getFormattedDate(jsonObject.optString("auditionDate")),
+                                                auditionTime = jsonObject.optString("auditionTime"),
+                                                projectName = jsonObject.optString("title"),
+                                                projectType = jsonObject.optString("projectType"),
+                                                description = jsonObject.optString("description"),
+                                                innerPhoneNumber = jsonObject.optString("contactNo"),
+                                                innerName = jsonObject.optString("senderName"),
+                                                innerApplnFrom = User.getInstance().getFormattedDate(jsonObject.optString("applicationFromDate")),
+                                                innerApplnTo = User.getInstance().getFormattedDate(jsonObject.optString("applicationToDate")),
+                                                innerAuditionLocation = jsonObject.optString("auditionLocation"),
+                                                innerProjectDescription = jsonObject.optString("description"),
+                                                innerImageURL = jsonObject.optString("auditionImageURL"),
+                                                innerSenderImageURL = jsonObject.optString("senderProfileImage");
+
+                                        innerImageURL = "hello";
+                                        innerSenderImageURL = "hey";
+
+                                        items.add(new Item(id, location, auditionDate, auditionTime, projectName, projectType, description, innerPhoneNumber, innerName, innerApplnFrom, innerApplnTo, innerAuditionLocation, innerProjectDescription, innerImageURL, innerSenderImageURL));
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                }){
+                    @Override
+                    public Map<String,String> getHeaders() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("authorization", sharedPref.getSPData(context, "jwtToken"));
+                        return params;
+                    }
+                };
+                MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
 
 
-        items.add(new Item("Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film"));
-        items.add(new Item("Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application"));
-        items.add(new Item("Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition"));
+                break;
+
+            default:
+
+                //, "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"
+
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                break;
+        }
+
         return items;
 
     }
-
 }

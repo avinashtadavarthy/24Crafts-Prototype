@@ -58,7 +58,8 @@ public class EncountersGrid extends android.support.v4.app.Fragment {
                     public void onItemClick(View view, int position) {
                         Intent page = new Intent(getActivity().getApplicationContext(), ProfileView.class)
                                 .putExtra("thisistogetback", "do nothing")
-                                .putExtra("fromwhom", "do nothing");
+                                .putExtra("fromwhom", "do nothing")
+                                .putExtra("viewingmyprofile", "false");
                         startActivity(page);
                     }
 

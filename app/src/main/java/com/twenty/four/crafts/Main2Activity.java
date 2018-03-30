@@ -264,7 +264,8 @@ public class Main2Activity extends AppCompatActivity
             public void onClick(View view){
                 Intent i = new Intent(Main2Activity.this, ProfileView.class)
                         .putExtra("thisistogetback", "do nothing")
-                        .putExtra("fromwhom", "do nothing");
+                        .putExtra("fromwhom", "do nothing")
+                        .putExtra("viewingmyprofile", "true");
                 startActivity(i);
             }
         });

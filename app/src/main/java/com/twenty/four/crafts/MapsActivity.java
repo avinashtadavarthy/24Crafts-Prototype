@@ -361,7 +361,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public boolean onMarkerClick(Marker marker) {
         Intent intent = new Intent(getApplicationContext(),ProfileView.class)
                                .putExtra("thisistogetback", "do nothing")
-                               .putExtra("fromwhom", "do nothing");
+                               .putExtra("fromwhom", "do nothing").putExtra("viewingmyprofile", "false");
         startActivity(intent);
 
         return true;
