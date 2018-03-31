@@ -33,6 +33,11 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
@@ -47,13 +52,18 @@ import com.vansuita.pickimage.dialog.PickImageDialog;
 import com.vansuita.pickimage.enums.EPickType;
 import com.vansuita.pickimage.listeners.IPickResult;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CreateAuditions extends AppCompatActivity implements IPickResult, CropIwaResultReceiver.Listener {
 
-    static final int REQUEST_SHOOT_LOCATION = 1000, REQUEST_AUDITION_LOCATION = 2000, AUDITION_FROM=100, AUDITION_TO=200;
+    static final int REQUEST_SHOOT_LOCATION = 1000, REQUEST_AUDITION_LOCATION = 2000, AUDITION_FROM=100, AUDITION_TO=200, AUDITION_DATE=10201;
     static final int TIME_DIALOG_ID = 1111;
     static final int REQUEST_IMAGE_LOAD = 9999;
 
@@ -61,8 +71,8 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
     CropIwaResultReceiver cropResultReceiver;
     ProgressBar loadimageprogress;
     CircleImageView edit_aud_image;
-    EditText e1, e2, e3, e4, e5, e6, e7, e8, e9, e10;
-    TextInputLayout input_1, input_2, input_3, input_4, input_5, input_6, input_7, input_8, input_9, input_10;
+    EditText e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11;
+    TextInputLayout input_1, input_2, input_3, input_4, input_5, input_6, input_7, input_8, input_9, input_10, input_11;
     LinearLayout project_type_layout;
     Button bn1, bn2, bn3, bn4, bn5, bn6, bn7, bn8;
 
@@ -73,11 +83,11 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
     int day = cal.get(Calendar.DAY_OF_MONTH);
     int hr = cal.get(Calendar.HOUR_OF_DAY);
     int min = cal.get(Calendar.MINUTE);
-    DatePickerDialog.OnDateSetListener from_dateListener, to_dateListener;
+    DatePickerDialog.OnDateSetListener from_dateListener, to_dateListener, audition_dateListener;
     TimePickerDialog.OnTimeSetListener timePickerListener;
 
     TextView errmsg;
-    Audition c = new Audition();
+
     public void err_msg_disp(int i)
     {
         if(i==1)
@@ -252,6 +262,42 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         }
     };
 
+    private TextWatcher filterTextWatchere10 = new TextWatcher() {
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            restore(e10);
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
+
+    private TextWatcher filterTextWatchere11 = new TextWatcher() {
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            restore(e11);
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -297,6 +343,7 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         e8 = (EditText) findViewById(R.id.e8);
         e9 = (EditText) findViewById(R.id.e9);
         e10 = (EditText) findViewById(R.id.e10);
+        e11 = (EditText) findViewById(R.id.e11);
 
         project_type_layout = (LinearLayout) findViewById(R.id.project_type_layout);
 
@@ -320,6 +367,7 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         input_8 = (TextInputLayout) findViewById(R.id.input_8);
         input_9 = (TextInputLayout) findViewById(R.id.input_9);
         input_10 = (TextInputLayout) findViewById(R.id.input_10);
+        input_11 = (TextInputLayout) findViewById(R.id.input_11);
 
 
         e1.addTextChangedListener(filterTextWatchere1);
@@ -331,6 +379,8 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         e7.addTextChangedListener(filterTextWatchere7);
         e8.addTextChangedListener(filterTextWatchere8);
         e9.addTextChangedListener(filterTextWatchere9);
+        e10.addTextChangedListener(filterTextWatchere10);
+        e11.addTextChangedListener(filterTextWatchere11);
 
 
 
@@ -585,6 +635,30 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         });
 
 
+        e11.setShowSoftInputOnFocus(false);
+        e11.setInputType(InputType.TYPE_NULL);
+        e11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(AUDITION_DATE);
+            }
+        });
+        e11.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    input_11.setBackgroundResource(R.drawable.box);
+
+                    showDialog(AUDITION_DATE);
+
+                } else {
+                    if(!e11.getText().toString().equals("")) input_11.setBackgroundResource(R.drawable.box);
+                    else input_11.setBackgroundColor(Color.parseColor("#00ffffff"));
+                }
+            }
+        });
+
+
 
 
         from_dateListener = new DatePickerDialog.OnDateSetListener() {
@@ -601,6 +675,15 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
                 e8.setText(new StringBuilder().append(dayOfMonth).append("/").append(month+1).append("/").append(year));
+
+            }
+        };
+
+        audition_dateListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                e11.setText(new StringBuilder().append(dayOfMonth).append("/").append(month+1).append("/").append(year));
 
             }
         };
@@ -651,6 +734,8 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
                 return new DatePickerDialog(this, from_dateListener, year, month, day);
             case AUDITION_TO:
                 return new DatePickerDialog(this, to_dateListener, year, month, day);
+            case AUDITION_DATE:
+                return new DatePickerDialog(this, audition_dateListener, year, month, day);
             case TIME_DIALOG_ID:
                 return new TimePickerDialog(this, timePickerListener, hr, min, false);
         }
@@ -738,10 +823,8 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
 
         if (e.getText().toString().equals(""))
         {
-
             e.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.error_box));
             return false;
-
         }
         else
         {
@@ -754,7 +837,7 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
 
     public void post(View view) {
         Log.i("here","hi");
-        boolean i1,i2,i3,i4,i5,i6,i7,i8,i9;
+        boolean i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11;
         i1=check(e1);
         i2=check(e2);
         i3=check(e3);
@@ -764,21 +847,62 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         i7=check(e7);
         i8=check(e8);
         i9=check(e9);
-        if(i1&&i2&&i3&&i4&&i5&&i6&&i7&&i8&&i9)
+        i10=check(e10);
+        i11=check(e11);
+        if(i1&&i2&&i3&&i4&&i5&&i6&&i7&&i8&&i9&&i10&&i11)
         {
-            Toast.makeText(getApplicationContext(), "Posted!",
-                    Toast.LENGTH_SHORT).show();//post it
-            c.setProj_name(e1.getText().toString());
-            c.setProj_type(e2.getText().toString());
-            c.setProj_desc(e3.getText().toString());
-            c.setProj_features(e4.getText().toString());
-            c.setProj_shotloc(e5.getText().toString());
-            c.setProj_audiloc(e6.getText().toString());
-            c.setProj_validfrom(e7.getText().toString());
-            c.setProj_validto(e8.getText().toString());
-            c.setProj_contact(e9.getText().toString());
-            Log.i("Details:",c.getProj_audiloc()+c.getProj_contact()+c.getProj_desc()+c.getProj_features());
-            finish();
+
+
+            StringRequest postRequest = new StringRequest(Request.Method.POST, User.getInstance().BASE_URL + "client/audition/create",
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Log.e("audition created?", response);
+                            Toast.makeText(CreateAuditions.this, response, Toast.LENGTH_SHORT).show();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("authorization", new SharedPref(getApplicationContext()).getSPData(getApplicationContext(),"jwtToken"));
+                    return params;
+                }
+
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+
+                    params.put("auditionLocation", e6.getText().toString());
+                    params.put("auditionDate", e11.getText().toString());
+                    params.put("auditionTime", e10.getText().toString());
+                    params.put("title", e1.getText().toString());
+                    params.put("projectType", e2.getText().toString());
+                    params.put("description", e3.getText().toString());
+                    params.put("contactNo", e9.getText().toString());
+                    params.put("applicationFromDate", e7.getText().toString());
+                    params.put("applicationToDate", e8.getText().toString());
+
+                    try {
+                        params.put("senderName", new JSONObject(new SharedPref(getApplicationContext()).getSPData(getApplicationContext(), "userdatamain")).optString("name"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                   /* params.put("auditionImageURL", );
+                    params.put("senderProfileImage", );
+                    params.put("senderName", );
+                    does backend take care of this code? */
+
+                    return params;
+                }
+            };
+            MySingleton.getInstance(getApplicationContext()).addToRequestQueue(postRequest);
+
         }
         else
             err_msg_disp(1);
