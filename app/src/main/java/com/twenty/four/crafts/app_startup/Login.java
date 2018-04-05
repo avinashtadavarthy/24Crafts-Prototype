@@ -25,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.twenty.four.crafts.ForgotPassword;
+import com.twenty.four.crafts.Item;
 import com.twenty.four.crafts.JWTUtils;
 import com.twenty.four.crafts.Main2Activity;
 import com.twenty.four.crafts.Main3Activity;
@@ -36,6 +37,7 @@ import com.twenty.four.crafts.User;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -108,6 +110,8 @@ public class Login extends AppCompatActivity {
                     uname = email.getText().toString().trim();
                     pword = password.getText().toString().trim();
 
+
+
                     loginUser();
 
                 } else {
@@ -168,6 +172,9 @@ public class Login extends AppCompatActivity {
 
                         storeSPData("jwtToken", jwtToken);
                         storeSPData("subscribed", subscribed);
+
+                        ArrayList<Item> items2 = new ArrayList<>();
+                        items2 = Item.getTestingList(getApplicationContext(),"CraftsmenOpenAuditions");
 
                         Log.e("jwtToken",jwtToken);
                         String payLoadJWT = jwtToken.substring(jwtToken.indexOf(".")+1);

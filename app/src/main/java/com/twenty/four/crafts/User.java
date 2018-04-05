@@ -1,20 +1,6 @@
 package com.twenty.four.crafts;
 
-import android.content.SharedPreferences;
-import android.util.Log;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
-
-import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by avinash on 27/12/17.
@@ -49,6 +35,35 @@ public class User {
         String ageS = ageInt.toString();
 
         return ageS;
+    }
+
+
+    public String getDate(String date)
+    {
+        String year = date.substring(0,4);
+        String day = date.substring(8,10);
+        String month = "";
+        switch(date.substring(5,7))
+        {
+            case "01": month = "JAN";break;
+            case "02": month = "FEB";break;
+            case "03": month = "MAR";break;
+            case "04": month = "APR";break;
+            case "05": month = "MAY";break;
+            case "06": month = "JUN";break;
+            case "07": month = "JUL";break;
+            case "08": month = "AUG";break;
+            case "09": month = "SEP";break;
+            case "10": month = "OCT";break;
+            case "11": month = "NOV";break;
+            case "12": month = "DEC";break;
+            default:   month = "HELLO";
+
+        }
+
+        String dateFinal = day + " " + month +  " " + year;
+
+        return dateFinal;
     }
 
 

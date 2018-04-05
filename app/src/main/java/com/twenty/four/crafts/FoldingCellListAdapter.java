@@ -2,8 +2,8 @@ package com.twenty.four.crafts;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,26 +19,16 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONArrayRequestListener;
-import com.androidnetworking.interfaces.StringRequestListener;
-import com.bumptech.glide.Glide;
 import com.ramotion.foldingcell.FoldingCell;
-import com.twenty.four.crafts.registration.OnBoardingPage;
-import com.twenty.four.crafts.registration.signup3;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -46,7 +36,7 @@ import static android.content.Context.MODE_PRIVATE;
  * Simple example of ListAdapter for using with Folding Cell
  * Adapter holds indexes of unfolded elements for correct work with default reusable views behavior
  */
-public class FoldingCellListAdapter extends ArrayAdapter<Item> {
+public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements SwipeRefreshLayout.OnRefreshListener{
 
     private HashSet<Integer> unfoldedIndexes = new HashSet<>();
     private View.OnClickListener defaultRequestBtnClickListener;
@@ -55,15 +45,17 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
 
 
     Context context;
+    Activity activity;
 
-    public FoldingCellListAdapter(Context context, List<Item> objects) {
+    public FoldingCellListAdapter(Context context, List<Item> objects, Activity activity) {
         super(context, 0, objects);
         this.context = context;
         this.items = objects;
+        this.activity = activity;
     }
 
     @Override
-    public View getView(int position, final View convertView, ViewGroup parent) {
+    public View getView(final int position, final View convertView, ViewGroup parent) {
         // get item for selected view
         final Item item = getItem(position);
         // if cell is exists - reuse it, if not - create the new one from resource
@@ -140,7 +132,17 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
                     @Override
                     public void onResponse(String response) {
                         Log.e("applied?", response);
-                        Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, response, Toast.LENGTH_LONG).show();
+
+                        if(response.toLowerCase().equals("registered for audition successfully and successfully updated features."))
+                        {
+                            ArrayList<Item> items2 = new ArrayList<>();
+                            items2 = Item.getTestingList2(context, "CraftsmenOpenAuditions",activity);
+                        }
+
+
+
+
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -236,6 +238,10 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item> {
 
     }
 
+    @Override
+    public void onRefresh() {
+
+    }
 
 
     // View lookup cache

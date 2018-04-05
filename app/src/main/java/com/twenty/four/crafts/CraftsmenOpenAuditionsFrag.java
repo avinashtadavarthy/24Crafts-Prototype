@@ -12,10 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
 import com.ramotion.foldingcell.FoldingCell;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,6 +30,9 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
 
     private FloatingActionButton createaudition;
     SwipeRefreshLayout swipeRefreshLayout;
+    ArrayList<Item> items = new ArrayList<>();
+    FoldingCellListAdapter adapter;
+
 
     @Nullable
     @Override
@@ -39,6 +43,7 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
         swipeRefreshLayout = myView.findViewById(R.id.swipe_container);
 
 
+        AndroidNetworking.initialize(getActivity().getApplicationContext());
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.setColorSchemeColors(getResources().getColor(android.R.color.holo_green_dark),
                 getResources().getColor(android.R.color.holo_red_dark),
@@ -46,7 +51,7 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
                 getResources().getColor(android.R.color.holo_orange_dark));
 
         // prepare elements to display
-        final ArrayList<Item> items = Item.getTestingList(getActivity().getApplicationContext(), "CraftsmenOpenAuditions");
+
 
        /* // add custom btn handler to first list item
         items.get(0).setRequestBtnClickListener(new View.OnClickListener() {
@@ -56,8 +61,46 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
             }
         });*/
 
+       if(getSPData("viewAllAuditions").equals("") || getSPData("viewAllAuditions").equals(null))
+       {
+
+           items = Item.getTestingList(getActivity().getApplicationContext(), "CraftsmenOpenAuditions");
+           adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity());
+           theListView.setAdapter(adapter);
+
+
+           theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+               @Override
+               public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                   // toggle clicked cell state
+                   ((FoldingCell) view).toggle(false);
+                   // register in adapter that state for selected cell is toggled
+                   adapter.registerToggle(pos);
+               }
+           });
+       }
+
+       else
+       {
+           items = setFoldingAdapter(getSPData("viewAllAuditions"));
+           adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity());
+           theListView.setAdapter(adapter);
+
+           theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+               @Override
+               public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                   // toggle clicked cell state
+                   ((FoldingCell) view).toggle(false);
+                   // register in adapter that state for selected cell is toggled
+                   adapter.registerToggle(pos);
+               }
+           });
+
+
+
+       }
         // create custom adapter that holds elements and their state (we need hold a id's of unfolded elements for reusable elements)
-        final FoldingCellListAdapter adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items);
+
 
        /* // add default btn handler for each request btn on each item if custom handler not found
         adapter.setDefaultRequestBtnClickListener(new View.OnClickListener() {
@@ -70,18 +113,13 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
         });*/
 
         // set elements to adapter
-        theListView.setAdapter(adapter);
+
 
         // set on click event listener to list view
-        theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                // toggle clicked cell state
-                ((FoldingCell) view).toggle(false);
-                // register in adapter that state for selected cell is toggled
-                adapter.registerToggle(pos);
-            }
-        });
+
+
+        ArrayList<Item> items2 = new ArrayList<>();
+        items2 = Item.getTestingList(getActivity().getApplicationContext(),"CraftsmenAppliedAuditions");
 
         createaudition = (FloatingActionButton) myView.findViewById(R.id.createaudition);
         createaudition.setOnClickListener(new View.OnClickListener() {
@@ -108,8 +146,16 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
     }
 
 
+    @Override
+    public void onResume() {
+        super.onResume();
 
+      /*  final ArrayList<Item> items = Item.getTestingList(getActivity().getApplicationContext(), "CraftsmenOpenAuditions");
+        final FoldingCellListAdapter adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items);
+        theListView.setAdapter(adapter);*/
 
+       // getActivity().recreate();
+    }
 
     //Shared Preferences
     private void storeSPData(String key, String data) {
@@ -132,8 +178,71 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
 
     @Override
     public void onRefresh() {
-        getActivity().recreate();
+
+        //storeSPData("viewAllAuditions","");
+
+        items = Item.getTestingList2(getActivity().getApplicationContext(), "CraftsmenOpenAuditions",getActivity());
+        adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity());
+
+
+        //getActivity().recreate();
     }
+
+
+    public ArrayList<Item> setFoldingAdapter(String response)
+    {
+
+        final ArrayList<Item> items = new ArrayList<>();
+
+        try {
+
+            JSONArray responseSharedPref = new JSONArray(response);
+
+
+            for(int i=0; i<responseSharedPref.length(); i++) {
+                JSONObject jsonObject = responseSharedPref.getJSONObject(i);
+
+                String id = jsonObject.optString("_id"),
+                        location = jsonObject.optString("auditionLocation"),
+                        auditionDate = User.getInstance().getFormattedDate(jsonObject.optString("auditionDate")),
+                        auditionTime = jsonObject.optString("auditionTime"),
+                        projectName = jsonObject.optString("title"),
+                        projectType = jsonObject.optString("projectType"),
+                        description = jsonObject.optString("description"),
+                        innerPhoneNumber = jsonObject.optString("contactNo"),
+                        innerName = jsonObject.optString("senderName"),
+                        innerApplnFrom = User.getInstance().getFormattedDate(jsonObject.optString("applicationFromDate")),
+                        innerApplnTo = User.getInstance().getFormattedDate(jsonObject.optString("applicationToDate")),
+                        innerAuditionLocation = jsonObject.optString("auditionLocation"),
+                        innerProjectDescription = jsonObject.optString("description"),
+                        innerImageURL = jsonObject.optString("auditionImageURL"),
+                        innerSenderImageURL = jsonObject.optString("senderProfileImage");
+
+
+
+                innerImageURL = "hello";
+                innerSenderImageURL = "hey";
+
+                items.add(new Item(id, location, auditionDate, auditionTime, projectName, projectType, description, innerPhoneNumber, innerName, innerApplnFrom, innerApplnTo, innerAuditionLocation, innerProjectDescription, innerImageURL, innerSenderImageURL));
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        return items;
+
+    }
+
+
+
+
+
+
+
+
+
 }
 
 

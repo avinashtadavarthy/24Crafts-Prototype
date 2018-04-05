@@ -51,7 +51,7 @@ public class ClientOpenAuditionsFragment extends android.support.v4.app.Fragment
         });
 
         // create custom adapter that holds elements and their state (we need hold a id's of unfolded elements for reusable elements)
-        final FoldingCellListAdapter adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items);
+        final FoldingCellListAdapter adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity());
 
         // add default btn handler for each request btn on each item if custom handler not found
         adapter.setDefaultRequestBtnClickListener(new View.OnClickListener() {

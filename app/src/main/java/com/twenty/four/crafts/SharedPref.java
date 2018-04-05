@@ -120,7 +120,22 @@ public class SharedPref {
         storeSPData(c, "subscribed", "");
         storeSPData(c, "pword", "");
         storeSPData(c, "encountersView", "");
+       // storeSPData(c,"viewAllAuditions","rubiks");
+        //storeSPData(c,"viewAppliedAuditions","rubiks");
+
+        //removeAuditionsKey(c);
+
     }
+
+    /*private void removeAuditionsKey(Context c) {
+
+        String uname = getSPData(c,"uname");
+        SharedPreferences sharedPreferences = c.getSharedPreferences("UserData",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        //editor.clear();
+        //editor.putString("uname",uname);
+        editor.commit();
+    }*/
 
 
     public void clearSelectedSharedPrefs(Context c) {

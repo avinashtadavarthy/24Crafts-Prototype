@@ -1,32 +1,20 @@
 package com.twenty.four.crafts;
 
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
 import android.util.Log;
 import android.view.View;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.FutureTarget;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Simple POJO model for example
@@ -35,6 +23,7 @@ import java.util.Map;
 public class Item {
 
     SharedPref sharedPref;
+
 
     private String id;
     private String location;
@@ -57,6 +46,7 @@ public class Item {
 
 
     public Item() {
+
     }
 
     public Item(String id, String location, String auditionDate, String auditionTime, String projectName, String projectType, String description,
@@ -85,7 +75,6 @@ public class Item {
         this.innerProjectDescription = innerProjectDescription;
 
     }
-
 
 
     public String getId() {
@@ -256,17 +245,22 @@ public class Item {
      */
     public static ArrayList<Item> getTestingList(final Context context, String fromwhere) {
 
-        final SharedPref sharedPref = new SharedPref(context);
+
 
         final ArrayList<Item> items = new ArrayList<>();
+
 
         switch(fromwhere) {
             case "CraftsmenOpenAuditions" :
 
-                Log.e("yeah?", "code has been accessed");
-                Log.e("jwt", sharedPref.getSPData(context,"jwtToken"));
+                auditionRequest(context,User.getInstance().BASE_URL + "user/audition/viewAll",items,"viewAllAuditions");
 
-                JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
+
+                Log.e("yeah?", "code has been accessed");
+                break;
+                //Log.e("jwt", sharedPref.getSPData(context,"jwtToken"));
+
+                /*JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
                         User.getInstance().BASE_URL + "user/audition/viewAll", null,
                         new Response.Listener<JSONArray>() {
                             @Override
@@ -316,9 +310,19 @@ public class Item {
                         return params;
                     }
                 };
-                MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
+                MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);*/
 
 
+
+
+
+
+
+
+
+            case "CraftsmenAppliedAuditions":
+
+                auditionRequest(context,User.getInstance().BASE_URL + "user/audition/viewMyAuditions",items,"viewAppliedAuditions");
                 break;
 
             default:
@@ -342,4 +346,246 @@ public class Item {
         return items;
 
     }
+
+
+
+
+    public static ArrayList<Item> getTestingList2(final Context context, String fromwhere, Activity activity) {
+
+
+
+        final ArrayList<Item> items = new ArrayList<>();
+
+
+        switch(fromwhere) {
+            case "CraftsmenOpenAuditions" :
+
+                auditionRequest2(context,User.getInstance().BASE_URL + "user/audition/viewAll",items,"viewAllAuditions",activity);
+
+
+                Log.e("yeah?", "code has been accessed");
+                break;
+            //Log.e("jwt", sharedPref.getSPData(context,"jwtToken"));
+
+                /*JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
+                        User.getInstance().BASE_URL + "user/audition/viewAll", null,
+                        new Response.Listener<JSONArray>() {
+                            @Override
+                            public void onResponse(JSONArray response) {
+                                Log.e("auditionsresponse", response.toString());
+                                try {
+
+                                    for(int i=0; i<response.length(); i++) {
+                                        JSONObject jsonObject = response.getJSONObject(i);
+
+                                        String id = jsonObject.optString("_id"),
+                                                location = jsonObject.optString("auditionLocation"),
+                                                auditionDate = User.getInstance().getFormattedDate(jsonObject.optString("auditionDate")),
+                                                auditionTime = jsonObject.optString("auditionTime"),
+                                                projectName = jsonObject.optString("title"),
+                                                projectType = jsonObject.optString("projectType"),
+                                                description = jsonObject.optString("description"),
+                                                innerPhoneNumber = jsonObject.optString("contactNo"),
+                                                innerName = jsonObject.optString("senderName"),
+                                                innerApplnFrom = User.getInstance().getFormattedDate(jsonObject.optString("applicationFromDate")),
+                                                innerApplnTo = User.getInstance().getFormattedDate(jsonObject.optString("applicationToDate")),
+                                                innerAuditionLocation = jsonObject.optString("auditionLocation"),
+                                                innerProjectDescription = jsonObject.optString("description"),
+                                                innerImageURL = jsonObject.optString("auditionImageURL"),
+                                                innerSenderImageURL = jsonObject.optString("senderProfileImage");
+
+                                        innerImageURL = "hello";
+                                        innerSenderImageURL = "hey";
+
+                                        items.add(new Item(id, location, auditionDate, auditionTime, projectName, projectType, description, innerPhoneNumber, innerName, innerApplnFrom, innerApplnTo, innerAuditionLocation, innerProjectDescription, innerImageURL, innerSenderImageURL));
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                }){
+                    @Override
+                    public Map<String,String> getHeaders() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("authorization", sharedPref.getSPData(context, "jwtToken"));
+                        return params;
+                    }
+                };
+                MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);*/
+
+
+
+
+
+
+
+
+
+            case "CraftsmenAppliedAuditions":
+
+                auditionRequest2(context,User.getInstance().BASE_URL + "user/audition/viewMyAuditions",items,"viewAppliedAuditions",activity);
+                break;
+
+            default:
+
+                //, "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"
+
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                break;
+        }
+
+        return items;
+
+    }
+
+
+
+    public static void auditionRequest(final Context context, String url, final ArrayList<Item> items, final String sharedprefKey)
+    {
+
+        AndroidNetworking.initialize(context);
+        final SharedPref sharedPref = new SharedPref(context);
+
+        AndroidNetworking.get(url)
+                .addHeaders("authorization",sharedPref.getSPData(context,"jwtToken"))
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONArray(new JSONArrayRequestListener() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        sharedPref.storeSPData(context,sharedprefKey,response.toString());
+
+                        Log.e("auditionsresponse", response.toString());
+                        try {
+
+                            JSONArray responseSharedPref = new JSONArray(sharedPref.getSPData(context,sharedprefKey));
+
+
+                            for(int i=0; i<responseSharedPref.length(); i++) {
+                                JSONObject jsonObject = responseSharedPref.getJSONObject(i);
+
+                                String id = jsonObject.optString("_id"),
+                                        location = jsonObject.optString("auditionLocation"),
+                                        auditionDate = User.getInstance().getFormattedDate(jsonObject.optString("auditionDate")),
+                                        auditionTime = jsonObject.optString("auditionTime"),
+                                        projectName = jsonObject.optString("title"),
+                                        projectType = jsonObject.optString("projectType"),
+                                        description = jsonObject.optString("description"),
+                                        innerPhoneNumber = jsonObject.optString("contactNo"),
+                                        innerName = jsonObject.optString("senderName"),
+                                        innerApplnFrom = User.getInstance().getFormattedDate(jsonObject.optString("applicationFromDate")),
+                                        innerApplnTo = User.getInstance().getFormattedDate(jsonObject.optString("applicationToDate")),
+                                        innerAuditionLocation = jsonObject.optString("auditionLocation"),
+                                        innerProjectDescription = jsonObject.optString("description"),
+                                        innerImageURL = jsonObject.optString("auditionImageURL"),
+                                        innerSenderImageURL = jsonObject.optString("senderProfileImage");
+
+                                innerImageURL = "hello";
+                                innerSenderImageURL = "hey";
+
+                                String auditionDateFinal = User.getInstance().getDate(auditionDate);
+
+                                items.add(new Item(id, location, auditionDateFinal, auditionTime, projectName, projectType, description, innerPhoneNumber, innerName, innerApplnFrom, innerApplnTo, innerAuditionLocation, innerProjectDescription, innerImageURL, innerSenderImageURL));
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+
+    }
+
+
+
+    public static void auditionRequest2(final Context context, String url, final ArrayList<Item> items, final String sharedprefKey, final Activity activity)
+    {
+
+        AndroidNetworking.initialize(context);
+        final SharedPref sharedPref = new SharedPref(context);
+
+        AndroidNetworking.get(url)
+                .addHeaders("authorization",sharedPref.getSPData(context,"jwtToken"))
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONArray(new JSONArrayRequestListener() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        sharedPref.storeSPData(context,sharedprefKey,response.toString());
+
+                        Log.e("auditionsresponse", response.toString());
+                        try {
+
+                            JSONArray responseSharedPref = new JSONArray(sharedPref.getSPData(context,sharedprefKey));
+
+
+                            for(int i=0; i<responseSharedPref.length(); i++) {
+                                JSONObject jsonObject = responseSharedPref.getJSONObject(i);
+
+                                String id = jsonObject.optString("_id"),
+                                        location = jsonObject.optString("auditionLocation"),
+                                        auditionDate = User.getInstance().getFormattedDate(jsonObject.optString("auditionDate")),
+                                        auditionTime = jsonObject.optString("auditionTime"),
+                                        projectName = jsonObject.optString("title"),
+                                        projectType = jsonObject.optString("projectType"),
+                                        description = jsonObject.optString("description"),
+                                        innerPhoneNumber = jsonObject.optString("contactNo"),
+                                        innerName = jsonObject.optString("senderName"),
+                                        innerApplnFrom = User.getInstance().getFormattedDate(jsonObject.optString("applicationFromDate")),
+                                        innerApplnTo = User.getInstance().getFormattedDate(jsonObject.optString("applicationToDate")),
+                                        innerAuditionLocation = jsonObject.optString("auditionLocation"),
+                                        innerProjectDescription = jsonObject.optString("description"),
+                                        innerImageURL = jsonObject.optString("auditionImageURL"),
+                                        innerSenderImageURL = jsonObject.optString("senderProfileImage");
+
+                                innerImageURL = "hello";
+                                innerSenderImageURL = "hey";
+
+                                String auditionDateFinal = User.getInstance().getDate(auditionDate);
+
+                                items.add(new Item(id, location, auditionDateFinal, auditionTime, projectName, projectType, description, innerPhoneNumber, innerName, innerApplnFrom, innerApplnTo, innerAuditionLocation, innerProjectDescription, innerImageURL, innerSenderImageURL));
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        activity.recreate();
+
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+
+    }
+
 }
