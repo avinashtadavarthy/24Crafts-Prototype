@@ -65,7 +65,7 @@ public class CraftsmenAppliedAuditionsFrag extends android.support.v4.app.Fragme
        {
 
            items = Item.getTestingList(getActivity().getApplicationContext(), "CraftsmenAppliedAuditions");
-           adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity());
+           adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),2);
            theListView.setAdapter(adapter);
 
 
@@ -84,7 +84,7 @@ public class CraftsmenAppliedAuditionsFrag extends android.support.v4.app.Fragme
        {
 
            items = setFoldingAdapter(getSPData("viewAppliedAuditions"));
-           adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity());
+           adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),2);
            theListView.setAdapter(adapter);
 
            theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -180,7 +180,7 @@ public class CraftsmenAppliedAuditionsFrag extends android.support.v4.app.Fragme
 
 
         items = Item.getTestingList2(getActivity().getApplicationContext(), "CraftsmenAppliedAuditions",getActivity());
-        adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity());
+        adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),2);
        // getActivity().recreate();
 
 
@@ -219,10 +219,13 @@ public class CraftsmenAppliedAuditionsFrag extends android.support.v4.app.Fragme
 
                 String auditionDateFinal = User.getInstance().getDate(auditionDate);
 
-                innerImageURL = "hello";
-                innerSenderImageURL = "hey";
+                JSONArray applicantsID = jsonObject.optJSONArray("applicantsId");
+                int applicantssize = applicantsID.length();
 
-                items.add(new Item(id, location, auditionDateFinal, auditionTime, projectName, projectType, description, innerPhoneNumber, innerName, innerApplnFrom, innerApplnTo, innerAuditionLocation, innerProjectDescription, innerImageURL, innerSenderImageURL));
+                innerImageURL = "hello";
+
+
+                items.add(new Item(id, location, auditionDateFinal, auditionTime, projectName, projectType, description, innerPhoneNumber, innerName, innerApplnFrom, innerApplnTo, innerAuditionLocation, innerProjectDescription, innerImageURL, innerSenderImageURL,applicantssize));
             }
 
         } catch (JSONException e) {

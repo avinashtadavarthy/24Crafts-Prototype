@@ -44,6 +44,7 @@ public class Item {
     private String innerAuditionLocation;
     private String innerProjectDescription;
 
+    int applicantsSize;
 
     public Item() {
 
@@ -53,7 +54,7 @@ public class Item {
                 String innerPhoneNumber,
                 String innerName,String innerApplnFrom,String innerApplnTo,
                 String innerAuditionLocation, String innerProjectDescription,
-                String innerImageURL, String innerSenderImageURL) {
+                String innerImageURL, String innerSenderImageURL,int applicantsSize) {
 
 
         this.id = id;
@@ -73,6 +74,9 @@ public class Item {
         this.innerName = innerName;
         this.innerAuditionLocation = innerAuditionLocation;
         this.innerProjectDescription = innerProjectDescription;
+        this.applicantsSize = applicantsSize;
+        this.innerSenderImageURL = innerSenderImageURL;
+        this.innerImageURL = innerImageURL;
 
     }
 
@@ -113,6 +117,7 @@ public class Item {
         this.innerPhoneNumber = innerPhoneNumber;
     }
 
+    public int getApplicantsSize(){return applicantsSize;}
     public String getInnerName() {
         return innerName;
     }
@@ -325,21 +330,25 @@ public class Item {
                 auditionRequest(context,User.getInstance().BASE_URL + "user/audition/viewMyAuditions",items,"viewAppliedAuditions");
                 break;
 
+
+            case "CraftsmenClosedAuditions":
+                auditionRequest(context,User.getInstance().BASE_URL + "user/audition/closedAuditions",items,"viewClosedAuditions");
+                break;
             default:
 
                 //, "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"
 
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",2));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",2));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",2));
 
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",3));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",4));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",7));
 
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",7));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",4));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",3));
                 break;
         }
 
@@ -432,21 +441,25 @@ public class Item {
                 auditionRequest2(context,User.getInstance().BASE_URL + "user/audition/viewMyAuditions",items,"viewAppliedAuditions",activity);
                 break;
 
+            case "CraftsmenClosedAuditions":
+                auditionRequest2(context,User.getInstance().BASE_URL + "user/audition/closedAuditions",items,"viewClosedAuditions",activity);
+                break;
+
             default:
 
                 //, "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"
 
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",2));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",3));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",1));
 
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",6));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",4));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",8));
 
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
-                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Chennai","2 FEB 2018","5:00 PM","CHENNAI SILKS","Feature Film","This is a Feature Film!!!","9172635490","Velu Pandian","11/01/2018","03/03/18","Chennai","This is a Feature Film", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",9));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Mumbai","3 MAR 2018","4:00 PM","24 CRAFTS","App","This is a Mobile Application!!!","9182612345","Hariharan","29/01/2018","23/03/18","Mumbai","This is a Mobile Application", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",2));
+                items.add(new Item("12227dbbiw7736bd_3e","Vadapalani, Coimbatore","21 JAN 2018","10:30 AM","RUBIKS","Fun","This is a WCA Competition!!!","9876512354","Rakesh Vaideeswaran","01/01/2018","07/02/18","Coimbatore","This is a WCA Competition", "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",3));
                 break;
         }
 
@@ -470,6 +483,10 @@ public class Item {
                     @Override
                     public void onResponse(JSONArray response) {
 
+
+
+
+
                         sharedPref.storeSPData(context,sharedprefKey,response.toString());
 
                         Log.e("auditionsresponse", response.toString());
@@ -497,12 +514,20 @@ public class Item {
                                         innerImageURL = jsonObject.optString("auditionImageURL"),
                                         innerSenderImageURL = jsonObject.optString("senderProfileImage");
 
+                                JSONArray applicantsID = jsonObject.optJSONArray("applicantsId");
+                                int applicantssize = applicantsID.length();
+
+
                                 innerImageURL = "hello";
-                                innerSenderImageURL = "hey";
+
+
+                                Log.e("sender image Item",innerSenderImageURL);
+
+
 
                                 String auditionDateFinal = User.getInstance().getDate(auditionDate);
 
-                                items.add(new Item(id, location, auditionDateFinal, auditionTime, projectName, projectType, description, innerPhoneNumber, innerName, innerApplnFrom, innerApplnTo, innerAuditionLocation, innerProjectDescription, innerImageURL, innerSenderImageURL));
+                                items.add(new Item(id, location, auditionDateFinal, auditionTime, projectName, projectType, description, innerPhoneNumber, innerName, innerApplnFrom, innerApplnTo, innerAuditionLocation, innerProjectDescription, innerImageURL, innerSenderImageURL,applicantssize));
                             }
 
                         } catch (JSONException e) {
@@ -525,6 +550,8 @@ public class Item {
     public static void auditionRequest2(final Context context, String url, final ArrayList<Item> items, final String sharedprefKey, final Activity activity)
     {
 
+
+
         AndroidNetworking.initialize(context);
         final SharedPref sharedPref = new SharedPref(context);
 
@@ -535,6 +562,7 @@ public class Item {
                 .getAsJSONArray(new JSONArrayRequestListener() {
                     @Override
                     public void onResponse(JSONArray response) {
+
 
                         sharedPref.storeSPData(context,sharedprefKey,response.toString());
 
@@ -564,11 +592,14 @@ public class Item {
                                         innerSenderImageURL = jsonObject.optString("senderProfileImage");
 
                                 innerImageURL = "hello";
-                                innerSenderImageURL = "hey";
+
+                                Log.e("sender image",innerSenderImageURL);
+                                JSONArray applicantsID = jsonObject.optJSONArray("applicantsId");
+                                int applicantssize = applicantsID.length();
 
                                 String auditionDateFinal = User.getInstance().getDate(auditionDate);
 
-                                items.add(new Item(id, location, auditionDateFinal, auditionTime, projectName, projectType, description, innerPhoneNumber, innerName, innerApplnFrom, innerApplnTo, innerAuditionLocation, innerProjectDescription, innerImageURL, innerSenderImageURL));
+                                items.add(new Item(id, location, auditionDateFinal, auditionTime, projectName, projectType, description, innerPhoneNumber, innerName, innerApplnFrom, innerApplnTo, innerAuditionLocation, innerProjectDescription, innerImageURL, innerSenderImageURL,applicantssize));
                             }
 
                         } catch (JSONException e) {

@@ -24,14 +24,14 @@ import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class CraftsmenClosedAuditionsFrag extends android.support.v4.app.Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     View myView;
 
     private FloatingActionButton createaudition;
     SwipeRefreshLayout swipeRefreshLayout;
-    ArrayList<Item> items = new ArrayList<>();
     FoldingCellListAdapter adapter;
+    ArrayList<Item> items = new ArrayList<>();
 
 
     @Nullable
@@ -61,11 +61,11 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
             }
         });*/
 
-       if(getSPData("viewAllAuditions").equals("") || getSPData("viewAllAuditions").equals(null))
+       if(getSPData("viewClosedAuditions").equals("") || getSPData("viewClosedAuditions").equals(null))
        {
 
-           items = Item.getTestingList(getActivity().getApplicationContext(), "CraftsmenOpenAuditions");
-           adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),0);
+           items = Item.getTestingList(getActivity().getApplicationContext(), "CraftsmenClosedAuditions");
+           adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),1);
            theListView.setAdapter(adapter);
 
 
@@ -82,8 +82,9 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
 
        else
        {
-           items = setFoldingAdapter(getSPData("viewAllAuditions"));
-           adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),0);
+
+           items = setFoldingAdapter(getSPData("viewClosedAuditions"));
+           adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),1);
            theListView.setAdapter(adapter);
 
            theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -95,7 +96,6 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
                    adapter.registerToggle(pos);
                }
            });
-
 
 
        }
@@ -117,11 +117,6 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
 
         // set on click event listener to list view
 
-
-        ArrayList<Item> items2 = new ArrayList<>();
-        items2 = Item.getTestingList(getActivity().getApplicationContext(),"CraftsmenAppliedAuditions");
-
-        items2 = Item.getTestingList(getActivity().getApplicationContext(),"CraftsmenClosedAuditions");
 
         createaudition = (FloatingActionButton) myView.findViewById(R.id.createaudition);
         createaudition.setOnClickListener(new View.OnClickListener() {
@@ -181,13 +176,15 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
     @Override
     public void onRefresh() {
 
-        //storeSPData("viewAllAuditions","");
-
-        items = Item.getTestingList2(getActivity().getApplicationContext(), "CraftsmenOpenAuditions",getActivity());
-        adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),0);
+        //storeSPData("viewAppliedAuditions","");
 
 
-        //getActivity().recreate();
+        items = Item.getTestingList2(getActivity().getApplicationContext(), "CraftsmenClosedAuditions",getActivity());
+        adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),2);
+       // getActivity().recreate();
+
+
+
     }
 
 
@@ -220,15 +217,14 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
                         innerImageURL = jsonObject.optString("auditionImageURL"),
                         innerSenderImageURL = jsonObject.optString("senderProfileImage");
 
-
-
-                innerImageURL = "hello";
+                String auditionDateFinal = User.getInstance().getDate(auditionDate);
 
                 JSONArray applicantsID = jsonObject.optJSONArray("applicantsId");
                 int applicantssize = applicantsID.length();
 
+                innerImageURL = "hello";
 
-                String auditionDateFinal = User.getInstance().getDate(auditionDate);
+
                 items.add(new Item(id, location, auditionDateFinal, auditionTime, projectName, projectType, description, innerPhoneNumber, innerName, innerApplnFrom, innerApplnTo, innerAuditionLocation, innerProjectDescription, innerImageURL, innerSenderImageURL,applicantssize));
             }
 

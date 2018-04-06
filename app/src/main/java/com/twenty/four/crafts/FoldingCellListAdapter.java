@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,11 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.StringRequestListener;
+import com.bumptech.glide.Glide;
 import com.ramotion.foldingcell.FoldingCell;
 
 import org.json.JSONException;
@@ -42,16 +48,19 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
     private View.OnClickListener defaultRequestBtnClickListener;
 
     List<Item> items;
+    int chooseTypeofAudition;
 
 
     Context context;
     Activity activity;
 
-    public FoldingCellListAdapter(Context context, List<Item> objects, Activity activity) {
+
+    public FoldingCellListAdapter(Context context, List<Item> objects, Activity activity,int chooseTypeofAudition) {
         super(context, 0, objects);
         this.context = context;
         this.items = objects;
         this.activity = activity;
+        this.chooseTypeofAudition = chooseTypeofAudition;
     }
 
     @Override
@@ -66,6 +75,9 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
             LayoutInflater vi = LayoutInflater.from(getContext());
             cell = (FoldingCell) vi.inflate(R.layout.cell, parent, false);
             // binding view parts to view holder
+            viewHolder.applicantsLayout = cell.findViewById(R.id.applicantsLayout);
+
+            viewHolder.noofApplicants = cell.findViewById(R.id.content_noofapplicants);
             viewHolder.locationAudition = (TextView) cell.findViewById(R.id.locationAudition);
             viewHolder.dateAudition = (TextView) cell.findViewById(R.id.dateAudition);
             viewHolder.timeAudition = (TextView) cell.findViewById(R.id.timeAudition);
@@ -86,6 +98,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
             viewHolder.innerAuditionLocation = cell.findViewById(R.id.content_audition_location);
             viewHolder.innerProjectDescription = cell.findViewById(R.id.content_project_desc);
             viewHolder.contentRequestBtn = (TextView) cell.findViewById(R.id.content_request_btn);
+            viewHolder.lastdividerline = cell.findViewById(R.id.lastdivider);
 
             cell.setTag(viewHolder);
         } else {
@@ -98,6 +111,22 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
             viewHolder = (ViewHolder) cell.getTag();
         }
 
+        String isClient = "";
+        String userdata =  getSPData("userdatamain");
+        try {
+            JSONObject object = new JSONObject(userdata);
+            isClient = object.optString("isClient");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if(isClient.equals("false"))
+        {
+            viewHolder.applicantsLayout.setVisibility(View.VISIBLE);
+            viewHolder.lastdividerline.setVisibility(View.VISIBLE);
+        }
+
+
         // bind data from selected element to view through view holder
         viewHolder.locationAudition.setText(item.getLocation());
         viewHolder.dateAudition.setText(item.getAuditionDate());
@@ -106,6 +135,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
         viewHolder.projectType.setText(item.getProjectType());
         viewHolder.projectDescription.setText(item.getProjectDescription());
         viewHolder.innerProjectName.setText(item.getProjectName());
+        viewHolder.noofApplicants.setText(item.getApplicantsSize() + "");
 
        /* //Glide to populate images for auditions and profilepics of uploader
         Glide.with(context).load("http://" + item.getInnerImageURL()).placeholder(R.drawable.avatar_placeholder).into(viewHolder.innerImageURL);
@@ -120,6 +150,16 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
         viewHolder.innerAuditionLocation.setText(item.getInnerAuditionLocation());
         viewHolder.innerProjectDescription.setText(item.getInnerProjectDescription());
 
+        if(chooseTypeofAudition == 1)
+            viewHolder.contentRequestBtn.setVisibility(View.GONE);
+
+        Log.e("sender image adapter",item.getInnerSenderImageURL());
+        if(item.getInnerSenderImageURL().equals(null))
+            viewHolder.innerSenderImageURL.setImageResource(R.drawable.male);
+
+        else
+            Glide.with(context).load("http://" + item.getInnerSenderImageURL()).into(viewHolder.innerSenderImageURL);
+
 
         viewHolder.contentRequestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,55 +167,89 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
 
                 //User.getInstance().BASE_URL + "user/audition/register/" + item.getId()
 
-                StringRequest getRequest = new StringRequest(Request.Method.GET, User.getInstance().BASE_URL + "user/audition/register/" + item.getId(),
-                        new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.e("applied?", response);
-                        Toast.makeText(context, response, Toast.LENGTH_LONG).show();
+                if(chooseTypeofAudition == 0) {
+                    StringRequest getRequest = new StringRequest(Request.Method.GET, User.getInstance().BASE_URL + "user/audition/register/" + item.getId(),
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    Log.e("applied?", response);
+                                    Toast.makeText(context, response, Toast.LENGTH_LONG).show();
 
-                        if(response.toLowerCase().equals("registered for audition successfully and successfully updated features."))
-                        {
-                            ArrayList<Item> items2 = new ArrayList<>();
-                            items2 = Item.getTestingList2(context, "CraftsmenOpenAuditions",activity);
+                                    if (response.toLowerCase().equals("registered for audition successfully and successfully updated features.")) {
+                                        ArrayList<Item> items2 = new ArrayList<>();
+                                        items2 = Item.getTestingList2(context, "CraftsmenOpenAuditions", activity);
+                                        items2 = Item.getTestingList2(context, "CraftsmenAppliedAuditions", activity);
+                                    }
+
+
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            error.printStackTrace();
                         }
+                    }) {
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+                            Map<String, String> params = new HashMap<String, String>();
+                            params.put("authorization", new SharedPref(context).getSPData(context, "jwtToken"));
+                            return params;
+                        }
+                    };
+                    MySingleton.getInstance(context).addToRequestQueue(getRequest);
+
+                }
 
 
 
 
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                    }
-                }) {
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("authorization", new SharedPref(context).getSPData(context,"jwtToken"));
-                        return params;
-                    }
-                };
-                MySingleton.getInstance(context).addToRequestQueue(getRequest);
 
 
+                else if(chooseTypeofAudition == 2)
+                {
+                    AndroidNetworking.initialize(context);
+
+
+                    AndroidNetworking.get(User.getInstance().BASE_URL + "user/audition/unregister/" + item.getId())
+                            .setPriority(Priority.MEDIUM)
+                            .addHeaders("authorization",getSPData("jwtToken"))
+                            .build()
+                            .getAsString(new StringRequestListener() {
+                                @Override
+                                public void onResponse(String response) {
+
+                                    Log.e("responseUnregister",response);
+                                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                                    if (response.equals("Successfully unregistered!")) {
+                                        ArrayList<Item> items2 = new ArrayList<>();
+                                        items2 = Item.getTestingList2(context, "CraftsmenAppliedAuditions", activity);
+                                        items2 = Item.getTestingList2(context, "CraftsmenOpenAuditions", activity);
+
+                                    }
+                                }
+
+                                @Override
+                                public void onError(ANError anError) {
+
+                                }
+                            });
+                }
             }
         });
 
 
-        String isClient = "";
-        String userdata =  getSPData("userdatamain");
-        try {
-            JSONObject object = new JSONObject(userdata);
-            isClient = object.optString("isClient");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
 
         if(isClient.equals("false"))
         {
-            viewHolder.contentRequestBtn.setText("APPLY");
+            if(chooseTypeofAudition == 0)
+                viewHolder.contentRequestBtn.setText("APPLY");
+
+            else if(chooseTypeofAudition == 2)
+                viewHolder.contentRequestBtn.setText("UNREGISTER");
+
+
+
         }
         else
         {
@@ -259,7 +333,9 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
         TextView innerAuditionLocation;
         TextView innerProjectDescription;
 
+        ImageView lastdividerline;
 
+        TextView noofApplicants;
         TextView locationAudition;
         TextView contentRequestBtn;
         TextView dateAudition;
@@ -271,5 +347,8 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
         RelativeLayout contentRequestBtnClient;
         TextView contentRequestBtnClientEdit;
         TextView contentRequestBtnClientDelete;
+
+
+        LinearLayout applicantsLayout;
     }
 }

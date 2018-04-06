@@ -12,8 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.twenty.four.crafts.AuditionsMain;
 import com.twenty.four.crafts.CraftsmenAppliedAuditionsFrag;
+import com.twenty.four.crafts.CraftsmenClosedAuditionsFrag;
 import com.twenty.four.crafts.CraftsmenOpenAuditionsFrag;
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.User;
@@ -74,7 +74,7 @@ public class AuditionsTab extends Fragment {
                 case 0:
                     return new CraftsmenOpenAuditionsFrag();
                 case 1:
-                    return new AuditionsMain();
+                    return new CraftsmenClosedAuditionsFrag();
                 case 2:
                     return new CraftsmenAppliedAuditionsFrag();
                 default:
