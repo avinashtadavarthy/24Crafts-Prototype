@@ -173,12 +173,28 @@ public class Login extends AppCompatActivity {
                         storeSPData("jwtToken", jwtToken);
                         storeSPData("subscribed", subscribed);
 
-                        ArrayList<Item> items2 = new ArrayList<>();
-                        items2 = Item.getTestingList(getApplicationContext(),"CraftsmenOpenAuditions");
+                        if(jsonObject.optString("isClient").equals("false")) {
 
-                        items2 = Item.getTestingList(getApplicationContext(),"CraftsmenAppliedAuditions");
+                            ArrayList<Item> items2 = new ArrayList<>();
+                            items2 = Item.getTestingList(getApplicationContext(), "CraftsmenOpenAuditions");
 
-                        items2 = Item.getTestingList(getApplicationContext(),"CraftsmenClosedAuditions");
+                            ArrayList<Item> items3 = new ArrayList<>();
+                            items3 = Item.getTestingList(getApplicationContext(), "CraftsmenAppliedAuditions");
+
+                            ArrayList<Item> items4 = new ArrayList<>();
+                            items4 = Item.getTestingList(getApplicationContext(), "CraftsmenClosedAuditions");
+
+                        }
+
+                        else {
+                            ArrayList<Item> items2 = new ArrayList<>();
+
+                            items2 = Item.getTestingList(getApplicationContext(),"ClientOpenAuditions");
+
+                            ArrayList<Item> items3 = new ArrayList<>();
+                            items3 = Item.getTestingList(getApplicationContext(),"ClientAppliedAuditions");
+                        }
+
 
 
 

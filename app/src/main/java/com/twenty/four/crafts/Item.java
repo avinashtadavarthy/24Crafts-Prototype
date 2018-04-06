@@ -334,6 +334,16 @@ public class Item {
             case "CraftsmenClosedAuditions":
                 auditionRequest(context,User.getInstance().BASE_URL + "user/audition/closedAuditions",items,"viewClosedAuditions");
                 break;
+
+
+
+            case "ClientOpenAuditions":
+                auditionRequest(context,User.getInstance().BASE_URL + "client/audition/viewAll",items,"viewAllAuditionsClient");
+                break;
+
+            case "ClientAppliedAuditions":
+                auditionRequest(context,User.getInstance().BASE_URL + "client/audition/viewMyAuditions",items,"viewAppliedAuditionsClient");
+
             default:
 
                 //, "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"
@@ -445,6 +455,17 @@ public class Item {
                 auditionRequest2(context,User.getInstance().BASE_URL + "user/audition/closedAuditions",items,"viewClosedAuditions",activity);
                 break;
 
+
+            case "ClientOpenAuditions":
+                auditionRequest2(context,User.getInstance().BASE_URL + "client/audition/viewAll",items,"viewAllAuditionsClient",activity);
+                break;
+
+
+
+            case "ClientAppliedAuditions":
+                auditionRequest2(context,User.getInstance().BASE_URL + "client/audition/viewMyAuditions",items,"viewAppliedAuditionsClient",activity);
+
+
             default:
 
                 //, "https://content.paulreiffer.com/wp-content/uploads/2015/06/bonsai-rock-lake-tahoe-trees-incline-village-nevada-california-city-water-sunset-clouds-landscape-professional-photographer-paul-reiffer-usa-discover.jpg", "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"
@@ -518,7 +539,7 @@ public class Item {
                                 int applicantssize = applicantsID.length();
 
 
-                                innerImageURL = "hello";
+                                //innerImageURL = "hello";
 
 
                                 Log.e("sender image Item",innerSenderImageURL);
@@ -591,7 +612,7 @@ public class Item {
                                         innerImageURL = jsonObject.optString("auditionImageURL"),
                                         innerSenderImageURL = jsonObject.optString("senderProfileImage");
 
-                                innerImageURL = "hello";
+                                //innerImageURL = "hello";
 
                                 Log.e("sender image",innerSenderImageURL);
                                 JSONArray applicantsID = jsonObject.optJSONArray("applicantsId");

@@ -5,13 +5,15 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.text.Editable;
 import android.text.InputType;
@@ -19,10 +21,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -38,23 +37,28 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.StringRequestListener;
+import com.androidnetworking.interfaces.UploadProgressListener;
+import com.bumptech.glide.Glide;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.steelkiwi.cropiwa.image.CropIwaResultReceiver;
-import com.twenty.four.crafts.auditions.Audition;
-import com.twenty.four.crafts.registration.EditPictureActivity;
-import com.twenty.four.crafts.registration.signup;
 import com.vansuita.pickimage.bean.PickResult;
 import com.vansuita.pickimage.bundle.PickSetup;
 import com.vansuita.pickimage.dialog.PickImageDialog;
 import com.vansuita.pickimage.enums.EPickType;
 import com.vansuita.pickimage.listeners.IPickResult;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -67,6 +71,12 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
     static final int TIME_DIALOG_ID = 1111;
     static final int REQUEST_IMAGE_LOAD = 9999;
 
+    String itemid,projName,projDesc,projType,phoneNo,audLocation,audTime,audDate,applnFrom,applnTo,audImage;
+
+
+
+    int mode;
+
     ImageView aud_image;
     CropIwaResultReceiver cropResultReceiver;
     ProgressBar loadimageprogress;
@@ -75,6 +85,8 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
     TextInputLayout input_1, input_2, input_3, input_4, input_5, input_6, input_7, input_8, input_9, input_10, input_11;
     LinearLayout project_type_layout;
     Button bn1, bn2, bn3, bn4, bn5, bn6, bn7, bn8;
+
+    Bitmap auditionImage;
 
 
     Calendar cal = Calendar.getInstance();
@@ -303,10 +315,37 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_auditions);
 
+        final Button postorupdate = findViewById(R.id.postorupdate);
+
         getSupportActionBar().setTitle("Create an Audition");
 
-
         aud_image = (ImageView) findViewById(R.id.aud_image);
+
+        ;
+        Intent intent = getIntent();
+
+
+        mode = intent.getIntExtra("createoredit",0);
+        if(mode == 2) {
+            itemid = intent.getStringExtra("id");
+            projName = intent.getStringExtra("projName");
+            projDesc = intent.getStringExtra("projDesc");
+            projType = intent.getStringExtra("projType");
+            phoneNo = intent.getStringExtra("phoneNo");
+            audLocation = intent.getStringExtra("audLocation");
+            audDate = intent.getStringExtra("audDate");
+            audTime = intent.getStringExtra("audTime");
+            applnFrom = intent.getStringExtra("applnFrom");
+            applnTo = intent.getStringExtra("applnTo");
+            audImage = intent.getStringExtra("audImage");
+
+            Glide.with(getApplicationContext()).load("http://" + audImage).into(aud_image);
+        }
+
+
+
+
+
         edit_aud_image = (CircleImageView) findViewById(R.id.edit_aud_image);
 
         loadimageprogress = (ProgressBar) findViewById(R.id.loadimageprogress);
@@ -345,7 +384,24 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         e10 = (EditText) findViewById(R.id.e10);
         e11 = (EditText) findViewById(R.id.e11);
 
+
+        if(mode == 2)
+        {
+            postorupdate.setText("UPDATE");
+            e1.setText(projName);
+            e2.setText(projType);
+            e3.setText(projDesc);
+            e6.setText(audLocation);
+            e7.setText(applnFrom);
+            e8.setText(applnTo);
+            e9.setText(phoneNo);
+            e10.setText(audTime);
+            e11.setText(audDate);
+        }
+
         project_type_layout = (LinearLayout) findViewById(R.id.project_type_layout);
+
+        auditionImage = BitmapFactory.decodeResource(getResources(),R.drawable.logo169);
 
         bn1 = (Button) findViewById(R.id.bn1);
         bn2 = (Button) findViewById(R.id.bn2);
@@ -660,12 +716,25 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
 
 
 
+        postorupdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mode == 2)
+                    post("client/audition/update/" + itemid);
+
+                else
+                    post("client/audition/create");
+            }
+        });
+
+
+
 
         from_dateListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                e7.setText(new StringBuilder().append(dayOfMonth).append("/").append(month+1).append("/").append(year));
+                e7.setText(new StringBuilder().append(month+1).append("/").append(dayOfMonth).append("/").append(year));
 
             }
         };
@@ -674,7 +743,7 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                e8.setText(new StringBuilder().append(dayOfMonth).append("/").append(month+1).append("/").append(year));
+                e8.setText(new StringBuilder().append(month+1).append("/").append(dayOfMonth).append("/").append(year));
 
             }
         };
@@ -683,7 +752,7 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                e11.setText(new StringBuilder().append(dayOfMonth).append("/").append(month+1).append("/").append(year));
+                e11.setText(new StringBuilder().append(month+1).append("/").append(dayOfMonth).append("/").append(year));
 
             }
         };
@@ -712,6 +781,8 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         cropResultReceiver.register(this);
 
     }
+
+
 
 
     @Override
@@ -835,7 +906,7 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
 
     }
 
-    public void post(View view) {
+    public void post(String url) {
         Log.i("here","hi");
         boolean i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11;
         i1=check(e1);
@@ -853,12 +924,23 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         {
 
 
-            StringRequest postRequest = new StringRequest(Request.Method.POST, User.getInstance().BASE_URL + "client/audition/create",
+            StringRequest postRequest = new StringRequest(Request.Method.POST, User.getInstance().BASE_URL + url,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             Log.e("audition created?", response);
                             Toast.makeText(CreateAuditions.this, response, Toast.LENGTH_SHORT).show();
+
+                            String id = "";
+
+                            if(mode!=2)
+                             id = response;
+
+                            else
+                                id = itemid;
+
+                            uploadImage(auditionImage,id);
+
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -886,12 +968,13 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
                     params.put("contactNo", e9.getText().toString());
                     params.put("applicationFromDate", e7.getText().toString());
                     params.put("applicationToDate", e8.getText().toString());
+                    params.put("auditionType","Audition");
 
-                    try {
-                        params.put("senderName", new JSONObject(new SharedPref(getApplicationContext()).getSPData(getApplicationContext(), "userdatamain")).optString("name"));
+                   /* try {
+                       // params.put("senderName", new JSONObject(new SharedPref(getApplicationContext()).getSPData(getApplicationContext(), "userdatamain")).optString("name"));
                     } catch (JSONException e) {
                         e.printStackTrace();
-                    }
+                    }*/
 
                    /* params.put("auditionImageURL", );
                     params.put("senderProfileImage", );
@@ -919,6 +1002,19 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
     public void onCropSuccess(Uri croppedUri) {
         loadimageprogress.setVisibility(View.GONE);
         aud_image.setImageURI(croppedUri);
+
+        try {
+            if(croppedUri.equals("") || croppedUri.equals(null))
+            {
+                auditionImage = BitmapFactory.decodeResource(getResources(),R.drawable.logo169);
+            }
+
+
+            else
+            auditionImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(),croppedUri);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -932,4 +1028,90 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         super.onDestroy();
         cropResultReceiver.unregister(this);
     }
+
+
+
+
+
+
+
+
+    private void uploadImage(Bitmap bitmap,String id) {
+
+        File f = new File(getApplicationContext().getCacheDir(),"Image"+".png");
+
+        try {
+            f.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,0,byteArrayOutputStream);
+
+        byte[] bitmapdata = byteArrayOutputStream.toByteArray();
+
+        FileOutputStream fos;
+
+        try {
+            fos = new FileOutputStream(f);
+            fos.write(bitmapdata);
+            fos.flush();
+            fos.close();
+
+
+            postRequest(f,id);
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void postRequest(File f,String id) {
+
+        String url = User.getInstance().BASE_URL + "client/audition/uploadPhoto/" + id;
+        AndroidNetworking.upload(url)
+                .addMultipartFile("image",f)
+                .setPriority(Priority.MEDIUM)
+                .addHeaders("authorization",new SharedPref(getApplicationContext()).getSPData(getApplication(),"jwtToken"))
+                .build()
+                .setUploadProgressListener(new UploadProgressListener() {
+                    @Override
+                    public void onProgress(long bytesUploaded, long totalBytes) {
+
+
+                    }
+                })
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+
+
+                        Toast.makeText(CreateAuditions.this, response, Toast.LENGTH_LONG).show();
+
+                        if(response.equals("Successfully Uploaded Audition Image") || response.equals("Audition Successfully Updated!")){
+
+                            Intent intent = getIntent();
+                            setResult(RESULT_OK,intent);
+                            finish();
+
+                    }
+
+                        //to update userdatamain in shared prefs
+                        new SharedPref(getApplicationContext()).updateUserDataMain(getApplicationContext());
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Toast.makeText(CreateAuditions.this,"Error: " + anError.getErrorBody(),Toast.LENGTH_LONG).show();
+
+                    }
+                });
+    }
+
 }

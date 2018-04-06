@@ -1,10 +1,17 @@
 package com.twenty.four.crafts;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +37,7 @@ import com.ramotion.foldingcell.FoldingCell;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -42,7 +50,8 @@ import static android.content.Context.MODE_PRIVATE;
  * Simple example of ListAdapter for using with Folding Cell
  * Adapter holds indexes of unfolded elements for correct work with default reusable views behavior
  */
-public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements SwipeRefreshLayout.OnRefreshListener{
+public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements SwipeRefreshLayout.OnRefreshListener,Serializable{
+
 
     private HashSet<Integer> unfoldedIndexes = new HashSet<>();
     private View.OnClickListener defaultRequestBtnClickListener;
@@ -150,8 +159,10 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
         viewHolder.innerAuditionLocation.setText(item.getInnerAuditionLocation());
         viewHolder.innerProjectDescription.setText(item.getInnerProjectDescription());
 
-        if(chooseTypeofAudition == 1)
+        if(chooseTypeofAudition == 1 || chooseTypeofAudition == -2)
             viewHolder.contentRequestBtn.setVisibility(View.GONE);
+
+
 
         Log.e("sender image adapter",item.getInnerSenderImageURL());
         if(item.getInnerSenderImageURL().equals(null))
@@ -159,6 +170,18 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
 
         else
             Glide.with(context).load("http://" + item.getInnerSenderImageURL()).into(viewHolder.innerSenderImageURL);
+
+
+
+
+
+
+        if(item.getInnerImageURL().equals(null))
+            viewHolder.innerImageURL.setImageResource(R.drawable.logo169);
+
+        else
+            Glide.with(context).load("http://" + item.getInnerImageURL()).into(viewHolder.innerImageURL);
+
 
 
         viewHolder.contentRequestBtn.setOnClickListener(new View.OnClickListener() {
@@ -236,6 +259,55 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
                                 }
                             });
                 }
+
+
+
+
+                else if(chooseTypeofAudition == -1)
+                {
+                    final AlertDialog dialog = new AlertDialog.Builder(new ContextThemeWrapper(activity,R.style.AlertDialog)).setMessage("Choose:").
+                            setPositiveButton("EDIT", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    //EDIT
+                                    Intent intent = new Intent(context,CreateAuditions.class);
+                                    intent.putExtra("createoredit",2);
+                                    intent.putExtra("id",item.getId());
+                                    intent.putExtra("projName",item.getProjectName());
+                                    intent.putExtra("projDesc",item.getProjectDescription());
+                                    intent.putExtra("projType",item.getProjectType());
+                                    intent.putExtra("phoneNo",item.getInnerPhoneNumber());
+                                    intent.putExtra("audLocation",item.getInnerAuditionLocation());
+                                    intent.putExtra("audDate",item.getAuditionDate());
+                                    intent.putExtra("audTime",item.getAuditionTime());
+                                    intent.putExtra("applnFrom",item.getInnerApplnFrom());
+                                    intent.putExtra("applnTo",item.getInnerApplnTo());
+                                    intent.putExtra("audImage",item.getInnerImageURL());
+                                    context.startActivity(intent);
+                                }
+                            })
+                            .setNegativeButton("DELETE", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    deleteTheAudition(item.getId());
+                                }
+                            })
+                            .setNeutralButton("CANCEL", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.cancel();
+                                }
+                            })
+                            .show();
+                    dialog.setCanceledOnTouchOutside(false);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                    TextView textView = (TextView) dialog.findViewById(android.R.id.message);
+                    textView.setGravity(Gravity.LEFT);
+                    textView.setTextSize(15);
+                }
             }
         });
 
@@ -270,6 +342,42 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
         return cell;
     }
 
+
+
+
+    private void deleteTheAudition(String id) {
+
+        AndroidNetworking.initialize(context);
+
+
+        AndroidNetworking.get(User.getInstance().BASE_URL + "client/audition/delete/" + id)
+                .setPriority(Priority.MEDIUM)
+                .addHeaders("authorization",getSPData("jwtToken"))
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Log.e("responseDelete",response);
+                        Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                        if (response.equals("Audition Successfully Deleted!")) {
+                            ArrayList<Item> items2 = new ArrayList<>();
+                            items2 = Item.getTestingList2(context, "ClientAppliedAuditions", activity);
+
+                            ArrayList<Item> items3 = new ArrayList<>();
+                            items3 = Item.getTestingList2(context, "ClientOpenAuditions", activity);
+
+
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }
+
     // simple methods for register cell state changes
     public void registerToggle(int position) {
         if (unfoldedIndexes.contains(position))
@@ -293,6 +401,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
     public void setDefaultRequestBtnClickListener(View.OnClickListener defaultRequestBtnClickListener) {
         this.defaultRequestBtnClickListener = defaultRequestBtnClickListener;
     }
+
 
 
     //Shared Preferences

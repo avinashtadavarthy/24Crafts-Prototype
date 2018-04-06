@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.twenty.four.crafts.ClientAppliedAuditionsFrag;
+import com.twenty.four.crafts.ClientOpenAuditionsFrag;
 import com.twenty.four.crafts.R;
 
 /**
@@ -59,7 +61,7 @@ public class DashboardAuditionsTabFragment extends Fragment {
 
     private class AuditionsTabFragmentAdapter extends FragmentStatePagerAdapter {
 
-        private String fragments [] = {"Open Auditions","Closed Auditions"};
+        private String fragments [] = {"All Auditions","My Auditions"};
 
         public AuditionsTabFragmentAdapter(FragmentManager supportFragmentManager, Context applicationContext) {
             super(supportFragmentManager);
@@ -69,9 +71,9 @@ public class DashboardAuditionsTabFragment extends Fragment {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    return new ClientOpenAuditionsFragment();
+                    return new ClientOpenAuditionsFrag();
                 case 1:
-                    return new ClientClosedAuditionsFragment();
+                    return new ClientAppliedAuditionsFrag();
                 default:
                     return null;
             }

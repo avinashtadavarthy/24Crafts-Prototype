@@ -310,7 +310,7 @@
                     android:textAlignment="center"
                     android:text=""/>
 
-                
+
             </LinearLayout>-->
 
             </LinearLayout>
@@ -555,12 +555,12 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/postorupdate"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="50dp"
         android:background="#004e92"
-        android:text="POST" />
+        android:onClick="update"
+        android:text="UPDATE" />
 
 </RelativeLayout>

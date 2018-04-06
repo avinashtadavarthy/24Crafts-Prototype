@@ -227,7 +227,7 @@ public class CraftsmenClosedAuditionsFrag extends android.support.v4.app.Fragmen
                 JSONArray applicantsID = jsonObject.optJSONArray("applicantsId");
                 int applicantssize = applicantsID.length();
 
-                innerImageURL = "hello";
+                //innerImageURL = "hello";
 
 
                 items.add(new Item(id, location, auditionDateFinal, auditionTime, projectName, projectType, description, innerPhoneNumber, innerName, innerApplnFrom, innerApplnTo, innerAuditionLocation, innerProjectDescription, innerImageURL, innerSenderImageURL,applicantssize));

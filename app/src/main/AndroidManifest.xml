@@ -348,7 +348,8 @@
         <activity android:name=".ChangePassword" />
         <activity android:name=".ClientVerification4Activity" />
         <activity android:name=".ClientVerification5Activity" />
-        <activity android:name=".ClientVerification6Activity"></activity>
+        <activity android:name=".ClientVerification6Activity" />
+        <activity android:name=".EditAudition"></activity>
     </application>
 
 </manifest>

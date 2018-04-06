@@ -1,5 +1,6 @@
 package com.twenty.four.crafts;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -24,7 +25,9 @@ import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class ClientOpenAuditionsFrag extends android.support.v4.app.Fragment implements SwipeRefreshLayout.OnRefreshListener {
+
+    private static final int REQUEST_CREATE_AUDITION = 1429;
 
     View myView;
 
@@ -61,11 +64,11 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
             }
         });*/
 
-       if(getSPData("viewAllAuditions").equals("") || getSPData("viewAllAuditions").equals(null))
+       if(getSPData("viewAllAuditionsClient").equals("") || getSPData("viewAllAuditionsClient").equals(null))
        {
 
-           items = Item.getTestingList(getActivity().getApplicationContext(), "CraftsmenOpenAuditions");
-           adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),0);
+           items = Item.getTestingList(getActivity().getApplicationContext(), "ClientOpenAuditions");
+           adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),-2);
            theListView.setAdapter(adapter);
 
 
@@ -82,8 +85,8 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
 
        else
        {
-           items = setFoldingAdapter(getSPData("viewAllAuditions"));
-           adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),0);
+           items = setFoldingAdapter(getSPData("viewAllAuditionsClient"));
+           adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),-2);
            theListView.setAdapter(adapter);
 
            theListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -118,18 +121,15 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
         // set on click event listener to list view
 
 
-        ArrayList<Item> items2 = new ArrayList<>();
-        items2 = Item.getTestingList(getActivity().getApplicationContext(),"CraftsmenAppliedAuditions");
 
-        ArrayList<Item> items3 = new ArrayList<>();
-        items3 = Item.getTestingList(getActivity().getApplicationContext(),"CraftsmenClosedAuditions");
 
         createaudition = (FloatingActionButton) myView.findViewById(R.id.createaudition);
         createaudition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity().getApplicationContext(),CreateAuditions.class);
-                startActivity(i);
+                i.putExtra("createoredit",1);
+                startActivityForResult(i,REQUEST_CREATE_AUDITION);
             }
         });
 
@@ -148,6 +148,21 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
         return myView;
     }
 
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if((requestCode == REQUEST_CREATE_AUDITION && resultCode == Activity.RESULT_OK))
+        {
+            ArrayList<Item> items2 = new ArrayList<>();
+            items2 = Item.getTestingList2(getActivity().getApplicationContext(), "ClientOpenAuditions",getActivity());
+
+            ArrayList<Item> items3 = new ArrayList<>();
+            items3 = Item.getTestingList2(getActivity().getApplicationContext(), "ClientAppliedAuditions",getActivity());
+        }
+    }
 
     @Override
     public void onResume() {
@@ -184,8 +199,8 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
 
         //storeSPData("viewAllAuditions","");
 
-        items = Item.getTestingList2(getActivity().getApplicationContext(), "CraftsmenOpenAuditions",getActivity());
-        adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),0);
+        items = Item.getTestingList2(getActivity().getApplicationContext(), "ClientOpenAuditions",getActivity());
+        adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),-2);
 
         //ArrayList<Item> items2 = new ArrayList<>();
         //items2 = Item.getTestingList2(getActivity().getApplicationContext(), "CraftsmenOpenAuditions", getActivity());
@@ -228,7 +243,7 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
 
 
 
-               // innerImageURL = "hello";
+                //innerImageURL = "hello";
 
                 JSONArray applicantsID = jsonObject.optJSONArray("applicantsId");
                 int applicantssize = applicantsID.length();
