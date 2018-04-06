@@ -180,7 +180,12 @@ public class CraftsmenClosedAuditionsFrag extends android.support.v4.app.Fragmen
 
 
         items = Item.getTestingList2(getActivity().getApplicationContext(), "CraftsmenClosedAuditions",getActivity());
-        adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),2);
+        adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),1);
+
+        //ArrayList<Item> items2 = new ArrayList<>();
+        //items2 = Item.getTestingList2(getActivity().getApplicationContext(), "CraftsmenOpenAuditions", getActivity());
+        //items2 = Item.getTestingList2(getActivity().getApplicationContext(), "CraftsmenAppliedAuditions", getActivity());
+        //items2 = Item.getTestingList2(getActivity().getApplicationContext(),"CraftsmenClosedAuditions",getActivity());
        // getActivity().recreate();
 
 

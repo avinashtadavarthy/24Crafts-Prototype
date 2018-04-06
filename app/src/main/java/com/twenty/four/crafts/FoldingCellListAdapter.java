@@ -179,6 +179,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
                                         ArrayList<Item> items2 = new ArrayList<>();
                                         items2 = Item.getTestingList2(context, "CraftsmenOpenAuditions", activity);
                                         items2 = Item.getTestingList2(context, "CraftsmenAppliedAuditions", activity);
+                                        items2 = Item.getTestingList2(context,"CraftsmenClosedAuditions",activity);
                                     }
 
 
@@ -224,6 +225,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
                                         ArrayList<Item> items2 = new ArrayList<>();
                                         items2 = Item.getTestingList2(context, "CraftsmenAppliedAuditions", activity);
                                         items2 = Item.getTestingList2(context, "CraftsmenOpenAuditions", activity);
+                                        items2 = Item.getTestingList2(context,"CraftsmenClosedAuditions",activity);
 
                                     }
                                 }

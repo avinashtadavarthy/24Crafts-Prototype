@@ -121,7 +121,8 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
         ArrayList<Item> items2 = new ArrayList<>();
         items2 = Item.getTestingList(getActivity().getApplicationContext(),"CraftsmenAppliedAuditions");
 
-        items2 = Item.getTestingList(getActivity().getApplicationContext(),"CraftsmenClosedAuditions");
+        ArrayList<Item> items3 = new ArrayList<>();
+        items3 = Item.getTestingList(getActivity().getApplicationContext(),"CraftsmenClosedAuditions");
 
         createaudition = (FloatingActionButton) myView.findViewById(R.id.createaudition);
         createaudition.setOnClickListener(new View.OnClickListener() {
@@ -185,6 +186,11 @@ public class CraftsmenOpenAuditionsFrag extends android.support.v4.app.Fragment 
 
         items = Item.getTestingList2(getActivity().getApplicationContext(), "CraftsmenOpenAuditions",getActivity());
         adapter = new FoldingCellListAdapter(getActivity().getApplicationContext(), items,getActivity(),0);
+
+        //ArrayList<Item> items2 = new ArrayList<>();
+        //items2 = Item.getTestingList2(getActivity().getApplicationContext(), "CraftsmenOpenAuditions", getActivity());
+        //items2 = Item.getTestingList2(getActivity().getApplicationContext(), "CraftsmenAppliedAuditions", getActivity());
+        //items2 = Item.getTestingList2(getActivity().getApplicationContext(),"CraftsmenClosedAuditions",getActivity());
 
 
         //getActivity().recreate();

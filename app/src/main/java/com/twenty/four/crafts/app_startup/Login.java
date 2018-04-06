@@ -176,6 +176,12 @@ public class Login extends AppCompatActivity {
                         ArrayList<Item> items2 = new ArrayList<>();
                         items2 = Item.getTestingList(getApplicationContext(),"CraftsmenOpenAuditions");
 
+                        items2 = Item.getTestingList(getApplicationContext(),"CraftsmenAppliedAuditions");
+
+                        items2 = Item.getTestingList(getApplicationContext(),"CraftsmenClosedAuditions");
+
+
+
                         Log.e("jwtToken",jwtToken);
                         String payLoadJWT = jwtToken.substring(jwtToken.indexOf(".")+1);
                         payLoadJWT = payLoadJWT.substring(0,payLoadJWT.indexOf("."));
@@ -199,6 +205,10 @@ public class Login extends AppCompatActivity {
 
                        // Log.e("newURL",newurl);
 
+
+                        Log.e("OA",getSPData("viewAllAuditions"));
+                        Log.e("CA",getSPData("viewClosedAuditions"));
+                        Log.e("AA",getSPData("viewAppliedAuditions"));
 
                         StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new Response.Listener<String>() {
                             @Override
