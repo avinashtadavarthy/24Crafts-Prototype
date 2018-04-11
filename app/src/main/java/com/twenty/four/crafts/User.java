@@ -12,7 +12,7 @@ public class User {
 
     //variables or functions
     public static String
-            languagesspoken = "", languagesspokendirty = "";
+            languagesspoken = "", languagesspokendirty = "";/**/
 
     public int navbarpos = 0;
     public int navbarposclient = 1;

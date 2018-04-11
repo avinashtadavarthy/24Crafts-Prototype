@@ -208,6 +208,7 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
                                     public void onResponse(JSONObject response) {
 
                                         storeSPData("facebookJSON", response.toString());
+                                        storeSPData("facebookEmail", response.optString("email"));
 
                                         Toast.makeText(Verification.this, "Successfully connected your account to facebook!", Toast.LENGTH_SHORT).show();
 
@@ -332,6 +333,7 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
                                 @Override
                                 public void success(Result<com.twitter.sdk.android.core.models.User> result) {
                                     String fullname = result.data.name;
+                                    long userId = result.data.getId();
 
                                     storeSPData("twitter_verified", "true");
 
@@ -349,6 +351,7 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
 
                                     JSONObject twitter = new JSONObject();
                                     try {
+                                        twitter.put("userId", userId);
                                         twitter.put("firstname", firstname);
                                         twitter.put("lastname", lastname);
                                         twitter.put("email", email);
@@ -360,6 +363,7 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
                                     }
 
                                     storeSPData("twitterJSON", twitter.toString());
+                                    storeSPData("twitterEmail", Long.toString(userId));
 
                                     twitter_layout_verified.setVisibility(View.VISIBLE);
                                     twitterim.setImageResource(R.drawable.twitter);
@@ -464,6 +468,7 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
                 }
 
                 storeSPData("googleJSON", google.toString());
+                storeSPData("googleEmail", email);
 
                 google_layout_verified.setVisibility(View.VISIBLE);
                 googleim.setImageResource(R.drawable.googleg_standard_color_18);
@@ -537,6 +542,7 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
             else {
                 storeSPData("facebook_verified", "true");
                 storeSPData("facebookJSON", jsonObject.optString("facebook"));
+                storeSPData("facebookEmail", jsonObject.optString("email"));
                 fb_layout_verified.setVisibility(View.VISIBLE);
 
                 JSONObject facebook = new JSONObject(jsonObject.optString("facebook"));
@@ -555,6 +561,7 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
             else {
                 storeSPData("google_verified", "true");
                 storeSPData("googleJSON", jsonObject.optString("google"));
+                storeSPData("googleEmail", email);
                 google_layout_verified.setVisibility(View.VISIBLE);
 
                 JSONObject google = new JSONObject(jsonObject.optString("google"));
@@ -571,6 +578,7 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
             else {
                 storeSPData("twitter_verified", "true");
                 storeSPData("twitterJSON", jsonObject.optString("twitter"));
+                storeSPData("twitterEmail", jsonObject.optString("userId"));
                 twitter_layout_verified.setVisibility(View.VISIBLE);
 
                 JSONObject twitter = new JSONObject(jsonObject.optString("twitter"));
@@ -657,9 +665,13 @@ public class Verification extends AppCompatActivity implements GoogleApiClient.O
                 Map<String, String> params = new HashMap<String, String>();
 
                 params.put("password", getSPData("pword"));
+
+                params.put("facebook", getSPData("facebookJSON"));
                 params.put("google", getSPData("googleJSON"));
                 params.put("twitter", getSPData("twitterJSON"));
-                params.put("facebook", getSPData("facebookJSON"));
+                params.put("facebookEmail", getSPData("facebookEmail"));
+                params.put("googleEmail", getSPData("googleEmail"));
+                params.put("twitterEmail", getSPData("twitterEmail"));
 
                 return params;
             }

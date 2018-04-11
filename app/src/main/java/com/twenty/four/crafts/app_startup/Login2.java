@@ -25,6 +25,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.facebook.AccessToken;
@@ -125,10 +129,11 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-        /* */ FacebookSdk.sdkInitialize(getApplicationContext()); /* */
-        /* */           Twitter.initialize(this);          /* */
-        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+        /* */  FacebookSdk.sdkInitialize(getApplicationContext());     /* */
+        /* */            Twitter.initialize(this);              /* */
+        /* */  AndroidNetworking.initialize(getApplicationContext());   /* */
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
         setContentView(R.layout.activity_login2);
 
         sharedPref = new SharedPref(getApplicationContext());
@@ -217,6 +222,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
                                     public void onResponse(JSONObject response) {
 
                                         storeSPData("facebookJSON", response.toString());
+                                        storeSPData("facebookEmail", response.optString("email"));
 
                                         firstname = response.optString("first_name");
                                         lastname = response.optString("last_name");
@@ -243,9 +249,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
                                         bundle.putString("gender", gender);
                                         bundle.putString("imgurl", imgurl);
 
-                                        Intent i = new Intent(Login2.this, StartingScreen.class);
-                                        i.putExtras(bundle);
-                                        startActivity(i);
+                                        checkIfUserExists(email, "facebook");
                                     }
                                 },
                                 new Response.ErrorListener()
@@ -306,6 +310,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
                             @Override
                             public void success(Result<com.twitter.sdk.android.core.models.User> result) {
                                 String fullname = result.data.name;
+                                long userId = result.data.getId();
 
                                 storeSPData("twitter_verified", "true");
 
@@ -323,6 +328,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
                                 JSONObject twitter = new JSONObject();
                                 try {
+                                    twitter.put("userId", userId);
                                     twitter.put("firstname", firstname);
                                     twitter.put("lastname", lastname);
                                     twitter.put("email", email);
@@ -334,6 +340,8 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
                                 }
 
                                 storeSPData("twitterJSON", twitter.toString());
+                                storeSPData("twitterEmail", Long.toString(userId));
+
 
 
                                 bundle.putString("firstname", firstname);
@@ -344,9 +352,8 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
                                 Toast.makeText(Login2.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
-                                Intent i = new Intent(Login2.this, StartingScreen.class);
-                                i.putExtras(bundle);
-                                startActivity(i);
+                                checkIfUserExists(Long.toString(userId), "twitter");
+
                             }
 
                             @Override
@@ -443,6 +450,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
                 }
 
                 storeSPData("googleJSON", google.toString());
+                storeSPData("googleEmail", email);
 
             if(firstname.contains(" "))
                 firstname = firstname.substring(0, firstname.indexOf(" "));
@@ -455,9 +463,8 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
             Toast.makeText(Login2.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
-            Intent i = new Intent(Login2.this, StartingScreen.class);
-                                        i.putExtras(bundle);
-                                        startActivity(i);
+                checkIfUserExists(email, "google");
+
             }
 
 
@@ -551,7 +558,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
         progressbar.setCancelable(false);
 
 
-        String url = "http://24crafts.cf:3000/login";
+        String url = User.getInstance().BASE_URL + "login";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -652,6 +659,143 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
 
 
+
+
+    void checkIfUserExists(String email, String source) {
+
+        if (source.equals("facebook")) {
+
+            AndroidNetworking.post(User.getInstance().BASE_URL + "loginFB")
+                    .addBodyParameter("facebookEmail", email)
+                    .setPriority(Priority.MEDIUM)
+                    .build()
+                    .getAsJSONObject(new JSONObjectRequestListener() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+
+                            Log.e("directlogintest", response.toString());
+
+                            if (!response.optString("token").equals("")) {
+                                storeSPData("jwtToken", response.optString("token"));
+
+                                loginUserDirectly();
+
+                            } else if(response.optString("message").equals("User not found in Database")) {
+
+                                 Intent i = new Intent(Login2.this, StartingScreen.class);
+                                            i.putExtras(bundle);
+                                            startActivity(i);
+                            }
+
+                        }
+                        @Override
+                        public void onError(ANError error) {
+                            error.printStackTrace();
+                        }
+                    });
+
+        } else if (source.equals("google")) {
+
+            AndroidNetworking.post(User.getInstance().BASE_URL + "loginGoogle")
+                    .addBodyParameter("googleEmail", email)
+                    .setPriority(Priority.MEDIUM)
+                    .build()
+                    .getAsJSONObject(new JSONObjectRequestListener() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+
+                            if (!response.optString("token").equals("")) {
+
+                                Log.e("directlogintest", response.toString());
+
+                                storeSPData("jwtToken", response.optString("token"));
+                                 loginUserDirectly();
+
+                            } else if(response.optString("message").equals("User not found in Database")){
+
+                               Intent i = new Intent(Login2.this, StartingScreen.class);
+                                            i.putExtras(bundle);
+                                            startActivity(i);
+                            }
+
+                        }
+                        @Override
+                        public void onError(ANError error) {
+                            error.printStackTrace();
+                        }
+                    });
+
+        } else if (source.equals("twitter")) {
+
+            AndroidNetworking.post(User.getInstance().BASE_URL + "loginTwitter")
+                    .addBodyParameter("twitterEmail", email)
+                    .setPriority(Priority.MEDIUM)
+                    .build()
+                    .getAsJSONObject(new JSONObjectRequestListener() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+
+                            if (!response.optString("token").equals("")) {
+
+                                Log.e("directlogintest", response.toString());
+
+                                storeSPData("jwtToken", response.optString("token"));
+                                 loginUserDirectly();
+
+                            } else if(response.optString("message").equals("User not found in Database")) {
+
+                                Intent i = new Intent(Login2.this, StartingScreen.class);
+                                            i.putExtras(bundle);
+                                            startActivity(i);
+                            }
+
+                        }
+                        @Override
+                        public void onError(ANError error) {
+                            error.printStackTrace();
+                        }
+                    });
+
+        }
+
+    }
+
+
+
+    void loginUserDirectly() {
+
+        AndroidNetworking.get(User.getInstance().BASE_URL + "user")
+                .addHeaders("authorization", getSPData("jwtToken"))
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        storeSPData("userdatamain", response.toString());
+
+                            String isClient = response.optString("isClient");
+
+                            if(isClient.equals("true")) {
+                                Intent i = new Intent(Login2.this,Main3Activity.class)
+                                        .putExtra("userdata", response.toString()).putExtra("subscribed", subscribed);
+                                Log.e("userdata",response.toString());
+                                startActivity(i);
+                            } else {
+                                Intent i = new Intent(Login2.this,Main2Activity.class)
+                                        .putExtra("userdata", response.toString()).putExtra("subscribed", subscribed);
+                                Log.e("userdata",response.toString());
+                                startActivity(i);
+                            }
+
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        error.printStackTrace();
+                    }
+                });
+
+    }
 
 
 

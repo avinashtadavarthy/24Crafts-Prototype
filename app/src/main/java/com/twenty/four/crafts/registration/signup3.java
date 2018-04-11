@@ -1949,9 +1949,14 @@ public class signup3 extends AppCompatActivity {
                 params.put("residingIn", getSPData("residingIn"));
                 params.put("native", getSPData("homeTown"));
                 params.put("emailVerification", "false");
+
                 params.put("facebook", getSPData("facebookJSON"));
                 params.put("google", getSPData("googleJSON"));
                 params.put("twitter", getSPData("twitterJSON"));
+                params.put("facebookEmail", getSPData("facebookEmail"));
+                params.put("googleEmail", getSPData("googleEmail"));
+                params.put("twitterEmail", getSPData("twitterEmail"));
+
                 params.put("hasPreviousExperience", getSPData("hasPrevExp"));
                 params.put("previousExperience", getSPData("prevExp"));
                 params.put("bio", editBio.getText().toString());
