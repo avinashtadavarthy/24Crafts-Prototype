@@ -600,7 +600,7 @@ public class Main2Activity extends AppCompatActivity
 
            if(subscribed.equals("true") || isSubscribed.equals("true"))
            {
-               Intent i = new Intent(getApplicationContext(), MapsActivity.class);
+               Intent i = new Intent(getApplicationContext(), RadarView.class);
                startActivity(i);
            } else {
                // grey out the option

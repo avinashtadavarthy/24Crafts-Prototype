@@ -1,12 +1,14 @@
 package com.twenty.four.crafts;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.util.AttributeSet;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,13 +22,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static android.content.Context.MODE_PRIVATE;
+
 /**
  * Created by rakesh on 13/3/18.
  */
 
 public class RadarViewClass extends View implements View.OnClickListener{
 
-    String url = "http://24crafts.cf:3000/users/5a9e814e0a462e6e1f7fa9c5/photos/24 Logo.png";
+    //String url = "http://24crafts.cf:3000/users/5a9e814e0a462e6e1f7fa9c5/photos/24 Logo.png";
     private Context mContext;
     private boolean isSearching = false;// 标识是否处于扫描状态,默认为不在扫描状态
     private Paint mPaint;// 画笔
@@ -42,6 +46,7 @@ public class RadarViewClass extends View implements View.OnClickListener{
     int mCx, mCy;// x、y轴中心点
     int mOutsideRadius, mInsideRadius;// 外、内圆半径
     ArrayList<Integer> mPointArrayX,mPointArrayY;
+    ArrayList<Bitmap> peopleNearbyBitmaps;
 
     public RadarViewClass(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -65,6 +70,8 @@ public class RadarViewClass extends View implements View.OnClickListener{
      * TODO<提前初始化好需要使用的对象,避免在绘制过程中多次初始化>
      */
     private void init(Context context) {
+
+        decodeToBitmap();
         mPaint = new Paint();
         this.mContext = context;
         this.mDefaultPointBmp = Bitmap.createBitmap(BitmapFactory
@@ -76,7 +83,25 @@ public class RadarViewClass extends View implements View.OnClickListener{
         this.mLightPointBmp = Bitmap.createScaledBitmap(mLightPointBmp,150,150,false);
         this.mPointArrayX = new ArrayList<>();
         this.mPointArrayY = new ArrayList<>();
+        this.peopleNearbyBitmaps = new ArrayList<>();
 
+    }
+
+    private void decodeToBitmap() {
+
+        SharedPreferences mUserData = getContext().getSharedPreferences("UserData", MODE_PRIVATE);
+        int nearbySize = mUserData.getInt("nearbySize",0);
+        for(int i=0;i<nearbySize;i++)
+        {
+            byte[] imageAsBytes = Base64.decode(getSPData("person"+i).getBytes(),Base64.DEFAULT);
+            Log.e("imageasbytes",imageAsBytes.toString());
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imageAsBytes,0,imageAsBytes.length);
+
+            peopleNearbyBitmaps.add(bitmap);
+        }
+
+
+        Log.e("sizeOfPeopleNearby",peopleNearbyBitmaps.size()+"");
     }
 
     /**
@@ -207,14 +232,21 @@ public class RadarViewClass extends View implements View.OnClickListener{
                 Log.e("mpointarray","Mpointarray[" + i + "] = " + mx + " " + my);
 
                 // 开始绘制动态点
-                if (i < mPointArray.size() - 1)
+                /*if (i < mPointArray.size() - 1)
                     canvas.drawBitmap(mDefaultPointBmp,
                             Integer.parseInt(result[0]),
                             Integer.parseInt(result[1]), null);
                 else
                     canvas.drawBitmap(mLightPointBmp,
                             Integer.parseInt(result[0]),
-                            Integer.parseInt(result[1]), null);
+                            Integer.parseInt(result[1]), null);*/
+
+                Bitmap bitmap = this.peopleNearbyBitmaps.get(i);
+                bitmap = Bitmap.createScaledBitmap(this.peopleNearbyBitmaps.get(i),150,150,false);
+
+                canvas.drawBitmap(bitmap,
+                        Integer.parseInt(result[0]),
+                        Integer.parseInt(result[1]), null);
             }
         }
 
@@ -285,6 +317,26 @@ public class RadarViewClass extends View implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
+
+    }
+
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = getContext().getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = getContext().getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
 
     }
 
