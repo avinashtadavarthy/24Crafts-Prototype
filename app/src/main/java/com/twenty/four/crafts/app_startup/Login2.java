@@ -146,6 +146,8 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
             loginUser();
 
+        } else if(!getSPData("jwtToken").equals("")) {
+            loginUserDirectly();
         }
 
         ImageView openinggif = (ImageView) findViewById(R.id.openinggif);
@@ -789,6 +791,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
                             }
 
                     }
+
                     @Override
                     public void onError(ANError error) {
                         error.printStackTrace();
