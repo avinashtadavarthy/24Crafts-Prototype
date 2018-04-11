@@ -3,6 +3,7 @@ package com.twenty.four.crafts;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -48,6 +49,7 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.steelkiwi.cropiwa.image.CropIwaResultReceiver;
+import com.twenty.four.crafts.app_startup.Login2;
 import com.vansuita.pickimage.bean.PickResult;
 import com.vansuita.pickimage.bundle.PickSetup;
 import com.vansuita.pickimage.dialog.PickImageDialog;
@@ -70,6 +72,8 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
     static final int REQUEST_SHOOT_LOCATION = 1000, REQUEST_AUDITION_LOCATION = 2000, AUDITION_FROM=100, AUDITION_TO=200, AUDITION_DATE=10201;
     static final int TIME_DIALOG_ID = 1111;
     static final int REQUEST_IMAGE_LOAD = 9999;
+
+    ProgressDialog progressbar;
 
     String itemid,projName,projDesc,projType,phoneNo,audLocation,audTime,audDate,applnFrom,applnTo,audImage;
 
@@ -169,40 +173,7 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
 
         }
     };
-    private TextWatcher filterTextWatchere4 = new TextWatcher() {
 
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            restore(e4);
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-        }
-    };
-    private TextWatcher filterTextWatchere5 = new TextWatcher() {
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            restore(e5);
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-        }
-    };
     private TextWatcher filterTextWatchere6 = new TextWatcher() {
 
         @Override
@@ -321,7 +292,8 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
 
         aud_image = (ImageView) findViewById(R.id.aud_image);
 
-        ;
+        progressbar = new ProgressDialog(CreateAuditions.this);
+
         Intent intent = getIntent();
 
 
@@ -375,8 +347,6 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         e1 = (EditText) findViewById(R.id.e1);
         e2 = (EditText) findViewById(R.id.e2);
         e3 = (EditText) findViewById(R.id.e3);
-        e4 = (EditText) findViewById(R.id.e4);
-        e5 = (EditText) findViewById(R.id.e5);
         e6 = (EditText) findViewById(R.id.e6);
         e7 = (EditText) findViewById(R.id.e7);
         e8 = (EditText) findViewById(R.id.e8);
@@ -416,8 +386,6 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         input_1 = (TextInputLayout) findViewById(R.id.input_1);
         input_2 = (TextInputLayout) findViewById(R.id.input_2);
         input_3 = (TextInputLayout) findViewById(R.id.input_3);
-        input_4 = (TextInputLayout) findViewById(R.id.input_4);
-        input_5 = (TextInputLayout) findViewById(R.id.input_5);
         input_6 = (TextInputLayout) findViewById(R.id.input_6);
         input_7 = (TextInputLayout) findViewById(R.id.input_7);
         input_8 = (TextInputLayout) findViewById(R.id.input_8);
@@ -429,8 +397,6 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
         e1.addTextChangedListener(filterTextWatchere1);
         e2.addTextChangedListener(filterTextWatchere2);
         e3.addTextChangedListener(filterTextWatchere3);
-        e4.addTextChangedListener(filterTextWatchere4);
-        e5.addTextChangedListener(filterTextWatchere5);
         e6.addTextChangedListener(filterTextWatchere6);
         e7.addTextChangedListener(filterTextWatchere7);
         e8.addTextChangedListener(filterTextWatchere8);
@@ -535,44 +501,6 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
                 } else {
                     if(!e3.getText().toString().equals("")) input_3.setBackgroundResource(R.drawable.box);
                     else input_3.setBackgroundColor(Color.parseColor("#00ffffff"));
-                }
-            }
-        });
-
-
-        e4.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus) {
-                    input_4.setBackgroundResource(R.drawable.box);
-                } else {
-                    if(!e4.getText().toString().equals("")) input_4.setBackgroundResource(R.drawable.box);
-                    else input_4.setBackgroundColor(Color.parseColor("#00ffffff"));
-                }
-            }
-        });
-
-
-        e5.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus) {
-                    input_5.setBackgroundResource(R.drawable.box);
-
-                    try {
-                        Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN).build(CreateAuditions.this);
-                        startActivityForResult(intent, REQUEST_SHOOT_LOCATION);
-
-                    } catch (GooglePlayServicesRepairableException e) {
-                        e.printStackTrace();
-                    } catch (GooglePlayServicesNotAvailableException e) {
-                        e.printStackTrace();
-                    }
-
-
-                } else {
-                    if(!e5.getText().toString().equals("")) input_5.setBackgroundResource(R.drawable.box);
-                    else input_5.setBackgroundColor(Color.parseColor("#00ffffff"));
                 }
             }
         });
@@ -854,20 +782,6 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == REQUEST_SHOOT_LOCATION) {
-            if (resultCode == RESULT_OK) {
-
-                Place place = PlaceAutocomplete.getPlace(this, data);
-                e5.setText(place.getName());
-
-            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
-            } else if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show();
-            }
-        }
-
-
         if(requestCode == REQUEST_IMAGE_LOAD) {
             if(resultCode == Activity.RESULT_OK) {
                 loadimageprogress.setVisibility(View.GONE);
@@ -908,20 +822,23 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
 
     public void post(String url) {
         Log.i("here","hi");
-        boolean i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11;
+        boolean i1,i2,i3,i6,i7,i8,i9,i10,i11;
         i1=check(e1);
         i2=check(e2);
         i3=check(e3);
-        i4=check(e4);
-        i5=check(e5);
         i6=check(e6);
         i7=check(e7);
         i8=check(e8);
         i9=check(e9);
         i10=check(e10);
         i11=check(e11);
-        if(i1&&i2&&i3&&i4&&i5&&i6&&i7&&i8&&i9&&i10&&i11)
+        if(i1&&i2&&i3&&i6&&i7&&i8&&i9&&i10&&i11)
         {
+
+
+            progressbar.show();
+            progressbar.setMessage("Creating audition...");
+            progressbar.setCancelable(false);
 
 
             StringRequest postRequest = new StringRequest(Request.Method.POST, User.getInstance().BASE_URL + url,
@@ -940,7 +857,6 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
                                 id = itemid;
 
                             uploadImage(auditionImage,id);
-
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -1094,10 +1010,13 @@ public class CreateAuditions extends AppCompatActivity implements IPickResult, C
 
                         Toast.makeText(CreateAuditions.this, response, Toast.LENGTH_LONG).show();
 
-                        if(response.equals("Successfully Uploaded Audition Image") || response.equals("Audition Successfully Updated!")){
+                        if(response.equals("Successfully Uploaded Audition Image") || response.equals("Audition Successfully Updated!")) {
 
                             Intent intent = getIntent();
                             setResult(RESULT_OK,intent);
+
+                            progressbar.dismiss();
+
                             finish();
 
                     }

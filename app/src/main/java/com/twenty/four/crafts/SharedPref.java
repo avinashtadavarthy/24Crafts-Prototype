@@ -80,7 +80,7 @@ public class SharedPref {
     public void clearAllSharedPrefs(Context c) {
 
         //registration purpose
-        storeSPData(c, "isClient", "");
+        //storeSPData(c, "isClient", "");
         storeSPData(c, "firstname", "");
         storeSPData(c, "lastname", "");
         storeSPData(c, "email", "");
@@ -141,7 +141,7 @@ public class SharedPref {
     public void clearSelectedSharedPrefs(Context c) {
 
         //registration purpose
-        storeSPData(c, "isClient", "");
+        //storeSPData(c, "isClient", "");
         storeSPData(c, "firstname", "");
         storeSPData(c, "lastname", "");
         storeSPData(c, "email", "");
