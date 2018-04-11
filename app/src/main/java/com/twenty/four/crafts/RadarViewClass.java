@@ -94,14 +94,14 @@ public class RadarViewClass extends View implements View.OnClickListener{
         for(int i=0;i<nearbySize;i++)
         {
             byte[] imageAsBytes = Base64.decode(getSPData("person"+i).getBytes(),Base64.DEFAULT);
-            Log.e("imageasbytes",imageAsBytes.toString());
+          //  Log.e("imageasbytes",imageAsBytes.toString());
             Bitmap bitmap = BitmapFactory.decodeByteArray(imageAsBytes,0,imageAsBytes.length);
 
             peopleNearbyBitmaps.add(bitmap);
         }
 
 
-        Log.e("sizeOfPeopleNearby",peopleNearbyBitmaps.size()+"");
+//        Log.e("sizeOfPeopleNearby",peopleNearbyBitmaps.size()+"");
     }
 
     /**
@@ -241,8 +241,8 @@ public class RadarViewClass extends View implements View.OnClickListener{
                             Integer.parseInt(result[0]),
                             Integer.parseInt(result[1]), null);*/
 
-                Bitmap bitmap = this.peopleNearbyBitmaps.get(i);
-                bitmap = Bitmap.createScaledBitmap(this.peopleNearbyBitmaps.get(i),150,150,false);
+                //Bitmap bitmap = this.peopleNearbyBitmaps.get(i);
+                Bitmap bitmap = Bitmap.createScaledBitmap(peopleNearbyBitmaps.get(i),150,150,false);
 
                 canvas.drawBitmap(bitmap,
                         Integer.parseInt(result[0]),
