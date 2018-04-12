@@ -5,9 +5,17 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Avinash Tadavarthy on 04-Nov-17.
@@ -42,7 +50,32 @@ public class CraftsmenFavouritesTabFragment extends android.support.v4.app.Fragm
         favs_grid = (RecyclerView) myView.findViewById(R.id.favs_grid);
         int numberOfColumns = 3;
         favs_grid.setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(), numberOfColumns));
-        FavsRecyclerAdapter adapter = new FavsRecyclerAdapter(getActivity().getApplicationContext(), mThumbIds);
+
+        //ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(mThumbIds));
+
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        new SharedPref(getActivity().getApplicationContext()).updateUserDataMain(getActivity().getApplicationContext());
+
+        String userdatamain = new SharedPref(getActivity().getApplicationContext()).getSPData(getActivity().getApplicationContext(), "userdatamain");
+
+        try {
+            JSONObject jsonObject = new JSONObject(userdatamain);
+            JSONArray jsonArray = jsonObject.getJSONArray("favorites");
+            for(int i = 0, count = jsonArray.length(); i< count; i++)
+            {
+                JSONObject jjo = jsonArray.getJSONObject(i);
+                arrayList.add(jjo.toString());
+
+                Log.e("favs", jjo.toString());
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        FavsRecyclerAdapter adapter = new FavsRecyclerAdapter(getActivity().getApplicationContext(), arrayList);
+
         favs_grid.setAdapter(adapter);
         favs_grid.setNestedScrollingEnabled(true);
 

@@ -226,7 +226,7 @@ public class ProfileView extends AppCompatActivity{
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<String, String>();
-                    params.put("idArray", "5abcdf1704d14d07a50f534a");
+                    params.put("idArray", getIntent().getStringExtra("userid"));
                     return params;
                 }
             };
@@ -249,12 +249,45 @@ public class ProfileView extends AppCompatActivity{
                     isfav = true;
                     fav_profile.setImageResource(R.drawable.star_full);
                     fav_profile.startAnimation(myAnim);
-                    Toast.makeText(ProfileView.this, "Added to favourites!", Toast.LENGTH_SHORT).show();
+
+                    AndroidNetworking.get(User.getInstance().BASE_URL + "user/favs/add/" + getIntent().getStringExtra("userid"))
+                            .addHeaders("authorization", getSPData("jwtToken"))
+                            .setPriority(Priority.LOW)
+                            .build()
+                            .getAsString(new StringRequestListener() {
+                                @Override
+                                public void onResponse(String response) {
+                                    Toast.makeText(ProfileView.this, response, Toast.LENGTH_SHORT).show();
+                                    sharedPref.updateUserDataMain(getApplicationContext());
+                                }
+
+                                @Override
+                                public void onError(ANError anError) {
+                                    anError.printStackTrace();
+                                }
+                            });
+
                 } else {
                     isfav = false;
                     fav_profile.setImageResource(R.drawable.star);
                     fav_profile.startAnimation(myAnim);
-                    Toast.makeText(ProfileView.this, "Removed from favourites!", Toast.LENGTH_SHORT).show();
+
+                    AndroidNetworking.get(User.getInstance().BASE_URL + "user/favs/remove/" + getIntent().getStringExtra("userid"))
+                            .addHeaders("authorization", getSPData("jwtToken"))
+                            .setPriority(Priority.LOW)
+                            .build()
+                            .getAsString(new StringRequestListener() {
+                                @Override
+                                public void onResponse(String response) {
+                                    Toast.makeText(ProfileView.this, response, Toast.LENGTH_SHORT).show();
+                                    sharedPref.updateUserDataMain(getApplicationContext());
+                                }
+
+                                @Override
+                                public void onError(ANError anError) {
+                                    anError.printStackTrace();
+                                }
+                            });
                 }
             }
         });

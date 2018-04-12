@@ -138,15 +138,14 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
         sharedPref = new SharedPref(getApplicationContext());
 
+        progressbar = new ProgressDialog(Login2.this);
 
         if(!getSPData("uname").equals("") && !getSPData("pword").equals("")) {
-
-            progressbar = new ProgressDialog(Login2.this);
-            progressbar.setCancelable(false);
 
             loginUser();
 
         } else if(!getSPData("jwtToken").equals("")) {
+
             loginUserDirectly();
         }
 
@@ -679,6 +678,7 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
                             if (!response.optString("token").equals("")) {
                                 storeSPData("jwtToken", response.optString("token"));
+                                storeSPData("subscribed", response.optString("subscribed"));
 
                                 loginUserDirectly();
 
@@ -711,6 +711,8 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
                                 Log.e("directlogintest", response.toString());
 
                                 storeSPData("jwtToken", response.optString("token"));
+                                storeSPData("subscribed", response.optString("subscribed"));
+
                                  loginUserDirectly();
 
                             } else if(response.optString("message").equals("User not found in Database")){
@@ -742,6 +744,8 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
                                 Log.e("directlogintest", response.toString());
 
                                 storeSPData("jwtToken", response.optString("token"));
+                                storeSPData("subscribed", response.optString("subscribed"));
+
                                  loginUserDirectly();
 
                             } else if(response.optString("message").equals("User not found in Database")) {
@@ -766,6 +770,10 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
 
     void loginUserDirectly() {
 
+        progressbar.show();
+        progressbar.setMessage("Getting existing logged in status...");
+        progressbar.setCancelable(false);
+
         AndroidNetworking.get(User.getInstance().BASE_URL + "user")
                 .addHeaders("authorization", getSPData("jwtToken"))
                 .setPriority(Priority.MEDIUM)
@@ -774,18 +782,20 @@ public class Login2 extends AppCompatActivity implements View.OnClickListener, G
                     @Override
                     public void onResponse(JSONObject response) {
 
+                        progressbar.dismiss();
+
                         storeSPData("userdatamain", response.toString());
 
                             String isClient = response.optString("isClient");
 
                             if(isClient.equals("true")) {
                                 Intent i = new Intent(Login2.this,Main3Activity.class)
-                                        .putExtra("userdata", response.toString()).putExtra("subscribed", subscribed);
+                                        .putExtra("userdata", response.toString());
                                 Log.e("userdata",response.toString());
                                 startActivity(i);
                             } else {
                                 Intent i = new Intent(Login2.this,Main2Activity.class)
-                                        .putExtra("userdata", response.toString()).putExtra("subscribed", subscribed);
+                                        .putExtra("userdata", response.toString());
                                 Log.e("userdata",response.toString());
                                 startActivity(i);
                             }

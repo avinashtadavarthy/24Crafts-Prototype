@@ -23,11 +23,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.android.volley.toolbox.StringRequest;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONArrayRequestListener;
+import com.androidnetworking.interfaces.StringRequestListener;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 import com.yuyakaido.android.cardstackview.CardStackView;
 import com.yuyakaido.android.cardstackview.SwipeDirection;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -64,6 +73,11 @@ public class EncountersMain extends android.support.v4.app.Fragment {
             "https://source.unsplash.com/PeFk7fzxTdk/600x800", "https://source.unsplash.com/LrMWHKqilUw/600x800", "https://source.unsplash.com/HN-5Z6AmxrM/600x800",
             "https://source.unsplash.com/CdVAUADdqEc/600x800", "https://source.unsplash.com/AWh9C-QjhE4/600x800"
     };
+
+    ArrayList<String> encountersnamenage = new ArrayList<>();
+    ArrayList<String> encounterscraft = new ArrayList<>();
+    ArrayList<String> encountersimage = new ArrayList<>();
+    ArrayList<String> userids = new ArrayList<>();
 
 
     @Nullable
@@ -162,7 +176,8 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                 Intent page = new Intent(getActivity().getApplicationContext(), ProfileView.class)
                         .putExtra("thisistogetback", "do nothing")
                         .putExtra("fromwhom", "do nothing")
-                        .putExtra("viewingmyprofile", "false");
+                        .putExtra("viewingmyprofile", "false")
+                        .putExtra("userid", userids.get(index));
                 startActivity(page);
 
             }
@@ -438,16 +453,74 @@ public class EncountersMain extends android.support.v4.app.Fragment {
     private List<TouristSpot> createTouristSpots() {
         List<TouristSpot> spots = new ArrayList<>();
 
-        for(int i = 0; i < mThumbIds.length; i++) {
-            spots.add(new TouristSpot("Sample Name", "Sample Description", mThumbIds[i]));
+        for(int i = 0; i < encountersnamenage.size(); i++) {
+
+            Log.e("encounters data", encountersnamenage.get(i) + '\n' + encounterscraft.get(i) + '\n' + encountersimage.get(i));
+
+            spots.add(new TouristSpot(encountersnamenage.get(i), encounterscraft.get(i), encountersimage.get(i)));
         }
 
         return spots;
+
     }
 
     private TouristSpotCardAdapter createTouristSpotCardAdapter() {
         final TouristSpotCardAdapter adapter = new TouristSpotCardAdapter(getActivity().getApplicationContext());
-        adapter.addAll(createTouristSpots());
+
+
+        //pull the data down
+        AndroidNetworking.get(User.getInstance().BASE_URL + "user/view/all/Actor")
+                .addHeaders("authorization", sharedPref.getSPData(getActivity().getApplicationContext(), "jwtToken"))
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONArray(new JSONArrayRequestListener() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        for (int i = 0; i<response.length(); i++) {
+
+                            try {
+
+                                String dob = response.getJSONObject(i).optString("dob");
+                                int year = Integer.parseInt(dob.substring(0,4));
+                                int month = Integer.parseInt(dob.substring(5,7));
+                                int day = Integer.parseInt(dob.substring(8,10));
+                                String Age = User.getInstance().getAge(year,month,day);
+                                String namenage = response.getJSONObject(i).optString("name") + ", " + Age;
+
+                                String craft = response.getJSONObject(i).optString("category");
+
+                                String imgurl = "null";
+
+                                if(response.getJSONObject(i).optString("profileImageURL").equals("")) {
+                                    //add default image
+                                    imgurl = "https://homepages.cae.wisc.edu/~ece533/images/airplane.png";
+                                } else {
+                                    imgurl = User.getInstance().BASE_URL + "users/" + response.getJSONObject(i).optString("_id") + "/profileImage.jpg";
+                                }
+
+                                userids.add(response.getJSONObject(i).optString("_id"));
+
+                                encountersnamenage.add(namenage);
+                                encounterscraft.add(craft);
+                                encountersimage.add(imgurl);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+
+                        adapter.addAll(createTouristSpots());
+
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        error.printStackTrace();
+                    }
+                });
+        //pull the data down
+
         return adapter;
     }
 

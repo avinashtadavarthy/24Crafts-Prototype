@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.makeramen.roundedimageview.RoundedImageView;
 
+import java.util.ArrayList;
+
 /**
  * Created by avinash on 17/3/18.
  */
@@ -16,11 +18,11 @@ import com.makeramen.roundedimageview.RoundedImageView;
 public class FavsRecyclerAdapter extends RecyclerView.Adapter<FavsRecyclerAdapter.FavsViewHolder> {
 
     private Context context;
-    private String[] mThumbIds;
+    private ArrayList<String> mThumbIds;
     private LayoutInflater inflater;
 
     // data is passed into the constructor
-    FavsRecyclerAdapter(Context context, String[] mThumbIds) {
+    FavsRecyclerAdapter(Context context, ArrayList<String> mThumbIds) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
         this.mThumbIds = mThumbIds;
@@ -39,14 +41,14 @@ public class FavsRecyclerAdapter extends RecyclerView.Adapter<FavsRecyclerAdapte
     @Override
     public void onBindViewHolder(FavsViewHolder holder, int position) {
 
-        Glide.with(context).load(mThumbIds[position]).into(holder.fav_item);
+        Glide.with(context).load(mThumbIds.get(position)).into(holder.fav_item);
 
     }
 
     // total number of cells
     @Override
     public int getItemCount() {
-        return mThumbIds.length;
+        return mThumbIds.size();
     }
 
 
@@ -65,6 +67,6 @@ public class FavsRecyclerAdapter extends RecyclerView.Adapter<FavsRecyclerAdapte
 
     // convenience method for getting data at click position
     String getItem(int id) {
-        return mThumbIds[id];
+        return mThumbIds.get(id);
     }
 }

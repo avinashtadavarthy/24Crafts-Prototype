@@ -5,12 +5,25 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONArrayRequestListener;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Created by Avinash Tadavarthy on 04-Nov-17.
@@ -21,6 +34,7 @@ public class EncountersGrid extends android.support.v4.app.Fragment {
     View myView;
 
     RecyclerView encounters_grid;
+    private ProgressBar progressBar;
 
     String[] mThumbIds = {
             "https://homepages.cae.wisc.edu/~ece533/images/airplane.png", "https://homepages.cae.wisc.edu/~ece533/images/arctichare.png", "https://homepages.cae.wisc.edu/~ece533/images/baboon.png",
@@ -34,6 +48,9 @@ public class EncountersGrid extends android.support.v4.app.Fragment {
             "https://source.unsplash.com/CdVAUADdqEc/600x800", "https://source.unsplash.com/AWh9C-QjhE4/600x800"
     };
 
+    ArrayList<String> encountersimage = new ArrayList<>();
+    ArrayList<String> userids = new ArrayList<>();
+
     SharedPref sharedPref;
 
     @Nullable
@@ -45,21 +62,71 @@ public class EncountersGrid extends android.support.v4.app.Fragment {
 
         sharedPref = new SharedPref(getActivity().getApplicationContext());
 
+        progressBar = (ProgressBar) myView.findViewById(R.id.activity_main_progress_bar);
+
         encounters_grid = (RecyclerView) myView.findViewById(R.id.encounters_grid);
         int numberOfColumns = 3;
         encounters_grid.setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(), numberOfColumns));
-        FavsRecyclerAdapter adapter = new FavsRecyclerAdapter(getActivity().getApplicationContext(), mThumbIds);
-        encounters_grid.setAdapter(adapter);
-        encounters_grid.setNestedScrollingEnabled(true);
+
+        //pull the data down
+        AndroidNetworking.get(User.getInstance().BASE_URL + "user/view/all/Actor")
+                .addHeaders("authorization", sharedPref.getSPData(getActivity().getApplicationContext(), "jwtToken"))
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONArray(new JSONArrayRequestListener() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        for (int i = 0; i<response.length(); i++) {
+
+                            try {
+
+                                userids.add(response.getJSONObject(i).optString("_id"));
+
+                                String imgurl = "null";
+
+                                if(response.getJSONObject(i).optString("profileImageURL").equals("")) {
+                                    //add default image
+                                    imgurl = "https://homepages.cae.wisc.edu/~ece533/images/airplane.png";
+                                } else {
+                                    imgurl = User.getInstance().BASE_URL + "users/" + response.getJSONObject(i).optString("_id") + "/profileImage.jpg";
+                                }
+
+                                encountersimage.add(imgurl);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+
+                        progressBar.setVisibility(View.GONE);
+
+                        FavsRecyclerAdapter adapter = new FavsRecyclerAdapter(getActivity().getApplicationContext(), encountersimage);
+                        encounters_grid.setAdapter(adapter);
+                        encounters_grid.setNestedScrollingEnabled(true);
+
+
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        error.printStackTrace();
+                    }
+                });
+        //pull the data down
+
+
 
         encounters_grid.addOnItemTouchListener(new RecyclerItemClickListener(this.getActivity().getApplicationContext(), encounters_grid ,
                 new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
+
                         Intent page = new Intent(getActivity().getApplicationContext(), ProfileView.class)
                                 .putExtra("thisistogetback", "do nothing")
                                 .putExtra("fromwhom", "do nothing")
-                                .putExtra("viewingmyprofile", "false");
+                                .putExtra("viewingmyprofile", "false")
+                                .putExtra("userid", userids.get(position));
                         startActivity(page);
                     }
 

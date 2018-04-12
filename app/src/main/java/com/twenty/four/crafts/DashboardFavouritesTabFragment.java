@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by Avinash Tadavarthy on 04-Nov-17.
  */
@@ -39,7 +42,10 @@ public class DashboardFavouritesTabFragment extends android.support.v4.app.Fragm
         favs_grid = (RecyclerView) myView.findViewById(R.id.favs_grid);
         int numberOfColumns = 3;
         favs_grid.setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(), numberOfColumns));
-        FavsRecyclerAdapter adapter = new FavsRecyclerAdapter(getActivity().getApplicationContext(), mThumbIds);
+
+        ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(mThumbIds));
+        FavsRecyclerAdapter adapter = new FavsRecyclerAdapter(getActivity().getApplicationContext(), arrayList);
+
         favs_grid.setAdapter(adapter);
         favs_grid.setNestedScrollingEnabled(true);
 

@@ -21,6 +21,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.twenty.four.crafts.NetworkController;
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.SharedPref;
+import com.twenty.four.crafts.User;
 import com.twenty.four.crafts.app_startup.Login2;
 import com.twenty.four.crafts.registration.ChooseCraftOrClient;
 
@@ -93,7 +94,7 @@ public class GarlandViewMain extends android.support.v4.app.Fragment {
         };
 
 
-        fetchData1("http://24crafts.cf:3000/user/view/all/" + who[i]);
+        fetchData1(User.getInstance().BASE_URL + "user/view/all/" + who[i]);
 
         return myView;
     }

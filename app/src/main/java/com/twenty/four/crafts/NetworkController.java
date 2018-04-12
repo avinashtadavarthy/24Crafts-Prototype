@@ -24,6 +24,8 @@ public class NetworkController extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
+
+        AndroidNetworking.initialize(getApplicationContext());
     }
 
     public static synchronized NetworkController getInstance() {
