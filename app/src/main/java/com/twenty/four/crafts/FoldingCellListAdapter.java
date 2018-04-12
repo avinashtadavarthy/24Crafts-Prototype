@@ -32,6 +32,11 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.bumptech.glide.Glide;
+import com.irozon.alertview.AlertActionStyle;
+import com.irozon.alertview.AlertStyle;
+import com.irozon.alertview.AlertTheme;
+import com.irozon.alertview.AlertView;
+import com.irozon.alertview.objects.AlertAction;
 import com.ramotion.foldingcell.FoldingCell;
 
 import org.json.JSONException;
@@ -265,6 +270,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Item>  implements Swipe
 
                 else if(chooseTypeofAudition == -1)
                 {
+
                     final AlertDialog dialog = new AlertDialog.Builder(new ContextThemeWrapper(activity,R.style.AlertDialog)).setMessage("Choose:").
                             setPositiveButton("EDIT", new DialogInterface.OnClickListener() {
                                 @Override

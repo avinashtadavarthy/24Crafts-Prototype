@@ -33,7 +33,7 @@
             android:textSize="18dp"
             android:layout_marginLeft="25dp"
             android:text="Account Information"
-            android:textColor="?attr/dayNnightText"
+            android:textColor="?attr/letters"
             />
 
 

@@ -147,6 +147,7 @@
         <item name="dayNnightText">#000000</item>
         <item name="dayNnightTint">#000000</item>
         <item name="dayNnightBtn">#004E92</item>
+        <item name="letters">#000000</item>
     </style>
 
   <!--  Theme.AppCompat.DayNight.NoActionBar-->
@@ -158,6 +159,7 @@
         <item name="dayNnightText">#FFFFFF</item>
         <item name="dayNnightTint">#FFFFFF</item>
         <item name="dayNnightBtn">#004E92</item>
+        <item name="letters">#efe7d8</item>
     </style>
 
     <style name="WindowAnimationTransition">

@@ -43,6 +43,11 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
+import com.irozon.alertview.AlertActionStyle;
+import com.irozon.alertview.AlertStyle;
+import com.irozon.alertview.AlertTheme;
+import com.irozon.alertview.AlertView;
+import com.irozon.alertview.objects.AlertAction;
 import com.kila.apprater_dialog.lars.AppRater;
 import com.yarolegovich.lovelydialog.LovelyCustomDialog;
 
@@ -58,14 +63,13 @@ public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
+    final int REQUEST_PROMOTE_PROFILE = 9640;
     AppBarLayout appBarLayout;
     DrawerLayout mDrawerLayout;
     String jwtToken = "";
     String decodedJWT = "";
     String isSubscribed = "";
     String subscription = null;
-
-    final int REQUEST_PROMOTE_PROFILE = 9640;
     int check = 0;
     String dialogtextverifyemail = "Please verify your email to continue using the app";
     String dialogtextsubscription = "Profile Successfully Subscribed!";
@@ -79,7 +83,7 @@ public class Main2Activity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        new AppRater.StarBuilder(this,"com.twenty.four.crafts")
+        new AppRater.StarBuilder(this, "com.twenty.four.crafts")
                 .showDefault()
                 .minimumNumberOfStars(3)
                 .email("raku18998@gmail.com")
@@ -104,8 +108,7 @@ public class Main2Activity extends AppCompatActivity
         */
 
 
-
-        if(getIntent() != null) {
+        if (getIntent() != null) {
             userdata = getIntent().getStringExtra("userdata");
         }
 
@@ -128,7 +131,6 @@ public class Main2Activity extends AppCompatActivity
         }
 
         Log.e("decodedJWT",decodedJWT);*/
-
 
 
         try {
@@ -155,9 +157,8 @@ public class Main2Activity extends AppCompatActivity
         Blurry.with(getApplicationContext()).from(icon).into(coverpic);
 
 
-        if(emailVerified.equals("false"))
-        {
-            final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this,R.style.AlertDialog)).setMessage(dialogtextverifyemail).
+        if (emailVerified.equals("false")) {
+            final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this, R.style.AlertDialog)).setMessage(dialogtextverifyemail).
                     setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -176,12 +177,11 @@ public class Main2Activity extends AppCompatActivity
         }
 
 
-        if((subscribed.equals("true") && isSubscribed.equals("false") && !subscription.equals(""))|| (subscribed.equals("false") && isSubscribed.equals("false") && subscription.equals(""))) {
+        if ((subscribed.equals("true") && isSubscribed.equals("false") && !subscription.equals("")) || (subscribed.equals("false") && isSubscribed.equals("false") && subscription.equals(""))) {
 
             lovelyDialogSubscribe();
 
         }
-
 
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -189,31 +189,21 @@ public class Main2Activity extends AppCompatActivity
         final ImageView fav_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.fav_handy);
         final ImageView inbox_handy = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.inbox_handy);
 
-        if(User.getInstance().navbarpos == 1)
-      {
-          aud_handy.setBackgroundColor(Color.parseColor("#123456"));
-          fav_handy.setBackgroundColor(Color.parseColor("#000000"));
-          inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
-      }
+        if (User.getInstance().navbarpos == 1) {
+            aud_handy.setBackgroundColor(Color.parseColor("#123456"));
+            fav_handy.setBackgroundColor(Color.parseColor("#000000"));
+            inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
+        } else if (User.getInstance().navbarpos == 2) {
+            fav_handy.setBackgroundColor(Color.parseColor("#123456"));
+            aud_handy.setBackgroundColor(Color.parseColor("#000000"));
+            inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
 
-      else if(User.getInstance().navbarpos == 2)
-      {
-          fav_handy.setBackgroundColor(Color.parseColor("#123456"));
-          aud_handy.setBackgroundColor(Color.parseColor("#000000"));
-          inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
+        } else if (User.getInstance().navbarpos == 3) {
 
-      }
-
-      else if(User.getInstance().navbarpos == 3)
-      {
-
-          inbox_handy.setBackgroundColor(Color.parseColor("#123456"));
-          fav_handy.setBackgroundColor(Color.parseColor("#000000"));
-          aud_handy.setBackgroundColor(Color.parseColor("#000000"));
-      }
-
-      else
-        {
+            inbox_handy.setBackgroundColor(Color.parseColor("#123456"));
+            fav_handy.setBackgroundColor(Color.parseColor("#000000"));
+            aud_handy.setBackgroundColor(Color.parseColor("#000000"));
+        } else {
             inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
             fav_handy.setBackgroundColor(Color.parseColor("#000000"));
             aud_handy.setBackgroundColor(Color.parseColor("#000000"));
@@ -244,9 +234,8 @@ public class Main2Activity extends AppCompatActivity
         toggle.syncState();
 
 
-
-        if(savedInstanceState==null){
-            navigationView.getMenu().performIdentifierAction(R.id.dashboard,0);
+        if (savedInstanceState == null) {
+            navigationView.getMenu().performIdentifierAction(R.id.dashboard, 0);
         }
 
         LinearLayout coin_purchase = navigationView.getHeaderView(0).findViewById(R.id.coin_purchase_layout);
@@ -259,9 +248,9 @@ public class Main2Activity extends AppCompatActivity
         });
 
         RelativeLayout nav_header_crafts = (RelativeLayout) navigationView.getHeaderView(0).findViewById(R.id.nav_header_crafts);
-        nav_header_crafts.setOnClickListener(new View.OnClickListener(){
+        nav_header_crafts.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent i = new Intent(Main2Activity.this, ProfileView.class)
                         .putExtra("thisistogetback", "do nothing")
                         .putExtra("fromwhom", "do nothing")
@@ -295,8 +284,6 @@ public class Main2Activity extends AppCompatActivity
         });
 
 
-
-
         fav_handy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -318,13 +305,11 @@ public class Main2Activity extends AppCompatActivity
         });
 
 
-
-
         inbox_handy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                 inbox_handy.setBackgroundColor(Color.parseColor("#123456"));
+                inbox_handy.setBackgroundColor(Color.parseColor("#123456"));
                 fav_handy.setBackgroundColor(Color.parseColor("#000000"));
                 aud_handy.setBackgroundColor(Color.parseColor("#000000"));
 
@@ -350,7 +335,7 @@ public class Main2Activity extends AppCompatActivity
         super.onResume();
 
 
-        if(getIntent() != null) {
+        if (getIntent() != null) {
             userdata = getIntent().getStringExtra("userdata");
         }
 
@@ -375,7 +360,6 @@ public class Main2Activity extends AppCompatActivity
         Log.e("decodedJWT",decodedJWT);*/
 
 
-
         try {
             userdatamain = new JSONObject(getSPData("userdatamain"));
         } catch (JSONException e) {
@@ -395,8 +379,7 @@ public class Main2Activity extends AppCompatActivity
 
 
         emailVerified = getSPData("emailVerified");
-        if(emailVerified.equals("false"))
-        {
+        if (emailVerified.equals("false")) {
             showSnackbar();
         }
 
@@ -404,7 +387,7 @@ public class Main2Activity extends AppCompatActivity
 
     private void showSnackbar() {
 
-         final Snackbar snackbar = Snackbar.make(mDrawerLayout,"Unverified Email",Snackbar.LENGTH_INDEFINITE);
+        final Snackbar snackbar = Snackbar.make(mDrawerLayout, "Unverified Email", Snackbar.LENGTH_INDEFINITE);
 
         snackbar.setAction("REFRESH", new View.OnClickListener() {
             @Override
@@ -419,8 +402,8 @@ public class Main2Activity extends AppCompatActivity
 
         snackbarView.setBackgroundColor(getResources().getColor(R.color.snackbarBackground));
 
-        if(check == 0)
-        snackbar.show();
+        if (check == 0)
+            snackbar.show();
 
         else
             snackbar.dismiss();
@@ -433,13 +416,13 @@ public class Main2Activity extends AppCompatActivity
         String url = User.getInstance().BASE_URL + "resendVerificationMail";
 
         AndroidNetworking.get(url)
-                .addHeaders("authorization",jwtToken)
+                .addHeaders("authorization", jwtToken)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
-                        Log.e("resendEmail",response);
+                        Log.e("resendEmail", response);
 
                         Toast.makeText(Main2Activity.this, response, Toast.LENGTH_LONG).show();
 
@@ -462,7 +445,7 @@ public class Main2Activity extends AppCompatActivity
             public void onResponse(String response) {
 
 
-                Log.e("userRequest",response);
+                Log.e("userRequest", response);
                 try {
 
                     storeSPData("userdatamain", response);
@@ -471,18 +454,21 @@ public class Main2Activity extends AppCompatActivity
 
 
                     emailVerified = obj.optString("emailVerification");
-                    Log.e("emailverified",emailVerified);
-                    storeSPData("emailVerified",emailVerified);
+                    Log.e("emailverified", emailVerified);
+                    storeSPData("emailVerified", emailVerified);
 
                     check = check(emailVerified);
 
-                    switch (check)
-                    {
-                        case 0:showSnackbar();break;
-                        case 1:showSnackbar();break;
+                    switch (check) {
+                        case 0:
+                            showSnackbar();
+                            break;
+                        case 1:
+                            showSnackbar();
+                            break;
                     }
 
-                    Log.e("check",check+"");
+                    Log.e("check", check + "");
 
                     recreate();
 
@@ -497,7 +483,7 @@ public class Main2Activity extends AppCompatActivity
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
             }
-        }){
+        }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
 
@@ -512,13 +498,12 @@ public class Main2Activity extends AppCompatActivity
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(getRequest);
 
 
-
         return check;
     }
 
     private int check(String emailVerified) {
 
-        if(emailVerified.equals("false"))
+        if (emailVerified.equals("false"))
             return 0;
 
         else
@@ -533,23 +518,29 @@ public class Main2Activity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
 
-            AlertDialog alert = new AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this,R.style.AlertDialog))
-                    .setMessage("Do you really want to exit?")
-                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            ActivityCompat.finishAffinity(Main2Activity.this);
-                            finish();
-                        }
-                    })
-                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    })
-                    .show();
-                    alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            AlertView alert = new AlertView("EXIT", "Do you want to exit from 24Crafts?", AlertStyle.IOS);
+            alert.addAction(new AlertAction("YES", AlertActionStyle.NEGATIVE, action -> {
+                ActivityCompat.finishAffinity(Main2Activity.this);
+                finish();
+            }));
+            alert.setTheme(AlertTheme.LIGHT);
+            alert.show(this);
 
-
+//            AlertDialog alert = new AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this,R.style.AlertDialog))
+//                    .setMessage("Do you really want to exit?")
+//                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            ActivityCompat.finishAffinity(Main2Activity.this);
+//                            finish();
+//                        }
+//                    })
+//                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.dismiss();
+//                        }
+//                    })
+//                    .show();
+//                    alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
 
         }
@@ -581,7 +572,7 @@ public class Main2Activity extends AppCompatActivity
 
         } else */
 
-        if(id == R.id.dashboard) {
+        if (id == R.id.dashboard) {
 
             Bundle data = new Bundle();
             Fragment fragment = new CraftsmenDashboard();
@@ -592,70 +583,69 @@ public class Main2Activity extends AppCompatActivity
 
         } else if (id == R.id.newsfeed) {
 
-           fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new NewsfeedFragment()).commit();
-           if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
+            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new NewsfeedFragment()).commit();
+            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.nearby) {
-          // fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new MapsFragment()).commit();
+            // fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new MapsFragment()).commit();
 
-           if(subscribed.equals("true") || isSubscribed.equals("true"))
-           {
-               Intent i = new Intent(getApplicationContext(), RadarView.class);
-               startActivity(i);
-           } else {
-               // grey out the option
-               mDrawerLayout.closeDrawers();
-               Toast.makeText(this, "Access Denied. Please Subscribe.", Toast.LENGTH_SHORT).show();
-           }
+            if (subscribed.equals("true") || isSubscribed.equals("true")) {
+                Intent i = new Intent(getApplicationContext(), RadarView.class);
+                startActivity(i);
+            } else {
+                // grey out the option
+                mDrawerLayout.closeDrawers();
+                Toast.makeText(this, "Access Denied. Please Subscribe.", Toast.LENGTH_SHORT).show();
+            }
 
-           if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
+            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.encounters) {
-           if(subscribed.equals("true") || isSubscribed.equals("true")) {
+            if (subscribed.equals("true") || isSubscribed.equals("true")) {
 
-               if(getSPData("encountersView").equals("") || getSPData("encountersView").equals("GridOff"))
-                   fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new EncountersMain()).commit();
-               else if(getSPData("encountersView").equals("GridOn"))
-                   fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new EncountersGrid()).commit();
+                if (getSPData("encountersView").equals("") || getSPData("encountersView").equals("GridOff"))
+                    fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new EncountersMain()).commit();
+                else if (getSPData("encountersView").equals("GridOn"))
+                    fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new EncountersGrid()).commit();
 
-           } else {
-               // grey out the option
-               mDrawerLayout.closeDrawers();
-               Toast.makeText(this, "Access Denied. Please Subscribe.", Toast.LENGTH_SHORT).show();
-           }
+            } else {
+                // grey out the option
+                mDrawerLayout.closeDrawers();
+                Toast.makeText(this, "Access Denied. Please Subscribe.", Toast.LENGTH_SHORT).show();
+            }
 
-           if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
+            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
-       } else if (id == R.id.directory) {
+        } else if (id == R.id.directory) {
 
-           fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new DirectoryFragment()).commit();
-           if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
+            fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new DirectoryFragment()).commit();
+            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.promote) {
-           if(subscribed.equals("true") || isSubscribed.equals("true")) {
-           Intent i = new Intent(getApplicationContext(),PromoteProfilePopUp.class);
-           startActivityForResult(i,REQUEST_PROMOTE_PROFILE);
-           } else {
-               // grey out the option
-               mDrawerLayout.closeDrawers();
-               Toast.makeText(this, "Access Denied. Please Subscribe.", Toast.LENGTH_SHORT).show();
-           }
+            if (subscribed.equals("true") || isSubscribed.equals("true")) {
+                Intent i = new Intent(getApplicationContext(), PromoteProfilePopUp.class);
+                startActivityForResult(i, REQUEST_PROMOTE_PROFILE);
+            } else {
+                // grey out the option
+                mDrawerLayout.closeDrawers();
+                Toast.makeText(this, "Access Denied. Please Subscribe.", Toast.LENGTH_SHORT).show();
+            }
 
-           //fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new SecondFragment()).commit();
+            //fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new SecondFragment()).commit();
 
         } else if (id == R.id.subscribe) {
            /*Intent i = new Intent(getApplicationContext(),SubscribePopUp.class);
            startActivity(i);*/
 
-           if(subscribed.equals("true") && isSubscribed.equals("false") && subscription.equals(""))
-               Toast.makeText(Main2Activity.this,"Enjoy your 4 day free Trial",Toast.LENGTH_LONG).show();
+            if (subscribed.equals("true") && isSubscribed.equals("false") && subscription.equals(""))
+                Toast.makeText(Main2Activity.this, "Enjoy your 4 day free Trial", Toast.LENGTH_LONG).show();
 
 
-            else if((subscribed.equals("true") && isSubscribed.equals("false") && !subscription.equals(""))|| (subscribed.equals("false") && isSubscribed.equals("false") && subscription.equals("")))
-               lovelyDialogSubscribe();
+            else if ((subscribed.equals("true") && isSubscribed.equals("false") && !subscription.equals("")) || (subscribed.equals("false") && isSubscribed.equals("false") && subscription.equals("")))
+                lovelyDialogSubscribe();
 
-            else if(subscribed.equals("true") && isSubscribed.equals("true") && !subscription.equals(""))
-                Toast.makeText(Main2Activity.this,"Already Subscribed",Toast.LENGTH_LONG).show();
+            else if (subscribed.equals("true") && isSubscribed.equals("true") && !subscription.equals(""))
+                Toast.makeText(Main2Activity.this, "Already Subscribed", Toast.LENGTH_LONG).show();
           /* new PanterDialog(Main2Activity.this)
                    .setHeaderBackground(R.drawable.bg_gradient)
                    .setHeaderLogo(R.drawable.logo)
@@ -665,13 +655,13 @@ public class Main2Activity extends AppCompatActivity
                    .setMessage("Subscribe to 24Crafts to enjoy using the app's features. Subscription allows Producers/Directors to find you")
                    .isCancelable(false)
                    .show();*/
-           // fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new SecondFragment()).commit();
+            // fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new SecondFragment()).commit();
 
         } else if (id == R.id.settings) {
-           Intent i = new Intent(this,Settings.class).putExtra("type","crafts");
-           startActivity(i);
+            Intent i = new Intent(this, Settings.class).putExtra("type", "crafts");
+            startActivity(i);
 
-       }
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -679,10 +669,7 @@ public class Main2Activity extends AppCompatActivity
     }
 
 
-
-
-    public void lovelyDialogSubscribe()
-    {
+    public void lovelyDialogSubscribe() {
         final LovelyCustomDialog lovelyCustomDialog = new LovelyCustomDialog(this);
 
         lovelyCustomDialog.setView(R.layout.activity_subscribe_pop_up)
@@ -695,7 +682,7 @@ public class Main2Activity extends AppCompatActivity
                     public void onClick(View view) {
                        /* Intent intent = new Intent(Main2Activity.this,PurchaseCoins.class);
                         startActivity(intent);*/
-                       lovelyCustomDialog.dismiss();
+                        lovelyCustomDialog.dismiss();
                         routeToSubscribe();
                     }
                 })
@@ -732,7 +719,7 @@ public class Main2Activity extends AppCompatActivity
             @Override
             public void onResponse(String response) {
 
-                Log.e("subscription",response);
+                Log.e("subscription", response);
 
                 checkforResponseSubscribe(response);
 
@@ -743,7 +730,7 @@ public class Main2Activity extends AppCompatActivity
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
             }
-        }){
+        }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
 
@@ -758,21 +745,15 @@ public class Main2Activity extends AppCompatActivity
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(getRequest);
 
 
-
-
-
     }
 
     private void checkforResponseSubscribe(String response) {
 
-        if(response.equals("Profile successfully subscribed!"))
-        {
-
-
+        if (response.equals("Profile successfully subscribed!")) {
 
 
             //alertdialog
-            final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this,R.style.AlertDialog)).setMessage(dialogtextsubscription).
+            final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this, R.style.AlertDialog)).setMessage(dialogtextsubscription).
                     setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -787,15 +768,10 @@ public class Main2Activity extends AppCompatActivity
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
 
-
-        }
-
-
-        else
-        {
-            Intent intent = new Intent(Main2Activity.this,PurchaseCoins.class);
+        } else {
+            Intent intent = new Intent(Main2Activity.this, PurchaseCoins.class);
             startActivity(intent);
-            Toast.makeText(Main2Activity.this,"Not enough coins. Please purchase them",Toast.LENGTH_LONG).show();
+            Toast.makeText(Main2Activity.this, "Not enough coins. Please purchase them", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -822,9 +798,8 @@ public class Main2Activity extends AppCompatActivity
 
     private void checkResponsePromoteProfile(String response) {
 
-        if(response.equals("Profile successfully promoted!"))
-        {
-            final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this,R.style.AlertDialog)).setMessage("Profile Successfully Promoted").
+        if (response.equals("Profile successfully promoted!")) {
+            final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this, R.style.AlertDialog)).setMessage("Profile Successfully Promoted").
                     setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -835,20 +810,12 @@ public class Main2Activity extends AppCompatActivity
                     })
                     .show();
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        }
-
-
-        else if(response.equals("User profile already promoted!!"))
-        {
-            Toast.makeText(Main2Activity.this,"Your profile has already been promoted!",Toast.LENGTH_LONG).show();
-        }
-
-
-        else
-        {
-            Intent intent = new Intent(Main2Activity.this,PurchaseCoins.class);
+        } else if (response.equals("User profile already promoted!!")) {
+            Toast.makeText(Main2Activity.this, "Your profile has already been promoted!", Toast.LENGTH_LONG).show();
+        } else {
+            Intent intent = new Intent(Main2Activity.this, PurchaseCoins.class);
             startActivity(intent);
-            Toast.makeText(Main2Activity.this,"Not enough coins. Please purchase them",Toast.LENGTH_LONG).show();
+            Toast.makeText(Main2Activity.this, "Not enough coins. Please purchase them", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -857,18 +824,15 @@ public class Main2Activity extends AppCompatActivity
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == REQUEST_PROMOTE_PROFILE)
-        {
-            if(resultCode == Activity.RESULT_OK)
-            {
+        if (requestCode == REQUEST_PROMOTE_PROFILE) {
+            if (resultCode == Activity.RESULT_OK) {
                 String responsePromoteProfile = data.getStringExtra("responsePromoteProfile");
-                Log.e("main2activity",responsePromoteProfile);
+                Log.e("main2activity", responsePromoteProfile);
                 checkResponsePromoteProfile(responsePromoteProfile);
 
             }
         }
     }
-
 
 
 }

@@ -11,8 +11,10 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,6 +56,13 @@ public class Login extends AppCompatActivity {
 
     String uname, pword, jwtToken, subscribed, decodedJWT = "";
 
+    public static void hideKeyboard(Activity activity) {
+        if (activity != null && activity.getWindow() != null && activity.getWindow().getDecorView() != null) {
+            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,9 +88,7 @@ public class Login extends AppCompatActivity {
         animationDrawable.setExitFadeDuration(2000);
 
 
-
         animationDrawable.start();
-
 
 
         password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -90,6 +97,24 @@ public class Login extends AppCompatActivity {
                     password.setHint("");
                 else
                     password.setHint("Password");
+            }
+        });
+
+        password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    if (!email.getText().toString().equals("") && !password.getText().toString().equals("")) {
+                        uname = email.getText().toString().trim();
+                        pword = password.getText().toString().trim();
+
+                        loginUser();
+
+                    } else {
+                        ifwrongpass.setText("Empty fields found");
+                    }
+                }
+                return false;
             }
         });
 
@@ -106,10 +131,9 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                if(!email.getText().toString().equals("") && !password.getText().toString().equals("")) {
+                if (!email.getText().toString().equals("") && !password.getText().toString().equals("")) {
                     uname = email.getText().toString().trim();
                     pword = password.getText().toString().trim();
-
 
 
                     loginUser();
@@ -121,10 +145,7 @@ public class Login extends AppCompatActivity {
         });
 
 
-
-
-
-        Button notif  = findViewById(R.id.pushnotif);
+        Button notif = findViewById(R.id.pushnotif);
         notif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,9 +154,6 @@ public class Login extends AppCompatActivity {
             }
         });
     }
-
-
-
 
     private void loginUser() {
 
@@ -155,12 +173,12 @@ public class Login extends AppCompatActivity {
 
                     JSONObject jsonObject = new JSONObject(response);
 
-                    if(jsonObject.optString("message").equals("Incorrect password.")) {
+                    if (jsonObject.optString("message").equals("Incorrect password.")) {
 
                         progressbar.dismiss();
                         ifwrongpass.setText("Incorrect Password!");
 
-                    } else if(response.equals("{}")) {
+                    } else if (response.equals("{}")) {
 
                         progressbar.dismiss();
                         ifwrongpass.setText("Email Not Registered. Kindly Register!");
@@ -173,7 +191,7 @@ public class Login extends AppCompatActivity {
                         storeSPData("jwtToken", jwtToken);
                         storeSPData("subscribed", subscribed);
 
-                        if(jsonObject.optString("isClient").equals("false")) {
+                        if (jsonObject.optString("isClient").equals("false")) {
 
                             ArrayList<Item> items2 = new ArrayList<>();
                             items2 = Item.getTestingList(getApplicationContext(), "CraftsmenOpenAuditions");
@@ -184,24 +202,20 @@ public class Login extends AppCompatActivity {
                             ArrayList<Item> items4 = new ArrayList<>();
                             items4 = Item.getTestingList(getApplicationContext(), "CraftsmenClosedAuditions");
 
-                        }
-
-                        else {
+                        } else {
                             ArrayList<Item> items2 = new ArrayList<>();
 
-                            items2 = Item.getTestingList(getApplicationContext(),"ClientOpenAuditions");
+                            items2 = Item.getTestingList(getApplicationContext(), "ClientOpenAuditions");
 
                             ArrayList<Item> items3 = new ArrayList<>();
-                            items3 = Item.getTestingList(getApplicationContext(),"ClientAppliedAuditions");
+                            items3 = Item.getTestingList(getApplicationContext(), "ClientAppliedAuditions");
                         }
 
 
-
-
-                        Log.e("jwtToken",jwtToken);
-                        String payLoadJWT = jwtToken.substring(jwtToken.indexOf(".")+1);
-                        payLoadJWT = payLoadJWT.substring(0,payLoadJWT.indexOf("."));
-                        Log.e("payLoadJWT",payLoadJWT);
+                        Log.e("jwtToken", jwtToken);
+                        String payLoadJWT = jwtToken.substring(jwtToken.indexOf(".") + 1);
+                        payLoadJWT = payLoadJWT.substring(0, payLoadJWT.indexOf("."));
+                        Log.e("payLoadJWT", payLoadJWT);
 
                         try {
                             decodedJWT = JWTUtils.getJson(payLoadJWT);
@@ -219,12 +233,12 @@ public class Login extends AppCompatActivity {
                             newurl = User.getInstance().BASE_URL + "client";*/
 
 
-                       // Log.e("newURL",newurl);
+                        // Log.e("newURL",newurl);
 
 
-                        Log.e("OA",getSPData("viewAllAuditions"));
-                        Log.e("CA",getSPData("viewClosedAuditions"));
-                        Log.e("AA",getSPData("viewAppliedAuditions"));
+                        Log.e("OA", getSPData("viewAllAuditions"));
+                        Log.e("CA", getSPData("viewClosedAuditions"));
+                        Log.e("AA", getSPData("viewAppliedAuditions"));
 
                         StringRequest getRequest = new StringRequest(Request.Method.GET, newurl, new Response.Listener<String>() {
                             @Override
@@ -240,19 +254,19 @@ public class Login extends AppCompatActivity {
 
                                     assignSPData();
 
-                                   JSONObject obj = new JSONObject(response);
+                                    JSONObject obj = new JSONObject(response);
                                     String isClient = obj.optString("isClient");
 
-                                    if(isClient.equals("false")) {
-                                        Intent i = new Intent(Login.this,Main2Activity.class)
+                                    if (isClient.equals("false")) {
+                                        Intent i = new Intent(Login.this, Main2Activity.class)
                                                 .putExtra("userdata", response).putExtra("subscribed", subscribed);
-                                        Log.e("userdata",response);
+                                        Log.e("userdata", response);
                                         startActivity(i);
                                     } else {
 
-                                        Intent i = new Intent(Login.this,Main3Activity.class)
+                                        Intent i = new Intent(Login.this, Main3Activity.class)
                                                 .putExtra("userdata", response).putExtra("subscribed", subscribed);
-                                        Log.e("userdata",response);
+                                        Log.e("userdata", response);
                                         startActivity(i);
                                     }
 
@@ -266,7 +280,7 @@ public class Login extends AppCompatActivity {
                             public void onErrorResponse(VolleyError error) {
                                 error.printStackTrace();
                             }
-                        }){
+                        }) {
                             @Override
                             public Map<String, String> getHeaders() throws AuthFailureError {
 
@@ -293,7 +307,7 @@ public class Login extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
 
@@ -308,9 +322,6 @@ public class Login extends AppCompatActivity {
 
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
-
-
-
 
     @Override
     public void onBackPressed() {
@@ -340,16 +351,6 @@ public class Login extends AppCompatActivity {
         return super.dispatchTouchEvent(ev);
     }
 
-    public static void hideKeyboard(Activity activity) {
-        if (activity != null && activity.getWindow() != null && activity.getWindow().getDecorView() != null) {
-            InputMethodManager imm = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
-        }
-    }
-
-
-
-
     //Shared Preferences
     private void storeSPData(String key, String data) {
 
@@ -376,13 +377,15 @@ public class Login extends AppCompatActivity {
 
             storeSPData("phone_verified", "true");
 
-            if(jsonObject.optString("facebook").equals("")) storeSPData("facebook_verified", "false");
+            if (jsonObject.optString("facebook").equals(""))
+                storeSPData("facebook_verified", "false");
             else storeSPData("facebook_verified", "true");
 
-            if(jsonObject.optString("google").equals("")) storeSPData("google_verified", "false");
+            if (jsonObject.optString("google").equals("")) storeSPData("google_verified", "false");
             else storeSPData("google_verified", "true");
 
-            if(jsonObject.optString("twitter").equals("")) storeSPData("twitter_verified", "false");
+            if (jsonObject.optString("twitter").equals(""))
+                storeSPData("twitter_verified", "false");
             else storeSPData("twitter_verified", "true");
 
 

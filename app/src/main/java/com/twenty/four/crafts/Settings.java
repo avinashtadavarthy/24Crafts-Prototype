@@ -62,6 +62,7 @@ public class Settings extends AppCompatActivity {
             daily.setVisibility(View.GONE);
             bfreecoins.setVisibility(View.GONE);
             bbuymorecoins.setVisibility(View.GONE);
+            verify.setVisibility(View.GONE);
         }
 
         info.setOnClickListener(new View.OnClickListener() {

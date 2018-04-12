@@ -29,12 +29,18 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.irozon.alertview.AlertActionStyle;
+import com.irozon.alertview.AlertStyle;
+import com.irozon.alertview.AlertTheme;
+import com.irozon.alertview.AlertView;
+import com.irozon.alertview.objects.AlertAction;
 import com.kila.apprater_dialog.lars.AppRater;
 import com.twenty.four.crafts.talenthunter.GarlandViewMain;
 
@@ -53,7 +59,7 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
     int check = 0;
     DrawerLayout drawer;
     String dialogtextverifyemail = "Please verify your email to continue using the app";
-    String userdata,subscribed,jwtToken;
+    String userdata, subscribed, jwtToken;
     JSONObject userdatamain;
 
     TextView nav_name, nav_craft, coinCount;
@@ -65,14 +71,13 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         setContentView(R.layout.activity_main3);
 
 
-        new AppRater.StarBuilder(this,"com.twenty.four.crafts")
+        new AppRater.StarBuilder(this, "com.twenty.four.crafts")
                 .showDefault()
                 .minimumNumberOfStars(3)
                 .email("raku18998@gmail.com")
                 .timesToLaunch(3)
                 .daysToWait(1)
                 .appLaunched();
-
 
 
         drawer = findViewById(R.id.drawer_layout);
@@ -97,13 +102,12 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         }
 
         emailVerified = userdatamain.optString("emailVerification");
-        storeSPData("emailVerified",emailVerified);
-
+        storeSPData("emailVerified", emailVerified);
 
 
         nav_name = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_name);
         nav_craft = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_craft);
-  //      coinCount = (TextView) navigationView.getHeaderView(0).findViewById(R.id.coinCount);
+        //      coinCount = (TextView) navigationView.getHeaderView(0).findViewById(R.id.coinCount);
         coverpic = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.coverpic);
 
         nav_name.setText(userdatamain.optString("name"));
@@ -113,53 +117,35 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         Blurry.with(getApplicationContext()).from(icon).into(coverpic);
 
 
-
         int dataInt = 0;
-        if(getIntent() != null) {
+        if (getIntent() != null) {
 
-            dataInt = getIntent().getIntExtra("navbarposclient",0);
+            dataInt = getIntent().getIntExtra("navbarposclient", 0);
         }
 
-        if(dataInt == 1)
-        {
+        if (dataInt == 1) {
             aud_handy.setBackgroundColor(Color.parseColor("#123456"));
             fav_handy.setBackgroundColor(Color.parseColor("#000000"));
             inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
-        }
-
-        else if(dataInt == 2)
-        {
+        } else if (dataInt == 2) {
             fav_handy.setBackgroundColor(Color.parseColor("#123456"));
             aud_handy.setBackgroundColor(Color.parseColor("#000000"));
             inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
 
-        }
-
-        else if(dataInt == 3)
-        {
+        } else if (dataInt == 3) {
 
             inbox_handy.setBackgroundColor(Color.parseColor("#123456"));
             fav_handy.setBackgroundColor(Color.parseColor("#000000"));
             aud_handy.setBackgroundColor(Color.parseColor("#000000"));
-        }
-
-        else
-        {
+        } else {
             inbox_handy.setBackgroundColor(Color.parseColor("#000000"));
             fav_handy.setBackgroundColor(Color.parseColor("#000000"));
             aud_handy.setBackgroundColor(Color.parseColor("#000000"));
         }
 
 
-
-
-
-
-
-
-        if(emailVerified.equals("false"))
-        {
-            final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main3Activity.this,R.style.AlertDialog)).setMessage(dialogtextverifyemail).
+        if (emailVerified.equals("false")) {
+            final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main3Activity.this, R.style.AlertDialog)).setMessage(dialogtextverifyemail).
                     setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -170,8 +156,6 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         }
-
-
 
 
         appBarLayout = (AppBarLayout) findViewById(R.id.app_bar_client);
@@ -199,16 +183,15 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         toggle.syncState();
 
 
-
-        if(savedInstanceState==null){
-            navigationView.getMenu().performIdentifierAction(R.id.dashboard,0);
+        if (savedInstanceState == null) {
+            navigationView.getMenu().performIdentifierAction(R.id.dashboard, 0);
         }
 
 
         LinearLayout header_for_clients = (LinearLayout) navigationView.getHeaderView(0).findViewById(R.id.header_for_clients);
-        header_for_clients.setOnClickListener(new View.OnClickListener(){
+        header_for_clients.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent i = new Intent(Main3Activity.this, ProfileView.class)
                         .putExtra("thisistogetback", "do nothing")
                         .putExtra("fromwhom", "do nothing")
@@ -293,17 +276,15 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         super.onResume();
 
         emailVerified = getSPData("emailVerified");
-        if(emailVerified.equals("false"))
-        {
+        if (emailVerified.equals("false")) {
             showSnackbar();
         }
     }
 
 
-
     private void showSnackbar() {
 
-        final Snackbar snackbar = Snackbar.make(drawer,"Unverified Email",Snackbar.LENGTH_INDEFINITE);
+        final Snackbar snackbar = Snackbar.make(drawer, "Unverified Email", Snackbar.LENGTH_INDEFINITE);
         snackbar.setAction("REFRESH", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -317,7 +298,7 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
 
         snackbarView.setBackgroundColor(getResources().getColor(R.color.snackbarBackground));
 
-        if(check == 0)
+        if (check == 0)
             snackbar.show();
 
         else
@@ -335,7 +316,7 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
             public void onResponse(String response) {
 
 
-                Log.e("userRequest",response);
+                Log.e("userRequest", response);
                 try {
 
                     storeSPData("userdatamain", response);
@@ -344,19 +325,21 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
 
 
                     emailVerified = obj.optString("emailVerification");
-                    Log.e("emailverified",emailVerified);
-                    storeSPData("emailVerified",emailVerified);
+                    Log.e("emailverified", emailVerified);
+                    storeSPData("emailVerified", emailVerified);
 
                     check = check(emailVerified);
 
-                    switch (check)
-                    {
-                        case 0:showSnackbar();break;
-                        case 1:showSnackbar();break;
+                    switch (check) {
+                        case 0:
+                            showSnackbar();
+                            break;
+                        case 1:
+                            showSnackbar();
+                            break;
                     }
 
-                    Log.e("check",check+"");
-
+                    Log.e("check", check + "");
 
 
                 } catch (JSONException e) {
@@ -369,7 +352,7 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
             }
-        }){
+        }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
 
@@ -384,13 +367,12 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(getRequest);
 
 
-
         return check;
     }
 
     private int check(String emailVerified) {
 
-        if(emailVerified.equals("false"))
+        if (emailVerified.equals("false"))
             return 0;
 
         else
@@ -406,21 +388,29 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
             drawer.closeDrawer(GravityCompat.START);
         } else {
 
-            AlertDialog alert = new AlertDialog.Builder(new ContextThemeWrapper(Main3Activity.this, R.style.AlertDialog))
-                    .setMessage("Do you really want to exit?")
-                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            ActivityCompat.finishAffinity(Main3Activity.this);
-                            finish();
-                        }
-                    })
-                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    })
-                    .show();
-                    alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            AlertView alert = new AlertView("EXIT", "Do you want to exit from 24Crafts?", AlertStyle.IOS);
+            alert.addAction(new AlertAction("Yes", AlertActionStyle.NEGATIVE, action -> {
+                ActivityCompat.finishAffinity(Main3Activity.this);
+                finish();
+            }));
+            alert.setTheme(AlertTheme.LIGHT);
+            alert.show(this);
+
+//            AlertDialog alert = new AlertDialog.Builder(new ContextThemeWrapper(Main3Activity.this, R.style.AlertDialog))
+//                    .setMessage("Do you really want to exit?")
+//                    .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            ActivityCompat.finishAffinity(Main3Activity.this);
+//                            finish();
+//                        }
+//                    })
+//                    .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.dismiss();
+//                        }
+//                    })
+//                    .show();
+//                    alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
     }
 
@@ -432,7 +422,7 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         int id = item.getItemId();
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
 
-        if(id == R.id.dashboard){
+        if (id == R.id.dashboard) {
             Bundle data = new Bundle();
             Fragment fragment = new ClientDashboard();
             data.putString("tab", "audition"); //put string, int, etc in bundle with a key value
@@ -442,11 +432,11 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
 
         } else if (id == R.id.talent_hunt) {
             fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new GarlandViewMain()).commit();
-              if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
+            if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.nearby) {
             //fragmentManager.beginTransaction().replace(R.id.content_frame_clients, new PeopleNearbyFragment()).commit();
-            Intent intent = new Intent(Main3Activity.this,RadarView.class);
+            Intent intent = new Intent(Main3Activity.this, RadarView.class);
             startActivity(intent);
 
             if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
@@ -456,10 +446,10 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
             if (android.os.Build.VERSION.SDK_INT >= 21) appBarLayout.setElevation(8);
 
         } else if (id == R.id.settings) {
-            Intent i = new Intent(this,Settings.class).putExtra("type","clients");
+            Intent i = new Intent(this, Settings.class).putExtra("type", "clients");
             startActivity(i);
 
-        } else if (id == R.id.clientverify){
+        } else if (id == R.id.clientverify) {
             Intent i = new Intent(this, ClientVerification1Activity.class);
             startActivity(i);
         }

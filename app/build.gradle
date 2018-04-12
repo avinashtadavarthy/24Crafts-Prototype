@@ -23,6 +23,10 @@ android {
         enabled = true
     }
 
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 repositories {
@@ -162,6 +166,10 @@ dependencies {
 
     //Fast Android Networking
     compile 'com.amitshekhar.android:android-networking:1.0.1'
+
+    //Alert View
+    implementation 'com.irozon.alertview:alertview:1.0.1'
+
 }
 
 

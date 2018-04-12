@@ -54,6 +54,7 @@
         <attr name="dayNnightText" format="color" />
         <attr name="dayNnightTint" format="color" />
         <attr name="dayNnightBtn" format="color" />
+        <attr name="letters" format="color" />
     </declare-styleable>
 
 </resources>
