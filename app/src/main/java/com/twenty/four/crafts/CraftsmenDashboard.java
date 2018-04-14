@@ -2,6 +2,8 @@ package com.twenty.four.crafts;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.twenty.four.crafts.auditions.AuditionsTab;
 
@@ -21,6 +25,7 @@ public class CraftsmenDashboard extends Fragment {
 
     TabLayout craftsmen_dashboard_tabs;
     ViewPager craftsmen_dashboard_tabbed;
+    SharedPref sharedPref;
     
     
     @Nullable

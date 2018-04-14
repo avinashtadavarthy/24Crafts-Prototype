@@ -142,26 +142,30 @@
     </style>
 
     <style name="day" parent="AppTheme3">
-        <item name="dayNnightBg">@drawable/b2</item>
+        <!--<item name="dayNnightBg">@drawable/b2</item>-->
+        <item name="dayNnightBg">#FFFFFF</item>
         <item name="dayNnightCard">#FFFFFF</item>
         <item name="dayNnightText">#000000</item>
-        <item name="dayNnightTint">#000000</item>
+        <item name="dayNnightTint">#006A7C</item>
         <item name="dayNnightBtn">#004E92</item>
         <item name="letters">#000000</item>
         <item name="dayText">#8000</item>
+        <item name="dayNNightNav">@drawable/b2</item>
     </style>
 
   <!--  Theme.AppCompat.DayNight.NoActionBar-->
 
 
     <style name="night" parent="AppTheme3">
-        <item name="dayNnightBg">@drawable/bg_gradient</item>
-        <item name="dayNnightCard">#000000</item>
+        <!--<item name="dayNnightBg">@drawable/bg_gradient</item>-->
+        <item name="dayNnightBg">#151D26</item>
+        <item name="dayNnightCard">#1C2733</item>
         <item name="dayNnightText">#FFFFFF</item>
         <item name="dayNnightTint">#FFFFFF</item>
         <item name="dayNnightBtn">#004E92</item>
         <item name="letters">#efe7d8</item>
-        <item name="dayText">#80ffffff</item>
+        <item name="dayText">#7D8E98</item>
+        <item name="dayNNightNav">#222E3C</item>
     </style>
 
 

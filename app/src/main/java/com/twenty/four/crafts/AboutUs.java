@@ -1,12 +1,16 @@
 package com.twenty.four.crafts;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,10 +24,27 @@ public class AboutUs extends AppCompatActivity {
 
         //Theme Stuff ---- Start
         sharedPref = new SharedPref(this);
-        if(sharedPref.loadNightModeState()){
+        if (sharedPref.loadNightModeState()) {
             setTheme(R.style.night);
+        } else {
+            setTheme(R.style.day);
         }
-        else {setTheme(R.style.day);}
+
+        // Status Bar Tint
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+//            Window w = getWindow();
+//            w.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+//            w.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            w.setBackgroundDrawable(getResources().getDrawable(R.drawable.b2));
+            Window w = getWindow();
+            w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            Drawable bgTint = this.getResources().getDrawable(R.drawable.b2);
+            w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            w.setStatusBarColor(this.getResources().getColor(R.color.transparent_black_hex_11));
+            w.setNavigationBarColor(this.getResources().getColor(R.color.transparent_black_hex_11));
+            w.setBackgroundDrawable(bgTint);
+        }
         //Theme Stuff ---- End
 
         super.onCreate(savedInstanceState);
@@ -31,6 +52,7 @@ public class AboutUs extends AppCompatActivity {
 
 
         getSupportActionBar().setTitle("About Us");
+        getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.b2));
 
 
         TextView privac =  (TextView) findViewById(R.id.privacy);

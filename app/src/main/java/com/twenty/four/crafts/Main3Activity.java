@@ -36,6 +36,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.StringRequestListener;
 import com.irozon.alertview.AlertActionStyle;
 import com.irozon.alertview.AlertStyle;
 import com.irozon.alertview.AlertTheme;
@@ -145,15 +149,26 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
 
 
         if (emailVerified.equals("false")) {
-            final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main3Activity.this, R.style.AlertDialog)).setMessage(dialogtextverifyemail).
-                    setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    })
-                    .show();
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+            final AlertView alert = new AlertView("VERIFICATION", "Please verify your email to continue using the 24 Crafts App", AlertStyle.DIALOG);
+            alert.addAction(new AlertAction("RESEND EMAIL", AlertActionStyle.POSITIVE, action -> {
+                resendEmailRequest();
+            }));
+            alert.addAction(new AlertAction("Cancel", AlertActionStyle.DEFAULT, action -> {
+
+            }));
+            alert.setTheme(AlertTheme.LIGHT);
+            alert.show(this);
+
+//            final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main3Activity.this, R.style.AlertDialog)).setMessage(dialogtextverifyemail).
+//                    setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            dialogInterface.dismiss();
+//                        }
+//                    })
+//                    .show();
+//            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         }
 
@@ -304,6 +319,31 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
         else
             snackbar.dismiss();
 
+    }
+
+    private void resendEmailRequest() {
+
+        jwtToken = getSPData("jwtToken");
+        String url = User.getInstance().BASE_URL + "resendVerificationMail";
+
+        AndroidNetworking.get(url)
+                .addHeaders("authorization", jwtToken)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("resendEmail", response);
+
+                        Toast.makeText(Main3Activity.this, response, Toast.LENGTH_LONG).show();
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
     }
 
     private int userRequest() {

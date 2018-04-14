@@ -2,309 +2,297 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_frame_settings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/content_frame_settings"
     android:background="?attr/dayNnightBg"
+    android:orientation="vertical"
     tools:context="com.twenty.four.crafts.Settings">
 
 
-    <LinearLayout
-        android:id="@+id/info"
-        android:padding="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp"
-        android:background="?android:attr/selectableItemBackground">
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/account_info"
-            android:tint="?attr/dayNnightTint"
-            android:layout_margin="5dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textSize="18dp"
-            android:layout_marginLeft="25dp"
-            android:text="Account Information"
-            android:textColor="?attr/letters"
-            />
-
-
-    </LinearLayout>
-
-    <View
-        android:id="@+id/belowaccinfo"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="5dp"
-        android:layout_below="@id/info"
-        android:background="?attr/dayNnightText"
-        />
-
-    <LinearLayout
-        android:id="@+id/verify"
-        android:layout_below="@+id/info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:padding="5dp">
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/verify_yourself"
-            android:tint="?attr/dayNnightTint"
-            android:layout_margin="5dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textSize="18dp"
-            android:layout_marginLeft="25dp"
-            android:text="Verify Yourself"
-            android:textColor="?attr/dayNnightText"/>
-
-    </LinearLayout>
-
-
-    <View
-        android:id="@+id/belowverify"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="5dp"
-        android:layout_below="@id/verify"
-        android:background="?attr/dayNnightText"
-        />
-
-    <LinearLayout
-        android:id="@+id/coinsfree"
-        android:layout_below="@+id/verify"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_margin="10dp"
-        >
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/free_coins"
-            android:tint="?attr/dayNnightTint"
-            android:layout_margin="5dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textSize="18dp"
-            android:layout_marginLeft="25dp"
-            android:text="Free Coins"
-            android:textColor="?attr/dayNnightText"/>
-
-    </LinearLayout>
-
-
-
-    <View
-        android:id="@+id/belowfreecoins"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="5dp"
-        android:layout_below="@id/coinsfree"
-        android:background="?attr/dayNnightText"
-        />
-
-    <LinearLayout
-        android:id="@+id/morecoins"
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_below="@+id/coinsfree"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp"
-        android:padding="5dp">
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/buy_coins"
-            android:tint="?attr/dayNnightTint"
-            android:layout_margin="5dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textSize="18dp"
-            android:layout_marginLeft="25dp"
-            android:text="Buy More Coins"
-            android:textColor="?attr/dayNnightText"/>
-
-    </LinearLayout>
-
-
-
-    <View
-        android:id="@+id/belowbuymorecoins"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="5dp"
-        android:layout_below="@id/morecoins"
-        android:background="?attr/dayNnightText"
-        />
-
-    <LinearLayout
-        android:id="@+id/themes"
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_below="@+id/morecoins"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp"
-        android:padding="5dp">
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/theme"
-            android:tint="?attr/dayNnightTint"
-            android:layout_margin="5dp"/>
-
         <LinearLayout
+            android:id="@+id/info"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="25dp"
-            >
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
-            <Switch
-                android:id="@+id/darkSwitch"
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/account_info"
+                android:tint="?attr/dayNnightTint" />
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Night Mode"
-                android:textSize="18dp"
-                android:textColor="?attr/dayNnightText"
-                />
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="25dp"
+                android:text="Account Information"
+                android:textColor="?attr/letters"
+                android:textSize="18dp" />
+
 
         </LinearLayout>
 
-    </LinearLayout>
+        <View
+            android:id="@+id/belowaccinfo"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/info"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="5dp"
+            android:background="?attr/dayNnightText" />
 
-    <View
-        android:id="@+id/belowthemes"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="5dp"
-        android:layout_below="@id/themes"
-        android:background="?attr/dayNnightText"
-        />
-    <LinearLayout
-        android:id="@+id/daily"
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_below="@+id/themes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        android:layout_margin="10dp"
-        >
+        <LinearLayout
+            android:id="@+id/verify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/info"
+            android:layout_margin="10dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/check_in"
-            android:tint="?attr/dayNnightTint"
-            android:layout_margin="5dp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/verify_yourself"
+                android:tint="?attr/dayNnightTint" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="25dp"
+                android:text="Verify Yourself"
+                android:textColor="?attr/dayNnightText"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/belowverify"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/verify"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="5dp"
+            android:background="?attr/dayNnightText" />
+
+        <LinearLayout
+            android:id="@+id/coinsfree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/verify"
+            android:layout_margin="10dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/free_coins"
+                android:tint="?attr/dayNnightTint" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="25dp"
+                android:text="Free Coins"
+                android:textColor="?attr/dayNnightText"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/belowfreecoins"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/coinsfree"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="5dp"
+            android:background="?attr/dayNnightText" />
+
+        <LinearLayout
+            android:id="@+id/morecoins"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/coinsfree"
+            android:layout_margin="10dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/buy_coins"
+                android:tint="?attr/dayNnightTint" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="25dp"
+                android:text="Buy More Coins"
+                android:textColor="?attr/dayNnightText"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/belowbuymorecoins"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/morecoins"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="5dp"
+            android:background="?attr/dayNnightText" />
+
+        <LinearLayout
+            android:id="@+id/themes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/morecoins"
+            android:layout_margin="10dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/theme"
+                android:tint="?attr/dayNnightTint" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="25dp">
+
+                <Switch
+                    android:id="@+id/darkSwitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Night Mode"
+                    android:textColor="?attr/dayNnightText"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/belowthemes"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/themes"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="5dp"
+            android:background="?attr/dayNnightText" />
+
+        <LinearLayout
+            android:id="@+id/daily"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/themes"
+            android:layout_margin="10dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/check_in"
+                android:tint="?attr/dayNnightTint" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="25dp"
+                android:text="Daily Check-In"
+                android:textColor="?attr/dayNnightText"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@+id/contactus"
+            android:background="?attr/dayNnightText" />
+
+        <LinearLayout
+            android:id="@+id/contactus"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textSize="18dp"
-            android:layout_marginLeft="25dp"
-            android:text="Daily Check-In"
-            android:textColor="?attr/dayNnightText"/>
+            android:layout_above="@+id/aboutus"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:padding="4dp">
 
-    </LinearLayout>
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/contact_us"
+                android:tint="?attr/dayNnightTint" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:text="Contact / Support"
+                android:textColor="?attr/dayNnightText"
+                android:textSize="10dp" />
+
+        </LinearLayout>
 
 
-
-    <TextView
-        android:layout_above="@+id/contactus"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?attr/dayNnightText"/>
-
-    <LinearLayout
-        android:id="@+id/contactus"
-        android:layout_above="@+id/aboutus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="?android:attr/selectableItemBackground"
-        android:padding="4dp">
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/contact_us"
-            android:tint="?attr/dayNnightTint"
-            android:layout_margin="5dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_vertical"
+        <LinearLayout
+            android:id="@+id/aboutus"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="10dp"
-            android:layout_marginLeft="5dp"
-            android:text="Contact / Support"
-            android:textColor="#ffffff"/>
+            android:layout_alignParentBottom="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:padding="4dp">
 
-    </LinearLayout>
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/about_us"
+                android:tint="?attr/dayNnightTint" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:text="About us"
+                android:textColor="?attr/dayNnightText"
+                android:textSize="10dp" />
 
-    <LinearLayout
-        android:id="@+id/aboutus"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="?android:attr/selectableItemBackground"
-        android:padding="4dp">
+        </LinearLayout>
 
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/about_us"
-            android:tint="?attr/dayNnightTint"
-            android:layout_margin="5dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textSize="10dp"
-            android:layout_marginLeft="5dp"
-            android:text="About us"
-            android:textColor="#ffffff"/>
-
-    </LinearLayout>
-
-    </RelativeLayout>
+</RelativeLayout>

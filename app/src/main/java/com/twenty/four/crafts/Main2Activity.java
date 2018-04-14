@@ -8,6 +8,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -27,6 +29,8 @@ import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -57,6 +61,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import es.dmoral.toasty.Toasty;
 import jp.wasabeef.blurry.Blurry;
 
 public class Main2Activity extends AppCompatActivity
@@ -78,9 +83,12 @@ public class Main2Activity extends AppCompatActivity
     String userdata, subscribed, emailVerified = "";
     TextView nav_name, nav_craft, coinCount;
     ImageView coverpic;
+    SharedPref sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
 
         new AppRater.StarBuilder(this, "com.twenty.four.crafts")
@@ -158,21 +166,32 @@ public class Main2Activity extends AppCompatActivity
 
 
         if (emailVerified.equals("false")) {
-            final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this, R.style.AlertDialog)).setMessage(dialogtextverifyemail).
-                    setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    })
-                    .setNegativeButton("RESEND EMAIL", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            resendEmailRequest();
-                        }
-                    })
-                    .show();
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+            final AlertView alert = new AlertView("VERIFICATION", "Please verify your email to continue using the 24 Crafts App", AlertStyle.DIALOG);
+            alert.addAction(new AlertAction("RESEND EMAIL", AlertActionStyle.POSITIVE, action -> {
+                resendEmailRequest();
+            }));
+            alert.addAction(new AlertAction("Cancel", AlertActionStyle.DEFAULT, action -> {
+
+            }));
+            alert.setTheme(AlertTheme.LIGHT);
+            alert.show(this);
+
+//            final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this, R.style.AlertDialog)).setMessage(dialogtextverifyemail).
+//                    setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            dialogInterface.dismiss();
+//                        }
+//                    })
+//                    .setNegativeButton("RESEND EMAIL", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            resendEmailRequest();
+//                        }
+//                    })
+//                    .show();
+//            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         }
 
@@ -689,6 +708,16 @@ public class Main2Activity extends AppCompatActivity
                 .setListener(R.id.ContinueButton, new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
+//                        final AlertView alert = new AlertView("CONTINUE FREE?", "Free Account only gives you access to the DIRECTORY. Producers/Directors will not be able to contact you...", AlertStyle.DIALOG);
+//                        alert.addAction(new AlertAction("OK", AlertActionStyle.NEGATIVE, action -> {
+//                            lovelyCustomDialog.dismiss();
+//                        }));
+//                        alert.addAction(new AlertAction("Cancel", AlertActionStyle.DEFAULT, action -> {
+//
+//                        }));
+//                        alert.setTheme(AlertTheme.LIGHT);
+//                        alert.show(Main2Activity.this);
 
                         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(new ContextThemeWrapper(Main2Activity.this, R.style.AlertDialog));
                         builder.setMessage("Free Account only gives you access to the DIRECTORY. Producers/Directors will not be able to contact you...")
