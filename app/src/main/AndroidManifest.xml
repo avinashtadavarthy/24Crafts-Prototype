@@ -288,7 +288,7 @@
             android:name=".AboutUs"
             android:parentActivityName=".Settings"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme3" />
+            android:theme="@style/day" />
         <activity
             android:name=".TermsConditions"
             android:parentActivityName=".AboutUs"

@@ -13,8 +13,19 @@ import android.widget.Toast;
 
 public class AboutUs extends AppCompatActivity {
 
+    SharedPref sharedPref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //Theme Stuff ---- Start
+        sharedPref = new SharedPref(this);
+        if(sharedPref.loadNightModeState()){
+            setTheme(R.style.night);
+        }
+        else {setTheme(R.style.day);}
+        //Theme Stuff ---- End
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
 

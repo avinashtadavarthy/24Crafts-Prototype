@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient"
+    android:background="?attr/dayNnightBg"
     android:orientation="vertical">
 
 
@@ -11,12 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_gravity="center_vertical"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:padding="16dp"
         android:gravity="center_vertical"
         android:layout_marginTop="5dp"
         android:text="Privacy Policy"
-        android:textColor="#ffffff"
+        android:textColor="?attr/letters"
         android:background="?android:attr/selectableItemBackground"/>
 
     <View
@@ -24,7 +24,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="#ffffff"
+        android:background="?attr/dayNnightText"
         />
 
 
@@ -33,11 +33,11 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_gravity="center_vertical"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:gravity="center_vertical"
         android:padding="16dp"
         android:text="Terms and Conditions"
-        android:textColor="#ffffff"
+        android:textColor="?attr/dayNnightText"
         android:background="?android:attr/selectableItemBackground"/>
 
 
@@ -46,7 +46,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="#ffffff"
+        android:background="?attr/dayNnightText"
         />
 
 
@@ -62,16 +62,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:textSize="15dp"
+                android:textSize="18dp"
                 android:text="Website"
-                android:textColor="#ffffff"/>
+                android:textColor="?attr/dayNnightText"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="http://www.geass.technology"
                 android:layout_marginLeft="10dp"
-                android:textColor="#80ffffff" />
+                android:textColor="?attr/dayText" />
         </LinearLayout>
 
 
@@ -80,7 +80,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="#ffffff"
+        android:background="?attr/dayNnightText"
         />
     <LinearLayout
         android:id="@+id/copy"
@@ -94,16 +94,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textSize="15dp"
-            android:text="Copyright© 2017"
-            android:textColor="#ffffff"/>
+            android:textSize="18dp"
+            android:text="Copyright © 2018"
+            android:textColor="?attr/dayNnightText"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Geass Technology"
             android:layout_marginLeft="10dp"
-            android:textColor="#80ffffff" />
+            android:textColor="?attr/dayText" />
     </LinearLayout>
 
 
@@ -113,7 +113,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="#ffffff"
+        android:background="?attr/dayNnightText"
         />
 
     <TextView
@@ -122,10 +122,10 @@
         android:layout_height="70dp"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:padding="16dp"
         android:text="Change Log"
-        android:textColor="#ffffff"
+        android:textColor="?attr/dayNnightText"
         android:background="?android:attr/selectableItemBackground"/>
 
 
@@ -134,7 +134,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="#ffffff"
+        android:background="?attr/dayNnightText"
         />
 
 </LinearLayout>
