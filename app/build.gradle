@@ -170,6 +170,9 @@ dependencies {
     //Alert View
     implementation 'com.irozon.alertview:alertview:1.0.1'
 
+    //Fabulous Filter
+    compile 'com.allattentionhere:fabulousfilter:0.0.5'
+
 }
 
 

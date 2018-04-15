@@ -1,6 +1,5 @@
 package com.twenty.four.crafts;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,8 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -29,8 +26,6 @@ import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -47,6 +42,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
+import com.bumptech.glide.Glide;
 import com.irozon.alertview.AlertActionStyle;
 import com.irozon.alertview.AlertStyle;
 import com.irozon.alertview.AlertTheme;
@@ -61,12 +57,13 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import es.dmoral.toasty.Toasty;
+import de.hdodenhof.circleimageview.CircleImageView;
 import jp.wasabeef.blurry.Blurry;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    CircleImageView nav_pic;
 
     final int REQUEST_PROMOTE_PROFILE = 9640;
     AppBarLayout appBarLayout;
@@ -156,7 +153,10 @@ public class Main2Activity extends AppCompatActivity
         nav_craft = (TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_craft);
         coinCount = (TextView) navigationView.getHeaderView(0).findViewById(R.id.coinCount);
         coverpic = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.coverpic);
+        nav_pic = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.nav_pic);
 
+
+        Glide.with(getApplicationContext()).load("http://" +userdatamain.optString("profileImageURL")).into(nav_pic);
         nav_name.setText(userdatamain.optString("name"));
         nav_craft.setText(User.getInstance().getCategoryFromTag(userdatamain.optString("category")));
         coinCount.setText(userdatamain.optString("coinCount"));

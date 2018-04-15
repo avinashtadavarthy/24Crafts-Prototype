@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -31,6 +32,11 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
+import com.irozon.alertview.AlertActionStyle;
+import com.irozon.alertview.AlertStyle;
+import com.irozon.alertview.AlertTheme;
+import com.irozon.alertview.AlertView;
+import com.irozon.alertview.objects.AlertAction;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 import com.yuyakaido.android.cardstackview.CardStackView;
 import com.yuyakaido.android.cardstackview.SwipeDirection;
@@ -50,14 +56,44 @@ public class EncountersMain extends android.support.v4.app.Fragment {
     View myView;
     private ProgressBar progressBar;
     private CardStackView cardStackView;
-    private TouristSpotCardAdapter adapter;
+    private TouristSpotCardAdapter adapter,adapter1;
     LinearLayout row;
 
+    String chosenCraftEncounters = "";
     int lastindex;
     int right,left,pos;
     int undo;
     boolean targetEncounter;
     //int clickStar,clickCross,swipeRighttoLike,swipelefttoDislike,undo;
+
+    String[] whoNcrafts = {
+            "Actor","Actress","Child Artist","Singer","Dancer",
+            "Side Artist","Assistant Director","Lyric Writer / Lyricist",
+            "Dialouge Writer","Script / Screenplay Writers", "Story Board Artist",
+            "Choreographer","Director of Photography", "Still Photographer",
+            "PRO", "Designer", "Production Manager",
+            "Focus Puller", "Vehicle Driver", "Mic Department",
+            "Music Director", "Make-up Man", "Hair Dresser",
+            "Costumer", "Art Department", "Set Department",
+            "Stuntman", "Editor", "Location Manager",
+            "Production (Food)", "Dubbing Artist", "Sound Recording Engineer",
+            "Sound Mixing Engineer", "Digital Intermediate", "VFX / CG",
+            "SFX", "Pet Supplier / Pet Doctor / AWBI Certifications"};
+
+    String[] whoNcrafts1 = {
+            "Actor","Actress","Childartist","Singer","Dancer",
+            "Sideartist","Assistantdirector","Lyricwriter",
+            "Dialoguewriter","Scriptwriter", "Storyboardartist",
+            "Choreographer","Directorofphotography", "Stillphotographer",
+            "Pro", "Designer", "Productionmanager",
+            "Focuspuller", "Vehicledriver", "Micdepartment",
+            "Musicdirector", "Makeupman", "Hairdresser",
+            "Costumer", "Artdepartment", "Setdepartment",
+            "Stuntman", "Editor", "Locationmanager",
+            "Productionfood", "Dubbingartist", "Soundrecordingengineer",
+            "Soundmixingengineer", "Di", "VFX",
+            "Sfx", "Petsupplier"};
+
 
     SharedPreferences pref;
     SharedPreferences.Editor editor;
@@ -67,17 +103,6 @@ public class EncountersMain extends android.support.v4.app.Fragment {
     String lastSwipeDirection = "";
     ImageView forbiddenMark,undoButton,starInEncounters,closeEnvelope;
 
-    String[] mThumbIds = {
-            "https://homepages.cae.wisc.edu/~ece533/images/airplane.png", "https://homepages.cae.wisc.edu/~ece533/images/arctichare.png", "https://homepages.cae.wisc.edu/~ece533/images/baboon.png",
-            "https://homepages.cae.wisc.edu/~ece533/images/barbara.bmp", "https://homepages.cae.wisc.edu/~ece533/images/boat.png", "https://homepages.cae.wisc.edu/~ece533/images/boy.bmp",
-            "https://homepages.cae.wisc.edu/~ece533/images/cat.png", "https://homepages.cae.wisc.edu/~ece533/images/fruits.png", "https://homepages.cae.wisc.edu/~ece533/images/frymire.png",
-            "https://homepages.cae.wisc.edu/~ece533/images/girl.png", "https://homepages.cae.wisc.edu/~ece533/images/goldhill.png", "https://homepages.cae.wisc.edu/~ece533/images/lena.png",
-            "https://homepages.cae.wisc.edu/~ece533/images/monarch.png", "https://homepages.cae.wisc.edu/~ece533/images/mountain.png", "https://homepages.cae.wisc.edu/~ece533/images/peppers.png",
-            "https://homepages.cae.wisc.edu/~ece533/images/serrano.png", "https://source.unsplash.com/Xq1ntWruZQI/600x800", "https://source.unsplash.com/NYyCqdBOKwc/600x800",
-            "https://source.unsplash.com/buF62ewDLcQ/600x800", "https://source.unsplash.com/THozNzxEP3g/600x800", "https://source.unsplash.com/USrZRcRS2Lw/600x800",
-            "https://source.unsplash.com/PeFk7fzxTdk/600x800", "https://source.unsplash.com/LrMWHKqilUw/600x800", "https://source.unsplash.com/HN-5Z6AmxrM/600x800",
-            "https://source.unsplash.com/CdVAUADdqEc/600x800", "https://source.unsplash.com/AWh9C-QjhE4/600x800"
-    };
 
     ArrayList<String> encountersnamenage = new ArrayList<>();
     ArrayList<String> encounterscraft = new ArrayList<>();
@@ -94,6 +119,11 @@ public class EncountersMain extends android.support.v4.app.Fragment {
         getActivity().setTitle("Encounters");
         setHasOptionsMenu(true);
         row = myView.findViewById(R.id.rowOfIcons);
+
+
+
+
+
 
         sharedPref = new SharedPref(getActivity().getApplicationContext());
 
@@ -221,35 +251,6 @@ public class EncountersMain extends android.support.v4.app.Fragment {
             }
         });
 
-      /*  forbiddenMark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                *//*getSharedPreferences();
-
-                if(clickCross == 0)
-                {
-                    AlertDialogPressDislike();
-                    editor.putInt("clickCross",1);
-                    editor.commit();
-                }
-
-                else
-                    swipeLeft();*//*
-
-                getSharedPreferences();
-
-                if (left == 0) {
-                    swipeLeft();
-                    AlertDialogSwipeLeft();
-                    editor.putInt("left", 1);
-                    editor.commit();
-                } else
-                    swipeLeft();
-
-            }
-        });*/
-
 
         undoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -265,37 +266,9 @@ public class EncountersMain extends android.support.v4.app.Fragment {
             }
         });
 
-        /*starInEncounters.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-             *//*   getSharedPreferences();
-
-                if(clickStar == 0)
-                {
-                    AlertDialogPressLike();
-                    editor.putInt("clickStar",1);
-                    editor.commit();
-                }
-
-                else
-                    swipeRight();
 
 
-*//*
-
-                if (right == 0) {
-                    swipeRight();
-                    AlertDialogSwipeRight();
-                    editor.putInt("right", 1);
-                    editor.commit();
-                } else
-                    swipeRight();
-            }
-        });*/
-
-
-        reload();
+        //reload();
 
         // Tap Target View - Implementation for a Fragment - Haiz,,,,
             TapTargetSequence sequence = new TapTargetSequence(getActivity())
@@ -450,11 +423,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
     }
 
     private void getSharedPreferences() {
-        /*clickStar = pref.getInt("clickStar",0);
-        clickCross = pref.getInt("clickCross",0);
-        swipeRighttoLike = pref.getInt("swipeRighttoLike",0);
-        swipelefttoDislike = pref.getInt("swipeLefttoDislike",0);
-        undo = pref.getInt("Undo",0);*/
+
 
         right = pref.getInt("right",0);
         left = pref.getInt("left",0);
@@ -463,42 +432,6 @@ public class EncountersMain extends android.support.v4.app.Fragment {
     }
 
 
- /*   @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.activity_main,menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_activity_main_reload:
-                reload();
-                break;
-            case R.id.menu_activity_main_add_first:
-                addFirst();
-                break;
-            case R.id.menu_activity_main_add_last:
-                addLast();
-                break;
-            case R.id.menu_activity_main_remove_first:
-                removeFirst();
-                break;
-            case R.id.menu_activity_main_remove_last:
-                removeLast();
-                break;
-            case R.id.menu_activity_main_swipe_left:
-                swipeLeft();
-                break;
-            case R.id.menu_activity_main_swipe_right:
-                swipeRight();
-                break;
-            case R.id.menu_activity_main_reverse:
-                reverse();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
 
     private TouristSpot createTouristSpot() {
         return new TouristSpot("Yasaka Shrine", "Kyoto", "https://source.unsplash.com/Xq1ntWruZQI/600x800");
@@ -518,64 +451,82 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
     }
 
-    private TouristSpotCardAdapter createTouristSpotCardAdapter() {
-        final TouristSpotCardAdapter adapter = new TouristSpotCardAdapter(getActivity().getApplicationContext());
+    private TouristSpotCardAdapter createTouristSpotCardAdapter(String craft) {
+         adapter1 = null;
+         if(getActivity()!= null) {
+             adapter1 = new TouristSpotCardAdapter(getActivity().getApplicationContext());
+             encountersnamenage.clear();
+             encounterscraft.clear();
+             encountersimage.clear();
+             userids.clear();
+
+             Log.e("craft:Main", craft);
+
+             //pull the data down
+             AndroidNetworking.get(User.getInstance().BASE_URL + "user/encounters/" + craft)
+                     .addHeaders("authorization", sharedPref.getSPData(getActivity().getApplicationContext(), "jwtToken"))
+                     .setPriority(Priority.MEDIUM)
+                     .build()
+                     .getAsJSONArray(new JSONArrayRequestListener() {
+                         @Override
+                         public void onResponse(JSONArray response) {
+                             Log.e("encounterResponse:Main", response.toString());
+
+                             for (int i = 0; i < response.length(); i++) {
+
+                                 try {
+
+                                     String dob = response.getJSONObject(i).optString("dob");
+                                     int year = Integer.parseInt(dob.substring(0, 4));
+                                     int month = Integer.parseInt(dob.substring(5, 7));
+                                     int day = Integer.parseInt(dob.substring(8, 10));
+                                     String Age = User.getInstance().getAge(year, month, day);
+                                     String namenage = response.getJSONObject(i).optString("name") + ", " + Age;
+
+                                     String craft = response.getJSONObject(i).optString("category");
+
+                                     String imgurl = "null";
+
+                                     if (response.getJSONObject(i).optString("profileImageURL").equals("")) {
+                                         //add default image
+                                         imgurl = "http://homepages.cae.wisc.edu/~ece533/images/airplane.png";
+                                     } else {
+                                         imgurl = "http://" + response.getJSONObject(i).optString("profileImageURL");
+                                     }
+
+                                     userids.add(response.getJSONObject(i).optString("_id"));
+
+                                     encountersnamenage.add(namenage);
+                                     encounterscraft.add(craft);
+                                     encountersimage.add(imgurl);
+
+                                 } catch (JSONException e) {
+                                     e.printStackTrace();
+                                 }
+                             }
 
 
+                             adapter1.addAll(createTouristSpots());
+
+                         }
+
+                         @Override
+                         public void onError(ANError error) {
+                             error.printStackTrace();
+                         }
+                     });
+         }
         //pull the data down
-        AndroidNetworking.get(User.getInstance().BASE_URL + "user/view/all/Actor")
-                .addHeaders("authorization", sharedPref.getSPData(getActivity().getApplicationContext(), "jwtToken"))
-                .setPriority(Priority.MEDIUM)
-                .build()
-                .getAsJSONArray(new JSONArrayRequestListener() {
-                    @Override
-                    public void onResponse(JSONArray response) {
 
-                        for (int i = 0; i<response.length(); i++) {
+        return adapter1;
+    }
 
-                            try {
-
-                                String dob = response.getJSONObject(i).optString("dob");
-                                int year = Integer.parseInt(dob.substring(0,4));
-                                int month = Integer.parseInt(dob.substring(5,7));
-                                int day = Integer.parseInt(dob.substring(8,10));
-                                String Age = User.getInstance().getAge(year,month,day);
-                                String namenage = response.getJSONObject(i).optString("name") + ", " + Age;
-
-                                String craft = response.getJSONObject(i).optString("category");
-
-                                String imgurl = "null";
-
-                                if(response.getJSONObject(i).optString("profileImageURL").equals("")) {
-                                    //add default image
-                                    imgurl = "http://homepages.cae.wisc.edu/~ece533/images/airplane.png";
-                                } else {
-                                    imgurl = "http://24crafts.cf:3000/" + "users/" + response.getJSONObject(i).optString("_id") + "/profileImage.jpg";
-                                }
-
-                                userids.add(response.getJSONObject(i).optString("_id"));
-
-                                encountersnamenage.add(namenage);
-                                encounterscraft.add(craft);
-                                encountersimage.add(imgurl);
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
+    @Override
+    public void onResume() {
+        super.onResume();
 
 
-                        adapter.addAll(createTouristSpots());
-
-                    }
-                    @Override
-                    public void onError(ANError error) {
-                        error.printStackTrace();
-                    }
-                });
-        //pull the data down
-
-        return adapter;
+        reload();
     }
 
     private void setup() {
@@ -584,17 +535,30 @@ public class EncountersMain extends android.support.v4.app.Fragment {
     }
 
     private void reload() {
+
+
+        if(getSPData("chosenCraftEncounters").equalsIgnoreCase("") || getSPData("chosenCraftEncounters").equalsIgnoreCase(null))
+            chosenCraftEncounters = "Actor";
+
+        else
+            chosenCraftEncounters = getSPData("chosenCraftEncounters");
+
+
+
         cardStackView.setVisibility(View.GONE);
         row.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                adapter = createTouristSpotCardAdapter();
-                cardStackView.setAdapter(adapter);
-                cardStackView.setVisibility(View.VISIBLE);
-                row.setVisibility(View.VISIBLE);
-                progressBar.setVisibility(View.GONE);
+                adapter = createTouristSpotCardAdapter(chosenCraftEncounters);
+
+
+                    cardStackView.setAdapter(adapter);
+                    cardStackView.setVisibility(View.VISIBLE);
+                    row.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.GONE);
+
             }
         }, 1000);
     }
@@ -726,6 +690,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
                         storeSPData("userdatamain",response.toString());
                         Log.e("userdatamain:encMain",response.toString());
+                        reload();
                     }
 
                     @Override
@@ -759,34 +724,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
         translateY.setStartDelay(100);
         translateX.setDuration(500);
         translateY.setDuration(500);
-        AnimatorSet set = new AnimatorSet();/*starInEncounters.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-             *//*   getSharedPreferences();
-
-                if(clickStar == 0)
-                {
-                    AlertDialogPressLike();
-                    editor.putInt("clickStar",1);
-                    editor.commit();
-                }
-
-                else
-                    swipeRight();
-
-
-*//*
-
-                if (right == 0) {
-                    swipeRight();
-                    AlertDialogSwipeRight();
-                    editor.putInt("right", 1);
-                    editor.commit();
-                } else
-                    swipeRight();
-            }
-        });*/
+        AnimatorSet set = new AnimatorSet();
         set.playTogether(rotation, translateX, translateY);
 
         cardStackView.swipe(SwipeDirection.Right, set);
@@ -799,109 +737,8 @@ public class EncountersMain extends android.support.v4.app.Fragment {
         Log.e("reverse","called");
         cardStackView.reverse();
 
-
-
     }
 
-
-
-    public void AlertDialogSwipeLeft()
-    {
-
-        new LovelyStandardDialog(getActivity(),LovelyStandardDialog.ButtonLayout.VERTICAL)
-                .setTopColorRes(R.color.indigo_500)
-                .setButtonsColorRes(R.color.indigo_500)
-                .setIcon(R.drawable.star75)
-                .setTitle("Not Interested?")
-                .setMessage("Are you sure you're not interested in this person?")
-                .setPositiveButton("OK", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                    }
-                })
-                .setNegativeButton("CANCEL", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        reverse();
-                    }
-                })
-                .show();
-    }
-
-
-
-    public void AlertDialogSwipeRight()
-    {
-
-
-        new LovelyStandardDialog(getActivity(),LovelyStandardDialog.ButtonLayout.VERTICAL)
-                .setTopColorRes(R.color.indigo_500)
-                .setButtonsColorRes(R.color.indigo_500)
-                .setIcon(R.drawable.star75)
-                .setTitle("Like?")
-                .setMessage("Swiping Right or Clicking on the star icon will add people to favorites")
-                .setPositiveButton("OK", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                    }
-                })
-                .setNegativeButton("CANCEL", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        reverse();
-                    }
-                })
-                .show();
-    }
-
-
-
-    /*public void AlertDialogPressLike()
-    {
-        new AlertDialog.Builder(getActivity())
-                .setTitle("Like")
-                .setMessage("Clicking on the star icon will add <name> to favourites")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        dialog.dismiss();
-                        swipeRight();
-
-
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .show();
-    }
-
-
-    public void AlertDialogPressDislike()
-    {
-        new AlertDialog.Builder(getActivity())
-                .setTitle("Not Interested?")
-                .setMessage("Are you sure you're not interested in this person?")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        swipeLeft();
-
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .show();
-    }
-
-*/
 
     public void AlertDialogUndo()
     {
@@ -947,6 +784,235 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                 break;
 
             case R.id.menu_filter_grid:
+                final AlertView alert = new AlertView("CHOOSE CRAFT", "Please choose the craft whose profiles you would like to see", AlertStyle.DIALOG);
+                alert.addAction(new AlertAction(whoNcrafts[0], AlertActionStyle.DEFAULT, action -> {
+                    chosenCraftEncounters = whoNcrafts1[0];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[1], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[1];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[2], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[2];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[3], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[3];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[4], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[4];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[5], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[5];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[6], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[6];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[7], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[7];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[8], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[8];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[9], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[9];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[10], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[10];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[11], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[11];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[12], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[12];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[13], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[13];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[14], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[14];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[15], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[15];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[16], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[16];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[17], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[17];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[18], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[18];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[19], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[19];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[20], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[20];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[21], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[21];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[22], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[22];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[23], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[23];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[24], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[24];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[25], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[25];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[26], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[26];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[27], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[27];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[28], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[28];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[29], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[29];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[30], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[30];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[31], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[31];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[32], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[32];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[33], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[33];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[34], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[34];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[35], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[35];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+                alert.addAction(new AlertAction(whoNcrafts[36], AlertActionStyle.DEFAULT, action -> {
+
+                    chosenCraftEncounters = whoNcrafts1[36];
+                    storeSPData("chosenCraftEncounters",chosenCraftEncounters);
+                    reload();
+                }));
+
+                alert.setTheme(AlertTheme.LIGHT);
+                alert.show((AppCompatActivity) getActivity());
+
+
+                //populateAdapter(chosenCraftEncounters);
                 break;
         }
 
@@ -974,4 +1040,8 @@ public class EncountersMain extends android.support.v4.app.Fragment {
         return data;
 
     }
+
+
+
+
 }

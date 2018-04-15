@@ -137,7 +137,13 @@ public class CraftsmenFavouritesTabFragment extends android.support.v4.app.Fragm
                 JSONArray favoritesIDs = new JSONArray(arrayList1);
                 storeSPData("favoritesIDs", favoritesIDs.toString());
 
-                String concatID = arrayList1.get(0) + ",";
+                String concatID;
+
+                if(arrayList1.size() != 1)
+                    concatID = arrayList1.get(0) + ",";
+
+                else
+                    concatID = arrayList1.get(0);
 
                 for (int i = 1; i < arrayList1.size(); i++) {
                     if (i == arrayList1.size() - 1)
@@ -179,11 +185,10 @@ public class CraftsmenFavouritesTabFragment extends android.support.v4.app.Fragm
                                 }
 
 
-                                if (imageURLs.size() != 0) {
                                     FavsRecyclerAdapter adapter = new FavsRecyclerAdapter(getContext(), imageURLs);
 
                                     favs_grid.setAdapter(adapter);
-                                }
+
 
 
                             }
