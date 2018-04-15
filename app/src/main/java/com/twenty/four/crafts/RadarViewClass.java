@@ -1,6 +1,7 @@
 package com.twenty.four.crafts;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,7 +14,9 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -32,6 +35,7 @@ public class RadarViewClass extends View implements View.OnClickListener{
 
     //String url = "http://24crafts.cf:3000/users/5a9e814e0a462e6e1f7fa9c5/photos/24 Logo.png";
     private Context mContext;
+    static int counter = 0;
     private boolean isSearching = false;// 标识是否处于扫描状态,默认为不在扫描状态
     private Paint mPaint;// 画笔
     private Bitmap mScanBmp;// 执行扫描运动的图片
@@ -46,24 +50,51 @@ public class RadarViewClass extends View implements View.OnClickListener{
     int mCx, mCy;// x、y轴中心点
     int mOutsideRadius, mInsideRadius;// 外、内圆半径
     ArrayList<Integer> mPointArrayX,mPointArrayY;
-    ArrayList<Bitmap> peopleNearbyBitmaps;
+    ArrayList<Bitmap> peopleNearbyBitmaps = new ArrayList<>();
+    JSONArray peoplenearbyID;
 
     public RadarViewClass(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         // TODO Auto-generated constructor stub
-        init(context);
+        mContext = context;
+        peopleNearbyBitmaps = new ArrayList<>();
+        try {
+            peoplenearbyID = new JSONArray(getSPData("peoplenearbyID"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        decodeToBitmap();
+
     }
 
     public RadarViewClass(Context context, AttributeSet attrs) {
         super(context, attrs);
         // TODO Auto-generated constructor stub
-        init(context);
+        mContext = context;
+        peopleNearbyBitmaps = new ArrayList<>();
+        try {
+            peoplenearbyID = new JSONArray(getSPData("peoplenearbyID"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        decodeToBitmap();
+
     }
 
     public RadarViewClass(Context context) {
         super(context);
         // TODO Auto-generated constructor stub
-        init(context);
+        mContext = context;
+        peopleNearbyBitmaps = new ArrayList<>();
+
+        try {
+            peoplenearbyID = new JSONArray(getSPData("peoplenearbyID"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        decodeToBitmap();
+
     }
 
     /**
@@ -71,9 +102,11 @@ public class RadarViewClass extends View implements View.OnClickListener{
      */
     private void init(Context context) {
 
-        decodeToBitmap();
+
+
         mPaint = new Paint();
         this.mContext = context;
+
         this.mDefaultPointBmp = Bitmap.createBitmap(BitmapFactory
                 .decodeResource(mContext.getResources(),
                         R.drawable.radar_default_point_ico));
@@ -83,25 +116,29 @@ public class RadarViewClass extends View implements View.OnClickListener{
         this.mLightPointBmp = Bitmap.createScaledBitmap(mLightPointBmp,150,150,false);
         this.mPointArrayX = new ArrayList<>();
         this.mPointArrayY = new ArrayList<>();
-        this.peopleNearbyBitmaps = new ArrayList<>();
+
 
     }
 
     private void decodeToBitmap() {
 
+        counter =1;
+
         SharedPreferences mUserData = getContext().getSharedPreferences("UserData", MODE_PRIVATE);
         int nearbySize = mUserData.getInt("nearbySize",0);
+        Log.e("decToBmpNbySize",nearbySize+"");
         for(int i=0;i<nearbySize;i++)
         {
             byte[] imageAsBytes = Base64.decode(getSPData("person"+i).getBytes(),Base64.DEFAULT);
-          //  Log.e("imageasbytes",imageAsBytes.toString());
+            Log.e("imageasbytes",imageAsBytes.toString());
             Bitmap bitmap = BitmapFactory.decodeByteArray(imageAsBytes,0,imageAsBytes.length);
 
             peopleNearbyBitmaps.add(bitmap);
         }
 
 
-//        Log.e("sizeOfPeopleNearby",peopleNearbyBitmaps.size()+"");
+        Log.e("sizeOfPeopleNearby",peopleNearbyBitmaps.size()+"");
+        init(getContext());
     }
 
     /**
@@ -143,6 +180,10 @@ public class RadarViewClass extends View implements View.OnClickListener{
         // TODO Auto-generated method stub
         super.onDraw(canvas);
         // 开始绘制最外层的圆
+
+
+       /* if(counter == 0)
+        decodeToBitmap();*/
 
         mPaint.setAntiAlias(true);// 设置抗锯齿
         mPaint.setStyle(Paint.Style.FILL);// 设置填充样式
@@ -241,10 +282,12 @@ public class RadarViewClass extends View implements View.OnClickListener{
                             Integer.parseInt(result[0]),
                             Integer.parseInt(result[1]), null);*/
 
-                //Bitmap bitmap = this.peopleNearbyBitmaps.get(i);
-                Bitmap bitmap = Bitmap.createScaledBitmap(peopleNearbyBitmaps.get(i),150,150,false);
 
-                canvas.drawBitmap(bitmap,
+                Bitmap bitmap = Bitmap.createScaledBitmap(peopleNearbyBitmaps.get(i),100,100,false);
+
+
+                if(bitmap!=null)
+                    canvas.drawBitmap(bitmap,
                         Integer.parseInt(result[0]),
                         Integer.parseInt(result[1]), null);
             }
@@ -306,7 +349,21 @@ public class RadarViewClass extends View implements View.OnClickListener{
                     if(x >= mPointArrayX.get(i) && x < (mPointArrayX.get(i) + mLightPointBmp.getWidth())
                             && y >= mPointArrayY.get(i) && y < (mPointArrayY.get(i) + mLightPointBmp.getHeight()))
                     {
-                        Toast.makeText(mContext,x + " " + y,Toast.LENGTH_LONG).show();
+                        //Toast.makeText(mContext,x + " " + y,Toast.LENGTH_LONG).show();
+
+
+                        try {
+                            Intent intent = new Intent(mContext,ProfileView.class);
+                            intent.putExtra("userID",peoplenearbyID.get(i).toString());
+                            intent.putExtra("viewingmyprofile","false");
+                            intent.putExtra("thisistogetback", "do nothing");
+                            intent.putExtra("mode","peoplenearby");
+                            intent.putExtra("fromwhom", "do nothing");
+                            mContext.startActivity(intent);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
                     }
                 }
         }

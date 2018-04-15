@@ -8,4 +8,11 @@
         app:showAsAction="always"
         android:title="Grid View" />
 
+    <item
+        android:id="@+id/menu_filter_grid"
+        app:showAsAction="always"
+        android:title="FilterGrid"
+        android:iconTint="@color/Color_White"
+        android:icon="@drawable/arrowicon"/>
+
 </menu>

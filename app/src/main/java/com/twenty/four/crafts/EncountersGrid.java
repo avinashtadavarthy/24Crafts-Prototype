@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,7 +22,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Created by Avinash Tadavarthy on 04-Nov-17.
@@ -87,9 +85,9 @@ public class EncountersGrid extends android.support.v4.app.Fragment {
 
                                 if(response.getJSONObject(i).optString("profileImageURL").equals("")) {
                                     //add default image
-                                    imgurl = "https://homepages.cae.wisc.edu/~ece533/images/airplane.png";
+                                    imgurl = "homepages.cae.wisc.edu/~ece533/images/airplane.png";
                                 } else {
-                                    imgurl = User.getInstance().BASE_URL + "users/" + response.getJSONObject(i).optString("_id") + "/profileImage.jpg";
+                                    imgurl =  "24crafts.cf:3000/users/" + response.getJSONObject(i).optString("_id") + "/profileImage.jpg";
                                 }
 
                                 encountersimage.add(imgurl);
@@ -126,6 +124,7 @@ public class EncountersGrid extends android.support.v4.app.Fragment {
                                 .putExtra("thisistogetback", "do nothing")
                                 .putExtra("fromwhom", "do nothing")
                                 .putExtra("viewingmyprofile", "false")
+                                .putExtra("mode","encountersgrid")
                                 .putExtra("userid", userids.get(position));
                         startActivity(page);
                     }
@@ -154,6 +153,9 @@ public class EncountersGrid extends android.support.v4.app.Fragment {
                 android.support.v4.app.FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new EncountersMain()).commit();
                 sharedPref.storeSPData(getActivity().getApplicationContext(), "encountersView", "GridOff");
+                break;
+
+            case R.id.menu_filter:
                 break;
         }
 

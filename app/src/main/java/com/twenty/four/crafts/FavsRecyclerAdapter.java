@@ -2,6 +2,7 @@ package com.twenty.four.crafts;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +22,15 @@ public class FavsRecyclerAdapter extends RecyclerView.Adapter<FavsRecyclerAdapte
     private ArrayList<String> mThumbIds;
     private LayoutInflater inflater;
 
+
+
+
     // data is passed into the constructor
     FavsRecyclerAdapter(Context context, ArrayList<String> mThumbIds) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
         this.mThumbIds = mThumbIds;
+
     }
 
     // inflates the cell layout from xml when needed
@@ -34,14 +39,19 @@ public class FavsRecyclerAdapter extends RecyclerView.Adapter<FavsRecyclerAdapte
         View view = inflater.inflate(R.layout.favs_item, null, false);
         RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(lp);
+
         return new FavsViewHolder(view);
     }
+
+
 
     // binds the data to the textview in each cell
     @Override
     public void onBindViewHolder(FavsViewHolder holder, int position) {
 
-        Glide.with(context).load(mThumbIds.get(position)).into(holder.fav_item);
+        Log.e("onBindViewHldr",mThumbIds.get(position));
+
+        Glide.with(context).load("http://" + mThumbIds.get(position)).into(holder.fav_item);
 
     }
 
@@ -69,4 +79,8 @@ public class FavsRecyclerAdapter extends RecyclerView.Adapter<FavsRecyclerAdapte
     String getItem(int id) {
         return mThumbIds.get(id);
     }
+
+
+
+
 }

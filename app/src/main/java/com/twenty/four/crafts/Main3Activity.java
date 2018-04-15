@@ -1,29 +1,25 @@
 package com.twenty.four.crafts;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
-import android.view.ContextThemeWrapper;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -210,7 +206,8 @@ public class Main3Activity extends AppCompatActivity implements NavigationView.O
                 Intent i = new Intent(Main3Activity.this, ProfileView.class)
                         .putExtra("thisistogetback", "do nothing")
                         .putExtra("fromwhom", "do nothing")
-                        .putExtra("viewingmyprofile", "true");
+                        .putExtra("viewingmyprofile", "true")
+                        .putExtra("mode","main3activity");
                 startActivity(i);
             }
         });

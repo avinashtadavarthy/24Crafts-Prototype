@@ -26,6 +26,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.twenty.four.crafts.ForgotPassword;
 import com.twenty.four.crafts.Item;
 import com.twenty.four.crafts.JWTUtils;
@@ -36,6 +40,7 @@ import com.twenty.four.crafts.PushNotifMain;
 import com.twenty.four.crafts.R;
 import com.twenty.four.crafts.User;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,6 +59,7 @@ public class Login extends AppCompatActivity {
     ProgressDialog progressbar;
     AnimationDrawable animationDrawable;
 
+    ArrayList<String> imageURLs = new ArrayList<>();
     String uname, pword, jwtToken, subscribed, decodedJWT = "";
 
     public static void hideKeyboard(Activity activity) {
@@ -252,6 +258,16 @@ public class Login extends AppCompatActivity {
                                     storeSPData("pword", pword);
                                     storeSPData("userdatamain", response);
 
+
+                                        JSONObject jsonObject = new JSONObject(response);
+                                        JSONArray jsonArray = jsonObject.getJSONArray("favorites");
+
+
+                                        Log.e("favsArrayID:Login",jsonArray.toString());
+                                        if(!jsonArray.toString().equals("[]"))
+                                        getAllUserData(jsonArray);
+
+
                                     assignSPData();
 
                                     JSONObject obj = new JSONObject(response);
@@ -323,6 +339,80 @@ public class Login extends AppCompatActivity {
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
 
+
+
+    public void getAllUserData(JSONArray arrayListWithQuotes)
+    {
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        for(int i=0;i<arrayListWithQuotes.length();i++)
+        {
+            try {
+                String temp = arrayListWithQuotes.getString(i);
+                temp = temp.substring(0,temp.length());
+
+                Log.e("temp" + i ,temp);
+
+                arrayList.add(temp);
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        AndroidNetworking.initialize(getApplicationContext());
+
+        String concatID = arrayList.get(0) + ",";
+
+        for(int i=1;i<arrayList.size();i++)
+        {
+            if(i == arrayList.size() - 1)
+                concatID = concatID + arrayList.get(i);
+
+            else
+                concatID = concatID + arrayList.get(i) + ",";
+        }
+
+        Log.e("concatID",concatID);
+
+        AndroidNetworking.post(User.getInstance().BASE_URL + "user/getDetails")
+                .setPriority(Priority.MEDIUM)
+                .addHeaders("authorization",getSPData("jwtToken"))
+                .addBodyParameter("idArray", concatID)
+                .build()
+                .getAsJSONArray(new JSONArrayRequestListener() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+
+                        Log.e("user/getDetails:log",response.toString());
+                        for(int i=0;i<response.length();i++)
+                        {
+                            try {
+                                JSONObject current = response.getJSONObject(i);
+                                String profileImageURL = current.optString("profileImageURL");
+
+                                imageURLs.add(profileImageURL);
+
+                                JSONArray jsonArray = new JSONArray(imageURLs);
+                                storeSPData("favsImgURLs",jsonArray.toString());
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+
+
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+
+    }
     @Override
     public void onBackPressed() {
 

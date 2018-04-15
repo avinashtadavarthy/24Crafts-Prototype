@@ -14,6 +14,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -40,6 +41,7 @@ public class RadarView extends AppCompatActivity implements GoogleApiClient.Conn
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
+    ImageView imageView;
     boolean requestSent = false;
     final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     GoogleApiClient mGoogleApiClient;
@@ -70,6 +72,7 @@ public class RadarView extends AppCompatActivity implements GoogleApiClient.Conn
                 .setInterval(10 * 1000)
                 .setFastestInterval(1 * 1000);
 
+        imageView = findViewById(R.id.testImageViewradarView);
 
         AndroidNetworking.initialize(getApplicationContext());
         //routeToGetPeopleNearby();
@@ -91,7 +94,6 @@ public class RadarView extends AppCompatActivity implements GoogleApiClient.Conn
             mGoogleApiClient.disconnect();
         }
     }
-
     private void routeTogetUserDetails(JSONArray peopleNearby) {
 
 
@@ -139,10 +141,13 @@ public class RadarView extends AppCompatActivity implements GoogleApiClient.Conn
                     public void onResponse(JSONObject response) {
 
                         JSONArray nearby = response.optJSONArray("nearby");
-                        Log.e("PeopleNearby", nearby.toString());
-                        Log.e("PeopleNearbyLength", nearby.length() + "");
+                        Log.e("PplNby:RouteTogetpn", nearby.toString());
+                        Log.e("PplNbyLngth:RtTogetpn", nearby.length() + "");
+                        storeSPData("peoplenearbyID",nearby.toString());
 
                         routeTogetUserDetails(nearby);
+
+
                     }
 
                     @Override
@@ -167,12 +172,12 @@ public class RadarView extends AppCompatActivity implements GoogleApiClient.Conn
         }
 
 
+        //imageView.setImageBitmap(peopleNearbyBitmaps.get(peopleNearbyBitmaps.size()-1));
 
         SharedPreferences mUserData = this.getSharedPreferences("UserData", MODE_PRIVATE);
         SharedPreferences.Editor mUserEditor = mUserData.edit();
         mUserEditor.putInt("nearbySize", peopleNearbyBitmaps.size());
         mUserEditor.commit();
-
 
         RadarViewClass mRadarView = (RadarViewClass) findViewById(R.id.radar_view);
         mRadarView.setSearching(true);
@@ -307,7 +312,6 @@ public class RadarView extends AppCompatActivity implements GoogleApiClient.Conn
                     }
                 });
     }
-
 
 
     public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {

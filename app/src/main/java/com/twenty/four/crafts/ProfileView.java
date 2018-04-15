@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -12,16 +13,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SnapHelper;
 import android.support.v7.widget.Toolbar;
 import android.transition.Transition;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -38,25 +34,14 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.androidnetworking.interfaces.ParsedRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.androidnetworking.interfaces.UploadProgressListener;
 import com.bumptech.glide.Glide;
-import com.makeramen.roundedimageview.RoundedImageView;
-import com.squareup.picasso.Picasso;
-import com.twenty.four.crafts.registration.signup3;
-import com.vansuita.pickimage.bean.PickResult;
-import com.vansuita.pickimage.bundle.PickSetup;
-import com.vansuita.pickimage.dialog.PickImageDialog;
-import com.vansuita.pickimage.enums.EPickType;
-import com.vansuita.pickimage.listeners.IPickResult;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -118,6 +103,7 @@ public class ProfileView extends AppCompatActivity{
 
     String viewingmyprofile="false";
 
+    String userID,mode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -174,6 +160,38 @@ public class ProfileView extends AppCompatActivity{
 
         viewingmyprofile = getIntent().getStringExtra("viewingmyprofile");
 
+        mode = getIntent().getStringExtra("mode");
+
+        if(mode.equals("peoplenearby"))
+            userID = getIntent().getStringExtra("userID");
+
+        else if(mode.equals("encountersmain") || mode.equals("encountersgrid"))
+            userID = getIntent().getStringExtra("userid");
+
+        else if(mode.equals("favorites"))
+        {
+            userID = getIntent().getStringExtra("userid");
+
+            fav_profile.setImageResource(R.drawable.star);
+
+            try {
+                JSONArray favoritesIDs = new JSONArray(getSPData("favoritesIDs"));
+
+                for(int i=0;i<favoritesIDs.length();i++)
+                {
+                    if(favoritesIDs.get(i).toString().equals(userID))
+                    {
+                        fav_profile.setImageResource(R.drawable.star_full);
+                        isfav = true;
+                        break;
+                    }
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
         if(viewingmyprofile.equals("true")) {
             fav_profile.setVisibility(View.GONE);
             message_profile.setVisibility(View.GONE);
@@ -226,13 +244,15 @@ public class ProfileView extends AppCompatActivity{
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<String, String>();
-                    params.put("idArray", getIntent().getStringExtra("userid"));
+                   // params.put("idArray", "5abcdf1704d14d07a50f534a");
+                    params.put("idArray",userID);
                     return params;
                 }
             };
             MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
 
         }
+
 
 
 
@@ -249,45 +269,16 @@ public class ProfileView extends AppCompatActivity{
                     isfav = true;
                     fav_profile.setImageResource(R.drawable.star_full);
                     fav_profile.startAnimation(myAnim);
-
-                    AndroidNetworking.get(User.getInstance().BASE_URL + "user/favs/add/" + getIntent().getStringExtra("userid"))
-                            .addHeaders("authorization", getSPData("jwtToken"))
-                            .setPriority(Priority.LOW)
-                            .build()
-                            .getAsString(new StringRequestListener() {
-                                @Override
-                                public void onResponse(String response) {
-                                    Toast.makeText(ProfileView.this, response, Toast.LENGTH_SHORT).show();
-                                    sharedPref.updateUserDataMain(getApplicationContext());
-                                }
-
-                                @Override
-                                public void onError(ANError anError) {
-                                    anError.printStackTrace();
-                                }
-                            });
+                    addToFavs();
 
                 } else {
                     isfav = false;
                     fav_profile.setImageResource(R.drawable.star);
                     fav_profile.startAnimation(myAnim);
+                    removeFromFavs(userID);
 
-                    AndroidNetworking.get(User.getInstance().BASE_URL + "user/favs/remove/" + getIntent().getStringExtra("userid"))
-                            .addHeaders("authorization", getSPData("jwtToken"))
-                            .setPriority(Priority.LOW)
-                            .build()
-                            .getAsString(new StringRequestListener() {
-                                @Override
-                                public void onResponse(String response) {
-                                    Toast.makeText(ProfileView.this, response, Toast.LENGTH_SHORT).show();
-                                    sharedPref.updateUserDataMain(getApplicationContext());
-                                }
 
-                                @Override
-                                public void onError(ANError anError) {
-                                    anError.printStackTrace();
-                                }
-                            });
+
                 }
             }
         });
@@ -448,9 +439,73 @@ public class ProfileView extends AppCompatActivity{
 
     }
 
+    private void addToFavs() {
+
+        AndroidNetworking.get(User.getInstance().BASE_URL + "user/favs/add/" + userID)
+                .setPriority(Priority.MEDIUM)
+                .addHeaders("authorization",getSPData("jwtToken"))
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("Removefromfavs",response);
+
+                        Toast.makeText(ProfileView.this, "Added to favourites!", Toast.LENGTH_SHORT).show();
+                        updateUserRequest();
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }
+
+    private void removeFromFavs(String userID) {
+
+        AndroidNetworking.get(User.getInstance().BASE_URL + "user/favs/remove/" + userID)
+                .setPriority(Priority.MEDIUM)
+                .addHeaders("authorization",getSPData("jwtToken"))
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("Removefromfavs",response);
+                        Toast.makeText(ProfileView.this, "Removed from favourites!", Toast.LENGTH_SHORT).show();
+                        updateUserRequest();
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }
+
+    private void updateUserRequest() {
+
+        AndroidNetworking.get(User.getInstance().BASE_URL + "user")
+                .addHeaders("authorization",getSPData("jwtToken"))
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        storeSPData("userdatamain",response.toString());
+                        Log.e("userdatamain:profview",response.toString());
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }
 
 
-    void populateFields(JSONObject jsonObject) {
+    void
+    populateFields(JSONObject jsonObject) {
 
         try {
 

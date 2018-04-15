@@ -4,7 +4,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
@@ -22,12 +21,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
-import com.android.volley.toolbox.StringRequest;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
@@ -37,10 +37,13 @@ import com.yuyakaido.android.cardstackview.SwipeDirection;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class EncountersMain extends android.support.v4.app.Fragment {
 
@@ -50,7 +53,8 @@ public class EncountersMain extends android.support.v4.app.Fragment {
     private TouristSpotCardAdapter adapter;
     LinearLayout row;
 
-    int right,left;
+    int lastindex;
+    int right,left,pos;
     int undo;
     boolean targetEncounter;
     //int clickStar,clickCross,swipeRighttoLike,swipelefttoDislike,undo;
@@ -60,6 +64,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
     SharedPref sharedPref;
 
+    String lastSwipeDirection = "";
     ImageView forbiddenMark,undoButton,starInEncounters,closeEnvelope;
 
     String[] mThumbIds = {
@@ -100,7 +105,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
         closeEnvelope = myView.findViewById(R.id.closeEnvelope);
 
 
-        pref = getActivity().getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        pref = getActivity().getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
         editor = pref.edit();
 
         progressBar = (ProgressBar) myView.findViewById(R.id.activity_main_progress_bar);
@@ -120,30 +125,26 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                 getSharedPreferences();
 
 
-                if (direction.toString().equalsIgnoreCase("right")) {
-                    /*if(swipeRighttoLike == 0 )
-                    {
-                        AlertDialogSwipeRight();
-                        editor.putInt("swipeRighttoLike",1);
-                        editor.commit();
-                    }*/
+                lastSwipeDirection = direction.toString();
+                lastindex = cardStackView.getTopIndex();
 
+                Log.e("lastSwipeDir",lastSwipeDirection);
+                Log.e("lastindex",lastindex+"");
+
+                if (direction.toString().equalsIgnoreCase("right")) {
 
                     if (right == 0) {
                        // AlertDialogSwipeRight();
                         editor.putInt("right", 1);
                         editor.commit();
                     }
+
+
+
+                    onSwipeRight(cardStackView.getTopIndex()-1);
                 }
 
                 if (direction.toString().equalsIgnoreCase("left")) {
-/*
-                    if(swipelefttoDislike == 0)
-                    {
-                        AlertDialogSwipeLeft();
-                        editor.putInt("swipeLefttoDislike",1);
-                        editor.commit();
-                    }*/
 
                     if (left == 0) {
                       //  AlertDialogSwipeLeft();
@@ -152,8 +153,8 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                     }
 
                 }
-                Log.d("CardStackView", "onCardSwiped: " + direction.toString());
-                Log.d("CardStackView", "topIndex: " + cardStackView.getTopIndex());
+                Log.e("CardStackView", "onCardSwiped: " + direction.toString());
+                Log.e("CardStackView", "topIndex: " + cardStackView.getTopIndex());
                 if (cardStackView.getTopIndex() == adapter.getCount() - 5) {
                     Log.d("CardStackView", "Paginate: " + cardStackView.getTopIndex());
                     paginate();
@@ -162,6 +163,13 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
             @Override
             public void onCardReversed() {
+
+                Log.e("onCardReverse","called");
+                if(lastSwipeDirection.equalsIgnoreCase("right"))
+                {
+                    removeFromFavs(userids.get(lastindex-1));
+                }
+
                 Log.d("CardStackView", "onCardReversed");
             }
 
@@ -177,6 +185,7 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                         .putExtra("thisistogetback", "do nothing")
                         .putExtra("fromwhom", "do nothing")
                         .putExtra("viewingmyprofile", "false")
+                        .putExtra("mode","encountersmain")
                         .putExtra("userid", userids.get(index));
                 startActivity(page);
 
@@ -395,6 +404,51 @@ public class EncountersMain extends android.support.v4.app.Fragment {
             }
     }
 
+    private void removeFromFavs(String s) {
+
+        Log.e("userIDundo",s);
+        AndroidNetworking.initialize(getActivity().getApplicationContext());
+        AndroidNetworking.get(User.getInstance().BASE_URL + "user/favs/remove/" + s)
+                .setPriority(Priority.MEDIUM)
+                .addHeaders("authorization",getSPData("jwtToken"))
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("Removefromfavs",response);
+                        Toast.makeText(getContext(), "Removed from favourites!", Toast.LENGTH_SHORT).show();
+                        updateUserRequest();
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }
+
+    private void updateUserRequest() {
+
+
+        AndroidNetworking.get(User.getInstance().BASE_URL + "user")
+                .addHeaders("authorization",getSPData("jwtToken"))
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        storeSPData("userdatamain",response.toString());
+                        Log.e("userdatamain:profview",response.toString());
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }
+
     private void getSharedPreferences() {
         /*clickStar = pref.getInt("clickStar",0);
         clickCross = pref.getInt("clickCross",0);
@@ -494,9 +548,9 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
                                 if(response.getJSONObject(i).optString("profileImageURL").equals("")) {
                                     //add default image
-                                    imgurl = "https://homepages.cae.wisc.edu/~ece533/images/airplane.png";
+                                    imgurl = "http://homepages.cae.wisc.edu/~ece533/images/airplane.png";
                                 } else {
-                                    imgurl = User.getInstance().BASE_URL + "users/" + response.getJSONObject(i).optString("_id") + "/profileImage.jpg";
+                                    imgurl = "http://24crafts.cf:3000/" + "users/" + response.getJSONObject(i).optString("_id") + "/profileImage.jpg";
                                 }
 
                                 userids.add(response.getJSONObject(i).optString("_id"));
@@ -607,6 +661,8 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
         View target = cardStackView.getTopView();
 
+
+
         ValueAnimator rotation = ObjectAnimator.ofPropertyValuesHolder(
                 target, PropertyValuesHolder.ofFloat("rotation", -10f));
         rotation.setDuration(200);
@@ -625,13 +681,72 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
     }
 
-    public void swipeRight() {
-        List<TouristSpot> spots = extractRemainingTouristSpots();
-        if (spots.isEmpty()) {
+
+    public void onSwipeRight(int pos)
+    {
+        if (adapter.getCount() == 0) {
             return;
         }
 
+        Log.e("pos:onSwipeRight",pos+"");
+        Log.e("userid:onSwipeRight",userids.get(pos));
+
+        AndroidNetworking.initialize(getActivity().getApplicationContext());
+
+
+        AndroidNetworking.get(User.getInstance().BASE_URL + "user/favs/add/" + userids.get(pos))
+                .setPriority(Priority.MEDIUM)
+                .addHeaders("authorization", getSPData("jwtToken"))
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("encountersaddtofavs",response);
+                        getUserDetails();
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+
+
+    }
+
+    private void getUserDetails() {
+
+        AndroidNetworking.get(User.getInstance().BASE_URL + "user")
+                .addHeaders("authorization",getSPData("jwtToken"))
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        storeSPData("userdatamain",response.toString());
+                        Log.e("userdatamain:encMain",response.toString());
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+    }
+
+
+    public void swipeRight() {
+        //List<TouristSpot> spots = extractRemainingTouristSpots();
+        if (adapter.getCount() == 0) {
+            return;
+        }
+
+
         View target = cardStackView.getTopView();
+
+
+
 
         ValueAnimator rotation = ObjectAnimator.ofPropertyValuesHolder(
                 target, PropertyValuesHolder.ofFloat("rotation", 10f));
@@ -680,7 +795,12 @@ public class EncountersMain extends android.support.v4.app.Fragment {
 
 
     private void reverse() {
+
+        Log.e("reverse","called");
         cardStackView.reverse();
+
+
+
     }
 
 
@@ -825,8 +945,33 @@ public class EncountersMain extends android.support.v4.app.Fragment {
                 fragmentManager.beginTransaction().replace(R.id.content_frame_crafts, new EncountersGrid()).commit();
                 sharedPref.storeSPData(getActivity().getApplicationContext(), "encountersView", "GridOn");
                 break;
+
+            case R.id.menu_filter_grid:
+                break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+
+    //Shared Preferences
+    private void storeSPData(String key, String data) {
+
+        SharedPreferences mUserData = getContext().getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor mUserEditor = mUserData.edit();
+        mUserEditor.putString(key, data);
+        mUserEditor.commit();
+
+    }
+
+    private String getSPData(String key) {
+
+        SharedPreferences mUserData = getContext().getSharedPreferences("UserData", MODE_PRIVATE);
+        String data = mUserData.getString(key, "");
+
+        return data;
+
     }
 }
