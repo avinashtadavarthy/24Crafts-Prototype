@@ -1,5 +1,7 @@
 package com.twenty.four.crafts;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -34,6 +36,16 @@ public class CraftsmenDashboard extends Fragment {
         myView = inflater.inflate(R.layout.activity_craftsmen_dashboard, container, false);
 
         getActivity().setTitle("Dashboard");
+
+
+        Window w = getActivity().getWindow();
+        w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        Drawable bgTint = this.getResources().getDrawable(R.drawable.b2);
+        w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        w.setStatusBarColor(this.getResources().getColor(android.R.color.transparent));
+        w.setNavigationBarColor(this.getResources().getColor(android.R.color.transparent));
+        w.setBackgroundDrawable(bgTint);
 
         craftsmen_dashboard_tabbed = (ViewPager) myView.findViewById(R.id.craftsmen_dashboard_tabbed);
         craftsmen_dashboard_tabbed.setAdapter(new CraftsmenDashboard.CraftsmenDashboardAdapter(getChildFragmentManager(), getActivity().getApplicationContext()));

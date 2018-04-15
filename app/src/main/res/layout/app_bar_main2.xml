@@ -10,7 +10,8 @@
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:theme="@style/AppTheme.AppBarOverlay"
+            android:background="@drawable/b2">
 
             <android.support.design.widget.CollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar_layout_craft"
@@ -18,7 +19,8 @@
                 android:layout_height="?attr/actionBarSize"
                 app:contentScrim="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|enterAlways"
-                app:titleEnabled="false">
+                app:titleEnabled="false"
+                android:background="@drawable/b2">
 
 
                 <android.support.v7.widget.Toolbar
@@ -26,9 +28,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                    android:background="?attr/colorPrimary"
+                    android:background="@drawable/b2"
                     app:popupTheme="@style/AppTheme.PopupOverlay"
-                    app:layout_collapseMode="pin"/>
+                    app:layout_collapseMode="pin"
+                    />
 
             </android.support.design.widget.CollapsingToolbarLayout>
 

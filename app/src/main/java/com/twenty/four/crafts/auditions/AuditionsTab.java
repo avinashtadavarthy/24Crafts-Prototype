@@ -21,7 +21,6 @@ import com.twenty.four.crafts.User;
 public class AuditionsTab extends Fragment {
 
     View myView;
-
     TabLayout auditions_tabs;
     ViewPager auditions_tabbed;
 

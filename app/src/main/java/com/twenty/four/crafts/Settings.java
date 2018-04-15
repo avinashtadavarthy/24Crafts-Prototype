@@ -50,8 +50,8 @@ public class Settings extends AppCompatActivity {
             w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             Drawable bgTint = this.getResources().getDrawable(R.drawable.b2);
             w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            w.setStatusBarColor(this.getResources().getColor(R.color.transparent_black_hex_11));
-            w.setNavigationBarColor(this.getResources().getColor(R.color.transparent_black_hex_11));
+            w.setStatusBarColor(this.getResources().getColor(android.R.color.transparent));
+            w.setNavigationBarColor(this.getResources().getColor(android.R.color.transparent));
             w.setBackgroundDrawable(bgTint);
         }
         //Theme Stuff ---- End

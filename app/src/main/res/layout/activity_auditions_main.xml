@@ -16,7 +16,7 @@
         android:id="@+id/mainListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_gradient"
+        android:background="#151D26"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:divider="@android:color/transparent"

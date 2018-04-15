@@ -8,12 +8,14 @@
 
     <style name="AppTheme2" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimaryDark">#212121</item>
+        <item name="colorPrimaryDark">#19222D</item>
+        <item name="colorPrimary">#222E3C</item>
     </style>
 
     <style name="AppTheme3" parent="Theme.AppCompat">
         <!-- Customize your theme here. -->
-        <item name="colorPrimaryDark">#212121</item>
+        <item name="colorPrimaryDark">#19222D</item>
+        <item name="colorPrimary">#222E3C</item>
     </style>
 
 

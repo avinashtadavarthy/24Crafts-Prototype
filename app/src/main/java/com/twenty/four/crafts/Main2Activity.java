@@ -1,5 +1,6 @@
 package com.twenty.four.crafts;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -87,7 +88,6 @@ public class Main2Activity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
         super.onCreate(savedInstanceState);
 
